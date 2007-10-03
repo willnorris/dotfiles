@@ -1,0 +1,16 @@
+package: homedir
+priority: critical
+maintainer: Christian Holtje <bugs.homedir@docwhat.gerf.org>
+depends: 
+standards-version: 1
+description: Homedir Base Package
+ This is the base package of HomeDir.  It is needed to install,
+ remove, upgrade and manage packages for your home directory
+dirs:
+ bin
+ .homedir
+ .homedir/cache
+mkdirs:
+ bin
+ .homedir
+ .homedir/cache

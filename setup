@@ -1,0 +1,50 @@
+#!/bin/sh
+# This sets up homedir for you...
+# Example usages:
+#  wget -q -O- http://willnorris.com/svn/homedir/setup | sh
+#  lynx -source http://willnorris.com/svn/homedir/setup | sh
+#  curl -o- http://willnorris.com/svn/homedir/setup | sh
+
+# If there is an error, ABORT!
+set -e
+
+if [ -e "${HOME}/.homedir/config" ]; then
+    echo "You have a homedir configuration already."
+    echo "Aborting."
+    exit 1
+fi
+
+echo "Making ${HOME}/.homedir directory..."
+mkdir -p "${HOME}/.homedir/files"
+
+echo "Getting packages..."
+svn co -q http://willnorris.com/svn/homedir "${HOME}/.homedir/files"
+
+echo "Basic Configuration..."
+touch "${HOME}/.homedir/config"
+chmod 0600 "${HOME}/.homedir/config"
+cat >> "${HOME}/.homedir/config" <<EOF
+## This is a simple config.  It should be good for most cases.
+## Read documentation and submit bugs at:
+##    http://trac.gerf.org/homedir
+
+## base packages -- You want these
+packages = ~/.homedir/files/packages
+
+## author's packages -- You can use these as examples for making
+##                      simple packages that require other packages
+#packages = ~/.homedir/files/docwhat
+
+## Unittests -- only a developer would need this
+#packages = ~/.homedir/files/unittest
+
+## Command for the -s switch
+synccmd = cd ~/.homedir/files ; svn up
+
+## EOF
+EOF
+
+echo "Installing Homedir..."
+"${HOME}/.homedir/files/packages/00homedir/bin/homedir" -q install homedir
+
+echo "Done!"
