@@ -1,0 +1,18 @@
+#
+# ~/.mutt/mailboxes
+#
+
+mailboxes !
+mailboxes "+.MailingLists.MacSB"
+mailboxes "+.MailingLists.moneydance"
+mailboxes "+.MailingLists.vsStaff"
+
+# --- Internet2 Mailing Lists --- #
+mailboxes "+.MailingLists.grouper-dev"
+mailboxes "+.MailingLists.grouper-users"
+mailboxes "+.MailingLists.mace-dir"
+mailboxes "+.MailingLists.nexus-users"
+mailboxes "+.MailingLists.shibboleth-dev"
+mailboxes "+.MailingLists.shibboleth-users"
+mailboxes "+.MailingLists.signet-dev"
+mailboxes "+.MailingLists.signet-users"

@@ -1,0 +1,5 @@
+# vim: ft=muttrc
+
+unmy_hdr
+
+my_hdr From: Will Norris <wnorris@memphis.edu>

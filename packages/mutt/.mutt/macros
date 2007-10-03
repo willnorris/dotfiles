@@ -1,0 +1,61 @@
+# vim:ft=muttrc
+#
+# ~/.mutt/macros
+#
+
+# imitate the old search-body function
+macro index \eb '/~b ' 'search in message bodies'
+
+# Show documentation when pressing F1
+macro generic <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
+macro index   <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
+macro pager   <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
+
+# replacement for delete
+macro index "d" "<save-message>=.Trash\n"
+macro pager "d" "<save-message>=.Trash\n"
+
+# Quick folder access
+macro index ",i" "<change-folder>=.\n" 
+macro pager ",i" "<change-folder>=.\n" 
+macro index ",d" "<change-folder>=.Drafts\n" 
+macro pager ",d" "<change-folder>=.Drafts\n" 
+macro index ",s" "<change-folder>=.Sent\n"
+macro pager ",s" "<change-folder>=.Sent\n"
+macro index ",t" "<change-folder>=.Trash\n"
+macro pager ",t" "<change-folder>=.Trash\n"
+
+macro index ",j" "<change-folder>=.Junk\n"
+macro pager ",j" "<change-folder>=.Junk\n"
+macro index ",cs" "<change-folder>=._confirmedSpam\n"
+macro pager ",cs" "<change-folder>=._confirmedSpam\n"
+macro index \ej "<save-message>=._confirmedSpam\n" "move message to junk folder"
+macro pager \ej "<save-message>=._confirmedSpam\n" "move message to junk folder"
+
+macro index ",ph" "<change-folder>=.panheads\n"
+macro pager ",ph" "<change-folder>=.panheads\n"
+macro index "Sph" "<save-message>=.panheads\n"
+macro pager "Sph" "<save-message>=.panheads\n"
+
+macro index ",u" "<change-folder>=.USC\n"
+macro pager ",u" "<change-folder>=.USC\n"
+macro index "Su" "<save-message>=.USC\n"
+macro pager "Su" "<save-message>=.USC\n"
+
+macro index ",vs" "<change-folder>=.VisibleSchool\n"
+macro pager ",vs" "<change-folder>=.VisibleSchool\n"
+macro index "Svs" "<save-message>=.VisibleSchool\n"
+macro pager "Svs" "<save-message>=.VisibleSchool\n"
+
+macro index ",wm" "<change-folder>=.wirewaterMedia\n"
+macro pager ",wm" "<change-folder>=.wirewaterMedia\n"
+macro index "Swm" "<save-message>=.wirewaterMedia\n"
+macro pager "Swm" "<save-message>=.wirewaterMedia\n"
+
+
+# View filters
+macro index .r "<limit>~R\n"     # show read only
+macro index .f "<limit>~F\n"     # show flagged only
+macro index .n "<limit>~N\n"     # show new only
+macro index .a "<limit>~A\n"     # show all messages
+macro index .u "<limit>~s URGENT\n"  # show urgent messages

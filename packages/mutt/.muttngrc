@@ -1,0 +1,7 @@
+#
+# ~/.muttngrc
+# vim: ft=muttrc
+#
+
+source ~/.mutt/muttrc				# get standard mutt configuration
+source ~/.mutt/muttng.sidebar		# setup muttng sidebar

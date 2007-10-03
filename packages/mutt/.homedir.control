@@ -1,10 +1,10 @@
-package: bash
+package: mutt
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
 depends: 
 standards-version: 1
-description: Basic bash configuration
- Basic bash configuration.  
+description: Mutt configuration
+ Mutt configuration.  
 dirs:
- .bash
+ .mutt
 

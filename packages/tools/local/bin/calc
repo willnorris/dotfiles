@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+	array_shift($argv);
+
+	preg_match_all(
+		'{<b>.+= (.+?)</b>}', 
+		file_get_contents('http://www.google.com/search?q=' .  urlencode(join(' ', $argv))), 
+		$matches
+	);
+
+	print str_replace('<font size=-2> </font>', ',', $matches[1][0]."\n");
+?>

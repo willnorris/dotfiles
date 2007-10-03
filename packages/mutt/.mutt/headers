@@ -1,0 +1,14 @@
+#
+# ~/.mutt/headers
+#
+
+# ignore all headers
+ignore *
+
+# then un-ignore the ones I want
+unignore        from: date: subject: to: cc: reply-to:
+#unignore        message-id: mail-followup-to:
+#unignore        user-agent: x-agent: x-mailer:
+
+# set the order
+hdr_order       From: Reply-to: To: Cc: Mail-Followup-To: Subject: Date: User-Agent: Message-Id:

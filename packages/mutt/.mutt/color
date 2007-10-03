@@ -1,0 +1,41 @@
+# vim:ft=muttrc
+#
+# ~/.mutt/color
+#
+
+color normal white default
+color quoted green default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 cyan default
+color indicator white red
+color signature blue default
+color hdrdefault yellow default
+color status white blue
+color message white default
+color error red default
+color tree yellow default
+color tilde brightblue default 
+color markers brightcyan default
+color attachment magenta default
+color search black green
+color underline brightgreen default
+
+
+## message scoring
+#color index magenta default '(~n 1-1)'
+#color index green default '(~n 2-2)'
+#color index brightblue default '(~n 3-3)'
+#color index white default '(~n 4-9)'
+#color index brightred default '(~n 10-99)'
+
+
+# URLs, smilies, and the like
+color body	brightred default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body	brightblue default "(http|https|ftp|news|telnet|finger)://[^] \">\)\t\r\n]*"
+color body brightgreen default "<[Gg]>"                                            # <g>
+color body brightgreen default "<[Bb][Gg]>"                                        # <bg>
+color body brightgreen default " [;:]-*[)>(<|]"                                    # :-) etc...
+color body brightblue  default "(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$)" # *Bold* text.
+color body brightblue  default "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)"     # _Underlined_ text.
+color body brightblue  default "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)"     # /Italic/ text.

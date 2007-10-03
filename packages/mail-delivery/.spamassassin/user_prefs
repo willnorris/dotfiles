@@ -1,0 +1,52 @@
+# SpamAssassin user preferences file.  See 'perldoc Mail::SpamAssassin::Conf'
+# for details of what can be tweaked.
+###########################################################################
+
+# How many points before a mail is considered spam.
+# required_score		5
+
+# don't rewrite subject line
+rewrite_header subject 	
+
+# don't modify spam emails, just add headers
+report_safe 0          	
+
+# Whitelist and blacklist addresses are now file-glob-style patterns, so
+# "friend@somewhere.com", "*@isp.com", or "*.domain.net" will all work.
+# whitelist_from	someone@somewhere.com
+whitelist_from	souled_out_steve@yahoo.com
+
+# Add your own customised scores for some tests below.  The default scores are
+# read from the installed spamassassin rules files, but you can override them
+# here.  To see the list of tests and their default scores, go to
+# http://spamassassin.apache.org/tests.html .
+#
+# score SYMBOLIC_TEST_NAME n.nn
+
+
+body LOCAL_CECELIA_REITEN		/cecelia reiten/i
+describe LOCAL_CECELIA_REITEN	Message contains the text 'cecelia reiten'
+score LOCAL_CECELIA_REITEN		50
+
+header LOCAL_UMEMPHIS_SPAM		Subject =~ /^\[SPAM\:\#\#/
+describe LOCAL_UMEMPHIS_SPAM	Message marked as spam by Univ of Memphis Server
+score LOCAL_UMEMPHIS_SPAM		3
+
+# Added 2006-10-12 15:43
+header LOCAL_PANHEADS_ACCT		To =~ /.*will\@panheads\.org.*/
+describe LOCAL_PANHEADS_ACCT	Almost all mail to will@panheads.org is spam
+score LOCAL_PANHEADS_ACCT		1
+
+# Rules for stock spam
+# Added 2006-12-10 13:18
+#body LOCAL_CURRENT_PRICE		/current price:/i
+#describe LOCAL_CURRENT_PRICE	Message contains the text 'current price:'
+#score LOCAL_CURRENT_PRICE		.01
+
+#body LOCAL_SHORT_TARGET			/short term target:/i
+#describe LOCAL_SHORT_TARGET		Message contains the text 'short term target:'
+#score LOCAL_SHORT_TARGET		.01
+
+#body LOCAL_LONG_TARGET			/long term target:/i
+#describe LOCAL_LONG_TARGET		Message contains the text 'long term target:'
+#score LOCAL_LONG_TARGET			.01

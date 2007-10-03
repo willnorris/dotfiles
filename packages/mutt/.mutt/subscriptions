@@ -1,0 +1,20 @@
+#
+# ~/.mutt/subscriptions
+#
+
+subscribe macsb
+subscribe staff@visible
+subscribe faculty@visible
+lists students@visible
+
+#--- Internet2 Mailing Lists ---#
+subscribe grouper-dev@internet2.edu
+subscribe grouper-users@internet2.edu
+subscribe mace-dir@internet2.edu
+subscribe nexus-users@internet2.edu
+subscribe shibboleth-core@internet2.edu
+subscribe shib-repository@internet2.edu
+subscribe shibboleth-dev@internet2.edu
+subscribe shibboleth-users@internet2.edu
+subscribe signet-dev@internet2.edu
+subscribe signet-users@internet2.edu

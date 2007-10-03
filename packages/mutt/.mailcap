@@ -1,0 +1,4 @@
+application/pkcs7-signature;openssl pkcs7 -in %s -inform der -noout -print_certs -text | less; needsterminal
+application/x-pkcs7-signature;openssl pkcs7 -in %s -inform der -noout -print_certs -text | less; needsterminal
+text/html;lynx -force-html %s
+text/*;less

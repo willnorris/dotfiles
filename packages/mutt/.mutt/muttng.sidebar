@@ -1,0 +1,24 @@
+# vim: ft=muttrc
+
+# set up the sidebar, default not visible
+# The width of the mailbox list pane (left sidebar like in GUIs).
+   set sidebar_width=24
+# This specifies whether or not to show the mailbox list panel.
+  set sidebar_visible=no
+# which mailboxes to list in the sidebar
+  #mailboxes =inbox =ml
+# color of folders with new mail
+  color sidebar_new yellow default 
+# ctrl-n, ctrl-p to select next, prev folder ctrl-o to open selected folder
+  bind index \CP sidebar-prev
+  bind index \CN sidebar-next
+  bind index \CO sidebar-open
+  bind pager \CP sidebar-prev
+  bind pager \CN sidebar-next
+  bind pager \CO sidebar-open
+# I don't need these.  just for documentation purposes.  See below. 
+  # sidebar-scroll-up
+  # sidebar-scroll-down
+# b toggles sidebar visibility
+  macro index b ':toggle sidebar_visible^M'
+  macro pager b ':toggle sidebar_visible^M'  
