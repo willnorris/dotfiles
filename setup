@@ -45,6 +45,6 @@ synccmd = cd ~/.homedir/files ; svn up
 EOF
 
 echo "Installing Homedir..."
-"${HOME}/.homedir/files/packages/00homedir/bin/homedir" -q install homedir
+"${HOME}/.homedir/files/packages/00homedir/local/bin/homedir" -q install homedir
 
 echo "Done!"
