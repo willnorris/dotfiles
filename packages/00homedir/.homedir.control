@@ -7,10 +7,12 @@ description: Homedir Base Package
  This is the base package of HomeDir.  It is needed to install,
  remove, upgrade and manage packages for your home directory
 dirs:
+ local
  local/bin
  .homedir
  .homedir/cache
 mkdirs:
+ local
  local/bin
  .homedir
  .homedir/cache
