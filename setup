@@ -28,15 +28,11 @@ cat >> "${HOME}/.homedir/config" <<EOF
 ## Read documentation and submit bugs at:
 ##    http://trac.gerf.org/homedir
 
-## base packages -- You want these
+## base packages
 packages = ~/.homedir/files/packages
 
-## author's packages -- You can use these as examples for making
-##                      simple packages that require other packages
-#packages = ~/.homedir/files/docwhat
-
-## Unittests -- only a developer would need this
-#packages = ~/.homedir/files/unittest
+## meta packages
+packages = ~/.homedir/files/meta-packages
 
 ## Command for the -s switch
 synccmd = cd ~/.homedir/files ; svn up
