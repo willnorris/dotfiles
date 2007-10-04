@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This sets up homedir for you...
 # Example usages:
 #  wget -q -O- http://willnorris.com/svn/homedir/setup | sh
