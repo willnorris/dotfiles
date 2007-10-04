@@ -26,7 +26,7 @@ source "/usr/usc/gnu/sed/default/setup.sh"
 source "/usr/usc/subversion/1.4.3/setup.sh"
 
 setAppHome  csw     /opt/csw
-setAppHome	php		/usr/usc/php/5.1.2
+setAppHome	php		/usr/usc/php/default
 setAppHome	vim		/usr/usc/vim/7.0
 
 addToPath	/usr/usc/gnu/gawk/default/bin
