@@ -29,8 +29,24 @@ SPAMLOG=$HOME/local/var/log/spam.log
 .MailingLists.jabber.jadmin/
 
 :0
-* ^List-Id: .*google-apps-apis\.googlegroups\.com.*
-.MailingLists.google-apps-api/
+* ^List-Id: .*(google-apps-apis|hosted-setup|apps-features)\.googlegroups\.com.*
+.MailingLists.google/
+
+:0
+* ^List-Id: .*oauth-extensions\.googlegroups\.com.*
+.MailingLists.openid.OAuth/
+
+:0
+* ^List-Id: .*oauth\.googlegroups\.com.*
+.MailingLists.openid.OAuth/
+
+:0
+* ^List-Id: .*microformats-discuss\.microformats\.org.*
+.MailingLists.microformats/
+
+:0
+* ^List-Id: .*social-network-portability\.googlegroups\.com.*
+.MailingLists.social-portability/
 
 :0
 * ^List-Id: .*dev\.lists\.openidenabled\.com.*
