@@ -19,7 +19,8 @@ setAppHome 	ant 	/Developer/Java/Ant
 setAppHome 	cayenne	/usr/local/cayenne
 setAppHome 	mysql 	/usr/local/mysql
 setAppHome 	mp 		/opt/mp
-setAppHome	gds		/opt/local/gds
+setAppHome	gds		/usr/local/gds
+setAppHome	php		/usr/local/php5
 
 export RSYNC_RSH='ssh'
 #export TERM='xterm-color'
