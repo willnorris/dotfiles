@@ -1,9 +1,6 @@
-##---------------------------------------------------------#
-## ~/.bash/host/hunting.login
-##
-## @author     William Norris <will@wirewater.org>
-## @modified   2004-05-30 13:29
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 # SSH keychain
 /usr/bin/keychain $HOME/.ssh/id_dsa > /dev/null 2>&1
@@ -21,7 +18,7 @@ setAppHome	idp			/var/local/shibboleth-idp-trunk
 setAppHome	sp			/opt/local/shibboleth-sp
 setAppHome	gds			/opt/local/gds
 setAppHome	gdsutils	/opt/local/gds/utilities
-setAppHome  maven       /opt/local/maven-2.0.7
+setAppHome  maven	   /opt/local/maven-2.0.7
 
 alias syn='ssh -f -N -L 24800:127.0.0.1:24800 aquinas && /usr/bin/synergyc localhost'
 

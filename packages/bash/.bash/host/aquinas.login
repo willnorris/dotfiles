@@ -1,9 +1,6 @@
-##---------------------------------------------------------#
-## ~/.bash/host/aquinas.login
-##
-## @author     William Norris <will@willnorris.com>
-## @modified   2005-03-14
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 [ "$TERM" != "dumb" ] && stty erase 
 TERM='xterm-color'
@@ -36,10 +33,10 @@ alias spamlearn='ssh mariposa spamlearn'
 
 PS1COLOR='\[\033[0;34m\]' #blue
 
-function resetvisor() {                                                                        
+function resetvisor() {																		
 	defaults write com.apple.Terminal VisorTerminal -dict-add Rows 20
-	~/local/bin/visor-fix &                                                                        
-	killall Terminal                                                                  
+	~/local/bin/visor-fix &																		
+	killall Terminal																  
 }
 
 [[ "`whoami`" == "wnorris" ]] || PS1="[\\u]:\\w\\$"

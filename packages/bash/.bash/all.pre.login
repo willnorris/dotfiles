@@ -1,9 +1,6 @@
-#!/bin/bash
-##---------------------------------------------------------#
-## ~/.bash/all.pre.login
-##
-## @author     William Norris <will@willnorris.com>
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 #[ -w /dev/console ] && echo "executing ~/.bash/all.pre.login" > /dev/console
 

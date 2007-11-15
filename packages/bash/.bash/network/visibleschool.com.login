@@ -1,10 +1,6 @@
-#!/bin/bash
-##---------------------------------------------------------#
-## ~/.bash/network/visibleschool.com.login
-##
-## @author     William Norris <will@wirewater.org>
-## @modified   2003-11-22 13:29
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 umask 0002
 

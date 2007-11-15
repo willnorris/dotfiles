@@ -1,8 +1,6 @@
-#---------------------------------------------------------#
-## ~/.bash/host/authx-test1.login
-##
-## @author     William Norris <will@willnorris.com>
-##---------------------------------------------------------#
+#
+# $Id$
+# 
 
 source "$HOME/.bash/other/usc-servers.login"
 

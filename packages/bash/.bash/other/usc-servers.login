@@ -1,10 +1,6 @@
-#!/bin/bash
-##---------------------------------------------------------#
-## ~/.bash/other/usc-servers.login
-##
-## @author     William Norris <will@wirewater.org>
-## @modified   2003-11-22 13:29
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 [ ! "${MANPATH}" ] && export MANPATH=/usr/man:/usr/openwin/man:/usr/share/man:/usr/usc/man
 

@@ -1,8 +1,6 @@
-##---------------------------------------------------------#
-## ~/.bash/host/gds-ldap2.login
-##
-## @author     William Norris <will@willnorris.com>
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 source "$HOME/.bash/other/usc-servers.login"
 

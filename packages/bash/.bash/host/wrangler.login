@@ -1,9 +1,6 @@
-##---------------------------------------------------------#
-## ~/.bash/host/wrangler.login
-##
-## @author     William Norris <will@wirewater.org>
-## @modified   2005-03-14
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 [ $TERM != 'dumb' ] && stty erase 
 

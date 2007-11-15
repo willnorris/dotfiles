@@ -1,10 +1,6 @@
-#!/bin/bash
-##---------------------------------------------------------#
-## ~/.bash/os/Darwin.login
-##
-## @author     William Norris <will@wirewater.org>
-## @modified   2003-11-22 13:29
-##---------------------------------------------------------#
+#
+# $Id$
+#
 
 alias ls="ls -FG"
 alias ldd="otool -L"

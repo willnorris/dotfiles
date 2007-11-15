@@ -1,8 +1,6 @@
-##---------------------------------------------------------#
-## ~/.bash/host/skat.login
-##
-## @author     William Norris <will@willnorris.com>
-##---------------------------------------------------------#
+# 
+# $Id$
+#
 
 source "$HOME/.bash/other/usc-servers.login"
 
