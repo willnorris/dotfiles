@@ -30,6 +30,7 @@ au BufNewFile,BufReadPre,FileReadPre  *.{phps,phtml}  set ft=php
 "au BufNewFile,BufReadPre,FileReadPre  *.mkd  set ft=mkd
 au BufNewFile,BufRead ~/*/blog/* set ft=html tw=80
 au BufNewFile,BufRead ~/.bash* set ft=sh
+au BufNewFile,BufRead /Users/wnorris/.bash/** set ft=sh
 au BufNewFile,BufRead /etc/apache2/*.conf set ft=apache
 au BufNewFile,BufRead /etc/apache2/sites*/* set ft=apache
 
