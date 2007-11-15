@@ -1,12 +1,5 @@
-# ===============================================================
-# File:                 $HOME/.screenrc
-# Purpose:              Setup file for program "(GNU) screen"
-# Written by:           Sven Guckes <guckes-screen@math.fu-berlin.de>
-# Updated by:           William Norris <will@wirewater.org>
-# Latest change:        Wed May 21 17:04:00 CST 2003
-# Latest user version:  screen-3.9.15 [2003-03-13]
-# ===============================================================
 #
+# $Id$
 #
 # ===============================================================
 # ENVIRONMENT

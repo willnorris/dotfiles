@@ -1,10 +1,6 @@
-"#---------------------------------------------------------#
-"# ~/.vimrc 
-"#
-"# @author     William Norris <will@wirewater.org>
-"# @modified   2003-08-02 17:49
-"#---------------------------------------------------------#
-
+"
+" $Id$
+"
 
 "----------------------------------------------------------#
 " Global Settings
@@ -28,11 +24,12 @@ source $VIMRUNTIME/macros/matchit.vim
 "autoset options for PHP files
 au BufNewFile,BufReadPre,FileReadPre  *.{phps,phtml}  set ft=php
 "au BufNewFile,BufReadPre,FileReadPre  *.mkd  set ft=mkd
-au BufNewFile,BufRead ~/*/blog/* set ft=html tw=80
-au BufNewFile,BufRead ~/.bash* set ft=sh
-au BufNewFile,BufRead /Users/wnorris/.bash/** set ft=sh
-au BufNewFile,BufRead /etc/apache2/*.conf set ft=apache
-au BufNewFile,BufRead /etc/apache2/sites*/* set ft=apache
+au BufNewFile,BufEnter ~/*/blog/* set ft=html tw=80
+au BufNewFile,BufEnter */.bash* set ft=sh
+au BufNewFile,BufEnter */.bash/* set ft=sh
+au BufNewFile,BufEnter */.mutt* set ft=muttrc
+au BufNewFile,BufEnter /etc/apache2/*.conf set ft=apache
+au BufNewFile,BufEnter /etc/apache2/sites*/* set ft=apache
 
 augroup mkd
 	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>

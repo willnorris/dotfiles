@@ -1,5 +1,8 @@
 # SpamAssassin user preferences file.  See 'perldoc Mail::SpamAssassin::Conf'
 # for details of what can be tweaked.
+#
+# $Id$
+#
 ###########################################################################
 
 # How many points before a mail is considered spam.

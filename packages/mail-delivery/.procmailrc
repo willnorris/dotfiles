@@ -1,3 +1,7 @@
+#
+# $Id$
+#
+
 MAILDIR=$HOME/Maildir
 
 SHELL=/bin/sh

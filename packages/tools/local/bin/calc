@@ -1,4 +1,7 @@
 #!/usr/bin/env php
+#
+# $Id$
+#
 <?php
 	array_shift($argv);
 
