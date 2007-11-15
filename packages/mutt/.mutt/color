@@ -1,6 +1,5 @@
-# vim:ft=muttrc
 #
-# ~/.mutt/color
+# $Id$
 #
 
 color normal white default

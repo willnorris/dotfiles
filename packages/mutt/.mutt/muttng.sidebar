@@ -1,4 +1,6 @@
-# vim: ft=muttrc
+#
+# $Id$
+#
 
 # set up the sidebar, default not visible
 # The width of the mailbox list pane (left sidebar like in GUIs).

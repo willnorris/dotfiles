@@ -1,5 +1,5 @@
-# vim: ft=muttrc
-# ~/.mutt/smime
+#
+# $Id: $
 #
 
 source /usr/share/doc/mutt/examples/smime.rc

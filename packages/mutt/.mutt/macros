@@ -1,6 +1,5 @@
-# vim:ft=muttrc
 #
-# ~/.mutt/macros
+# $Id$
 #
 
 # imitate the old search-body function

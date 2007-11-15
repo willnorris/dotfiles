@@ -1,5 +1,5 @@
 #
-# ~/.mutt/muttrc
+# $Id$
 #
 
 set mbox_type=Maildir			# using maildir

@@ -1,6 +1,5 @@
 #
-# ~/.muttngrc
-# vim: ft=muttrc
+# $Id$
 #
 
 source ~/.mutt/muttrc				# get standard mutt configuration

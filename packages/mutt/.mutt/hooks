@@ -1,4 +1,6 @@
-# vim: ft=muttrc
+#
+# $Id$
+#
 
 # set appropriate profile based on which address message was sent to
 message-hook . "source ~/.mutt/profiles/default"
