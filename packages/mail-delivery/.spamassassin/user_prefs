@@ -38,18 +38,46 @@ score LOCAL_UMEMPHIS_SPAM		3
 # Added 2006-10-12 15:43
 header LOCAL_PANHEADS_ACCT		To =~ /.*will\@panheads\.org.*/
 describe LOCAL_PANHEADS_ACCT	Almost all mail to will@panheads.org is spam
-score LOCAL_PANHEADS_ACCT		1
+score LOCAL_PANHEADS_ACCT		2
 
 # Rules for stock spam
 # Added 2006-12-10 13:18
-#body LOCAL_CURRENT_PRICE		/current price:/i
-#describe LOCAL_CURRENT_PRICE	Message contains the text 'current price:'
-#score LOCAL_CURRENT_PRICE		.01
+body LOCAL_SPAM_1				/current price:/i
+describe LOCAL_SPAM_1			Message contains the text 'current price:'
+score LOCAL_SPAM_1				.5
 
-#body LOCAL_SHORT_TARGET			/short term target:/i
-#describe LOCAL_SHORT_TARGET		Message contains the text 'short term target:'
-#score LOCAL_SHORT_TARGET		.01
+body LOCAL_SPAM_2				/analysts predict/i
+describe LOCAL_SPAM_2			Message contains the text 'analysts predict'
+score LOCAL_SPAM_2				.5
 
-#body LOCAL_LONG_TARGET			/long term target:/i
-#describe LOCAL_LONG_TARGET		Message contains the text 'long term target:'
-#score LOCAL_LONG_TARGET			.01
+body LOCAL_SPAM_3				/^forecast [0-9.]+$/i
+describe LOCAL_SPAM_3			Message contains the text 'forecast' followed by numbers
+score LOCAL_SPAM_3				2
+
+body LOCAL_SPAM_4				/independant publication/i
+describe LOCAL_SPAM_4			Message contains the text 'independant publication'
+score LOCAL_SPAM_4				.5
+
+body LOCAL_SPAM_5				/this is not an offer/i
+describe LOCAL_SPAM_5			Message contains the text 'this is not an offer'
+score LOCAL_SPAM_5				.5
+
+body LOCAL_SPAM_6				/due dilligence/i
+describe LOCAL_SPAM_6			Message contains the text 'due dilligence'
+score LOCAL_SPAM_6				.5
+
+body LOCAL_SPAM_7				/short term target:/i
+describe LOCAL_SPAM_7			Message contains the text 'short term target:'
+score LOCAL_SPAM_7				.5
+
+body LOCAL_SPAM_8				/long term target:/i
+describe LOCAL_SPAM_8			Message contains the text 'long term target:'
+score LOCAL_SPAM_8				.5
+
+body LOCAL_SPAM_9				/equities/i
+describe LOCAL_SPAM_9			Message contains the text 'equities'
+score LOCAL_SPAM_9				.3
+
+
+
+
