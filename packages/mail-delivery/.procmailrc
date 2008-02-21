@@ -37,12 +37,28 @@ SPAMLOG=$HOME/local/var/log/spam.log
 .MailingLists.google/
 
 :0
+* ^List-Id: .*google-help-dataapi\.googlegroups\.com.*
+.MailingLists.google.data-api/
+
+:0
+* ^List-Id: .*diso-project\.googlegroups\.com.*
+.MailingLists.openid.diso-project/
+
+:0
 * ^List-Id: .*oauth-extensions\.googlegroups\.com.*
 .MailingLists.openid.OAuth/
 
 :0
 * ^List-Id: .*oauth\.googlegroups\.com.*
 .MailingLists.openid.OAuth/
+
+:0
+* ^List-Id: .*openid4java\.googlegroups\.com.*
+.MailingLists.openid.openid4java/
+
+:0
+* ^List-Id: .*axschema\.googlegroups\.com.*
+.MailingLists.openid.axschema/
 
 :0
 * ^List-Id: .*microformats-discuss\.microformats\.org.*
@@ -55,6 +71,10 @@ SPAMLOG=$HOME/local/var/log/spam.log
 :0
 * ^List-Id: .*dev\.lists\.openidenabled\.com.*
 .MailingLists.openid.openIdEnabled-Dev/
+
+:0
+* ^List-Id: .*specs\.openid\.net.*
+.MailingLists.openid.specs/
 
 :0
 * ^List-Id: .*yadis\.lists\.danga\.com.*
@@ -73,8 +93,8 @@ SPAMLOG=$HOME/local/var/log/spam.log
 .MailingLists.openid.openid-legal/
 
 :0
-* ^List-Id: .*claimid-users\.lists\.claimid\.com.*
-.MailingLists.openid.claimid-users/
+* ^List-Id: .*claimid-(users|developers)\.lists\.claimid\.com.*
+.MailingLists.openid.claimid/
 
 :0
 * ^List-Id: .*microid\.lists\.ibiblio\.org.*
@@ -98,8 +118,16 @@ SPAMLOG=$HOME/local/var/log/spam.log
 .MailingLists.subversion-users/
 
 :0
+* ^List-Id: .*orca-users\.orcaware\.com.*
+.MailingLists.orca-users/
+
+:0
 * ^List-Id: .*users\.tapestry\.apache\.org.*
 .MailingLists.tapestry-users/
+
+:0
+* ^List-Id: .*logback-user\.qos\.ch.*
+.MailingLists.logback-users/
 
 :0
 * ^List-Id: .*heraldry-dev\.incubator\.apache\.org.*
@@ -190,6 +218,10 @@ SPAMLOG=$HOME/local/var/log/spam.log
 * ^List-Id: .*incommon-participants\.incommonfederation\.org.*
 .MailingLists.incommon.participants/
 
+:0
+* ^List-Id: .*inc-dreamspark\.incommonfederation\.org.*
+.MailingLists.incommon.dreamspark/
+
 
 # keep this rule last so as not to accidentally scoop up cross-listed messages
 :0
@@ -208,19 +240,27 @@ SPAMLOG=$HOME/local/var/log/spam.log
 /dev/null
 
 # --- USC Filters --- #
-#:0B
-#* ^Subject: .*MSG: (Start|End) of process - \(\./ds_sync.*\.pl\)
-#:0
-#* ^message-id: <.*@gds-ldap1\.usc\.edu>
-#.USC.cron.ds_sync/
+:0
+* ^Subject: .*MSG: (Start|End) of process.*
+* ^message-id: <.*@gds-ldap.+\.usc\.edu>
+{
+	# Send ds_sync end message to INBOX if it actually did anything
+	:0
+	* ^Subject: .*MSG: End of process - \(\./ds_sync.*\.pl\)
+	$MAILDIR/
+
+	# Everything else gets filed
+	:0
+	.USC.cron/
+}
 
 :0
 * ^Subject: .*ECS dbbackups.*
-.USC.cron.dbbackups/
+.USC.cron/
 
 :0
 * ^Subject: .*rsync for gds-ldap.*
-.USC.cron.rsync/
+.USC.cron/
 
 :0
 * ^TO_uscmacusers@(usc\.edu|mac\.com)
@@ -230,9 +270,9 @@ SPAMLOG=$HOME/local/var/log/spam.log
 * ^X-Shibboleth-Status: up
 .USC.cron.shibboleth-status/
 
-:0
-* ^Received: .*shib-discuss-l@listproc.usc.edu.*
-.MailingLists.usc-shib-discuss/
+#:0
+#* ^Received: .*shib-discuss-l@listproc.usc.edu.*
+#.MailingLists.usc-shib-discuss/
 
 #:0
 #* ^TO_wnorris@skat.usc.edu
@@ -247,7 +287,7 @@ SPAMLOG=$HOME/local/var/log/spam.log
 
 
 # --- Filter everything else through Spamassassin --- #
-:0fw: spamassassin.lock
+:0fw: $HOME/local/var/spamassassin.lock
 | $HOME/local/bin/spamassassin
 
 
@@ -270,4 +310,4 @@ SPAMLOG=$HOME/local/var/log/spam.log
 
 # --- catch all for inbox --- #
 :0
-$HOME/Maildir/
+$MAILDIR/
