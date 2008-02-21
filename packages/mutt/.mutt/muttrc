@@ -19,6 +19,7 @@ set confirmappend=no			# don't prompt to append message to existing mailbox
 
 
 set tilde						# fill out messages with '~'
+set editor=vim
 
 set use_envelope_from			# derive envelope sender address
 set use_domain=no				# don't add the hostname to the From header

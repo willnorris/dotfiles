@@ -15,7 +15,7 @@ addToManPath $HOME/local/man
 PAGER=`which less 2>/dev/null`
 
 # fix vi
-[[ "`vi --version 2>/dev/null | awk 'NR==1 { print $1 }'`" != "VIM" ]] && which vim > /dev/null 2>&1 && alias vi='vim'
+[[ "`vi --version 2>/dev/null | awk 'NR==1 { print $1 }'`" != "VIM" ]] && which vim > /dev/null 2>&1 && alias vi='vim' && export EDITOR='vim' && export DISPLAY=${EDITOR}
 
 # have `ls` output color if it knows how
 ls --version 2>/dev/null | grep coreutils >/dev/null && alias ls="ls --color=auto -F"
