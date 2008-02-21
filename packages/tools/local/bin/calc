@@ -1,8 +1,8 @@
 #!/usr/bin/env php
+<?php
 #
 # $Id$
 #
-<?php
 	array_shift($argv);
 
 	preg_match_all(
