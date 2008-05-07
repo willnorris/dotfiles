@@ -40,6 +40,10 @@ header LOCAL_PANHEADS_ACCT		To =~ /.*will\@panheads\.org.*/
 describe LOCAL_PANHEADS_ACCT	Almost all mail to will@panheads.org is spam
 score LOCAL_PANHEADS_ACCT		2
 
+header LOCAL_PANHEADS_ACCT		To =~ /.*(wnorris|will)\@visibleschool\.com.*/
+describe LOCAL_PANHEADS_ACCT	Almost all mail to will@visibleschool.com is spam
+score LOCAL_PANHEADS_ACCT		2
+
 # Rules for stock spam
 # Added 2006-12-10 13:18
 body LOCAL_SPAM_1				/current price:/i
