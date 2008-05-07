@@ -12,6 +12,7 @@ VERBOSE=no
 #ABSTRACT=no
 
 SPAMLOG=$HOME/local/var/log/spam.log
+SPAMPORT=9783
 
 
 # --- Mailing Lists --- #
@@ -31,6 +32,10 @@ SPAMLOG=$HOME/local/var/log/spam.log
 :0
 * ^List-Id: .*.jadmin\.jabber\.org.*
 .MailingLists.jabber.jadmin/
+
+:0
+* ^List-Id: .*social\.xmpp\.org.*
+.MailingLists.openid.xmpp-social/
 
 :0
 * ^List-Id: .*(google-apps-apis|hosted-setup|apps-features)\.googlegroups\.com.*
@@ -59,6 +64,10 @@ SPAMLOG=$HOME/local/var/log/spam.log
 :0
 * ^List-Id: .*axschema\.googlegroups\.com.*
 .MailingLists.openid.axschema/
+
+:0
+* ^List-Id: .*user-centric-identity-interop\.googlegroups\.com.*
+.MailingLists.openid.osis-interop/
 
 :0
 * ^List-Id: .*microformats-discuss\.microformats\.org.*
@@ -288,7 +297,8 @@ SPAMLOG=$HOME/local/var/log/spam.log
 
 # --- Filter everything else through Spamassassin --- #
 :0fw: $HOME/local/var/spamassassin.lock
-| $HOME/local/bin/spamassassin
+* < 300000
+| $HOME/local/bin/spamc -p $SPAMPORT
 
 
 # Log spam statistics for all messages

@@ -7,10 +7,10 @@ color quoted green default
 color quoted1 cyan default
 color quoted2 green default
 color quoted3 cyan default
-color indicator white red
+color indicator brightwhite red
 color signature blue default
 color hdrdefault yellow default
-color status white blue
+color status brightwhite blue
 color message white default
 color error red default
 color tree yellow default
