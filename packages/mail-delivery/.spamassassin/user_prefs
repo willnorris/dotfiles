@@ -33,16 +33,28 @@ score LOCAL_CECELIA_REITEN		50
 
 header LOCAL_UMEMPHIS_SPAM		Subject =~ /^\[SPAM\:\#\#/
 describe LOCAL_UMEMPHIS_SPAM	Message marked as spam by Univ of Memphis Server
-score LOCAL_UMEMPHIS_SPAM		3
+score LOCAL_UMEMPHIS_SPAM		2
 
 # Added 2006-10-12 15:43
-header LOCAL_PANHEADS_ACCT		To =~ /.*will\@panheads\.org.*/
-describe LOCAL_PANHEADS_ACCT	Almost all mail to will@panheads.org is spam
+header LOCAL_PANHEADS_ACCT		X-Original-To =~ /.*will\+panheads\@willnorris\.com.*/
+describe LOCAL_PANHEADS_ACCT	Almost all mail to *@panheads.org is spam
 score LOCAL_PANHEADS_ACCT		2
 
-header LOCAL_PANHEADS_ACCT		To =~ /.*(wnorris|will)\@visibleschool\.com.*/
-describe LOCAL_PANHEADS_ACCT	Almost all mail to will@visibleschool.com is spam
-score LOCAL_PANHEADS_ACCT		2
+header LOCAL_VISIBLE_ACCT		X-Original-To =~ /.*will\+visible\@willnorris\.com.*/
+describe LOCAL_VISIBLE_ACCT		Almost all mail to will@visibleschool.com is spam
+score LOCAL_VISIBLE_ACCT		2
+
+header LOCAL_NORR1S_ACCT		X-Original-To =~ /.*\@norr1s\.com.*/
+describe LOCAL_NORR1S_ACCT		Almost all mail to *@norr1s.com is spam
+score LOCAL_NORR1S_ACCT			3
+
+header LOCAL_WIREWATER_ACCT		X-Original-To =~ /.*\@wirewater.org.*/
+describe LOCAL_WIREWATER_ACCT	Almost all mail to *@wirewater.org is spam
+score LOCAL_WIREWATER_ACCT		2
+
+header VIDOOP_SPAM				X-Pmwin-Spamscore =~ /^[7-9][0-9]$/
+describe VIDOOP_SPAM			Vidoop Spam
+score VIDOOP_SPAM				2
 
 # Rules for stock spam
 # Added 2006-12-10 13:18

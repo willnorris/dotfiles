@@ -1,0 +1,227 @@
+#
+# $Id: .procmailrc 24 2008-02-21 19:01:26Z wjnorris $
+#
+
+
+:0
+* ^List-Id: .*cocoa-dev\.lists\.apple\.com.*
+.MailingLists.apple.cocoa-dev/
+
+:0
+* ^List-Id: .*faculty\.lists\.visibleschool.com.*
+.MailingLists.vsStaff/
+
+:0
+* ^List-Id: .*moneydance-dev\.moneydance.com.*
+.MailingLists.moneydance/
+
+:0
+* ^List-Id: .*.jadmin\.jabber\.org.*
+.MailingLists.jabber.jadmin/
+
+:0
+* ^List-Id: .*social\.xmpp\.org.*
+.MailingLists.openid.xmpp-social/
+
+:0
+* ^List-Id: .*(google-apps-apis|hosted-setup|apps-features)\.googlegroups\.com.*
+.MailingLists.google/
+
+:0
+* ^List-Id: .*google-help-dataapi\.googlegroups\.com.*
+.MailingLists.google.data-api/
+
+:0
+* ^List-Id: .*diso-project\.googlegroups\.com.*
+.MailingLists.openid.diso-project/
+
+:0
+* ^List-Id: .*oauth-extensions\.googlegroups\.com.*
+.MailingLists.openid.OAuth/
+
+:0
+* ^List-Id: .*oauth\.googlegroups\.com.*
+.MailingLists.openid.OAuth/
+
+:0
+* ^List-Id: .*openid4java\.googlegroups\.com.*
+.MailingLists.openid.openid4java/
+
+:0
+* ^List-Id: .*axschema\.googlegroups\.com.*
+.MailingLists.openid.axschema/
+
+:0
+* ^List-Id: .*user-centric-identity-interop\.googlegroups\.com.*
+.MailingLists.openid.osis-interop/
+
+:0
+* ^List-Id: .*microformats-discuss\.microformats\.org.*
+.MailingLists.microformats/
+
+:0
+* ^List-Id: .*social-network-portability\.googlegroups\.com.*
+.MailingLists.social-portability/
+
+:0
+* ^List-Id: .*dev\.lists\.openidenabled\.com.*
+.MailingLists.openid.openIdEnabled-Dev/
+
+:0
+* ^List-Id: .*specs\.openid\.net.*
+.MailingLists.openid.specs/
+
+:0
+* ^List-Id: .*yadis\.lists\.danga\.com.*
+.MailingLists.openid.openid-general/
+
+:0
+* ^List-Id: .*general\.openid\.net.*
+.MailingLists.openid.openid-general/
+
+:0
+* ^List-Id: .*board\.openid\.net.*
+.MailingLists.openid.openid-board/
+
+:0
+* ^List-Id: .*legal\.openid\.net.*
+.MailingLists.openid.openid-legal/
+
+:0
+* ^List-Id: .*claimid-(users|developers)\.lists\.claimid\.com.*
+.MailingLists.openid.claimid/
+
+:0
+* ^List-Id: .*microid\.lists\.ibiblio\.org.*
+.MailingLists.openid.microid/
+
+:0
+* ^List-Id: .*barcamp\.googlegroups\.com.*
+.MailingLists.barcamp/
+
+:0
+* ^List-Id: .*barcampla\.googlegroups\.com.*
+.MailingLists.barcamp/
+
+:0
+* ^List-Id: .*wp-hackers\.lists\.automattic\.com.*
+* !^X-List-Administrivia: yes
+.MailingLists.wp-hackers/
+
+:0
+* ^TO_users@subversion\.tigris\.org
+.MailingLists.subversion-users/
+
+:0
+* ^List-Id: .*orca-users\.orcaware\.com.*
+.MailingLists.orca-users/
+
+:0
+* ^List-Id: .*users\.tapestry\.apache\.org.*
+.MailingLists.tapestry-users/
+
+:0
+* ^List-Id: .*logback-user\.qos\.ch.*
+.MailingLists.logback-users/
+
+:0
+* ^List-Id: .*heraldry-dev\.incubator\.apache\.org.*
+.MailingLists.heraldry-dev/
+
+# --- Internet2 Mailing Lists --- #
+:0
+* ^List-Id: .*grouper-dev\.internet2\.edu.*
+.MailingLists.grouper-dev/
+
+:0
+* ^List-Id: .*grouper-users\.internet2\.edu.*
+.MailingLists.grouper-users/
+
+:0
+* ^List-Id: .*mace-dir\.internet2\.edu.*
+.MailingLists.mace-dir/
+
+:0
+* ^List-Id: .*nexus-users\.internet2\.edu.*
+.MailingLists.nexus-users/
+
+:0
+* ^List-Id: .*mace-opensaml-users\.internet2\.edu.*
+.MailingLists.opensaml-users/
+
+:0
+* ^List-Id: .*shib-repository\.internet2\.edu.*
+{
+	:0
+	* ^Subject: \[cpp-.* COMMIT\]
+	.MailingLists.shib-repository.cpp/
+
+	:0
+	* ^Subject: \[java-idp COMMIT\]
+	.MailingLists.shib-repository.java-idp/
+
+	:0
+	* ^Subject: \[java-opensaml2 COMMIT\]
+	.MailingLists.shib-repository.java-opensaml2/
+
+	:0
+	* ^Subject: \[java-openws COMMIT\]
+	.MailingLists.shib-repository.java-openws/
+
+	:0
+	* ^Subject: \[java-shib-common COMMIT\]
+	.MailingLists.shib-repository.java-shib-common/
+
+	:0
+	* ^Subject: \[java-sp COMMIT\]
+	.MailingLists.shib-repository.java-sp/
+
+	:0
+	* ^Subject: \[java-xmltooling COMMIT\]
+	.MailingLists.shib-repository.java-xmltooling/
+
+	:0
+	* ^Subject: \[java-wayf COMMIT\]
+	.MailingLists.shib-repository.java-wayf/
+
+	:0
+	.MailingLists.shib-repository/
+}
+
+
+:0
+* ^List-Id: .*shibboleth-core\.internet2\.edu.*
+.MailingLists.shibboleth-core/
+
+:0
+* ^List-Id: .*shibboleth-dev\.internet2\.edu.*
+.MailingLists.shibboleth-dev/
+
+:0
+* ^List-Id: .*shibboleth-users\.internet2\.edu.*
+.MailingLists.shibboleth-users/
+
+:0
+* ^List-Id: .*signet-dev\.internet2\.edu.*
+.MailingLists.signet-dev/
+
+:0
+* ^List-Id: .*signet-users\.internet2\.edu.*
+.MailingLists.signet-users/
+
+:0
+* ^List-Id: .*incommon-participants\.incommonfederation\.org.*
+.MailingLists.incommon.participants/
+
+:0
+* ^List-Id: .*inc-dreamspark\.incommonfederation\.org.*
+.MailingLists.incommon.dreamspark/
+
+
+# keep this rule last so as not to accidentally scoop up cross-listed messages
+:0
+* ^TO_idm@listserv.educause.edu
+.MailingLists.educause-idm/
+
+
+# vim: ft=procmail
