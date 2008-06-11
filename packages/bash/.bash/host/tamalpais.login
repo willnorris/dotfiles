@@ -24,6 +24,8 @@ addToLibPath "$HOME/local/bdb/include"
 #setAppHome subversion $HOME/local/subversion
 #setAppHome spamassassin $HOME/local/spamassassin
 
+export MUTT_HOME="$HOME/local"
+
 alias ls='ls -F --color=auto'
 #alias vi='vim'
 alias view='vim -R'

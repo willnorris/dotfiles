@@ -36,6 +36,10 @@
 .MailingLists.openid.diso-project/
 
 :0
+* ^List-Id: .*portablecontacts\.googlegroups\.com.*
+.MailingLists.PortableContacts/
+
+:0
 * ^List-Id: .*oauth-extensions\.googlegroups\.com.*
 .MailingLists.openid.OAuth/
 
@@ -130,92 +134,72 @@
 
 # --- Internet2 Mailing Lists --- #
 :0
-* ^List-Id: .*grouper-dev\.internet2\.edu.*
-.MailingLists.grouper-dev/
-
-:0
-* ^List-Id: .*grouper-users\.internet2\.edu.*
-.MailingLists.grouper-users/
-
-:0
 * ^List-Id: .*mace-dir\.internet2\.edu.*
-.MailingLists.mace-dir/
-
-:0
-* ^List-Id: .*nexus-users\.internet2\.edu.*
-.MailingLists.nexus-users/
+.Internet2.mace-dir/
 
 :0
 * ^List-Id: .*mace-opensaml-users\.internet2\.edu.*
-.MailingLists.opensaml-users/
+.Internet2.opensaml-users/
 
 :0
 * ^List-Id: .*shib-repository\.internet2\.edu.*
 {
 	:0
 	* ^Subject: \[cpp-.* COMMIT\]
-	.MailingLists.shib-repository.cpp/
+	.Internet2.shib-repository.cpp/
 
 	:0
 	* ^Subject: \[java-idp COMMIT\]
-	.MailingLists.shib-repository.java-idp/
+	.Internet2.shib-repository.java-idp/
 
 	:0
 	* ^Subject: \[java-opensaml2 COMMIT\]
-	.MailingLists.shib-repository.java-opensaml2/
+	.Internet2.shib-repository.java-opensaml2/
 
 	:0
 	* ^Subject: \[java-openws COMMIT\]
-	.MailingLists.shib-repository.java-openws/
+	.Internet2.shib-repository.java-openws/
 
 	:0
 	* ^Subject: \[java-shib-common COMMIT\]
-	.MailingLists.shib-repository.java-shib-common/
+	.Internet2.shib-repository.java-shib-common/
 
 	:0
 	* ^Subject: \[java-sp COMMIT\]
-	.MailingLists.shib-repository.java-sp/
+	.Internet2.shib-repository.java-sp/
 
 	:0
 	* ^Subject: \[java-xmltooling COMMIT\]
-	.MailingLists.shib-repository.java-xmltooling/
+	.Internet2.shib-repository.java-xmltooling/
 
 	:0
 	* ^Subject: \[java-wayf COMMIT\]
-	.MailingLists.shib-repository.java-wayf/
+	.Internet2.shib-repository.java-wayf/
 
 	:0
-	.MailingLists.shib-repository/
+	.Internet2.shib-repository/
 }
 
 
 :0
 * ^List-Id: .*shibboleth-core\.internet2\.edu.*
-.MailingLists.shibboleth-core/
+.Internet2.Shibboleth._core/
 
 :0
 * ^List-Id: .*shibboleth-dev\.internet2\.edu.*
-.MailingLists.shibboleth-dev/
+.Internet2.Shibboleth._dev/
 
 :0
 * ^List-Id: .*shibboleth-users\.internet2\.edu.*
-.MailingLists.shibboleth-users/
-
-:0
-* ^List-Id: .*signet-dev\.internet2\.edu.*
-.MailingLists.signet-dev/
-
-:0
-* ^List-Id: .*signet-users\.internet2\.edu.*
-.MailingLists.signet-users/
+.Internet2.Shibboleth._users/
 
 :0
 * ^List-Id: .*incommon-participants\.incommonfederation\.org.*
-.MailingLists.incommon.participants/
+.Internet2.incommon.participants/
 
 :0
 * ^List-Id: .*inc-dreamspark\.incommonfederation\.org.*
-.MailingLists.incommon.dreamspark/
+.Internet2.incommon.dreamspark/
 
 
 # keep this rule last so as not to accidentally scoop up cross-listed messages

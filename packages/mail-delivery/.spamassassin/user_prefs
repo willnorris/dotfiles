@@ -26,6 +26,7 @@ whitelist_from	souled_out_steve@yahoo.com
 #
 # score SYMBOLIC_TEST_NAME n.nn
 
+score DNS_FROM_OPENWHOIS 0
 
 body LOCAL_CECELIA_REITEN		/cecelia reiten/i
 describe LOCAL_CECELIA_REITEN	Message contains the text 'cecelia reiten'
