@@ -6,9 +6,9 @@
 macro index \eb '/~b ' 'search in message bodies'
 
 # Show documentation when pressing F1
-macro generic <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
-macro index   <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
-macro pager   <f1> "!zcat /usr/share/doc/mutt/manual.txt.gz | sensible-pager\n" "Show Mutt documentation"
+macro generic <f1> "!lynx $MUTT_HOME/share/doc/mutt/manual.html\n" "Show Mutt documentation"
+macro index   <f1> "!lynx $MUTT_HOME/share/doc/mutt/manual.html\n" "Show Mutt documentation"
+macro pager   <f1> "!lynx $MUTT_HOME/share/doc/mutt/manual.html\n" "Show Mutt documentation"
 
 # replacement for delete
 macro index "d" "<save-message>=.Trash\n"
@@ -31,25 +31,20 @@ macro pager ",cs" "<change-folder>=._confirmedSpam\n"
 macro index \ej "<save-message>=._confirmedSpam\n" "move message to junk folder"
 macro pager \ej "<save-message>=._confirmedSpam\n" "move message to junk folder"
 
-macro index ",ph" "<change-folder>=.panheads\n"
-macro pager ",ph" "<change-folder>=.panheads\n"
-macro index "Sph" "<save-message>=.panheads\n"
-macro pager "Sph" "<save-message>=.panheads\n"
+macro index ",p" "<change-folder>=.personal\n"
+macro pager ",p" "<change-folder>=.personal\n"
+macro index "Sp" "<save-message>=.personal\n"
+macro pager "Sp" "<save-message>=.personal\n"
 
-macro index ",u" "<change-folder>=.USC\n"
-macro pager ",u" "<change-folder>=.USC\n"
-macro index "Su" "<save-message>=.USC\n"
-macro pager "Su" "<save-message>=.USC\n"
+macro index ",D" "<change-folder>=.Development.diso\n"
+macro pager ",D" "<change-folder>=.Development.diso\n"
+macro index "SD" "<save-message>=.Development.diso\n"
+macro pager "SD" "<save-message>=.Development.diso\n"
 
-macro index ",vs" "<change-folder>=.VisibleSchool\n"
-macro pager ",vs" "<change-folder>=.VisibleSchool\n"
-macro index "Svs" "<save-message>=.VisibleSchool\n"
-macro pager "Svs" "<save-message>=.VisibleSchool\n"
-
-macro index ",wm" "<change-folder>=.wirewaterMedia\n"
-macro pager ",wm" "<change-folder>=.wirewaterMedia\n"
-macro index "Swm" "<save-message>=.wirewaterMedia\n"
-macro pager "Swm" "<save-message>=.wirewaterMedia\n"
+macro index ",V" "<change-folder>=.Vidoop\n"
+macro pager ",V" "<change-folder>=.Vidoop\n"
+macro index "SV" "<save-message>=.Vidoop\n"
+macro pager "SV" "<save-message>=.Vidoop\n"
 
 
 # View filters

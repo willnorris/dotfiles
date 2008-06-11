@@ -3,10 +3,12 @@
 #
 
 # set appropriate profile based on which address message was sent to
-message-hook . "source ~/.mutt/profiles/default"
+#message-hook . "source ~/.mutt/profiles/default"
 #message-hook "~C wnorris@memphis.edu"  "source ~/.mutt/profiles/memphis"
 #message-hook "~C '(wnorris|will.norris)@usc.edu'"  "source ~/.mutt/profiles/usc"
 #message-hook "~C '@internet2.edu'"  "source ~/.mutt/profiles/usc"
 #message-hook "~C '(wnorris|will)@visibleschool.com'"  "source ~/.mutt/profiles/visibleschool"
 
-folder-hook . "source ~/.mutt/profiles/default"
+#folder-hook . "source ~/.mutt/profiles/default"
+
+folder-hook . "push <collapse-all>"

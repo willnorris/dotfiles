@@ -37,6 +37,7 @@ set query_command="$HOME/local/bin/lbdbq '%s'"
 ## change index format
 set index_format="%4C %Z %{%b %d} %-18.18F (%4c) %M %s"
 
+set header_cache="$HOME/.mutt-headers/"
 
 source ~/.mutt/bindings			# define key bindings
 source ~/.mutt/color			# define color
@@ -47,6 +48,6 @@ source ~/.mutt/mailboxes		# define mailboxes
 source ~/.mutt/bindings			# define bindings
 source ~/.mutt/macros			# define macros
 source ~/.mutt/hooks			# define hooks to manage profiles
-source ~/.mutt/muttng.sidebar	# define muttng sidebar
+#source ~/.mutt/muttng.sidebar	# define muttng sidebar
 
 #source ~/.mutt/smime
