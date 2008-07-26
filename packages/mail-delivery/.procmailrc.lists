@@ -2,7 +2,6 @@
 # $Id: .procmailrc 24 2008-02-21 19:01:26Z wjnorris $
 #
 
-
 :0
 * ^List-Id: .*cocoa-dev\.lists\.apple\.com.*
 .MailingLists.apple.cocoa-dev/
@@ -34,6 +33,18 @@
 :0
 * ^List-Id: .*diso-project\.googlegroups\.com.*
 .MailingLists.openid.diso-project/
+
+:0
+* ^List-Id: .*open-web-discuss\.googlegroups\.com.*
+.MailingLists.OpenWeb/
+
+:0
+* ^List-Id: .*oembed\.googlegroups\.com.*
+.MailingLists.oEmbed/
+
+:0
+* ^List-Id: .*xrds-simple\.googlegroups\.com.*
+.MailingLists.xrds-simple/
 
 :0
 * ^List-Id: .*portablecontacts\.googlegroups\.com.*
@@ -206,6 +217,5 @@
 :0
 * ^TO_idm@listserv.educause.edu
 .MailingLists.educause-idm/
-
 
 # vim: ft=procmail

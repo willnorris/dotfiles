@@ -3,7 +3,7 @@
 #
 
 #[ "$TERM" != "dumb" ] && stty erase 
-[ "$TERM" == "xterm-color" ] && TERM=xterm
+#[ "$TERM" == "xterm-color" ] && TERM=xterm
 
 #stty istrip
 PATH=/usr/local/bin:/usr/local/sbin:/usr/xpg4/bin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/openwin/bin:/usr/ccs/bin::/opt/mysql/current/bin

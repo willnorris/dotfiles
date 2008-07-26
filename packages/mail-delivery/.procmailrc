@@ -35,11 +35,7 @@ INCLUDERC=$HOME/.procmailrc.lists
 /dev/null
 
 
-# --- Vidoop Filters --- #
-:0
-* ^TO_myvidoop-fb@vidoop.com
-.Vidoop.myvidoop-fb/
-
+# --- Pre-Spam Vidoop Filters --- #
 :0
 * ^Subject: .*myvidoop inquiries.*
 .Vidoop.myvidoop-inquiries/
@@ -80,6 +76,13 @@ INCLUDERC=$HOME/.procmailrc.lists
 :0
 * ^X-Spam-Level: \*\*\*\*\*
 .Junk/
+
+
+# --- Post-Spam Vidoop Filters --- #
+:0
+* ^TO_myvidoop-fb@vidoop.com
+.Vidoop.myvidoop-fb/
+
 
 
 # --- catch all for inbox --- #
