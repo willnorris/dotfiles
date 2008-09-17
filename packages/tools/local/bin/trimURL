@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+# vim: expandtab
+
+import simplejson, urllib, osax, netrc, os
+from appscript import app
+
+TRIM_BASE = 'http://tr.im/api/trim_url.json'
+USERNAME, ACCOUNT, PASSWORD = netrc.netrc().authenticators('tr.im')
+
+def trim_url(url, **args):
+    args.update({
+        'url': url,
+        'username': USERNAME,
+        'password': PASSWORD,
+    })
+    trim_url = TRIM_BASE + '?' + urllib.urlencode(args)
+    return simplejson.load(urllib.urlopen(trim_url))
+
+
+url = app('Safari').documents[1].URL.get()
+result = trim_url(url);
+
+message = result['status']['message']
+
+if (result['status']['code'] < '400'):
+    message += '\n\n' + url + '\n\n' + result['url']
+
+    # Set clipboard to shortened URL
+    sa = osax.ScriptingAddition()
+    sa.set_the_clipboard_to(result['url'])
+
+
+# Growl Notification
+app('GrowlHelperApp').register(
+        all_notifications=['tr.im URL'], 
+        as_application='tr.im URL', 
+        default_notifications=['tr.im URL']
+        )
+app('GrowlHelperApp').notify(
+        title='tr.im URL', 
+        application_name='tr.im URL', 
+        icon_of_file='file://' + __file__, 
+        with_name='tr.im URL', 
+        description=message)
+
+
