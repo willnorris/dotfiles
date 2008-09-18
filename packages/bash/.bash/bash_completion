@@ -1,3 +1,4 @@
+#!/bin/bash
 #   bash_completion - programmable completion functions for bash 3.x
 #		      (backwards compatible with bash 2.05b)
 #

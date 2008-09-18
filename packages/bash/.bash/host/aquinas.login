@@ -17,7 +17,9 @@ setAppHome 	cayenne	/usr/local/cayenne
 setAppHome 	mysql 	/usr/local/mysql
 setAppHome 	mp 		/opt/mp
 setAppHome	gds		/usr/local/gds
-setAppHome	php		/usr/local/php5
+setAppHome	pear	/usr/local/pear
+
+addToPath /usr/local/yuicompress/bin
 
 export RSYNC_RSH='ssh'
 #export TERM='xterm-color'
