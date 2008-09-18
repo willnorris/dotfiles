@@ -1,8 +1,7 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-15 -*-
 # vim: expandtab
 
-import simplejson, urllib, osax, netrc, os
+import simplejson, urllib, osax, netrc
 from appscript import app
 
 TRIM_BASE = 'http://tr.im/api/trim_url.json'
@@ -27,22 +26,22 @@ if (result['status']['code'] < '400'):
     message += '\n\n' + url + '\n\n' + result['url']
 
     # Set clipboard to shortened URL
-    sa = osax.ScriptingAddition()
-    sa.set_the_clipboard_to(result['url'])
+    osax.ScriptingAddition().set_the_clipboard_to(result['url'])
 
 
-# Growl Notification
-app('GrowlHelperApp').register(
-        all_notifications=['tr.im URL'], 
-        as_application='tr.im URL', 
-        default_notifications=['tr.im URL']
-        )
-f = open('/tmp/trim.tiff', 'r');
-app('GrowlHelperApp').notify(
-        title='tr.im URL', 
-        application_name='tr.im URL', 
-        icon_of_file='file://' + __file__, 
-        with_name='tr.im URL', 
-        description=message)
-
-
+for p in app('System Events').processes():
+    if (p == app('System Events').application_processes[u'GrowlHelperApp']):
+        # Growl Notification
+        app('GrowlHelperApp').register(
+                all_notifications=['tr.im URL'], 
+                as_application='tr.im URL', 
+                default_notifications=['tr.im URL']
+                )
+        f = open('/tmp/trim.tiff', 'r');
+        app('GrowlHelperApp').notify(
+                title='tr.im URL', 
+                application_name='tr.im URL', 
+                icon_of_file='file://' + __file__, 
+                with_name='tr.im URL', 
+                description=message)
+        break
