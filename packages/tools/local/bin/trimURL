@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: iso-8859-15 -*-
 # vim: expandtab
 
 import simplejson, urllib, osax, netrc, os
@@ -36,6 +37,7 @@ app('GrowlHelperApp').register(
         as_application='tr.im URL', 
         default_notifications=['tr.im URL']
         )
+f = open('/tmp/trim.tiff', 'r');
 app('GrowlHelperApp').notify(
         title='tr.im URL', 
         application_name='tr.im URL', 
