@@ -2,7 +2,7 @@
 # $Id$
 #
 
-setPS1
+export PROMPT_COMMAND='setPS1'
 
 addToPath $HOME/bin
 addToPath $HOME/local/bin

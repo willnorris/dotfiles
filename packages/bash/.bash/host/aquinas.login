@@ -6,6 +6,7 @@
 TERM='xterm-color'
 
 addToPath /usr/local/bin
+addToManPath /usr/local/man
 
 # Directories & Paths
 setAppHome 	java 	/Library/Java/Home
@@ -18,8 +19,7 @@ setAppHome 	mysql 	/usr/local/mysql
 setAppHome 	mp 		/opt/mp
 setAppHome	gds		/usr/local/gds
 setAppHome	pear	/usr/local/pear
-
-addToPath /usr/local/yuicompress/bin
+setAppHome	yuicompressor  /usr/local/yuicompressor
 
 export RSYNC_RSH='ssh'
 #export TERM='xterm-color'
@@ -32,6 +32,27 @@ export MOZILLA_CERTIFICATE_FOLDER='/Users/wnorris/Library/Application Support/Fi
 alias sdf='unison hunting && ssh hunting unison -batch skat && ssh hunting unison -batch mariposa'
 alias syn='/usr/local/synergy-1.3.1/synergys -c /usr/local/synergy-1.3.1/synergy.conf -a 127.0.0.1'
 alias spamlearn='ssh mariposa spamlearn'
+alias ff2='/Applications/Firefox2.app/Contents/MacOS/firefox -P ff2'
+
+# grc aliases
+if [ "$TERM" != dumb ] && [ -x /opt/mp/bin/grc ] ; then
+	alias cl='grc -es --colour=auto'
+	alias configure='cl ./configure'
+	alias diff='cl diff'
+	alias make='cl make'
+	alias gcc='cl gcc'
+	alias g++='cl g++'
+	alias as='cl as'
+	#alias gas='cl gas'
+	alias ld='cl ld'
+	alias netstat='cl netstat'
+	alias ping='cl ping'
+	alias traceroute='cl /usr/sbin/traceroute'
+	alias cat='cl cat'
+	alias tail='cl tail'
+	#alias perl='cl perl'
+	#alias python='cl python'
+fi
 
 PS1COLOR='\[\033[0;34m\]' #blue
 
@@ -41,4 +62,4 @@ function resetvisor() {
 	killall Terminal																  
 }
 
-[[ "`whoami`" == "wnorris" ]] || PS1="[\\u]:\\w\\$"
+[[ "`whoami`" == "wnorris" ]] || PROMPT="[\\u]:\\w\\$"

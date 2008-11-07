@@ -29,4 +29,4 @@ addToPath	/usr/usc/gnu/gawk/default/bin
 [ `which gawk` ] && alias awk='gawk'
 
 PERL5LIB="$HOME/local/perl/lib/perl5:$PERL5LIB"
-PS1="[\\h]:\\w\\$"
+PROMPT="[\\h]:\\w\\$"

@@ -3,10 +3,27 @@
 # $Id$
 #
 
+function _shortpath
+{
+
+	[ -z "${MAXPATH}" ] && MAXPATH=30
+	DIR=`pwd | sed -E "s|$HOME|~|"`
+
+	if [ ${#DIR} -gt "$MAXPATH" ]; then
+		DIR="...${DIR: -$MAXPATH}"
+	fi
+
+	echo $DIR
+}
+
 function setPS1
 {
-	[ -z "${PS1}" ] && PS1="\w\\$"
-	PS1="${PS1COLOR}${PS1}\[\033[0m\] "
+
+	[ -z "${PROMPT}" ] && PROMPT="\x\\$"
+	SHORTPATH=`_shortpath`
+
+	PS1="${PS1COLOR}${PROMPT}\[\033[0m\] "
+	PS1=`echo "$PS1" | sed -E "s|(\\\\\x)|$SHORTPATH|"`
 
 	# add information to titlebar if using xterm
 	if [ -z "${PS1_NO_TITLEBAR}" ]; then
