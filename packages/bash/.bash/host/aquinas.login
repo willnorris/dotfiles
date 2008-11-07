@@ -29,6 +29,7 @@ addToLibPath '/opt/mp/lib'
 
 export MOZILLA_CERTIFICATE_FOLDER='/Users/wnorris/Library/Application Support/Firefox/Profiles/bds4wxjc.default'
 
+alias sed='gsed'
 alias sdf='unison hunting && ssh hunting unison -batch skat && ssh hunting unison -batch mariposa'
 alias syn='/usr/local/synergy-1.3.1/synergys -c /usr/local/synergy-1.3.1/synergy.conf -a 127.0.0.1'
 alias spamlearn='ssh mariposa spamlearn'
