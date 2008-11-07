@@ -30,7 +30,7 @@ export MUTT_HOME="$HOME/local"
 export EDITOR="vim"
 export VISUAL="vim"
 
-alias ls='ls -F --color=auto'
+#alias ls='ls -F --color=auto'
 #alias vi='vim'
 alias view='vim -R'
 
