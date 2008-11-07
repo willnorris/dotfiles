@@ -14,6 +14,7 @@ PS1COLOR='\[\033[0;32m\]' #green
 #addToPath '/usr/local/sbin'
 #addToPath '/usr/xpg4/bin'
 #addToPath "$HOME/local/bin"
+addToManPath "/usr/man"
 addToManPath "/usr/local/man"
 
 addToLibPath "/usr/local/lib"
@@ -25,6 +26,9 @@ addToLibPath "$HOME/local/bdb/include"
 #setAppHome spamassassin $HOME/local/spamassassin
 
 export MUTT_HOME="$HOME/local"
+
+export EDITOR="vim"
+export VISUAL="vim"
 
 alias ls='ls -F --color=auto'
 #alias vi='vim'
