@@ -1,9 +1,9 @@
 #!/bin/bash
 # This sets up homedir for you...
 # Example usages:
-#  wget -q -O- http://willnorris.com/svn/homedir/setup | sh
-#  lynx -source http://willnorris.com/svn/homedir/setup | sh
-#  curl -o- http://willnorris.com/svn/homedir/setup | sh
+#  wget -q -O- https://github.com/willnorris/homedir/raw/master/setup | sh
+#  lynx -source https://github.com/willnorris/homedir/raw/master/setup | sh
+#  curl -o- https://github.com/willnorris/homedir/raw/master/setup | sh
 
 # If there is an error, ABORT!
 set -e
