@@ -1,0 +1,6 @@
+# ignore all temporary files from VIM
+.*.swp
+
+# ignore OS X files
+.DS_Store
+
