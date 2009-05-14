@@ -18,7 +18,8 @@ echo "Making ${HOME}/.homedir directory..."
 mkdir -p "${HOME}/.homedir/files"
 
 echo "Getting packages..."
-svn co -q http://willnorris.com/svn/homedir "${HOME}/.homedir/files"
+#svn co -q http://willnorris.com/svn/homedir "${HOME}/.homedir/files"
+git clone git@github.com:willnorris/homedir.git "${HOME}/.homedir/files"
 
 echo "Basic Configuration..."
 touch "${HOME}/.homedir/config"
@@ -35,7 +36,8 @@ packages = ~/.homedir/files/packages
 packages = ~/.homedir/files/meta-packages
 
 ## Command for the -s switch
-synccmd = cd ~/.homedir/files ; svn up
+#synccmd = cd ~/.homedir/files ; svn up
+synccmd = cd ~/.homedir/files ; git pull origin master
 
 ## EOF
 EOF
