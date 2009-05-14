@@ -60,9 +60,9 @@ Install Rootdir
  
 ## MacPorts ##
 
-Install MacPorts from source with: ./configure --prefix /opt/mp
-Add /opt/mp/bin to the end of /etc/paths
-see macports install script
+ - Install MacPorts from source with `./configure --prefix /opt/mp`
+ - Add /opt/mp/bin to the end of /etc/paths: `sudo echo "/opt/mp/bin" >> /etc/paths`
+ - see [macports install script](macports.md)
  
  
 ## Install Applications ##
