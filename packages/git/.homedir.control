@@ -1,0 +1,8 @@
+package: git
+priority: normal
+maintainer: Will Norris <will@willnorris.com>
+depends: 
+standards-version: 1
+description: Git configuration
+ Git configuration.  
+
