@@ -8,6 +8,7 @@ possible to make sure I don't bring over any baggage.
  
  
 ## System Level Stuff ##
+
  1. Do clean install of OS X, since I don't need the printer drivers, language packs, and such.  (this saves a good 4+ GB or so) (about 30 minutes)
  1. Go through normal Mac setup.  Add MobileMe account, but choose not to migrate any data
  1. TimeMachine backup of machine as-is, since it might be cool to have backups all the way back to the beginning. (about 15-20 minutes)
@@ -16,7 +17,9 @@ possible to make sure I don't bring over any baggage.
  1. Run Boot Camp Assistant, and designate 32 GB for Windows.  Install Windows, drivers, and updates (roughly 2 hours)
  1. TimeMachine backup again
  
+
 ## Basic Environment Setup ## 
+
  1. Install Secrets Preference Pane and get environment customized so I can work
  1. Install bluetooth mouse b/c the trackpad clicking is driving me a little crazy
  1. Configure Safari preferences (tabs, homepage, etc)
@@ -25,12 +28,16 @@ possible to make sure I don't bring over any baggage.
  1. Setup Mail.app 
  	* to copy over local messages not on the IMAP server, I stopped Mail, restored the messages through Time Machine, deleted the Envelope Index, then started Mail again and let it rebuild the cache
  
+
 ## Setup Terminal ##
+
  1. Install Hex Color Picker
  1. Install SIMBL + TerminalColors
  1. svn cat http://willnorris.com/svn/homedir/setup | sh
  
-## SSH  ##
+
+## SSH ##
+
  1. Generate new SSH keys
  1. ssh localhost to add passphrase to keychain
  
@@ -42,7 +49,9 @@ Install GD for PHP (http://www.kenior.com/macintosh/adding-gd-library-for-mac-os
  
 Install Rootdir
  
+
 ## MySQL ##
+
  1. Download and install MySQL + PreferencePane
  1. load launchdaemon: sudo launchctl load /Library/LaunchDaemons/com.mysql.mysqld.plist
  1. change root password using:   mysqladmin -u root -p'oldpassword' password newpass
@@ -50,16 +59,21 @@ Install Rootdir
  
  
 ## MacPorts ##
+
 Install MacPorts from source with: ./configure --prefix /opt/mp
 Add /opt/mp/bin to the end of /etc/paths
 see macports install script
  
  
 ## Install Applications ##
-iLife
-Password Assistant
-growl
-colloquy
-slim battery monitor
-unplugged preference pane 
+
+ - iLife
+ - Password Assistant
+ - growl
+ - colloquy
+ - slim battery monitor
+ - unplugged preference pane 
  
+
+<!-- vim: ft=markdown
+-->
