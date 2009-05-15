@@ -493,6 +493,34 @@ class HDPackage(object):
 
         return is_empty
 
+    def install(self,dest,src=None):
+        "Install the package"
+        fdebug('install',locals())
+        _src = src
+        if _src is None:
+            _src = self.package_location
+        preflight = os.path.join(_src,CONTROLDIR,'pre-install');
+        if os.access(preflight, os.X_OK):
+            os.system(preflight)
+        self.merge(dest,src)
+        postflight = os.path.join(_src,CONTROLDIR,'post-install');
+        if os.access(postflight, os.X_OK):
+            os.system(postflight)
+
+    def remove(self,dest,src=None):
+        "Remove the package"
+        fdebug('remove',locals())
+        _src = src
+        if _src is None:
+            _src = self.package_location
+        preflight = os.path.join(_src,CONTROLDIR,'pre-remove');
+        if os.access(preflight, os.X_OK):
+            os.system(preflight)
+        self.unmerge(dest,src)
+        postflight = os.path.join(_src,CONTROLDIR,'post-remove');
+        if os.access(postflight, os.X_OK):
+            os.system(postflight)
+
 def doParse():
     """Actually does the command line parsing.
     Returns (options, args) (as per optparse's parse_args
@@ -910,7 +938,7 @@ def do_install(options,*packages):
             print "Okay then, quitting..."
             sys.exit(0)
     print "Installing Packages..."
-    actionLoop( lambda p:p.merge(HOME), 'installing', extra+packages )
+    actionLoop( lambda p:p.install(HOME), 'installing', extra+packages )
 
 def do_remove(options,*packages):
     "Do the uninstall command"
@@ -942,7 +970,7 @@ def do_remove(options,*packages):
 
     print "Removing Packages..."
         
-    actionLoop( lambda p:p.unmerge(HOME), 'removing', extra+packages )
+    actionLoop( lambda p:p.remove(HOME), 'removing', extra+packages )
 
 def do_upgrade(options,*packages):
     packages = lookUp(options,*packages)
@@ -989,10 +1017,10 @@ def do_upgrade(options,*packages):
     print "Updating Packages..."
 
     # UnInstall Only
-    actionLoop( lambda p:p.unmerge(HOME), 'removing', reverse_deps )
+    actionLoop( lambda p:p.remove(HOME), 'removing', reverse_deps )
     def func(package):
-        package.unmerge(HOME)
-        package.merge(HOME)
+        package.install(HOME)
+        package.remove(HOME)
         
     actionLoop( func, 'upgrading', extra + packages )
 
