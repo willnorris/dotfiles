@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -h "$HOME/.my.cnf" ] && [ `readlink $HOME/.my.cnf` == "/Volumes/secure/etc/my.cnf" ]; then
+	rm $HOME/.my.cnf
+fi
+
