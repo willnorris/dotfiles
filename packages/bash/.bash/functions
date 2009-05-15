@@ -3,24 +3,10 @@
 # $Id$
 #
 
-if [ `gsed --version > /dev/null 2>&1` ]; then
-	function _sed 
-	{ 
-		gsed -r "$1" 
-	}
-else
-	function _sed 
-	{ 
-		sed -E "$1" 
-	}
-fi
-
-
 function _shortpath
 {
-
 	[ -z "${MAXPATH}" ] && MAXPATH=30
-	DIR=`pwd | _sed "s|^$HOME|~|"`
+	DIR=`pwd | sed "s|^$HOME|~|"`
 
 	if [ ${#DIR} -gt "$MAXPATH" ]; then
 		let "MAXPATH -= 3"
@@ -32,12 +18,11 @@ function _shortpath
 
 function setPS1
 {
-
 	[ -z "${PROMPT}" ] && PROMPT="\x\\$"
 	SHORTPATH=`_shortpath`
 
 	PS1="${PS1COLOR}${PROMPT}\[\033[0m\] "
-	PS1=`echo "$PS1" | _sed "s|(\\\\\x)|$SHORTPATH|"`
+	PS1=`echo "$PS1" | sed "s|\\\\\x|$SHORTPATH|"`
 
 	# add information to titlebar if using xterm
 	if [ -z "${PS1_NO_TITLEBAR}" ]; then

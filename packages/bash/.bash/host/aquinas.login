@@ -29,14 +29,15 @@ addToLibPath '/opt/mp/lib'
 
 export MOZILLA_CERTIFICATE_FOLDER='/Users/wnorris/Library/Application Support/Firefox/Profiles/bds4wxjc.default'
 
-alias sed='gsed'
+[[ `which gsed &>/dev/null` ]] && alias sed='gsed'
+
 alias sdf='unison hunting && ssh hunting unison -batch skat && ssh hunting unison -batch mariposa'
 alias syn='/usr/local/synergy-1.3.1/synergys -c /usr/local/synergy-1.3.1/synergy.conf -a 127.0.0.1'
 alias spamlearn='ssh mariposa spamlearn'
 alias ff2='/Applications/Firefox2.app/Contents/MacOS/firefox -P ff2'
 
 # grc aliases
-if [ "$TERM" != dumb ] && [ -x /opt/mp/bin/grc ] ; then
+if [ "$TERM" != dumb ] && [ `which grc &>/dev/null` ] ; then
 	alias cl='grc -es --colour=auto'
 	alias configure='cl ./configure'
 	alias diff='cl diff'
@@ -63,4 +64,4 @@ function resetvisor() {
 	killall Terminal																  
 }
 
-[[ "`whoami`" == "wnorris" ]] || PROMPT="[\\u]:\\w\\$"
+[[ "`whoami`" == "wnorris" ]] || PROMPT="[\\u] \\x\\$"
