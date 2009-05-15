@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -h "$HOME/.gnupg/secring.gpg" ] && [ `readlink $HOME/.gnupg/secring.gpg` == "/Volumes/secure/gpg/secring.gpg" ]; then
+	rm $HOME/.gnupg/secring.gpg
+fi
+
+if [ -h "$HOME/.gnupg/pubring.gpg" ] && [ `readlink $HOME/.gnupg/pubring.gpg` == "/Volumes/secure/gpg/pubring.gpg" ]; then
+	rm $HOME/.gnupg/pubring.gpg
+fi
+

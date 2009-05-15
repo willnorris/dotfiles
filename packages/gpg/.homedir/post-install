@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -f "/Volumes/secure/gpg/secring.gpg" ]; then
+	ln -s /Volumes/secure/gpg/secring.gpg $HOME/.gnupg/secring.gpg
+fi
+
+if [ -f "/Volumes/secure/gpg/pubring.gpg" ]; then
+	ln -s /Volumes/secure/gpg/pubring.gpg $HOME/.gnupg/pubring.gpg
+fi
+
