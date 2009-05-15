@@ -40,6 +40,7 @@ HOMEDIR = os.path.expanduser("~/.homedir")
 HOMEDIRCONFIG = os.path.join(HOMEDIR,"config")
 CONTROLDIR = ".homedir"
 CONTROLFILENAME = "control"
+OLD_CONTROLFILENAME = ".homedir.control"
 
 ###
 ### Version Check
@@ -160,7 +161,9 @@ class HDPackage(object):
         self.package_location = os.path.realpath(directory)
         control = os.path.join(directory,CONTROLDIR,CONTROLFILENAME)
         if not os.path.exists(control):
-            raise NotPackageError("No control file")
+			control = os.path.join(directory,OLD_CONTROLFILENAME)
+			if not os.path.exists(control):
+				raise NotPackageError("No control file")
         self._parse(control)
 
     def __repr__(self):
@@ -333,7 +336,8 @@ class HDPackage(object):
 
     def fromSubdir(cls,directory):
         "Classmethod: Create a package from a subdirectory"
-        if os.path.exists(os.path.join(directory,CONTROLDIR,CONTROLFILENAME)):
+        if os.path.exists(os.path.join(directory,CONTROLDIR,CONTROLFILENAME)) or \
+				os.path.exists(os.path.join(directory,OLD_CONTROLFILENAME)):
             return cls(directory)
         updir = os.path.dirname(directory).rstrip(os.sep)
         if updir:
@@ -353,7 +357,7 @@ class HDPackage(object):
         for content in os.listdir(src):
             if content in IGNORE_DIRS:
                 continue
-            if ignore_control and content == CONTROLDIR:
+            if ignore_control and (content == CONTROLDIR or content == OLD_CONTROLFILENAME):
                 continue
             if os.path.isdir(os.path.join(src,content)):
                 self.mergeSubDir(src,dest,content)
