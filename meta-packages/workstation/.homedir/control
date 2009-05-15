@@ -3,7 +3,10 @@ priority: normal
 maintainer: Will Norris <will@willnorris.com>
 depends: 
  bash
+ git
+ gpg
  lynx
+ netrc
  screen
  ssh 
  tools
