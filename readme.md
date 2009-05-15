@@ -5,12 +5,6 @@
 which allows for "controlling the contents of your home directory via a version
 control system in a sane way".
 
-[homedir][] project.  Rather than managing dotfiles in your home directory,
-rootdir manages system-wide configuration files.  If you have multiple systems
-that share a lot of common configuration, this may be useful.  For myself, I
-simply use rootdir to maintain version history of a number of system config
-files on my primary workstation.
-
 [Homedir]: http://trac.gerf.org/homedir
 
 
