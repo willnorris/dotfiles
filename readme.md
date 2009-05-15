@@ -1,9 +1,9 @@
 
 # Homedir #
 
-[Homedir][] is a project developed by Christian "[Dr. What](/docwhat)" Höltje's
-which allows controlling the contents of your home directory via a version
-control system in a sane way.
+[Homedir][] is a project developed by Christian "[Dr. What](/docwhat)" Höltje
+which allows for "controlling the contents of your home directory via a version
+control system in a sane way".
 
 [homedir][] project.  Rather than managing dotfiles in your home directory,
 rootdir manages system-wide configuration files.  If you have multiple systems
