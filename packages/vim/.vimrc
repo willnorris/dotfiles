@@ -39,7 +39,7 @@ augroup END
 "----------------------------------------------------------#
 " Key bindings 
 "----------------------------------------------------------#
-nmap <F9> :!vim-ftp %<CR><CR>
-map! <F9> :!vim-ftp %<CR><CR>
+"nmap <F9> :!vim-ftp %<CR><CR>
+"map! <F9> :!vim-ftp %<CR><CR>
 
 source ~/.vim/plist_script.vim
