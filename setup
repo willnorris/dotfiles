@@ -15,7 +15,8 @@ if [ -e "${HOME}/.homedir/config" ]; then
 fi
 
 echo "Making ${HOME}/.homedir directory..."
-mkdir -p "${HOME}/.homedir/files"
+#mkdir -p "${HOME}/.homedir/files"
+mkdir -p "${HOME}/.homedir"
 
 echo "Getting packages..."
 #svn co -q http://willnorris.com/svn/homedir "${HOME}/.homedir/files"
