@@ -1,0 +1,66 @@
+_mvn() 
+{
+	local cur prev opts
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+	prev="${COMP_WORDS[COMP_CWORD-1]}"
+	
+	# phases for the default lifecycle
+	default_phases="validate 
+               initialize 
+               generate-sources 
+               process-sources 
+               generate-resources 
+               process-resources 
+               compile 
+               process-classes 
+               generate-test-sources 
+               process-test-sources 
+               generate-test-resources 
+               process-test-resources 
+               test-compile 
+               process-test-classes 
+               test 
+               package 
+               pre-integration-test 
+               integration-test 
+               post-integration-test 
+               verify 
+               install 
+               deploy"
+
+	# phases for the clean lifecycle
+	clean_phases="pre-clean
+		clean
+		post-clean"
+
+	# phases for the site lifecycle
+	site_phases="pre-site
+		site
+		post-site
+		site-deploy"
+
+	opts="--file --debug --batch-mode --lax-checksums --strict-checksums --check-plugin-updates --define --errors --fail-at-end --fail-fast --fail-never --help --non-recursive --no-plugin-registry --no-plugin-updates --offline --activate-profiles --quiet --reactor --settings --update-snapshots --update-plugins --version ${default_phases} ${clean_phases} ${site_phases}"
+
+	if [[ ${cur} == -* ]] ; then
+		COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+		return 0
+	fi
+
+	case "${prev}" in
+		"--file")
+			local pom_files=$(for x in `find -type f -name pom.xml` ; do echo ${x} ; done)
+			COMPREPLY=( $(compgen -W "${pom_files}" -- ${cur} ))
+			return 0
+			;;
+		${default_phases})
+			;;
+		*)
+			;;
+	esac
+
+	COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+	return 0
+}
+complete -F _mvn mvn m2
+

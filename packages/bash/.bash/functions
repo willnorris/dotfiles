@@ -83,6 +83,16 @@ function addToLibPath
 	[ -d $1 ] && [ ! `echo $LD_LIBRARY_PATH | egrep "(^|:)$1(:|$)"` ] && LD_LIBRARY_PATH="$1:$LD_LIBRARY_PATH"
 }
 
+function appendToAlias
+{
+	if [ ${#@} -ge 2 ]; then
+		args=($@); unset args[0]
+		ALIAS_CMD=`alias $1 2>/dev/null || echo "alias $1='$1'"`
+		ALIAS_CMD="${ALIAS_CMD%\'} ${args[@]}'"
+		eval "$ALIAS_CMD"
+	fi
+}
+
 function sdr
 {
 	if [ -z "$@" ]; then
