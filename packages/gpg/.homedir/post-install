@@ -1,10 +1,14 @@
 #!/bin/sh
 
 if [ -f "/Volumes/secure/gpg/secring.gpg" ]; then
-	ln -s /Volumes/secure/gpg/secring.gpg $HOME/.gnupg/secring.gpg
+	if [ ! -h "$HOME/.gnupg/secring.gpg" ] || [ `readlink $HOME/.gnupg/secring.gpg` != "/Volumes/secure/gpg/secring.gpg" ]; then
+		ln -s /Volumes/secure/gpg/secring.gpg $HOME/.gnupg/secring.gpg
+	fi
 fi
 
 if [ -f "/Volumes/secure/gpg/pubring.gpg" ]; then
-	ln -s /Volumes/secure/gpg/pubring.gpg $HOME/.gnupg/pubring.gpg
+	if [ ! -h "$HOME/.gnupg/pubring.gpg" ] || [ `readlink $HOME/.gnupg/pubring.gpg` != "/Volumes/secure/gpg/pubring.gpg" ]; then
+		ln -s /Volumes/secure/gpg/pubring.gpg $HOME/.gnupg/pubring.gpg
+	fi
 fi
 
