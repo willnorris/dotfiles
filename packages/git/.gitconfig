@@ -2,8 +2,8 @@
 	email = will@willnorris.com
 	name = Will Norris
 
-#[core]
-#	excludesfile = /Users/wnorris/.gitignore
+[core]
+	excludesfile = 
 
 [diff "vim"]
 	command = vimdiff
@@ -13,4 +13,3 @@
 	diff = auto
 	interactive = auto
 	status = auto
-
