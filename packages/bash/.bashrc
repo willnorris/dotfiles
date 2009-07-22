@@ -1,33 +1,39 @@
 #
-# $Id$
+# Primary bash(1) configuration file
 #
 
-HOST=`hostname | sed "s/\..*$//"`
-DOMAIN=`hostname | sed "s/^[^\.]*//" | sed "s/^\.//"`
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+HOSTNAME=`hostname | tr A-Z a-z`
+HOST=${HOSTNAME%%.*}
+DOMAIN=${HOSTNAME#*.}
+OS=`uname | tr A-Z a-z`
 
 
-[[ -r /etc/bashrc ]] && source /etc/bashrc
-[[ -r $HOME/.bash/all.pre.login ]] && source $HOME/.bash/all.pre.login
-[[ -r $HOME/.bash/os/`uname`.login ]] && source $HOME/.bash/os/`uname`.login
-[[ -r $HOME/.bash/network/$DOMAIN.login ]] && source $HOME/.bash/network/$DOMAIN.login
-
+[[ -r ${HOME}/.bash/all.pre.login ]] && source ${HOME}/.bash/all.pre.login
+[[ -r ${HOME}/.bash/os/${OS}.login ]] && source ${HOME}/.bash/os/${OS}.login
+[[ -r ${HOME}/.bash/network/${DOMAIN}.login ]] && source ${HOME}/.bash/network/${DOMAIN}.login
 
 # hostname or default -- this is necessary when I plugin to something like a DSL
 # line and it assigns me some weird hostname based on the ip address.
-if [[ -r $HOME/.bash/host/$HOST.login ]]; then 
-	source $HOME/.bash/host/$HOST.login
+if [[ -r ${HOME}/.bash/host/${HOST}.login ]]; then 
+	source ${HOME}/.bash/host/${HOST}.login
 else
-	source $HOME/.bash/host/aquinas.login
+	source ${HOME}/.bash/host/default.login
 fi
 
 
-# the HOST variable above resolves to the non-fully-qualified hostname of the
-# machine.  For example, it would not differentiate between the machines
-# "foo.bar.com" and "foo.bar.net".  This last line allows you to create a file
-# that uses the fully qualified hostname.  (note that this should only be
-# necessary if you have two machines with the same name on two different
-# networks and they need individual configurations)
-[[ -r $HOME/.bash/host/`hostname`.login && "`hostname`" != "$HOST" ]] && source $HOME/.bash/host/`hostname`.login
+# The HOST variable above resolves only to the local portion of the machine 
+# hostname. For example, it would not differentiate between the machines
+# "foo.bar.com" and "foo.example.com".  This last line allows you to create 
+# a file that uses the fully qualified hostname.  
+#
+# Note that this should only be necessary if you have two machines with the 
+# same name on two different networks and they need individual configurations
+if [[ "$HOSTNAME" != "$HOST" && -r ${HOME}/.bash/host/${HOSTNAME}.login ]]; then
+   source ${HOME}/.bash/host/${HOSTNAME}.login
+fi
 
 
 #FROM_HOST=`getConnectingHost`
@@ -41,6 +47,6 @@ fi
 #fi
 
 
-[[ -r $HOME/.bash/all.post.login ]] && source $HOME/.bash/all.post.login
+[[ -r ${HOME}/.bash/all.post.login ]] && source ${HOME}/.bash/all.post.login
 
 #EOF
