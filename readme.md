@@ -15,4 +15,7 @@ explaining it though.
 [Homedir]: http://trac.gerf.org/homedir
 [blogged about my setup]: http://willnorris.com/2005/03/bashrc
 
+Note to self: setup on a new host using:
+	curl http://github.com/willnorris/homedir/raw/master/setup | bash
+
 <!-- vim: set ft=mkd :-->
