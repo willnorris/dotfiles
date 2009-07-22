@@ -9,16 +9,16 @@ addToPath /usr/local/bin
 addToManPath /usr/local/man
 
 # Directories & Paths
-setAppHome 	java 	/Library/Java/Home
-setAppHome 	maven 	/usr/local/maven
-setAppHome 	tomcat 	/usr/local/tomcat
-setAppHome 	idp 	/usr/local/shibboleth-idp
-setAppHome 	ant 	/Developer/Java/Ant
-setAppHome 	cayenne	/usr/local/cayenne
-setAppHome 	mysql 	/usr/local/mysql
-setAppHome 	mp 		/opt/mp
-setAppHome	gds		/usr/local/gds
-setAppHome	pear	/usr/local/pear
+setAppHome 	java 		/Library/Java/Home
+setAppHome 	maven 		/usr/local/maven
+setAppHome 	tomcat 		/usr/local/tomcat
+setAppHome 	idp 		/usr/local/shibboleth-idp
+setAppHome 	ant 		/Developer/Java/Ant
+setAppHome 	cayenne		/usr/local/cayenne
+setAppHome 	mysql 		/usr/local/mysql
+setAppHome 	macports	/opt/mp
+setAppHome	gds			/usr/local/gds
+setAppHome	pear		/usr/local/pear
 setAppHome	yuicompressor  /usr/local/yuicompressor
 
 export RSYNC_RSH='ssh'
@@ -30,6 +30,7 @@ addToLibPath '/opt/mp/lib'
 export MOZILLA_CERTIFICATE_FOLDER='/Users/wnorris/Library/Application Support/Firefox/Profiles/bds4wxjc.default'
 
 [[ `which gsed &>/dev/null` ]] && alias sed='gsed'
+[[ -x "$MACPORTS_HOME/bin/svn" ]] && alias svn="$MACPORTS_HOME/bin/svn"
 
 alias sdf='unison hunting && ssh hunting unison -batch skat && ssh hunting unison -batch mariposa'
 alias syn='/usr/local/synergy-1.3.1/synergys -c /usr/local/synergy-1.3.1/synergy.conf -a 127.0.0.1'
