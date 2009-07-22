@@ -33,10 +33,12 @@ alias dircolors='gdircolors'
 
 PS1COLOR='\[\033[0;34m\]' #blue
 
-function resetvisor() {																		
+function resetvisor() {
 	defaults write com.apple.Terminal VisorTerminal -dict-add Rows 20
-	~/local/bin/visor-fix &																		
-	killall Terminal																  
+	~/local/bin/visor-fix &
+	killall Terminal
 }
 
 [[ "`whoami`" == "willnorris" ]] || PROMPT="[\\u] \\x\\$"
+
+[[ -r ${MACPORTS_HOME}/etc/bash_completion ]] && source ${MACPORTS_HOME}/etc/bash_completion
