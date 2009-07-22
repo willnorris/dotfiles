@@ -6,9 +6,8 @@
 #[ "$TERM" == "xterm-color" ] && TERM=xterm
 
 #stty istrip
-PATH=/usr/local/bin:/usr/local/sbin:/usr/xpg4/bin:/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/openwin/bin:/usr/ccs/bin::/opt/mysql/current/bin
 
-PS1COLOR='\[\033[0;32m\]' #green
+PS1COLOR='\[\033[01;32m\]' #bright green
 
 #addToPath '/usr/local/bin'
 #addToPath '/usr/local/sbin'
@@ -25,7 +24,7 @@ addToLibPath "$HOME/local/bdb/include"
 #setAppHome subversion $HOME/local/subversion
 #setAppHome spamassassin $HOME/local/spamassassin
 
-export MUTT_HOME="$HOME/local"
+setAppHome MUTT $HOME/local
 
 export EDITOR="vim"
 export VISUAL="vim"
