@@ -31,6 +31,7 @@ function setPS1
 
 	if [ `expr "$PS1" : '.*\(\\x\).*'` ]; then
 		SHORTPATH=`_shortpath`
+		PS1=${PS1/\\\\x/$SHORTPATH}
 		PS1=${PS1/\\x/$SHORTPATH}
 	fi
 

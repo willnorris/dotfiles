@@ -33,7 +33,7 @@ export PAGER="less"
 # Let's add a little color to the world
 #----------------------------------------------------------#
 # grc aliases
-if [ "$TERM" != dumb ] && [ `which grc &>/dev/null` ] ; then
+if [[ "$TERM" != "dumb" && `which grc 2>/dev/null` ]]; then
 	alias cl='grc -es --colour=auto'
 	alias configure='cl ./configure'
 	alias diff='cl diff'

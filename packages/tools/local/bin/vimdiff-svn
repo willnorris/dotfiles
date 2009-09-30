@@ -28,10 +28,19 @@ revertAndDiff() {
 	rm "$1~"
 }
 
-if test -z "$1"; then
+svnVimdiffWrapper() {
+	shift 5; vimdiff -f "$@";
+}
+
+if test -n "$2"; then
+	# If two arguments are provided, then we're probably using vimdiff-svn as the diff-cmd for "svn diff"
+	svnVimdiffWrapper "$@";
+elif test -n "$1"; then
+	# If only one argument is provided, then we want to vimdiff the uncommitted changes of a single file
+	revertAndDiff "$1"
+else
+	# otherwise, then we want to vimdiff the uncommitted changes of a all files
 	for i in `svn status|grep -v '^\?'|cut -c8-`; do
 		revertAndDiff "$i"
 	done
-else
-	revertAndDiff "$1"
 fi

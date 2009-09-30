@@ -17,7 +17,7 @@ setAppHome 	cayenne		/usr/local/cayenne
 setAppHome 	mysql 		/usr/local/mysql
 setAppHome 	macports	/opt/mp
 setAppHome	gds			/usr/local/gds
-setAppHome	pear		/usr/local/pear
+#setAppHome	pear		/usr/local/pear
 setAppHome	yuicompressor  /usr/local/yuicompressor
 
 export RSYNC_RSH='ssh'
@@ -33,6 +33,12 @@ alias dircolors='gdircolors'
 
 PS1COLOR='\[\033[0;34m\]' #blue
 
+# Local perl modules
+export PERL5LIB="$HOME/local/lib/perl5/i386-solaris-thread-multi:$HOME/local/lib/perl5:$PERL5LIB"
+addToPath $HOME/local/perl/bin
+addToManPath $HOME/local/perl/man
+
+
 function resetvisor() {
 	defaults write com.apple.Terminal VisorTerminal -dict-add Rows 20
 	~/local/bin/visor-fix &
@@ -42,3 +48,4 @@ function resetvisor() {
 [[ "`whoami`" == "willnorris" ]] || PROMPT="[\\u] \\x\\$"
 
 [[ -r ${MACPORTS_HOME}/etc/bash_completion ]] && source ${MACPORTS_HOME}/etc/bash_completion
+
