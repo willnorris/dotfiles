@@ -31,14 +31,14 @@ cat >> "${HOME}/.homedir/config" <<EOF
 ##    http://trac.gerf.org/homedir
 
 ## base packages
-packages = ~/.homedir/files/packages
+packages = \$HOME/.homedir/files/packages
 
 ## meta packages
-packages = ~/.homedir/files/meta-packages
+packages = \$HOME/.homedir/files/meta-packages
 
 ## Command for the -s switch
-#synccmd = cd ~/.homedir/files ; svn up
-synccmd = cd ~/.homedir/files ; git pull origin master
+#synccmd = cd \$HOME/.homedir/files ; svn up
+synccmd = cd \$HOME/.homedir/files ; git pull origin master
 
 ## EOF
 EOF
