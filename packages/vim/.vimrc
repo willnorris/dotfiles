@@ -31,6 +31,8 @@ au BufNewFile,BufEnter */.mutt* set ft=muttrc
 au BufNewFile,BufEnter /etc/apache2/*.conf set ft=apache
 au BufNewFile,BufEnter /etc/apache2/sites*/* set ft=apache
 
+au! BufRead,BufNewFile *.json setfiletype json
+
 augroup mkd
 	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
