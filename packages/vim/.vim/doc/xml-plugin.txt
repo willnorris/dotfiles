@@ -1,4 +1,4 @@
-*xml-plugin.txt*  Help edit XML and SGML documents.                   v1.35
+*xml-plugin.txt*  Help edit XML and SGML documents.                   v1.36
 
 				   XML Edit  ~
 
@@ -288,9 +288,6 @@ for details.
         The top uses append
         The bottom uses append
         Useful when marking up a text file
-
-------------------------------------------------------------------------------
-                                                        *xml-plugin-callbacks*
 
 ------------------------------------------------------------------------------
                                                         *xml-plugin-callbacks*
