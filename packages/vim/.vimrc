@@ -42,4 +42,4 @@ augroup END
 "nmap <F9> :!vim-ftp %<CR><CR>
 "map! <F9> :!vim-ftp %<CR><CR>
 
-source ~/.vim/plist_script.vim
+" source ~/.vim/plist_script.vim
