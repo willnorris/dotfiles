@@ -1,7 +1,3 @@
-"
-" $Id$
-"
-
 "----------------------------------------------------------#
 " Global Settings
 "----------------------------------------------------------#
@@ -22,16 +18,16 @@ source $VIMRUNTIME/macros/matchit.vim
 " Filetype-specific Settings
 "----------------------------------------------------------#
 "autoset options for PHP files
-au BufNewFile,BufReadPre,FileReadPre  *.{phps,phtml}  set ft=php
+au BufNewFile,BufRead  *.{phps,phtml}  set ft=php
 "au BufNewFile,BufReadPre,FileReadPre  *.mkd  set ft=mkd
-au BufNewFile,BufEnter ~/*/blog/* set ft=html tw=80
-au BufNewFile,BufEnter */.bash* set ft=sh
-au BufNewFile,BufEnter */.bash/* set ft=sh
-au BufNewFile,BufEnter */.mutt* set ft=muttrc
-au BufNewFile,BufEnter /etc/apache2/*.conf set ft=apache
-au BufNewFile,BufEnter /etc/apache2/sites*/* set ft=apache
+au BufNewFile,BufRead ~/*/blog/* set ft=html tw=80
+au BufNewFile,BufRead */.bash* set ft=sh
+au BufNewFile,BufRead */.bash/* set ft=sh
+au BufNewFile,BufRead */.mutt* set ft=muttrc
+au BufNewFile,BufRead /etc/apache2/*.conf set ft=apache
+au BufNewFile,BufRead /etc/apache2/sites*/* set ft=apache
 
-au! BufRead,BufNewFile *.json setfiletype json
+au! BufNewFile,BufRead *.json setfiletype json
 
 augroup mkd
 	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -44,4 +40,3 @@ augroup END
 "nmap <F9> :!vim-ftp %<CR><CR>
 "map! <F9> :!vim-ftp %<CR><CR>
 
-" source ~/.vim/plist_script.vim
