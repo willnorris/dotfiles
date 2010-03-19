@@ -17,23 +17,11 @@ source $VIMRUNTIME/macros/matchit.vim
 "----------------------------------------------------------#
 " Filetype-specific Settings
 "----------------------------------------------------------#
-"autoset options for PHP files
-au BufNewFile,BufRead  *.{phps,phtml}  set ft=php
-"au BufNewFile,BufReadPre,FileReadPre  *.mkd  set ft=mkd
-au BufNewFile,BufRead ~/*/blog/* set ft=html tw=80
-au BufNewFile,BufRead */.bash* set ft=sh
-au BufNewFile,BufRead */.bash/* set ft=sh
-au BufNewFile,BufRead */.mutt* set ft=muttrc
-au BufNewFile,BufRead /etc/apache2/*.conf set ft=apache
-au BufNewFile,BufRead /etc/apache2/sites*/* set ft=apache
+au FileType mkd  set ai formatoptions=tcroqn2 comments=n:>
 
-au! BufNewFile,BufRead *.json setfiletype json
+" localvimrc settings
+let g:localvimrc_ask = 0
 
-augroup mkd
-	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-augroup END
-
-"
 "----------------------------------------------------------#
 " Key bindings 
 "----------------------------------------------------------#
