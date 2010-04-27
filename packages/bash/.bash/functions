@@ -84,6 +84,19 @@ function addToLibPath
 	[ -d $1 ] && [ ! `echo $LD_LIBRARY_PATH | egrep "(^|:)$1(:|$)"` ] && LD_LIBRARY_PATH="$1:$LD_LIBRARY_PATH"
 }
 
+
+# Add the specified folder to the specified PATH-like environment variable, if it is not already present
+function addToPathVar
+{
+	eval local v=\$$1
+	if [ -z "$v" ]; then
+		[ -d $2 ] && eval $1=$2
+	else
+		[ -d $2 ] && [ ! `echo $v | egrep "(^|:)$2(:|$)"` ] && eval $1=$2:\$$1
+	fi
+}
+
+
 function appendToAlias
 {
 	if [ ${#@} -ge 2 ]; then
@@ -101,6 +114,14 @@ function sdr
 	else
 		screen -U -D -R $@
 	fi
+}
+
+function toLower() {
+	echo $1 | tr "[:upper:]" "[:lower:]"
+}
+
+function toUpper() {
+	echo $1 | tr "[:lower:]" "[:upper:]"
 }
 
 #function getConnectingHost
