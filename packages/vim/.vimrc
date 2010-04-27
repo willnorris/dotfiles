@@ -1,7 +1,7 @@
 "----------------------------------------------------------#
 " Global Settings
 "----------------------------------------------------------#
-set nocp incsearch ru ts=4 sw=4
+set nocp incsearch ruler showcmd ts=4 sw=4
 set listchars=tab:>-,trail:-
 set modelines=4 
 set nu                              " line numbers
