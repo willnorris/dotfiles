@@ -24,6 +24,8 @@ else
 fi
 unset VIM_VERSION
 
+VIM=$HOME/.vim/
+
 export VISUAL=${EDITOR}
 export PAGER="less"
 
@@ -70,3 +72,4 @@ export PATH_LD_BAK=${LD_LIBRARY_PATH}
 
 #source ~/.bash/bash_completion
 
+[ ! -z "$MACPORTS_HOME" ] && addToPathVar "PYTHONPATH" "$MACPORTS_HOME/lib/python2.5/site-packages"
