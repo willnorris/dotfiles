@@ -9,6 +9,8 @@ addToPath $HOME/bin
 addToPath $HOME/local/bin
 addToManPath $HOME/local/man
 
+addToPath $HOME/Projects/oacurl
+
 export JPY=$HOME/.bash/j2/j.py
 source $HOME/.bash/j2/j.sh
 
