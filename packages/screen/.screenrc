@@ -1,6 +1,6 @@
 #
 # $Id$
-#
+
 # ===============================================================
 # ENVIRONMENT
 # ===============================================================
@@ -21,13 +21,14 @@
 # DISPLAY variable even if it is empty.
 # so to turn off the effect you *must*
 # "unset" the variable.
-#
+
 # ===============================================================
 # ESCAPE - the COMMAND CHARACTER
 # ===============================================================
 # escape ^aa  # default
 # escape ^pp  # suggested binding for emacs users
-#
+escape ^jj
+
 # ===============================================================
 # STARTUP of programs in an extra window:
 # ===============================================================
@@ -38,19 +39,19 @@
 # screen -t GOOGLE      2 links http://www.google.com
 # screen -t NEWS        3 slrn
 # screen -t WWW         4 links http://www.math.fu-berlin.de/~guckes/
-#
+
 # ===============================================================
 # VARIABLES - Boolean values (on/off)
 # ===============================================================
   autodetach            on              # default: on
   crlf                  off             # default: off
-  deflogin              off             # default: on
+#  deflogin              off             # default: on
 # defsilence            off             # default: off
   hardcopy_append       on              # default: off
 # nethack               on              # default: off
   startup_message       off             # default: on
   vbell                 off             # default: ???
-#
+
 # ===============================================================
 # TERMCAP and TERMINFO
 # ===============================================================
@@ -64,14 +65,14 @@
 # Matthias Kopfermann <matthias_kopfermann@gmx.de> [020222]:
 # make the cursor show up in red:
   termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
-#
+
 # ===============================================================
 # VARIABLES - Number values
 # ===============================================================
   defscrollback         10000            # default: 100
 # msgminwait            3               # default: 1
   silencewait           15              # default: 30
-#
+
 # ===============================================================
 # VARIABLES - Paths and Files (esp. programs)
 # ===============================================================
@@ -89,7 +90,7 @@
 # shell                 zsh
   shell                 bash
 # shell                 ksh
-#
+
 # ===============================================================
 # VARIABLES - Strings
 # ===============================================================
@@ -115,7 +116,7 @@
 # 9 transparent       y    yellow          u    underline
 #
 # note: "dim" is not mentioned in the manual.
-#
+
 # ===========================================
 # CAPTION - shows a "caption" for the window.
 # ===========================================
@@ -132,9 +133,9 @@
 # caption always "%>%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?%<"
 # caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
 # caption always "%?%F%{.RW}%?%3n %t%? [%h]%?"
-#    caption always "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
-# ===============================================================
-#
+# caption always "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+# caption always "%?%F%{.R.}%?%3n %t%? [%h]%?"
+
 # ===============================
 # Hardstatus Line and sorendition
 # ===============================
@@ -163,7 +164,18 @@
 # this uses a black background foreverything execpt for
 # the current window which is show on a white background.
 # hostname in red, clock in green, date in yellow:
-   hardstatus alwayslastline "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+# hardstatus alwayslastline "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+ caption always "%{=d kw}%?%-Lw%?%{wk}%n*%f %t%?(%u)%?%{kw}%?%+Lw%?"
+ #caption always "%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+ #caption always "%?%F%{.R.}%?%3n %t%? [%h]%?"
+ #caption     always        "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y | %72=Load: %l %{wk}"
+ #hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
+
+ #hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+ hardstatus alwayslastline "%{dR}%H %{dg}%c %{dy}%M%d"
+
+#hardstatus alwayslastline
+#hardstatus string "%{= ky}%-Lw%{=r}%20>%n %t%{= ky}%+Lw %{= ky}%-=| %{= kw}%M%d %c%{-} %{=r} ${USER}@%H "
 #
 # 2003-03-26
 # use the hardstatus line to show the
@@ -186,7 +198,7 @@
 #  sorendition    kG # black  on bold green
   sorendition   mk # black  on bold green
 #
-#
+
 # ============================
 # Password
 # ============================
@@ -203,7 +215,7 @@
 # so this gives additional safety.
 # but if you forget the internal password
 # then you can also forget about the session - ok?!
-#
+
 # ===============================================================
 # Messages
 # ===============================================================
@@ -248,7 +260,7 @@
 # to display window titles - but since version 3.7 this is
 # obsoleted by '%n' and it will vanish in future releases.
 # So please update your screenrc to meet this convention!
-#
+
 # ===============================================================
 # "~" stands for the "bell" character
 #
@@ -271,7 +283,7 @@
 # vbell_msg:            Message shown when the
 #                       "virtual bell" rings.
   vbell_msg             " *beep* "
-#
+
 # ==============================================================
 #  BIND bind - defaults
 # ==============================================================
@@ -356,7 +368,7 @@
 # I   login on
 # O   login off
 # ]   paste .
-#
+
 # ===============================================================
 # Key bindings
 # ===============================================================
@@ -394,7 +406,7 @@
 # bind W width
 # bind X remove
 # bind Z reset
-#
+
 # ==============================================================
 # KEY BINDING FAQ:
 # ==============================================================
@@ -436,8 +448,10 @@
 # zombie z
 # here the parameter 'z' defines the key
 # which makes a zombie window go away.
-#
-#
+
+bind w resize
+
+
 # ==============================================================
 # BIND and the Services:
 # ==============================================================
@@ -584,7 +598,7 @@
 # bind W screen -t WEBSTER 4 links http://www.m-w.com/
 #
 #      X - a fast way to lock the current screen.
-  bind X lockscreen
+#  bind X lockscreen
 #
 # bind Y exec !!! echo -n http://www.math.fu-berlin.de/~guckes/
 #     bind Y stuff http://www.math.fu-berlin.de/~guckes/
@@ -592,7 +606,7 @@
 # in the current window.  very nice - saves some typing.
 # and you don't have to have the functionality of
 # "abbreviating" in the processes themselves. :-)
-#
+
 # ===============================================================
 # BIND Examples:
 # ===============================================================
@@ -601,7 +615,7 @@
 # bind E stuff $EMAIL
 # bind U stuff $URL
 # bind I stuff $ICQ
-#
+
 # ===============================================================
 # BINDKEY:
 # ===============================================================
@@ -630,7 +644,7 @@
 # ^[Om -      resize -2
 # ^[Ok +      resize +2
 # ^[OM Enter
-#
+
 # ===============================================================
 # At the very end... show the current version and say hello :-)
 # ===============================================================
@@ -645,9 +659,4 @@
 # Welcome the user:
 #  echo "welcome to screen :-)  -> http://www.guckes.net/screen/"
 #
-# ========
-# Tell Vim to use a "tabstop" of '8',
-# ie expands TABs to the next column
-# whose number is a multiple of eight.
-# EOF  vim: ts=8 et nowrap
 
