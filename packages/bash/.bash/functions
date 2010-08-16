@@ -47,6 +47,11 @@ function setPS1
     esac
   fi
 
+  # set title to screen session name if it exists
+  if [ -n "${STY}" ]; then
+    local PS1_TITLEBAR="\[\e]0;${STY#*.}\a\]"
+  fi
+
   export PS1="${PS1_TITLEBAR}${PS1}"
 }
 

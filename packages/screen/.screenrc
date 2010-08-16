@@ -172,7 +172,8 @@ escape ^jj
  #hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
 
  #hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
- hardstatus alwayslastline "%{dR}%H %{dg}%c %{dy}%M%d"
+ #hardstatus alwayslastline "%{dR}%H %{dg}%c %{dy}%M%d"
+ hardstatus alwayslastline "%{dR}%H %50=%{db}%h %=%{dg}%c %{dy}%M%d"
 
 #hardstatus alwayslastline
 #hardstatus string "%{= ky}%-Lw%{=r}%20>%n %t%{= ky}%+Lw %{= ky}%-=| %{= kw}%M%d %c%{-} %{=r} ${USER}@%H "
