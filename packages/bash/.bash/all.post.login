@@ -64,6 +64,7 @@ if [[ `ls --version 2>/dev/null | grep coreutils` ]]; then
    alias ls &> /dev/null || alias ls="ls --color=auto -F"
 fi
 
+alias s='screen'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'

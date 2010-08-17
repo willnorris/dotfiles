@@ -47,11 +47,6 @@ function setPS1
     esac
   fi
 
-  # set title to screen session name if it exists
-  if [ -n "${STY}" ]; then
-    local PS1_TITLEBAR="\[\e]0;${STY#*.}\a\]"
-  fi
-
   export PS1="${PS1_TITLEBAR}${PS1}"
 }
 
@@ -119,6 +114,22 @@ function sdr
   else
     screen -U -D -R $@
   fi
+}
+
+# wrapper for screen that exports a few environment variables
+function screen
+{
+  unset SCREEN_SESSION_NAME
+  _HOST=$HOST
+
+  args=("$@")
+  for ((i=0; i<${#args[@]} ; i++)); do
+    if [ ${args[i]} == "-S" ]; then
+      export SCREEN_SESSION_NAME=${args[i+1]}
+    fi
+  done
+
+  `which screen` "$@"
 }
 
 function toLower() {
