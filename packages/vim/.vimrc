@@ -15,7 +15,7 @@ syntax on
 source $VIMRUNTIME/macros/matchit.vim
 
 " Google-specific settings
-if filereadable("$HOME/.vim/google.vim")
+if filereadable($HOME . "/.vim/google.vim")
   source $HOME/.vim/google.vim
 endif
 

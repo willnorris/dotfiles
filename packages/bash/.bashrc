@@ -5,15 +5,38 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-HOSTNAME=`hostname | tr A-Z a-z`
+HOSTNAME=`hostname`
+# allow for vanity hostname override
+if [[ -r "/etc/vanity-hostname" ]]; then
+  HOSTNAME=`cat /etc/vanity-hostname`
+fi
+
+HOSTNAME=`echo ${HOSTNAME} | tr A-Z a-z`
 HOST=${HOSTNAME%%.*}
-DOMAIN=${HOSTNAME#*.}
 OS=`uname | tr A-Z a-z`
+
+# build networks array -- this allows for login scripts that apply to increasinly more specific
+# portions of a network.  For example, given the hostname 'server.sfo.example.com', the NETWORKS
+# array would be: ( 'com', 'example.com', 'sfo.example.com' )
+DOMAIN=${HOSTNAME#*.}
+NETWORKS=()
+while [[ "$HOST" != "$DOMAIN" && -n $DOMAIN ]]
+do
+  [ "$DOMAIN" == "${NETWORKS[0]}" ] && break
+  NETWORKS=( "$DOMAIN" "${NETWORKS[@]}" )
+  DOMAIN=${DOMAIN#*.}
+done
+DOMAIN=
 
 
 [[ -r ${HOME}/.bash/all.pre.login ]] && source ${HOME}/.bash/all.pre.login
 [[ -r ${HOME}/.bash/os/${OS}.login ]] && source ${HOME}/.bash/os/${OS}.login
-[[ -r ${HOME}/.bash/network/${DOMAIN}.login ]] && source ${HOME}/.bash/network/${DOMAIN}.login
+
+# iterate through networks
+for NETWORK in "${NETWORKS[@]}"
+do
+  [[ -r ${HOME}/.bash/network/${NETWORK}.login ]] && source ${HOME}/.bash/network/${NETWORK}.login
+done
 
 # hostname or default -- this is necessary when I plugin to something like a DSL
 # line and it assigns me some weird hostname based on the ip address.
