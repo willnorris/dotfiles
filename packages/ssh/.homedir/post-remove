@@ -1,10 +1,10 @@
 #!/bin/sh
 
-if [ -h "$HOME/.ssh/id_dsa" ] && [ `readlink $HOME/.ssh/id_dsa` == "/Volumes/secure/ssh/private.key" ]; then
+if [ -h "$HOME/.ssh/id_dsa" ] && [ `readlink $HOME/.ssh/id_dsa` == "$HOME/.secure/ssh/private.key" ]; then
 	rm $HOME/.ssh/id_dsa
 fi
 
-if [ -h "$HOME/.ssh/id_dsa.pub" ] && [ `readlink $HOME/.ssh/id_dsa.pub` == "/Volumes/secure/ssh/public.key" ]; then
+if [ -h "$HOME/.ssh/id_dsa.pub" ] && [ `readlink $HOME/.ssh/id_dsa.pub` == "$HOME/.secure/ssh/public.key" ]; then
 	rm $HOME/.ssh/id_dsa.pub
 fi
 

@@ -70,7 +70,7 @@ else:
                 if os.path.exists(pythonpath):
                     argv = ['--'] +  sys.argv[:] + ['--python-retried']
                     os.execl(pythonpath, *argv)
-        
+
     print >> sys.stderr, """This program requires either python 2.3 (or greater)
 or python 2.2 with the optik module available at http://optik.sf.net/
 
@@ -114,7 +114,7 @@ def fdebug(fname,locals=None):
             args = " ".join(["%s==%s" % (key,locals[key]) for key in keys])
         else:
             args = ""
-                
+
         print "   -> %s(%s)" % (fname, args)
 
 # Warn mode helper
@@ -161,9 +161,9 @@ class HDPackage(object):
         self.package_location = os.path.realpath(directory)
         control = os.path.join(directory,CONTROLDIR,CONTROLFILENAME)
         if not os.path.exists(control):
-			control = os.path.join(directory,OLD_CONTROLFILENAME)
-			if not os.path.exists(control):
-				raise NotPackageError("No control file")
+            control = os.path.join(directory,OLD_CONTROLFILENAME)
+            if not os.path.exists(control):
+                raise NotPackageError("No control file")
         self._parse(control)
 
     def __repr__(self):
@@ -173,8 +173,8 @@ class HDPackage(object):
     def __eq__(self,other):
         if isinstance(other,self.__class__):
             return self.package_location == other.package_location
-      	elif isinstance(other,str):
-	    return self.package == other
+        elif isinstance(other,str):
+            return self.package == other
         else:
             raise TypeError( "%s cannot be compared to %s" % (
                 self.__class__, type(other)))
@@ -337,7 +337,7 @@ class HDPackage(object):
     def fromSubdir(cls,directory):
         "Classmethod: Create a package from a subdirectory"
         if os.path.exists(os.path.join(directory,CONTROLDIR,CONTROLFILENAME)) or \
-				os.path.exists(os.path.join(directory,OLD_CONTROLFILENAME)):
+                os.path.exists(os.path.join(directory,OLD_CONTROLFILENAME)):
             return cls(directory)
         updir = os.path.dirname(directory).rstrip(os.sep)
         if updir:
@@ -345,7 +345,7 @@ class HDPackage(object):
         else:
             return None
     fromSubdir = classmethod(fromSubdir)
-            
+
 
     def merge(self,dest,src=None):
         "Merge the package into dest"
@@ -463,11 +463,11 @@ class HDPackage(object):
             if self.dirs:
                 for directory in self.dirs:
                     only_dirs.append(os.path.join(dest,directory))
-                
+
         elif dest not in only_dirs:
             # It's not prunable, don't worry about it.
             return False 
-            
+
         if dest == self.package_location:
             return False # It's not empty
 
@@ -615,22 +615,18 @@ commands:
             ]
         if options.config == HOMEDIRCONFIG and \
            not os.path.exists(HOMEDIRCONFIG):
+            # Make this to make life easier
             try:
-                # Make this to make like easier
-                try:
-                    os.mkdir(os.path.dirname(HOMEDIRCONFIG))
-                except:
-                    pass
-                fp = file(HOMEDIRCONFIG,'w')
-                fp.write("# This is the homedir config file.\n#\n")
-                fp.write( "".join( ["# %s\n" % x for x in example] ) )
-                fp.write( "#\n" )
-                fp.close
-
-            except 'fish':
+                os.mkdir(os.path.dirname(HOMEDIRCONFIG))
+            except:
                 pass
+            fp = file(HOMEDIRCONFIG,'w')
+            fp.write("# This is the homedir config file.\n#\n")
+            fp.write( "".join( ["# %s\n" % x for x in example] ) )
+            fp.write( "#\n" )
+            fp.close
 
-                   
+
         print >> sys.stderr, "%s: %s" % (err.args[-1],options.config)
         print >> sys.stderr, """
 Example config file:
@@ -647,7 +643,7 @@ Example config file:
         sys.exit(0)
     if args[0] not in COMMANDS.keys():
         parser.error("Invalid command '%s'" % args[0])
-    
+
     return options,args
 
 def fixDir(dir):
@@ -764,7 +760,7 @@ def scanReverseDepends(options):
         if depender.package != 'homedir' and \
            not [x for x in dependencies if x == 'homedir']:
             dependencies.append('homedir')
-        
+
         for dependee in dependencies:
             dependee = lookUpOne(options,dependee)
             if dependee.reverse_depends is None:
@@ -936,7 +932,7 @@ def do_install(options,*packages):
               pluralize('package','packages',len(extra))
         for p in extra:
             print "    %s \t%s" % (p.package,p.short_description)
-        else:
+        if not extra:
             print "    None"
 
         print "Is that okay? [Y/n] ",
@@ -958,7 +954,7 @@ def do_remove(options,*packages):
                                                    len(packages))
     for p in packages:
         print "    %s \t%s" % (p.package,p.short_description)
-    else:
+    if not packages:
         print "    None"
 
 
@@ -979,7 +975,7 @@ def do_remove(options,*packages):
             sys.exit(0)
 
     print "Removing Packages..."
-        
+
     actionLoop( lambda p:p.remove(HOME), 'removing', extra+packages )
 
 def do_upgrade(options,*packages):
@@ -991,7 +987,7 @@ def do_upgrade(options,*packages):
 
     for p in packages:
         print "    %s \t%s" % (p.package,p.short_description)
-    else:
+    if not packages:
         print "    None"
 
     extra = buildDeps(options,*packages)
@@ -1033,7 +1029,7 @@ def do_upgrade(options,*packages):
     def func(package):
         package.install(HOME)
         package.remove(HOME)
-        
+
     actionLoop( func, 'upgrading', extra + packages )
 
 def do_sync(options):
@@ -1073,4 +1069,4 @@ if "__main__" == __name__:
 # indent-tabs-mode: nil
 # End:
     
-# vim: expandtab
+# vim: set sw=4 ts=4 expandtab
