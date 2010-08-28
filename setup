@@ -15,11 +15,9 @@ if [ -e "${HOME}/.homedir/config" ]; then
 fi
 
 echo "Making ${HOME}/.homedir directory..."
-#mkdir -p "${HOME}/.homedir/files"
 mkdir -p "${HOME}/.homedir"
 
 echo "Getting packages..."
-#svn co -q http://willnorris.com/svn/homedir "${HOME}/.homedir/files"
 git clone git@github.com:willnorris/homedir.git "${HOME}/.homedir/files"
 
 echo "Basic Configuration..."
@@ -37,7 +35,6 @@ packages = \$HOME/.homedir/files/packages
 packages = \$HOME/.homedir/files/meta-packages
 
 ## Command for the -s switch
-#synccmd = cd \$HOME/.homedir/files ; svn up
 synccmd = cd \$HOME/.homedir/files ; git pull origin master
 
 ## EOF
