@@ -615,22 +615,18 @@ commands:
             ]
         if options.config == HOMEDIRCONFIG and \
            not os.path.exists(HOMEDIRCONFIG):
+            # Make this to make life easier
             try:
-                # Make this to make like easier
-                try:
-                    os.mkdir(os.path.dirname(HOMEDIRCONFIG))
-                except:
-                    pass
-                fp = file(HOMEDIRCONFIG,'w')
-                fp.write("# This is the homedir config file.\n#\n")
-                fp.write( "".join( ["# %s\n" % x for x in example] ) )
-                fp.write( "#\n" )
-                fp.close
-
-            except 'fish':
+                os.mkdir(os.path.dirname(HOMEDIRCONFIG))
+            except:
                 pass
+            fp = file(HOMEDIRCONFIG,'w')
+            fp.write("# This is the homedir config file.\n#\n")
+            fp.write( "".join( ["# %s\n" % x for x in example] ) )
+            fp.write( "#\n" )
+            fp.close
 
-                   
+
         print >> sys.stderr, "%s: %s" % (err.args[-1],options.config)
         print >> sys.stderr, """
 Example config file:
@@ -936,7 +932,7 @@ def do_install(options,*packages):
               pluralize('package','packages',len(extra))
         for p in extra:
             print "    %s \t%s" % (p.package,p.short_description)
-        else:
+        if not extra:
             print "    None"
 
         print "Is that okay? [Y/n] ",
@@ -958,7 +954,7 @@ def do_remove(options,*packages):
                                                    len(packages))
     for p in packages:
         print "    %s \t%s" % (p.package,p.short_description)
-    else:
+    if not packages:
         print "    None"
 
 
@@ -991,7 +987,7 @@ def do_upgrade(options,*packages):
 
     for p in packages:
         print "    %s \t%s" % (p.package,p.short_description)
-    else:
+    if not packages:
         print "    None"
 
     extra = buildDeps(options,*packages)
