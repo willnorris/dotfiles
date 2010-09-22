@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -f "/Volumes/secure/etc/my.cnf" ]; then
-	ln -s /Volumes/secure/etc/my.cnf $HOME/.my.cnf
+if [ -f "$HOME/.secure/etc/my.cnf" ]; then
+	ln -s $HOME/.secure/etc/my.cnf $HOME/.my.cnf
 fi
 
