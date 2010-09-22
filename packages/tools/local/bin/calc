@@ -1,15 +1,18 @@
 #!/usr/bin/env php
 <?php
-#
-# $Id$
-#
-	array_shift($argv);
+array_shift($argv);
 
-	preg_match_all(
-		'{<b>.+= (.+?)</b>}', 
-		file_get_contents('http://www.google.com/search?q=' .  urlencode(join(' ', $argv))), 
-		$matches
-	);
+$url = 'http://www.google.com/search?q=' .  urlencode(join(' ', $argv));
+$html =  file_get_contents( $url );
 
-	print str_replace('<font size=-2> </font>', ',', $matches[1][0]."\n");
+preg_match_all(
+  '|<(\w+) class=r [^>]+><b>(.+?)</b></\\1>|m',
+  file_get_contents('http://www.google.com/search?q=' .  urlencode(join(' ', $argv))),
+  $matches
+);
+
+$result = $matches[2][0];
+$result = str_replace('<font size=-2> </font>', ',', $result);
+
+print "$result\n";
 ?>

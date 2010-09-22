@@ -1,10 +1,10 @@
 #!/usr/bin/php
 <?php
-	array_shift($argv) && $arg = implode(" ", $argv);
+  array_shift($argv) && $arg = implode(" ", $argv);
 
-	$timestamp = $arg ? (is_numeric($arg) ? $arg : strtotime($arg)) : time();
+  $timestamp = $arg ? (is_numeric($arg) ? $arg : strtotime($arg)) : time();
 
-	echo "$timestamp  -  ".date('r', $timestamp)."\n";
+  echo "$timestamp  -  ".date('r', $timestamp)."\n";
 
-	//echo "UNIX Timestamp:\t$timestamp\n" . "Gregorian Time:\t".date('r', $timestamp)."\n";
+  //echo "UNIX Timestamp:\t$timestamp\n" . "Gregorian Time:\t".date('r', $timestamp)."\n";
 ?>
