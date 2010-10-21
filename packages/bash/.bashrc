@@ -10,6 +10,9 @@ HOSTNAME=`hostname`
 if [[ -r "/etc/vanity-hostname" ]]; then
   HOSTNAME=`cat /etc/vanity-hostname`
 fi
+if [[ -r "$HOME/.vanity-hostname" ]]; then
+  HOSTNAME=`cat $HOME/.vanity-hostname`
+fi
 
 HOSTNAME=`echo ${HOSTNAME} | tr A-Z a-z`
 HOST=${HOSTNAME%%.*}

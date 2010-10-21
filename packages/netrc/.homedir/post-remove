@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -h "$HOME/.netrc" ] && [ `readlink $HOME/.netrc` == "/Volumes/secure/etc/netrc" ]; then
+if [ -h "$HOME/.netrc" ] && [ `readlink $HOME/.netrc` == "$HOME/.secure/etc/netrc" ]; then
 	rm $HOME/.netrc
 fi
 

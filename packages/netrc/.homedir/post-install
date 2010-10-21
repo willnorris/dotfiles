@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ -f "/Volumes/secure/etc/netrc" ]; then
-	if [ ! -h "$HOME/.netrc" ] || [ `readlink $HOME/.netrc` != "/Volumes/secure/etc/netrc" ]; then
-		ln -s /Volumes/secure/etc/netrc $HOME/.netrc
+if [ -f "$HOME/.secure/etc/netrc" ]; then
+	if [ ! -h "$HOME/.netrc" ] || [ `readlink $HOME/.netrc` != "$HOME/.secure/etc/netrc" ]; then
+		ln -s $HOME/.secure/etc/netrc $HOME/.netrc
 	fi
 fi
 

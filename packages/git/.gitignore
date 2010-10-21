@@ -1,7 +1,11 @@
-# ignore all temporary files from VIM
+# temporory VIM files
 .*.swp
 
-# ignore OS X files
+# nfs files
+.nfs*
+
+# Desktop Services Store (OS X)
 .DS_Store
 
+# compiled python scripts
 *.pyc

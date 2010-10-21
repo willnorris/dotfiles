@@ -10,9 +10,7 @@ dirs:
  local
  local/bin
  .homedir
- .homedir/cache
 mkdirs:
  local
  local/bin
  .homedir
- .homedir/cache
