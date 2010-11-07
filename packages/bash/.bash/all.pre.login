@@ -1,5 +1,5 @@
 #
-# This bash(1) config file is read during login on all machines, 
+# This bash(1) config file is read during login on all machines,
 # before any host or OS specific files
 #
 
@@ -7,19 +7,19 @@
 # set -a
 
 #----------------------------------------------------------#
-# Environment Variables 
+# Environment Variables
 #----------------------------------------------------------#
 # User Information
 export NAME="Will Norris"
 export EMAIL="will@willnorris.com"
 
-# Default Programs 
+# Default Programs
 # (several more are defined in all.post.login so they can use the updated $PATH)
 export BROWSER="lynx"
 
 
 #----------------------------------------------------------#
-# Bash Options 
+# Bash Options
 #----------------------------------------------------------#
 set -o vi
 set -o ignoreeof
@@ -43,11 +43,11 @@ export HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # Prevent common commands from being added to .bash_history
-export HISTIGNORE="&:ls:mutt:jobs:[bf]g:exit"
+export HISTIGNORE="&:ls:mutt:jobs:[bf]g:exit:clear"
 
 
 #----------------------------------------------------------#
-# Aliases 
+# Aliases
 #----------------------------------------------------------#
 [[ -f ${HOME}/.lynx.cfg ]] && alias lynx='lynx -cfg=~/.lynx.cfg'
 alias listen='netstat -an | grep -i listen | grep -iE "(tcp|udp)"'
