@@ -1,4 +1,0 @@
-# Don't accidentally commit Google settings
-packages/bash/.bash/other/google-dev.login
-packages/bash/.bash/network/*.google.com.*
-packages/vim/.vim/google.vim
