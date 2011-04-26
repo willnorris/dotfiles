@@ -13,3 +13,6 @@
 	diff = auto
 	interactive = auto
 	status = auto
+
+[http]
+  sslCAInfo = /users/home/wnorris/.cacert.pem
