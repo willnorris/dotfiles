@@ -16,6 +16,7 @@ explaining it though.
 [blogged about my setup]: http://willnorris.com/2005/03/bashrc
 
 Note to self: setup on a new host using:
+
     curl https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
     cd $HOME/.homedir/packages
     git clone git@github.com:willnorris/homedir-packages.git personal
