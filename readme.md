@@ -12,10 +12,17 @@ interesting.  I [blogged about my setup][] back in 2005, and amazingly not that
 much has changed since then.  I could certainly stand to do a better job
 explaining it though.
 
-[Homedir]: http://trac.gerf.org/homedir
+[Homedir]: https://github.com/docwhat/homedir
 [blogged about my setup]: http://willnorris.com/2005/03/bashrc
 
 Note to self: setup on a new host using:
-	curl https://github.com/willnorris/homedir/raw/master/setup | bash
+    curl https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
+    cd $HOME/.homedir/packages
+    git clone git@github.com:willnorris/homedir-packages.git personal
+
+    # or for read-only
+    curl https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
+    cd $HOME/.homedir/packages
+    git clone git://github.com/willnorris/homedir-packages.git
 
 <!-- vim: set ft=mkd :-->
