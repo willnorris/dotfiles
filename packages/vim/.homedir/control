@@ -7,4 +7,6 @@ description: VIM configuration
  VIM configuration.  
 dirs:
  .vim
+mkdirs:
+ .vim
 
