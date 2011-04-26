@@ -7,6 +7,12 @@ description: Basic bash configuration
  Basic bash configuration.  
 dirs:
  .bash
+ .bash/bash_completion.d
+ .bash/fromhost
+ .bash/host
+ .bash/j2
+ .bash/network
+ .bash/os
  .bash/other
 mkdirs:
  .bash
