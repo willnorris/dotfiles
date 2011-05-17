@@ -7,6 +7,12 @@ description: VIM configuration
  VIM configuration.  
 dirs:
  .vim
+ .vim/after
+ .vim/doc
+ .vim/ftdetect
+ .vim/ftplugin
+ .vim/plugin
+ .vim/syntax
 mkdirs:
  .vim
 
