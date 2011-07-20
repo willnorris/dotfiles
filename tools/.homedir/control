@@ -1,7 +1,7 @@
 package: tools
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
 standards-version: 1
 description: Common tools and utilities
  Common tools and utilities.

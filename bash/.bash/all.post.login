@@ -1,5 +1,5 @@
 #
-# This bash(1) config file is read during login on all machines, 
+# This bash(1) config file is read during login on all machines,
 # after any host or OS specific files
 #
 
@@ -11,8 +11,8 @@ addToManPath $HOME/local/man
 
 addToPath $HOME/Projects/oacurl
 
-export JPY=$HOME/.bash/j2/j.py
-source $HOME/.bash/j2/j.sh
+#export JPY=$HOME/.bash/j2/j.py
+#source $HOME/.bash/j2/j.sh
 
 
 ## setup some more defaults, now that the value of PATH is correct for the local system
@@ -20,9 +20,9 @@ source $HOME/.bash/j2/j.sh
 # Set vi alias if need be
 VIM_VERSION=`vi --version 2>/dev/null`
 if [[ ${VIM_VERSION:0:3} == "VIM" ]]; then
-	export EDITOR="vi"
+  export EDITOR="vi"
 else
-   	which vim &> /dev/null && alias vi='vim' && export EDITOR='vim'
+  which vim &> /dev/null && alias vi='vim' && export EDITOR='vim'
 fi
 unset VIM_VERSION
 
@@ -38,22 +38,22 @@ export PAGER="less"
 #----------------------------------------------------------#
 # grc aliases
 if [[ "$TERM" != "dumb" && `which grc 2>/dev/null` ]]; then
-	alias cl='grc -es --colour=auto'
-	alias configure='cl ./configure'
-	alias diff='cl diff'
-	alias make='cl make'
-	alias gcc='cl gcc'
-	alias g++='cl g++'
-	alias as='cl as'
-	#alias gas='cl gas'
-	alias ld='cl ld'
-	alias netstat='cl netstat'
-	alias ping='cl ping'
-	alias traceroute='cl /usr/sbin/traceroute'
-	alias cat='cl cat'
-	alias tail='cl tail'
-	#alias perl='cl perl'
-	#alias python='cl python'
+  alias cl='grc -es --colour=auto'
+  alias configure='cl ./configure'
+  alias diff='cl diff'
+  alias make='cl make'
+  alias gcc='cl gcc'
+  alias g++='cl g++'
+  alias as='cl as'
+  #alias gas='cl gas'
+  alias ld='cl ld'
+  alias netstat='cl netstat'
+  alias ping='cl ping'
+  alias traceroute='cl /usr/sbin/traceroute'
+  alias cat='cl cat'
+  alias tail='cl tail'
+  #alias perl='cl perl'
+  #alias python='cl python'
 fi
 
 # enable color support of ls (may be named dircolors or gdircolors)

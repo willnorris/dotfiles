@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ -f "$HOME/.secure/etc/netrc" ]; then
-	if [ ! -h "$HOME/.netrc" ] || [ `readlink $HOME/.netrc` != "$HOME/.secure/etc/netrc" ]; then
-		ln -s $HOME/.secure/etc/netrc $HOME/.netrc
-	fi
+  if [ ! -h "$HOME/.netrc" ] || [ `readlink $HOME/.netrc` != "$HOME/.secure/etc/netrc" ]; then
+    ln -s $HOME/.secure/etc/netrc $HOME/.netrc
+  fi
 fi
 

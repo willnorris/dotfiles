@@ -19,19 +19,19 @@
 # 02110-1301, USA.
 
 revertAndDiff() {
-	cp -i "$1" "$1.tmp"
-	git checkout "$1"
-	mv -i "$1" "$1~"
-	mv -i "$1.tmp" "$1"
-	touch "$1" # so svn doesn't miss changes
-	vimdiff "$1" "$1~"
-	rm "$1~"
+  cp -i "$1" "$1.tmp"
+  git checkout "$1"
+  mv -i "$1" "$1~"
+  mv -i "$1.tmp" "$1"
+  touch "$1" # so svn doesn't miss changes
+  vimdiff "$1" "$1~"
+  rm "$1~"
 }
 
 if test -z "$1"; then
-	for i in `svn status|grep -v '^\?'|cut -c8-`; do
-		revertAndDiff "$i"
-	done
+  for i in `svn status|grep -v '^\?'|cut -c8-`; do
+    revertAndDiff "$i"
+  done
 else
-	revertAndDiff "$1"
+  revertAndDiff "$1"
 fi

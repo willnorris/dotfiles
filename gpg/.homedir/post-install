@@ -1,14 +1,14 @@
 #!/bin/sh
 
 if [ -f "$HOME/.secure/gpg/secring.gpg" ]; then
-	if [ ! -h "$HOME/.gnupg/secring.gpg" ] || [ `readlink $HOME/.gnupg/secring.gpg` != "$HOME/.secure/gpg/secring.gpg" ]; then
-		ln -s $HOME/.secure/gpg/secring.gpg $HOME/.gnupg/secring.gpg
-	fi
+  if [ ! -h "$HOME/.gnupg/secring.gpg" ] || [ `readlink $HOME/.gnupg/secring.gpg` != "$HOME/.secure/gpg/secring.gpg" ]; then
+    ln -s $HOME/.secure/gpg/secring.gpg $HOME/.gnupg/secring.gpg
+  fi
 fi
 
 if [ -f "$HOME/.secure/gpg/pubring.gpg" ]; then
-	if [ ! -h "$HOME/.gnupg/pubring.gpg" ] || [ `readlink $HOME/.gnupg/pubring.gpg` != "$HOME/.secure/gpg/pubring.gpg" ]; then
-		ln -s $HOME/.secure/gpg/pubring.gpg $HOME/.gnupg/pubring.gpg
-	fi
+  if [ ! -h "$HOME/.gnupg/pubring.gpg" ] || [ `readlink $HOME/.gnupg/pubring.gpg` != "$HOME/.secure/gpg/pubring.gpg" ]; then
+    ln -s $HOME/.secure/gpg/pubring.gpg $HOME/.gnupg/pubring.gpg
+  fi
 fi
 

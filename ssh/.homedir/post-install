@@ -1,15 +1,15 @@
 #!/bin/sh
 
 if [ -f "$HOME/.secure/ssh/private.key" ]; then
-	if [ ! -h "$HOME/.ssh/id_dsa" ] || [ `readlink $HOME/.ssh/id_dsa` != "$HOME/.secure/ssh/private.key" ]; then
-		ln -s $HOME/.secure/ssh/private.key $HOME/.ssh/id_dsa
-	fi
+  if [ ! -h "$HOME/.ssh/id_dsa" ] || [ `readlink $HOME/.ssh/id_dsa` != "$HOME/.secure/ssh/private.key" ]; then
+    ln -s $HOME/.secure/ssh/private.key $HOME/.ssh/id_dsa
+  fi
 
 fi
 
 if [ -f "$HOME/.secure/ssh/public.key" ]; then
-	if [ ! -h "$HOME/.ssh/id_dsa.pub" ] || [ `readlink $HOME/.ssh/id_dsa.pub` != "$HOME/.secure/ssh/public.key" ]; then
-		ln -s $HOME/.secure/ssh/public.key $HOME/.ssh/id_dsa.pub
-	fi
+  if [ ! -h "$HOME/.ssh/id_dsa.pub" ] || [ `readlink $HOME/.ssh/id_dsa.pub` != "$HOME/.secure/ssh/public.key" ]; then
+    ln -s $HOME/.secure/ssh/public.key $HOME/.ssh/id_dsa.pub
+  fi
 fi
 

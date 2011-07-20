@@ -1,12 +1,18 @@
 package: vim
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
 standards-version: 1
 description: VIM configuration
- VIM configuration.  
+ VIM configuration.
 dirs:
  .vim
+ .vim/after
+ .vim/doc
+ .vim/ftdetect
+ .vim/ftplugin
+ .vim/plugin
+ .vim/syntax
 mkdirs:
  .vim
 
