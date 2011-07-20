@@ -5,7 +5,7 @@ endif
 
 augroup filetypedetect
   au! BufNewFile,BufRead  *.{phps,phtml}  setfiletype php
-  au! BufRead,BufNewFile *.mkd            setfiletype mkd
+  au! BufRead,BufNewFile *.{md,mkd}       setfiletype mkd
   au! BufRead,BufNewFile *.xmlt           setfiletype xml
   au! BufRead,BufNewFile *.ezt            setfiletype html
   au! BufRead,BufNewFile *.scss           setfiletype css

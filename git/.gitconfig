@@ -3,7 +3,7 @@
 	name = Will Norris
 
 [core]
-	excludesfile = 
+	excludesfile =
 
 [diff "vim"]
 	command = vimdiff
@@ -15,4 +15,4 @@
 	status = auto
 
 [http]
-  sslCAInfo = /users/home/wnorris/.cacert.pem
+	sslCAInfo =
