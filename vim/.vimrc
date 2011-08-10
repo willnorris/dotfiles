@@ -7,6 +7,7 @@ set modelines=4
 set nu                              " line numbers
 set backspace=2                     " more powerful backspace
 set ignorecase smartcase            " smart case matching
+set scrolloff=3                     " keep some context when scrolling
 "let php_folding=1
 
 filetype plugin indent on
