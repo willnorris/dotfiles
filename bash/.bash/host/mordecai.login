@@ -2,6 +2,7 @@
 # $Id$
 #
 
+
 [ "$TERM" != "dumb" ] && stty erase 
 TERM='xterm-color'
 
@@ -13,7 +14,8 @@ setAppHome 	homebrew 	/opt/homebrew
 setAppHome 	pear 		/usr/local/pear
 setAppHome 	go 		$HOME/Projects/go
 
-addToPath $HOMEBREW_HOME/Cellar/python/2.7.1/bin
+addToPath `brew --prefix python`/bin
+source `brew --prefix grc`/etc/grc.bashrc
 
 PS1COLOR='\[\033[0;34m\]' #blue
 
