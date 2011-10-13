@@ -11,6 +11,7 @@ dirs:
  .vim/doc
  .vim/ftdetect
  .vim/ftplugin
+ .vim/nerdtree_plugin
  .vim/plugin
  .vim/syntax
 mkdirs:

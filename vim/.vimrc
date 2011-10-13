@@ -34,3 +34,4 @@ let g:localvimrc_ask = 0
 "nmap <F9> :!vim-ftp %<CR><CR>
 "map! <F9> :!vim-ftp %<CR><CR>
 
+map <F2> :NERDTreeToggle<CR>
