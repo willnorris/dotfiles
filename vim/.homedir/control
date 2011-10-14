@@ -8,6 +8,7 @@ description: VIM configuration
 dirs:
  .vim
  .vim/after
+ .vim/bundle
  .vim/doc
  .vim/ftdetect
  .vim/ftplugin

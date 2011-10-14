@@ -1,6 +1,9 @@
 "----------------------------------------------------------#
 " Global Settings
 "----------------------------------------------------------#
+runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
 set nocp incsearch ruler showcmd ts=2 sw=2 et
 set listchars=tab:>-,trail:-
 set modelines=4
@@ -23,7 +26,6 @@ endif
 "----------------------------------------------------------#
 " Filetype-specific Settings
 "----------------------------------------------------------#
-au FileType mkd  set ai formatoptions=tcroqn2 comments=n:>
 
 " localvimrc settings
 let g:localvimrc_ask = 0
