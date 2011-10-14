@@ -9,3 +9,6 @@
 
 # compiled python scripts
 *.pyc
+
+# ctags
+tags
