@@ -16,6 +16,12 @@ set scrolloff=3                     " keep some context when scrolling
 filetype plugin indent on
 syntax on
 
+" rebuild help tags
+Helptags
+
+" automatically show diff when running 'git commit'
+autocmd BufRead *.git/COMMIT_EDITMSG DiffGitCached | wincmd p
+
 source $VIMRUNTIME/macros/matchit.vim
 
 " Google-specific settings
