@@ -25,6 +25,8 @@ set number                     " show line numbers
 set scrolloff=3                " keep some context when scrolling
 set wildmenu
 
+let mapleader = ","
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
