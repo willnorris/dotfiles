@@ -31,3 +31,6 @@
 [submodule "vim/.vim/bundle/afterimage"]
 	path = vim/.vim/bundle/afterimage
 	url = https://github.com/tpope/vim-afterimage.git
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
