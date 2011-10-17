@@ -4,19 +4,79 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-set nocp incsearch ruler showcmd ts=2 sw=2 et
-set listchars=tab:>-,trail:-
-set modelines=4
-set nu                              " line numbers
-set backspace=2                     " more powerful backspace
-set ignorecase smartcase            " smart case matching
-set scrolloff=3                     " keep some context when scrolling
-"let php_folding=1
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
 
-filetype plugin indent on
-syntax on
 
-" rebuild help tags
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set history=50                 " keep 50 lines of command line history
+set ruler                      " show the cursor position all the time
+set showcmd                    " display incomplete commands
+set incsearch                  " do incremental searching
+set ignorecase smartcase       " smart case matching
+
+set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
+set listchars=tab:>-,trail:-,extends:>,precedes:<
+set modelines=5
+set number                     " show line numbers
+set scrolloff=3                " keep some context when scrolling
+set wildmenu
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " Also don't do it when the mark is in the first line, that is the default
+  " position when opening a file.
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  augroup END
+
+else
+
+  set autoindent               " always set autoindenting on
+
+endif " has("autocmd")
+
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+
+" ensure we always have the latest help tags
 Helptags
 
 " automatically show diff when running 'git commit'
@@ -29,17 +89,12 @@ if filereadable($HOME . "/.vim/google.vim")
   source $HOME/.vim/google.vim
 endif
 
-"----------------------------------------------------------#
-" Filetype-specific Settings
-"----------------------------------------------------------#
-
 " localvimrc settings
 let g:localvimrc_ask = 0
+
 
 "----------------------------------------------------------#
 " Key bindings
 "----------------------------------------------------------#
-"nmap <F9> :!vim-ftp %<CR><CR>
-"map! <F9> :!vim-ftp %<CR><CR>
-
-map <F2> :NERDTreeToggle<CR>
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+nmap <silent> <c-l> :TlistToggle<CR>
