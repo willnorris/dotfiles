@@ -11,8 +11,8 @@ addToManPath $HOME/local/man
 
 addToPath $HOME/Projects/oacurl
 
-#export JPY=$HOME/.bash/j2/j.py
-#source $HOME/.bash/j2/j.sh
+export JPY=$HOME/.bash/j2/j.py
+source $HOME/.bash/j2/j.sh
 
 
 ## setup some more defaults, now that the value of PATH is correct for the local system

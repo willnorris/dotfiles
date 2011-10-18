@@ -3,6 +3,7 @@
 "----------------------------------------------------------#
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
+call pathogen#helptags()
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -22,8 +23,12 @@ set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 set modelines=5
 set number                     " show line numbers
-set scrolloff=3                " keep some context when scrolling
 set wildmenu
+
+" Scrolling
+set scrolloff=3
+set sidescroll=1
+set sidescrolloff=10
 
 let mapleader = ","
 
@@ -37,6 +42,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" Use sane regexes.
+nnoremap / /\v
+vnoremap / /\v
+
+noremap j gj
+noremap k gk
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -77,9 +88,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-
-" ensure we always have the latest help tags
-Helptags
 
 " automatically show diff when running 'git commit'
 autocmd BufRead *.git/COMMIT_EDITMSG DiffGitCached | wincmd p
