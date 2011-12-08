@@ -1,4 +1,3 @@
-
 # Homedir #
 
 [Homedir][] is a project developed by Christian "[Dr. What](/docwhat)" Höltje
@@ -17,12 +16,12 @@ explaining it though.
 
 Note to self: setup on a new host using:
 
-    curl https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
+    curl -L https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
     cd $HOME/.homedir/packages
     git clone git@github.com:willnorris/homedir-packages.git personal
 
     # or for read-only
-    curl https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
+    curl -L https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
     cd $HOME/.homedir/packages
     git clone git://github.com/willnorris/homedir-packages.git
 
