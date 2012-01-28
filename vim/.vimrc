@@ -23,7 +23,7 @@ set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 set modelines=5
 set number                     " show line numbers
-set wildmenu
+set wildmenu wildmode=list:longest,full
 
 " Scrolling
 set scrolloff=3

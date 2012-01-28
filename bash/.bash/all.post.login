@@ -31,6 +31,8 @@ VIM=$HOME/.vim/
 export VISUAL=${EDITOR}
 export PAGER="less"
 
+export ACK_PAGER=$PAGER
+export ACK_PAGER_COLOR="less -R"
 
 
 #----------------------------------------------------------#
