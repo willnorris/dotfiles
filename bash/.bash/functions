@@ -120,7 +120,8 @@ function sdr
 function screen
 {
   unset SCREEN_SESSION_NAME
-  _HOST=$HOST
+  export _HOST=$HOST
+  export _DISPLAY=$DISPLAY
 
   args=("$@")
   for ((i=0; i<${#args[@]} ; i++)); do

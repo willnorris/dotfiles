@@ -18,6 +18,9 @@ export EMAIL="will@willnorris.com"
 export BROWSER="lynx"
 
 
+# maintain DISPLAY in screen sessions
+[[ -z "$DISPLAY" ]] && [[ -n "$_DISPLAY" ]] && export DISPLAY=$_DISPLAY
+
 #----------------------------------------------------------#
 # Bash Options
 #----------------------------------------------------------#
