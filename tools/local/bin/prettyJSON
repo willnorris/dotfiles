@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+"""
+Convert JSON data to human-readable form.
+
+(Reads from stdin and writes to stdout)
+"""
+
+from collections import OrderedDict
+import json
+from optparse import OptionParser
+import sys
+
+parser = OptionParser()
+parser.add_option('-i', '--indent', dest='indent', default=2, type='int', help='indent level')
+parser.add_option('-s', '--sort', dest='sort', action='store_true', default=False, help='sort keys')
+(options, args) = parser.parse_args()
+
+data = json.load(sys.stdin, object_pairs_hook=OrderedDict)
+print json.dumps(data, sort_keys=options.sort, indent=options.indent)
+sys.exit(0)
