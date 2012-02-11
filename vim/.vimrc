@@ -107,4 +107,4 @@ let g:localvimrc_ask = 0
 " Key bindings
 "----------------------------------------------------------#
 nmap <silent> <c-n> :NERDTreeToggle<CR>
-nmap <silent> <c-l> :TlistToggle<CR>
+nmap <silent> <c-l> :TagbarToggle<CR>
