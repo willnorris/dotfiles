@@ -40,3 +40,9 @@
 [submodule "vim/.vim/bundle/pasta"]
 	path = vim/.vim/bundle/pasta
 	url = https://github.com/sickill/vim-pasta.git
+[submodule "vim/.vim/bundle/protobuf"]
+	path = vim/.vim/bundle/protobuf
+	url = https://github.com/willnorris/vim-protobuf.git
+[submodule "vim/.vim/bundle/localvimrc"]
+	path = vim/.vim/bundle/localvimrc
+	url = https://github.com/vim-scripts/localvimrc.git
