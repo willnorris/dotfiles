@@ -30,7 +30,7 @@ set scrolloff=3
 set sidescroll=1
 set sidescrolloff=10
 
-let mapleader = ","
+let mapleader = ";"
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -106,7 +106,7 @@ let g:localvimrc_ask = 0
 "----------------------------------------------------------#
 " Key bindings
 "----------------------------------------------------------#
-nmap <silent> <c-n> :NERDTreeToggle<CR>
+nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
 
 " move around split windows with ctrl
