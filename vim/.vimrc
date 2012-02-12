@@ -107,4 +107,10 @@ let g:localvimrc_ask = 0
 " Key bindings
 "----------------------------------------------------------#
 nmap <silent> <c-n> :NERDTreeToggle<CR>
-nmap <silent> <c-l> :TagbarToggle<CR>
+nmap <silent> <leader>t :TagbarToggle<CR>
+
+" move around split windows with ctrl
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
