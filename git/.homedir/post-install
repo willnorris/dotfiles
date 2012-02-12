@@ -1,5 +1,0 @@
-#!/bin/sh
-
-git config --global core.excludesfile $HOME/.gitignore
-git config --global http.sslCAInfo $HOME/.cacert.pem
-

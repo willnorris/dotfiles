@@ -1,23 +1,22 @@
 [user]
-	email = will@willnorris.com
-	name = Will Norris
+  email = will@willnorris.com
+  name = Will Norris
 
 [core]
-	excludesfile =
-	quotepath = false
+  excludesfile = ~/.gitignore
+  quotepath = false
 
 [diff "vim"]
-	command = vimdiff
+  command = vimdiff
 
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
 
-[http]
-	sslCAInfo =
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
+
 [alias]
-	ctags = !.git/hooks/ctags
+  ctags = !.git/hooks/ctags
