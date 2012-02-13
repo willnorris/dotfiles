@@ -42,6 +42,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" less contrast on status line
+hi StatusLine guifg=#000000 guibg=#FFFFFF ctermfg=0 ctermbg=15
+"hi StatusLineNC guifg=#000000 guibg=#FFFFFF ctermfg=0 ctermbg=15
+hi StatusLineNC guifg=#666666 guibg=#666666 ctermfg=7 ctermbg=8
+"hi StatusLineNC guifg=#808080 guibg=#000000 ctermfg=8 ctermbg=0
+
 " Use sane regexes.
 nnoremap / /\v
 vnoremap / /\v
@@ -85,7 +91,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+      \ | wincmd p | diffthis
 endif
 
 
@@ -102,6 +108,7 @@ endif
 " localvimrc settings
 let g:localvimrc_ask = 0
 
+let g:statline_fugitive = 1
 
 "----------------------------------------------------------#
 " Key bindings

@@ -46,3 +46,15 @@
 [submodule "vim/.vim/bundle/localvimrc"]
 	path = vim/.vim/bundle/localvimrc
 	url = https://github.com/vim-scripts/localvimrc.git
+[submodule "vim/.vim/bundle/ack"]
+	path = vim/.vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/.vim/bundle/syntastic"]
+	path = vim/.vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/.vim/bundle/statline"]
+	path = vim/.vim/bundle/statline
+	url = https://github.com/millermedeiros/vim-statline.git
+[submodule "vim/.vim/bundle/nerdcommenter"]
+	path = vim/.vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
