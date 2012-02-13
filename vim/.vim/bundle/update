@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for b in `ls`; do
+  cd $b
+  git pull origin master
+  cd ..
+done
