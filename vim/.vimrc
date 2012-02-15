@@ -18,6 +18,7 @@ set ruler                      " show the cursor position all the time
 set showcmd                    " display incomplete commands
 set incsearch                  " do incremental searching
 set ignorecase smartcase       " smart case matching
+set hidden
 
 set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
 set listchars=tab:>-,trail:-,extends:>,precedes:<
@@ -35,17 +36,37 @@ let mapleader = ";"
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
+" Try to setup colors
+try
+  set background=dark
+  colorscheme solarized
   syntax on
   set hlsearch
+catch /E185:/
+  colorscheme default
+endtry
+
+
+" Customize solarized color
+if exists('g:colors_name') && g:colors_name == 'solarized'
+  " Text is unreadable with background transparency.
+  if has('gui_macvim')
+    "set transparency=0
+  endif
+
+  " Highlighted text is unreadable in Terminal.app because it
+  " does not support setting of the cursor foreground color.
+  if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
+    "let g:solarized_termcolors = &t_Co
+    let g:solarized_termtrans = 1
+    colorscheme solarized
+  endif
 endif
 
+
 " less contrast on status line
-hi StatusLine guifg=#000000 guibg=#FFFFFF ctermfg=0 ctermbg=15
-"hi StatusLineNC guifg=#000000 guibg=#FFFFFF ctermfg=0 ctermbg=15
-hi StatusLineNC guifg=#666666 guibg=#666666 ctermfg=7 ctermbg=8
+"hi StatusLine guifg=#000000 guibg=#FFFFFF ctermfg=0 ctermbg=15
+"hi StatusLineNC guifg=#666666 guibg=#666666 ctermfg=7 ctermbg=8
 "hi StatusLineNC guifg=#808080 guibg=#000000 ctermfg=8 ctermbg=0
 
 " Use sane regexes.
@@ -109,6 +130,9 @@ endif
 let g:localvimrc_ask = 0
 
 let g:statline_fugitive = 1
+
+" auto-close NERDtree if it's the only thing running
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "----------------------------------------------------------#
 " Key bindings

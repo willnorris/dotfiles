@@ -58,3 +58,6 @@
 [submodule "vim/.vim/bundle/nerdcommenter"]
 	path = vim/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/.vim/bundle/solarized"]
+	path = vim/.vim/bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
