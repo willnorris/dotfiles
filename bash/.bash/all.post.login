@@ -61,7 +61,8 @@ if [[ "$TERM" != "dumb" && `type -P grc` ]]; then
 fi
 
 # enable color support of ls (may be named dircolors or gdircolors)
-eval "`dircolors -b 2>/dev/null`"
+eval "`dircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
+eval "`gdircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
 
 # have `ls` output color if it knows how
 if [[ `ls --version 2>/dev/null | grep coreutils` ]]; then
