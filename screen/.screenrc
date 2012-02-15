@@ -27,7 +27,7 @@
 # ===============================================================
 # escape ^aa  # default
 # escape ^pp  # suggested binding for emacs users
-escape ^gg
+escape ^nn
 
 # ===============================================================
 # STARTUP of programs in an extra window:
