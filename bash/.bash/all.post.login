@@ -15,7 +15,7 @@ export JPY=$HOME/.bash/j2/j.py
 source $HOME/.bash/j2/j.sh
 
 # use local cacert file for git
-[ -r "$HOME/.cacert.pem" ] && GIT_SSL_CERT="$HOME/.cacert.pem"
+[ -r "$HOME/.cacert.pem" ] && export GIT_SSL_CAINFO="$HOME/.cacert.pem"
 
 ## setup some more defaults, now that the value of PATH is correct for the local system
 
