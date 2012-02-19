@@ -1,6 +1,6 @@
 # Homedir #
 
-[Homedir][] is a project developed by Christian "[Dr. What](/docwhat)" Höltje
+[Homedir][] is a project developed by Christian "[docwhat](/docwhat)" Höltje
 which allows for "controlling the contents of your home directory via a version
 control system in a sane way".
 
