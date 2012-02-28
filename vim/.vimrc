@@ -49,18 +49,8 @@ endtry
 
 " Customize solarized color
 if exists('g:colors_name') && g:colors_name == 'solarized'
-  " Text is unreadable with background transparency.
-  if has('gui_macvim')
-    "set transparency=0
-  endif
-
-  " Highlighted text is unreadable in Terminal.app because it
-  " does not support setting of the cursor foreground color.
-  if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
-    "let g:solarized_termcolors = &t_Co
-    let g:solarized_termtrans = 1
-    colorscheme solarized
-  endif
+  let g:solarized_termtrans = 1
+  colorscheme solarized
 endif
 
 
