@@ -49,7 +49,7 @@ endtry
 
 " Customize solarized color
 if exists('g:colors_name') && g:colors_name == 'solarized'
-  let g:solarized_termtrans = 1
+  let g:solarized_termtrans = 0
   colorscheme solarized
 endif
 
