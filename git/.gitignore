@@ -13,5 +13,7 @@
 # ctags
 tags
 
+# Google specific files
+devsite-build
 magicjar.jar
 magicjar
