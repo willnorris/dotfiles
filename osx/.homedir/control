@@ -1,0 +1,14 @@
+package: osx
+priority: normal
+maintainer: Will Norris <will@willnorris.com>
+depends:
+standards-version: 1
+description: OS X configuration
+ OS X configuration.
+dirs:
+ Library
+ Library/Preferences
+mkdirs:
+ Library
+ Library/Preferences
+
