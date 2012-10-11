@@ -1,0 +1,15 @@
+package: mordecai
+priority: normal
+maintainer: Will Norris <will@willnorris.com>
+depends:
+ osx
+ workstation
+standards-version: 1
+description: configuration for mordecai
+ configuration for mordecai
+dirs:
+ Library
+ Library/LaunchAgents
+mkdirs:
+ Library
+ Library/LaunchAgents
