@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for b in `find -mindepth 1 -maxdepth 1 -type d`; do
+for b in `find . -mindepth 1 -maxdepth 1 -type d`; do
   cd $b
   git pull origin master
   cd ..
