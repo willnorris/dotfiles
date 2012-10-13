@@ -1,0 +1,5 @@
+PROMPT_COLOR="$fg[blue]"
+
+setAppHome homebrew /opt/homebrew
+addToPath `brew --prefix python`/bin
+source `brew --prefix grc`/etc/grc.bashrc

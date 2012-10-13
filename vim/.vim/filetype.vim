@@ -12,6 +12,7 @@ augroup filetypedetect
   au! BufNewFile,BufRead *.jsont          setfiletype javascript
   au! BufNewFile,BufRead */.bash*         setfiletype sh
   au! BufNewFile,BufRead */.bash/*        setfiletype sh
+  au! BufNewFile,BufRead */.zsh/*         setfiletype zsh
   au! BufNewFile,BufRead */.mutt*         setfiletype muttrc
   au! BufNewFile,BufRead /etc/apache2/*.conf    setfiletype apache
   au! BufNewFile,BufRead /etc/apache2/sites*/*  setfiletype apache

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Add folder to MANPATH
+addToPathVar MANPATH $1
