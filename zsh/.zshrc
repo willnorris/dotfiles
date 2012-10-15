@@ -9,6 +9,46 @@ setopt PROMPT_SUBST
 fpath=(~/.zsh/functions $fpath)
 autoload -U ~/.zsh/functions/*(:t)
 
+# Enable auto-execution of functions.
+typeset -ga preexec_functions
+typeset -ga precmd_functions
+typeset -ga chpwd_functions
+
+# Append git functions needed for prompt.
+preexec_functions+='preexec_update_git_vars'
+precmd_functions+='precmd_update_git_vars'
+chpwd_functions+='chpwd_update_git_vars'
+
+
+# use vi key bindings
+bindkey -v
+
+# sane backspace behavior
+zle -A .backward-kill-word vi-backward-kill-word
+zle -A .backward-delete-char vi-backward-delete-char
+
+
+source $HOME/.zsh/functions.sh
+
+
+# User Information
+export NAME="Will Norris"
+export EMAIL="will@willnorris.com"
+
+# History
+setopt hist_ignore_all_dups hist_ignore_space hist_no_functions hist_no_store \
+  share_history append_history
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+
+# Alias common commands to begin with a space so they don't appear in zsh
+# history.  This is the closest I can come to Bash's HISTIGNORE setting
+for c (ls fg bg jobs exit clear reset); do
+  alias $c=" $c"
+done
 
 HOSTNAME=`hostname`
 # allow for vanity hostname override
@@ -66,30 +106,9 @@ fi
 
 
 
-# User Information
-export NAME="Will Norris"
-export EMAIL="will@willnorris.com"
 
 # Set up the prompt
-PROMPT="%{$PROMPT_COLOR%}%~%#%{$reset_color%} "
-
-# use vi key bindings
-bindkey -v
-
-# sane backspace behavior
-zle -A .backward-kill-word vi-backward-kill-word
-zle -A .backward-delete-char vi-backward-delete-char
-
-
-# History
-setopt HistIgnoreAllDups HistIgnoreSpace ShareHistory AppendHistory
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
-
-source $HOME/.zsh/functions.sh
+PROMPT=$'$PROMPT_COLOR%~$(prompt_git_info)$PROMPT_COLOR%#%{${fg[default]}%} '
 
 # Let's add a little color to the world
 # grc aliases
@@ -118,7 +137,7 @@ eval "`gdircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
 
 # have `ls` output color if it knows how
 if [ `ls --version 2>/dev/null | grep coreutils` ]; then
-   alias ls &> /dev/null || alias ls="ls --color=auto -F"
+   appendToAlias 'ls' '--color=auto -F'
 fi
 
 alias grep='grep --color=auto'
