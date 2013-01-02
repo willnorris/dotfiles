@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # Add the specified folder to the specified PATH-like environment variable, if
-# it is not already present
+# it is not already present.
+#
+# Example usage: addToPathVar PATH /usr/local/bin
 
 eval local v=\$$1
 if [ -z "$v" ]; then

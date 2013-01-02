@@ -3,7 +3,7 @@
 function setAppHome
 {
   if [ -n "$1" ] && [ -n "$2" ] && [ -d $2 ]; then
-    export `echo $1 | tr a-z A-Z`_HOME="$2"
+    export `echo ${1}_HOME | uppercase`="$2"
     addToPath "$2/bin"
     addToPath "$2/sbin"
 
