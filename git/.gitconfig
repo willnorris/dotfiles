@@ -17,6 +17,8 @@
 
 [alias]
   ctags = !.git/hooks/ctags
+  svn-diff = !git-svn-diff
+
   #sort = !git5 diff --name-only | grep -e '\\.java$' | xargs READONLY/google3/tools/java/sort_java_imports.py
   #unused = !git5 diff --name-only | grep -e '\\.java$' | xargs READONLY/google3/tools/java/remove_unused_imports.py --fix
   #buildify = !git5 diff --name-only | grep -e 'BUILD$' | xargs /google/data/ro/projects/orkut/util/buildifier.par --mode=fix
