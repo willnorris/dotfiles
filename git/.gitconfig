@@ -1,7 +1,3 @@
-[user]
-  email = will@willnorris.com
-  name = Will Norris
-
 [core]
   excludesfile = ~/.gitignore
   quotepath = false
