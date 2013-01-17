@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Add folder to PATH
-addToPathVar PATH $1
