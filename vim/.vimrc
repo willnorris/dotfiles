@@ -9,7 +9,6 @@ call pathogen#helptags()
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -124,11 +123,24 @@ let g:statline_fugitive = 1
 " auto-close NERDtree if it's the only thing running
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+let g:gundo_preview_bottom = 1
+let g:nerdtree_tabs_startup_cd = 1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\~$', '\.swp$', '\.pyc$']
+
 "----------------------------------------------------------#
 " Key bindings
 "----------------------------------------------------------#
-nmap <silent> <leader>f :NERDTreeToggle<CR>
+inoremap jk <ESC>
+
+nmap <silent> <leader>ff :NERDTreeTabsToggle<CR>
+nmap <silent> <leader>fs :NERDTreeFind<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
+
+nmap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
+nmap <silent> <leader>st :SyntasticToggleMode<CR>
+
+nnoremap <leader>u :GundoToggle<CR>
 
 " move around split windows with ctrl
 map <c-h> <c-w>h
