@@ -37,6 +37,14 @@ DOMAIN=
 
 
 # Load host-specific env files
+
+# iterate through networks
+for NETWORK in "${NETWORKS[@]}"
+do
+  [[ -r ${HOME}/.zsh/network/${NETWORK}.env ]] &&  \
+    source ${HOME}/.zsh/network/${NETWORK}.env
+done
+
 local file="${HOME}/.zsh/host/${HOST}.env"
 [[ -r ${file} ]] && source ${file}
 

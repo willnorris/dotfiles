@@ -50,7 +50,7 @@ for c (ls fg bg jobs exit clear reset); do
 done
 
 [[ -r ${HOME}/.zsh/os/${OS} ]] && source ${HOME}/.zsh/os/${OS}
-[[ -r ${HOME}/.zsh/os/${OSTYPE} ]] && [[ ${OS} != ${OSTYPE} ]] && \
+[[ ${OS} != ${OSTYPE} ]] && [[ -r ${HOME}/.zsh/os/${OSTYPE} ]] && \
   source ${HOME}/.zsh/os/${OSTYPE}
 
 # iterate through networks
