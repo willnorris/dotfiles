@@ -31,9 +31,6 @@ zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
 
 
-source $HOME/.zsh/functions.sh
-
-
 # History
 setopt hist_ignore_all_dups hist_ignore_space hist_no_functions \
   hist_no_store share_history append_history
@@ -111,8 +108,8 @@ eval "`dircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
 eval "`gdircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
 
 # have `ls` output color if it knows how
-if [ `ls --version 2>/dev/null | grep coreutils` ]; then
-   appendToAlias 'ls' '--color=auto -F'
+if [[ -n `ls --version 2>/dev/null | grep coreutils` ]]; then
+  alias ls=' ls --color=auto -F'
 fi
 
 alias grep='grep --color=auto'
