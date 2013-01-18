@@ -1,0 +1,8 @@
+package: tmux
+priority: normal
+maintainer: Will Norris <will@willnorris.com>
+depends: 
+standards-version: 1
+description: tmux configuration
+ tmux configuration.  
+
