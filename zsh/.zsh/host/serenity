@@ -1,0 +1,3 @@
+PROMPT_COLOR="%{${fg[cyan]}%}"
+
+source `brew --prefix grc`/etc/grc.bashrc
