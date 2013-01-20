@@ -1,0 +1,4 @@
+PROMPT_COLOR="%{${fg[green]}%}"
+
+# apparently no terminfo for xterm-256color on this machine
+export TERM="xterm-color"
