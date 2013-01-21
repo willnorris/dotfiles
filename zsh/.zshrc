@@ -2,6 +2,9 @@ autoload -U colors compinit
 colors
 compinit
  
+# Ignore commands that begin with '#'
+set -k
+
 # Allow for functions in the prompt.
 setopt PROMPT_SUBST
  
@@ -19,25 +22,18 @@ preexec_functions+='preexec_update_git_vars'
 precmd_functions+='precmd_update_git_vars'
 chpwd_functions+='chpwd_update_git_vars'
 
-
 # use vi key bindings
 bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
 
 # sane backspace behavior
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
 
 
-source $HOME/.zsh/functions.sh
-
-
-# User Information
-export NAME="Will Norris"
-export EMAIL="will@willnorris.com"
-
 # History
-setopt hist_ignore_all_dups hist_ignore_space hist_no_functions hist_no_store \
-  share_history append_history
+setopt hist_ignore_all_dups hist_ignore_space hist_no_functions \
+  hist_no_store share_history append_history
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -50,31 +46,8 @@ for c (ls fg bg jobs exit clear reset); do
   alias $c=" $c"
 done
 
-HOSTNAME=`hostname`
-# allow for vanity hostname override
-[ -r "/etc/vanity-hostname" ] && HOSTNAME=`cat /etc/vanity-hostname`
-[ -r "$HOME/.vanity-hostname" ] && HOSTNAME=`cat $HOME/.vanity-hostname`
-
-HOSTNAME=`echo ${HOSTNAME} | tr A-Z a-z`
-HOST=${HOSTNAME%%.*}
-OS=`uname | tr A-Z a-z`
-
-# build networks array -- this allows for login scripts that apply to
-# increasinly more specific portions of a network.  For example, given the
-# hostname 'server.sfo.example.com', the NETWORKS array would be: ( 'com',
-# 'example.com', 'sfo.example.com' )
-DOMAIN=${HOSTNAME#*.}
-NETWORKS=()
-while [[ "$HOST" != "$DOMAIN" && -n $DOMAIN ]]
-do
-  [[ "$DOMAIN" == "${NETWORKS[1]}" ]] && break
-  NETWORKS=( "$DOMAIN" "${NETWORKS[@]}" )
-  DOMAIN=${DOMAIN#*.}
-done
-DOMAIN=
-
 [[ -r ${HOME}/.zsh/os/${OS} ]] && source ${HOME}/.zsh/os/${OS}
-[[ -r ${HOME}/.zsh/os/${OSTYPE} ]] && [[ "${OS}" != "${OSTYPE}" ]] && \
+[[ ${OS} != ${OSTYPE} ]] && [[ -r ${HOME}/.zsh/os/${OSTYPE} ]] && \
   source ${HOME}/.zsh/os/${OSTYPE}
 
 # iterate through networks
@@ -92,7 +65,6 @@ else
   source ${HOME}/.zsh/host/default
 fi
 
-
 # The HOST variable above resolves only to the local portion of the machine
 # hostname. For example, it would not differentiate between the machines
 # "foo.bar.com" and "foo.example.com".  This last line allows you to create
@@ -105,10 +77,10 @@ if [[ "$HOSTNAME" != "$HOST" && -r ${HOME}/.zsh/host/${HOSTNAME} ]]; then
 fi
 
 
-
-
 # Set up the prompt
-PROMPT=$'$PROMPT_COLOR%~$(prompt_git_info)$PROMPT_COLOR%#%{${fg[default]}%} '
+PROMPT='
+%{$PROMPT_COLOR%}%~$(prompt_git_info)%{$PROMPT_COLOR%}
+%# %{$reset_color%}'
 
 # Let's add a little color to the world
 # grc aliases
@@ -136,8 +108,8 @@ eval "`dircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
 eval "`gdircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
 
 # have `ls` output color if it knows how
-if [ `ls --version 2>/dev/null | grep coreutils` ]; then
-   appendToAlias 'ls' '--color=auto -F'
+if [[ -n `ls --version 2>/dev/null | grep coreutils` ]]; then
+  alias ls=' ls --color=auto -F'
 fi
 
 alias grep='grep --color=auto'
@@ -152,7 +124,3 @@ export PAGER='less'
 
 export ACK_PAGER=${PAGER}
 export ACK_PAGER_COLOR='less -R'
-
-addToPath $HOME/local/bin
-addToManPath $HOME/local/man
-

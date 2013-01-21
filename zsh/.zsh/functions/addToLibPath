@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Add folder to LD_LIBARY_PATH
-addToPathVar LD_LIBRARY_PATH $1

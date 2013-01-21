@@ -2,3 +2,6 @@ PROMPT_COLOR="$fg[green]"
 
 export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
+
+# apparently no terminfo for xterm-256color on this machine
+export TERM="xterm-color"
