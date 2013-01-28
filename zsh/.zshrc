@@ -9,7 +9,7 @@ set -k
 setopt PROMPT_SUBST
  
 # Autoload zsh functions.
-fpath=(~/.zsh/functions $fpath)
+fpath+="$HOME/.zsh/functions"
 autoload -U ~/.zsh/functions/*(:t)
 
 # Enable auto-execution of functions.
