@@ -17,10 +17,36 @@ typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
 
-# Append git functions needed for prompt.
-preexec_functions+='preexec_update_git_vars'
-precmd_functions+='precmd_update_git_vars'
-chpwd_functions+='chpwd_update_git_vars'
+# Append git functions needed for prompt if zsh has the regex module
+zmodload zsh/regex &>/dev/null
+if [[ $? -eq 0 ]]; then
+  preexec_functions+='preexec_update_git_vars'
+  precmd_functions+='precmd_update_git_vars'
+  chpwd_functions+='chpwd_update_git_vars'
+fi
+
+precmd_functions+='precmd_set_xterm_title'
+
+# build magical functions on old zsh
+if [[ $__zsh_version < 4.3.4 ]]; then
+  preexec() {
+    for func in $preexec_functions; do
+      $func $*
+    done
+  }
+
+  precmd() {
+    for func in $precmd_functions; do
+      $func $*
+    done
+  }
+
+  chpwd() {
+    for func in $chpwd_functions; do
+      $func $*
+    done
+  }
+fi
 
 # use vi key bindings
 bindkey -v
