@@ -19,6 +19,8 @@ set incsearch                  " do incremental searching
 set ignorecase smartcase       " smart case matching
 set hidden
 
+set undodir^=~/.vim/undo//
+
 set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 set modelines=5

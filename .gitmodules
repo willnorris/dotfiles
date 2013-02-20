@@ -79,3 +79,6 @@
 [submodule "vim/.vim/bundle/ctrlp"]
 	path = vim/.vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
+[submodule "vim/.vim/bundle/sensible"]
+	path = vim/.vim/bundle/sensible
+	url = git://github.com/tpope/vim-sensible.git
