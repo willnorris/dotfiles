@@ -1,10 +1,12 @@
 #!/bin/sh
 
-if [ -h "$HOME/.ssh/id_dsa" ] && [ `readlink $HOME/.ssh/id_dsa` == "$HOME/.secure/etc/ssh/private.key" ]; then
+HOST=`hostname | cut -d. -f1`
+
+if [ -h "$HOME/.ssh/id_dsa" ] && [ `readlink $HOME/.ssh/id_dsa` == "$HOME/.secure/$HOST/ssh/private.key" ]; then
   rm $HOME/.ssh/id_dsa
 fi
 
-if [ -h "$HOME/.ssh/id_dsa.pub" ] && [ `readlink $HOME/.ssh/id_dsa.pub` == "$HOME/.secure/etc/ssh/public.key" ]; then
+if [ -h "$HOME/.ssh/id_dsa.pub" ] && [ `readlink $HOME/.ssh/id_dsa.pub` == "$HOME/.secure/$HOST/ssh/public.key" ]; then
   rm $HOME/.ssh/id_dsa.pub
 fi
 
