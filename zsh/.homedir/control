@@ -7,6 +7,7 @@ description: Basic zsh configuration
  Basic zsh configuration.
 dirs:
  .zsh
+ .zsh/bundle
  .zsh/functions
  .zsh/host
  .zsh/network
