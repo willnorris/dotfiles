@@ -2,19 +2,32 @@
   excludesfile = ~/.gitignore
   quotepath = false
 
-[diff "vim"]
-  command = vimdiff
+[alias]
+  ctags = !.git/hooks/ctags
+  hub = !hub
+  l = log --decorate --graph --oneline
+  s = status --short --branch
+  svn-diff = !git-svn-diff
+  x = !gitx
 
 [color]
   ui = auto
 
+[diff "vim"]
+  command = vimdiff
+
 [init]
   #templatedir = ~/.git_template
 
-[alias]
-  ctags = !.git/hooks/ctags
-  svn-diff = !git-svn-diff
-  x = !gitx
+[log]
+  decorate = short
+
+[pull]
+  rebase = true
 
 [push]
   default = simple
+
+[rerere]
+  enabled = 1
+
