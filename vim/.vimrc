@@ -5,6 +5,10 @@ runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 
+if $GOROOT != ""
+  set runtimepath+=$GOROOT/misc/vim
+endif
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
