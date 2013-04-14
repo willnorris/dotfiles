@@ -1,7 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
-for b in `find . -mindepth 1 -maxdepth 1 -type d`; do
-  cd $b
+pushd `dirname $0`
+
+# update each git repository
+for b in `find . -mindepth 1 -maxdepth 2 -name .git`; do
+  pushd `dirname $b`
   git pull origin master
-  cd ..
+  popd
 done
+
+popd
