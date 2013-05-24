@@ -133,6 +133,8 @@ let g:gundo_preview_bottom = 1
 let g:nerdtree_tabs_startup_cd = 1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\~$', '\.swp$', '\.pyc$']
+let NERDTreeMapOpenVSplit="v"
+let NERDTreeMapOpenSplit="s"
 
 "----------------------------------------------------------#
 " Key bindings
