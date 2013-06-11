@@ -146,7 +146,12 @@ nmap <silent> <leader>p :set invpaste paste?<CR>
 
 nmap <silent> <leader>ff :NERDTreeTabsToggle<CR>
 nmap <silent> <leader>fs :NERDTreeFind<CR>
-nmap <silent> <leader>t :TagbarToggle<CR>
+nmap <silent> <leader>tt :TagbarToggle<CR>
+
+" tab navigation
+nmap <silent> <leader>tn :tabnext<CR>
+nmap <silent> <leader>tp :tabprev<CR>
+nmap <silent> <leader>tc :tabclose<CR>
 
 nmap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
 nmap <silent> <leader>st :SyntasticToggleMode<CR>
