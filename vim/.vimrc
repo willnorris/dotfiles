@@ -125,6 +125,7 @@ endif
 let g:localvimrc_ask = 0
 
 let g:statline_fugitive = 1
+let g:statline_filename_relative = 1
 
 " auto-close NERDtree if it's the only thing running
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -141,12 +142,17 @@ let NERDTreeMapOpenSplit="s"
 "----------------------------------------------------------#
 inoremap jk <ESC>
 
+nmap <silent> <leader>p :set invpaste paste?<CR>
+
 nmap <silent> <leader>ff :NERDTreeTabsToggle<CR>
 nmap <silent> <leader>fs :NERDTreeFind<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
 
 nmap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
 nmap <silent> <leader>st :SyntasticToggleMode<CR>
+
+nmap <silent> <leader>god :Godoc<CR>
+nmap <silent> <leader>gof :%!gofmt<CR>
 
 nnoremap <leader>u :GundoToggle<CR>
 
