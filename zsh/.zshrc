@@ -148,7 +148,4 @@ export EDITOR='vim'
 export VISUAL=${EDITOR}
 export PAGER='less'
 
-export ACK_PAGER=${PAGER}
-export ACK_PAGER_COLOR='less -R'
-
 source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
