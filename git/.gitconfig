@@ -3,9 +3,10 @@
   quotepath = false
 
 [alias]
+  b = branch -v -v
   ctags = !.git/hooks/ctags
   hub = !hub
-  l = log --decorate --graph --oneline
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset' --abbrev-commit
   s = status --short --branch
   svn-diff = !git-svn-diff
   x = !gitx
