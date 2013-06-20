@@ -8,6 +8,10 @@ call pathogen#helptags()
 if $GOROOT != ""
   set runtimepath+=$GOROOT/misc/vim
 endif
+if $GOPATH != ""
+  exe "set rtp+=" . globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
+endif
+autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -70,6 +74,15 @@ vnoremap / /\v
 
 noremap j gj
 noremap k gk
+
+" Join lines and restore cursor location (J)
+nnoremap J mjJ`j
+
+" Buffer navigation (,,) (,]) (,[) (,ls)
+nmap <leader>; <C-^>
+" :map <leader>] :bnext<CR>
+" :map <leader>[ :bprev<CR>
+nmap <leader>ls :buffers<CR>
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
