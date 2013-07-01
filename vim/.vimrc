@@ -156,21 +156,21 @@ let NERDTreeMapOpenSplit="s"
 inoremap jk <ESC>
 
 nmap <silent> <leader>p :set invpaste paste?<CR>
+nmap <silent> <leader>r :redraw!<CR>:redrawstatus!<CR>
 
 nmap <silent> <leader>ff :NERDTreeTabsToggle<CR>
 nmap <silent> <leader>fs :NERDTreeFind<CR>
 nmap <silent> <leader>tt :TagbarToggle<CR>
 
 " tab navigation
-nmap <silent> <leader>tn :tabnext<CR>
-nmap <silent> <leader>tp :tabprev<CR>
+nmap <silent> <leader>tn :tabnew<CR>
 nmap <silent> <leader>tc :tabclose<CR>
 
 nmap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
 nmap <silent> <leader>st :SyntasticToggleMode<CR>
 
 nmap <silent> <leader>god :Godoc<CR>
-nmap <silent> <leader>gof :%!gofmt<CR>
+nmap <silent> <leader>gof mg:%!gofmt<CR>`g
 
 nnoremap <leader>u :GundoToggle<CR>
 
