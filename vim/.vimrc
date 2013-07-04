@@ -5,13 +5,13 @@ runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 
-if $GOROOT != ""
-  set runtimepath+=$GOROOT/misc/vim
+" add golang configs to runtimepath
+if isdirectory($GOROOT . "/misc/vim" )
+  call pathogen#surround( $GOROOT . "/misc/vim" )
 endif
-if $GOPATH != ""
-  exe "set rtp+=" . globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
+if isdirectory($GOPATH . "/src/github.com/golang/lint/misc/vim")
+  call pathogen#surround($GOPATH . "/src/github.com/golang/lint/misc/vim")
 endif
-autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
