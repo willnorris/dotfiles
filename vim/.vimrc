@@ -26,14 +26,12 @@
 " }
 
 " Vim UI {
-  set ruler                      " always show the cursor position
-  set showcmd                    " display incomplete commands
-  set incsearch                  " do incremental searching
-  set ignorecase smartcase       " smart case matching
-
-  set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
+  set ruler " always show the cursor position
+  set showcmd " display incomplete commands
+  set incsearch " do incremental searching
   set listchars=tab:>-,trail:-,extends:>,precedes:<
-  set number                     " show line numbers
+  set number " show line numbers
+  set splitright "open vertical splits on the right
 
   " Scrolling
   set scrolloff=3
@@ -41,21 +39,25 @@
   set sidescrolloff=10
 " }
 
-" Colors {
-  try
-    set background=dark
-    colorscheme solarized
-    syntax on
-    set hlsearch
-  catch /E185:/
-    colorscheme default
-  endtry
+" Text Formatting / Layout {
+  set ignorecase smartcase infercase " smart case matching
+  set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
+" }
 
-  " Customize solarized color
-  if exists('g:colors_name') && g:colors_name == 'solarized'
-    let g:solarized_termtrans = 0
-    colorscheme solarized
-  endif
+" Folding {
+  set foldenable " turn on folding
+  set foldmethod=marker "fold on markers
+  set foldlevel=100 " don't autofold anything
+  set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
+" }
+
+" Colors {
+  set background=dark
+  let g:solarized_termtrans = 0
+  colorscheme solarized
+  syntax on
+  set hlsearch
+  highlight SignColumn ctermbg=8
 " }
 
 " Mappings {
@@ -85,8 +87,8 @@
   nmap <silent> <leader>p :set invpaste paste?<CR>
   nmap <silent> <leader>r :redraw!<CR>:redrawstatus!<CR>
 
-  nmap <silent> <leader>ff :NERDTreeTabsToggle<CR>
-  nmap <silent> <leader>fs :NERDTreeFind<CR>
+  nmap <silent> <leader>nn :NERDTreeTabsToggle<CR>
+  nmap <silent> <leader>nf :NERDTreeFind<CR>
   nmap <silent> <leader>tt :TagbarToggle<CR>
 
   " tab navigation
@@ -151,6 +153,9 @@ augroup END
   let NERDTreeIgnore=['\~$', '\.swp$', '\.pyc$']
   let NERDTreeMapOpenVSplit="v"
   let NERDTreeMapOpenSplit="s"
+  let NERDTreeMinimalUI = 1
+
+  let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp_cache'
 " }
 
 " Google-specific settings {
