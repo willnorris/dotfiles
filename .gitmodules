@@ -85,3 +85,9 @@
 [submodule "zsh/.zsh/bundle/zsh-syntax-highlighting"]
 	path = zsh/.zsh/bundle/zsh-syntax-highlighting
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "vim/.vim/bundle/signify"]
+	path = vim/.vim/bundle/signify
+	url = https://github.com/mhinz/vim-signify.git
+[submodule "vim/.vim/bundle/signature"]
+	path = vim/.vim/bundle/signature
+	url = https://github.com/kshenoy/vim-signature.git
