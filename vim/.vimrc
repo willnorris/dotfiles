@@ -42,6 +42,10 @@
 " Text Formatting / Layout {
   set ignorecase smartcase infercase " smart case matching
   set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
+  set autoindent               " always set autoindenting on
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
 " }
 
 " Folding {
@@ -58,6 +62,7 @@
   syntax on
   set hlsearch
   highlight SignColumn ctermbg=8
+  set colorcolumn=+1
 " }
 
 " Mappings {
@@ -74,13 +79,16 @@
   noremap k gk
 
   " Join lines and restore cursor location (J)
-  nnoremap J mjJ`j
+  nnoremap J :call Preserve("join")<CR>
 
-  " Buffer navigation (,,) (,]) (,[) (,ls)
+  " Buffer navigation (;;) (;]) (;[) (;ls)
   nmap <leader>; <C-^>
   " :map <leader>] :bnext<CR>
   " :map <leader>[ :bprev<CR>
   nmap <leader>ls :buffers<CR>
+
+  " strip trailing whitespace
+  nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
   inoremap jk <ESC>
 
@@ -99,9 +107,14 @@
   nmap <silent> <leader>st :SyntasticToggleMode<CR>
 
   nmap <silent> <leader>god :Godoc<CR>
-  nmap <silent> <leader>gof mg:%!gofmt<CR>`g
+  nmap <silent> <leader>gof :call Preserve(":%!gofmt")<CR>
 
   nnoremap <leader>u :GundoToggle<CR>
+
+  " find current word in quickfix
+  nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<cr>:copen<cr>
+  " find last search in quickfix
+  nnoremap <leader>ff :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
   " move around split windows with ctrl
   map <c-h> <c-w>h
@@ -123,13 +136,31 @@ autocmd BufReadPost *
 augroup END
 
 " Functions {
-  " Convenient command to see the difference between the current buffer and the
-  " file it was loaded from, thus the changes you made.
+  " Convenient command to see the difference between the current buffer and
+  " the file it was loaded from, thus the changes you made.
   " Only define it when not defined already.
   if !exists(":DiffOrig")
     command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
         \ | wincmd p | diffthis
   endif
+
+  function! Preserve(command) "{
+    " preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    execute a:command
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+  endfunction "}
+
+  function! EnsureExists(path) "{
+    if !isdirectory(expand(a:path))
+      call mkdir(expand(a:path))
+    endif
+  endfunction "}
 " }
 
 
@@ -156,6 +187,10 @@ augroup END
   let NERDTreeMinimalUI = 1
 
   let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp_cache'
+
+  let g:signify_vcs_list = [ 'git', 'hg' ]
+  let g:signify_mapping_toggle_highlight = '<leader>sh'
+  let g:signify_mapping_toggle = '<leader>st'
 " }
 
 " Google-specific settings {
