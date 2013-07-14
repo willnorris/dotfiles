@@ -1,4 +1,4 @@
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker:
+" vim: set foldmarker={,} foldmethod=marker:
 
 " Runtime Path {
   runtime bundle/pathogen/autoload/pathogen.vim
@@ -19,6 +19,7 @@
   set backspace=indent,eol,start " backspace over everything in insert mode
   set history=9999 " keep plenty of history
   set undodir^=~/.vim/undo
+  set undofile
   set hidden "allow changing buffers without saving
   set wildmenu wildmode=list:longest,full
   set modelines=5
@@ -61,8 +62,9 @@
   colorscheme solarized
   syntax on
   set hlsearch
+  set colorcolumn=+1 " display column at edge of textwidth
   highlight SignColumn ctermbg=8
-  set colorcolumn=+1
+  highlight FoldColumn ctermbg=8
 " }
 
 " Mappings {
@@ -106,9 +108,6 @@
   nmap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
   nmap <silent> <leader>st :SyntasticToggleMode<CR>
 
-  nmap <silent> <leader>god :Godoc<CR>
-  nmap <silent> <leader>gof :call Preserve(":%!gofmt")<CR>
-
   nnoremap <leader>u :GundoToggle<CR>
 
   " find current word in quickfix
@@ -147,13 +146,12 @@ augroup END
   function! Preserve(command) "{
     " preparation: save last search, and cursor position.
     let _s=@/
-    let l = line(".")
-    let c = col(".")
+    let view = winsaveview()
     " do the business:
     execute a:command
     " clean up: restore previous search history, and cursor position
     let @/=_s
-    call cursor(l, c)
+    call winrestview(view)
   endfunction "}
 
   function! EnsureExists(path) "{
