@@ -189,6 +189,8 @@ augroup END
   let g:signify_vcs_list = [ 'git', 'hg' ]
   let g:signify_mapping_toggle_highlight = '<leader>sh'
   let g:signify_mapping_toggle = '<leader>st'
+
+  let g:syntastic_go_checkers=['go', 'govet', 'golint']
 " }
 
 " Google-specific settings {
