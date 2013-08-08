@@ -1,0 +1,6 @@
+if (( $# == 0 )); then
+  echo "usage: ts session-name"
+else
+  tmux has-session -t $1 >/dev/null && tmux attach -t $1 || tmux new-session -s $1
+fi
+
