@@ -20,6 +20,7 @@
   set history=9999 " keep plenty of history
   set undodir^=~/.vim/undo
   set undofile
+  set spellfile=~/.vim/en.utf-8.add
   set hidden "allow changing buffers without saving
   set wildmenu wildmode=list:longest,full
   set modelines=5
@@ -95,7 +96,7 @@
   inoremap jk <ESC>
 
   nmap <silent> <leader>p :set invpaste paste?<CR>
-  nmap <silent> <leader>r :redraw!<CR>:redrawstatus!<CR>
+  nmap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
 
   nmap <silent> <leader>nn :NERDTreeTabsToggle<CR>
   nmap <silent> <leader>nf :NERDTreeFind<CR>
