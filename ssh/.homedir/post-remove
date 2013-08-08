@@ -2,11 +2,11 @@
 
 HOST=`hostname | cut -d. -f1`
 
-if [ -h "$HOME/.ssh/id_dsa" ] && [ `readlink $HOME/.ssh/id_dsa` == "$HOME/.secure/$HOST/ssh/private.key" ]; then
-  rm $HOME/.ssh/id_dsa
+if [ -h "$HOME/.ssh/id_rsa" ] && [ `readlink $HOME/.ssh/id_rsa` == "$HOME/.secure/$HOST/ssh/private.key" ]; then
+  rm $HOME/.ssh/id_rsa
 fi
 
-if [ -h "$HOME/.ssh/id_dsa.pub" ] && [ `readlink $HOME/.ssh/id_dsa.pub` == "$HOME/.secure/$HOST/ssh/public.key" ]; then
-  rm $HOME/.ssh/id_dsa.pub
+if [ -h "$HOME/.ssh/id_rsa.pub" ] && [ `readlink $HOME/.ssh/id_rsa.pub` == "$HOME/.secure/$HOST/ssh/public.key" ]; then
+  rm $HOME/.ssh/id_rsa.pub
 fi
 

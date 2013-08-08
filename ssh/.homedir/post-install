@@ -3,15 +3,15 @@
 HOST=`hostname | cut -d. -f1`
 
 if [ -f "$HOME/.secure/$HOST/ssh/private.key" ]; then
-  if [ ! -h "$HOME/.ssh/id_dsa" ] || [ `readlink $HOME/.ssh/id_dsa` != "$HOME/.secure/$HOST/ssh/private.key" ]; then
-    ln -s $HOME/.secure/$HOST/ssh/private.key $HOME/.ssh/id_dsa
+  if [ ! -h "$HOME/.ssh/id_rsa" ] || [ `readlink $HOME/.ssh/id_rsa` != "$HOME/.secure/$HOST/ssh/private.key" ]; then
+    ln -s $HOME/.secure/$HOST/ssh/private.key $HOME/.ssh/id_rsa
   fi
 
 fi
 
 if [ -f "$HOME/.secure/$HOST/ssh/public.key" ]; then
-  if [ ! -h "$HOME/.ssh/id_dsa.pub" ] || [ `readlink $HOME/.ssh/id_dsa.pub` != "$HOME/.secure/$HOST/ssh/public.key" ]; then
-    ln -s $HOME/.secure/$HOST/ssh/public.key $HOME/.ssh/id_dsa.pub
+  if [ ! -h "$HOME/.ssh/id_rsa.pub" ] || [ `readlink $HOME/.ssh/id_rsa.pub` != "$HOME/.secure/$HOST/ssh/public.key" ]; then
+    ln -s $HOME/.secure/$HOST/ssh/public.key $HOME/.ssh/id_rsa.pub
   fi
 fi
 
