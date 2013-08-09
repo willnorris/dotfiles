@@ -1,7 +1,11 @@
-if (( $# == 1 )); then
+if [ $# -eq 1 ]; then
   tmux has-session -t $1 >/dev/null && tmux attach -t $1 || tmux new-session -s $1
 else
-  echo "usage: ts session-name\n"
-  echo "Available Sessions:"
-  tmux list-sessions | awk '{ print "  "$0 }'
+  echo "usage: ts session-name"
+
+  tmux list-sessions &>/dev/null
+  if [ $? -eq 0 ]; then
+    echo "\nAvailable Sessions:"
+    tmux list-sessions | awk '{ print "  "$0 }'
+  fi
 fi
