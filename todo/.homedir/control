@@ -1,0 +1,16 @@
+package: todo
+priority: normal
+maintainer: Will Norris <will@willnorris.com>
+depends:
+standards-version: 1
+description: Todo.txt configuration
+ Todo.txt configuration.
+dirs:
+ .todo
+ local
+ local/bin
+mkdirs:
+ .todo
+ local
+ local/bin
+
