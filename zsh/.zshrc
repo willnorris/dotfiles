@@ -150,3 +150,7 @@ export VISUAL=${EDITOR}
 export PAGER='less'
 
 source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# todo.txt
+export TODOTXT_DEFAULT_ACTION=ls
+alias t=todo.sh
