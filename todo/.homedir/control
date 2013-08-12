@@ -6,11 +6,9 @@ standards-version: 1
 description: Todo.txt configuration
  Todo.txt configuration.
 dirs:
- .todo
  local
  local/bin
 mkdirs:
- .todo
  local
  local/bin
 
