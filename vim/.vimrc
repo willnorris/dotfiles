@@ -95,7 +95,6 @@
 
   inoremap jk <ESC>
 
-  nmap <silent> <leader>p :set invpaste paste?<CR>
   nmap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
 
   nmap <silent> <leader>nn :NERDTreeTabsToggle<CR>
