@@ -5,4 +5,10 @@ depends:
 standards-version: 1
 description: tmux configuration
  tmux configuration.  
+dirs:
+ local
+ local/bin
+mkdirs:
+ local
+ local/bin
 
