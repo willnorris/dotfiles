@@ -8,7 +8,11 @@ description: tmux configuration
 dirs:
  local
  local/bin
+ .zsh
+ .zsh/completion
 mkdirs:
  local
  local/bin
+ .zsh
+ .zsh/completion
 

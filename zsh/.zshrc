@@ -1,7 +1,3 @@
-autoload -U colors compinit
-colors
-compinit
- 
 # Ignore commands that begin with '#'
 set -k
 
@@ -10,7 +6,14 @@ setopt PROMPT_SUBST
  
 # Autoload zsh functions.
 fpath+="$HOME/.zsh/functions"
+fpath+="$HOME/.zsh/completion"
 autoload -U ~/.zsh/functions/*(:t)
+
+autoload -U colors compinit
+colors
+compinit
+
+zstyle ':completion:*' menu select=2
 
 # Enable auto-execution of functions.
 typeset -ga preexec_functions
