@@ -9,10 +9,10 @@ else
   echo "Usage: ts <session-name>"
   echo ""
 
-  sessions=`tmux list-sessions 2>/dev/null`
-  if [ -n "$sessions" ]; then
+  tmux has-session 2>/dev/null
+  if [ "$?" -eq "0" ]; then
     echo "Active sessions:"
-    echo $sessions | awk '{ print "  "$0 }'
+    tmux list-sessions | awk '{ print "  "$0 }'
   else
     echo "No active sessions."
   fi
