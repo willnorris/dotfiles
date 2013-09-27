@@ -2,6 +2,7 @@ package: bash
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
 depends:
+ shell
 standards-version: 1
 description: Basic bash configuration
  Basic bash configuration.

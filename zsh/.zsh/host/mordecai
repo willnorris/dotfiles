@@ -1,3 +1,7 @@
 PROMPT_COLOR="%{${fg[blue]}%}"
 
 source `brew --prefix grc`/etc/grc.bashrc
+
+if [[ -n "$HOMEBREW_HOME" ]]; then
+  fpath+=$HOMEBREW_HOME/share/zsh-completions
+fi

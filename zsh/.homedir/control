@@ -2,6 +2,7 @@ package: zsh
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
 depends:
+ shell
 standards-version: 1
 description: Basic zsh configuration
  Basic zsh configuration.

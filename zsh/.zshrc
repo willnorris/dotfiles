@@ -3,7 +3,7 @@ set -k
 
 # Allow for functions in the prompt.
 setopt PROMPT_SUBST
- 
+
 # Autoload zsh functions.
 fpath+="$HOME/.zsh/functions"
 fpath+="$HOME/.zsh/completion"
@@ -116,30 +116,9 @@ PROMPT='
 %{$PROMPT_COLOR%}%~$(prompt_git_info)%{$PROMPT_COLOR%}
 %# %{$reset_color%}'
 
-# Let's add a little color to the world
-# grc aliases
-if [ "$TERM" != "dumb" ] && [ `whence grc` ]; then
-  alias cl='grc -es --colour=auto'
-  alias configure='cl ./configure'
-  alias diff='cl diff'
-  alias make='cl make'
-  alias gcc='cl gcc'
-  alias g++='cl g++'
-  alias as='cl as'
-  #alias gas='cl gas'
-  alias ld='cl ld'
-  alias netstat='cl netstat'
-  alias ping='cl ping'
-  alias traceroute='cl /usr/sbin/traceroute'
-  alias cat='cl cat'
-  alias tail='cl tail'
-  #alias perl='cl perl'
-  #alias python='cl python'
-fi
-
 # enable color support of ls (may be named dircolors or gdircolors)
-eval "`dircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
-eval "`gdircolors -b $HOME/.bash/dircolors.ansi-dark 2>/dev/null`"
+eval "`dircolors -b $HOME/.shell/dircolors.ansi-dark 2>/dev/null`"
+eval "`gdircolors -b $HOME/.shell/dircolors.ansi-dark 2>/dev/null`"
 
 # have `ls` output color if it knows how
 if [[ -n `ls --version 2>/dev/null | grep coreutils` ]]; then
@@ -156,4 +135,5 @@ export EDITOR='vim'
 export VISUAL=${EDITOR}
 export PAGER='less'
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
