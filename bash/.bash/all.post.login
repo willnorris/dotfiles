@@ -6,8 +6,7 @@
 PROMPT_COMMAND='setPS1'
 
 addToPath $HOME/bin
-addToPath $HOME/local/bin
-addToManPath $HOME/local/man
+addToManPath $HOME/man
 
 addToPath $HOME/Projects/oacurl
 

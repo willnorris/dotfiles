@@ -6,9 +6,7 @@ standards-version: 1
 description: Common tools and utilities
  Common tools and utilities.
 dirs:
- local
- local/bin
+ bin
 mkdirs:
- local
- local/bin
+ bin
 

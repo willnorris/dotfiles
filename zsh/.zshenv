@@ -49,7 +49,7 @@ local file="${HOME}/.zsh/host/${HOST}.env"
 [[ -r ${file} ]] && source ${file}
 
 
-# Lastly, add directories in $HOME/local
-path=($HOME/local/bin $path)
-manpath=($HOME/local/man $manpath)
+# Lastly, add directories in $HOME
+path=($HOME/bin $path)
+manpath=($HOME/man $manpath)
 

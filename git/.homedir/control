@@ -7,9 +7,7 @@ description: Git configuration
  Git configuration.  
 dirs:
  .git_template
- local
- local/bin
+ bin
 mkdirs:
- local
- local/bin
+ bin
 

@@ -6,13 +6,11 @@ standards-version: 1
 description: tmux configuration
  tmux configuration.  
 dirs:
- local
- local/bin
  .zsh
  .zsh/completion
+ bin
 mkdirs:
- local
- local/bin
  .zsh
  .zsh/completion
+ bin
 
