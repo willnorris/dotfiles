@@ -45,6 +45,7 @@
   set ignorecase smartcase infercase " smart case matching
   set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
   set autoindent               " always set autoindenting on
+  set formatoptions+=cqj
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
