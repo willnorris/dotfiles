@@ -97,3 +97,6 @@
 [submodule "vim/.vim/bundle/todo.txt"]
 	path = vim/.vim/bundle/todo.txt
 	url = https://github.com/freitass/todo.txt-vim.git
+[submodule "vim/.vim/bundle/airline"]
+	path = vim/.vim/bundle/airline
+	url = https://github.com/bling/vim-airline.git
