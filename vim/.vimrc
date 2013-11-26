@@ -6,7 +6,9 @@
   call pathogen#helptags()
 
   " add golang configs to runtimepath
-  if isdirectory($GOROOT . "/misc/vim" )
+  if isdirectory($HOME . "/Projects/golang/misc/vim" )
+    call pathogen#surround( $HOME . "/Projects/golang/misc/vim" )
+  elseif isdirectory($GOROOT . "/misc/vim" )
     call pathogen#surround( $GOROOT . "/misc/vim" )
   endif
   if isdirectory($GOPATH . "/src/github.com/golang/lint/misc/vim")
@@ -169,6 +171,7 @@ augroup END
 
   source $VIMRUNTIME/macros/matchit.vim
 
+  let g:gofmt_command = "goimports"
   let g:localvimrc_ask = 0
 
   let g:statline_fugitive = 1

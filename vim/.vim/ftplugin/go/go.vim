@@ -1,7 +1,7 @@
 set ts=8 sw=8 noet
 
-autocmd BufWritePre <buffer> Imports
-autocmd BufWritePost <buffer> execute 'Lint' | cwindow
+autocmd BufWritePre <buffer> Fmt
+"autocmd BufWritePost <buffer> execute 'Lint' | cwindow
 
 " Go has no max line-length, but set colorcolumn as a reference
 set colorcolumn=81
