@@ -6,8 +6,8 @@
   call pathogen#helptags()
 
   " add golang configs to runtimepath
-  if isdirectory($HOME . "/Projects/golang/misc/vim" )
-    call pathogen#surround( $HOME . "/Projects/golang/misc/vim" )
+  if isdirectory($GOSRC . "/misc/vim" )
+    call pathogen#surround( $GOSRC . "/misc/vim" )
   elseif isdirectory($GOROOT . "/misc/vim" )
     call pathogen#surround( $GOROOT . "/misc/vim" )
   endif
