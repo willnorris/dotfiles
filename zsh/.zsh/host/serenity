@@ -1,3 +1,4 @@
 PROMPT_COLOR="%{${fg[cyan]}%}"
 
 source `brew --prefix grc`/etc/grc.bashrc
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
