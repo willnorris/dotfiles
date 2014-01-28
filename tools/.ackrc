@@ -3,3 +3,5 @@
 
 --color-filename=red
 --color-lineno=bold yellow on_black
+
+--ignore-dir=.sass-cache
