@@ -63,8 +63,13 @@
 " }
 
 " Colors {
+  if $HTERM == 1
+    let g:solarized_termtrans = 1
+    let g:solarized_termcolors=256
+  else
+    let g:solarized_termtrans = 0
+  endif
   set background=dark
-  let g:solarized_termtrans = 0
   colorscheme solarized
   syntax on
   set hlsearch
