@@ -100,3 +100,6 @@
 [submodule "vim/.vim/bundle/airline"]
 	path = vim/.vim/bundle/airline
 	url = https://github.com/bling/vim-airline.git
+[submodule "vim/.vim/bundle/eunuch"]
+	path = vim/.vim/bundle/eunuch
+	url = https://github.com/tpope/vim-eunuch.git
