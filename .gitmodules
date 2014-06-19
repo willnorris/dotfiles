@@ -103,3 +103,6 @@
 [submodule "vim/.vim/bundle/eunuch"]
 	path = vim/.vim/bundle/eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+[submodule "vim/.vim/bundle/nginx"]
+	path = vim/.vim/bundle/nginx
+	url = https://github.com/evanmiller/nginx-vim-syntax
