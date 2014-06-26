@@ -1,7 +1,3 @@
-#
-# $Id: $
-#
-
 subscribe macsb
 subscribe staff@visible
 subscribe faculty@visible

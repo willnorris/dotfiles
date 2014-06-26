@@ -1,7 +1,3 @@
-#
-# $Id$
-#
-
 # map delete-char to a sane value
 bind editor    <delete>  backspace
 

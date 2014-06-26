@@ -1,7 +1,3 @@
-#
-# $Id$
-#
-
 # imitate the old search-body function
 macro index \eb '/~b ' 'search in message bodies'
 

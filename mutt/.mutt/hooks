@@ -1,7 +1,3 @@
-#
-# $Id$
-#
-
 # set appropriate profile based on which address message was sent to
 #message-hook . "source ~/.mutt/profiles/default"
 #message-hook "~C wnorris@memphis.edu"  "source ~/.mutt/profiles/memphis"

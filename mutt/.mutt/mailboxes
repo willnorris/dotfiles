@@ -1,7 +1,3 @@
-#
-# $Id$
-#
-
 mailboxes !
 mailboxes "+.MailingLists.MacSB"
 mailboxes "+.MailingLists.moneydance"

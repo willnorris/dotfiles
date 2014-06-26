@@ -1,7 +1,3 @@
-#
-# $Id$
-#
-
 color normal white default
 color quoted green default
 color quoted1 cyan default
