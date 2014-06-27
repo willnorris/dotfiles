@@ -1,11 +1,3 @@
 #!/bin/sh
 
-xattr='xattr-2.7'
-
-if [ `$xattr $1 | grep com.apple.quarantine` ]; then
-  if [ -d "$1" ] && [ ! `grep -E ".app$" $1` ]; then
-    find $1 -exec $xattr -d com.apple.quarantine {} \;
-  else
-    $xattr -d com.apple.quarantine $1
-  fi
-fi
+xattr -r -d com.apple.quarantine $1
