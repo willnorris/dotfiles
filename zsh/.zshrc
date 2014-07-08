@@ -7,6 +7,7 @@ setopt PROMPT_SUBST
 # Autoload zsh functions.
 fpath+="$HOME/.zsh/functions"
 fpath+="$HOME/.zsh/completion"
+fpath+="/opt/homebrew/share/zsh/site-functions"
 autoload -U ~/.zsh/functions/*(:t)
 
 autoload -U colors compinit
