@@ -1,6 +1,11 @@
 PROMPT_COLOR="%{${fg[blue]}%}"
 
-source `brew --prefix grc`/etc/grc.bashrc
+command -v rbenv &>/dev/null \
+  && eval "$(rbenv init -)"
+
+if [[ -x `brew --prefix grc`/etc/grc.bashrc ]]; then
+  source `brew --prefix grc`/etc/grc.bashrc
+fi
 
 if [[ -n "$HOMEBREW_HOME" ]]; then
   fpath+=$HOMEBREW_HOME/share/zsh-completions
