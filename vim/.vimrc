@@ -117,6 +117,7 @@
   nmap <silent> <leader>st :SyntasticToggleMode<CR>
 
   nnoremap <leader>u :GundoToggle<CR>
+  nnoremap <leader>su :sign unplace *<CR>
 
   " find current word in quickfix
   nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<cr>:copen<cr>
