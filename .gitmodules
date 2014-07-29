@@ -31,9 +31,6 @@
 [submodule "vim/.vim/bundle/afterimage"]
 	path = vim/.vim/bundle/afterimage
 	url = https://github.com/tpope/vim-afterimage.git
-[submodule "vim/.vim/bundle/nerdtree"]
-	path = vim/.vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/.vim/bundle/tagbar"]
 	path = vim/.vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
@@ -73,9 +70,6 @@
 [submodule "vim/.vim/bundle/snipmate"]
 	path = vim/.vim/bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim.git
-[submodule "vim/.vim/bundle/nerdtree-tabs"]
-	path = vim/.vim/bundle/nerdtree-tabs
-	url = git://github.com/jistr/vim-nerdtree-tabs.git
 [submodule "vim/.vim/bundle/ctrlp"]
 	path = vim/.vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
@@ -106,3 +100,6 @@
 [submodule "vim/.vim/bundle/nginx"]
 	path = vim/.vim/bundle/nginx
 	url = https://github.com/evanmiller/nginx-vim-syntax
+[submodule "vim/.vim/bundle/vinegar"]
+	path = vim/.vim/bundle/vinegar
+	url = https://github.com/tpope/vim-vinegar.git

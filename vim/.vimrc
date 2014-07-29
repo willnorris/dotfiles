@@ -107,8 +107,6 @@
 
   nmap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
 
-  nmap <silent> <leader>nn :NERDTreeTabsToggle<CR>
-  nmap <silent> <leader>nf :NERDTreeFind<CR>
   nmap <silent> <leader>tt :TagbarToggle<CR>
 
   " tab navigation
@@ -184,16 +182,7 @@ augroup END
   let g:statline_fugitive = 1
   let g:statline_filename_relative = 1
 
-  " auto-close NERDtree if it's the only thing running
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
   let g:gundo_preview_bottom = 1
-  let g:nerdtree_tabs_startup_cd = 1
-  let NERDTreeShowHidden=1
-  let NERDTreeIgnore=['\~$', '\.swp$', '\.pyc$']
-  let NERDTreeMapOpenVSplit="v"
-  let NERDTreeMapOpenSplit="s"
-  let NERDTreeMinimalUI = 1
 
   let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp_cache'
 
