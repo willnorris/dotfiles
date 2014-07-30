@@ -1,5 +1,7 @@
 # map delete-char to a sane value
-bind editor    <delete>  backspace
+bind editor <delete> backspace
 
-bind pager		]		half-down
-bind pager		[		half-up
+bind pager ] half-down
+bind pager [ half-up
+
+bind editor <space> noop

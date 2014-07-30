@@ -1,51 +1,16 @@
 # imitate the old search-body function
 macro index \eb '/~b ' 'search in message bodies'
 
-# Show documentation when pressing F1
-macro generic <f1> "!lynx $MUTT_HOME/share/doc/mutt/manual.html\n" "Show Mutt documentation"
-macro index   <f1> "!lynx $MUTT_HOME/share/doc/mutt/manual.html\n" "Show Mutt documentation"
-macro pager   <f1> "!lynx $MUTT_HOME/share/doc/mutt/manual.html\n" "Show Mutt documentation"
-
-# replacement for delete
-macro index "d" "<save-message>=.Trash\n"
-macro pager "d" "<save-message>=.Trash\n"
-
 # Quick folder access
-macro index ",i" "<change-folder>=.\n" 
-macro pager ",i" "<change-folder>=.\n" 
-macro index ",d" "<change-folder>=.Drafts\n" 
-macro pager ",d" "<change-folder>=.Drafts\n" 
-macro index ",s" "<change-folder>=.Sent\n"
-macro pager ",s" "<change-folder>=.Sent\n"
-macro index ",t" "<change-folder>=.Trash\n"
-macro pager ",t" "<change-folder>=.Trash\n"
-
-macro index ",j" "<change-folder>=.Junk\n"
-macro pager ",j" "<change-folder>=.Junk\n"
-macro index ",cs" "<change-folder>=._confirmedSpam\n"
-macro pager ",cs" "<change-folder>=._confirmedSpam\n"
-macro index \ej "<save-message>=._confirmedSpam\n" "move message to junk folder"
-macro pager \ej "<save-message>=._confirmedSpam\n" "move message to junk folder"
-
-macro index ",p" "<change-folder>=.personal\n"
-macro pager ",p" "<change-folder>=.personal\n"
-macro index "Sp" "<save-message>=.personal\n"
-macro pager "Sp" "<save-message>=.personal\n"
-
-macro index ",D" "<change-folder>=.Development.diso\n"
-macro pager ",D" "<change-folder>=.Development.diso\n"
-macro index "SD" "<save-message>=.Development.diso\n"
-macro pager "SD" "<save-message>=.Development.diso\n"
-
-macro index ",V" "<change-folder>=.Vidoop\n"
-macro pager ",V" "<change-folder>=.Vidoop\n"
-macro index "SV" "<save-message>=.Vidoop\n"
-macro pager "SV" "<save-message>=.Vidoop\n"
-
+macro index y "<enter-command>unset trash<enter><tag-prefix><delete-message>" "archive message"
+macro pager y "<enter-command>unset trash<enter><delete-message>" "archive message"
+macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
+macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "go to starred messages"
+macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "go to drafts"
 
 # View filters
-macro index .r "<limit>~R\n"     # show read only
-macro index .f "<limit>~F\n"     # show flagged only
-macro index .n "<limit>~N\n"     # show new only
-macro index .a "<limit>~A\n"     # show all messages
-macro index .u "<limit>~s URGENT\n"  # show urgent messages
+macro index .r "<limit>~R\n"     "show read only"
+macro index .f "<limit>~F\n"     "show flagged only"
+macro index .n "<limit>~N\n"     "show new only"
+macro index .a "<limit>~A\n"     "show all messages"
+macro index .u "<limit>~s URGENT\n"  "show urgent messages"

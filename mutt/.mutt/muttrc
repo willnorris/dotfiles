@@ -1,16 +1,21 @@
-set mbox_type=Maildir     # using maildir
-set spoolfile=~/Maildir   # using maildir
-set folder=~/Maildir      # using maildir
+source ~/.mutt/credentials        # imap and smtp credentials
+
+set imap_keepalive = 900
+set imap_check_subscribed
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[GMail]/Drafts"
+
+
 set move=no               # hold messages in $MAIL
-set mask="^\\."           # show only courier style IMAP folders
+#set mask="^\\."           # show only courier style IMAP folders
 set sort=threads          # Specifies how to sort messages in the index menu.
 
 set postpone=ask-yes      # ask about postponing.
-set postponed=+.Drafts/   # save postponed messages to =.Drafts
+set postponed="=[Gmail]/Drafts"   # save postponed messages to +Drafts
 
 set mark_old=no           # don't mark unread new messages as old
-set copy                  # keep copies of outgoing mail ...
-set record=+.Sent/        # ... and save them in =.Sent
+set copy=no               # don't save a copy of sent messages (Gmail does this automatically)
 set confirmappend=no      # don't prompt to append message to existing mailbox
 
 
@@ -38,12 +43,8 @@ set header_cache="$HOME/.mutt-headers/"
 source ~/.mutt/bindings        # define key bindings
 source ~/.mutt/color           # define color
 source ~/.mutt/macros          # define macros
-source ~/.mutt/headers         # define headers
-source ~/.mutt/subscriptions   # define subscriptions
-source ~/.mutt/mailboxes       # define mailboxes
-source ~/.mutt/bindings        # define bindings
-source ~/.mutt/macros          # define macros
-source ~/.mutt/hooks           # define hooks to manage profiles
-#source ~/.mutt/muttng.sidebar # define muttng sidebar
+#source ~/.mutt/headers         # define headers
+#source ~/.mutt/subscriptions   # define subscriptions
+#source ~/.mutt/hooks           # define hooks to manage profiles
 
 #source ~/.mutt/smime
