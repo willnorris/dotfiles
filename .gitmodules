@@ -103,3 +103,6 @@
 [submodule "vim/.vim/bundle/vinegar"]
 	path = vim/.vim/bundle/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule "vim/.vim/bundle/go"]
+	path = vim/.vim/bundle/go
+	url = https://github.com/fatih/vim-go.git
