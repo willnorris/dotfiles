@@ -1,6 +1,6 @@
 # Homedir #
 
-[Homedir][] is a project developed by Christian "[docwhat](/docwhat)" Höltje
+[Homedir][] is a project developed by [Christian Höltje][docwhat]
 which allows for "controlling the contents of your home directory via a version
 control system in a sane way".
 
@@ -12,6 +12,7 @@ much has changed since then.  I could certainly stand to do a better job
 explaining it though.
 
 [Homedir]: https://github.com/docwhat/homedir
+[docwhat]: https://docwhat.org/
 [blogged about my setup]: http://willnorris.com/2005/03/bashrc
 
 Note to self: setup on a new host using:
