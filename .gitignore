@@ -1,2 +1,4 @@
 vim/.vim/bundle/*~
+
+mutt/.mutt/cache
 mutt/.mutt/credentials

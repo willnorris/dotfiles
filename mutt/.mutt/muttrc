@@ -8,7 +8,6 @@ set postponed ="+[GMail]/Drafts"
 
 
 set move=no               # hold messages in $MAIL
-#set mask="^\\."           # show only courier style IMAP folders
 set sort=threads          # Specifies how to sort messages in the index menu.
 
 set postpone=ask-yes      # ask about postponing.
@@ -18,6 +17,7 @@ set mark_old=no           # don't mark unread new messages as old
 set copy=no               # don't save a copy of sent messages (Gmail does this automatically)
 set confirmappend=no      # don't prompt to append message to existing mailbox
 
+auto_view text/html
 
 set tilde                 # fill out messages with '~'
 set editor=vim
@@ -38,13 +38,14 @@ set query_command="$HOME/local/bin/lbdbq '%s'"
 ## change index format
 set index_format="%4C %Z %{%b %d} %-18.18F (%4c) %M %s"
 
-set header_cache="$HOME/.mutt-headers/"
+set header_cache="~/.mutt/cache/headers/"
+set message_cachedir="~/.mutt/cache/bodies"
 
 source ~/.mutt/bindings        # define key bindings
 source ~/.mutt/color           # define color
 source ~/.mutt/macros          # define macros
 #source ~/.mutt/headers         # define headers
 #source ~/.mutt/subscriptions   # define subscriptions
-#source ~/.mutt/hooks           # define hooks to manage profiles
+source ~/.mutt/hooks           # define hooks to manage profiles
 
 #source ~/.mutt/smime
