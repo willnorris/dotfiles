@@ -119,6 +119,9 @@
   map <c-j> <c-w>j
   map <c-k> <c-w>k
   map <c-l> <c-w>l
+
+  imap <C-I>t <C-R>=system('timestamp -rfc3339')<C-M>
+  imap <C-I>e <C-R>=system('timestamp -epoch')<C-M>
 " }
 
 " When editing a file, always jump to the last known cursor position.
