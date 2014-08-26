@@ -1,3 +1,0 @@
-PROMPT_COLOR="$fg[red]"
-
-alias t="ssh -qt judah todo.sh"
