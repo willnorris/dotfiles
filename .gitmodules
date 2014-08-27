@@ -60,25 +60,25 @@
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/.vim/bundle/sleuth"]
 	path = vim/.vim/bundle/sleuth
-	url = git://github.com/tpope/vim-sleuth.git
+	url = https://github.com/tpope/vim-sleuth.git
 [submodule "vim/.vim/bundle/indent-object"]
 	path = vim/.vim/bundle/indent-object
-	url = git://github.com/michaeljsmith/vim-indent-object.git
+	url = https://github.com/michaeljsmith/vim-indent-object.git
 [submodule "vim/.vim/bundle/gundo"]
 	path = vim/.vim/bundle/gundo
-	url = git://github.com/sjl/gundo.vim.git
+	url = https://github.com/sjl/gundo.vim.git
 [submodule "vim/.vim/bundle/snipmate"]
 	path = vim/.vim/bundle/snipmate
-	url = git://github.com/msanders/snipmate.vim.git
+	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/.vim/bundle/ctrlp"]
 	path = vim/.vim/bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/.vim/bundle/sensible"]
 	path = vim/.vim/bundle/sensible
-	url = git://github.com/tpope/vim-sensible.git
+	url = https://github.com/tpope/vim-sensible.git
 [submodule "zsh/.zsh/bundle/zsh-syntax-highlighting"]
 	path = zsh/.zsh/bundle/zsh-syntax-highlighting
-	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "vim/.vim/bundle/signify"]
 	path = vim/.vim/bundle/signify
 	url = https://github.com/mhinz/vim-signify.git
