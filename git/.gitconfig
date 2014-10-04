@@ -1,5 +1,5 @@
 [alias]
-  amend = commit -m "" --amend
+  amend = commit --amend -m ""
   b = branch -v -v
   ctags = !.git/hooks/ctags
   hub = !hub
