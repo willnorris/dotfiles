@@ -1,15 +1,24 @@
-#
 # Lynx User Defaults File
-#
-# $Id$
-#
+# 
 # This file contains options saved from the Lynx Options Screen (normally
-# with the '>' key).  There is normally no need to edit this file manually,
-# since the defaults here can be controlled from the Options Screen, and the
-# next time options are saved from the Options Screen this file will be
-# completely rewritten.  You have been warned...
+# with the 'o' key).  To save options with that screen, you must select the
+# checkbox:
+#	Save options to disk
+#
+# You must then save the settings using the link on the line above the
+# checkbox:
+#	Accept Changes
+#
+# You may also use the command-line option "-forms_options", which displays
+# the simpler Options Menu instead.  Save options with that using the '>' key.
+# 
+# There is normally no need to edit this file manually, since the defaults
+# here can be controlled from the Options Screen, and the next time options
+# are saved from the Options Screen this file will be completely rewritten.
+# You have been warned...
+# 
 # If you are looking for the general configuration file - it is normally
-# called lynx.cfg, and it has different content and a different format.
+# called "lynx.cfg".  It has different content and a different format.
 # It is not this file.
 
 # accept_all_cookies allows the user to tell Lynx to automatically
@@ -17,6 +26,12 @@
 # prompt for each cookie.  Set accept_all_cookies to "TRUE" to accept
 # all cookies.
 accept_all_cookies=on
+
+# anonftp_password allows the user to tell Lynx to use the personal
+# email address as the password for anonymous ftp.  If no value is given,
+# Lynx will use the personal email address.  Set anonftp_password
+# to a different value if you choose.
+anonftp_password=
 
 # bookmark_file specifies the name and location of the default bookmark
 # file into which the user can paste links for easy access at a later
@@ -55,6 +70,7 @@ case_sensitive_searching=off
 #    Eastern European (windows-1250)
 #    Latin 3 (ISO-8859-3)
 #    Latin 4 (ISO-8859-4)
+#    Baltic Rim (ISO-8859-13)
 #    Baltic Rim (cp775)
 #    Baltic Rim (windows-1257)
 #    Cyrillic (ISO-8859-5)
@@ -64,6 +80,7 @@ case_sensitive_searching=off
 #    Arabic (ISO-8859-6)
 #    Arabic (cp864)
 #    Arabic (windows-1256)
+#    Celtic (ISO-8859-14)
 #    Greek (ISO-8859-7)
 #    Greek (cp737)
 #    Greek2 (cp869)
@@ -72,13 +89,15 @@ case_sensitive_searching=off
 #    Hebrew (cp862)
 #    Hebrew (windows-1255)
 #    Turkish (ISO-8859-9)
-#    ISO-8859-10
+#    Turkish (cp857)
+#    North European (ISO-8859-10)
 #    UNICODE (UTF-8)
 #    RFC 1345 w/o Intro
 #    RFC 1345 Mnemonic
 #    Ukrainian Cyrillic (cp866u)
 #    Ukrainian Cyrillic (KOI8-U)
-character_set=Western (ISO-8859-1)
+#    Cyrillic-Asian (PT154)
+character_set=UNICODE (UTF-8)
 
 # cookie_accept_domains and cookie_reject_domains are comma-delimited
 # lists of domains from which Lynx should automatically accept or reject
@@ -105,6 +124,10 @@ cookie_query_invalid_domains=
 cookie_reject_domains=
 
 cookie_strict_invalid_domains=
+
+# dir_list_order specifies the directory list order under DIRED_SUPPORT
+# (if implemented).  The default is "ORDER_BY_NAME"
+dir_list_order=ORDER_BY_NAME
 
 # dir_list_styles specifies the directory list style under DIRED_SUPPORT
 # (if implemented).  The default is "MIXED_STYLE", which sorts both
@@ -156,13 +179,13 @@ keypad_mode=NUMBERS_AS_ARROWS
 # lineedit_mode specifies the key binding used for inputting strings in
 # prompts and forms.  If lineedit_mode is set to "Default Binding" then
 # the following control characters are used for moving and deleting:
-
+# 
 #              Prev  Next       Enter = Accept input
 #    Move char: <-    ->        ^G    = Cancel input
 #    Move word: ^P    ^N        ^U    = Erase line
 #  Delete char: ^H    ^R        ^A    = Beginning of line
 #  Delete word: ^B    ^F        ^E    = End of line
-
+# 
 # Current lineedit modes are:
 #    Default Binding
 #    Alternate Bindings
@@ -208,6 +231,16 @@ multi_bookmarkZ=
 # your mailed comments.
 personal_mail_address=
 
+# personal_mail_name specifies your personal name, for mail.  The
+# name is sent for mailed comments.  Lynx will prompt for this,
+# showing the configured value as a default when sending mail.
+# This is not necessarily the same as a name provided as part of the
+# personal_mail_address.
+# Lynx does not save your changes to that default value as a side-effect
+# of sending email.  To update the default value, you must use the options
+# menu, or modify this file directly.
+personal_mail_name=
+
 # preferred_charset specifies the character set in MIME notation (e.g.,
 # ISO-8859-2, ISO-8859-5) which Lynx will indicate you prefer in requests
 # to http servers using an Accept-Charset header.  The value should NOT
@@ -226,7 +259,7 @@ preferred_charset=
 # fr, may be a comma-separated list in decreasing preference)
 # which Lynx will indicate you prefer in requests to http servers.
 # If a file in that language is available, the server will send it.
-# Otherwise, the server will send the file in it's default language.
+# Otherwise, the server will send the file in its default language.
 preferred_language=en
 
 # select_popups specifies whether the OPTIONs in a SELECT block which
