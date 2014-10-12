@@ -297,7 +297,7 @@ show_color=default
 # or color.  A value of "on" will set positioning to the left as the
 # default while a value of "off" will set 'hiding' of the cursor.
 # The default can be overridden via the -show_cursor command line toggle.
-show_cursor=off
+show_cursor=on
 
 # show_dotfiles specifies that the directory listing should include
 # "hidden" (dot) files/directories.  If set "on", this will be
@@ -323,7 +323,7 @@ sub_bookmarks=OFF
 # commands.  Set user_mode to "INTERMEDIATE" to turn off the extra info.
 # Use "ADVANCED" to see the URL of the currently selected link at the
 # bottom of the screen.
-user_mode=NOVICE
+user_mode=ADVANCED
 
 # If verbose_images is "on", lynx will print the name of the image
 # source file in place of [INLINE], [LINK] or [IMAGE]
