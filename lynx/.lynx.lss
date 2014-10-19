@@ -9,45 +9,38 @@
 
 # Document Metadata
 title:          normal:                 magenta
-# Special handling for link.
-link:           normal:                 white
-link.green:     bold:                   brightgreen
-link.red:       bold:                   black:          red
-link.blue:      bold:                   white:          blue
-link.toc:       bold:                   black:          white
-# Special cases for link - the rel or title is appended after the class.
-# <link rel=next class=red href="1">
-link.red.next:  bold:                   red
-link.red.prev:  bold:                   yellow:         red
-link.blue.prev: bold:                   yellow:         blue
-link.blue.next: bold:                   blue
-link.green.toc: bold:                   white:          green
+link:           normal:                 brightwhite
 
 # Sections
-h1:             bold:                   yellow:         blue
+h1:             bold:                   green
+h2:             bold:                   green
+h3:             bold:                   green
+h4:             bold:                   green
+h5:             bold:                   green
+h6:             bold:                   green
 address:        normal:                 magenta
 
 # Grouping Content
 hr:             normal:                 yellow
-blockquote:     normal:                 brightblue
-ul:             normal:                 brown
-li:             normal:                 magenta
-fig:            normal:                 gray
+pre:            normal:                 cyan
+blockquote:     normal:                 brightmagenta
+li:             normal:                 brown
 
 # Text-level semantics
-a:              bold:                   green
-em:             bold:                   brightblue
+a:              bold:                   blue
+em:             bold:                   white
 strong:         bold:                   brightred
 small:          dim:                    default
-big:            bold:                   yellow
-cite:           normal:                 cyan
-q:              normal:                 yellow:         magenta
+cite:           normal:                 brightmagenta
+q:              normal:                 brightmagenta
 code:           normal:                 cyan
-tt:             dim:                    brightmagenta:  black
-sub:            dim:                    gray
+var:            normal:                 cyan
+samp:           normal:                 cyan
+kbd:            normal:                 cyan
+sub:            dim:                    yellow
 sup:            bold:                   yellow
-i:              bold:                   brightblue
-b:              bold:                   red
+i:              bold:                   white
+b:              bold:                   brightred
 br:             normal:                 default
 
 # Embedded content
@@ -70,13 +63,10 @@ label:          normal:                 magenta
 #       status  - status bar
 #       whereis - whereis search target
 ##
-#normal:normal:default:blue
-alink:          reverse:                yellow:         black
-status:         normal:                 yellow:         normal
-alert:          bold:                   yellow:         red
-whereis:        reverse+underline:      magenta:        cyan
-# currently not used
-#value:normal:green
+alink:          reverse:                black:          blue
+status:         normal:                 yellow
+alert:          bold:                   black:          red
+whereis:        reverse+underline:      black:          cyan
 
 menu.bg:        normal:                 black:          lightgray
 menu.frame:     normal:                 black:          lightgray
@@ -90,41 +80,18 @@ hot.paste:      normal:                 brightred:      gray
 
 
 ##
-# Styles with classes - <ul class=red> etc.
-##
-
-ul.red:         underline:              brightred
-ul.blue:        bold:                   brightblue
-li.red:         reverse:                red:            yellow
-li.blue:        bold:                   blue
-strong.a:       bold:                   black:          red
-em.a:           reverse:                black:          blue
-strong.b:       bold:                   white:          red
-em.b:           reverse:                white:          blue
-strong.debug:   reverse:                green
-font.letter:    normal:                 white:          blue
-input.submit:   normal:                 cyan
-tr.baone:       bold:                   yellow
-tr.batwo:       bold:                   green
-tr.bathree:     bold:                   red
-
-
-##
 # View Source - styles that will be used when syntax highlighting is requested
 # (commandline option -prettysrc). 
 ##
-
-span.htmlsrc_comment:normal:            white
-span.htmlsrc_tag:normal:                white
-#If you don't like that the tag name and attribute name are displayed 
-#in different colors, comment the following line. 
-span.htmlsrc_attrib:normal:             cyan
-span.htmlsrc_attrval:normal:            magenta
-span.htmlsrc_abracket:normal:           white
-span.htmlsrc_entity:normal:             white
-##span.htmlsrc_href:
-##span.htmlsrc_entire:
-span.htmlsrc_badseq:normal:             red
-span.htmlsrc_badtag:normal:             red
-span.htmlsrc_badattr:normal:            red
-span.htmlsrc_sgmlspecial:normal:        yellow
+span.htmlsrc_comment:normal:            yellow
+span.htmlsrc_tag:normal:                normal
+span.htmlsrc_attrib:normal:             yellow
+span.htmlsrc_attrval:normal:            brown
+span.htmlsrc_abracket:normal:           yellow
+span.htmlsrc_entity:normal:             yellow
+span.htmlsrc_href:normal: green
+span.htmlsrc_entire:normal: magenta
+#span.htmlsrc_badseq:normal:             red
+#span.htmlsrc_badtag:normal:             red
+#span.htmlsrc_badattr:normal:            red
+span.htmlsrc_sgmlspecial:normal:         yellow
