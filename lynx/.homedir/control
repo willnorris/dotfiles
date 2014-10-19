@@ -1,8 +1,8 @@
 package: lynx
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
 standards-version: 1
 description: Lynx configuration
- Lynx configuration.  
+ Lynx configuration.
 

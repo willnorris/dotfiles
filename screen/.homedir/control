@@ -1,8 +1,8 @@
 package: screen
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
 standards-version: 1
 description: Screen configuration
- Screen configuration.  
+ Screen configuration.
 

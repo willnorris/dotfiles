@@ -1,10 +1,10 @@
 package: mutt
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
 standards-version: 1
 description: Mutt configuration
- Mutt configuration.  
+ Mutt configuration.
 dirs:
  .mutt
 

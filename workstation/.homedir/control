@@ -1,14 +1,14 @@
 package: workstation
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
  bash
  git
  gpg
  lynx
  netrc
  screen
- ssh 
+ ssh
  tmux
  tools
  vim

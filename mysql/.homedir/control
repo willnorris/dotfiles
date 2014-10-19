@@ -1,7 +1,7 @@
 package: mysql
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
 standards-version: 1
 description: MySQL configuration
- MySQL configuration.  
+ MySQL configuration.

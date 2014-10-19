@@ -1,7 +1,7 @@
 package: mail-delivery
 priority: normal
 maintainer: Will Norris <will@willnorris.com>
-depends: 
+depends:
 standards-version: 1
 description: Configuration for mail delivery
  Configuration for mail delivery
