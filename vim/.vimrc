@@ -59,13 +59,27 @@
   else
     let g:solarized_termtrans = 0
   endif
-  set background=dark
+
+  if $THEME == "light"
+    set background=light
+  else
+    set background=dark
+  endif
+
+  "let g:solarized_visibility = "high"
+  "let g:solarized_contrast = "high"
   colorscheme solarized
   syntax on
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
-  highlight SignColumn ctermbg=8
-  highlight FoldColumn ctermbg=8
+
+  if $THEME == "light"
+    highlight SignColumn ctermbg=7
+    highlight FoldColumn ctermbg=7
+  else
+    highlight SignColumn ctermbg=8
+    highlight FoldColumn ctermbg=8
+  endif
 " }
 
 " Mappings {
