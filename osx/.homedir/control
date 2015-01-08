@@ -6,9 +6,10 @@ standards-version: 1
 description: OS X configuration
  OS X configuration.
 dirs:
+ bin
  Library
  Library/Preferences
 mkdirs:
+ bin
  Library
  Library/Preferences
-
