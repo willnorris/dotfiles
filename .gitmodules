@@ -106,3 +106,6 @@
 [submodule "vim/.vim/bundle/go"]
 	path = vim/.vim/bundle/go
 	url = https://github.com/fatih/vim-go.git
+[submodule "vim/.vim/bundle/ctrlp-funky"]
+	path = vim/.vim/bundle/ctrlp-funky
+	url = https://github.com/tacahiroy/ctrlp-funky.git

@@ -123,6 +123,10 @@
   nnoremap <leader>u :GundoToggle<CR>
   nnoremap <leader>su :sign unplace *<CR>
 
+  nnoremap <Leader>fu :CtrlPFunky<Cr>
+  " narrow the list down with a word under cursor
+  nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
   " find current word in quickfix
   nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<cr>:copen<cr>
   " find last search in quickfix
@@ -192,6 +196,8 @@ augroup END
   let g:gundo_preview_bottom = 1
 
   let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp_cache'
+  let g:ctrlp_extensions = ['funky']
+  let g:ctrlp_funky_matchtype = 'path'
 
   let g:signify_vcs_list = [ 'git', 'hg' ]
   let g:signify_mapping_toggle_highlight = '<leader>sh'
