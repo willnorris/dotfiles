@@ -26,6 +26,7 @@
   set listchars=tab:>-,trail:-,extends:>,precedes:<
   set number " show line numbers
   set splitright "open vertical splits on the right
+  set linebreak
 
   " Scrolling
   set scrolloff=3
@@ -41,6 +42,8 @@
     set formatoptions+=cqj
   endif
 
+  set diffopt=filler,vertical
+
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
 " }
@@ -50,6 +53,7 @@
   set foldmethod=marker "fold on markers
   set foldlevel=100 " don't autofold anything
   set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
+  set foldcolumn=1
 " }
 
 " Colors {
@@ -108,6 +112,7 @@
   nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
   inoremap jk <ESC>
+  set timeout timeoutlen=1000 ttimeoutlen=100
 
   nmap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
 
@@ -119,9 +124,9 @@
 
   nmap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
   nmap <silent> <leader>st :SyntasticToggleMode<CR>
+  nnoremap <leader>su :sign unplace *<CR>
 
   nnoremap <leader>u :GundoToggle<CR>
-  nnoremap <leader>su :sign unplace *<CR>
 
   nnoremap <Leader>fu :CtrlPFunky<Cr>
   " narrow the list down with a word under cursor
