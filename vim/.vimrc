@@ -6,24 +6,21 @@
   call pathogen#helptags()
 " }
 
+" a handful of basic config options come from vim-sensible
+
 " General {
   set nocompatible " get out of vi-compatibility mode
-  set backspace=indent,eol,start " backspace over everything in insert mode
   set history=9999 " keep plenty of history
   set undodir^=~/.vim/undo
   set undofile
   set spellfile=~/.vim/en.utf-8.add
-  set hidden "allow changing buffers without saving
-  set wildmenu wildmode=list:longest,full
+  set hidden " allow changing buffers without saving
+  set wildmode=list:longest,full
   set modelines=5
-  filetype plugin indent on " load filetype plugin/indent settings
 " }
 
 " Vim UI {
-  set ruler " always show the cursor position
-  set showcmd " display incomplete commands
-  set incsearch " do incremental searching
-  set listchars=tab:>-,trail:-,extends:>,precedes:<
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   set number " show line numbers
   set splitright "open vertical splits on the right
   set linebreak
@@ -37,7 +34,6 @@
 " Text Formatting / Layout {
   set ignorecase smartcase infercase " smart case matching
   set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
-  set autoindent               " always set autoindenting on
   if v:version >= 704
     set formatoptions+=cqj
   endif
@@ -112,7 +108,6 @@
   nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
   inoremap jk <esc>
-  set timeout timeoutlen=1000 ttimeoutlen=100
 
   nnoremap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
 
