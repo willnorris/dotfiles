@@ -111,7 +111,7 @@
   " strip trailing whitespace
   nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
-  inoremap jk <ESC>
+  inoremap jk <esc>
   set timeout timeoutlen=1000 ttimeoutlen=100
 
   nnoremap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
@@ -128,23 +128,23 @@
 
   nnoremap <leader>u :GundoToggle<CR>
 
-  nnoremap <Leader>fu :CtrlPFunky<Cr>
+  nnoremap <leader>fu :CtrlPFunky<CR>
   " narrow the list down with a word under cursor
-  nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+  nnoremap <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 
   " find current word in quickfix
-  nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<cr>:copen<cr>
+  nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<CR>:copen<CR>
   " find last search in quickfix
-  nnoremap <leader>ff :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+  nnoremap <leader>ff :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
   " move around split windows with ctrl
-  noremap <c-h> <c-w>h
-  noremap <c-j> <c-w>j
-  noremap <c-k> <c-w>k
-  noremap <c-l> <c-w>l
+  noremap <C-H> <C-W>h
+  noremap <C-J> <C-W>j
+  noremap <C-K> <C-W>k
+  noremap <C-L> <C-W>l
 
-  inoremap <C-I>t <C-R>=system('timestamp -rfc3339')<C-M>
-  inoremap <C-I>e <C-R>=system('timestamp -epoch')<C-M>
+  inoremap <C-I>t <C-R>=system('timestamp -rfc3339')<CR>
+  inoremap <C-I>e <C-R>=system('timestamp -epoch')<CR>
 " }
 
 " When editing a file, always jump to the last known cursor position.
