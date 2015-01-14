@@ -90,7 +90,7 @@
   let mapleader = ";"
 
   " Don't use Ex mode, use Q for formatting
-  map Q gq
+  noremap Q gq
 
   " Use sane regexes.
   nnoremap / /\v
@@ -103,27 +103,27 @@
   nnoremap J :call Preserve("join")<CR>
 
   " Buffer navigation (;;) (;]) (;[) (;ls)
-  nmap <leader>; <C-^>
+  nnoremap <leader>; <C-^>
   " :map <leader>] :bnext<CR>
   " :map <leader>[ :bprev<CR>
-  nmap <leader>ls :buffers<CR>
+  nnoremap <leader>ls :buffers<CR>
 
   " strip trailing whitespace
-  nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+  nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
   inoremap jk <ESC>
   set timeout timeoutlen=1000 ttimeoutlen=100
 
-  nmap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
+  nnoremap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
 
-  nmap <silent> <leader>tt :TagbarToggle<CR>
+  nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
   " tab navigation
-  nmap <silent> <leader>tn :tabnew<CR>
-  nmap <silent> <leader>tc :tabclose<CR>
+  nnoremap <silent> <leader>tn :tabnew<CR>
+  nnoremap <silent> <leader>tc :tabclose<CR>
 
-  nmap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
-  nmap <silent> <leader>st :SyntasticToggleMode<CR>
+  nnoremap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
+  nnoremap <silent> <leader>st :SyntasticToggleMode<CR>
   nnoremap <leader>su :sign unplace *<CR>
 
   nnoremap <leader>u :GundoToggle<CR>
@@ -138,13 +138,13 @@
   nnoremap <leader>ff :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
   " move around split windows with ctrl
-  map <c-h> <c-w>h
-  map <c-j> <c-w>j
-  map <c-k> <c-w>k
-  map <c-l> <c-w>l
+  noremap <c-h> <c-w>h
+  noremap <c-j> <c-w>j
+  noremap <c-k> <c-w>k
+  noremap <c-l> <c-w>l
 
-  imap <C-I>t <C-R>=system('timestamp -rfc3339')<C-M>
-  imap <C-I>e <C-R>=system('timestamp -epoch')<C-M>
+  inoremap <C-I>t <C-R>=system('timestamp -rfc3339')<C-M>
+  inoremap <C-I>e <C-R>=system('timestamp -epoch')<C-M>
 " }
 
 " When editing a file, always jump to the last known cursor position.
