@@ -20,6 +20,7 @@
 " }
 
 " Vim UI {
+  set list
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   set number " show line numbers
   set splitright "open vertical splits on the right

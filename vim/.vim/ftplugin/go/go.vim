@@ -1,4 +1,5 @@
 set ts=8 sw=8 noet
+set nolist
 
 " Go has no max line-length, but set colorcolumn as a reference
 set colorcolumn=81
