@@ -3,3 +3,4 @@
 " to edit more liquid files, I may need to modify some of these rules.
 
 set textwidth=100
+set spell

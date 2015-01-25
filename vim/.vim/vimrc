@@ -80,6 +80,8 @@
     highlight SignColumn ctermbg=8
     highlight FoldColumn ctermbg=8
   endif
+
+  highlight SpellBad ctermfg=1
 " }
 
 " Mappings {
