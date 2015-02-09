@@ -22,7 +22,7 @@
   command = vimdiff
 
 [init]
-  #templatedir = ~/.git_template
+  templatedir = ~/.git_template
 
 [log]
   decorate = short
