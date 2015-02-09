@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# ensure exuberant ctags is used
-PATH=$HOME/local/bin:$PATH
-
-rm -f .git/tags
-#ctags --tag-relative -Rf.git/tags --exclude=.git --languages=-sql
