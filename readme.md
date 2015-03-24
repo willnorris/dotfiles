@@ -1,25 +1,13 @@
-# Homedir #
+This repositry contains my dot-files for various applications, structured as
+[homedir][] packages.
 
-[Homedir][] is a project developed by [Christian Höltje][docwhat]
-which allows for "controlling the contents of your home directory via a version
-control system in a sane way".
-
-Within this repositry you will find all of my various dot-files for
-applications like bash, vim, git, mutt, etc.  Feel free to peruse them and take
-whatever is useful for you.  My bash files are most certainly the most
-interesting.  I [blogged about my setup][] back in 2005, and amazingly not that
-much has changed since then.  I could certainly stand to do a better job
-explaining it though.
-
-[Homedir]: https://github.com/docwhat/homedir
-[docwhat]: https://docwhat.org/
-[blogged about my setup]: http://willnorris.com/2005/03/bashrc
+[homedir]: https://github.com/docwhat/homedir
 
 Note to self: setup on a new host using:
 
     curl -L https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
     cd $HOME/.homedir/packages
-    git clone git@github.com:willnorris/homedir-packages.git personal
+    git clone git@github.com:willnorris/dotfiles.git personal
     cd personal
     git submodule init
     git submodule update
@@ -28,9 +16,7 @@ Or for read-only:
 
     curl -L https://github.com/docwhat/homedir/raw/master/lib/homedir/setup.py | python
     cd $HOME/.homedir/packages
-    git clone https://github.com/willnorris/homedir-packages.git personal
+    git clone https://github.com/willnorris/dotfiles.git personal
     cd personal
     git submodule init
     git submodule update
-
-<!-- vim: set ft=mkd :-->
