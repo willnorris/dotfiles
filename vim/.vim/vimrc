@@ -48,7 +48,15 @@
   set foldmethod=marker "fold on markers
   set foldlevel=100 " don't autofold anything
   set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
-  set foldcolumn=1
+
+  nnoremap cof :call FoldColumnToggle()<cr>
+  function! FoldColumnToggle()
+      if &foldcolumn
+          setlocal foldcolumn=0
+      else
+          setlocal foldcolumn=1
+      endif
+  endfunction
 " }
 
 " Colors {
