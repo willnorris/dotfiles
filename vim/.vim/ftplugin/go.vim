@@ -10,9 +10,7 @@ set colorcolumn=81
 set keywordprg=":GoDoc"
 
 nmap <LocalLeader>i <Plug>(go-info)
-
-nmap <LocalLeader>gd <Plug>(go-doc)
-nmap <LocalLeader>gv <Plug>(go-doc-vertical)
+nmap <LocalLeader>f :GoFmt<CR>
 
 nmap <LocalLeader>r <Plug>(go-run)
 nmap <LocalLeader>b <Plug>(go-build)
