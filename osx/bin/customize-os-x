@@ -8,10 +8,7 @@
 # General UI/UX                                                               #
 ###############################################################################
 
-# Menu bar: disable transparency (pre-Yosemite)
-defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
-
-# Menu bar: disable transparency (Yosemite)
+# Menu bar: disable transparency
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Always show scrollbars
@@ -45,10 +42,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
 defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 
-# Disable Resume system-wide (pre-Yosemite)
-defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
-
-# Disable Resume system-wide (Yosemite)
+# Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
