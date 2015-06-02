@@ -1,0 +1,7 @@
+#!/bin/sh
+
+HOST=`hostname | cut -d. -f1`
+
+if [ -h "$HOME/.mutt/credentials" ] && [ `readlink $HOME/.mutt/credentials` == "$HOME/.secure/$HOST/mutt/credentials" ]; then
+  rm $HOME/.mutt/credentials
+fi
