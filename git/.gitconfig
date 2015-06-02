@@ -11,6 +11,14 @@
   svn-diff = !git-svn-diff
   x = !gitx
 
+  # git-codereview aliases (golang.org/x/review/git-codereview)
+  change = codereview change
+  gofmt = codereview gofmt
+  mail = codereview mail
+  pending = codereview pending
+  submit = codereview submit
+  sync = codereview sync
+
 [color]
   ui = auto
 
@@ -38,3 +46,9 @@
 
 [user]
   name = Will Norris
+
+# Allow pushing changes when working with a "read-only" remote from GitHub.
+# Only configured for personal repos though, not any organization-owned repos.
+[url "git@github.com:willnorris/"]
+    pushInsteadOf = https://github.com/willnorris/
+    pushInsteadOf = git://github.com/willnorris/
