@@ -92,7 +92,7 @@
 " }
 
 " Mappings {
-  let mapleader = ";"
+  let mapleader = "\<SPACE>"
   let maplocalleader = ","
 
   " Don't use Ex mode, use Q for formatting
