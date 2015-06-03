@@ -7,4 +7,6 @@ description: Mutt configuration
  Mutt configuration.
 dirs:
  .mutt
+mkdirs:
+ .mutt
 
