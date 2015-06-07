@@ -109,3 +109,6 @@
 [submodule "vim/.vim/bundle/ctrlp-funky"]
 	path = vim/.vim/bundle/ctrlp-funky
 	url = https://github.com/tacahiroy/ctrlp-funky.git
+[submodule "vim/.vim/bundle/golden-ratio"]
+	path = vim/.vim/bundle/golden-ratio
+	url = https://github.com/roman/golden-ratio.git
