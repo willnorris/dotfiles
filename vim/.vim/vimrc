@@ -120,7 +120,8 @@
 
   inoremap jk <esc>
 
-  nnoremap <silent> <leader>R :redraw!<CR>:redrawstatus!<CR>
+  nnoremap <silent> <leader>r :redraw!<CR>:redrawstatus!<CR>
+  nnoremap <leader>R :so $MYVIMRC<CR>
 
   nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
@@ -137,6 +138,8 @@
   nnoremap <leader>fu :CtrlPFunky<CR>
   " narrow the list down with a word under cursor
   nnoremap <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+
+  nnoremap cog :GoldenRatioToggle<CR>
 
   " find current word in quickfix
   nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<CR>:copen<CR>
@@ -215,6 +218,8 @@ augroup END
   let g:signify_mapping_toggle = '<leader>st'
 
   let g:syntastic_go_checkers=['go', 'gofmt', 'golint', 'gotype', 'govet']
+
+  let g:golden_ratio_exclude_nonmodifiable = 1
 " }
 
 " Google-specific settings {
