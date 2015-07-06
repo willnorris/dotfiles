@@ -152,8 +152,9 @@
   noremap <C-K> <C-W>k
   noremap <C-L> <C-W>l
 
-  inoremap <leader>it <C-R>=system('timestamp -rfc3339')<CR>
-  inoremap <leader>ie <C-R>=system('timestamp -epoch')<CR>
+  inoremap <C-L>t <C-R>=system('timestamp -rfc3339')<CR>
+  inoremap <C-L>z <C-R>=system('timestamp -rfc3339 -utc')<CR>
+  inoremap <C-L>e <C-R>=system('timestamp -epoch')<CR>
 " }
 
 " When editing a file, always jump to the last known cursor position.
