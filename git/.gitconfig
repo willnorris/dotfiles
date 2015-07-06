@@ -4,18 +4,20 @@
   ctags = !.git/hooks/ctags
   hub = !hub
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset' --abbrev-commit
-  # pr and pr-clean aliases from https://gist.github.com/gnarf/5406589
-  pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && :
-  pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
   s = status --short --branch
   svn-diff = !git-svn-diff
   x = !gitx
 
-  # git-codereview aliases (golang.org/x/review/git-codereview)
+  # GitHub pull request aliases (https://gist.github.com/gnarf/5406589)
+  pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && :
+  pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+  # git-codereview aliases (https://golang.org/x/review/git-codereview)
   change = codereview change
   gofmt = codereview gofmt
   mail = codereview mail
   pending = codereview pending
+  rebase-work = codereview rebase-work
   submit = codereview submit
   sync = codereview sync
 
@@ -46,6 +48,7 @@
 
 [user]
   name = Will Norris
+  email = will@willnorris.com
 
 # Allow pushing changes when working with a "read-only" remote from GitHub.
 # Only configured for personal repos though, not any organization-owned repos.
