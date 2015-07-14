@@ -17,7 +17,7 @@
   set hidden " allow changing buffers without saving
   set wildmode=list:longest,full
   set modelines=5
-  set mouse=a " enable mouse support
+  "set mouse=a " enable mouse support
 " }
 
 " Vim UI {
