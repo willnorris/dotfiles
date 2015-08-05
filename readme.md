@@ -20,3 +20,10 @@ Or for read-only:
     cd personal
     git submodule init
     git submodule update
+
+
+## License
+
+I'm not sure that many of the files here would constitute a creative work able
+to be covered by copyright.  But to the extent that they are, unless otherwise
+noted, they are made available under an [Apache 2.0 license](./LICENSE).
