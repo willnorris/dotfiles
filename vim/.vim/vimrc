@@ -120,7 +120,7 @@
 
   inoremap jk <esc>
 
-  nnoremap <silent> <leader>r :redraw!<CR>:redrawstatus!<CR>
+  nnoremap <silent> <leader>! :redraw!<CR>:redrawstatus!<CR>
   nnoremap <leader>R :so $MYVIMRC<CR>
 
   nnoremap <silent> <leader>tt :TagbarToggle<CR>
