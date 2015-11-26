@@ -5,6 +5,7 @@
   hub = !hub
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset'
   st = status --short --branch
+  start = !git init && git commit --allow-empty -m \"initial empty commit\"
   svn-diff = !git-svn-diff
   x = !gitx
 
