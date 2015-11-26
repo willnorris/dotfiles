@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "Status" && git status --short --branch
+
+echo "
+Log" && git l -n 5
+
+echo "
+Branches" && git b
