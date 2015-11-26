@@ -132,6 +132,7 @@
   nnoremap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
   nnoremap <silent> <leader>st :SyntasticToggleMode<CR>
   nnoremap <leader>su :sign unplace *<CR>
+  nnoremap <leader>dm :delmarks!<CR>:sign unplace *<CR>
 
   nnoremap <leader>u :GundoToggle<CR>
 
