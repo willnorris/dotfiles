@@ -56,3 +56,7 @@
 [url "git@github.com:willnorris/"]
     pushInsteadOf = https://github.com/willnorris/
     pushInsteadOf = git://github.com/willnorris/
+
+[url "git@github.com:cchmb/"]
+    pushInsteadOf = https://github.com/cchmb/
+    pushInsteadOf = git://github.com/cchmb/
