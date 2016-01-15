@@ -63,11 +63,11 @@ zle -A .backward-delete-char vi-backward-delete-char
 
 
 # History
-setopt hist_ignore_all_dups hist_ignore_space hist_no_functions \
-  hist_no_store share_history append_history
+setopt hist_expire_dups_first hist_ignore_space hist_no_functions \
+  hist_no_store inc_append_history share_history
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
 
