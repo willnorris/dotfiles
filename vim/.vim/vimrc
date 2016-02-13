@@ -128,6 +128,8 @@
   " tab navigation
   nnoremap <silent> <leader>tn :tabnew<CR>
   nnoremap <silent> <leader>tc :tabclose<CR>
+  nnoremap <S-L> :tabnext<CR>
+  nnoremap <S-H> :tabprevious<CR>
 
   nnoremap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
   nnoremap <silent> <leader>st :SyntasticToggleMode<CR>
