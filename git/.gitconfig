@@ -7,6 +7,7 @@
   st = status --short --branch
   start = !git init && git commit --allow-empty -m \"initial empty commit\"
   svn-diff = !git-svn-diff
+  who = log --graph --pretty=format:'%Cred%h%Creset - %C(blue)a: %an <%ae>%Creset %C(green)c: %cn <%ce>%Creset - %s'
   x = !gitx
 
   # GitHub pull request aliases (https://gist.github.com/gnarf/5406589)
