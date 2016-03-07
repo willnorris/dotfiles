@@ -38,6 +38,7 @@
 
 [log]
   decorate = short
+  follow = true
 
 [pull]
   rebase = true
