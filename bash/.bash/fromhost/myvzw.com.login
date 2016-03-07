@@ -1,5 +1,0 @@
-#
-# $Id: $
-#
-
-alias x='exit'
