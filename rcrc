@@ -1,2 +1,3 @@
 EXCLUDES="LICENSE README.md"
+SYMLINK_DIRS="zsh"
 UNDOTTED="bin Library"
