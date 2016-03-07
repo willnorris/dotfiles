@@ -1,2 +1,2 @@
 EXCLUDES="LICENSE README.md"
-UNDOTTED="bin"
+UNDOTTED="bin Library"
