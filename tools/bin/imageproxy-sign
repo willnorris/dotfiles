@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# Calculate the imageproxy signature for the specified URL
+
+KEY=$(cat /etc/imageproxy.key)
+DATA=$1
+echo -n $DATA | openssl dgst -sha256 -hmac $KEY -binary|base64| tr '/+' '_-'
