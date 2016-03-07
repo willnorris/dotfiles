@@ -1,8 +1,0 @@
-#!/bin/sh
-
-HOST=`hostname | cut -d. -f1`
-
-if [ -h "$HOME/.my.cnf" ] && [ `readlink $HOME/.my.cnf` == "$HOME/.secure/$HOST/mysql/my.cnf" ]; then
-  rm $HOME/.my.cnf
-fi
-

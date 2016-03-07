@@ -1,7 +1,0 @@
-package: netrc
-priority: normal
-maintainer: Will Norris <will@willnorris.com>
-depends:
-standards-version: 1
-description: netrc configuration
- netrc configuration.

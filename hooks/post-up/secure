@@ -12,3 +12,8 @@ function install_file() {
 
 install_file "gpg/secring.gpg"  ".gnupg/secring.gpg"
 install_file "gpg/pubring.gpg"  ".gnupg/pubring.gpg"
+install_file "mutt/credentials" ".mutt/credentials"
+install_file "mysql/my.cnf"     ".my.cnf"
+install_file "netrc"            ".netrc"
+install_file "ssh/private.key"  ".ssh/id_rsa"
+install_file "ssh/public.key"   ".ssh/id_rsa.pub"

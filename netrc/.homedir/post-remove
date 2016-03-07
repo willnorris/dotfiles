@@ -1,8 +1,0 @@
-#!/bin/sh
-
-HOST=`hostname | cut -d. -f1`
-
-if [ -h "$HOME/.netrc" ] && [ `readlink $HOME/.netrc` == "$HOME/.secure/$HOST/netrc" ]; then
-  rm $HOME/.netrc
-fi
-

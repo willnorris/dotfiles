@@ -1,8 +1,0 @@
-#!/bin/sh
-
-HOST=`hostname | cut -d. -f1`
-
-if [ -f "$HOME/.secure/$HOST/mysql/my.cnf" ]; then
-  ln -s $HOME/.secure/$HOST/mysql/my.cnf $HOME/.my.cnf
-fi
-
