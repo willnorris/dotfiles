@@ -1,3 +1,6 @@
 EXCLUDES="LICENSE README.md"
-SYMLINK_DIRS="git_template zsh"
+
+# "bundle" should really be "vim/bundle"
+SYMLINK_DIRS="git_template bundle zsh"
+
 UNDOTTED="bin Library"
