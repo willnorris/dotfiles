@@ -1,12 +1,11 @@
-This repositry contains my dotfiles for various applications, structured as
-[homedir][] packages.
-
-[homedir]: https://github.com/docwhat/homedir
+This repositry contains my dotfiles for various applications.
 
 Setup on a new host:
 
-    curl -L https://github.com/willnorris/homedir/raw/master/lib/homedir/setup.py | python
-    git clone --recursive https://github.com/willnorris/dotfiles.git $HOME/.homedir/packages/personal
+* Install [rcm](https://github.com/thoughtbot/rcm)
+* `git clone --recursive https://github.com/willnorris/dotfiles $HOME/.dotfiles`
+* `cp $HOME/.dotfiles/rcrc $HOME/.rcrc` and edit if needed
+* `rcup`
 
 
 ## License
