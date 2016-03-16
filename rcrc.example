@@ -1,3 +1,4 @@
+DOTFILES_DIRS="${HOME}/.dotfiles"
 EXCLUDES="LICENSE README.md *.example"
 
 # "bundle" should really be "vim/bundle"
