@@ -1,4 +1,4 @@
-EXCLUDES="LICENSE README.md"
+EXCLUDES="LICENSE README.md *.example"
 
 # "bundle" should really be "vim/bundle"
 SYMLINK_DIRS="git_template bundle zsh"
