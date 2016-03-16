@@ -1,6 +1,2 @@
-#
-# $Id$
-#
-
-source ~/.mutt/muttrc				# get standard mutt configuration
-source ~/.mutt/muttng.sidebar		# setup muttng sidebar
+source ~/.mutt/muttrc         # get standard mutt configuration
+source ~/.mutt/muttng.sidebar # setup muttng sidebar
