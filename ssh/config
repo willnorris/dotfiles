@@ -61,7 +61,7 @@ Host elias-remote
   User willnorris
   ForwardAgent yes
   PreferredAuthentications publickey,gssapi-with-mic,hostbased,keyboard-interactive,password
-  ProxyCommand /Users/willnorris/bin/ssh-proxy %h %p
+  ProxyCommand corp-ssh-helper %h %p
 
 Host ananias
   HostName ananias.i
