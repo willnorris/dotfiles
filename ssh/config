@@ -1,16 +1,9 @@
-#
-# $Id: $
-#
+# vim: set ft=sshconfig :
 
-#HostbasedAuthentication yes
-#PreferredAuthentications hostbased,publickey,password
-
-#HostbasedUsesNameFromPacketOnly yes
 ConnectionAttempts 3
 
 Host *
   IdentityFile ~/.ssh/id_rsa
-  #IdentityFile ~/.ssh/id_dsa
 
   ControlPath ~/.ssh/master-%r@%h:%p
   ControlMaster auto
@@ -26,8 +19,8 @@ Host ark
   Port 10022
   User admin
 
-Host serenity
-  HostName serenity.lan
+Host esther
+  HostName esther.lan
   User elisabeth
 
 # Personal
@@ -39,10 +32,6 @@ Host strongspace
   HostName willnorris.strongspace.com
   User willnorris
 
-Host linode
-  HostName linode.willnorris.net
-  User willnorris
-
 Host gce
   HostName gce.willnorris.net
   User willnorris
@@ -51,20 +40,6 @@ Host gce
 Host elias
   HostName elias.mtv
   User willnorris
-  #GSSAPIDelegateCredentials yes
-  #RemoteForward 3000 localhost:1817
-  ForwardAgent yes
-  PreferredAuthentications publickey,gssapi-with-mic,hostbased,keyboard-interactive,password
-
-Host elias-remote
-  HostName elias.mtv
-  User willnorris
   ForwardAgent yes
   PreferredAuthentications publickey,gssapi-with-mic,hostbased,keyboard-interactive,password
   ProxyCommand corp-ssh-helper %h %p
-
-Host ananias
-  HostName ananias.i
-  User willnorris
-  ForwardAgent yes
-  PreferredAuthentications publickey,gssapi-with-mic,hostbased,keyboard-interactive,password
