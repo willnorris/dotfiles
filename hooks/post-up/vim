@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p $HOME/.vim/undo
 chmod 700 $HOME/.vim/undo

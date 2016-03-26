@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 HOST=`hostname | cut -d. -f1`
 
