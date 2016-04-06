@@ -112,3 +112,6 @@
 [submodule "zsh/bundle/zsh-syntax-highlighting"]
 	path = zsh/bundle/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "vim/bundle/airline-themes"]
+	path = vim/bundle/airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
