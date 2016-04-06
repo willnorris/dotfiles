@@ -1,8 +1,1 @@
-# El Capitan made some change that is effecting the entry order of the PATH
-# variable.  Specifically, entries from /etc/paths are being placed before
-# paths set in my ~/.zshenv.  Temporarily fix this by reloading ~/.zshenv.
-if [[ $(sw_vers -productVersion) == 10.11* ]]; then
-  source ${HOME}/.zshenv
-fi
-
 alias ls=' ls -FG'

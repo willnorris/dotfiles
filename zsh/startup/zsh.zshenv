@@ -3,7 +3,6 @@ export NAME="Will Norris"
 export EMAIL="will@willnorris.com"
 
 # Setup path-like variables
-typeset -U path manpath
 export -TU LD_LIBRARY_PATH ld_library_path
 export -TU PYTHONPATH python_path
 
@@ -47,9 +46,3 @@ done
 
 local file="${HOME}/.zsh/host/${HOST}.env"
 [[ -r ${file} ]] && source ${file}
-
-
-# Lastly, add directories in $HOME
-path=($HOME/bin $path)
-manpath=($HOME/man $manpath)
-
