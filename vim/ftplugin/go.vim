@@ -1,8 +1,6 @@
 set ts=8 sw=8 noet
 set nolist
 
-let g:go_fmt_command = "goimports"
-
 " Go has no max line-length, but set colorcolumn as a reference
 set colorcolumn=81
 
@@ -10,7 +8,7 @@ set colorcolumn=81
 set keywordprg=":GoDoc"
 
 nmap <LocalLeader>i <Plug>(go-info)
-nmap <LocalLeader>f :GoFmt<CR>
+nmap <LocalLeader>f :GoImports<CR>
 
 nmap <LocalLeader>r <Plug>(go-run)
 nmap <LocalLeader>b <Plug>(go-build)

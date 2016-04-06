@@ -228,6 +228,11 @@ augroup END
   let g:signify_mapping_toggle = '<leader>st'
 
   let g:syntastic_go_checkers=['go', 'gofmt', 'golint', 'gotype', 'govet']
+  let g:syntastic_mode_map = {
+      \ "mode": "active",
+      \ "active_filetypes": [],
+      \ "passive_filetypes": ["go"],
+      \ }
 
   let g:golden_ratio_exclude_nonmodifiable = 1
 " }
