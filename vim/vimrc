@@ -2,8 +2,10 @@
 
 " Runtime Path {
   runtime bundle/pathogen/autoload/pathogen.vim
-  call pathogen#infect()
-  call pathogen#helptags()
+  if exists('*pathogen#infect')
+    call pathogen#infect()
+    call pathogen#helptags()
+  endif
 " }
 
 " a handful of basic config options come from vim-sensible
@@ -76,7 +78,11 @@
 
   "let g:solarized_visibility = "high"
   "let g:solarized_contrast = "high"
-  colorscheme solarized
+  try
+    colorscheme solarized
+  catch /^Vim\%((\a\+)\)\=:E185/
+    " ignore
+  endtry
   syntax on
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
