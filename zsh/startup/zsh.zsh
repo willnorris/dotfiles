@@ -4,8 +4,6 @@ set -k
 # Autoload zsh functions.
 fpath+="$HOME/.zsh/completion"
 
-autoload -U compinit && compinit
-
 zstyle ':completion:*' menu select=2
 
 # use vi key bindings
