@@ -50,10 +50,6 @@ SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
 
-# todo.txt
-export TODOTXT_DEFAULT_ACTION=ls
-alias t=todo.sh
-
 # Alias common commands to begin with a space so they don't appear in zsh
 # history.  This is the closest I can come to Bash's HISTIGNORE setting
 for c (fg bg jobs exit clear reset); do
