@@ -1,3 +1,6 @@
+# vim: ft=zsh
+
+autoload -U colors && colors
 PROMPT_COLOR="%{${fg[blue]}%}"
 
 command -v rbenv &>/dev/null \

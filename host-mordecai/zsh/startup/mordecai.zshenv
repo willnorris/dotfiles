@@ -1,3 +1,5 @@
+# vim: ft=zsh
+
 # Homebrew
 export HOMEBREW_HOME=/opt/homebrew
 path=($HOMEBREW_HOME/bin $HOMEBREW_HOME/sbin $path)
