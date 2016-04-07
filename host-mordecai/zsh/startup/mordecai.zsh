@@ -3,11 +3,12 @@
 autoload -U colors && colors
 PROMPT_COLOR="%{${fg[blue]}%}"
 
-command -v rbenv &>/dev/null \
-  && eval "$(rbenv init -)"
+if (( $+commands[rbenv] )); then
+  eval "$(rbenv init - --no-rehash zsh)"
+fi
 
-if [[ -x `brew --prefix grc`/etc/grc.bashrc ]]; then
-  source `brew --prefix grc`/etc/grc.bashrc
+if [[ -f $HOMEBREW_HOME/opt/grc/etc/grc.bashrc ]]; then
+  source $HOMEBREW_HOME/opt/grc/etc/grc.bashrc
 fi
 
 if [[ -n "$HOMEBREW_HOME" ]]; then

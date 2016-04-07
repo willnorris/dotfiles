@@ -5,15 +5,9 @@ export HOMEBREW_HOME=/opt/homebrew
 path=($HOMEBREW_HOME/bin $HOMEBREW_HOME/sbin $path)
 manpath=($HOMEBREW_HOME/man $HOMEBREW_HOME/share/man $manpath)
 
-brew --prefix ruby &>/dev/null && \
-  path=(`brew --prefix ruby`/bin $path)
-
 export RBENV_ROOT=$HOMEBREW_HOME/var/rbenv
 
 path=($HOME/Projects/jekyll/bin $path)
-
-#export GEM_HOME=/opt/homebrew/lib/ruby/gems/1.9.1
-#path=($GEM_HOME/bin $path)
 
 # Android Developer Tools
 export ANDROID_HOME=/opt/android-sdk
