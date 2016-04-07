@@ -1,33 +1,13 @@
 # Ignore commands that begin with '#'
 set -k
 
-# Allow for functions in the prompt.
-setopt PROMPT_SUBST
-
 # Autoload zsh functions.
 fpath+="$HOME/.zsh/completion"
 fpath+="/opt/homebrew/share/zsh/site-functions"
 
-autoload -U colors compinit
-colors
-compinit
+autoload -U compinit && compinit
 
 zstyle ':completion:*' menu select=2
-
-# Enable auto-execution of functions.
-typeset -ga preexec_functions
-typeset -ga precmd_functions
-typeset -ga chpwd_functions
-
-# Append git functions needed for prompt if zsh has the regex module
-zmodload zsh/regex &>/dev/null
-if [[ $? -eq 0 ]]; then
-  preexec_functions+='preexec_update_git_vars'
-  precmd_functions+='precmd_update_git_vars'
-  chpwd_functions+='chpwd_update_git_vars'
-fi
-
-precmd_functions+='precmd_set_xterm_title'
 
 # use vi key bindings
 bindkey -v
@@ -57,11 +37,6 @@ done
 # TODO: eliminate the need for these host-specific configs or move to rvm
 local file="${HOME}/.zsh/host/${SHORT_HOST}"
 [[ -r ${file} ]] && source ${file}
-
-# Set up the prompt
-PROMPT='
-%{$PROMPT_COLOR%}%~$(prompt_git_info)%{$PROMPT_COLOR%}
-%# %{$reset_color%}'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

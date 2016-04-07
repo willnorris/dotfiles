@@ -1,0 +1,23 @@
+# vim: ft=zsh
+
+autoload -Uz add-zsh-hook
+autoload -Uz colors && colors
+autoload -Uz prompt
+
+add-zsh-hook preexec preexec_update_git_vars
+add-zsh-hook precmd precmd_update_git_vars
+add-zsh-hook chpwd chpwd_update_git_vars
+
+add-zsh-hook precmd precmd_set_xterm_title
+
+function prompt_willnorris {
+  print "
+%{$PROMPT_COLOR%}%~$(prompt_git_info)%{$PROMPT_COLOR%}
+%# %{$reset_color%}"
+}
+
+function prompt_willnorris_setup {
+  PROMPT='$(prompt_willnorris)'
+}
+
+prompt_willnorris_setup "$@"
