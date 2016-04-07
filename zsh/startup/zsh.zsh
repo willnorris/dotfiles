@@ -3,7 +3,6 @@ set -k
 
 # Autoload zsh functions.
 fpath+="$HOME/.zsh/completion"
-fpath+="/opt/homebrew/share/zsh/site-functions"
 
 autoload -U compinit && compinit
 

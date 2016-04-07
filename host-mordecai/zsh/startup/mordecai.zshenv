@@ -1,11 +1,6 @@
 # vim: ft=zsh
 
-# Homebrew
-export HOMEBREW_HOME=/opt/homebrew
-path=($HOMEBREW_HOME/bin $HOMEBREW_HOME/sbin $path)
-manpath=($HOMEBREW_HOME/man $HOMEBREW_HOME/share/man $manpath)
-
-export RBENV_ROOT=$HOMEBREW_HOME/var/rbenv
+export RBENV_ROOT=/opt/homebrew/var/rbenv
 
 path=($HOME/Projects/jekyll/bin $path)
 
