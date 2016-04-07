@@ -1,15 +1,8 @@
 # vim: ft=zsh
 
-autoload -Uz add-zsh-hook
-autoload -Uz colors && colors
-autoload -Uz prompt
+autoload -Uz add-zsh-hook colors vcs_info
 
-add-zsh-hook preexec preexec_update_git_vars
-add-zsh-hook precmd precmd_update_git_vars
-add-zsh-hook chpwd chpwd_update_git_vars
-
-add-zsh-hook precmd precmd_set_xterm_title
-
+colors
 if (( ! $+PROMPT_COLOR )); then
   case $SHORT_HOST in
     elias) PROMPT_COLOR="${fg[red]}" ;;
@@ -21,15 +14,31 @@ if (( ! $+PROMPT_COLOR )); then
   esac
 fi
 
+function prompt_willnorris_hook_precmd {
+  vcs_info 2>/dev/null
+}
 
 function prompt_willnorris {
-  print "
-%{$PROMPT_COLOR%}%~$(prompt_git_info)%{$PROMPT_COLOR%}
-%# %{$reset_color%}"
+  print -n "\n%{$PROMPT_COLOR%}%~"
+
+  if [[ -n ${vcs_info_msg_0_} ]]; then
+    print -n " %{${fg[yellow]}%}(${vcs_info_msg_0_})"
+  fi
+
+  print -n "%{$PROMPT_COLOR%}\n%# %{$reset_color%}"
 }
 
 function prompt_willnorris_setup {
   PROMPT='$(prompt_willnorris)'
+
+  add-zsh-hook precmd prompt_willnorris_hook_precmd
+  add-zsh-hook precmd precmd_set_xterm_title
+
+  zstyle ':vcs_info:*' disable bzr cdv cvs darcs fossil mtn svk tla
+  zstyle ':vcs_info:git*' formats "%b%m%u%c"
+  zstyle ':vcs_info:*' check-for-changes true
+  zstyle ':vcs_info:*' stagedstr   "‡"
+  zstyle ':vcs_info:*' unstagedstr "‡"
 }
 
 prompt_willnorris_setup "$@"
