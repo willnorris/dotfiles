@@ -1,4 +1,0 @@
-PROMPT_COLOR="%{${fg[blue]}%}"
-
-source `brew --prefix grc`/etc/grc.bashrc
-

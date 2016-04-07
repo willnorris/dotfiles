@@ -10,6 +10,18 @@ add-zsh-hook chpwd chpwd_update_git_vars
 
 add-zsh-hook precmd precmd_set_xterm_title
 
+if (( ! $+PROMPT_COLOR )); then
+  case $SHORT_HOST in
+    elias) PROMPT_COLOR="${fg[red]}" ;;
+    esther) PROMPT_COLOR="${fg[cyan]}" ;;
+    judah) PROMPT_COLOR="${fg[green]}" ;;
+    mordecai) PROMPT_COLOR="${fg[blue]}" ;;
+    serenity) PROMPT_COLOR="${fg[cyan]}" ;;
+    vashti) PROMPT_COLOR="${fg[blue]}" ;;
+  esac
+fi
+
+
 function prompt_willnorris {
   print "
 %{$PROMPT_COLOR%}%~$(prompt_git_info)%{$PROMPT_COLOR%}

@@ -1,5 +1,3 @@
-PROMPT_COLOR="%{${fg[cyan]}%}"
-
 command -v pyenv &>/dev/null \
   && eval "$(pyenv init -)"
 
