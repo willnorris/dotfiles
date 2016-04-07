@@ -16,7 +16,6 @@ path=($ANDROID_HOME/tools $ANDROID_HOME/platform-tools $path)
 
 # Go
 path=(/usr/local/go/bin $path)
-export GOPATH=$HOME
 path=($(go env GOPATH)/bin $(go env GOROOT)/bin $path)
 
 path=($GOPATH/src/camlistore.org/bin $path)
