@@ -18,7 +18,6 @@ HOSTNAME=$HOST
 
 HOSTNAME=$HOSTNAME:l
 HOST=${HOSTNAME%%.*}
-OS=${$(uname):l}
 
 # build networks array -- this allows for login scripts that apply to
 # increasinly more specific portions of a network.  For example, given the

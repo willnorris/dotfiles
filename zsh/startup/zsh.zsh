@@ -77,13 +77,9 @@ alias t=todo.sh
 
 # Alias common commands to begin with a space so they don't appear in zsh
 # history.  This is the closest I can come to Bash's HISTIGNORE setting
-for c (ls fg bg jobs exit clear reset); do
+for c (fg bg jobs exit clear reset); do
   alias $c=" $c"
 done
-
-[[ -r ${HOME}/.zsh/os/${OS} ]] && source ${HOME}/.zsh/os/${OS}
-[[ ${OS} != ${OSTYPE} ]] && [[ -r ${HOME}/.zsh/os/${OSTYPE} ]] && \
-  source ${HOME}/.zsh/os/${OSTYPE}
 
 # iterate through networks
 for NETWORK in "${NETWORKS[@]}"
@@ -116,15 +112,6 @@ fi
 PROMPT='
 %{$PROMPT_COLOR%}%~$(prompt_git_info)%{$PROMPT_COLOR%}
 %# %{$reset_color%}'
-
-# enable color support of ls (may be named dircolors or gdircolors)
-eval "`dircolors -b $HOME/.shell/dircolors.ansi-dark 2>/dev/null`"
-eval "`gdircolors -b $HOME/.shell/dircolors.ansi-dark 2>/dev/null`"
-
-# have `ls` output color if it knows how
-if [[ -n `ls --version 2>/dev/null | grep coreutils` ]]; then
-  alias ls=' ls --color=auto -F'
-fi
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
