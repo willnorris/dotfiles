@@ -31,27 +31,6 @@ fi
 
 precmd_functions+='precmd_set_xterm_title'
 
-# build magical functions on old zsh
-if [[ $__zsh_version < 4.3.4 ]]; then
-  preexec() {
-    for func in $preexec_functions; do
-      $func $*
-    done
-  }
-
-  precmd() {
-    for func in $precmd_functions; do
-      $func $*
-    done
-  }
-
-  chpwd() {
-    for func in $chpwd_functions; do
-      $func $*
-    done
-  }
-fi
-
 # use vi key bindings
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
@@ -81,32 +60,9 @@ for c (fg bg jobs exit clear reset); do
   alias $c=" $c"
 done
 
-# iterate through networks
-for NETWORK in "${NETWORKS[@]}"
-do
-  [[ -r ${HOME}/.zsh/network/${NETWORK} ]] &&  \
-    source ${HOME}/.zsh/network/${NETWORK}
-done
-
-# hostname or default -- this is necessary when I plugin to something like a
-# DSL line and it assigns me some weird hostname based on the ip address.
-if [[ -r ${HOME}/.zsh/host/${HOST} ]]; then
-  source ${HOME}/.zsh/host/${HOST}
-else
-  source ${HOME}/.zsh/host/default
-fi
-
-# The HOST variable above resolves only to the local portion of the machine
-# hostname. For example, it would not differentiate between the machines
-# "foo.bar.com" and "foo.example.com".  This last line allows you to create
-# a file that uses the fully qualified hostname.
-#
-# Note that this should only be necessary if you have two machines with the
-# same name on two different networks and they need individual configurations
-if [[ "$HOSTNAME" != "$HOST" && -r ${HOME}/.zsh/host/${HOSTNAME} ]]; then
-   source ${HOME}/.zsh/host/${HOSTNAME}
-fi
-
+# TODO: eliminate the need for these host-specific configs or move to rvm
+local file="${HOME}/.zsh/host/${SHORT_HOST}"
+[[ -r ${file} ]] && source ${file}
 
 # Set up the prompt
 PROMPT='

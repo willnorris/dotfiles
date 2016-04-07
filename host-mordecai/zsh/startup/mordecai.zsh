@@ -11,6 +11,6 @@ if [[ -f $HOMEBREW_HOME/opt/grc/etc/grc.bashrc ]]; then
   source $HOMEBREW_HOME/opt/grc/etc/grc.bashrc
 fi
 
-if [[ -n "$HOMEBREW_HOME" ]]; then
+if [[ -d "$HOMEBREW_HOME" ]]; then
   fpath+=$HOMEBREW_HOME/share/zsh-completions
 fi
