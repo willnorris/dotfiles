@@ -9,7 +9,7 @@ if [[ -r ~/.config/personal/dircolors ]]; then
 fi
 
 if (( $+commands[gls] )); then
-  alias ls=" gls --color=auto -F"
+  alias ls=" gls --color=auto -F -N"
 elif ls --color=auto &>/dev/null; then
   alias ls=" ls --color=auto -F"
 else
