@@ -20,8 +20,6 @@
   set wildmode=list:longest,full
   set modelines=5
   "set mouse=a " enable mouse support
-
-  set shell=bash\ --norc " TODO: clean up my zsh config so this isn't needed
 " }
 
 " Vim UI {
