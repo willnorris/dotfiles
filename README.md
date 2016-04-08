@@ -4,7 +4,7 @@ Setup on a new host:
 
 * Install [rcm](https://github.com/thoughtbot/rcm)
 * `git clone --recursive https://github.com/willnorris/dotfiles $HOME/.dotfiles`
-* `cp $HOME/.dotfiles/rcrc $HOME/.rcrc` and edit if needed
+* `cp $HOME/.dotfiles/rcrc.example $HOME/.rcrc` and edit if needed
 * `rcup`
 
 
