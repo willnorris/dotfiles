@@ -22,10 +22,6 @@ for c (fg bg jobs exit clear reset); do
   alias $c=" $c"
 done
 
-# TODO: eliminate the need for these host-specific configs or move to rvm
-local file="${HOME}/.zsh/host/${SHORT_HOST}"
-[[ -r ${file} ]] && source ${file}
-
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
