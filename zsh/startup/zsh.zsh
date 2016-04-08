@@ -37,5 +37,7 @@ export VISUAL=${EDITOR}
 export PAGER='less'
 export LYNX_LSS=${HOME}/.lynx.lss
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -d "$HOME/.zsh/bundle/zsh-syntax-highlighting" ]]; then
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+  source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
