@@ -33,6 +33,9 @@
 [diff "vim"]
   command = vimdiff
 
+[http]
+  cookiefile = ~/.gitcookies
+
 [init]
   templatedir = ~/.git_template
 
@@ -56,9 +59,9 @@
 # Allow pushing changes when working with a "read-only" remote from GitHub.
 # Only configured for personal repos though, not any organization-owned repos.
 [url "git@github.com:willnorris/"]
-    pushInsteadOf = https://github.com/willnorris/
-    pushInsteadOf = git://github.com/willnorris/
+  pushInsteadOf = https://github.com/willnorris/
+  pushInsteadOf = git://github.com/willnorris/
 
 [url "git@github.com:cchmb/"]
-    pushInsteadOf = https://github.com/cchmb/
-    pushInsteadOf = git://github.com/cchmb/
+  pushInsteadOf = https://github.com/cchmb/
+  pushInsteadOf = git://github.com/cchmb/
