@@ -19,13 +19,36 @@ function prompt_willnorris_hook_precmd {
 }
 
 function prompt_willnorris {
-  print -n "\n%{$PROMPT_COLOR%}%~"
+  (( split = $LINES >= 20 )) # split prompt if sufficient vertical space
+  (( trunc = $split == 0 || $COLUMNS < 80 )) # truncate prompt if limited space
+
+  if (( $split )); then
+    print ""
+  fi
+  print -n "%{$PROMPT_COLOR%}"
+
+  if (( $trunc )); then
+    if (( $split )); then
+      (( cols = $COLUMNS * 3/4))
+    else
+      (( cols = $COLUMNS * 1/4))
+    fi
+    print -n "%${cols}<…<%~%<<"
+  else
+    print -n "%~"
+  fi
 
   if [[ -n ${vcs_info_msg_0_} ]]; then
     print -n " %{${fg[yellow]}%}(${vcs_info_msg_0_})"
   fi
 
-  print -n "%{$PROMPT_COLOR%}\n%# %{$reset_color%}"
+  print -n "%{$PROMPT_COLOR%}"
+  if (( $split )); then
+    print ""
+  else
+    print -n " "
+  fi
+  print -n "%# %{$reset_color%}"
 }
 
 function prompt_willnorris_setup {
@@ -37,7 +60,7 @@ function prompt_willnorris_setup {
   zstyle ':vcs_info:*' disable bzr cdv cvs darcs fossil mtn svk tla
   zstyle ':vcs_info:git*' formats "%b%m%u%c"
   zstyle ':vcs_info:*' check-for-changes true
-  zstyle ':vcs_info:*' stagedstr   "‡"
+  zstyle ':vcs_info:*' stagedstr   "†"
   zstyle ':vcs_info:*' unstagedstr "‡"
 }
 
