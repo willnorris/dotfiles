@@ -1,4 +1,5 @@
 # https://github.com/Homebrew/homebrew-bundle
+tap 'homebrew/nginx'
 tap 'thoughtbot/formulae'
 
 brew 'browser'
@@ -11,6 +12,7 @@ brew 'git'
 brew 'git-crypt'
 brew 'gnupg'
 brew 'grc'
+brew 'homebrew/nginx/nginx-full', args: ['with-lua-module', 'with-set-misc-module']
 brew 'httrack'
 brew 'hub'
 brew 'imagemagick'
