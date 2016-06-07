@@ -1,5 +1,5 @@
 DOTFILES_DIRS="${HOME}/.dotfiles"
-EXCLUDES="LICENSE README.md *.example"
+EXCLUDES="Brewfile LICENSE README.md *.example"
 
 # "bundle" should really be "vim/bundle"
 SYMLINK_DIRS="git_template bundle"
