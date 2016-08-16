@@ -6,6 +6,7 @@ fi
 
 if (( $+RBENV_ROOT )); then
   path=($RBENV_ROOT/bin $path)
+  path=($RBENV_ROOT/shims $path)
 fi
 
 if (( $+commands[rbenv] )); then
