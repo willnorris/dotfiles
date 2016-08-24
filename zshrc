@@ -1,5 +1,7 @@
 # vim: ft=zsh
 
+autoload -U compinit && compinit
+
 if [ -f /etc/zshrc ]; then
   source /etc/zshrc
 fi

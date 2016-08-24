@@ -1,7 +1,5 @@
 # vim: ft=zsh
 
-autoload -U compinit && compinit
-
 typeset -U path manpath
 path=(
   $HOME/bin
