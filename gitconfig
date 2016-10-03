@@ -1,5 +1,6 @@
 [alias]
   amend = commit --amend --no-edit
+  authors = shortlog --summary --email --numbered
   b = branch -v -v
   ctags = !.git/hooks/ctags
   hub = !hub
