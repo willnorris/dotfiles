@@ -37,3 +37,8 @@ if [[ -d "$HOME/.zsh/bundle/zsh-syntax-highlighting" ]]; then
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
   source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+function encmount {
+  [ -z "$1" ] && echo "volumne not specified" 2>&1 && return 1
+  encfs "$HOME/.googledrive/$1.enc" "$HOME/.$1" -- -o volname="$1"
+}
