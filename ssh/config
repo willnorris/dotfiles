@@ -39,7 +39,7 @@ Host gce
 
 # Work
 Host elias
-  HostName elias.mtv
+  HostName elias.i
   User willnorris
   ForwardAgent yes
   PreferredAuthentications publickey,gssapi-with-mic,hostbased,keyboard-interactive,password
