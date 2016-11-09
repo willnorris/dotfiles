@@ -3,7 +3,12 @@
 # ts provides a simple wrapper around tmux named sessions.
 
 if [ $# -eq 1 ]; then
-  tmux attach -t $1 2>/dev/null || tmux new-session -s $1
+  if [ -z "$TMUX" ]; then
+    tmux attach -t $1 2>/dev/null || tmux new-session -s $1
+  else
+    TMUX= command tmux new-session -s $1 -d 2>/dev/null
+    command tmux switch-client -t $1
+  fi
 else
   echo "ts - create or attach to the specified tmux session"
   echo "Usage: ts <session-name>"
