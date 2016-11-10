@@ -39,7 +39,7 @@ function prompt_willnorris {
   fi
 
   if [[ -n ${vcs_info_msg_0_} ]]; then
-    print -n " %{${fg[yellow]}%}(${vcs_info_msg_0_})"
+    print -n " %{${fg[yellow]}%}(${vcs_info_msg_0_})%{$reset_color%}"
   fi
 
   print -n "%{$PROMPT_COLOR%}"
