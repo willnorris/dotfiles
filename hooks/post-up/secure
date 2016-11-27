@@ -3,9 +3,12 @@
 HOST=`hostname | cut -d. -f1`
 
 function install_file() {
-  if [ -f "$HOME/.secure/$HOST/$1" ]; then
-    if [ ! -h "$HOME/$2" ] || [ `readlink $HOME/$2` != "$HOME/.secure/$HOST/$1" ]; then
-      ln -s $HOME/.secure/$HOST/$1 $HOME/$2
+  SRC="$HOME/.secure/$HOST/$1"
+  DST="$HOME/$2"
+
+  if [ -f "$SRC" ]; then
+    if [ ! -h "$DST" ] || [ `readlink $DST` != "$SRC" ]; then
+      ln -s "$SRC" "$DST"
     fi
   fi
 }
