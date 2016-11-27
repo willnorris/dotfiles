@@ -1,13 +1,5 @@
 " vim: set foldmarker={,} foldmethod=marker:
 
-" Runtime Path {
-  runtime bundle/pathogen/autoload/pathogen.vim
-  if exists('*pathogen#infect')
-    call pathogen#infect()
-    call pathogen#helptags()
-  endif
-" }
-
 " a handful of basic config options come from vim-sensible
 
 " General {
@@ -73,6 +65,7 @@
   "let g:solarized_visibility = "high"
   "let g:solarized_contrast = "high"
   try
+    packadd solarized
     colorscheme solarized
   catch /^Vim\%((\a\+)\)\=:E185/
     " ignore

@@ -3,7 +3,7 @@
 pushd `dirname $0`
 
 # update each git repository
-for b in `find . -mindepth 1 -maxdepth 2 -name .git`; do
+for b in `find . -mindepth 1 -maxdepth 3 -name .git`; do
   pushd `dirname $b`
   git pull origin master
   popd
