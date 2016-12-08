@@ -39,7 +39,14 @@ Host gce
 
 # Work
 Host elias
-  HostName elias.i
+  HostName elias.mtv
+  User willnorris
+  ForwardAgent yes
+  PreferredAuthentications publickey,gssapi-with-mic,hostbased,keyboard-interactive,password
+  ProxyCommand corp-ssh-helper %h %p
+
+Host elias2
+  HostName elias2.mtv
   User willnorris
   ForwardAgent yes
   PreferredAuthentications publickey,gssapi-with-mic,hostbased,keyboard-interactive,password
