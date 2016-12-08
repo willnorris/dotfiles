@@ -126,6 +126,7 @@
 
   nnoremap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
   nnoremap <silent> <leader>st :SyntasticToggleMode<CR>
+  " hide sign column
   nnoremap <leader>su :sign unplace *<CR>
   nnoremap <leader>dm :delmarks!<CR>:sign unplace *<CR>
 
@@ -222,6 +223,9 @@ augroup END
       \ }
 
   let g:golden_ratio_exclude_nonmodifiable = 1
+
+  let g:vimwiki_list = [{
+      \ 'path': '~/.wiki/', 'syntax': 'markdown', 'ext': '.md' }]
 " }
 
 " Google-specific settings {
