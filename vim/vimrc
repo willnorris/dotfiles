@@ -55,7 +55,7 @@
 " }
 
 " Colors {
-  "let base16colorspace=256
+  let base16colorspace=256
   packadd base16-vim
   if &background == "light"
     colorscheme base16-solarized-light
