@@ -226,6 +226,12 @@ augroup END
 
   let g:vimwiki_list = [{
       \ 'path': '~/.wiki/', 'syntax': 'markdown', 'ext': '.md' }]
+
+  if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+  endif
 " }
 
 " Google-specific settings {

@@ -22,6 +22,7 @@ brew 'mutt'
 brew 'mysql', restart_service: :changed
 brew 'pngcrush'
 brew 'rbenv'
+brew 'ripgrep'
 brew 'thoughtbot/formulae/rcm'
 brew 'tmux'
 brew 'vim'
