@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# List all listening TCP ports.  First try the linux version of netstat, then
+# the darwin version.
+netstat --tcp --listen --numeric --program 2>/dev/null || \
+  netstat -an | grep LISTEN
