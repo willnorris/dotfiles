@@ -1,5 +1,5 @@
 #!/bin/bash
 
 if [[ -d "$FZF_HOME" ]]; then
-  ln -s "$FZF_HOME" "$HOME/.vim/pack/bundle/start/"
+  ln -s "$FZF_HOME" "$HOME/.vim/pack/bundle/start/fzf"
 fi
