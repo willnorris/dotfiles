@@ -1,4 +1,0 @@
-#!/bin/sh
-
-sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx-full.plist && \
-  sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx-full.plist
