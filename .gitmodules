@@ -78,7 +78,7 @@
 	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/bundle/solarized"]
 	path = vim/pack/bundle/opt/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/blueyed/vim-colors-solarized.git
 [submodule "vim/bundle/statline"]
 	path = vim/bundle/statline
 	url = https://github.com/willnorris/vim-statline.git
