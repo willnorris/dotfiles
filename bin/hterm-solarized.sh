@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/bash
 #
 # Author: benley@gmail.com (Benjamin Staffin)
 # Set your terminal's color palette to match the Solarized color scheme by
