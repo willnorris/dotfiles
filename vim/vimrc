@@ -152,6 +152,8 @@
   inoremap <C-L>t <C-R>=system('timestamp -rfc3339')<CR>
   inoremap <C-L>z <C-R>=system('timestamp -rfc3339 -utc')<CR>
   inoremap <C-L>e <C-R>=system('timestamp -epoch')<CR>
+
+  nnoremap <C-P> :FZF<CR>
 " }
 
 " When editing a file, always jump to the last known cursor position.
@@ -232,6 +234,8 @@ augroup END
     set grepformat=%f:%l:%c:%m,%f:%l:%m
     let g:ackprg = 'ag --nogroup --nocolor --column'
   endif
+
+  let g:fzf_history_dir = '~/.fzf-history'
 " }
 
 " Google-specific settings {

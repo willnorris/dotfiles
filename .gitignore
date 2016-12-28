@@ -1,5 +1,6 @@
 vim/pack/bundle/opt/*~
 vim/pack/bundle/start/*~
+vim/pack/bundle/start/fzf
 
 mutt/.mutt/cache
 mutt/.mutt/credentials
