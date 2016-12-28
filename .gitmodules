@@ -31,21 +31,12 @@
 [submodule "vim/bundle/gundo"]
 	path = vim/pack/bundle/start/gundo
 	url = https://github.com/sjl/gundo.vim.git
-[submodule "vim/bundle/haml"]
-	path = vim/pack/bundle/start/haml
-	url = https://github.com/tpope/vim-haml.git
 [submodule "vim/bundle/indent-object"]
 	path = vim/pack/bundle/start/indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule "vim/bundle/liquid"]
-	path = vim/pack/bundle/start/liquid
-	url = https://github.com/tpope/vim-liquid.git
 [submodule "vim/bundle/localvimrc"]
 	path = vim/pack/bundle/start/localvimrc
 	url = https://github.com/vim-scripts/localvimrc.git
-[submodule "vim/bundle/markdown"]
-	path = vim/pack/bundle/start/markdown
-	url = https://github.com/tpope/vim-markdown.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/pack/bundle/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -55,9 +46,6 @@
 [submodule "vim/bundle/pasta"]
 	path = vim/pack/bundle/start/pasta
 	url = https://github.com/sickill/vim-pasta.git
-[submodule "vim/bundle/protobuf"]
-	path = vim/pack/bundle/start/protobuf
-	url = https://github.com/willnorris/vim-protobuf.git
 [submodule "vim/bundle/repeat"]
 	path = vim/pack/bundle/start/repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -73,9 +61,6 @@
 [submodule "vim/bundle/sleuth"]
 	path = vim/pack/bundle/start/sleuth
 	url = https://github.com/tpope/vim-sleuth.git
-[submodule "vim/bundle/snipmate"]
-	path = vim/pack/bundle/start/snipmate
-	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/bundle/solarized"]
 	path = vim/pack/bundle/opt/solarized
 	url = https://github.com/blueyed/vim-colors-solarized.git
