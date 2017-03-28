@@ -40,9 +40,6 @@
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/pack/bundle/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/bundle/nginx"]
-	path = vim/pack/bundle/start/nginx
-	url = https://github.com/evanmiller/nginx-vim-syntax
 [submodule "vim/bundle/pasta"]
 	path = vim/pack/bundle/start/pasta
 	url = https://github.com/sickill/vim-pasta.git
@@ -88,3 +85,6 @@
 [submodule "vim/bundle/airline-themes"]
 	path = vim/pack/bundle/start/airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/pack/bundle/start/polyglot"]
+	path = vim/pack/bundle/start/polyglot
+	url = https://github.com/sheerun/vim-polyglot
