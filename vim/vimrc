@@ -130,11 +130,11 @@
   nnoremap <leader>su :sign unplace *<CR>
   nnoremap <leader>dm :delmarks!<CR>:sign unplace *<CR>
 
-  nnoremap <leader>u :GundoToggle<CR>
+  nnoremap <leader>sh :SignifyToggleHighlight<CR>
+  nnoremap <leader>sr :SignifyRefresh<CR>
+  nnoremap <leader>st :SignifyToggle<CR>
 
-  nnoremap <leader>fu :CtrlPFunky<CR>
-  " narrow the list down with a word under cursor
-  nnoremap <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+  nnoremap <leader>u :GundoToggle<CR>
 
   nnoremap cog :GoldenRatioToggle<CR>
 
@@ -198,7 +198,7 @@ augroup END
 
 " Plugins {
   " automatically show diff when running 'git commit'
-  autocmd BufRead *.git/COMMIT_EDITMSG DiffGitCached | wincmd p
+  autocmd FileType gitcommit DiffGitCached | wincmd p
 
   source $VIMRUNTIME/macros/matchit.vim
 
@@ -209,13 +209,7 @@ augroup END
 
   let g:gundo_preview_bottom = 1
 
-  let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp_cache'
-  let g:ctrlp_extensions = ['funky']
-  let g:ctrlp_funky_matchtype = 'path'
-
   let g:signify_vcs_list = [ 'git', 'hg' ]
-  let g:signify_mapping_toggle_highlight = '<leader>sh'
-  let g:signify_mapping_toggle = '<leader>st'
 
   let g:syntastic_go_checkers=['go', 'gofmt', 'golint', 'gotype', 'govet']
   let g:syntastic_mode_map = {
