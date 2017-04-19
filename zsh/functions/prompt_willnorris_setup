@@ -8,7 +8,7 @@ if (( ! $+PROMPT_COLOR )); then
     elias) PROMPT_COLOR="${fg[red]}" ;;
     esther) PROMPT_COLOR="${fg[cyan]}" ;;
     judah) PROMPT_COLOR="${fg[green]}" ;;
-    mordecai) PROMPT_COLOR="${fg[blue]}" ;;
+    meshach) PROMPT_COLOR="${fg[blue]}" ;;
     serenity) PROMPT_COLOR="${fg[cyan]}" ;;
     vashti) PROMPT_COLOR="${fg[blue]}" ;;
   esac
