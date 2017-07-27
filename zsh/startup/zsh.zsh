@@ -26,8 +26,10 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias rg='rg -S'
-alias ack='rg'
+if (( $+commands[rg] )); then
+  alias rg='rg -S'
+  alias ack='rg'
+fi
 
 alias vi=vim
 export EDITOR='vim'
