@@ -22,9 +22,11 @@ for c (fg bg jobs exit clear reset); do
   alias $c=" $c"
 done
 
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+if grep --color "a" <<< "a" &>/dev/null; then
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
 
 if (( $+commands[rg] )); then
   alias rg='rg -S'
