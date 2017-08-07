@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # go-pre-commit checks all go files for errors
 if hash go-pre-commit &>/dev/null; then
