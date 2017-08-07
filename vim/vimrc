@@ -153,7 +153,7 @@
   inoremap <C-L>z <C-R>=system('timestamp -rfc3339 -utc')<CR>
   inoremap <C-L>e <C-R>=system('timestamp -epoch')<CR>
 
-  nnoremap <C-P> :FZF<CR>
+  nnoremap <C-T> :FZF<CR>
 " }
 
 " When editing a file, always jump to the last known cursor position.

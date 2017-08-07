@@ -8,6 +8,7 @@ if (( $+commands[fzf] )); then
   --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C -L 1 -F {}) 2> /dev/null | head -200'
   --bind '?:toggle-preview'
   "
+  export FZF_TMUX=1
 
   if [[ -f "$FZF_HOME/shell/completion.zsh" ]]; then
     source "$FZF_HOME/shell/completion.zsh"
