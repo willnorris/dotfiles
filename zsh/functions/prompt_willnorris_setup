@@ -7,10 +7,9 @@ if (( ! $+PROMPT_COLOR )); then
   case $SHORT_HOST in
     elias) PROMPT_COLOR="${fg[red]}" ;;
     esther) PROMPT_COLOR="${fg[cyan]}" ;;
-    judah) PROMPT_COLOR="${fg[green]}" ;;
-    levi) PROMPT_COLOR="${fg[red]}" ;;
-    meshach) PROMPT_COLOR="${fg[blue]}" ;;
-    serenity) PROMPT_COLOR="${fg[cyan]}" ;;
+    judah) PROMPT_COLOR="${fg[magenta]}" ;;
+    levi) PROMPT_COLOR="${fg[green]}" ;;
+    localhost) PROMPT_COLOR="${fg[blue]}" ;;
     vashti) PROMPT_COLOR="${fg[blue]}" ;;
   esac
 fi
