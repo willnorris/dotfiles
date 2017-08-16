@@ -42,10 +42,15 @@ htermProfiles.forEach(function(profile) {
         '#859900', '#b58900', '#268bd2', '#d33682', '#2aa198', '#eee8d5',
         '#002b36', '#cb4b16', '#586e75', '#657b83', '#839496', '#6c71c4',
         '#93a1a1', '#fdf6e3']);
-    term_.prefs_.set('font-size', 12);
+
+    term_.prefs_.set('font-size', 15);
     term_.prefs_.set('enable-bold', false);
-    //term_.prefs_.set('font-family', 'Menlo');
+    term_.prefs_.set('font-family', '"Anonymous Pro", monospace');
     term_.prefs_.set('font-smoothing', 'subpixel-antialiased');
+    term_.prefs_.set('user-css', 'http://fonts.googleapis.com/css?family=Source+Code+Pro|Anonymous+Pro');
+
+
+    term_.prefs_.set('scrollbar-visible', '');
 });
 
 // From then on to set the profile at will: `term_.setProfile('profile_name)`,
