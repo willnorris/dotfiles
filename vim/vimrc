@@ -65,6 +65,7 @@
   "let g:solarized_visibility = "high"
   "let g:solarized_contrast = "high"
   try
+    set background=dark
     packadd solarized
     colorscheme solarized
   catch /^Vim\%((\a\+)\)\=:E185/
@@ -74,13 +75,8 @@
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
 
-  if &background == "light"
-    highlight SignColumn ctermbg=7
-    highlight FoldColumn ctermbg=7
-  else
-    highlight SignColumn ctermbg=8
-    highlight FoldColumn ctermbg=8
-  endif
+  highlight SignColumn ctermbg=8
+  highlight FoldColumn ctermbg=8
 
   highlight SpellBad ctermfg=1
 " }

@@ -1,7 +1,6 @@
 # vim: set ft=sshconfig :
 
 ConnectionAttempts 3
-SendEnv COLORFGBG
 
 Host *
   IdentityFile ~/.ssh/id_rsa

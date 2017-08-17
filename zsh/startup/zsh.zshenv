@@ -12,8 +12,3 @@ autoload -Uz ~/.zsh/functions/*(N:t)
 # Setup host-specific environment variables.  This is used for
 # loading zsh config files based on the current hostname.
 SHORT_HOST=${HOST%%.*}
-
-
-# If COLORFGBG is not set (like in Chrome Secure Shell), assume solarized dark.
-: ${COLORFGBG=12;8}
-export COLORFGBG
