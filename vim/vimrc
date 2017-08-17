@@ -55,29 +55,20 @@
 " }
 
 " Colors {
-  if $HTERM == 1
-    let g:solarized_termtrans = 1
-    let g:solarized_termcolors=256
-  else
-    let g:solarized_termtrans = 0
-  endif
-
-  "let g:solarized_visibility = "high"
-  "let g:solarized_contrast = "high"
+  set background=dark
   try
-    set background=dark
     packadd solarized
     colorscheme solarized
   catch /^Vim\%((\a\+)\)\=:E185/
     " ignore
   endtry
+
   syntax on
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
 
   highlight SignColumn ctermbg=8
   highlight FoldColumn ctermbg=8
-
   highlight SpellBad ctermfg=1
 " }
 
