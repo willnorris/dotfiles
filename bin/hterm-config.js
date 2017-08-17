@@ -66,6 +66,7 @@ for (name in htermProfiles) {
     term_.prefs_.set('cursor-blink', true);
     term_.prefs_.set('cursor-blink-cycle', [800, 500]);
     term_.prefs_.set('scrollbar-visible', '');
+    term_.prefs_.set('desktop-notification-bell', true);
 };
 
 // restore current profile
