@@ -27,35 +27,32 @@ var s7d_colors = {
   'green':   '#859900'
 };
 
-var htermProfiles = [
-    // Solarized Dark
-    {
-        'name': 'solarized-dark',
-        'prefs': {
-            'background-color': s7d_colors.base03,
-            'foreground-color': s7d_colors.base0,
-            'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(s7d_colors.red), 0.6),
-            'color-palette-overrides': [s7d_colors.base02, s7d_colors.red, s7d_colors.green, s7d_colors.yellow, s7d_colors.blue, s7d_colors.magenta, s7d_colors.cyan, s7d_colors.base2, s7d_colors.base03, s7d_colors.orange, s7d_colors.base01, s7d_colors.base00, s7d_colors.base0, s7d_colors.violet, s7d_colors.base1, s7d_colors.base3],
-        },
+var htermProfiles = {
+    'solarized-dark': {
+        'background-color': s7d_colors.base03,
+        'foreground-color': s7d_colors.base0,
+        'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(s7d_colors.red), 0.6),
+        'color-palette-overrides': [s7d_colors.base02, s7d_colors.red, s7d_colors.green, s7d_colors.yellow, s7d_colors.blue, s7d_colors.magenta, s7d_colors.cyan, s7d_colors.base2, s7d_colors.base03, s7d_colors.orange, s7d_colors.base01, s7d_colors.base00, s7d_colors.base0, s7d_colors.violet, s7d_colors.base1, s7d_colors.base3],
     },
-    // Solarized Light
-    {
-        'name': 'solarized-light',
-        'prefs': {
-            'background-color': s7d_colors.base3,
-            'foreground-color': s7d_colors.base00,
-            'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(s7d_colors.red), 0.6),
-            'color-palette-overrides': [s7d_colors.base2, s7d_colors.red, s7d_colors.green, s7d_colors.yellow, s7d_colors.blue, s7d_colors.magenta, s7d_colors.cyan, s7d_colors.base02, s7d_colors.base3, s7d_colors.orange, s7d_colors.base1, s7d_colors.base0, s7d_colors.base00, s7d_colors.violet, s7d_colors.base01, s7d_colors.base03],
-        },
+    'solarized-light': {
+        'background-color': s7d_colors.base3,
+        'foreground-color': s7d_colors.base00,
+        'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(s7d_colors.red), 0.6),
+        'color-palette-overrides': [s7d_colors.base2, s7d_colors.red, s7d_colors.green, s7d_colors.yellow, s7d_colors.blue, s7d_colors.magenta, s7d_colors.cyan, s7d_colors.base02, s7d_colors.base3, s7d_colors.orange, s7d_colors.base1, s7d_colors.base0, s7d_colors.base00, s7d_colors.violet, s7d_colors.base01, s7d_colors.base03],
     },
-];
+};
 
-htermProfiles.forEach(function(profile) {
-    term_.setProfile(profile.name);
+// set default profile
+htermProfiles['default'] = htermProfiles['solarized-dark'];
+
+for (name in htermProfiles) {
+    prefs = htermProfiles[name];
+
+    term_.setProfile(name);
     term_.prefs_.resetAll();
 
-    for (var name in profile.prefs) {
-        term_.prefs_.set(name, profile.prefs[name]);
+    for (var name in prefs) {
+        term_.prefs_.set(name, prefs[name]);
     }
 
     term_.prefs_.set('font-size', 15);
@@ -66,7 +63,7 @@ htermProfiles.forEach(function(profile) {
 
     term_.prefs_.set('cursor-blink', true);
     term_.prefs_.set('scrollbar-visible', '');
-});
+};
 
 // From then on to set the profile at will: `term_.setProfile('profile_name)`,
 // e.g.: `term_.setProfile('solarized-dark')`
