@@ -45,6 +45,8 @@ var htermProfiles = {
 // set default profile
 htermProfiles['default'] = htermProfiles['solarized-dark'];
 
+var currentProfile = term_.profileId_;
+
 for (name in htermProfiles) {
     prefs = htermProfiles[name];
 
@@ -64,6 +66,9 @@ for (name in htermProfiles) {
     term_.prefs_.set('cursor-blink', true);
     term_.prefs_.set('scrollbar-visible', '');
 };
+
+// restore current profile
+term_.setProfile(currentProfile);
 
 // From then on to set the profile at will: `term_.setProfile('profile_name)`,
 // e.g.: `term_.setProfile('solarized-dark')`
