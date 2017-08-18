@@ -25,9 +25,6 @@
 [submodule "vim/bundle/go"]
 	path = vim/pack/bundle/start/go
 	url = https://github.com/fatih/vim-go.git
-[submodule "vim/bundle/golden-ratio"]
-	path = vim/pack/bundle/start/golden-ratio
-	url = https://github.com/roman/golden-ratio.git
 [submodule "vim/bundle/gundo"]
 	path = vim/pack/bundle/start/gundo
 	url = https://github.com/sjl/gundo.vim.git
@@ -88,3 +85,6 @@
 [submodule "vim/pack/bundle/start/polyglot"]
 	path = vim/pack/bundle/start/polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim/pack/bundle/start/goldenview"]
+	path = vim/pack/bundle/start/goldenview
+	url = https://github.com/zhaocai/GoldenView.Vim

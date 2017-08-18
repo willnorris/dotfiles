@@ -123,7 +123,7 @@
 
   nnoremap <leader>u :GundoToggle<CR>
 
-  nnoremap cog :GoldenRatioToggle<CR>
+  nnoremap cog :ToggleGoldenViewAutoResize<CR>
 
   " find current word in quickfix
   nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<CR>:copen<CR>
@@ -199,7 +199,7 @@ augroup END
       \ "passive_filetypes": ["go"],
       \ }
 
-  let g:golden_ratio_exclude_nonmodifiable = 1
+  let g:goldenview__enable_default_mapping = 0
 
   let g:vimwiki_list = [{
       \ 'path': '~/.wiki/', 'syntax': 'markdown', 'ext': '.md' }]
