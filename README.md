@@ -12,4 +12,4 @@ Setup on a new host:
 
 I'm not sure that many of the files here would constitute a creative work able
 to be covered by copyright.  But to the extent that they are, unless otherwise
-noted, they are made available under an [Apache 2.0 license](./LICENSE).
+noted, they are made available under a [0BSD license](./LICENSE).
