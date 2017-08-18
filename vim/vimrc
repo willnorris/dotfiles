@@ -174,12 +174,6 @@ augroup END
     let @/=_s
     call winrestview(view)
   endfunction "}
-
-  function! EnsureExists(path) "{
-    if !isdirectory(expand(a:path))
-      call mkdir(expand(a:path))
-    endif
-  endfunction "}
 " }
 
 
