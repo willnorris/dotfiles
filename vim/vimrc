@@ -178,9 +178,6 @@ augroup END
 
 
 " Plugins {
-  " automatically show diff when running 'git commit'
-  autocmd FileType gitcommit DiffGitCached | wincmd p
-
   source $VIMRUNTIME/macros/matchit.vim
 
   let g:localvimrc_ask = 0
