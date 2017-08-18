@@ -208,6 +208,11 @@ augroup END
   endif
 
   let g:fzf_history_dir = '~/.fzf-history'
+
+  if !has('python') && has('python3')"
+    let g:ycm_server_python_interpreter = '/usr/bin/python3'
+    let g:gundo_prefer_python3 = 1
+  endif
 " }
 
 " Google-specific settings {
