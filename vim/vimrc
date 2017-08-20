@@ -103,6 +103,7 @@
   nnoremap <silent> <leader>! :redraw!<CR>:redrawstatus!<CR>
   nnoremap <leader>R :so $MYVIMRC<CR>
 
+  nnoremap <silent> <leader>nn :Lexplore<CR>
   nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
   " tab navigation
@@ -186,6 +187,12 @@ augroup END
   let g:statline_filename_relative = 1
 
   let g:gundo_preview_bottom = 1
+
+  let g:netrw_banner = 0
+  let g:netrw_liststyle = 3
+  let g:netrw_browse_split = 4
+  let g:netrw_altv = 1
+  let g:netrw_winsize = -28
 
   let g:signify_vcs_list = [ 'git', 'hg' ]
 
