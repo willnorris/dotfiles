@@ -11,6 +11,7 @@
   set hidden " allow changing buffers without saving
   set wildmode=list:longest,full
   set modelines=5
+  filetype plugin indent on
   "set mouse=a " enable mouse support
 " }
 
