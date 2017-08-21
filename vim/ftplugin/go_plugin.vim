@@ -1,0 +1,1 @@
+../pack/bundle/start/go/ftplugin/go.vim
