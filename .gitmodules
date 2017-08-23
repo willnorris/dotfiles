@@ -19,9 +19,6 @@
 [submodule "vim/bundle/git"]
 	path = vim/pack/bundle/start/git
 	url = https://github.com/tpope/vim-git.git
-[submodule "vim/bundle/gitv"]
-	path = vim/pack/bundle/start/gitv
-	url = https://github.com/gregsexton/gitv.git
 [submodule "vim/bundle/go"]
 	path = vim/pack/bundle/start/go
 	url = https://github.com/fatih/vim-go.git
@@ -88,3 +85,6 @@
 [submodule "vim/pack/bundle/start/goldenview"]
 	path = vim/pack/bundle/start/goldenview
 	url = https://github.com/zhaocai/GoldenView.Vim
+[submodule "vim/pack/bundle/start/gv"]
+	path = vim/pack/bundle/start/gv
+	url = https://github.com/junegunn/gv.vim
