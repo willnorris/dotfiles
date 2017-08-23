@@ -1,6 +1,7 @@
 # vim: ft=zsh
 
-# This must be loaded after the `bindkey -v` call in zsh.zsh
+# must call bindkey -v before fzf keybindings
+bindkey -v
 
 if (( $+commands[fzf] )); then
   export FZF_DEFAULT_OPTS="
