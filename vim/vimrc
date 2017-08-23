@@ -91,11 +91,12 @@
   " Join lines and restore cursor location (J)
   nnoremap J :call Preserve("join")<CR>
 
-  " Buffer navigation (;;) (;]) (;[) (;ls)
+  " Buffer navigation
   nnoremap <leader>; <C-^>
-  " :map <leader>] :bnext<CR>
-  " :map <leader>[ :bprev<CR>
-  nnoremap <leader>ls :buffers<CR>
+  :map <leader>] :bnext<CR>
+  :map <leader>[ :bprev<CR>
+  nnoremap <leader>ls :Buffers<CR>
+  nnoremap <leader>bd :bd<CR>
 
   " strip trailing whitespace
   nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
