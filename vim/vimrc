@@ -216,6 +216,7 @@ autocmd BufReadPost *
   endif
 
   let g:fzf_history_dir = '~/.fzf-history'
+  let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 
   let g:limelight_conceal_ctermfg = 10
   nnoremap <leader>gg :Goyo<CR>
