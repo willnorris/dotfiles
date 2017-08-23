@@ -19,6 +19,7 @@
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   set number " show line numbers
   set splitright "open vertical splits on the right
+  set noshowmode
 
   " Scrolling
   set scrolloff=3
