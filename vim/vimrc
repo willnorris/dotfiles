@@ -157,8 +157,6 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-augroup END
-
 " Functions {
   " Convenient command to see the difference between the current buffer and
   " the file it was loaded from, thus the changes you made.
