@@ -88,3 +88,9 @@
 [submodule "vim/pack/bundle/start/gv"]
 	path = vim/pack/bundle/start/gv
 	url = https://github.com/junegunn/gv.vim
+[submodule "vim/pack/bundle/start/goyo"]
+	path = vim/pack/bundle/start/goyo
+	url = https://github.com/junegunn/goyo.vim
+[submodule "vim/pack/bundle/start/limelight"]
+	path = vim/pack/bundle/start/limelight
+	url = https://github.com/junegunn/limelight.vim
