@@ -18,7 +18,7 @@ if (( $+commands[fzf] )); then
     source "$FZF_HOME/shell/key-bindings.zsh"
   fi
 
-  # open recently edited files in vim
+  # open recently edited files in vim (https://github.com/junegunn/fzf/wiki/Examples#v)
   v() {
     local files
     files=$(grep '^>' ~/.viminfo | cut -c3- |
@@ -27,7 +27,7 @@ if (( $+commands[fzf] )); then
             done | fzf-tmux -d -m -q "$*" -1) && vim ${files//\~/$HOME}
   }
 
-  # cd to recently opened directories
+  # cd to recently opened directories (https://github.com/junegunn/fzf/wiki/Examples#z)
   j() {
     [ $# -gt 0 ] && _z "$*" && return
     cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf-tmux +s --tac --query "$*")"
