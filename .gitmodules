@@ -94,3 +94,6 @@
 [submodule "vim/pack/bundle/start/limelight"]
 	path = vim/pack/bundle/start/limelight
 	url = https://github.com/junegunn/limelight.vim
+[submodule "vim/pack/bundle/start/fzf.vim"]
+	path = vim/pack/bundle/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
