@@ -218,6 +218,51 @@ autocmd BufReadPost *
   let g:fzf_history_dir = '~/.fzf-history'
   let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 
+  " Airline {
+    if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+    endif
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
+    let g:airline_mode_map = {
+        \ '__' : '-',
+        \ 'n'  : 'N',
+        \ 'i'  : 'I',
+        \ 'R'  : 'R',
+        \ 'c'  : 'C',
+        \ 'v'  : 'V',
+        \ 'V'  : 'V:line',
+        \ '' : 'V:block',
+        \ 's'  : 'S',
+        \ 'S'  : 'S:line',
+        \ '' : 'S:block',
+        \ 't'  : 'T',
+        \ }
+    let g:airline_symbols.branch = ''
+    let g:airline_symbols.crypt = '⚿'
+    let g:airline_symbols.paste = '∥'
+    let g:airline_symbols.spell = 'Ꞩ'
+
+    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+    let g:airline#extensions#hunks#non_zero_only = 1
+
+    let g:airline#extensions#syntastic#enabled = 1
+    let g:airline#extensions#syntastic#error_symbol = '⚠:'
+    let g:airline#extensions#syntastic#warning_symbol = '⦸:'
+
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+    let g:airline#extensions#tabline#show_close_button = 0
+
+    function! AirlineInit()
+        call airline#parts#define_raw('linenr', '☰ %l')
+        call airline#parts#define_accent('linenr', 'bold')
+        let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%c'])
+    endfunction
+    autocmd User AirlineAfterInit call AirlineInit()
+  " }
+
   let g:limelight_conceal_ctermfg = 10
   nnoremap <leader>gg :Goyo<CR>
   autocmd! User GoyoEnter Limelight
