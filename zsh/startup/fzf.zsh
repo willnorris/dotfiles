@@ -37,4 +37,14 @@ if (( $+commands[fzf] )); then
     [ $# -gt 0 ] && _z "$*" && return
     cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf-tmux +s --tac --query "$*")"
   }
+
+  # load or start named tmux session (https://github.com/bag-man/dotfiles/blob/c88cc45/bashrc)
+  ts() {
+    [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+    if [ $1 ]; then
+      tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+    fi
+    session=$(command tmux list-sessions -F "#{session_name}" 2>/dev/null | \
+      fzf --exit-0) && tmux $change -t "$session" || echo "No sessions found."
+  }
 fi
