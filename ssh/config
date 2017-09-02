@@ -1,14 +1,9 @@
 # vim: set ft=sshconfig :
 
-ConnectionAttempts 3
-
 Host *
-  IdentityFile ~/.ssh/id_rsa
-
   ControlPath ~/.ssh/master-%r@%h:%p
   ControlMaster auto
 
-# Home
 Host home
   HostName home.willnorris.net
   Port 10022
@@ -23,15 +18,6 @@ Host esther
   HostName esther.lan
   User elisabeth
 
-# Personal
-Host judah
-  HostName judah.willnorris.net
-  User willnorris
-
-Host strongspace
-  HostName willnorris.strongspace.com
-  User willnorris
-
-Host gce
-  HostName gce.willnorris.net
+Host levi
+  HostName levi.willnorris.net
   User willnorris
