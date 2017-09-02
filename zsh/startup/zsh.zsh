@@ -11,6 +11,10 @@ bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey "^?" backward-delete-char
 
+# disable tty stop and start
+stty stop ''
+stty start ''
+
 # sane backspace behavior
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
