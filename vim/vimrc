@@ -258,7 +258,6 @@ autocmd BufReadPost *
 
     function! AirlineInit()
         call airline#parts#define_raw('linenr', '☰ %l')
-        call airline#parts#define_accent('linenr', 'bold')
         let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%c'])
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
