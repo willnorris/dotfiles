@@ -57,9 +57,9 @@ for (name in htermProfiles) {
         term_.prefs_.set(name, prefs[name]);
     }
 
-    term_.prefs_.set('font-size', 15);
+    term_.prefs_.set('font-size', 14);
     term_.prefs_.set('enable-bold', false);
-    term_.prefs_.set('font-family', '"Anonymous Pro", monospace');
+    term_.prefs_.set('font-family', '"Source Code Pro", monospace');
     term_.prefs_.set('font-smoothing', 'subpixel-antialiased');
     term_.prefs_.set('user-css', 'http://fonts.googleapis.com/css?family=Source+Code+Pro|Anonymous+Pro');
 
