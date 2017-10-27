@@ -198,12 +198,9 @@ autocmd BufReadPost *
 
   let g:signify_vcs_list = [ 'git', 'hg' ]
 
-  let g:syntastic_go_checkers=['go', 'gofmt', 'golint', 'gotype', 'govet']
-  let g:syntastic_mode_map = {
-      \ "mode": "active",
-      \ "active_filetypes": [],
-      \ "passive_filetypes": ["go"],
-      \ }
+  let g:ale_lint_on_text_changed = 'normal'
+  let g:ale_lint_on_insert_leave = 1
+  highlight ALEErrorSign ctermfg=8 ctermbg=1
 
   let g:goldenview__enable_default_mapping = 0
 
@@ -247,9 +244,9 @@ autocmd BufReadPost *
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
     let g:airline#extensions#hunks#non_zero_only = 1
 
-    let g:airline#extensions#syntastic#enabled = 1
-    let g:airline#extensions#syntastic#error_symbol = '⚠:'
-    let g:airline#extensions#syntastic#warning_symbol = '⦸:'
+    let g:airline#extensions#ale#enabled = 1
+    let g:airline#extensions#ale#error_symbol = '⚠:'
+    let g:airline#extensions#ale#warning_symbol = '⦸:'
 
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_sep = ' '
