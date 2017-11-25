@@ -35,6 +35,8 @@ fi
 if (( $+commands[rg] )); then
   alias rg='rg -S'
   alias ack='rg'
+elif (( $+commands[ag] )); then
+  alias ack='ag'
 fi
 
 alias vi=vim
