@@ -1,6 +1,0 @@
-#!/bin/bash
-
-DST="$HOME/.vim/pack/bundle/start/fzf"
-if [[ -d "$FZF_HOME" ]] && [[ ! -d $DST ]]; then
-  ln -s "$FZF_HOME" "$DST"
-fi

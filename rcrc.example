@@ -1,7 +1,4 @@
 DOTFILES_DIRS="${HOME}/.dotfiles"
 EXCLUDES="Brewfile LICENSE README.md *.example"
-
-# "bundle" should really be "vim/bundle"
-SYMLINK_DIRS="git_template bundle"
-
-UNDOTTED="bin Library"
+SYMLINK_DIRS="git_template"
+UNDOTTED="bin"

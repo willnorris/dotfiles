@@ -1,5 +1,42 @@
 " vim: set foldmarker={,} foldmethod=marker:
 
+call plug#begin('~/.vim/bundle')
+
+Plug 'bling/vim-airline'
+Plug 'blueyed/vim-colors-solarized'
+Plug 'fatih/vim-go'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-signify'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sheerun/vim-polyglot'
+Plug 'sickill/vim-pasta'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-afterimage'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/localvimrc'
+Plug 'w0rp/ale'
+Plug 'zhaocai/GoldenView.vim'
+
+call plug#end()
+
 " a handful of basic config options come from vim-sensible
 
 " General {
@@ -60,7 +97,6 @@
 " Colors {
   set background=dark
   try
-    packadd solarized
     colorscheme solarized
   catch /^Vim\%((\a\+)\)\=:E185/
     " ignore

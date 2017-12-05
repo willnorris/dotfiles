@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mkdir -p $HOME/.zsh/bundle
+if [ ! -d "$HOME/.zsh/bundle/zsh-syntax-highlighting" ]; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zsh/bundle/zsh-syntax-highlighting
+fi
