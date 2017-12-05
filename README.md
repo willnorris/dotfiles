@@ -2,11 +2,8 @@ This repositry contains my dotfiles for various applications.
 
 Setup on a new host:
 
-* Install [rcm](https://github.com/thoughtbot/rcm)
-* `git clone https://github.com/willnorris/dotfiles $HOME/.dotfiles`
-* `cp $HOME/.dotfiles/rcrc.example $HOME/.rcrc` and edit if needed
-* `rcup`
-
+* `git clone https://github.com/willnorris/dotfiles ~/.dotfiles`
+* `~/.dotfiles/rcm/bin/rcup`
 
 ## License
 

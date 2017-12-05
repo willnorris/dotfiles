@@ -1,0 +1,395 @@
+#!/bin/bash
+
+: ${RCM_LIB:=$(dirname "$0")/../share/rcm}
+. "$RCM_LIB/rcm.sh"
+
+pushdir() {
+  DIR_STACK="$DIR_STACK:$PWD/$1"
+  $DEBUG "cd'ing to $1 from $PWD with stack $DIR_STACK"
+  cd "$1"
+}
+
+popdir() {
+  current="$(echo "$DIR_STACK" | sed -e 's/.*://g')"
+  prior="$(echo "$DIR_STACK" | sed -e "s|:$current$||" | sed -e 's/.*://g')"
+  DIR_STACK="$(echo "$DIR_STACK" | sed -e 's/:[^:]*$//')"
+  $DEBUG "cd'ing to $prior from $PWD with stack $DIR_STACK"
+  cd "$prior"
+}
+
+build_path() {
+  local dest="$1"
+  local file="$2"
+  local dotted=$3
+
+  if [ $dotted -eq 1 ]; then
+    echo "$dest/$file"
+  else
+    echo "$dest/.$file"
+  fi
+}
+
+file_join() {
+  local result=
+
+  for file; do
+    if [ "x$file" != "x." ]; then
+      if [ "x$result" = "x" ]; then
+        result="$file"
+      else
+        result="$result/$file"
+      fi
+    fi
+  done
+
+  echo "$result"
+}
+
+show_dir() {
+  local dir="$1"
+  local dest_dir="$2"
+  local dotfiles_dir="$3"
+  local dotfiles_subdir="$4"
+  local dotted=$5
+  local exclude_file_globs="$6"
+  local include_file_globs="$7"
+  local symlink_dirs_file_globs="$8"
+  local mk_dirs_file_globs="$9"
+  local dest_path="$(build_path "$dest_dir" "$dir" $dotted)"
+
+  $DEBUG "show_dir $1 $2 $3 $4 $5 $6 $7 $8 $9"
+
+  $VERBOSE "recurring on $dest_path"
+
+  pushdir "$dir"
+  for f in *; do
+    $DEBUG "handling the file $f"
+    next_dir="$(file_join "$dotfiles_subdir" "$dir")"
+    handle_file "$f" "$dest_path" "$dotfiles_dir" "$next_dir" 1 "$exclude_file_globs" "$include_file_globs" "$symlink_dirs_file_globs" "$mk_dirs_file_globs"
+  done
+  popdir
+}
+
+sigil_for() {
+  local file="$1"
+  local symlink_dirs_file_globs="$2"
+  local copy_always=0
+  local symlink_dirs=0
+
+  for copy_file in $COPY_ALWAYS; do
+    $DEBUG "copy_file: $copy_file"
+    $DEBUG "file: $file"
+
+    case "$file" in
+      $copy_file)
+        copy_always=1
+        break
+        ;;
+    esac
+  done
+
+  if [ -n "$symlink_dirs_file_globs" ]; then
+    symlink_dirs=1
+  fi
+
+  if [ $copy_always -eq 1 ]; then
+    echo 'X'
+  elif [ $symlink_dirs -eq 1 ]; then
+    echo '$'
+  else
+    echo '@'
+  fi
+}
+
+show_file() {
+  local file="$1"
+  local dest_dir="$2"
+  local dotfiles_dir="$3"
+  local dotfiles_subdir="$4"
+  local dotted=$5
+  local symlink_dirs_file_globs="$6"
+  local dest_file="$(build_path "$dest_dir" "$file" $dotted)"
+  local src_file="$(file_join "$dotfiles_subdir" "$file")"
+  local abs_src_file="$(file_join "$dotfiles_dir" "$src_file")"
+  local output="$dest_file:$abs_src_file"
+
+  if [ $SHOW_SIGILS -eq 1 ]; then
+    sigil="$(sigil_for "$src_file" "$symlink_dirs_file_globs")"
+    output="$output:$sigil"
+  fi
+
+  if echo "$DEST_STACK:" | grep -v ":$dest_file:" >/dev/null; then
+    DEST_STACK="$DEST_STACK:$dest_file"
+    $PRINT "$output"
+  else
+    $VERBOSE "skipping hidden file $output"
+  fi
+}
+
+handle_file() {
+  local file="$1"
+  local dest_dir="$2"
+  local dotfiles_dir="$3"
+  local dotfiles_subdir="$4"
+  local dotted=$5
+  local exclude_file_globs="$6"
+  local include_file_globs="$7"
+  local symlink_dirs_file_globs="$8"
+  local mk_dirs_file_globs="$9"
+
+  $DEBUG "handle_file $1 $2 $3 $4 $5 $6 $7 $8" "$9"
+
+  if [ ! -e "$file" ]; then
+    $VERBOSE "skipping non-existent file $file"
+  elif is_excluded "$dotfiles_subdir/$file" "$exclude_file_globs" "$include_file_globs"; then
+    $VERBOSE "skipping excluded file $file"
+  elif [ -d "$file" ] && is_excluded "$dotfiles_subdir/$file" "$symlink_dirs_file_globs" "$mk_dirs_file_globs"; then
+    show_file "$file" "$dest_dir" "$dotfiles_dir" "$dotfiles_subdir" $dotted
+  elif [ -d "$file" ]; then
+    show_dir "$file" "$dest_dir" "$dotfiles_dir" "$dotfiles_subdir" $dotted "$exclude_file_globs" "$include_file_globs" "$symlink_dirs_file_globs" "$mk_dirs_file_globs"
+  else
+    show_file "$file" "$dest_dir" "$dotfiles_dir" "$dotfiles_subdir" $dotted
+  fi
+}
+
+is_metafile() {
+  host_portion="$(echo "$1" | sed -e 's/host-.*/host-/')"
+  tag_portion="$(echo "$1" | sed -e 's/tag-.*/tag-/')"
+
+  [ "x$host_portion" = 'xhost-' -o "x$tag_portion" = 'xtag-' -o "x$1" = "xhooks" ]
+}
+
+dotfiles_dir_excludes() {
+  local dotfiles_dir="$1"
+  local excludes="$2"
+
+  $DEBUG "dotfiles_dir_excludes $dotfiles_dir"
+  $DEBUG "  with excludes: $excludes"
+
+  for exclude in $excludes; do
+    if echo "$exclude" | grep ':' >/dev/null; then
+      dotfiles_dir_pat="$(echo "$exclude" | sed 's/:.*//')"
+      file_glob="$(echo "$exclude" | sed 's/.*://')"
+
+      if [ "x$dotfiles_dir_pat" != "x*" ] && is_relative "$dotfiles_dir_pat"; then
+        dotfiles_dir_pat="$PWD/$dotfiles_dir_pat"
+      fi
+
+      if [ "x$dotfiles_dir_pat" = "x*" -o "x$dotfiles_dir_pat" = "x$dotfiles_dir" ]; then
+        echo "$file_glob"
+      fi
+    else
+      echo "$exclude"
+    fi
+  done
+}
+
+is_excluded() {
+  local file="$1"
+  local exclude_file_globs="$2"
+  local include_file_globs="$3"
+  local base_file="$(basename "$file")"
+
+  $DEBUG "is_excluded $file $exclude_file_globs $include_file_globs"
+
+  for exclude_file_glob in $exclude_file_globs; do
+    $DEBUG "file: $file"
+    $DEBUG "exclude_file_glob: $exclude_file_glob"
+
+    is_single_excluded "$file" "$exclude_file_glob" "$include_file_globs"
+    ret=$?
+    if [ $ret -eq 0 -o $ret -eq 1 ]; then
+      return $ret
+    fi
+
+    is_single_excluded "$base_file" "$exclude_file_glob" "$include_file_globs"
+    ret=$?
+    if [ $ret -eq 0 -o $ret -eq 1 ]; then
+      return $ret
+    fi
+  done
+
+  return 1
+}
+
+is_single_excluded() {
+  local file="$1"
+  local exclude_file_glob="$2"
+  local include_file_globs="$3"
+
+  case "$file" in
+    $exclude_file_glob)
+      for include_file_glob in $include_file_globs; do
+        case "$file" in
+          $include_file_glob) return 1;;
+        esac
+      done
+
+      return 0
+      ;;
+  esac
+
+  return 2
+}
+
+show_help() {
+  local exit_code=${1:-0}
+
+  $PRINT "Usage: lsrc [-FhqVv] [-B HOSTNAME] [-d DOT_DIR] [-I EXCL_PAT] [-S EXCL_PAT] [-s EXCL_PAT] [-t TAG] [-U EXCL_PAT] [-u EXCL_PAT] [-x EXCL_PAT]"
+  $PRINT "see lsrc(1) and rcm(7) for more details"
+
+  exit $exit_code
+}
+
+handle_command_line() {
+  local arg_tags=
+  local verbosity=0
+  local version=0
+  local show_sigils=0
+  local dotfiles_dirs=
+  local excludes=
+  local includes=
+  local symlink_dirs=
+  local never_symlink_dirs=
+  local hostname=
+  local undotted=
+  local never_undotted=
+
+  while getopts :FVqvhI:x:B:S:s:U:u:t:d: opt; do
+    case "$opt" in
+      F) show_sigils=1;;
+      h) show_help ;;
+      I) includes="$includes $OPTARG";;
+      t) arg_tags="$arg_tags $OPTARG";;
+      v) verbosity=$(($verbosity + 1));;
+      q) verbosity=$(($verbosity - 1));;
+      d) dotfiles_dirs="$dotfiles_dirs $OPTARG";;
+      V) version=1;;
+      x) excludes="$excludes $OPTARG";;
+      S) symlink_dirs="$symlink_dirs $OPTARG";;
+      s) never_symlink_dirs="$never_symlink_dirs $OPTARG";;
+      U) undotted="$undotted $OPTARG";;
+      u) never_undotted="$never_undotted $OPTARG";;
+      B) hostname="$OPTARG";;
+      ?) show_help 64 ;;
+    esac
+  done
+  shift $(($OPTIND-1))
+
+  handle_common_flags lsrc $version $verbosity
+  HOSTNAME="$(determine_hostname "$hostname")"
+  SHOW_SIGILS=$show_sigils
+  TAGS="${arg_tags:-$TAGS}"
+  DOTFILES_DIRS="${dotfiles_dirs:-$DOTFILES_DIRS}"
+  EXCLUDES="${excludes:-$EXCLUDES}"
+  INCLUDES="${includes:-$INCLUDES}"
+  SYMLINK_DIRS="${symlink_dirs:-$SYMLINK_DIRS}"
+  MK_DIRS="${never_symlink_dirs:-$MK_DIRS}"
+  UNDOTTED="${undotted:-$UNDOTTED}"
+  NEVER_UNDOTTED="${never_undotted:-$NEVER_UNDOTTED}"
+  FILES="$@"
+
+  $DEBUG "TAGS: $TAGS"
+  $DEBUG "DOTFILES_DIRS: $DOTFILES_DIRS"
+}
+
+DEST_STACK=
+
+handle_command_line "$@"
+
+: ${DOTFILES_DIRS:=$DOTFILES_DIRS $DEFAULT_DOTFILES_DIR}
+$DEBUG "DOTFILES_DIRS: $DOTFILES_DIRS"
+
+: ${COPY_ALWAYS:=""}
+$DEBUG "COPY_ALWAYS: $COPY_ALWAYS"
+
+: ${SYMLINK_DIRS:=""}
+$DEBUG "SYMLINK_DIRS: $SYMLINK_DIRS"
+
+: ${MK_DIRS:=""}
+$DEBUG "MK_DIRS: $MK_DIRS"
+
+: ${UNDOTTED:=""}
+$DEBUG "UNDOTTED: $UNDOTTED"
+
+: ${NEVER_UNDOTTED:=""}
+$DEBUG "NEVER_UNDOTTED: $NEVER_UNDOTTED"
+
+relative_root_dir="$PWD"
+
+for DOTFILES_DIR in $DOTFILES_DIRS; do
+  cd "$relative_root_dir"
+
+  if is_relative $DOTFILES_DIR; then
+    DOTFILES_DIR="$PWD/$DOTFILES_DIR"
+  fi
+
+  if [ ! -d "$DOTFILES_DIR" ]; then
+    $VERBOSE "skipping non-existent directory: $DOTFILES_DIR"
+    continue
+  fi
+
+  exclude_file_globs="$(dotfiles_dir_excludes "$DOTFILES_DIR" "$EXCLUDES")"
+  $DEBUG "exclude_file_globs: $exclude_file_globs"
+  include_file_globs="$(dotfiles_dir_excludes "$DOTFILES_DIR" "$INCLUDES")"
+  symlink_dirs_file_globs="$(dotfiles_dir_excludes "$DOTFILES_DIR" "$SYMLINK_DIRS")"
+  $DEBUG "symlink_dirs_file_globs: $symlink_dirs_file_globs"
+  mk_dirs_file_globs="$(dotfiles_dir_excludes "$DOTFILES_DIR" "$MK_DIRS")"
+  $DEBUG "mk_dirs_file_globs: $mk_dirs_file_globs"
+  undotted_file_globs="$(dotfiles_dir_excludes "$DOTFILES_DIR" "$UNDOTTED")"
+  $DEBUG "undotted_file_globs: $undotted_file_globs"
+  never_undotted_file_globs="$(dotfiles_dir_excludes "$DOTFILES_DIR" "$NEVER_UNDOTTED")"
+  $DEBUG "never_undotted_file_globs: $never_undotted_file_globs"
+
+  cd "$DOTFILES_DIR"
+  DIR_STACK=":$DOTFILES_DIR"
+
+  host_files="$DOTFILES_DIR/host-$HOSTNAME"
+  if [ -d "$host_files" ]; then
+    pushdir "$(basename "$host_files")"
+    for escaped_file in ${FILES:-*}; do
+      file="$(decode "$escaped_file")"
+      dotted=0
+      if is_excluded "$file" "$undotted_file_globs" "$never_undotted_file_globs"; then
+        dotted=1
+      fi
+
+      handle_file "$file" "$DEST_DIR" "$host_files" . "$dotted" "$exclude_file_globs" "$include_file_globs" "$symlink_dirs_file_globs" "$mk_dirs_file_globs"
+    done
+    popdir
+  fi
+
+  cd "$DOTFILES_DIR"
+
+  for tag in $TAGS; do
+    if [ -d "tag-$tag" ]; then
+      pushdir "$(basename "tag-$tag")"
+      for escaped_file in ${FILES:-*}; do
+        file="$(decode "$escaped_file")"
+        $DEBUG "TAG: $tag, exclude_file_globs: $exclude_file_globs"
+        dotted=0
+        if is_excluded "$file" "$undotted_file_globs" "$never_undotted_file_globs"; then
+          dotted=1
+        fi
+        handle_file "$file" "$DEST_DIR" "$DOTFILES_DIR/tag-$tag" . "$dotted" "$exclude_file_globs" "$include_file_globs" "$symlink_dirs_file_globs" "$mk_dirs_file_globs"
+      done
+      popdir
+    fi
+  done
+
+  cd "$DOTFILES_DIR"
+
+  for escaped_file in ${FILES:-*}; do
+    file="$(decode "$escaped_file")"
+    dotted=0
+    if is_metafile "$file"; then
+      continue
+    fi
+
+    if is_excluded "$file" "$undotted_file_globs" "$never_undotted_file_globs"; then
+      dotted=1
+    fi
+
+    handle_file "$file" "$DEST_DIR" "$DOTFILES_DIR" . "$dotted" "$exclude_file_globs" "$include_file_globs" "$symlink_dirs_file_globs" "$mk_dirs_file_globs"
+  done
+done

@@ -1,0 +1,131 @@
+#!/bin/bash
+
+: ${RCM_LIB:=$(dirname "$0")/../share/rcm}
+. "$RCM_LIB/rcm.sh"
+
+destination() {
+  local dotfiles_dir="$1"
+  local dotless=$2
+  local in_host=$3
+  local tag="$4"
+
+  $DEBUG "destination $dotfiles_dir $dotless $in_host $tag"
+
+  if [ "x$tag" != "x" ]; then
+    echo "$dotfiles_dir/tag-$tag"
+  elif [ $in_host = 1 ]; then
+    echo "$dotfiles_dir/host-$HOSTNAME"
+  else
+    echo "$dotfiles_dir"
+  fi
+}
+
+show_help() {
+  local exit_code=${1:-0}
+
+  $PRINT "Usage: mkrc [-ChSsUuVvqo] [-t TAG] [-d DIR] [-B HOSTNAME] FILES ..."
+  $PRINT "see mkrc(1) and rcm(7) for more details"
+
+  exit $exit_code
+}
+
+if [ $# -eq 0 ]; then
+  show_help 64
+fi
+
+for DOTFILES_DIR in $DOTFILES_DIRS $DEFAULT_DOTFILES_DIR; do
+  break
+done
+
+tag=
+hostname=
+verbosity=0
+in_host=0
+version=0
+always_copy=0
+force_symlink=50
+undotted=50
+install_args=
+
+while getopts :ChSsUuVvqot:d:B: opt; do
+  case "$opt" in
+    C) always_copy=1 ;;
+    h) show_help ;;
+    t) tag="$OPTARG" ;;
+    v) verbosity=$(($verbosity + 1)) ;;
+    q) verbosity=$(($verbosity - 1)) ;;
+    o) in_host=1 ;;
+    d) DOTFILES_DIR="$OPTARG" ;;
+    V) version=1 ;;
+    S) force_symlink=1 ;;
+    s) force_symlink=0 ;;
+    U) undotted=1 ;;
+    u) undotted=0 ;;
+    B)
+      in_host=1
+      hostname="$OPTARG"
+      install_args="-B $hostname"
+      ;;
+    ?) show_help 64 ;;
+  esac
+done
+shift $(($OPTIND-1))
+
+handle_common_flags mkrc $version $verbosity
+HOSTNAME="$(determine_hostname "$hostname")"
+
+if [ $in_host -eq 1 -a "x$tag" != "x" ]; then
+  $ERROR 1 "Cannot specify both -o and -t"
+fi
+
+if [ $always_copy -eq 1 ]; then
+  INSTALL="$INSTALL -C"
+fi
+
+files=""
+for i; do
+  files="$(printf "$files\n$i")"
+done
+
+if [ $force_symlink -eq 1 ]; then
+  for file in $files; do
+    dedotted="$(de_dot "$file")"
+    INSTALL="$INSTALL -S $dedotted"
+  done
+elif [ $force_symlink -eq 0 ]; then
+  for file in $files; do
+    dedotted="$(de_dot "$file")"
+    INSTALL="$INSTALL -s $dedotted"
+  done
+fi
+
+if [ $undotted -eq 1 ]; then
+  for file in $files; do
+    dedotted="$(de_dot "$file")"
+    INSTALL="$INSTALL -U $dedotted"
+  done
+elif [ $undotted -eq 0 ]; then
+  for file in $files; do
+    dedotted="$(de_dot "$file")"
+    INSTALL="$INSTALL -u $dedotted"
+  done
+fi
+
+saved_IFS="$IFS"
+IFS='
+'
+for file in $files; do
+  IFS="$saved_IFS"
+  case "$file" in
+    /*) : ;;
+    *) [ -e "$PWD/$file" ] && file="$PWD/$file" ;;
+  esac
+
+  dotless="$(de_dot "$file")"
+  dest="$(destination "$DOTFILES_DIR" "$dotless" $in_host "$tag")"
+  mkdir -p "$dest/$(dirname "$dotless")"
+  $VERBOSE "Moving..."
+  mv_v "$file" "$dest/$dotless"
+  $VERBOSE "Linking..."
+  $INSTALL -d "$DOTFILES_DIR" -t "${tag:--}" $install_args "$dotless"
+done
