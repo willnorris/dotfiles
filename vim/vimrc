@@ -35,6 +35,7 @@ Plug 'vim-scripts/localvimrc'
 Plug 'w0rp/ale'
 Plug 'zhaocai/GoldenView.vim'
 
+Plug '~/.vim/bundle/osc52'
 call plug#end()
 
 " a handful of basic config options come from vim-sensible
@@ -124,6 +125,8 @@ call plug#end()
 
   noremap j gj
   noremap k gk
+
+  vmap <C-c> y:call SendViaOSC52(getreg('"'))<cr>
 
   " Join lines and restore cursor location (J)
   nnoremap J :call Preserve("join")<CR>
