@@ -1,46 +1,8 @@
 " vim: set foldmarker={,} foldmethod=marker:
 
-call plug#begin('~/.vim/bundle')
-
-Plug 'bling/vim-airline'
-Plug 'blueyed/vim-colors-solarized'
-Plug 'fatih/vim-go'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/gv.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'kshenoy/vim-signature'
-Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-signify'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'sheerun/vim-polyglot'
-Plug 'sickill/vim-pasta'
-Plug 'sjl/gundo.vim'
-Plug 'tpope/vim-afterimage'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/localvimrc'
-Plug 'w0rp/ale'
-Plug 'zhaocai/GoldenView.vim'
-
-Plug '~/.vim/bundle/osc52'
-call plug#end()
-
-" a handful of basic config options come from vim-sensible
-
 " General {
+  " a handful of basic config options come from vim-sensible
+
   set nocompatible " get out of vi-compatibility mode
   set history=9999 " keep plenty of history
   set undodir^=~/.vim/undo
@@ -77,6 +39,15 @@ call plug#end()
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position. Don't
+  " do it when the position is invalid or when inside an event handler (happens
+  " when dropping a file on gvim). Also don't do it when the mark is in the
+  " first line, that is the default position when opening a file.
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 " }
 
 " Folding {
@@ -93,23 +64,6 @@ call plug#end()
           setlocal foldcolumn=1
       endif
   endfunction
-" }
-
-" Colors {
-  set background=dark
-  try
-    colorscheme solarized
-  catch /^Vim\%((\a\+)\)\=:E185/
-    " ignore
-  endtry
-
-  syntax on
-  set hlsearch
-  set colorcolumn=+1 " display column at edge of textwidth
-
-  highlight SignColumn ctermbg=8
-  highlight FoldColumn ctermbg=8
-  highlight SpellBad ctermfg=1
 " }
 
 " Mappings {
@@ -167,8 +121,6 @@ call plug#end()
 
   nnoremap <leader>u :GundoToggle<CR>
 
-  nnoremap cog :ToggleGoldenViewAutoResize<CR>
-
   " find current word in quickfix
   nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<CR>:copen<CR>
   " find last search in quickfix
@@ -186,16 +138,6 @@ call plug#end()
 
   nnoremap <C-T> :FZF<CR>
 " }
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" Also don't do it when the mark is in the first line, that is the default
-" position when opening a file.
-autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
 
 " Functions {
   " Convenient command to see the difference between the current buffer and
@@ -218,16 +160,42 @@ autocmd BufReadPost *
   endfunction "}
 " }
 
-
 " Plugins {
+  call plug#begin('~/.vim/bundle')
+
+  Plug 'blueyed/vim-colors-solarized'
+  Plug 'fatih/vim-go'
+  Plug 'junegunn/gv.vim'
+  Plug 'kshenoy/vim-signature'
+  Plug 'majutsushi/tagbar'
+  Plug 'michaeljsmith/vim-indent-object'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'sickill/vim-pasta'
+  Plug 'tpope/vim-afterimage'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-git'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-sleuth'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-vinegar'
+
+  Plug '~/.vim/bundle/osc52'
+
   source $VIMRUNTIME/macros/matchit.vim
 
+  Plug 'vim-scripts/localvimrc'
   let g:localvimrc_ask = 0
 
-  let g:statline_fugitive = 1
-  let g:statline_filename_relative = 1
-
+  Plug 'sjl/gundo.vim'
   let g:gundo_preview_bottom = 1
+  if has('python3')
+    let g:gundo_prefer_python3 = 1
+  endif
 
   let g:netrw_banner = 0
   let g:netrw_liststyle = 3
@@ -235,27 +203,33 @@ autocmd BufReadPost *
   let g:netrw_altv = 1
   let g:netrw_winsize = -28
 
+  Plug 'mhinz/vim-signify'
   let g:signify_vcs_list = [ 'git', 'hg' ]
 
+  Plug 'w0rp/ale'
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
   highlight ALEErrorSign ctermfg=8 ctermbg=1
 
+  Plug 'zhaocai/GoldenView.vim'
   let g:goldenview__enable_default_mapping = 0
+  nnoremap cog :ToggleGoldenViewAutoResize<CR>
 
-  let g:vimwiki_list = [{
-      \ 'path': '~/.wiki/', 'syntax': 'markdown', 'ext': '.md' }]
-
+  Plug 'mileszs/ack.vim'
   if executable("rg")
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
     let g:ackprg = 'ag --nogroup --nocolor --column'
   endif
 
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
   let g:fzf_history_dir = '~/.fzf-history'
   let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 
   " Airline {
+    Plug 'bling/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     if !exists('g:airline_symbols')
       let g:airline_symbols = {}
     endif
@@ -299,15 +273,31 @@ autocmd BufReadPost *
     autocmd User AirlineAfterInit call AirlineInit()
   " }
 
+  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/limelight.vim'
   let g:limelight_conceal_ctermfg = 10
   nnoremap <leader>gg :Goyo<CR>
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
 
-  if !has('python') && has('python3')"
-    let g:ycm_server_python_interpreter = '/usr/bin/python3'
-    let g:gundo_prefer_python3 = 1
-  endif
+  call plug#end()
+" }
+
+" Colors {
+  set background=dark
+  try
+    colorscheme solarized
+  catch /^Vim\%((\a\+)\)\=:E185/
+    " ignore
+  endtry
+
+  syntax on
+  set hlsearch
+  set colorcolumn=+1 " display column at edge of textwidth
+
+  highlight SignColumn ctermbg=8
+  highlight FoldColumn ctermbg=8
+  highlight SpellBad ctermfg=1
 " }
 
 " Google-specific settings {
