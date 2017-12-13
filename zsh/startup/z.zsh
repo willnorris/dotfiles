@@ -1,4 +1,4 @@
-# Copyright (c) 2009 rupa deadwyler under the WTFPL license
+# Copyright (c) 2009 rupa deadwyler. Licensed under the WTFPL license, Version 2
 
 # maintains a jump-list of the directories you actually use
 #
@@ -31,15 +31,18 @@ _z() {
 
     local datafile="${_Z_DATA:-$HOME/.z}"
 
+    # if symlink, dereference
+    [ -h "$datafile" ] && datafile=$(readlink "$datafile")
+
     # bail if we don't own ~/.z and $_Z_OWNER not set
     [ -z "$_Z_OWNER" -a -f "$datafile" -a ! -O "$datafile" ] && return
 
     _z_dirs () {
-      while read line; do
-        # only count directories
-        [ -d "${line%%\|*}" ] && echo $line
-      done < "$datafile"
-      return 0
+        while read line; do
+            # only count directories
+            [ -d "${line%%\|*}" ] && echo $line
+        done < "$datafile"
+        return 0
     }
 
     # add entries
