@@ -2,6 +2,7 @@
   amend = commit --amend --no-edit
   authors = shortlog --summary --email --numbered
   b = branch -v -v
+  co = checkout
   ctags = !.git/hooks/ctags
   hub = !hub
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset'
