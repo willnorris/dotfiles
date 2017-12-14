@@ -3,7 +3,7 @@ This repositry contains my dotfiles for various applications.
 Setup on a new host:
 
 * `git clone https://github.com/willnorris/dotfiles ~/.dotfiles`
-* `~/.dotfiles/rcm/bin/rcup`
+* `path=(~/.dotfiles/rcm/bin $path) rcup`
 
 ## License
 
