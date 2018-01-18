@@ -7,3 +7,5 @@ function g {
     echo "\n## Branches" && git b
   fi
 }
+
+compdef g='git'
