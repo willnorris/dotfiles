@@ -7,3 +7,6 @@ manpath=($HOME/man $manpath)
 for config_file (~/.zsh/startup/*.zprofile(rN)); do
   source $config_file
 done
+
+# allow /etc/manpath.config to add system paths
+MANPATH="$MANPATH:"
