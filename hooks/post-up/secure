@@ -3,20 +3,18 @@
 HOST=`hostname | cut -d. -f1`
 
 function install_file() {
-  SRC="$HOME/.secure/$HOST/$1"
+  SRC="$HOME/.secure/$1"
   DST="$HOME/$2"
 
-  if [ -f "$SRC" ]; then
+  if [ -r "$SRC" ]; then
     if [ ! -h "$DST" ] || [ `readlink $DST` != "$SRC" ]; then
       ln -s "$SRC" "$DST"
     fi
   fi
 }
 
-install_file "gpg/secring.gpg"  ".gnupg/secring.gpg"
-install_file "gpg/pubring.gpg"  ".gnupg/pubring.gpg"
-install_file "mutt/credentials" ".mutt/credentials"
-install_file "mysql/my.cnf"     ".my.cnf"
-install_file "netrc"            ".netrc"
-install_file "ssh/id_rsa"       ".ssh/id_rsa"
-install_file "ssh/id_rsa.pub"   ".ssh/id_rsa.pub"
+install_file "gpg/pubring.gpg"        ".gnupg/pubring.gpg"
+install_file "gpg/private-keys-v1.d"  ".gnupg/private-keys-v1.d"
+install_file "mutt/credentials"       ".mutt/credentials"
+install_file "mysql/$HOST.cnf"        ".my.cnf"
+install_file "netrc/$HOST.netrc"      ".netrc"
