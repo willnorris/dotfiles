@@ -1,0 +1,17 @@
+#!/bin/bash
+
+VERSION="1.3.1-1"
+
+FILE="rcm_${VERSION}_all.deb"
+if [ ! -f "${FILE}" ]; then
+  curl -O "https://apt.thoughtbot.com/debian/pool/main/r/rcm/${FILE}"
+fi
+dpkg -x "${FILE}" .
+
+mkdir -p share
+rsync -a --delete usr/bin/* bin/
+rsync -a --delete usr/share/man/* share/man/
+rsync -a --delete usr/share/rcm/* share/rcm/
+
+rm "${FILE}"
+rm -rf ./usr
