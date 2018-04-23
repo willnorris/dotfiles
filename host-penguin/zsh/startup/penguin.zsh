@@ -1,3 +1,3 @@
 if [ -z "$DISPLAY"]; then
-  export DISPLAY=:0
+  export $(systemctl --user show-environment | grep ^DISPLAY=)
 fi
