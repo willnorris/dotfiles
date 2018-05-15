@@ -53,5 +53,9 @@ ZSH_HIGHLIGHT_STYLES[comment]=fg=yellow,bold
 
 function encmount {
   [ -z "$1" ] && echo "volumne not specified" 2>&1 && return 1
-  encfs "$HOME/.googledrive/Documents/$1.enc" "$HOME/.$1" -- -o volname="$1"
+  if [[ `uname` == "Darwin" ]]; then
+    encfs "$HOME/.googledrive/Documents/$1.enc" "$HOME/.$1" -- -o volname="$1"
+  else
+    encfs "$HOME/.googledrive/Documents/$1.enc" "$HOME/.$1"
+  fi
 }
