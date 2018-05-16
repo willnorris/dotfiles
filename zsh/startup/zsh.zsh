@@ -49,7 +49,9 @@ if [[ -d "$HOME/.zsh/bundle/zsh-syntax-highlighting" ]]; then
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
   source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
-ZSH_HIGHLIGHT_STYLES[comment]=fg=yellow,bold
+if (( $+ZSH_HIGHLIGHT_STYLES )); then
+  ZSH_HIGHLIGHT_STYLES[comment]=fg=yellow,bold
+fi
 
 function encmount {
   [ -z "$1" ] && echo "volumne not specified" 2>&1 && return 1
