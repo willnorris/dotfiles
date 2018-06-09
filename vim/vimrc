@@ -1,6 +1,4 @@
-" vim: set foldmarker={,} foldmethod=marker:
-
-" General {
+" General {{{
   " a handful of basic config options come from vim-sensible
 
   set nocompatible " get out of vi-compatibility mode
@@ -14,9 +12,9 @@
   set encoding=utf-8
   filetype plugin indent on
   "set mouse=a " enable mouse support
-" }
+" }}}
 
-" Vim UI {
+" Vim UI {{{
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   set number " show line numbers
   set splitright "open vertical splits on the right
@@ -26,9 +24,9 @@
   set scrolloff=3
   set sidescroll=1
   set sidescrolloff=10
-" }
+" }}}
 
-" Text Formatting / Layout {
+" Text Formatting / Layout {{{
   set ignorecase smartcase infercase " smart case matching
   set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
   if v:version >= 704
@@ -48,9 +46,9 @@
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-" }
+" }}}
 
-" Folding {
+" Folding {{{
   set foldenable " turn on folding
   set foldmethod=marker "fold on markers
   set foldlevel=100 " don't autofold anything
@@ -64,9 +62,9 @@
           setlocal foldcolumn=1
       endif
   endfunction
-" }
+" }}}
 
-" Mappings {
+" Mappings {{{
   let mapleader = "\<SPACE>"
   let maplocalleader = ","
 
@@ -137,9 +135,9 @@
   inoremap <C-L>e <C-R>=system('timestamp -epoch')<CR>
 
   nnoremap <C-T> :FZF<CR>
-" }
+" }}}
 
-" Functions {
+" Functions {{{
   " Convenient command to see the difference between the current buffer and
   " the file it was loaded from, thus the changes you made.
   " Only define it when not defined already.
@@ -148,7 +146,7 @@
         \ | wincmd p | diffthis
   endif
 
-  function! Preserve(command) "{
+  function! Preserve(command) "{{{
     " preparation: save last search, and cursor position.
     let _s=@/
     let view = winsaveview()
@@ -157,10 +155,10 @@
     " clean up: restore previous search history, and cursor position
     let @/=_s
     call winrestview(view)
-  endfunction "}
-" }
+  endfunction "}}}
+" }}}
 
-" Plugins {
+" Plugins {{{
   call plug#begin('~/.vim/bundle')
 
   Plug 'blueyed/vim-colors-solarized'
@@ -227,7 +225,7 @@
   let g:fzf_history_dir = '~/.fzf-history'
   let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
 
-  " Airline {
+  " Airline {{{
     Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     if !exists('g:airline_symbols')
@@ -271,7 +269,7 @@
         let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%c'])
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
-  " }
+  " }}}
 
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/limelight.vim'
@@ -281,9 +279,9 @@
   autocmd! User GoyoLeave Limelight!
 
   call plug#end()
-" }
+" }}}
 
-" Colors {
+" Colors {{{
   set background=dark
   try
     colorscheme solarized
@@ -298,10 +296,10 @@
   highlight SignColumn ctermbg=8
   highlight FoldColumn ctermbg=8
   highlight SpellBad ctermfg=1
-" }
+" }}}
 
-" Google-specific settings {
+" Google-specific settings {{{
   if filereadable($HOME . "/.vim/google.vim")
     source $HOME/.vim/google.vim
   endif
-" }
+" }}}
