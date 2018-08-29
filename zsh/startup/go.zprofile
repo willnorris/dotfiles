@@ -4,4 +4,6 @@ if (( $+GOROOT )); then
   path=($GOROOT/bin $path)
 fi
 
-path=($GOPATH/src/perkeep.org/bin $path)
+if [[ -d "$(go env GOPATH)/bin" ]]; then
+  path=("$(go env GOPATH)/bin" $path)
+fi
