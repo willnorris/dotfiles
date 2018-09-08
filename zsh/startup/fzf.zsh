@@ -4,6 +4,9 @@
 bindkey -v
 
 if (( $+commands[fzf] )); then
+  if (( $+commands[fd] )); then
+    export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git --color always"
+  fi
   export FZF_DEFAULT_OPTS="
   --color 16,fg+:-1,hl:1,hl+:1,info:2,marker:1 --no-bold --height '40%' --reverse
   --preview '(bat --color always {} 2> /dev/null || tree -C -L 1 -F {}) 2> /dev/null | head -200'
