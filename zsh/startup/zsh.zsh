@@ -39,6 +39,12 @@ elif (( $+commands[ag] )); then
   alias ack='ag'
 fi
 
+if (( $+commands[bat] )); then
+  export BAT_THEME="solarized-dark"
+  alias cat='bat'
+fi
+
+
 alias vi=vim
 export EDITOR='vim'
 export VISUAL=${EDITOR}
