@@ -1,4 +1,4 @@
-VERSION="1.3.1"
+VERSION="1.3.3"
 
 #set -x
 
@@ -12,6 +12,10 @@ DEFAULT_DOTFILES_DIR="$HOME/.dotfiles"
 MKDIR=mkdir
 INSTALL=rcup
 ROOT_DIR="$HOME"
+
+if [ -z "$LOGNAME" ]; then
+  LOGNAME=$(whoami)
+fi
 
 ln_v() {
   $VERBOSE "'$1' -> '$2'"
@@ -117,6 +121,8 @@ run_hooks() {
 
   if [ $RUN_HOOKS -eq 1 ]; then
     for dotfiles_dir in $DOTFILES_DIRS; do
+      dotfiles_dir=$(eval echo "$dotfiles_dir")
+
       hook_file="$dotfiles_dir/hooks/$when-$direction"
 
       if [ -e "$hook_file" ]; then
@@ -132,7 +138,7 @@ run_hooks() {
         # else's dotfiles repository without reviewing the hooks before doing an `rcup`?
         find "$hook_file" -type f \( \( -user $LOGNAME -perm -100 \) -o -perm -001 \) \
           | sort | while read file; do
-            sh -c 'cd "`dirname $1`" && ./"`basename $1`"' arg0 "$file"
+            sh -c 'cd -- "`dirname $1`" && ./"`basename $1`"' arg0 "$file"
           done
       else
         $DEBUG "no $when-$direction hook present for $dotfiles_dir, skipping"
