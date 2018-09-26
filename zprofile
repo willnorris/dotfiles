@@ -8,5 +8,5 @@ for config_file (~/.zsh/startup/*.zprofile(rN)); do
   source $config_file
 done
 
-# allow /etc/manpath.config to add system paths
-MANPATH="$MANPATH:"
+# append default system manpath
+MANPATH="$MANPATH:$(manpath -g)"
