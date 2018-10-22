@@ -5,4 +5,4 @@ if (( ! $+GOROOT )) && [[ -d /opt/go ]]; then
 fi
 
 # enable go 1.11 modules
-export GO111MODULE=on
+# export GO111MODULE=on
