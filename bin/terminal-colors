@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""2.2 John Eikenberry <jae@zhar.net> GPL-3+ http://zhar.net/projects/
+"""2.3.0 John Eikenberry <jae@zhar.net> GPL-3+ http://zhar.net/projects/
 
 Copyright
     Copyright (C) 2010-2015 John Eikenberry <jae@zhar.net>
@@ -58,6 +58,7 @@ import curses
 from optparse import OptionParser, OptionGroup, make_option
 from math import ceil, sqrt
 from inspect import getdoc
+from functools import wraps
 
 # output constants
 fg_escape = "\x1b[38;5;%dm"
@@ -134,6 +135,7 @@ def _cached(f):
     """ Memoize function w/ no params
     """
     _cache = {}
+    @wraps(f)
     def cache():
         if None not in _cache:
             _cache[None] = f()
@@ -196,9 +198,9 @@ class term16(object):
 
         x_labels = ["%6s " % fg for fg in fg_codes]
         y_labels = [' ' * 6]
-        y_labels.extend(["{: ^7}".format(bg) for bg in bg_codes])
+        y_labels.extend(["{: ^5}".format(bg) for bg in bg_codes])
 
-        text, esc_code = "  gYw  ", "\x1b[%s"
+        text, esc_code = " gYw ", "\x1b[%s"
 
         codes = [[esc_code % fg + esc_code % bg + text + clear
                             for bg in bg_codes] for fg in fg_codes]
@@ -211,9 +213,9 @@ class term16(object):
         x_labels, y_labels, codes = term16.ansicodes()
 
         print(' '.join(y_labels))
-        for i in range(len(codes)):
+        for i, code in enumerate(codes):
             print(x_labels[i], end='')
-            print(' '.join(codes[i]))
+            print(' '.join(code))
 
     def display():
         """ display 16 color info
@@ -233,6 +235,12 @@ class term256(term16):
     @_cached
     def _rgb_lookup():
         """ color rgb lookup dict
+        >>> term256._rgb_lookup()[16]
+        (0, 0, 0)
+        >>> term256._rgb_lookup()[128]
+        (175, 0, 215)
+        >>> term256._rgb_lookup()[255]
+        (238, 238, 238)
         """
         # color increment is based on xterm/rxvt palette
         cincr = [0] + [95+40*n for n in range(5)]
@@ -246,11 +254,17 @@ class term256(term16):
 
     def _to_rgb(n):
         """ Convert color value to rgb tuple.
+        >>> term256._to_rgb(128)
+        (175, 0, 215)
         """
         return term256._rgb_lookup()[n]
 
     def _rgb_color_table():
         """ 256 color info
+        >>> term256._rgb_color_table()[0][0]
+        '\\x1b[38;5;16m  16: \\x1b[38;5;255m\\x1b[48;5;16m#000000\\x1b[0m'
+        >>> term256._rgb_color_table()[-1][-1]
+        '\\x1b[38;5;255m 255: \\x1b[38;5;16m\\x1b[48;5;255m#eeeeee\\x1b[0m'
         """
         rgbl = term256._rgb_lookup()
         label_num = "% 4d: "
@@ -299,7 +313,7 @@ class term256(term16):
             esc = lambda n: fg_escape % \
                     (16 if term256._to_rgb(n).is_light() else 255)
             render = lambda n: bg_escape % n + term256.label(n, esc) + clear
-        return [[render(n) for n in i] for i in palette]
+        return [[render(n) for n in i] for i in iter(palette)]
 
     def _compact_display():
         """ display colors in compact format
@@ -390,7 +404,7 @@ class term88(term16):
             esc = lambda n: fg_escape % \
                     (16 if term88._to_rgb(n).is_light() else 87)
             render = lambda n: bg_escape % n + term88.label(n, esc) + clear
-        return [[render(n) for n in i] for i in palette]
+        return [[render(n) for n in i] for i in iter(palette)]
 
     def _colors():
         """ 88 color numbers
@@ -569,4 +583,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
