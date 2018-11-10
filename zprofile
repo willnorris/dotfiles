@@ -9,4 +9,8 @@ for config_file (~/.zsh/startup/*.zprofile(rN)); do
 done
 
 # append default system manpath
-MANPATH="$MANPATH:$(manpath -g)"
+if [[ `uname` == "Darwin" ]]; then
+  MANPATH="$MANPATH:"
+else
+  MANPATH="$MANPATH:$(manpath -g)"
+fi
