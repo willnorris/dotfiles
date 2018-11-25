@@ -31,14 +31,16 @@ function prompt_willnorris {
     (( cols = $COLUMNS * 1/4))
   elif [[ -n ${vcs_info_msg_0_} ]]; then
     # if we have any vcs info, make sure there's room in the prompt for it
-    (( cols = $COLUMNS - ${#vcs_info_msg_0_} - 4 ))
+    # strip color codes to ensure we calculate length correctly
+    vcs=$(echo ${vcs_info_msg_0_} | sed "s/%F{[[:alnum:]]*}//g" | sed "s/%f//g")
+    (( cols = $COLUMNS - ${#vcs} - 2 ))
   else
     cols="-1"
   fi
   print -n "%${cols}<…<%~%<<"
 
   if [[ -n ${vcs_info_msg_0_} ]]; then
-    print -n " %{${fg[yellow]}%}(${vcs_info_msg_0_})%{$reset_color%}"
+    print -n " ${vcs_info_msg_0_}"
   fi
 
   if (( $split )); then
@@ -55,11 +57,11 @@ function prompt_willnorris_setup {
   add-zsh-hook precmd prompt_willnorris_hook_precmd
   add-zsh-hook precmd precmd_set_xterm_title
 
-  zstyle ':vcs_info:*' disable bzr cdv cvs darcs fossil mtn svk tla
-  zstyle ':vcs_info:git*' formats "%b%m%u%c"
+  zstyle ':vcs_info:*' enable git hg p4 svn
+  zstyle ':vcs_info:git*' formats "%f(%F{yellow}%b%m%u%c%f)"
   zstyle ':vcs_info:*' check-for-changes true
-  zstyle ':vcs_info:*' stagedstr   "†"
-  zstyle ':vcs_info:*' unstagedstr "‡"
+  zstyle ':vcs_info:*' stagedstr   "%F{green}†%f"
+  zstyle ':vcs_info:*' unstagedstr "%F{blue}‡%f"
 }
 
 prompt_willnorris_setup "$@"
