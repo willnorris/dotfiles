@@ -60,8 +60,8 @@ function prompt_willnorris_setup {
   zstyle ':vcs_info:*' enable git hg p4 svn
   zstyle ':vcs_info:git*' formats "%f(%F{yellow}%b%m%u%c%f)"
   zstyle ':vcs_info:*' check-for-changes true
-  zstyle ':vcs_info:*' stagedstr   "%F{green}†%f"
-  zstyle ':vcs_info:*' unstagedstr "%F{blue}‡%f"
+  zstyle ':vcs_info:*' stagedstr   "%F{green}+%f"
+  zstyle ':vcs_info:*' unstagedstr "%F{blue}*%f"
 }
 
 prompt_willnorris_setup "$@"
