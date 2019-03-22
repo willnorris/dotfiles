@@ -5,5 +5,6 @@ if [[ -e $NVM_DIR/nvm.sh ]]; then
 fi
 
 if [[ -e $NVM_DIR/bash_completion ]]; then
-  source "$NVM_DIR/bash_completion"
+  # this interferes with my compdef in git.zsh
+  #source "$NVM_DIR/bash_completion"
 fi
