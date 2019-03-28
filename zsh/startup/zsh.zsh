@@ -4,6 +4,9 @@ set -k
 # Autoload zsh functions.
 fpath+="$HOME/.zsh/completion"
 
+# ensure $HOME/bin appears higher in $path
+path=($HOME/bin $path)
+
 zstyle ':completion:*' menu select=2
 
 # use vi key bindings
