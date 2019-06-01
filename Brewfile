@@ -1,35 +1,32 @@
 # https://github.com/Homebrew/homebrew-bundle
-tap 'caskroom/homebrew-cask'
+tap 'homebrew/cask'
 tap 'homebrew/services'
-tap 'homebrew/nginx'
-tap 'homebrew/php'
-tap 'homebrew/fuse'
+tap 'denji/nginx'
 
+brew 'bat'
 brew 'browser'
 brew 'coreutils'
+brew 'denji/nginx/nginx-full', args: ['with-lua-module', 'with-set-misc-module']
 brew 'dos2unix'
-brew 'encfs'
 brew 'findutils'
 brew 'fzf'
 brew 'git'
 brew 'git-crypt'
 brew 'gnupg'
+brew 'go'
 brew 'grc'
-brew 'highlight'
-brew 'homebrew/nginx/nginx-full', args: ['with-lua-module', 'with-set-misc-module']
-brew 'homebrew/php/php71', restart_service: :changed
-brew 'homebrew/php/phpmyadmin'
+brew 'hugo'
 brew 'jpegoptim'
 brew 'jq'
 brew 'lynx'
-brew 'mercurial'
 brew 'mobile-shell'
 brew 'mutt'
 brew 'mysql', restart_service: :changed
+brew 'php', restart_service: :changed
+brew 'phpmyadmin'
 brew 'pngcrush'
 brew 'rbenv'
 brew 'ripgrep'
-brew 'thoughtbot/formulae/rcm'
 brew 'tmux'
 brew 'tree'
 brew 'vim'
@@ -37,10 +34,11 @@ brew 'zsh-completions'
 brew 'zsh-lovers'
 
 cask 'alfred'
-cask 'colloquy'
 cask 'dash'
 cask 'iterm2'
 cask 'keepingyouawake'
-cask 'moom'
 cask 'password-assistant'
-cask 'rowanj-gitx'
+
+# these must be installed in this order
+cask 'osxfuse'
+brew 'encfs'
