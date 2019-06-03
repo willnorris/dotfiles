@@ -1,16 +1,18 @@
 # Setup ls colors
 
-if [[ -r ~/.config/personal/dircolors ]]; then
-  if (( $+commands[gdircolors] )); then
+[ -z "$PS1" ] && return # interactive only
+
+if [ -r ~/.config/personal/dircolors ]; then
+  if command -v gdircolors >/dev/null; then
     eval $(gdircolors ~/.config/personal/dircolors)
-  elif (( $+commands[dircolors] )); then
+  elif command -v dircolors >/dev/null; then
     eval $(dircolors ~/.config/personal/dircolors)
   fi
 fi
 
-if (( $+commands[gls] )); then
+if command -v gls >/dev/null; then
   alias ls=" gls --color=auto -F -N"
-elif ls --color=auto &>/dev/null; then
+elif ls --color=auto >/dev/null 2>/dev/null; then
   alias ls=" ls --color=auto -F"
 else
   # Incase we're using BSD ls with color support.

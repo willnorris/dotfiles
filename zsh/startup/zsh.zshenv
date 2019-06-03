@@ -1,7 +1,3 @@
-# User Information
-export NAME="Will Norris"
-export EMAIL="will@willnorris.com"
-
 # Setup path-like variables
 export -TU LD_LIBRARY_PATH ld_library_path
 export -TU PYTHONPATH python_path
