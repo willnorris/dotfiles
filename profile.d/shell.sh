@@ -9,6 +9,7 @@ fi
 
 if command -v bat >/dev/null; then
   export BAT_THEME="solarized-dark"
+  export BAT_STYLE="plain"
   alias cat='bat'
 fi
 

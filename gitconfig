@@ -6,6 +6,7 @@
   ctags = !.git/hooks/ctags
   hub = !hub
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset'
+  ll = !git log --oneline | fzf --multi --preview 'git show {+1}'
   st = status --short --branch
   start = !git init && git commit -n --allow-empty -m \"initial empty commit\"
   svn-diff = !git-svn-diff

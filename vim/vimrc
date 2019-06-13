@@ -220,10 +220,11 @@
     let g:ackprg = 'rg --vimgrep --no-heading'
   endif
 
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
   let g:fzf_history_dir = '~/.fzf-history'
   let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
+  let g:fzf_layout = { 'down': '~70%' }
 
   " Airline {{{
     Plug 'bling/vim-airline'
