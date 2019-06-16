@@ -5,7 +5,7 @@ typeset -U path manpath
 
 # load common shell configuration
 if [ -f ~/.profile ]; then
-  emulate sh -c 'source ~/.profile'
+  source ~/.profile
 fi
 
 for config_file (~/.zsh/startup/*.zsh(rN)); do
