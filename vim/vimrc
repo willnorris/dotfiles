@@ -162,7 +162,6 @@
   call plug#begin('~/.vim/bundle')
 
   Plug 'blueyed/vim-colors-solarized'
-  Plug 'fatih/vim-go'
   Plug 'junegunn/gv.vim'
   Plug 'kshenoy/vim-signature'
   Plug 'majutsushi/tagbar'
@@ -185,6 +184,10 @@
   Plug '~/.vim/bundle/osc52'
 
   source $VIMRUNTIME/macros/matchit.vim
+
+  " pin to commit before https://github.com/fatih/vim-go/pull/2497 was merged
+  " until vim 8.0.1453 is available on debian stretch
+  Plug 'fatih/vim-go', { 'commit': '1946131' }
 
   Plug 'vim-scripts/localvimrc'
   let g:localvimrc_ask = 0
