@@ -5,6 +5,7 @@ Include ~/.ssh/google-config
 Host *
   ControlPath ~/.ssh/master-%r@%h:%p
   ControlMaster auto
+  ControlPersist 3h
 
 Host home
   HostName home.willnorris.net
