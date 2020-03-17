@@ -4,12 +4,13 @@ autoload -Uz add-zsh-hook colors vcs_info
 
 colors
 if (( ! $+PROMPT_COLOR )); then
-  case $SHORT_HOST in
+  case $HOSTNAME in
     elias) PROMPT_COLOR="${fg[red]}" ;;
     esther) PROMPT_COLOR="${fg[cyan]}" ;;
     judah) PROMPT_COLOR="${fg[magenta]}" ;;
     levi) PROMPT_COLOR="${fg[green]}" ;;
     localhost) PROMPT_COLOR="${fg[blue]}" ;;
+    meshach) PROMPT_COLOR="${fg[blue]}" ;;
     penguin) PROMPT_COLOR="${fg[blue]}" ;;
     vashti) PROMPT_COLOR="${fg[blue]}" ;;
   esac
