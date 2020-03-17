@@ -1,5 +1,7 @@
 # vim: set ft=sshconfig :
 
+Include ~/.ssh/google-config
+
 Host *
   ControlPath ~/.ssh/master-%r@%h:%p
   ControlMaster auto
