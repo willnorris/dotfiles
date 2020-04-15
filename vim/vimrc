@@ -299,7 +299,7 @@
 " }}}
 
 " Colors {{{
-  set background=dark
+  set background=light
   try
     colorscheme solarized
   catch /^Vim\%((\a\+)\)\=:E185/
@@ -310,8 +310,8 @@
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
 
-  highlight SignColumn ctermbg=8
-  highlight FoldColumn ctermbg=8
+  highlight SignColumn ctermbg=15
+  highlight FoldColumn ctermbg=15
   highlight SpellBad ctermfg=1
 " }}}
 

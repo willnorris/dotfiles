@@ -29,6 +29,9 @@
 [color]
   ui = auto
 
+[color "diff"]
+  meta = normal
+
 [core]
   excludesfile = ~/.gitignore
   quotepath = false
