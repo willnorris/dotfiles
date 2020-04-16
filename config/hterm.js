@@ -31,14 +31,10 @@ var htermProfiles = {
     'solarized-dark': {
         'background-color': colors.base03,
         'foreground-color': colors.base0,
-        'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(colors.red), 0.6),
-        'color-palette-overrides': [colors.base02, colors.red, colors.green, colors.yellow, colors.blue, colors.magenta, colors.cyan, colors.base2, colors.base03, colors.orange, colors.base01, colors.base00, colors.base0, colors.violet, colors.base1, colors.base3],
     },
     'solarized-light': {
         'background-color': colors.base3,
         'foreground-color': colors.base00,
-        'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(colors.red), 0.6),
-        'color-palette-overrides': [colors.base02, colors.red, colors.green, colors.yellow, colors.blue, colors.magenta, colors.cyan, colors.base2, colors.base03, colors.orange, colors.base01, colors.base00, colors.base0, colors.violet, colors.base1, colors.base3],
     },
 };
 
@@ -56,6 +52,12 @@ for (name in htermProfiles) {
     for (var name in prefs) {
         term_.prefs_.set(name, prefs[name]);
     }
+
+    term_.prefs_.set('color-palette-overrides', [colors.base02, colors.red,
+        colors.green, colors.yellow, colors.blue, colors.magenta, colors.cyan,
+        colors.base2, colors.base03, colors.orange, colors.base01, colors.base00,
+        colors.base0, colors.violet, colors.base1, colors.base3]);
+    term_.prefs_.set('cursor-color', lib.colors.setAlpha(lib.colors.hexToRGB(colors.red), 0.6));
 
     term_.prefs_.set('font-size', 14);
     term_.prefs_.set('enable-bold', false);
