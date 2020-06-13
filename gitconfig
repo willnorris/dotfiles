@@ -33,17 +33,17 @@
   meta = normal
 
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.config/git/ignore
   quotepath = false
 
 [diff "vim"]
   command = vimdiff
 
 [http]
-  cookiefile = ~/.gitcookies
+  cookiefile = ~/.config/git/cookies
 
 [init]
-  templatedir = ~/.git_template
+  templatedir = ~/.config/git/template
 
 [log]
   decorate = short
