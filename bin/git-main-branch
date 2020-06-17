@@ -1,0 +1,22 @@
+#! /bin/sh
+#
+# Gets the "main" branch name for a git repository.
+#
+# https://github.com/mr-salty/git-main-branch
+
+if [[ $1 == "--help" ]]; then
+  cat <<EOM
+usage: git main-branch [repository-name]
+  repository-name defaults to "origin"
+EOM
+  exit 1
+fi
+
+repo="${1-origin}"
+branch="$(git rev-parse --abbrev-ref ${repo}/HEAD 2>/dev/null)"
+if [[ $? -ne 0 ]]; then
+  set -e
+  git remote set-head "${repo}" -a > /dev/null
+  branch="$(git rev-parse --abbrev-ref ${repo}/HEAD 2>/dev/null)"
+fi
+echo "${branch}" | sed -e "s#${repo}/##"
