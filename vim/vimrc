@@ -162,6 +162,7 @@
   call plug#begin('~/.vim/bundle')
 
   Plug 'blueyed/vim-colors-solarized'
+  Plug 'google/vim-jsonnet'
   Plug 'junegunn/gv.vim'
   Plug 'kshenoy/vim-signature'
   Plug 'majutsushi/tagbar'
