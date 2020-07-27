@@ -44,6 +44,7 @@
 
 [init]
   templatedir = ~/.config/git/template
+  defaultBranch = main
 
 [log]
   decorate = short
