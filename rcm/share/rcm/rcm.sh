@@ -58,6 +58,10 @@ is_relative() {
   echo "$1" | grep -v '^/' >/dev/null
 }
 
+is_nested() {
+  echo "$1" | sed "s|$DEST_DIR/||" | grep '/' >/dev/null
+}
+
 version() {
   cat << EOV
 $1 (rcm) $VERSION
@@ -165,6 +169,14 @@ decode() {
   local file="$1"
 
   echo "$file" | tr "$DELIMITER" " "
+}
+
+append_variable() {
+  if [ -z "$1" ]; then
+    echo "$2"
+  else
+    echo "$1 $2"
+  fi
 }
 
 : ${RCRC:=$HOME/.rcrc}
