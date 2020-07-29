@@ -9,6 +9,7 @@ To update this local installation from the upstream source:
     git clone https://github.com/thoughtbot/rcm /tmp/rcm
     cd /tmp/rcm
 
+    ./autogen.sh
     ./configure --prefix ~/.dotfiles/rcm
     make
     make install
