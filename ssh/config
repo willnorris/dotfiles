@@ -19,3 +19,8 @@ Host esther
 Host levi
   HostName levi.ipn.willnorris.net
   User willnorris
+
+Host local
+  HostName levi.ipn.willnorris.net
+  User willnorris
+  RemoteForward 9200 localhost:8080
