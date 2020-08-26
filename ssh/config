@@ -1,6 +1,6 @@
 # vim: set ft=sshconfig :
 
-Include ~/.ssh/google-config
+Include ~/.ssh/work-config
 
 Host *
   ControlPath ~/.ssh/master-%r@%h:%p
@@ -17,7 +17,7 @@ Host esther
   User elisabeth
 
 Host levi
-  HostName levi.ipn.willnorris.net
+  HostName levi.willnorris.net
   User willnorris
 
 Host local

@@ -18,8 +18,8 @@ configuration files for internal tools. For those that have access, they can
 be found at <http://go/user.git/willnorris/dotfiles>. They are installed
 using:
 
-* `git clone sso://user/willnorris/dotfiles ~/.dotfiles-google`
-* update `~/.rcrc` to include `DOTFILES_DIRS="${HOME}/.dotfiles-google ${HOME}/.dotfiles"`
+* `git clone sso://user/willnorris/dotfiles ~/.dotfiles-work`
+* update `~/.rcrc` to include `DOTFILES_DIRS="${HOME}/.dotfiles-work ${HOME}/.dotfiles"`
 
 `rcup` will now install my work-specific dotfiles alongside my regular ones.
 

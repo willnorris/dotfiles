@@ -332,8 +332,8 @@
   highlight MatchParen ctermbg=8
 " }}}
 
-" Google-specific settings {{{
-  if filereadable($HOME . "/.vim/google.vim")
-    source $HOME/.vim/google.vim
+" Work-specific settings {{{
+  if filereadable($HOME . "/.vim/work.vim")
+    source $HOME/.vim/work.vim
   endif
 " }}}
