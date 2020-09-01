@@ -161,7 +161,6 @@
 " Plugins {{{
   call plug#begin('~/.vim/bundle')
 
-  Plug 'blueyed/vim-colors-solarized'
   Plug 'google/vim-jsonnet'
   Plug 'junegunn/gv.vim'
   Plug 'kshenoy/vim-signature'
@@ -233,6 +232,7 @@
   " Airline {{{
     Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    let g:airline_theme='sol'
     if !exists('g:airline_symbols')
       let g:airline_symbols = {}
     endif
@@ -301,18 +301,20 @@
 
 " Colors {{{
   set background=light
-  try
-    colorscheme solarized
-  catch /^Vim\%((\a\+)\)\=:E185/
-    " ignore
-  endtry
+  colorscheme default
 
   syntax on
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
 
-  highlight SignColumn ctermbg=15
-  highlight FoldColumn ctermbg=15
+  highlight SignColumn ctermbg=NONE
+  highlight Folded ctermbg=LightGray
+  highlight FoldColumn ctermbg=NONE
+  highlight LineNr ctermbg=NONE ctermfg=LightGray
+  highlight DiffChange ctermbg=NONE ctermfg=Blue
+  highlight DiffAdd ctermbg=LightGreen
+  highlight DiffDelete ctermbg=LightRed
+  highlight DiffText ctermbg=Blue ctermfg=White
   highlight SpellBad ctermfg=1
 " }}}
 
