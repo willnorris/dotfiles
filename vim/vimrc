@@ -308,14 +308,15 @@
   set colorcolumn=+1 " display column at edge of textwidth
 
   highlight SignColumn ctermbg=NONE
-  highlight Folded ctermbg=LightGray
+  highlight Folded ctermbg=252
   highlight FoldColumn ctermbg=NONE
-  highlight LineNr ctermbg=NONE ctermfg=LightGray
-  highlight DiffChange ctermbg=NONE ctermfg=Blue
+  highlight LineNr ctermbg=NONE ctermfg=248
+  highlight DiffChange ctermbg=NONE ctermfg=None
   highlight DiffAdd ctermbg=LightGreen
   highlight DiffDelete ctermbg=LightRed
   highlight DiffText ctermbg=Blue ctermfg=White
-  highlight SpellBad ctermfg=1
+  highlight SpellBad ctermfg=Red
+  highlight MatchParen ctermbg=250
 " }}}
 
 " Google-specific settings {{{
