@@ -15,7 +15,7 @@ if command -v fzf > /dev/null; then
     export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git --color always"
   fi
   export FZF_DEFAULT_OPTS="
-  --color 16,fg+:-1,hl:1,hl+:1,info:2,marker:1 --no-bold --height '40%' --reverse
+  --color light,fg+:-1,hl:1,hl+:1,info:2,marker:1 --no-bold --height '40%' --reverse
   --preview '(bat -p --color always {} || cat {} || tree -C -L 1 -F {}) 2> /dev/null | head -300'
   --preview-window 'right:70%'
   --bind '?:toggle-preview,alt-j:preview-down,alt-k:preview-up'

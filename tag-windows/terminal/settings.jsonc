@@ -33,10 +33,8 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "colorScheme": "One Half Light",
-            "cursorColor": "#dc322f",
+            "colorScheme": "gogh",
             "cursorShape": "filledBox",
-            "selectionBackground": "#93A1A1",
             "fontFace": "Cascadia Mono",
             "fontWeight": "semi-light",
             "fontSize": 11,
@@ -76,7 +74,32 @@
 
     // Add custom color schemes to this array.
     // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
-    "schemes": [],
+    "schemes": [
+          {
+            // colors adapted from of gogh's logo (https://github.com/Mayccoll/Gogh)
+            "name": "gogh",
+            "black": "#404f5f",
+            "red": "#c0392b",
+            "green": "#27ae60",
+            "yellow": "#f39c12",
+            "blue": "#2980b9",
+            "purple": "#8e44ad",
+            "cyan": "#16a085",
+            "white": "#bdc3c7",
+            "brightBlack": "#506070",
+            "brightRed": "#e74c3c",
+            "brightGreen": "#2ecc71",
+            "brightYellow": "#f1c40f",
+            "brightBlue": "#3498db",
+            "brightPurple": "#9b59b6",
+            "brightCyan": "#2aa198",
+            "brightWhite": "#ecf0f1",
+            "background": "#fafafa",
+            "foreground": "#222d3f",
+            "cursorColor": "#c0392b",
+            "selectionBackground": "#afb6b6"
+          }
+    ],
 
     // Add custom keybindings to this array.
     // To unbind a key combination from your defaults.json, set the command to "unbound".

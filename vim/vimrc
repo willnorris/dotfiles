@@ -300,22 +300,24 @@
 " }}}
 
 " Colors {{{
-  set background=light
+  set background&
   colorscheme default
 
   syntax on
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
 
+  highlight ColorColumn ctermbg=White
+  highlight VertSplit ctermfg=LightGray ctermbg=LightGray
   highlight SignColumn ctermbg=NONE
   highlight Folded ctermbg=252
   highlight FoldColumn ctermbg=NONE
   highlight LineNr ctermbg=NONE ctermfg=248
   highlight DiffChange ctermbg=NONE ctermfg=None
-  highlight DiffAdd ctermbg=LightGreen
-  highlight DiffDelete ctermbg=LightRed
-  highlight DiffText ctermbg=Blue ctermfg=White
-  highlight SpellBad ctermfg=Red
+  highlight DiffAdd ctermbg=LightGreen ctermfg=8
+  highlight DiffDelete ctermbg=LightRed ctermfg=8
+  highlight DiffText ctermbg=4 ctermfg=15
+  highlight SpellBad cterm=undercurl
   highlight MatchParen ctermbg=250
 " }}}
 
