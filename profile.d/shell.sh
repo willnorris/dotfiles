@@ -7,6 +7,9 @@ elif command -v ag >/dev/null; then
   alias ack='ag'
 fi
 
+if command -v batcat >/dev/null; then
+  alias bat='batcat'
+fi
 if command -v bat >/dev/null; then
   export BAT_THEME="solarized-light"
   export BAT_STYLE="plain"
