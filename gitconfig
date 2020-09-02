@@ -73,3 +73,6 @@
   clean = git-lfs clean -- %f
   process = git-lfs filter-process
   smudge = git-lfs smudge -- %f
+
+[credential "https://source.developers.google.com"]
+  helper = gcloud.sh
