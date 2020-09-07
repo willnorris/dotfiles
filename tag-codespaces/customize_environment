@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# call as `customize_environment $USER` so that $1 is the username of the
+# calling user, not root.
+
+
+apt-get update
+apt-get -y install man
+
+if [ -z "$1" ]; then
+  chsh -s /usr/bin/zsh $1
+fi
+
+# install ripgrep
+curl -o /tmp/ripgrep.deb -L https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+dpkg -i /tmp/ripgrep.deb
+
+# install bat
+curl -o /tmp/bat.deb -L https://github.com/sharkdp/bat/releases/download/v0.15.4/bat_0.15.4_amd64.deb
+dpkg -i /tmp/bat.deb
