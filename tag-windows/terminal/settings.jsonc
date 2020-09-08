@@ -33,7 +33,7 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "colorScheme": "One Half Dark",
+            "colorScheme": "My Dark",
             "cursorShape": "filledBox",
             "fontFace": "Cascadia Mono",
             "fontWeight": "semi-light",
@@ -75,6 +75,28 @@
     // Add custom color schemes to this array.
     // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
     "schemes": [
+        { // modified from One Half Dark
+            "name": "My Dark",
+            "foreground": "#dcdfe4",
+            "background": "#202229",
+            "cursorColor": "#e06c75",
+            "black": "#2c313a",
+            "red": "#e06c75",
+            "green": "#98c379",
+            "yellow": "#e5c07b",
+            "blue": "#61afef",
+            "purple": "#c678dd",
+            "cyan": "#56b6c2",
+            "white": "#dcdfe4",
+            "brightBlack": "#5a6374",
+            "brightRed": "#e06c75",
+            "brightGreen": "#98c379",
+            "brightYellow": "#e5c07b",
+            "brightBlue": "#61afef",
+            "brightPurple": "#c678dd",
+            "brightCyan": "#56b6c2",
+            "brightWhite": "#dcdfe4"
+        },
     ],
 
     // Add custom keybindings to this array.

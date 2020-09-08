@@ -232,7 +232,16 @@
   Plug 'joshdick/onedark.vim'
 
   " Airline {{{
-    Plug 'bling/vim-airline'
+    Plug 'vim-airline/vim-airline'
+
+    let g:airline_theme_patch_func = 'AirlineThemePatch'
+    function! AirlineThemePatch(palette)
+      if g:airline_theme == 'onedark'
+        let a:palette.normal.airline_c[3] = 0
+        let a:palette.normal.airline_x[3] = 0
+      endif
+    endfunction
+
     let g:airline_theme='onedark'
     if !exists('g:airline_symbols')
       let g:airline_symbols = {}
@@ -292,7 +301,7 @@
 
   Plug 'junegunn/goyo.vim'
   Plug 'junegunn/limelight.vim'
-  let g:limelight_conceal_ctermfg = 10
+  let g:limelight_conceal_ctermfg = 8
   nnoremap <leader>gg :Goyo<CR>
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
@@ -319,7 +328,7 @@
 
   highlight Comment ctermfg=8
   highlight SpecialComment ctermfg=8
-  highlight ColorColumn ctermbg=8
+  highlight ColorColumn ctermbg=black
   highlight SignColumn ctermbg=NONE
   highlight LineNr ctermbg=NONE ctermfg=8
   highlight DiffChange cterm=NONE
