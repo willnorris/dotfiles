@@ -229,10 +229,11 @@
   let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
   let g:fzf_layout = { 'down': '~70%' }
 
+  Plug 'joshdick/onedark.vim'
+
   " Airline {{{
     Plug 'bling/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme='sol'
+    let g:airline_theme='onedark'
     if !exists('g:airline_symbols')
       let g:airline_symbols = {}
     endif
@@ -300,25 +301,30 @@
 " }}}
 
 " Colors {{{
-  set background&
-  colorscheme default
+  " onedark: don't set a background color, just use terminal's background
+  if (has("autocmd") && !has("gui_running"))
+    augroup colorset
+      autocmd!
+      let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+      autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
+    augroup END
+  endif
+
+  let g:onedark_termcolors=16
+  colorscheme onedark
 
   syntax on
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
 
-  highlight ColorColumn ctermbg=White
-  highlight VertSplit ctermfg=LightGray ctermbg=LightGray
+  highlight Comment ctermfg=8
+  highlight SpecialComment ctermfg=8
+  highlight ColorColumn ctermbg=8
   highlight SignColumn ctermbg=NONE
-  highlight Folded ctermbg=252
-  highlight FoldColumn ctermbg=NONE
-  highlight LineNr ctermbg=NONE ctermfg=248
-  highlight DiffChange ctermbg=NONE ctermfg=None
-  highlight DiffAdd ctermbg=LightGreen ctermfg=8
-  highlight DiffDelete ctermbg=LightRed ctermfg=8
-  highlight DiffText ctermbg=4 ctermfg=15
+  highlight LineNr ctermbg=NONE ctermfg=8
+  highlight DiffChange cterm=NONE
   highlight SpellBad cterm=undercurl
-  highlight MatchParen ctermbg=250
+  highlight MatchParen ctermbg=8
 " }}}
 
 " Google-specific settings {{{

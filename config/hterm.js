@@ -39,7 +39,7 @@ var htermProfiles = {
 };
 
 // set default profile
-htermProfiles['default'] = htermProfiles['solarized-light'];
+htermProfiles['default'] = htermProfiles['solarized-dark'];
 
 var currentProfile = term_.profileId_;
 
