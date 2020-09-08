@@ -17,6 +17,9 @@ if command -v bat >/dev/null; then
 fi
 
 
+if command -v nvim >/dev/null; then
+  alias vim=nvim
+fi
 alias vi=vim
 export EDITOR='vim'
 export VISUAL=${EDITOR}
