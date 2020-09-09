@@ -10,6 +10,7 @@
   set wildmode=list:longest,full
   set modelines=5
   set encoding=utf-8
+  set updatetime=100
   filetype plugin indent on
   "set mouse=a " enable mouse support
 " }}}
@@ -187,9 +188,6 @@
   source $VIMRUNTIME/macros/matchit.vim
 
 
-  Plug 'vim-scripts/localvimrc'
-  let g:localvimrc_ask = 0
-
   Plug 'sjl/gundo.vim'
   let g:gundo_preview_bottom = 1
   if has('python3')
@@ -202,8 +200,8 @@
   let g:netrw_altv = 1
   let g:netrw_winsize = -28
 
-  Plug 'mhinz/vim-signify'
-  let g:signify_vcs_list = [ 'git', 'hg' ]
+  Plug 'airblade/vim-gitgutter'
+  nnoremap yogg :GitGutterToggle<CR>
 
   Plug 'w0rp/ale'
   let g:ale_lint_on_text_changed = 'normal'
@@ -212,7 +210,7 @@
 
   Plug 'zhaocai/GoldenView.vim'
   let g:goldenview__enable_default_mapping = 0
-  nnoremap cog :ToggleGoldenViewAutoResize<CR>
+  nnoremap yogv :ToggleGoldenViewAutoResize<CR>
 
   Plug 'mileszs/ack.vim'
   if executable("rg")
