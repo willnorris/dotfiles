@@ -17,7 +17,7 @@ Host esther
   User elisabeth
 
 Host levi
-  HostName levi.willnorris.net
+  HostName levi.ipn.willnorris.net
   User willnorris
 
 Host local
