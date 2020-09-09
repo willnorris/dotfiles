@@ -8,7 +8,7 @@ if [ -n "$RBENV_ROOT" ]; then
   PATH="$RBENV_ROOT/shims:$RBENV_ROOT/bin:$PATH"
 fi
 
-if command -v pyenv >/dev/null; then
+if command -v rbenv >/dev/null; then
   # TODO: is this really zsh specific?
   eval "$(rbenv init - --no-rehash zsh)"
 fi
