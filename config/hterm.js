@@ -8,7 +8,7 @@
 // will be propagated to other devices.
 //term_.prefs_.storage.clear();
 
-var colors = {
+var s7d_colors = {
   'base03':  '#002b36',
   'base02':  '#073642',
   'base01':  '#586e75',
@@ -29,17 +29,50 @@ var colors = {
 
 var htermProfiles = {
     'solarized-dark': {
-        'background-color': colors.base03,
-        'foreground-color': colors.base0,
+        'background-color': s7d_colors.base03,
+        'foreground-color': s7d_colors.base0,
+        'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(s7d_colors.red), 0.6),
+        'color-palette-overrides': [s7d_colors.base02, s7d_colors.red,
+          s7d_colors.green, s7d_colors.yellow, s7d_colors.blue, s7d_colors.magenta, s7d_colors.cyan,
+          s7d_colors.base2, s7d_colors.base03, s7d_colors.orange, s7d_colors.base01, s7d_colors.base00,
+          s7d_colors.base0, s7d_colors.violet, s7d_colors.base1, s7d_colors.base3],
     },
     'solarized-light': {
-        'background-color': colors.base3,
-        'foreground-color': colors.base00,
+        'background-color': s7d_colors.base3,
+        'foreground-color': s7d_colors.base00,
+        'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB(s7d_colors.red), 0.6),
+        'color-palette-overrides': [s7d_colors.base02, s7d_colors.red,
+          s7d_colors.green, s7d_colors.yellow, s7d_colors.blue, s7d_colors.magenta, s7d_colors.cyan,
+          s7d_colors.base2, s7d_colors.base03, s7d_colors.orange, s7d_colors.base01, s7d_colors.base00,
+          s7d_colors.base0, s7d_colors.violet, s7d_colors.base1, s7d_colors.base3],
+    },
+    'my-dark': {
+        'foreground-color': '#dcdfe4',
+        'background-color': '#202229',
+        'cursor-color': '#e06c75',
+        'color-palette-overrides': [
+            '#2c313a', // black
+            '#e06c75', // red
+            '#98c379', // green
+            '#e5c07b', // yellow
+            '#61afef', // blue
+            '#c678dd', // magenta
+            '#56b6c2', // cyan
+            '#dcdfe4', // white
+            '#5a6374', // bright black
+            '#e06c75', // bright red
+            '#98c379', // bright green
+            '#e5c07b', // bright yellow
+            '#61afef', // bright blue
+            '#c678dd', // bright magenta
+            '#56b6c2', // bright cyan
+            '#dcdfe4', // bright white
+        ],
     },
 };
 
 // set default profile
-htermProfiles['default'] = htermProfiles['solarized-dark'];
+htermProfiles['default'] = htermProfiles['my-dark'];
 
 var currentProfile = term_.profileId_;
 
@@ -52,12 +85,6 @@ for (name in htermProfiles) {
     for (var name in prefs) {
         term_.prefs_.set(name, prefs[name]);
     }
-
-    term_.prefs_.set('color-palette-overrides', [colors.base02, colors.red,
-        colors.green, colors.yellow, colors.blue, colors.magenta, colors.cyan,
-        colors.base2, colors.base03, colors.orange, colors.base01, colors.base00,
-        colors.base0, colors.violet, colors.base1, colors.base3]);
-    term_.prefs_.set('cursor-color', lib.colors.setAlpha(lib.colors.hexToRGB(colors.red), 0.6));
 
     term_.prefs_.set('font-size', 14);
     term_.prefs_.set('enable-bold', false);
