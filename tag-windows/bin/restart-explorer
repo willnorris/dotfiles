@@ -1,0 +1,3 @@
+#!/bin/sh
+
+powershell.exe 'Stop-Process -ProcessName explorer'
