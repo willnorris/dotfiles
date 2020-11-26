@@ -9,7 +9,6 @@
   ll = !git l | fzf-tmux --ansi --multi --preview 'git show --color=always {+2}'
   s = status --short --branch
   start = !git init && git commit -n --allow-empty -m \"initial empty commit\"
-  svn-diff = !git-svn-diff
   who = log --graph --pretty=format:'%Cred%h%Creset - %C(blue)a: %an <%ae>%Creset %C(green)c: %cn <%ce>%Creset - %s'
   x = !gitx
 
@@ -26,6 +25,9 @@
   submit = codereview submit
   sync = codereview sync
 
+[credential "https://source.developers.google.com"]
+  helper = gcloud.sh
+
 [color]
   ui = auto
 
@@ -38,6 +40,13 @@
 
 [diff "vim"]
   command = vimdiff
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
+  smudge = git-lfs smudge -- %f
+
 
 [http]
   cookiefile = ~/.config/git/cookies
@@ -59,20 +68,17 @@
 [rerere]
   enabled = 1
 
-[user]
-  name = Will Norris
-  email = will@willnorris.com
-
 # Allow pushing changes when working with a "read-only" remote from GitHub.
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/
   pushInsteadOf = git://github.com/
 
-[filter "lfs"]
-  required = true
-  clean = git-lfs clean -- %f
-  process = git-lfs filter-process
-  smudge = git-lfs smudge -- %f
+[user]
+  name = Will Norris
+  email = will@willnorris.com
 
-[credential "https://source.developers.google.com"]
-  helper = gcloud.sh
+# keep at end to let work configuration options override
+[include]
+  path = ~/.config/git/work
+
+# vim: ft=gitconfig
