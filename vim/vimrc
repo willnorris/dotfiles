@@ -11,6 +11,7 @@
   set modelines=5
   set encoding=utf-8
   set updatetime=100
+  set maxmempattern=2000
   filetype plugin indent on
   "set mouse=a " enable mouse support
 " }}}
