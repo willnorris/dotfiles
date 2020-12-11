@@ -317,7 +317,7 @@
   endif
 
   let g:onedark_termcolors=16
-  colorscheme onedark
+  silent! colorscheme onedark
 
   syntax on
   set hlsearch
