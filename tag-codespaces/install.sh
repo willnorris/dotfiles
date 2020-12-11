@@ -3,7 +3,7 @@
 sudo apt-get update
 sudo apt-get -y install man
 
-sudo chsh -s /usr/bin/zsh $USER
+sudo chsh -s /usr/bin/zsh codespace
 
 # install ripgrep
 curl -o /tmp/ripgrep.deb -L https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
