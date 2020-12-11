@@ -64,9 +64,15 @@ function prompt_willnorris_setup {
 
   zstyle ':vcs_info:*' enable git hg p4 svn
   zstyle ':vcs_info:git*' formats "%f(%F{yellow}%b%m%u%c%f)"
-  zstyle ':vcs_info:*' check-for-changes true
+  zstyle -e ':vcs_info:*' check-for-changes 'prompt_willnorris_vcs_info_cfc && reply=( true ) || reply=( false )'
   zstyle ':vcs_info:*' stagedstr   "%F{green}+%f"
   zstyle ':vcs_info:*' unstagedstr "%F{blue}*%f"
+}
+
+# returns 0 status if vcs_info should enable check-for-changes.  For now,
+# enable for all directories except ~/workspace/source.
+function prompt_willnorris_vcs_info_cfc() {
+  [[ $PWD != ${HOME}/workspace/source(|/*) ]]
 }
 
 prompt_willnorris_setup "$@"
