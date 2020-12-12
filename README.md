@@ -1,3 +1,5 @@
+# willnorris/dotfiles
+
 This repository contains my dotfiles for various applications.
 
 Installation of these files is managed by [rcm][], which I've actually bundled
@@ -19,12 +21,8 @@ be found at <http://go/dotfiles/users/wnorris>. They are installed
 using:
 
 * `git clone https://git.internal/dotfiles ~/.dotfiles-work`
-* update `~/.rcrc` to include `DOTFILES_DIRS="${HOME}/.dotfiles-work/users/wnorris ${HOME}/.dotfiles"`
+* update `~/.rcrc` to include:
+
+      DOTFILES_DIRS="${HOME}/.dotfiles-work/users/wnorris ${HOME}/.dotfiles"
 
 `rcup` will now install my work-specific dotfiles alongside my regular ones.
-
-## License
-
-I'm not sure that many of the files here would constitute a creative work able
-to be covered by copyright. But to the extent that they are, unless otherwise
-noted, they are made available under a [0BSD license](./LICENSE).
