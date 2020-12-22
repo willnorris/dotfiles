@@ -20,6 +20,11 @@ Host levi
   HostName levi.ipn.willnorris.net
   User willnorris
 
+Host rpi
+  HostName rpi.ipn.willnorris.net
+  User willnorris
+
+
 Host local
   HostName levi.ipn.willnorris.net
   User willnorris

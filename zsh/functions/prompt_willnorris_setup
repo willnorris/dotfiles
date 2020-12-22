@@ -13,6 +13,7 @@ if (( ! $+PROMPT_COLOR )); then
     meshach) PROMPT_COLOR="${fg[blue]}" ;;
     penguin) PROMPT_COLOR="${fg[blue]}" ;;
     rahab) PROMPT_COLOR="${fg[blue]}" ;;
+    rpi) PROMPT_COLOR="${fg[red]}" ;;
 
     # Elisabeth's primary hosts
     esther) PROMPT_COLOR="${fg[cyan]}" ;;
