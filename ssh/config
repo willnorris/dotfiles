@@ -8,9 +8,7 @@ Host *
   ControlPersist 3h
 
 Host ark
-  HostName ark.lan
-  Port 10022
-  User admin
+  HostName ark.ipn.willnorris.net
 
 Host esther
   HostName esther.ipn.willnorris.net
