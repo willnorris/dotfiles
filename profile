@@ -1,4 +1,4 @@
-# ~/.profile contains common configuration for bourne compatible shells.
+# ~/.config/profile contains common configuration for bourne compatible shells.
 
 # User Information
 : ${EMAIL:="will@willnorris.com"}
@@ -8,8 +8,8 @@
 : ${XDG_CACHE_HOME:="${HOME}/.cache"}
 : ${XDG_DATA_HOME:="${HOME}/.local/share"}
 
-if [ -d "$HOME/.profile.d" ]; then
-  for i in $HOME/.profile.d/*.sh; do
+if [ -d "${XDG_CONFIG_HOME}/shell" ]; then
+  for i in ${XDG_CONFIG_HOME}/shell/*.sh; do
     if [ -r $i ]; then
       . $i
     fi

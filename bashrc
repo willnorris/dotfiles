@@ -1,5 +1,5 @@
-if [ -f ~/.profile ]; then
-  . ~/.profile
+if [ -f "${HOME}/.profile" ]; then
+  source "${HOME}/.profile"
 fi
 
 mkdir -p "${XDG_DATA_HOME}/bash"

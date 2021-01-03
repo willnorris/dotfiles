@@ -4,8 +4,8 @@ autoload -U compinit && compinit
 typeset -U path manpath
 
 # load common shell configuration
-if [ -f ~/.profile ]; then
-  source ~/.profile
+if [ -f "${HOME}/.profile" ]; then
+  source "${HOME}/.profile"
 fi
 
 for config_file (${XDG_CONFIG_HOME}/zsh/startup/*.zsh(rN)); do
