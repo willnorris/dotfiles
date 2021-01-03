@@ -8,6 +8,7 @@ function install_file() {
 
   if [ -r "$SRC" ]; then
     if [ ! -h "$DST" ] || [ `readlink $DST` != "$SRC" ]; then
+      mkdir -p $(dirname ${DST})
       ln -s "$SRC" "$DST"
     fi
   fi
