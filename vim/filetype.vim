@@ -5,7 +5,7 @@ endif
 
 augroup filetypedetect
   au! BufNewFile,BufRead */.bash*         setfiletype sh
-  au! BufNewFile,BufRead */.bash/*        setfiletype sh
+  au! BufNewFile,BufRead */.config/bash/* setfiletype sh
   au! BufNewFile,BufRead */.config/zsh/*  setfiletype zsh
   au! BufNewFile,BufRead */.mutt*         setfiletype muttrc
   au! BufNewFile,BufRead */etc/apache2/*  setfiletype apache

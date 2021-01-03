@@ -2,13 +2,12 @@ if [ -f ~/.profile ]; then
   . ~/.profile
 fi
 
+mkdir -p "${XDG_DATA_HOME}/bash"
+export HISTFILE="${XDG_DATA_HOME}/bash/history"
+
 export PS1='\w\$ '
 
-if [ -d "$HOME/.bash" ]; then
-  for i in $HOME/.bash/*.bash; do
-    if [ -r $i ]; then
-      . $i
-    fi
-  done
-  unset i
-fi
+for config_file in ${XDG_CONFIG_HOME}/bash/*.bash; do
+    source $config_file
+done
+unset i
