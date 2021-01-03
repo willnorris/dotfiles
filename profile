@@ -1,8 +1,12 @@
 # ~/.profile contains common configuration for bourne compatible shells.
 
 # User Information
-export NAME="Will Norris"
-export EMAIL="will@willnorris.com"
+: ${EMAIL:="will@willnorris.com"}
+
+# variables for default XDG user directories
+: ${XDG_CONFIG_HOME:="${HOME}/.config"}
+: ${XDG_CACHE_HOME:="${HOME}/.cache"}
+: ${XDG_DATA_HOME:="${HOME}/.local/share"}
 
 if [ -d "$HOME/.profile.d" ]; then
   for i in $HOME/.profile.d/*.sh; do
