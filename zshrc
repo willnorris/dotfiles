@@ -8,7 +8,7 @@ if [ -f ~/.profile ]; then
   source ~/.profile
 fi
 
-for config_file (~/.zsh/startup/*.zsh(rN)); do
+for config_file (${XDG_CONFIG_HOME}/zsh/startup/*.zsh(rN)); do
   source $config_file
 done
 

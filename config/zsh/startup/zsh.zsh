@@ -6,10 +6,10 @@ setopt hist_expire_dups_first hist_ignore_space hist_no_functions \
   hist_no_store inc_append_history share_history
 HISTSIZE=100000
 SAVEHIST=100000
-HISTFILE=~/.zsh_history
+HISTFILE="${XDG_DATA_HOME}/zsh/history"
 
 # Autoload zsh functions.
-fpath+="$HOME/.zsh/completion"
+fpath+="${XDG_CONFIG_HOME}/zsh/completion"
 
 zstyle ':completion:*' menu select=2
 
@@ -28,9 +28,9 @@ for c (fg bg jobs exit clear reset); do
   alias $c=" $c"
 done
 
-if [[ -d "$HOME/.zsh/bundle/zsh-syntax-highlighting" ]]; then
+if [[ -d "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting" ]]; then
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-  source $HOME/.zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 if (( $+ZSH_HIGHLIGHT_STYLES )); then
   ZSH_HIGHLIGHT_STYLES[comment]=fg=yellow,bold

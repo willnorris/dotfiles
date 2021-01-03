@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p $HOME/.zsh/bundle
-if [ ! -d "$HOME/.zsh/bundle/zsh-syntax-highlighting" ]; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zsh/bundle/zsh-syntax-highlighting
+mkdir -p "${XDG_CONFIG_HOME}/zsh/bundle"
+if [ ! -d "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting" ]; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting"
 fi
