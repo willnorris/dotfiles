@@ -9,8 +9,8 @@ as part of my dotfiles in the [rcm](./rcm/) directory.
 
 To set up a new host:
 
-* `git clone https://github.com/willnorris/dotfiles ~/.dotfiles`
-* `PATH="~/.dotfiles/rcm/bin:$PATH" rcup`
+* `git clone https://github.com/willnorris/dotfiles $HOME/.dotfiles`
+* `PATH="$HOME/.dotfiles/rcm/bin:$PATH" rcup`
 
 ## Work dotfiles
 
