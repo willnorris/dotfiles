@@ -1,12 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
-apt-get update
-apt-get -y install ripgrep tmux zsh
+set -x
+
+# set aside global profile files that conflict with personal dotfiles or are just annoying
+mv /etc/profile.d/init_help.sh /etc/profile.d/init_help.bak
+mv /etc/profile.d/restore_bashrc.sh /etc/profile.d/restore_bashrc.bak
+mv /etc/profile.d/restore_profile.sh /etc/profile.d/restore_profile.bak
 
 chsh -s /usr/bin/zsh wnorris
 rm /home/**/README-cloudshell.txt
 
 ln -s /usr/local/go/bin/* /usr/local/bin/
+
+apt-get update
+apt-get -y install ripgrep tmux zsh
+apt-get -y autoremove
 
 # install bat
 curl -o /tmp/bat.deb -L https://github.com/sharkdp/bat/releases/download/v0.15.4/bat_0.15.4_amd64.deb
