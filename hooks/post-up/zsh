@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/usr/bin/zsh
+
+echo "zsh post-up hook"
+. "${HOME}/.config/shell/_xdg_base.sh"
 
 mkdir -p "${XDG_CONFIG_HOME}/zsh/bundle"
 if [ ! -d "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting"
 fi
+
+mkdir -p "${XDG_DATA_HOME}/zsh"

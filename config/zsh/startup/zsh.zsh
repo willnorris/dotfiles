@@ -1,7 +1,7 @@
 # Ignore commands that begin with '#'
 set -k
 
-# Keep lots of shell history and save it to ~/.zsh_history
+# Keep lots of shell history and save it to ~/.local/share/zsh/history
 setopt hist_expire_dups_first hist_ignore_space hist_no_functions \
   hist_no_store inc_append_history share_history
 HISTSIZE=100000
