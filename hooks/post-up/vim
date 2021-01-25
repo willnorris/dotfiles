@@ -1,12 +1,14 @@
 #!/bin/bash
 
-mkdir -p $HOME/.vim/undo
-chmod 700 $HOME/.vim/undo
+mkdir -p "${HOME}/.vim/undo"
+chmod 700 "${HOME}/.vim/undo"
 
-mkdir -p $HOME/.vim/bundle
-if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
-  curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \
+mkdir -p "${HOME}/.vim/bundle"
+if [ ! -f "${HOME}/.vim/autoload/plug.vim" ]; then
+  curl -sfLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-vim +PlugInstall +qall >/dev/null
+# TODO: investigate why running this as part of rcm hook causes problems with
+# the environment such that no other hooks are run.
+#vim +PlugInstall +qall >/dev/null
