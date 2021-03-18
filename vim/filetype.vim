@@ -10,4 +10,5 @@ augroup filetypedetect
   au! BufNewFile,BufRead */.mutt*         setfiletype muttrc
   au! BufNewFile,BufRead */etc/apache2/*  setfiletype apache
   au! BufNewFile,BufRead */etc/nginx*.conf  setfiletype nginx
+  au! BufNewFile,BufRead /etc/nginx/sites/*  setfiletype nginx
 augroup END
