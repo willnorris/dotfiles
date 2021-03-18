@@ -2,6 +2,7 @@
 # by Sindre Sorhus
 # https://github.com/sindresorhus/pure
 # MIT License
+# vim: ft=zsh
 
 # For my own and others sanity
 # git:
@@ -130,40 +131,72 @@ prompt_pure_preprompt_render() {
 
 	# Initialize the preprompt array.
 	local -a preprompt_parts
+	local -a preprompt_plain
 
 	# Username and machine, if applicable.
-	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
-
-	# Set the path.
-	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
+	if [[ -n $prompt_pure_state[username] ]]; then
+		preprompt_parts+=($prompt_pure_state[username])
+		preprompt_plain+=($prompt_pure_state[username])
+	fi
 
 	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
 		preprompt_parts+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
+		preprompt_plain+=("${prompt_pure_vcs_info[branch]}${prompt_pure_git_dirty}")
 	fi
 	# Git action (for example, merge).
 	if [[ -n $prompt_pure_vcs_info[action] ]]; then
 		preprompt_parts+=("%F{$prompt_pure_colors[git:action]}"'$prompt_pure_vcs_info[action]%f')
+		preprompt_plain+=($prompt_pure_vcs_info[action])
 	fi
 	# Git pull/push arrows.
 	if [[ -n $prompt_pure_git_arrows ]]; then
 		preprompt_parts+=('%F{$prompt_pure_colors[git:arrow]}${prompt_pure_git_arrows}%f')
+		preprompt_plain+=(${prompt_pure_git_arrows})
 	fi
 	# Git stash symbol (if opted in).
 	if [[ -n $prompt_pure_git_stash ]]; then
 		preprompt_parts+=('%F{$prompt_pure_colors[git:stash]}${PURE_GIT_STASH_SYMBOL:-≡}%f')
+		preprompt_plain+=(${PURE_GIT_STASH_SYMBOL:-≡})
 	fi
 
 	# Execution time.
-	[[ -n $prompt_pure_cmd_exec_time ]] && preprompt_parts+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f')
+	if [[ -n $prompt_pure_cmd_exec_time ]]; then
+		preprompt_parts+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f')
+		preprompt_plain+=(${prompt_pure_cmd_exec_time})
+	fi
+
+	local visual_separator=$prompt_newline
+
+	# split or not
+	(( split = $LINES >= 20 )) # split prompt if sufficient vertical space
+	if (( !$split )); then
+		(( cols = $COLUMNS * 1/4 ))
+		visual_separator=" "
+	elif (( ${#preprompt_plain[@]} )); then
+		# if we have any prompt info, make sure there's room for it
+		# strip color codes to ensure we calculate length correctly
+		ppp=$(echo ${(j. .)preprompt_plain})
+		(( cols = $COLUMNS - ${#ppp} - 2 ))
+	else
+		cols="-1"
+	fi
+
+	# prepend the path.
+	preprompt_parts=('%F{${prompt_pure_colors[path]}}%${cols}<…<%~%<<%f' "${preprompt_parts[@]}")
 
 	local cleaned_ps1=$PROMPT
 	local -H MATCH MBEGIN MEND
-	if [[ $PROMPT = *$prompt_newline* ]]; then
-		# Remove everything from the prompt until the newline. This
+
+	# prompt_separator is a valid prompt escape sequence that does not 
+	# expand to anything and is unlikely to ever appear in a real prompt
+	local prompt_separator="%{%0G%}"
+
+	if [[ $PROMPT = *$prompt_separator* ]]; then
+		# Remove everything from the prompt until the separator. This
 		# removes the preprompt and only the original PROMPT remains.
-		cleaned_ps1=${PROMPT##*${prompt_newline}}
+		cleaned_ps1=${PROMPT##*${prompt_separator}}
 	fi
 	unset MATCH MBEGIN MEND
 
@@ -171,7 +204,8 @@ prompt_pure_preprompt_render() {
 	local -ah ps1
 	ps1=(
 		${(j. .)preprompt_parts}  # Join parts, space separated.
-		$prompt_newline           # Separate preprompt and prompt.
+		$visual_separator
+		$prompt_separator         # Separate preprompt and prompt.
 		$cleaned_ps1
 	)
 
@@ -181,7 +215,7 @@ prompt_pure_preprompt_render() {
 	local expanded_prompt
 	expanded_prompt="${(S%%)PROMPT}"
 
-	if [[ $1 == precmd ]]; then
+	if [[ $1 == precmd ]] && (( $split )); then
 		# Initial newline, for spaciousness.
 		print
 	elif [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
@@ -191,6 +225,12 @@ prompt_pure_preprompt_render() {
 
 	typeset -g prompt_pure_last_prompt=$expanded_prompt
 }
+
+# re-render preprompt when window changes
+TRAPWINCH() {
+	prompt_pure_preprompt_render
+}
+
 
 prompt_pure_precmd() {
 	setopt localoptions noshwordsplit
