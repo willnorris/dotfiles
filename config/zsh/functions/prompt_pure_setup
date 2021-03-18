@@ -189,7 +189,7 @@ prompt_pure_preprompt_render() {
 
 	# prompt_separator is a valid prompt escape sequence that does not 
 	# expand to anything and is unlikely to ever appear in a real prompt
-	local prompt_separator="%{%0G%}"
+	local prompt_separator="%{%}"
 
 	if [[ $PROMPT = *$prompt_separator* ]]; then
 		# Remove everything from the prompt until the separator. This
