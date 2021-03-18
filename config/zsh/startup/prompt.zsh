@@ -6,7 +6,7 @@ autoload -Uz promptinit
 promptinit
 prompt pure
 
-local color=$(case $HOSTNAME in
+local prompt_color=$(case $HOSTNAME in
   levi)   echo green;;
   rpi)    echo red;;
   esther) echo cyan;;
@@ -16,5 +16,5 @@ esac)
 
 export PURE_PROMPT_SYMBOL="%#"
 export PURE_PROMPT_VICMD_SYMBOL=":"
-zstyle :prompt:pure:prompt:success color $color
-zstyle :prompt:pure:path color $color
+zstyle :prompt:pure:prompt:success color $prompt_color
+zstyle :prompt:pure:path color $prompt_color
