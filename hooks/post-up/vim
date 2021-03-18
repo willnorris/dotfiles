@@ -1,11 +1,15 @@
 #!/bin/bash
 
-mkdir -p "${HOME}/.vim/undo"
-chmod 700 "${HOME}/.vim/undo"
+. "${HOME}/.config/shell/_xdg_base.sh"
 
-mkdir -p "${HOME}/.vim/bundle"
-if [ ! -f "${HOME}/.vim/autoload/plug.vim" ]; then
-  curl -sfLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
+ln -s "${XDG_CONFIG_HOME}/vim" "${HOME}/.vim" 2>/dev/null
+
+mkdir -p "${XDG_CONFIG_HOME}/vim/undo"
+chmod 700 "${XDG_CONFIG_HOME}/vim/undo"
+
+mkdir -p "${XDG_CONFIG_HOME}/vim/bundle"
+if [ ! -f "${XDG_CONFIG_HOME}/vim/autoload/plug.vim" ]; then
+  curl -sfLo "${XDG_CONFIG_HOME}/vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 

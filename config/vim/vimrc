@@ -3,9 +3,9 @@
 
   set nocompatible " get out of vi-compatibility mode
   set history=9999 " keep plenty of history
-  set undodir^=~/.vim/undo
+  set undodir^=$XDG_CONFIG_HOME/vim/undo
   set undofile
-  set spellfile=~/.vim/en.utf-8.add
+  set spellfile=$XDG_CONFIG_HOME/vim/en.utf-8.add
   set hidden " allow changing buffers without saving
   set wildmode=list:longest,full
   set modelines=5
@@ -161,7 +161,7 @@
 " }}}
 
 " Plugins {{{
-  call plug#begin('~/.vim/bundle')
+  call plug#begin('$XDG_CONFIG_HOME/vim/bundle')
 
   Plug 'fatih/vim-go'
   Plug 'google/vim-jsonnet'
@@ -184,7 +184,7 @@
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-vinegar'
 
-  Plug '~/.vim/bundle/osc52'
+  Plug '$XDG_CONFIG_HOME/vim/bundle/osc52'
 
   source $VIMRUNTIME/macros/matchit.vim
 
@@ -334,7 +334,7 @@
 " }}}
 
 " Work-specific settings {{{
-  if filereadable($HOME . "/.vim/work.vim")
-    source $HOME/.vim/work.vim
+  if filereadable($XDG_CONFIG_HOME . "/vim/work.vim")
+    source $XDG_CONFIG_HOME/vim/work.vim
   endif
 " }}}
