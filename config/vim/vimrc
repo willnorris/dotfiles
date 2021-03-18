@@ -1,11 +1,7 @@
 " General {{{
   " a handful of basic config options come from vim-sensible
-
   set nocompatible " get out of vi-compatibility mode
   set history=9999 " keep plenty of history
-  set undodir^=$XDG_CONFIG_HOME/vim/undo
-  set undofile
-  set spellfile=$XDG_CONFIG_HOME/vim/en.utf-8.add
   set hidden " allow changing buffers without saving
   set wildmode=list:longest,full
   set modelines=5
@@ -14,6 +10,24 @@
   set maxmempattern=2000
   filetype plugin indent on
   "set mouse=a " enable mouse support
+  set spellfile=$XDG_CONFIG_HOME/vim/en.utf-8.add
+" }}}
+
+" Data Directories {{{
+  set runtimepath^=$XDG_CONFIG_HOME/vim
+  set runtimepath+=$XDG_DATA_HOME/vim
+  set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+  let g:netrw_home = $XDG_DATA_HOME."/vim"
+  call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
+
+  set viewdir=$XDG_DATA_HOME/vim/view     | call mkdir(&viewdir, 'p')
+  set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
+  set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
+  set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
+  set undofile
+
+  if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
 " }}}
 
 " Vim UI {{{
