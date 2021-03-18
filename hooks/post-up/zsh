@@ -2,9 +2,9 @@
 
 . "${HOME}/.config/shell/_xdg_base.sh"
 
-ln -s zprofile "${XDG_CONFIG_HOME}/zsh/.zprofile"
-ln -s zshrc "${XDG_CONFIG_HOME}/zsh/.zshrc"
-ln -s "${XDG_CONFIG_HOME}/zsh/zshenv" "${HOME}/.zshenv"
+ln -s zprofile "${XDG_CONFIG_HOME}/zsh/.zprofile" 2>/dev/null
+ln -s zshrc "${XDG_CONFIG_HOME}/zsh/.zshrc" 2>/dev/null
+ln -s "${XDG_CONFIG_HOME}/zsh/zshenv" "${HOME}/.zshenv" 2>/dev/null
 
 mkdir -p "${XDG_CONFIG_HOME}/zsh/bundle"
 if [ ! -d "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting" ]; then
