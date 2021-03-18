@@ -2,6 +2,7 @@
 
 . "${HOME}/.config/shell/_xdg_base.sh"
 
+ln -s zshenv "${XDG_CONFIG_HOME}/zsh/.zshenv" 2>/dev/null
 ln -s zprofile "${XDG_CONFIG_HOME}/zsh/.zprofile" 2>/dev/null
 ln -s zshrc "${XDG_CONFIG_HOME}/zsh/.zshrc" 2>/dev/null
 ln -s "${XDG_CONFIG_HOME}/zsh/zshenv" "${HOME}/.zshenv" 2>/dev/null
