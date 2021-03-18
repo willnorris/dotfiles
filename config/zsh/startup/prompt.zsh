@@ -15,5 +15,6 @@ local color=$(case $HOSTNAME in
 esac)
 
 export PURE_PROMPT_SYMBOL="%#"
+export PURE_PROMPT_VICMD_SYMBOL=":"
 zstyle :prompt:pure:prompt:success color $color
 zstyle :prompt:pure:path color $color
