@@ -18,6 +18,7 @@ export PURE_PROMPT_SYMBOL="%#"
 export PURE_PROMPT_VICMD_SYMBOL=":"
 zstyle :prompt:pure:prompt:success color $prompt_color
 zstyle :prompt:pure:path color $prompt_color
+zstyle :prompt:pure:user:root color red
 
 # re-render preprompt when window changes
 TRAPWINCH() {
