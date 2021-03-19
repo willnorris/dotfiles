@@ -27,7 +27,7 @@
   set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
   set undofile
 
-  if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
+  if !has('nvim') | set viminfofile=$XDG_DATA_HOME/vim/viminfo | endif
 " }}}
 
 " Vim UI {{{

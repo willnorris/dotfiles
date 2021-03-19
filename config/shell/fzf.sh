@@ -30,7 +30,7 @@ if command -v fzf > /dev/null; then
   # open recently edited files in vim (https://github.com/junegunn/fzf/wiki/Examples#v)
   v() {
     local files
-    files=$(grep '^>' ~/.viminfo | cut -c3- |
+    files=$(grep '^>' $XDG_DATA_HOME/vim/viminfo | cut -c3- |
             while read line; do
               [ -f "${line/\~/$HOME}" ] && echo "$line"
             done | fzf-tmux -d -m -q "$*" -1) && vim ${files//\~/$HOME}
