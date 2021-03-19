@@ -41,6 +41,7 @@ if [ -z "$HOSTNAME" ]; then
   export HOSTNAME="${HOST%%.*}"
 fi
 
+export _Z_DATA="${XDG_DATA_HOME}/z/db"
 
 encmount () {
   [ -z "$1" ] && echo "volumne not specified" 2>&1 && return 1
