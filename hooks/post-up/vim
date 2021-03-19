@@ -2,10 +2,7 @@
 
 . "${HOME}/.config/shell/_xdg_base.sh"
 
-ln -s "${XDG_CONFIG_HOME}/vim" "${HOME}/.vim" 2>/dev/null
-
-mkdir -p "${XDG_CONFIG_HOME}/vim/undo"
-chmod 700 "${XDG_CONFIG_HOME}/vim/undo"
+ln -sn "${XDG_CONFIG_HOME}/vim" "${HOME}/.vim" 2>/dev/null
 
 mkdir -p "${XDG_CONFIG_HOME}/vim/bundle"
 if [ ! -f "${XDG_CONFIG_HOME}/vim/autoload/plug.vim" ]; then
