@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 
 . "${HOME}/.config/shell/_xdg_base.sh"
 
