@@ -1,7 +1,3 @@
-if [ -d /opt/node ]; then
-  PATH="/opt/node/bin:$PATH"
-fi
-
 [ -z "$PS1" ] && return # interactive only
 
 if [ -z "$NODENV_ROOT" ] && [ -d $HOME/.nodenv ]; then
