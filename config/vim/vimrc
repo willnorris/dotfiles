@@ -221,6 +221,9 @@
   Plug 'w0rp/ale'
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
+  let g:ale_fixers = {
+  \   'javascript': ['eslint'],
+  \}
   highlight ALEErrorSign ctermfg=8 ctermbg=1
 
   Plug 'zhaocai/GoldenView.vim'
