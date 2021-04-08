@@ -202,6 +202,8 @@
 
   source $VIMRUNTIME/macros/matchit.vim
 
+  Plug 'editorconfig/editorconfig-vim'
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
   Plug 'sjl/gundo.vim'
   let g:gundo_preview_bottom = 1
@@ -239,7 +241,7 @@
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
-  let g:fzf_history_dir = '~/.fzf-history'
+  let g:fzf_history_dir = '$XDG_DATA_HOME/vim/fzf-history'
   let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
   let g:fzf_layout = { 'down': '~70%' }
 
