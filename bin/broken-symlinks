@@ -1,0 +1,16 @@
+#!/bin/bash
+# find broken symlinks in a directory.
+
+# maximum depth to search
+maxdepth=5
+
+while getopts d: o
+do case "$o" in
+  d) maxdepth="${OPTARG}"
+  esac
+done
+
+shift $(($OPTIND-1))
+dir="${1}"
+
+find $dir -maxdepth $maxdepth -type l -exec test ! -e {} \; -print
