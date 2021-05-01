@@ -1,7 +1,7 @@
 [ -z "$PS1" ] && return # interactive only
 
-if [ -z "$NODENV_ROOT" ] && [ -d $HOME/.nodenv ]; then
-  export NODENV_ROOT=$HOME/.nodenv
+if [ -z "$NODENV_ROOT" ] && [ -d "$HOME/.nodenv" ]; then
+  export NODENV_ROOT="$HOME/.nodenv"
 fi
 
 if [ -n "$NODENV_ROOT" ]; then

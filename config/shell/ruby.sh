@@ -1,7 +1,7 @@
 [ -z "$PS1" ] && return # interactive only
 
-if [ -z "$RBENV_ROOT" ] && [ -d $HOME/.rbenv ]; then
-  export RBENV_ROOT=$HOME/.rbenv
+if [ -z "$RBENV_ROOT" ] && [ -d "$HOME/.rbenv" ]; then
+  export RBENV_ROOT="$HOME/.rbenv"
 fi
 
 if [ -n "$RBENV_ROOT" ]; then

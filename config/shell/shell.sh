@@ -37,17 +37,18 @@ fi
 # Set $HOSTNAME environment variables, which is used in other places for
 # host-specific configuration
 if command -v scutil >/dev/null; then
-  export HOSTNAME="$(scutil --get ComputerName)"
+  HOSTNAME="$(scutil --get ComputerName)"
 fi
 if [ -z "$HOSTNAME" ]; then
-  export HOSTNAME="${HOST%%.*}"
+  HOSTNAME="${HOST%%.*}"
 fi
+export HOSTNAME
 
 export _Z_DATA="${XDG_DATA_HOME}/z/db"
 
 encmount () {
   [ -z "$1" ] && echo "volumne not specified" 2>&1 && return 1
-  if [ `uname` = "Darwin" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
     encfs "$HOME/.googledrive/Documents/$1.enc" "$HOME/.$1" -- -o volname="$1"
   else
     encfs "$HOME/.googledrive/Documents/$1.enc" "$HOME/.$1"
