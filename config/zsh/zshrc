@@ -12,11 +12,5 @@ for config_file (${XDG_CONFIG_HOME}/zsh/startup/*.zsh(rN)); do
   source $config_file
 done
 
-manpath=($HOME/man $manpath)
-
-# append default system manpath
-if [[ `uname` == "Darwin" ]]; then
-  MANPATH="$MANPATH:"
-else
-  MANPATH="$MANPATH:$(manpath -g)"
-fi
+manpath=($XDG_DATA_HOME/man $manpath)
+export MANPATH="$MANPATH:"
