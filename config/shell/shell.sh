@@ -26,8 +26,6 @@ export VISUAL=${EDITOR}
 export PAGER='less'
 export LYNX_LSS=${HOME}/.lynx.lss
 
-alias sudo='sudo -i'
-
 if echo "a" | grep --color "a" >/dev/null 2>/dev/null; then
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
