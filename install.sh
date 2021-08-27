@@ -1,8 +1,9 @@
 #!/bin/sh
 
-# move ~/dotfiles to ~/.dotfiles
-if [ -d "${HOME}/dotfiles" ] && [ ! -d "${HOME}/.dotfiles" ]; then
-  mv "${HOME}/dotfiles" "${HOME}/.dotfiles"
+# link installed dotfiles location to ~/.dotfiles
+DOTFILE_DIR=$(dirname $(realpath $0))
+if [ -d "${DOTFILE_DIR}" ] && [ ! -d "${HOME}/.dotfiles" ]; then
+  ln -s "${DOTFILE_DIR}" "${HOME}/.dotfiles"
 fi
 
 # run the codespaces install script.
