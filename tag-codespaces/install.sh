@@ -5,12 +5,12 @@ sudo apt-get -y install man
 
 sudo chsh -s /usr/bin/zsh codespace
 
-# install ripgrep
-curl -o /tmp/ripgrep.deb -L https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
+# install ripgrep (https://github.com/BurntSushi/ripgrep/releases/latest)
+curl -o /tmp/ripgrep.deb -L https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
 sudo dpkg -i /tmp/ripgrep.deb
 
-# install bat
-curl -o /tmp/bat.deb -L https://github.com/sharkdp/bat/releases/download/v0.17.1/bat_0.17.1_amd64.deb
+# install bat (https://github.com/sharkdp/bat/releases/latest)
+curl -o /tmp/bat.deb -L https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb
 sudo dpkg -i /tmp/bat.deb
 
 # install neovim
