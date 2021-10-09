@@ -22,6 +22,9 @@ if command -v nvim >/dev/null; then
 fi
 alias vi=vim
 export EDITOR='vim'
+if [ "${TERM_PROGRAM}" = "vscode" ]; then
+  EDITOR='code -w'
+fi
 export VISUAL=${EDITOR}
 export PAGER='less'
 export LYNX_LSS=${HOME}/.lynx.lss
