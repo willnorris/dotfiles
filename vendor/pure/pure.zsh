@@ -131,6 +131,11 @@ prompt_pure_preprompt_render() {
 	# Initialize the preprompt array.
 	local -a preprompt_parts
 
+	# Suspended jobs in background.
+	if ((${(M)#jobstates:#suspended:*} != 0)); then
+		preprompt_parts+='%F{$prompt_pure_colors[suspended_jobs]}✦'
+	fi
+
 	# Username and machine, if applicable.
 	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
 
@@ -225,8 +230,10 @@ prompt_pure_precmd() {
 	# Nix package manager integration. If used from within 'nix shell' - shell name is shown like so:
 	# ~/Projects/flake-utils-plus master
 	# flake-utils-plus ❯
-	if [[ -n $IN_NIX_SHELL ]]; then
-		psvar[12]="${name:-nix-shell}"
+	if zstyle -T ":prompt:pure:environment:nix-shell" show; then
+		if [[ -n $IN_NIX_SHELL ]]; then
+			psvar[12]="${name:-nix-shell}"
+		fi
 	fi
 
 	# Make sure VIM prompt is reset.
@@ -279,7 +286,7 @@ prompt_pure_async_vcs_info() {
 
 	local -A info
 	info[pwd]=$PWD
-	info[branch]=$vcs_info_msg_0_
+	info[branch]=${vcs_info_msg_0_//\%/%%}
 	info[top]=$vcs_info_msg_1_
 	info[action]=$vcs_info_msg_2_
 
@@ -699,18 +706,20 @@ prompt_pure_state_setup() {
 	[[ $UID -eq 0 ]] && username='%F{$prompt_pure_colors[user:root]}%n%f'"$hostname"
 
 	typeset -gA prompt_pure_state
-	prompt_pure_state[version]="1.17.1"
+	prompt_pure_state[version]="1.20.1"
 	prompt_pure_state+=(
 		username "$username"
 		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"
 	)
 }
 
-# Return true if executing inside a Docker or LXC container.
+# Return true if executing inside a Docker, LXC or systemd-nspawn container.
 prompt_pure_is_inside_container() {
 	local -r cgroup_file='/proc/1/cgroup'
+	local -r nspawn_file='/run/host/container-manager'
 	[[ -r "$cgroup_file" && "$(< $cgroup_file)" = *(lxc|docker)* ]] \
-		|| [[ "$container" == "lxc" ]]
+		|| [[ "$container" == "lxc" ]] \
+		|| [[ -r "$nspawn_file" ]]
 }
 
 prompt_pure_system_report() {
@@ -810,6 +819,7 @@ prompt_pure_setup() {
 		prompt:error         red
 		prompt:success       magenta
 		prompt:continuation  242
+		suspended_jobs       red
 		user                 242
 		user:root            default
 		virtualenv           242
