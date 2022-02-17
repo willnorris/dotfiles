@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# build dependencies:
+#   apt install autotools-dev automake
+#   gem install mustache
+
 TMP=$(mktemp -d --suffix=.rcm)
 RCM="${HOME}/.dotfiles/rcm"
 
