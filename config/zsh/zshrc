@@ -1,6 +1,5 @@
 # vim: ft=zsh
 
-autoload -U compinit && compinit
 typeset -U path manpath
 
 # load common shell configuration
@@ -14,3 +13,5 @@ done
 
 manpath=($XDG_DATA_HOME/man $manpath)
 export MANPATH="$MANPATH:"
+
+autoload -U compinit && compinit
