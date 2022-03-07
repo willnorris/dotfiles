@@ -16,6 +16,7 @@ esac)
 
 export PURE_PROMPT_SYMBOL="%#"
 export PURE_PROMPT_VICMD_SYMBOL=":"
+export PURE_CMD_MAX_EXEC_TIME=3
 zstyle :prompt:pure:prompt:success color $prompt_color
 zstyle :prompt:pure:path color $prompt_color
 zstyle :prompt:pure:user:root color red
