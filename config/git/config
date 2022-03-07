@@ -4,13 +4,12 @@
   b = branch -v -v
   co = checkout
   ctags = !.git/hooks/ctags
-  hub = !hub
+  git = !exec git
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset'
   ll = !git l | fzf-tmux --ansi --multi --preview 'git show --color=always {+2}'
   s = status --short --branch
   start = !git init && git commit -n --allow-empty -m \"initial empty commit\"
   who = log --graph --pretty=format:'%Cred%h%Creset - %C(blue)a: %an <%ae>%Creset %C(green)c: %cn <%ce>%Creset - %s'
-  x = !gitx
 
   # GitHub pull request aliases (https://gist.github.com/gnarf/5406589)
   pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && :
