@@ -18,11 +18,5 @@ curl -o /tmp/nvim.tgz -L https://github.com/neovim/neovim/releases/download/nigh
 sudo tar -xzf /tmp/nvim.tgz -C /usr/local
 sudo ln -s /usr/local/nvim-linux64/bin/nvim /usr/local/bin/
 
-# setup rcm config if not present
-if [ ! -f "${HOME}/.rcrc" ]; then
-  cp "${HOME}/.dotfiles/rcrc.example" "${HOME}/.rcrc"
-fi
-
-echo 'TAGS="codespaces"' >> ~/.rcrc
 # run rcm (force install dotfiles)
-PATH="${HOME}/.dotfiles/rcm/bin:${PATH}" rcup -f
+PATH="${HOME}/.dotfiles/local/bin:${PATH}" rcup -f -t codespaces
