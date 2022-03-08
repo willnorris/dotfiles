@@ -1,7 +1,5 @@
 export GOPATH="${HOME}/go"
 
-if command -v go >/dev/null; then
-  if [ -d "$(go env GOPATH)/bin" ]; then
-    PATH="$(go env GOPATH)/bin:$PATH"
-  fi
+if [ -d "${GOPATH}/bin" ]; then
+  PATH="${GOPATH}/bin:$PATH"
 fi
