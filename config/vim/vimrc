@@ -244,7 +244,7 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
     let g:ackprg = 'rg --vimgrep --no-heading'
   endif
 
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf', { 'dir': '$XDG_DATA_HOME/fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
   let g:fzf_history_dir = '$XDG_DATA_HOME/vim/fzf-history'
   let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }

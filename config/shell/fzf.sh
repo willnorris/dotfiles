@@ -2,8 +2,8 @@ if [ -d "$HOMEBREW_HOME/opt/fzf" ]; then
   export FZF_HOME="$HOMEBREW_HOME/opt/fzf"
 fi
 
-if [ -z "$FZF_HOME" ] && [ -d "$HOME/.fzf" ]; then
-  export FZF_HOME=$HOME/.fzf
+if [ -z "$FZF_HOME" ] && [ -d "$XDG_DATA_HOME/fzf" ]; then
+  export FZF_HOME="${XDG_DATA_HOME}/fzf"
 fi
 
 if [ -n "$FZF_HOME" ]; then
