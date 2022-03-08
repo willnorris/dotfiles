@@ -1,9 +1,11 @@
 #!/bin/bash
 
+USERNAME=$(whoami)
+
 sudo apt-get update
 sudo apt-get -y install man
 
-sudo chsh -s /usr/bin/zsh codespace
+sudo chsh -s /usr/bin/zsh $USERNAME
 
 # install ripgrep (https://github.com/BurntSushi/ripgrep/releases/latest)
 curl -o /tmp/ripgrep.deb -L https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
