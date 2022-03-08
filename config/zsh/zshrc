@@ -1,6 +1,7 @@
 # vim: ft=zsh
 
 typeset -U path manpath
+autoload -U compinit && compinit
 
 # load common shell configuration
 if [ -f "${HOME}/.profile" ]; then
@@ -13,5 +14,3 @@ done
 
 manpath=($XDG_DATA_HOME/man $manpath)
 export MANPATH="$MANPATH:"
-
-autoload -U compinit && compinit
