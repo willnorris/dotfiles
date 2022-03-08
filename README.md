@@ -3,14 +3,14 @@
 This repository contains my dotfiles for various applications.
 
 Installation of these files is managed by [rcm][], which I've actually bundled
-as part of my dotfiles in the [rcm](./rcm/) directory.
+as part of my dotfiles in the [rcm](./vendor/rcm/) directory.
 
 [rcm]: https://github.com/thoughtbot/rcm
 
 To set up a new host:
 
 * `git clone https://github.com/willnorris/dotfiles $HOME/.dotfiles`
-* `PATH="$HOME/.dotfiles/rcm/bin:$PATH" rcup`
+* `PATH="$HOME/.dotfiles/local/bin:$PATH" rcup`
 
 ## Work dotfiles
 

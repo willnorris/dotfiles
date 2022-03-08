@@ -1,4 +1,3 @@
 DOTFILES_DIRS="${HOME}/.dotfiles"
-EXCLUDES="Brewfile LICENSE README.md rcm *.example install.sh"
+EXCLUDES="Brewfile LICENSE README.md vendor *.example install.sh"
 SYMLINK_DIRS="config/git/template"
-UNDOTTED="bin"
