@@ -1,22 +1,22 @@
 # Lynx User Defaults File
-# 
+#
 # This file contains options saved from the Lynx Options Screen (normally
 # with the 'o' key).  To save options with that screen, you must select the
 # checkbox:
-#	Save options to disk
+# Save options to disk
 #
 # You must then save the settings using the link on the line above the
 # checkbox:
-#	Accept Changes
+# Accept Changes
 #
 # You may also use the command-line option "-forms_options", which displays
 # the simpler Options Menu instead.  Save options with that using the '>' key.
-# 
+#
 # There is normally no need to edit this file manually, since the defaults
 # here can be controlled from the Options Screen, and the next time options
 # are saved from the Options Screen this file will be completely rewritten.
 # You have been warned...
-# 
+#
 # If you are looking for the general configuration file - it is normally
 # called "lynx.cfg".  It has different content and a different format.
 # It is not this file.
@@ -179,13 +179,13 @@ keypad_mode=NUMBERS_AS_ARROWS
 # lineedit_mode specifies the key binding used for inputting strings in
 # prompts and forms.  If lineedit_mode is set to "Default Binding" then
 # the following control characters are used for moving and deleting:
-# 
+#
 #              Prev  Next       Enter = Accept input
 #    Move char: <-    ->        ^G    = Cancel input
 #    Move word: ^P    ^N        ^U    = Erase line
 #  Delete char: ^H    ^R        ^A    = Beginning of line
 #  Delete word: ^B    ^F        ^E    = End of line
-# 
+#
 # Current lineedit modes are:
 #    Default Binding
 #    Alternate Bindings
