@@ -26,13 +26,16 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   let g:netrw_home = $XDG_DATA_HOME."/vim"
   call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
 
-  set viewdir=$XDG_DATA_HOME/vim/view     | call mkdir(&viewdir, 'p')
-  set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
-  set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
-  set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
-  set undofile
+  " neovim uses XDG directories by default, so just set for non-neovim
+  if !has('nvim')
+    set viewdir=$XDG_DATA_HOME/vim/view     | call mkdir(&viewdir, 'p')
+    set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
+    set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
+    set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
+    set undofile
 
-  if !has('nvim') | set viminfofile=$XDG_DATA_HOME/vim/viminfo | endif
+    set viminfofile=$XDG_DATA_HOME/vim/viminfo
+  endif
 " }}}
 
 " Vim UI {{{
