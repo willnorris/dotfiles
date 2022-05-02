@@ -188,6 +188,7 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   Plug 'fatih/vim-go'
   Plug 'google/vim-jsonnet'
   Plug 'junegunn/gv.vim'
+  Plug 'konfekt/vim-sentence-chopper'
   Plug 'kshenoy/vim-signature'
   Plug 'majutsushi/tagbar'
   Plug 'michaeljsmith/vim-indent-object'
