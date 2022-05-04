@@ -32,10 +32,9 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
     set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
     set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
     set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
-    set undofile
-
     set viminfofile=$XDG_DATA_HOME/vim/viminfo
   endif
+  set undofile
 " }}}
 
 " Vim UI {{{
