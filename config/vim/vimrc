@@ -119,15 +119,9 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   nnoremap <S-L> :tabnext<CR>
   nnoremap <S-H> :tabprevious<CR>
 
-  nnoremap <silent> <leader>sc :SyntasticCheck<CR>:Errors<CR>
-  nnoremap <silent> <leader>st :SyntasticToggleMode<CR>
   " hide sign column
   nnoremap <leader>su :sign unplace *<CR>
   nnoremap <leader>dm :delmarks!<CR>:sign unplace *<CR>
-
-  nnoremap <leader>sh :SignifyToggleHighlight<CR>
-  nnoremap <leader>sr :SignifyRefresh<CR>
-  nnoremap <leader>st :SignifyToggle<CR>
 
   " find current word in quickfix
   nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<CR>:copen<CR>
@@ -173,18 +167,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 " }}}
 
 " Colors {{{
-  " onedark: don't set a background color, just use terminal's background
-  if (has("autocmd") && !has("gui_running"))
-    augroup colorset
-      autocmd!
-      let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-      autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
-    augroup END
-  endif
-
-  let g:onedark_termcolors=16
-  silent! colorscheme onedark
-
   syntax on
   set hlsearch
   set colorcolumn=+1 " display column at edge of textwidth
