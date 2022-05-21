@@ -31,11 +31,13 @@ return packer.startup(function(use)
 
   use 'fatih/vim-go'
   use 'google/vim-jsonnet'
+  use 'joshdick/onedark.vim'
   use 'junegunn/gv.vim'
   use 'konfekt/vim-sentence-chopper'
   use 'kshenoy/vim-signature'
   use 'majutsushi/tagbar'
   use 'michaeljsmith/vim-indent-object'
+  use 'ojroques/vim-oscyank'
   use 'scrooloose/nerdcommenter'
   use 'sheerun/vim-polyglot'
   use 'sickill/vim-pasta'
@@ -50,7 +52,6 @@ return packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
-  use 'joshdick/onedark.vim'
 
   use 'editorconfig/editorconfig-vim'
   vim.g.EditorConfig_exclude_patterns = {'fugitive://.*'}

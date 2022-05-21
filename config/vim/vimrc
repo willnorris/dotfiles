@@ -162,10 +162,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 " Plugins {{{
   call plug#begin('$XDG_CONFIG_HOME/vim/bundle')
 
-  Plug '$XDG_CONFIG_HOME/vim/bundle/osc52'
-
-  source $VIMRUNTIME/macros/matchit.vim
-
   let g:netrw_banner = 0
   let g:netrw_liststyle = 3
   let g:netrw_browse_split = 4
