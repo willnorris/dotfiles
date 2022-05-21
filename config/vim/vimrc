@@ -140,8 +140,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   nnoremap <leader>sr :SignifyRefresh<CR>
   nnoremap <leader>st :SignifyToggle<CR>
 
-  nnoremap <leader>u :GundoToggle<CR>
-
   " find current word in quickfix
   nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<CR>:copen<CR>
   " find last search in quickfix
@@ -157,7 +155,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   inoremap <C-L>z <C-R>=system('timestamp -rfc3339 -utc')<CR>
   inoremap <C-L>e <C-R>=system('timestamp -epoch')<CR>
 
-  nnoremap <C-T> :FZF<CR>
 " }}}
 
 " Functions {{{
@@ -184,40 +181,9 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 " Plugins {{{
   call plug#begin('$XDG_CONFIG_HOME/vim/bundle')
 
-  Plug 'fatih/vim-go'
-  Plug 'google/vim-jsonnet'
-  Plug 'junegunn/gv.vim'
-  Plug 'konfekt/vim-sentence-chopper'
-  Plug 'kshenoy/vim-signature'
-  Plug 'majutsushi/tagbar'
-  Plug 'michaeljsmith/vim-indent-object'
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'sickill/vim-pasta'
-  Plug 'tpope/vim-afterimage'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-eunuch'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-git'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-sensible'
-  Plug 'tpope/vim-sleuth'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-unimpaired'
-  Plug 'tpope/vim-vinegar'
-
   Plug '$XDG_CONFIG_HOME/vim/bundle/osc52'
 
   source $VIMRUNTIME/macros/matchit.vim
-
-  Plug 'editorconfig/editorconfig-vim'
-  let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-  Plug 'sjl/gundo.vim'
-  let g:gundo_preview_bottom = 1
-  if has('python3')
-    let g:gundo_prefer_python3 = 1
-  endif
 
   let g:netrw_banner = 0
   let g:netrw_liststyle = 3
@@ -225,110 +191,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   let g:netrw_altv = 1
   let g:netrw_winsize = -28
 
-  Plug 'airblade/vim-gitgutter'
-  nnoremap yogg :GitGutterToggle<CR>
-
-  Plug 'w0rp/ale'
-  let g:ale_lint_on_text_changed = 'normal'
-  let g:ale_lint_on_insert_leave = 1
-  let g:ale_fixers = {
-  \   'javascript': ['eslint'],
-  \}
-  highlight ALEErrorSign ctermfg=8 ctermbg=1
-
-  Plug 'zhaocai/GoldenView.vim'
-  let g:goldenview__enable_default_mapping = 0
-  nnoremap yogv :ToggleGoldenViewAutoResize<CR>
-
-  Plug 'mileszs/ack.vim'
-  if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-    let g:ackprg = 'rg --vimgrep --no-heading'
-  endif
-
-  Plug 'junegunn/fzf', { 'dir': '$XDG_DATA_HOME/fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-  let g:fzf_history_dir = '$XDG_DATA_HOME/vim/fzf-history'
-  let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' }
-  let g:fzf_layout = { 'down': '~70%' }
-
-  Plug 'joshdick/onedark.vim'
-
-  " Airline {{{
-    Plug 'vim-airline/vim-airline'
-
-    let g:airline_theme_patch_func = 'AirlineThemePatch'
-    function! AirlineThemePatch(palette)
-      if g:airline_theme == 'onedark'
-        let a:palette.normal.airline_c[3] = 0
-        let a:palette.normal.airline_x[3] = 0
-      endif
-    endfunction
-
-    let g:airline_theme='onedark'
-    if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-    endif
-    let g:airline_left_sep=''
-    let g:airline_right_sep=''
-    let g:airline_mode_map = {
-        \ '__' : '-',
-        \ 'n'  : 'N',
-        \ 'i'  : 'I',
-        \ 'R'  : 'R',
-        \ 'c'  : 'C',
-        \ 'v'  : 'V',
-        \ 'V'  : 'V:line',
-        \ '' : 'V:block',
-        \ 's'  : 'S',
-        \ 'S'  : 'S:line',
-        \ '' : 'S:block',
-        \ 't'  : 'T',
-        \ }
-    let g:airline_symbols.branch = ''
-    let g:airline_symbols.crypt = '⚿'
-    let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.spell = 'Ꞩ'
-
-    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-    let g:airline#extensions#hunks#non_zero_only = 1
-
-    let g:airline#extensions#ale#enabled = 1
-    let g:airline#extensions#ale#error_symbol = '⚠:'
-    let g:airline#extensions#ale#warning_symbol = '⦸:'
-
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#show_splits = 1
-    let g:airline#extensions#tabline#tab_nr_type = 2
-    let g:airline#extensions#tabline#buffer_idx_mode = 1
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
-    let g:airline#extensions#tabline#show_close_button = 0
-
-    nmap <A-1> <Plug>AirlineSelectTab1
-    nmap <A-2> <Plug>AirlineSelectTab2
-    nmap <A-3> <Plug>AirlineSelectTab3
-    nmap <A-4> <Plug>AirlineSelectTab4
-    nmap <A-5> <Plug>AirlineSelectTab5
-    nmap <A-6> <Plug>AirlineSelectTab6
-    nmap <A-7> <Plug>AirlineSelectTab7
-    nmap <A-8> <Plug>AirlineSelectTab8
-    nmap <A-9> <Plug>AirlineSelectTab9
-
-    function! AirlineInit()
-        call airline#parts#define_raw('linenr', '☰ %l')
-        let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%c'])
-    endfunction
-    autocmd User AirlineAfterInit call AirlineInit()
-  " }}}
-
-  Plug 'junegunn/goyo.vim'
-  Plug 'junegunn/limelight.vim'
-  let g:limelight_conceal_ctermfg = 8
-  nnoremap <leader>gg :Goyo<CR>
-  autocmd! User GoyoEnter Limelight
-  autocmd! User GoyoLeave Limelight!
 
   call plug#end()
 " }}}

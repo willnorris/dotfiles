@@ -5,6 +5,9 @@ fi
 if [ -z "$FZF_HOME" ] && [ -d "$XDG_DATA_HOME/fzf" ]; then
   export FZF_HOME="${XDG_DATA_HOME}/fzf"
 fi
+if [ -z "$FZF_HOME" ] && [ -d "$XDG_DATA_HOME/nvim/site/pack/packer/start/fzf" ]; then
+  export FZF_HOME="${XDG_DATA_HOME}/nvim/site/pack/packer/start/fzf"
+fi
 
 if [ -n "$FZF_HOME" ]; then
   export PATH="$FZF_HOME/bin:$PATH"
