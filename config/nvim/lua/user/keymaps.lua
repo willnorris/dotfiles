@@ -1,10 +1,23 @@
 local keymap = vim.keymap.set
 local noremap = { noremap = true }
 
+vim.cmd [[
+  function! Preserve(command) "{{{
+    " preparation: save last search, and cursor position.
+    let _s=@/
+    let view = winsaveview()
+    " do the business:
+    execute a:command
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call winrestview(view)
+  endfunction "}}}
+]]
+
 -- set leader and local leader key
 keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
-vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- movement
 keymap("i", "jk", "<esc>", noremap)
@@ -32,3 +45,17 @@ keymap("n", "<S-H>", ":tabprevious<CR>")
 
 keymap("n", "<leader>!", ":redraw!<CR>:redrawstatus!<CR>")
 keymap("n", "<leader>R", ":source $MYVIMRC<CR>")
+
+-- yank to clipboard via osc52
+keymap("v", "<C-c>", ":OSCYank<cr>")
+
+-- Join lines and restore cursor location (J)
+keymap("n", "J", [[:call Preserve("join")<CR>]])
+
+-- strip trailing whitespace
+keymap("n", "_$", [[:call Preserve("%s/\\s\\+$//e")<CR>]])
+
+-- timestamp insertion
+keymap("i", "<C-L>t", "<C-R>=system('timestamp -rfc3339')<CR>")
+keymap("i", "<C-L>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>")
+keymap("i", "<C-L>e", "<C-R>=system('timestamp -epoch')<CR>")

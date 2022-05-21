@@ -1,8 +1,6 @@
 " Load defaults.vim
-if !has('nvim')
-  unlet! skip_defaults_vim
-  source $VIMRUNTIME/defaults.vim
-endif
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
 
 " set XDG directories if not already set
 if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
@@ -17,7 +15,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   set encoding=utf-8
   set updatetime=100
   set maxmempattern=2000
-  set spellfile=$XDG_CONFIG_HOME/vim/en.utf-8.add
 " }}}
 
 " Data Directories {{{
@@ -28,14 +25,12 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   let g:netrw_home = $XDG_DATA_HOME."/vim"
   call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
 
-  " neovim uses XDG directories by default, so just set for non-neovim
-  if !has('nvim')
-    set viewdir=$XDG_DATA_HOME/vim/view     | call mkdir(&viewdir, 'p')
-    set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
-    set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
-    set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
-    set viminfofile=$XDG_DATA_HOME/vim/viminfo
-  endif
+  " use XDG directories
+  set viewdir=$XDG_DATA_HOME/vim/view     | call mkdir(&viewdir, 'p')
+  set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
+  set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
+  set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
+  set viminfofile=$XDG_DATA_HOME/vim/viminfo
   set undofile
 " }}}
 
@@ -63,34 +58,14 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   autocmd FileType text setlocal textwidth=78
 " }}}
 
-" Folding {{{
-  set foldenable " turn on folding
-  set foldmethod=marker "fold on markers
-  set foldlevel=100 " don't autofold anything
-  set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds
-
-  nnoremap cof :call FoldColumnToggle()<cr>
-  function! FoldColumnToggle()
-      if &foldcolumn
-          setlocal foldcolumn=0
-      else
-          setlocal foldcolumn=1
-      endif
-  endfunction
-" }}}
-
 " Mappings {{{
   let mapleader = "\<SPACE>"
   let maplocalleader = ","
 
-  " Use sane regexes.
-  nnoremap / /\v
-  vnoremap / /\v
-
   noremap j gj
   noremap k gk
 
-  vmap <C-c> y:call SendViaOSC52(getreg('"'))<cr>
+  vmap <C-c> :OSCYank<cr>
 
   " Join lines and restore cursor location (J)
   nnoremap J :call Preserve("join")<CR>
@@ -119,24 +94,11 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   nnoremap <S-L> :tabnext<CR>
   nnoremap <S-H> :tabprevious<CR>
 
-  " hide sign column
-  nnoremap <leader>su :sign unplace *<CR>
-  nnoremap <leader>dm :delmarks!<CR>:sign unplace *<CR>
-
-  " find current word in quickfix
-  nnoremap <leader>fw :execute "vimgrep ".expand("<cword>")." %"<CR>:copen<CR>
-  " find last search in quickfix
-  nnoremap <leader>ff :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
   " move around split windows with ctrl
   noremap <C-H> <C-W>h
   noremap <C-J> <C-W>j
   noremap <C-K> <C-W>k
   noremap <C-L> <C-W>l
-
-  inoremap <C-L>t <C-R>=system('timestamp -rfc3339')<CR>
-  inoremap <C-L>z <C-R>=system('timestamp -rfc3339 -utc')<CR>
-  inoremap <C-L>e <C-R>=system('timestamp -epoch')<CR>
 
 " }}}
 
@@ -153,18 +115,11 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   endfunction "}}}
 " }}}
 
-" Plugins {{{
-  call plug#begin('$XDG_CONFIG_HOME/vim/bundle')
-
   let g:netrw_banner = 0
   let g:netrw_liststyle = 3
   let g:netrw_browse_split = 4
   let g:netrw_altv = 1
   let g:netrw_winsize = -28
-
-
-  call plug#end()
-" }}}
 
 " Colors {{{
   syntax on
@@ -179,10 +134,4 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   highlight DiffChange cterm=NONE
   highlight SpellBad cterm=undercurl
   highlight MatchParen ctermbg=8
-" }}}
-
-" Work-specific settings {{{
-  if filereadable($XDG_CONFIG_HOME . "/vim/work.vim")
-    source $XDG_CONFIG_HOME/vim/work.vim
-  endif
 " }}}
