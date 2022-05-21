@@ -1,3 +1,9 @@
+" Load defaults.vim
+if !has('nvim')
+  unlet! skip_defaults_vim
+  source $VIMRUNTIME/defaults.vim
+endif
+
 " set XDG directories if not already set
 if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
 if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
@@ -5,16 +11,12 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 
 " General {{{
   " a handful of basic config options come from vim-sensible
-  set nocompatible " get out of vi-compatibility mode
   set history=9999 " keep plenty of history
   set hidden " allow changing buffers without saving
   set wildmode=list:longest,full
-  set modelines=5
   set encoding=utf-8
   set updatetime=100
   set maxmempattern=2000
-  filetype plugin indent on
-  "set mouse=a " enable mouse support
   set spellfile=$XDG_CONFIG_HOME/vim/en.utf-8.add
 " }}}
 
@@ -44,7 +46,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
   set noshowmode
 
   " Scrolling
-  set scrolloff=3
   set sidescroll=1
   set sidescrolloff=10
 " }}}
@@ -60,15 +61,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position. Don't
-  " do it when the position is invalid or when inside an event handler (happens
-  " when dropping a file on gvim). Also don't do it when the mark is in the
-  " first line, that is the default position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
 " }}}
 
 " Folding {{{
@@ -90,9 +82,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 " Mappings {{{
   let mapleader = "\<SPACE>"
   let maplocalleader = ","
-
-  " Don't use Ex mode, use Q for formatting
-  noremap Q gq
 
   " Use sane regexes.
   nnoremap / /\v
@@ -158,14 +147,6 @@ if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endi
 " }}}
 
 " Functions {{{
-  " Convenient command to see the difference between the current buffer and
-  " the file it was loaded from, thus the changes you made.
-  " Only define it when not defined already.
-  if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-        \ | wincmd p | diffthis
-  endif
-
   function! Preserve(command) "{{{
     " preparation: save last search, and cursor position.
     let _s=@/
