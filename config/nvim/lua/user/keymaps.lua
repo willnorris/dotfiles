@@ -46,9 +46,6 @@ keymap("n", "<S-H>", ":tabprevious<CR>")
 keymap("n", "<leader>!", ":redraw!<CR>:redrawstatus!<CR>")
 keymap("n", "<leader>R", ":source $MYVIMRC<CR>")
 
--- yank to clipboard via osc52
-keymap("v", "<C-c>", ":OSCYank<cr>")
-
 -- Join lines and restore cursor location (J)
 keymap("n", "J", [[:call Preserve("join")<CR>]])
 
