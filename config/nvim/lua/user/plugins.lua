@@ -101,81 +101,37 @@ return packer.startup(function(use)
   }
   vim.cmd [[highlight ALEErrorSign ctermfg=8 ctermbg=1]]
 
-  -- Airline {{{
-  use 'vim-airline/vim-airline'
+  use {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      -- customize 16color theme, swap insert and normal color
+      local t16c = require 'lualine.themes.16color'
+      local normal = t16c.normal.a
+      t16c.normal.a = t16c.insert.a
+      t16c.insert.a = normal
+      t16c.normal.a.fg = '#000000'
+      t16c.insert.a.fg = '#000000'
+      t16c.visual.a.fg = '#000000'
 
-  vim.g.airline_theme_patch_func = 'AirlineThemePatch'
-  vim.cmd [[
-  function! AirlineThemePatch(palette)
-    if g:airline_theme == 'onedark'
-      let a:palette.normal.airline_c[3] = 0
-      let a:palette.normal.airline_x[3] = 0
-    endif
-  endfunction
-  ]]
-
-  vim.g.airline_theme = 'onedark'
-  vim.cmd [[
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-  ]]
-  vim.g.airline_left_sep = ''
-  vim.g.airline_right_sep = ''
-
-  vim.g.airline_mode_map = {
-      __ = '-',
-      n  = 'N',
-      i  = 'I',
-      R  = 'R',
-      c  = 'C',
-      v  = 'V',
-      V  = 'V_',
-      ["^V"]  = '-V',
-      s  = 'S',
-      S  = 'S:_',
-      ["^S"]  = '^S',
-      t  = 'T',
+      require('lualine').setup {
+        options = {
+          theme = t16c,
+          icons_enabled = false,
+          section_separators = '',
+          component_separators = '',
+        },
+        sections = {
+          lualine_a = {
+            { 'mode', fmt = function(str) return str:sub(1,1) end }
+          },
+        },
+        tabline = {
+          lualine_a = { {'buffers', mode=2} },
+          lualine_z = { {'tabs', mode=2} },
+        }
+      }
+    end,
   }
-
-  vim.g.airline_symbols.branch = ''
-  vim.g.airline_symbols.crypt = '⚿'
-  vim.g.airline_symbols.paste = '∥'
-  vim.g.airline_symbols.spell = 'Ꞩ'
-
-  vim.g["airline#parts#ffenc#skip_expected_string"] = "utf-8[unix]"
-  vim.g["airline#extensions#hunks#non_zero_only"] = 1
-
-  vim.g["airline#extensions#ale#enabled"] = 1
-  vim.g["airline#extensions#ale#error_symbol"] = '⚠:'
-  vim.g["airline#extensions#ale#warning_symbol"] = '⦸:'
-
-  vim.g["airline#extensions#tabline#enabled"] = 1
-  vim.g["airline#extensions#tabline#show_splits"] = 1
-  vim.g["airline#extensions#tabline#tab_nr_type"] = 2
-  vim.g["airline#extensions#tabline#buffer_idx_mode"] = 1
-  vim.g["airline#extensions#tabline#left_sep"] = ' '
-  vim.g["airline#extensions#tabline#left_alt_sep"] = '|'
-  vim.g["airline#extensions#tabline#show_close_button"] = 0
-
-  keymap("n", "<A-1>", "<Plug>AirlineSelectTab1")
-  keymap("n", "<A-2>", "<Plug>AirlineSelectTab2")
-  keymap("n", "<A-3>", "<Plug>AirlineSelectTab3")
-  keymap("n", "<A-4>", "<Plug>AirlineSelectTab4")
-  keymap("n", "<A-5>", "<Plug>AirlineSelectTab5")
-  keymap("n", "<A-6>", "<Plug>AirlineSelectTab6")
-  keymap("n", "<A-7>", "<Plug>AirlineSelectTab7")
-  keymap("n", "<A-8>", "<Plug>AirlineSelectTab8")
-  keymap("n", "<A-9>", "<Plug>AirlineSelectTab9")
-
-  vim.cmd [[
-  function! AirlineInit()
-      call airline#parts#define_raw('linenr', '☰ %l')
-      let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%c'])
-  endfunction
-  autocmd User AirlineAfterInit call AirlineInit()
-  ]]
-  -- }}}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
