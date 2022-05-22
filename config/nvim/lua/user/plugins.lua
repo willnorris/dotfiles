@@ -38,11 +38,9 @@ return packer.startup(function(use)
   use 'majutsushi/tagbar'
   use 'michaeljsmith/vim-indent-object'
   use 'ojroques/vim-oscyank'
-  use 'scrooloose/nerdcommenter'
   use 'sheerun/vim-polyglot'
   use 'sickill/vim-pasta'
   use 'tpope/vim-afterimage'
-  use 'tpope/vim-commentary'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-git'
@@ -52,6 +50,13 @@ return packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 
   use 'editorconfig/editorconfig-vim'
   vim.g.EditorConfig_exclude_patterns = {'fugitive://.*'}
