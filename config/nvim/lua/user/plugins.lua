@@ -61,8 +61,18 @@ return packer.startup(function(use)
   vim.g.gundo_prefer_python3 = 1
   keymap("n", "<leader>u", ":GundoToggle<CR>")
 
-  use 'airblade/vim-gitgutter'
-  keymap("n", "yogg", ":GitGutterToggle<CR>")
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+        }
+      }
+    end,
+  }
+  keymap("n", "yogg", ":Gitsigns toggle_signs<CR>")
 
   use 'zhaocai/GoldenView.vim'
   vim.g.goldenview__enable_default_mapping = 0
