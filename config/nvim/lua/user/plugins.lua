@@ -31,7 +31,6 @@ return packer.startup(function(use)
   use "junegunn/gv.vim"
   use "konfekt/vim-sentence-chopper"
   use "kshenoy/vim-signature"
-  use "majutsushi/tagbar"
   use "michaeljsmith/vim-indent-object"
   use "sheerun/vim-polyglot"
   use "sickill/vim-pasta"
@@ -204,13 +203,20 @@ return packer.startup(function(use)
     'preservim/nerdtree',
     config = function()
       vim.g.NERDTreeMapOpenVSPlit = "v"
-      vim.keymap.set("n", "<C-n>", ":NERDTreeToggle<CR>")
+      vim.keymap.set("n", "<leader>f", ":NERDTreeToggle<CR>")
 
       -- Close the tab if NERDTree is the only window remaining in it.
       vim.cmd [[autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]
       -- If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
       vim.cmd [[autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
         \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif]]
+    end,
+  }
+
+  use {
+    "preservim/tagbar",
+    config = function()
+      vim.keymap.set("n", "<leader>tt", ":TagbarToggle<CR>")
     end,
   }
 
