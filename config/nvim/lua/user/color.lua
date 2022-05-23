@@ -24,4 +24,5 @@ vim.cmd [[
   highlight DiffChange cterm=NONE
   highlight SpellBad cterm=undercurl
   highlight MatchParen ctermbg=8
+  highlight NormalFloat ctermfg=15 ctermbg=0
 ]]

@@ -105,6 +105,7 @@ return packer.startup(function(use)
         vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
         vim.g.ackprg = "rg --vimgrep --no-heading"
       end
+      vim.keymap.set("n", "<leader>a", ":Ack! ")
     end,
   }
 
@@ -143,7 +144,7 @@ return packer.startup(function(use)
         ["ctrl-s"] = "split",
         ["ctrl-v"] = "vsplit",
       }
-      vim.g.fzf_layout = { down = "~70%" }
+      vim.g.fzf_layout = { down = "~60%" }
       vim.keymap.set("n", "<C-T>", ":FZF<CR>")
     end,
   }
@@ -189,6 +190,20 @@ return packer.startup(function(use)
           lualine_z = { {"tabs", mode=2} },
         }
       }
+    end,
+  }
+
+  use {
+    'preservim/nerdtree',
+    config = function()
+      vim.g.NERDTreeMapOpenVSPlit = "v"
+      vim.keymap.set("n", "<C-n>", ":NERDTreeToggle<CR>")
+
+      -- Close the tab if NERDTree is the only window remaining in it.
+      vim.cmd [[autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]
+      -- If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+      vim.cmd [[autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+        \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif]]
     end,
   }
 
