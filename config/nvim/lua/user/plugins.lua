@@ -47,6 +47,13 @@ return packer.startup(function(use)
   use "tpope/vim-vinegar"
 
   use {
+    "moll/vim-bbye",
+    config = function()
+      vim.keymap.set("n", "<C-q>", ":Bdelete<CR>")
+    end,
+  }
+
+  use {
     "ojroques/vim-oscyank",
     config = function()
       vim.keymap.set("v", "<C-c>", ":OSCYank<cr>")

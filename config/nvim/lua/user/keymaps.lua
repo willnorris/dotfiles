@@ -36,7 +36,6 @@ keymap("n", "<leader>]", ":bnext<CR>")
 keymap("n", "<leader>[", ":bprev<CR>")
 keymap("n", "<leader>ls", ":Buffers<CR>")
 keymap("n", "<leader>dd", ":bd<CR>")
-keymap("n", "<C-q>", ":bd<CR>")
 
 -- tab navigation
 keymap("n", "<leader>tn", ":tabnew<CR>")
