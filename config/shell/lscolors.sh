@@ -3,7 +3,9 @@
 [ -z "$PS1" ] && return # interactive only
 
 if [ -r "$XDG_CONFIG_HOME/personal/dircolors" ]; then
-  if command -v gdircolors >/dev/null; then
+  if command -v udircolors >/dev/null; then
+    eval "$(udircolors ~/.config/personal/dircolors)"
+  elif command -v gdircolors >/dev/null; then
     eval "$(gdircolors ~/.config/personal/dircolors)"
   elif command -v dircolors >/dev/null; then
     eval "$(dircolors ~/.config/personal/dircolors)"
