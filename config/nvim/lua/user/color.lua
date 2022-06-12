@@ -25,4 +25,5 @@ vim.cmd [[
   highlight SpellBad cterm=undercurl
   highlight MatchParen ctermbg=8
   highlight NormalFloat ctermfg=15 ctermbg=0
+  highlight Pmenu ctermfg=15 ctermbg=0
 ]]

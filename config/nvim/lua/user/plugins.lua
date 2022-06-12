@@ -6,7 +6,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- Reload neovim config when plugins.lua file is saved
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -14,16 +14,15 @@ vim.cmd [[
   augroup end
 ]]
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
+local ok, packer = pcall(require, "packer")
+if not ok then
   return
 end
 
 -- Install plugins
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"    -- Have packer manage itself
-  use "nvim-lua/plenary.nvim"     -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/plenary.nvim"     -- Useful lua functions used by lots of plugins
 
   use "fatih/vim-go"
   use "google/vim-jsonnet"
@@ -219,6 +218,17 @@ return packer.startup(function(use)
       vim.keymap.set("n", "<leader>tt", ":TagbarToggle<CR>")
     end,
   }
+
+   -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- Automatically set up configuration after cloning packer.nvim
   if packer_bootstrap then
