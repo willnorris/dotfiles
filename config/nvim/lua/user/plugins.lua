@@ -155,18 +155,6 @@ return packer.startup(function(use)
   }
 
   use {
-    "w0rp/ale",
-    config = function()
-      vim.g.ale_lint_on_text_changed = "normal"
-      vim.g.ale_lint_on_insert_leave = 1
-      vim.g.ale_fixers = {
-         javascript = {"eslint"},
-      }
-      vim.cmd [[highlight ALEErrorSign ctermfg=8 ctermbg=1]]
-    end,
-  }
-
-  use {
     "nvim-lualine/lualine.nvim",
     config = function()
       -- customize 16color theme, swapping insert and normal color
@@ -225,10 +213,16 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  -- LSP
+  use "neovim/nvim-lspconfig"
+  use "williamboman/nvim-lsp-installer"
 
   -- Automatically set up configuration after cloning packer.nvim
   if packer_bootstrap then
