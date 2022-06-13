@@ -295,6 +295,17 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    "stevearc/qf_helper.nvim",
+    config = function()
+      require('qf_helper').setup {
+        quickfix = {
+          default_bindings = false,
+        },
+      }
+    end,
+  }
+
   -- Automatically set up configuration after cloning packer.nvim
   if packer_bootstrap then
     require("packer").sync()
