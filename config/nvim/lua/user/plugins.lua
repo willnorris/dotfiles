@@ -144,22 +144,6 @@ return packer.startup(function(use)
     end,
   }
 
-  use "junegunn/fzf.vim"
-  use {
-    "junegunn/fzf",
-    run = "./install --bin",
-    config = function()
-      vim.g.fzf_history_dir = vim.fn.stdpath("data") .. "/fzf-history"
-      vim.g.fzf_action = {
-        ["ctrl-t"] = "tab split",
-        ["ctrl-s"] = "split",
-        ["ctrl-v"] = "vsplit",
-      }
-      vim.g.fzf_layout = { down = "~60%" }
-      vim.keymap.set("n", "<C-T>", ":FZF<CR>")
-    end,
-  }
-
   use {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -229,6 +213,9 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
+
+  -- Telescope
+  use "nvim-telescope/telescope.nvim"
 
   -- Automatically set up configuration after cloning packer.nvim
   if packer_bootstrap then

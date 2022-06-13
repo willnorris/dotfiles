@@ -52,6 +52,10 @@ keymap("n", "J", [[:call Preserve("join")<CR>]])
 -- strip trailing whitespace
 keymap("n", "_$", [[:call Preserve("%s/\\s\\+$//e")<CR>]])
 
+-- telescope
+keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>")
+keymap("n", "<leader>tg", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_ivy())<cr>")
+
 -- timestamp insertion
 keymap("i", "<C-L>t", "<C-R>=system('timestamp -rfc3339')<CR>")
 keymap("i", "<C-L>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>")
