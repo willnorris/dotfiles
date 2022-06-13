@@ -24,7 +24,6 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"    -- Have packer manage itself
   use "nvim-lua/plenary.nvim"     -- Useful lua functions used by lots of plugins
 
-  use "fatih/vim-go"
   use "google/vim-jsonnet"
   use "joshdick/onedark.vim"
   use "junegunn/gv.vim"
@@ -43,6 +42,13 @@ return packer.startup(function(use)
   use "tpope/vim-surround"
   use "tpope/vim-unimpaired"
   use "tpope/vim-vinegar"
+
+  use {
+    "fatih/vim-go",
+    config = function()
+      vim.g.go_def_mapping_enabled = false
+    end,
+  }
 
   use {
     "moll/vim-bbye",
