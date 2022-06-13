@@ -101,10 +101,11 @@ return packer.startup(function(use)
   }
 
   use {
-    "zhaocai/GoldenView.vim",
+    "beauwilliams/focus.nvim",
     config = function()
-      vim.g.goldenview__enable_default_mapping = 0
-      vim.keymap.set("n", "yogv", ":ToggleGoldenViewAutoResize<CR>")
+      require "focus".setup {
+      }
+      vim.keymap.set("n", "yogv", ":FocusToggle<CR>")
     end,
   }
 
@@ -127,20 +128,20 @@ return packer.startup(function(use)
       vim.g.limelight_conceal_ctermfg = 8
       vim.cmd [[
         function! s:goyo_enter()
-          DisableGoldenViewAutoResize
+          FocusDisable
           lua require('gitsigns').toggle_signs(false)
           Limelight
         endfunction
         autocmd! User GoyoEnter nested call <SID>goyo_enter()
 
         function! s:goyo_leave()
-          EnableGoldenViewAutoResize
+          FocusEnable
           lua require('gitsigns').toggle_signs(true)
           Limelight!
         endfunction
         autocmd! User GoyoLeave nested call <SID>goyo_leave()
       ]]
-      vim.keymap.set("n", "<leader>gg", ":DisableGoldenViewAutoResize<CR>:Goyo<CR>")
+      vim.keymap.set("n", "<leader>gg", ":FocusDisable<CR>:Goyo<CR>")
     end,
   }
 
