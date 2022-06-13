@@ -222,6 +222,20 @@ return packer.startup(function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
+  use {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup {
+        icons = false,
+        fold_open = "▾",
+        fold_closed = "▸",
+        indent_lines = false,
+        use_diagnostic_signs = true,
+      }
+      vim.keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")
+    end
+  }
+
   -- Automatically set up configuration after cloning packer.nvim
   if packer_bootstrap then
     require("packer").sync()
