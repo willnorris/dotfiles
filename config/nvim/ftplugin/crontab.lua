@@ -1,1 +1,1 @@
-set backupcopy=yes
+vim.opt.backupcopy = "yes"
