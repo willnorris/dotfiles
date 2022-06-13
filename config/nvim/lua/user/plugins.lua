@@ -121,27 +121,31 @@ return packer.startup(function(use)
     end,
   }
 
-  use "junegunn/goyo.vim"
   use {
-    "junegunn/limelight.vim",
-    config = function()
-      vim.g.limelight_conceal_ctermfg = 8
-      vim.cmd [[
-        function! s:goyo_enter()
-          FocusDisable
-          lua require('gitsigns').toggle_signs(false)
-          Limelight
-        endfunction
-        autocmd! User GoyoEnter nested call <SID>goyo_enter()
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 
-        function! s:goyo_leave()
-          FocusEnable
-          lua require('gitsigns').toggle_signs(true)
-          Limelight!
-        endfunction
-        autocmd! User GoyoLeave nested call <SID>goyo_leave()
-      ]]
-      vim.keymap.set("n", "<leader>gg", ":FocusDisable<CR>:Goyo<CR>")
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require "zen-mode".setup{
+        window = {
+          options = {
+            signcolumn = "no",
+            number = false,
+          },
+        },
+      }
+      vim.keymap.set("n", "<leader>zz", ":ZenMode<CR>")
+    end,
+  }
+
+  use {
+    "benstockil/twilight.nvim",
+    config = function()
+      require("twilight").setup{}
+      vim.cmd [[highlight Twilight ctermfg=8]]
     end,
   }
 
