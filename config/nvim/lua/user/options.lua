@@ -12,6 +12,7 @@ o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
 o.number = true-- show line numbers
 o.splitright = true -- open vertical splits on the right
 o.showmode = false
+o.cursorlineopt = "number"
 
 -- Scrolling
 o.sidescrolloff = 10
