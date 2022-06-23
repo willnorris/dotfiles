@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 : ${RCM_LIB:=$(dirname "$0")/../share/rcm}
 . "$RCM_LIB/rcm.sh"

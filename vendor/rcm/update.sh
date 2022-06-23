@@ -4,8 +4,10 @@
 #   apt install autotools-dev automake
 #   gem install mustache
 
-TMP=$(mktemp -d --suffix=.rcm)
-RCM="${HOME}/.dotfiles/rcm"
+set -x
+
+TMP=$(mktemp -d)
+RCM="${HOME}/.dotfiles/vendor/rcm"
 
 git clone https://github.com/thoughtbot/rcm ${TMP} || exit
 cd ${TMP}
