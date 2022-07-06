@@ -196,9 +196,18 @@ return packer.startup(function(use)
   }
 
   use {
-    "preservim/tagbar",
+    "simrat39/symbols-outline.nvim",
     config = function()
-      vim.keymap.set("n", "<leader>tt", ":TagbarToggle<CR>")
+      vim.g.symbols_outline = {
+        auto_preview = false,
+        show_symbol_details = false,
+        symbols = {
+          Field = { icon = "f" },
+          Function = { icon = "ƒ" },
+          Struct = { icon = "s" },
+        }
+      }
+      vim.keymap.set("n", "<leader>tt", ":SymbolsOutline<CR>")
     end,
   }
 
