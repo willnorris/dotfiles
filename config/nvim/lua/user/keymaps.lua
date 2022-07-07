@@ -53,8 +53,9 @@ keymap("n", "J", [[:call Preserve("join")<CR>]])
 keymap("n", "_$", [[:call Preserve("%s/\\s\\+$//e")<CR>]])
 
 -- telescope
-keymap("n", "<C-t>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>")
-keymap("n", "<leader>tg", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_ivy())<cr>")
+local builtin = require('telescope.builtin')
+keymap("n", "<C-t>", builtin.find_files)
+keymap("n", "<leader>tg", builtin.live_grep)
 
 -- timestamp insertion
 keymap("i", "<C-L>t", "<C-R>=system('timestamp -rfc3339')<CR>")
