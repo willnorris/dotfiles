@@ -1,7 +1,9 @@
 -- Automatically install packer
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  packer_bootstrap = vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
+    install_path })
   print "Installing packer close and reopen Neovim..."
   vim.cmd [[packadd packer.nvim]]
 end
@@ -21,8 +23,8 @@ end
 
 -- Install plugins
 return packer.startup(function(use)
-  use "wbthomason/packer.nvim"    -- Have packer manage itself
-  use "nvim-lua/plenary.nvim"     -- Useful lua functions used by lots of plugins
+  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
   use "google/vim-jsonnet"
   use "joshdick/onedark.vim"
@@ -74,7 +76,7 @@ return packer.startup(function(use)
   use {
     "editorconfig/editorconfig-vim",
     config = function()
-      vim.g.EditorConfig_exclude_patterns = {"fugitive://.*"}
+      vim.g.EditorConfig_exclude_patterns = { "fugitive://.*" }
     end,
   }
 
@@ -129,7 +131,7 @@ return packer.startup(function(use)
   use {
     "folke/zen-mode.nvim",
     config = function()
-      require "zen-mode".setup{
+      require "zen-mode".setup {
         window = {
           options = {
             signcolumn = "no",
@@ -144,7 +146,7 @@ return packer.startup(function(use)
   use {
     "benstockil/twilight.nvim",
     config = function()
-      require("twilight").setup{}
+      require("twilight").setup {}
       vim.cmd [[highlight Twilight ctermfg=8]]
     end,
   }
@@ -170,12 +172,12 @@ return packer.startup(function(use)
         },
         sections = {
           lualine_a = {
-            { "mode", fmt = function(str) return str:sub(1,1) end }
+            { "mode", fmt = function(str) return str:sub(1, 1) end }
           },
         },
         tabline = {
-          lualine_a = { {"buffers", mode=2} },
-          lualine_z = { {"tabs", mode=2} },
+          lualine_a = { { "buffers", mode = 2 } },
+          lualine_z = { { "tabs", mode = 2 } },
         }
       }
     end,
@@ -211,7 +213,7 @@ return packer.startup(function(use)
     end,
   }
 
-   -- cmp plugins
+  -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
