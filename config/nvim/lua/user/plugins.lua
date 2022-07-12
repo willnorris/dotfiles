@@ -53,14 +53,14 @@ return packer.startup(function(use)
   use {
     "moll/vim-bbye",
     config = function()
-      vim.keymap.set("n", "<C-q>", ":Bdelete<CR>")
+      vim.keymap.set("n", "<C-q>", "<Cmd>Bdelete<CR>")
     end,
   }
 
   use {
     "ojroques/vim-oscyank",
     config = function()
-      vim.keymap.set("v", "<C-c>", ":OSCYank<cr>")
+      vim.keymap.set("v", "<C-c>", "<Cmd>OSCYank<cr>")
     end,
   }
 
@@ -83,7 +83,7 @@ return packer.startup(function(use)
     config = function()
       vim.g.gundo_preview_bottom = 1
       vim.g.gundo_prefer_python3 = 1
-      vim.keymap.set("n", "<leader>u", ":GundoToggle<CR>")
+      vim.keymap.set("n", "<leader>u", "<Cmd>GundoToggle<CR>")
     end,
   }
 
@@ -96,7 +96,7 @@ return packer.startup(function(use)
           change = { text = "~" },
         }
       }
-      vim.keymap.set("n", "yogs", ":Gitsigns toggle_signs<CR>")
+      vim.keymap.set("n", "yogs", "<Cmd>Gitsigns toggle_signs<CR>")
     end,
   }
 
@@ -105,7 +105,7 @@ return packer.startup(function(use)
     config = function()
       require "focus".setup {
       }
-      vim.keymap.set("n", "yogv", ":FocusToggle<CR>")
+      vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>")
     end,
   }
 
@@ -117,13 +117,13 @@ return packer.startup(function(use)
         vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
         vim.g.ackprg = "rg --vimgrep --no-heading"
       end
-      vim.keymap.set("n", "<leader>a", ":Ack! ")
+      vim.keymap.set("n", "<leader>a", "<Cmd>Ack! ")
     end,
   }
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    run = '<Cmd>TSUpdate'
   }
 
   use {
@@ -137,7 +137,7 @@ return packer.startup(function(use)
           },
         },
       }
-      vim.keymap.set("n", "<leader>zz", ":ZenMode<CR>")
+      vim.keymap.set("n", "<leader>zz", "<Cmd>ZenMode<CR>")
     end,
   }
 
@@ -185,7 +185,7 @@ return packer.startup(function(use)
     'preservim/nerdtree',
     config = function()
       vim.g.NERDTreeMapOpenVSPlit = "v"
-      vim.keymap.set("n", "<leader>f", ":NERDTreeToggle<CR>")
+      vim.keymap.set("n", "<leader>ff", "<Cmd>NERDTreeToggle<CR>")
 
       -- Close the tab if NERDTree is the only window remaining in it.
       vim.cmd [[autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]
@@ -207,7 +207,7 @@ return packer.startup(function(use)
           Struct = { icon = "s" },
         }
       }
-      vim.keymap.set("n", "<leader>tt", ":SymbolsOutline<CR>")
+      vim.keymap.set("n", "<leader>tt", "<Cmd>SymbolsOutline<CR>")
     end,
   }
 
@@ -242,7 +242,7 @@ return packer.startup(function(use)
         indent_lines = false,
         use_diagnostic_signs = true,
       }
-      vim.keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")
+      vim.keymap.set("n", "<leader>xx", "<Cmd>TroubleToggle<CR>")
     end
   }
 
