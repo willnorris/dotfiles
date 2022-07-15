@@ -46,13 +46,6 @@ return packer.startup(function(use)
   use "tpope/vim-vinegar"
 
   use {
-    "fatih/vim-go",
-    config = function()
-      vim.g.go_def_mapping_enabled = false
-    end,
-  }
-
-  use {
     "moll/vim-bbye",
     config = function()
       vim.keymap.set("n", "<C-q>", "<Cmd>Bdelete<CR>")
