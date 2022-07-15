@@ -5,7 +5,6 @@ end
 
 local actions = require "telescope.actions"
 
-
 local defaults = {
   --prompt_prefix = "",
   --selection_caret = "",
@@ -18,22 +17,24 @@ local defaults = {
 
       ["<C-j>"] = actions.move_selection_next,
       ["<C-k>"] = actions.move_selection_previous,
-
-      ["<C-c>"] = actions.close,
-
       ["<Down>"] = actions.move_selection_next,
       ["<Up>"] = actions.move_selection_previous,
 
+      ["<C-c>"] = actions.close,
+
       ["<CR>"] = actions.select_default,
       ["<C-x>"] = actions.select_horizontal,
+      ["<C-s>"] = actions.select_horizontal,
       ["<C-v>"] = actions.select_vertical,
       ["<C-t>"] = actions.select_tab,
 
-      ["<C-b>"] = actions.preview_scrolling_up,
-      ["<C-f>"] = actions.preview_scrolling_down,
+      ["<A-k>"] = actions.preview_scrolling_up,
+      ["<A-j>"] = actions.preview_scrolling_down,
 
       ["<PageUp>"] = actions.results_scrolling_up,
       ["<PageDown>"] = actions.results_scrolling_down,
+      ["<C-b>"] = actions.results_scrolling_up,
+      ["<C-f>"] = actions.results_scrolling_down,
 
       ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
       ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -44,34 +45,41 @@ local defaults = {
     },
 
     n = {
+      ["<C-n>"] = actions.cycle_history_next,
+      ["<C-p>"] = actions.cycle_history_prev,
+
+      ["j"] = actions.move_selection_next,
+      ["k"] = actions.move_selection_previous,
+      ["<C-j>"] = actions.move_selection_next,
+      ["<C-k>"] = actions.move_selection_previous,
+      ["<Down>"] = actions.move_selection_next,
+      ["<Up>"] = actions.move_selection_previous,
+      ["gg"] = actions.move_to_top,
+      ["G"] = actions.move_to_bottom,
+
       ["<esc>"] = actions.close,
+      ["<C-c>"] = actions.close,
+
       ["<CR>"] = actions.select_default,
       ["<C-x>"] = actions.select_horizontal,
+      ["<C-s>"] = actions.select_horizontal,
       ["<C-v>"] = actions.select_vertical,
       ["<C-t>"] = actions.select_tab,
+
+      ["<A-k>"] = actions.preview_scrolling_up,
+      ["<A-j>"] = actions.preview_scrolling_down,
+
+      ["<PageUp>"] = actions.results_scrolling_up,
+      ["<PageDown>"] = actions.results_scrolling_down,
+      ["<C-b>"] = actions.results_scrolling_up,
+      ["<C-f>"] = actions.results_scrolling_down,
 
       ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
       ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
       ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
       ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
-      ["j"] = actions.move_selection_next,
-      ["k"] = actions.move_selection_previous,
-      ["H"] = actions.move_to_top,
-      ["M"] = actions.move_to_middle,
-      ["L"] = actions.move_to_bottom,
-
-      ["<Down>"] = actions.move_selection_next,
-      ["<Up>"] = actions.move_selection_previous,
-      ["gg"] = actions.move_to_top,
-      ["G"] = actions.move_to_bottom,
-
-      ["<C-u>"] = actions.preview_scrolling_up,
-      ["<C-d>"] = actions.preview_scrolling_down,
-
-      ["<PageUp>"] = actions.results_scrolling_up,
-      ["<PageDown>"] = actions.results_scrolling_down,
-
+      ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
       ["?"] = actions.which_key,
     },
   },
