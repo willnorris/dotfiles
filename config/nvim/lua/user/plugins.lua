@@ -92,6 +92,8 @@ return packer.startup(function(use)
         }
       }
       vim.keymap.set("n", "yogs", "<Cmd>Gitsigns toggle_signs<CR>")
+      vim.keymap.set("n", "]c", require("gitsigns").next_hunk)
+      vim.keymap.set("n", "[c", require("gitsigns").prev_hunk)
     end,
   }
 
