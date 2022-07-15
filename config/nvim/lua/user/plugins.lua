@@ -242,6 +242,15 @@ return packer.startup(function(use)
       vim.keymap.set("n", "<leader>xx", "<Cmd>TroubleToggle<CR>")
     end
   }
+  use {
+    "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+    config = function()
+      require'toggle_lsp_diagnostics'.init({
+          update_in_insert = false,
+      })
+      vim.keymap.set("n", "yoxx", "<Plug>(toggle-lsp-diag-vtext)")
+    end
+  }
 
   -- Automatically set up configuration after cloning packer.nvim
   if packer_bootstrap then
