@@ -34,8 +34,7 @@ keymap("n", "<C-L>", "<C-W>l", noremap)
 keymap("n", "<leader>;", "<C-^>", noremap)
 keymap("n", "<leader>]", "<Cmd>bnext<CR>")
 keymap("n", "<leader>[", "<Cmd>bprev<CR>")
-keymap("n", "<leader>ls", "<Cmd>Buffers<CR>")
-keymap("n", "<leader>dd", "<Cmd>bd<CR>")
+keymap("n", "<leader>bd", "<Cmd>bd<CR>")
 
 -- tab navigation
 keymap("n", "<leader>tn", "<Cmd>tabnew<CR>")
@@ -43,7 +42,7 @@ keymap("n", "<leader>tc", "<Cmd>tabclose<CR>")
 keymap("n", "<S-L>", "<Cmd>tabnext<CR>")
 keymap("n", "<S-H>", "<Cmd>tabprevious<CR>")
 
-keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR>")
+keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>")
 keymap("n", "<leader>R", "<Cmd>source $MYVIMRC<CR>")
 
 -- Join lines and restore cursor location (J)
@@ -53,9 +52,11 @@ keymap("n", "J", [[<Cmd>call Preserve("join")<CR>]])
 keymap("n", "_$", [[<Cmd>call Preserve("%s/\\s\\+$//e")<CR>]])
 
 -- telescope
-local builtin = require('telescope.builtin')
-keymap("n", "<C-t>", builtin.find_files)
-keymap("n", "<leader>tg", builtin.live_grep)
+keymap("n", "<C-t>", require('telescope.builtin').find_files)
+keymap("n", "<leader>tb", require('telescope.builtin').buffers)
+keymap("n", "<leader>tg", require('telescope.builtin').live_grep)
+keymap("n", "<leader>ts", require('telescope.builtin').grep_string)
+keymap("n", "<leader>tr", require('telescope.builtin').treesitter)
 
 -- timestamp insertion
 keymap("i", "<C-L>t", "<C-R>=system('timestamp -rfc3339')<CR>")

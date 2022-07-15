@@ -19,7 +19,7 @@ M.setup = function()
     signs = {
       active = signs,
     },
-    update_in_insert = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
     float = {
@@ -60,18 +60,20 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
+  local builtin = require("telescope.builtin")
 
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true, buffer = bufnr }
   keymap("n", "gD", vim.lsp.buf.declaration, opts)
   keymap("n", "gd", vim.lsp.buf.definition, opts)
-  keymap("n", "gr", vim.lsp.buf.references, opts)
+  keymap("n", "gr", builtin.lsp_references, opts)
+  keymap("n", "gc", builtin.lsp_incoming_calls, opts)
   keymap("n", "gi", vim.lsp.buf.implementation, opts)
   keymap("n", "K", vim.lsp.buf.hover, opts)
   keymap("n", "gk", vim.lsp.buf.signature_help, opts)
   keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
-  keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+  keymap("n", "ga", vim.lsp.buf.code_action, opts)
 
   -- diagnostics
   keymap("n", "<leader>e", vim.diagnostic.open_float, opts)
