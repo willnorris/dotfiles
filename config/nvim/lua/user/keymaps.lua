@@ -34,7 +34,7 @@ keymap("n", "<C-L>", "<C-W>l", noremap)
 keymap("n", "<leader>;", "<C-^>", noremap)
 keymap("n", "<leader>]", "<Cmd>bnext<CR>")
 keymap("n", "<leader>[", "<Cmd>bprev<CR>")
-keymap("n", "<leader>bd", "<Cmd>bd<CR>")
+keymap("n", "<leader>bd", "<Cmd>Bdelete<CR>")
 
 -- tab navigation
 keymap("n", "<leader>tn", "<Cmd>tabnew<CR>")
