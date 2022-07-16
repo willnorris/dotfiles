@@ -27,6 +27,7 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim"             -- Useful lua functions used by lots of plugins
 
   use "famiu/bufdelete.nvim"              -- Better buffer deletion
+  use "farmergreg/vim-lastplace"          -- Restore last cursor position
   use "joshdick/onedark.vim"              -- Dark colorscheme
   use "junegunn/gv.vim"                   -- Git commit browser
   use "konfekt/vim-sentence-chopper"      -- Semantic Line Breaks

@@ -58,9 +58,6 @@ vim.g.netrw_browse_split = 4
 vim.g.netrw_altv = 1
 vim.g.netrw_winsize = -28
 
--- jump to last cursor position
-vim.cmd [[au BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
-
 -- use OSCYank to integrate with client clipboard
 -- https://github.com/ojroques/vim-oscyank/issues/24#issuecomment-1098406019
 local function copy(lines, _)
