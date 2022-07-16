@@ -1,14 +1,10 @@
-local ok, telescope = pcall(require, "telescope")
-if not ok then
-  return
-end
-
+local telescope = require "telescope"
 local actions = require "telescope.actions"
 
 local defaults = {
-  --prompt_prefix = "",
-  --selection_caret = "",
   path_display = { "smart" },
+  results_title = false,
+  color_devicons = false,
 
   mappings = {
     i = {
@@ -21,6 +17,7 @@ local defaults = {
       ["<Up>"] = actions.move_selection_previous,
 
       ["<C-c>"] = actions.close,
+      ["<C-o>"] = require("telescope.actions.layout").toggle_preview,
 
       ["<CR>"] = actions.select_default,
       ["<C-x>"] = actions.select_horizontal,
@@ -59,6 +56,7 @@ local defaults = {
 
       ["<esc>"] = actions.close,
       ["<C-c>"] = actions.close,
+      ["<C-o>"] = require("telescope.actions.layout").toggle_preview,
 
       ["<CR>"] = actions.select_default,
       ["<C-x>"] = actions.select_horizontal,
@@ -89,19 +87,18 @@ defaults = require 'telescope.themes'.get_ivy(defaults)
 telescope.setup {
   defaults = defaults,
   pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
+    buffers = {
+      ignore_current_buffer = true,
+      sort_mru = true,
+      previewer = false,
+    }
   },
   extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
+    ["ui-select"] = {
+      require("telescope.themes").get_cursor {
+      }
+    },
   },
 }
+
+telescope.load_extension("ui-select")

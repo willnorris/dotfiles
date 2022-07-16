@@ -55,13 +55,6 @@ keymap("n", "J", [[<Cmd>call Preserve("join")<CR>]])
 -- strip trailing whitespace
 keymap("n", "_$", [[<Cmd>call Preserve("%s/\\s\\+$//e")<CR>]])
 
--- telescope
-keymap("n", "<C-t>", require('telescope.builtin').find_files)
-keymap("n", "<leader>tb", require('telescope.builtin').buffers)
-keymap("n", "<leader>tg", require('telescope.builtin').live_grep)
-keymap("n", "<leader>ts", require('telescope.builtin').grep_string)
-keymap("n", "<leader>tr", require('telescope.builtin').treesitter)
-
 -- timestamp insertion
 keymap("i", "<C-L>t", "<C-R>=system('timestamp -rfc3339')<CR>")
 keymap("i", "<C-L>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>")

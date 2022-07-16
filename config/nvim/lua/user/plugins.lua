@@ -226,7 +226,22 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer"
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      'nvim-telescope/telescope-ui-select.nvim'
+    },
+    config = function()
+      require("user.telescope")
+
+      local tb = require("telescope.builtin")
+      vim.keymap.set("n", "<C-t>", tb.find_files)
+      vim.keymap.set("n", "<leader>tb", tb.buffers)
+      vim.keymap.set("n", "<leader>tg", tb.live_grep)
+      vim.keymap.set("n", "<leader>ts", tb.grep_string)
+      vim.keymap.set("n", "<leader>tr", tb.treesitter)
+    end
+  }
 
   -- Diagnostics viewer
   use {
