@@ -24,10 +24,6 @@ keymap("i", "jk", "<esc>", noremap)
 keymap("", "j", "gj", noremap)
 keymap("", "k", "gk", noremap)
 
--- Y yanks to client clipboard (must use : rather than <Cmd>)
-keymap("v", "Y", ":OSCYank<CR>")
-keymap("n", "Y", "<Plug>OSCYank")
-
 -- move around split windows with ctrl
 keymap("n", "<C-H>", "<C-W>h", noremap)
 keymap("n", "<C-J>", "<C-W>j", noremap)

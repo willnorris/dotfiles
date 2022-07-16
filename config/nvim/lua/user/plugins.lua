@@ -30,9 +30,7 @@ return packer.startup(function(use)
   use "joshdick/onedark.vim"              -- Dark colorscheme
   use "junegunn/gv.vim"                   -- Git commit browser
   use "konfekt/vim-sentence-chopper"      -- Semantic Line Breaks
-  use "kshenoy/vim-signature"             -- Toggle, display, and navigate marks
   use "michaeljsmith/vim-indent-object"   -- Text objects based on indent level
-  use "ojroques/vim-oscyank"              -- Copy text to clipboard with OSC52
   use "sickill/vim-pasta"                 -- Adjust indentation when pasting
   use "tpope/vim-eunuch"                  -- Helpers for UNIX
   use "tpope/vim-fugitive"                -- Vim interface to git
@@ -41,6 +39,24 @@ return packer.startup(function(use)
   use "tpope/vim-sleuth"                  -- Heuristically set buffer options
   use "tpope/vim-surround"                -- Mappings for quotes, brackets, etc
   use "tpope/vim-unimpaired"              -- Pairs of handy bracket mappings
+
+  -- Copy text to clipboard with OSC52
+  use {
+    "ojroques/vim-oscyank",
+    config = function()
+      -- Y yanks to client clipboard (must use : rather than <Cmd>)
+      vim.keymap.set("v", "Y", ":OSCYank<CR>")
+      vim.keymap.set("n", "Y", "<Plug>OSCYank")
+    end,
+  }
+
+  -- Toggle, display, and navigate marks
+  use {
+    "kshenoy/vim-signature",
+    config = function()
+      vim.keymap.set("n", "yom", "<Cmd>SignatureToggle<CR>")
+    end,
+  }
 
   -- Smart and powerful commenting plugin
   use {
@@ -96,8 +112,6 @@ return packer.startup(function(use)
         end,
       }
       vim.keymap.set("n", "yogs", "<Cmd>Gitsigns toggle_signs<CR>")
-      vim.keymap.set("n", "]c", require("gitsigns").next_hunk)
-      vim.keymap.set("n", "[c", require("gitsigns").prev_hunk)
     end,
   }
 
