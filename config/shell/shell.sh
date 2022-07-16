@@ -17,12 +17,14 @@ if command -v bat >/dev/null; then
 fi
 
 
-if command -v nvim >/dev/null; then
-  alias vim=nvim
-fi
 alias vi=vim
 alias view='vim -R'
+alias vimdiff='vim -d'
 export EDITOR='vim'
+if command -v nvim >/dev/null; then
+  alias vim=nvim
+  EDITOR='nvim'
+fi
 if [ "${TERM_PROGRAM}" = "vscode" ]; then
   EDITOR='code -w'
 fi
