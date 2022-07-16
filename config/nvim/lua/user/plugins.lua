@@ -61,12 +61,11 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Undo history visualizer
   use {
-    "sjl/gundo.vim",
+    "mbbill/undotree",
     config = function()
-      vim.g.gundo_preview_bottom = 1
-      vim.g.gundo_prefer_python3 = 1
-      vim.keymap.set("n", "<leader>u", "<Cmd>GundoToggle<CR>")
+      vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
     end,
   }
 
