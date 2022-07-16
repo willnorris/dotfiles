@@ -244,8 +244,15 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets"  -- A bunch of snippets to use
 
   -- LSP
-  use "neovim/nvim-lspconfig"
-  use "williamboman/nvim-lsp-installer"
+  use {
+    "neovim/nvim-lspconfig",
+    requires = {
+      "williamboman/nvim-lsp-installer",
+    },
+    config = function()
+      require("user.lsp")
+    end,
+  }
 
   -- Telescope
   use {
