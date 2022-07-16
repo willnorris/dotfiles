@@ -159,6 +159,7 @@ return packer.startup(function(use)
     'preservim/nerdtree',
     config = function()
       vim.g.NERDTreeMapOpenVSPlit = "v"
+      vim.g.NERDTreeMapMenu = "M"
       vim.keymap.set("n", "<leader>ff", "<Cmd>NERDTreeToggle<CR>")
 
       -- Close the tab if NERDTree is the only window remaining in it.
