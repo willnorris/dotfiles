@@ -106,7 +106,7 @@ return packer.startup(function(use)
           end, {expr=true, buffer=bufnr})
 
           vim.keymap.set("n", "yogs", gs.toggle_signs)
-          vim.keymap.set("n", "<leader>gs", gs.stage_hunk)
+          vim.keymap.set("n", "<leader>ga", gs.stage_hunk)
           vim.keymap.set("n", "<leader>gu", gs.undo_stage_hunk)
           vim.keymap.set("n", "<leader>gr", gs.reset_hunk)
           vim.keymap.set("n", "<leader>gp", gs.preview_hunk)
