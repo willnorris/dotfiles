@@ -36,7 +36,7 @@ vim.cmd [[autocmd FileType text setlocal textwidth=78]]
 
 -- Folding
 o.foldenable = true -- turn on folding
-o.foldmethod = "marker" -- fold on markers
+o.foldmethod = "indent" -- fold on indent level
 o.foldlevel = 100 -- don't autofold anything
 o.foldopen = "block,hor,mark,percent,quickfix,tag" -- what movements open folds
 
