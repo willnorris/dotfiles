@@ -33,6 +33,7 @@ return packer.startup(function(use)
   use "konfekt/vim-sentence-chopper"
   use "kshenoy/vim-signature"
   use "michaeljsmith/vim-indent-object"
+  use "ojroques/vim-oscyank"
   use "sheerun/vim-polyglot"
   use "sickill/vim-pasta"
   use "tpope/vim-afterimage"
@@ -45,14 +46,6 @@ return packer.startup(function(use)
   use "tpope/vim-surround"
   use "tpope/vim-unimpaired"
   use "tpope/vim-vinegar"
-
-
-  use {
-    "ojroques/vim-oscyank",
-    config = function()
-      vim.keymap.set("v", "<C-c>", "<Cmd>OSCYank<cr>")
-    end,
-  }
 
   use {
     "numToStr/Comment.nvim",
