@@ -41,6 +41,18 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
+
+  -- use telescope LSP handlers
+  local tb = require("telescope.builtin")
+  vim.lsp.handlers["callHierarchy/incomingCalls"] = tb.lsp_incoming_calls
+  vim.lsp.handlers["callHierarchy/outgoingCalls"] = tb.lsp_outgoing_calls
+  vim.lsp.handlers["textDocument/references"] = tb.lsp_references
+  vim.lsp.handlers["textDocument/definition"] = tb.lsp_definitions
+  vim.lsp.handlers["textDocument/typeDefinition"] = tb.lsp_type_definitions
+  vim.lsp.handlers["textDocument/implementation"] = tb.lsp_implementations
+  vim.lsp.handlers["textDocument/documentSymbol"] = tb.lsp_document_symbols
+  vim.lsp.handlers["workspace/symbol"] = tb.lsp_workspace_symbols
+  vim.lsp.handlers["textDocument/codeAction"] = tb.lsp_references
 end
 
 local function lsp_highlight_document(client)
@@ -61,14 +73,13 @@ end
 
 local function lsp_keymaps(bufnr)
   vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
-  local builtin = require("telescope.builtin")
 
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true, buffer = bufnr }
   keymap("n", "gD", vim.lsp.buf.declaration, opts)
   keymap("n", "gd", vim.lsp.buf.definition, opts)
-  keymap("n", "gr", builtin.lsp_references, opts)
-  keymap("n", "gc", builtin.lsp_incoming_calls, opts)
+  keymap("n", "gr", vim.lsp.buf.references, opts)
+  keymap("n", "gc", vim.lsp.buf.incoming_calls, opts)
   keymap("n", "gi", vim.lsp.buf.implementation, opts)
   keymap("n", "K", vim.lsp.buf.hover, opts)
   keymap("n", "gk", vim.lsp.buf.signature_help, opts)
