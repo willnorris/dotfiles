@@ -15,17 +15,19 @@ o.showmode = false
 o.cursorlineopt = "number"
 
 -- Scrolling
+o.scrolloff = 3
 o.sidescrolloff = 10
 
 -- Text Formatting / Layout
 o.ignorecase = true
 o.smartcase = true
-o.infercase =true
+o.infercase = true
 
 -- 2 space indents
 o.tabstop = 2
 o.shiftwidth = 2
 o.expandtab = true
+o.smartindent = true
 
 o.diffopt = "filler,vertical"
 
@@ -57,12 +59,7 @@ vim.g.netrw_altv = 1
 vim.g.netrw_winsize = -28
 
 -- jump to last cursor position
-vim.cmd [[
-    autocmd BufReadPost *
-      \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-]]
+vim.cmd [[au BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
 
 -- use OSCYank to integrate with client clipboard
 -- https://github.com/ojroques/vim-oscyank/issues/24#issuecomment-1098406019

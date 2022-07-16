@@ -26,7 +26,7 @@ vim.cmd [[
   highlight MatchParen ctermbg=8
   highlight NormalFloat ctermfg=15 ctermbg=NONE
   highlight Visual ctermbg=0
-  highlight Pmenu ctermfg=15 ctermbg=0
+  highlight Pmenu ctermfg=15 ctermbg=NONE
   highlight FocusedSymbol ctermfg=NONE ctermbg=8
   highlight SymbolsOutlineConnector ctermfg=8
   highlight LspReferenceRead ctermfg=red cterm=underline

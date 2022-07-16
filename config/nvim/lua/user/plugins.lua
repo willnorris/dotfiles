@@ -23,30 +23,26 @@ end
 
 -- Install plugins
 return packer.startup(function(use)
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
+  use "wbthomason/packer.nvim"            -- Have packer manage itself
+  use "nvim-lua/plenary.nvim"             -- Useful lua functions used by lots of plugins
 
-  use "famiu/bufdelete.nvim"
-  use "google/vim-jsonnet"
-  use "joshdick/onedark.vim"
-  use "junegunn/gv.vim"
-  use "konfekt/vim-sentence-chopper"
-  use "kshenoy/vim-signature"
-  use "michaeljsmith/vim-indent-object"
-  use "ojroques/vim-oscyank"
-  use "sheerun/vim-polyglot"
-  use "sickill/vim-pasta"
-  use "tpope/vim-afterimage"
-  use "tpope/vim-eunuch"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-git"
-  use "tpope/vim-repeat"
-  use "tpope/vim-sensible"
-  use "tpope/vim-sleuth"
-  use "tpope/vim-surround"
-  use "tpope/vim-unimpaired"
-  use "tpope/vim-vinegar"
+  use "famiu/bufdelete.nvim"              -- Better buffer deletion
+  use "joshdick/onedark.vim"              -- Dark colorscheme
+  use "junegunn/gv.vim"                   -- Git commit browser
+  use "konfekt/vim-sentence-chopper"      -- Semantic Line Breaks
+  use "kshenoy/vim-signature"             -- Toggle, display, and navigate marks
+  use "michaeljsmith/vim-indent-object"   -- Text objects based on indent level
+  use "ojroques/vim-oscyank"              -- Copy text to clipboard with OSC52
+  use "sickill/vim-pasta"                 -- Adjust indentation when pasting
+  use "tpope/vim-eunuch"                  -- Helpers for UNIX
+  use "tpope/vim-fugitive"                -- Vim interface to git
+  use "tpope/vim-git"                     -- Vim runtime files for git
+  use "tpope/vim-repeat"                  -- Repeat more things with "."
+  use "tpope/vim-sleuth"                  -- Heuristically set buffer options
+  use "tpope/vim-surround"                -- Mappings for quotes, brackets, etc
+  use "tpope/vim-unimpaired"              -- Pairs of handy bracket mappings
 
+  -- Smart and powerful commenting plugin
   use {
     "numToStr/Comment.nvim",
     config = function()
@@ -69,6 +65,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Git integration for buffers
   use {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -84,6 +81,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Auto-resize windows according to golden ratio
   use {
     "beauwilliams/focus.nvim",
     config = function()
@@ -94,22 +92,11 @@ return packer.startup(function(use)
   }
 
   use {
-    "mileszs/ack.vim",
-    config = function()
-      if vim.fn.executable("rg") == 1 then
-        vim.opt.grepprg = "rg --vimgrep --no-heading"
-        vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
-        vim.g.ackprg = "rg --vimgrep --no-heading"
-      end
-      vim.keymap.set("n", "<leader>a", "<Cmd>Ack! ")
-    end,
-  }
-
-  use {
     'nvim-treesitter/nvim-treesitter',
     run = '<Cmd>TSUpdate'
   }
 
+  -- Distraction-free writing and coding
   use {
     "folke/zen-mode.nvim",
     config = function()
@@ -125,6 +112,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Dim inactive portions of file content
   use {
     "benstockil/twilight.nvim",
     config = function()
@@ -133,6 +121,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Statusline
   use {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -165,6 +154,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- File tree explorer
   use {
     'preservim/nerdtree',
     config = function()
@@ -179,6 +169,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- File outline based on LSP symbols
   use {
     "simrat39/symbols-outline.nvim",
     config = function()
@@ -195,19 +186,19 @@ return packer.startup(function(use)
     end,
   }
 
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
-  use "hrsh7th/cmp-nvim-lsp-signature-help"
+  -- Completion plugins
+  use "hrsh7th/nvim-cmp"                    -- The completion plugin
+  use "hrsh7th/cmp-buffer"                  -- Buffer completions
+  use "hrsh7th/cmp-path"                    -- Path completions
+  use "hrsh7th/cmp-cmdline"                 -- Cmdline completions
+  use "saadparwaiz1/cmp_luasnip"            -- Snippet completions
+  use "hrsh7th/cmp-nvim-lsp"                -- LSP completions
+  use "hrsh7th/cmp-nvim-lua"                -- Lua completions
+  use "hrsh7th/cmp-nvim-lsp-signature-help" -- LSP function signature completions
 
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- Snippets
+  use "L3MON4D3/LuaSnip"              -- Snippet engine
+  use "rafamadriz/friendly-snippets"  -- A bunch of snippets to use
 
   -- LSP
   use "neovim/nvim-lspconfig"
@@ -216,6 +207,7 @@ return packer.startup(function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
+  -- Diagnostics viewer
   use {
     "folke/trouble.nvim",
     config = function()
@@ -227,8 +219,14 @@ return packer.startup(function(use)
         use_diagnostic_signs = true,
       }
       vim.keymap.set("n", "<leader>xx", "<Cmd>TroubleToggle<CR>")
+      vim.keymap.set("n", "<leader>xw", "<Cmd>Trouble workspace_diagnostics<CR>")
+      vim.keymap.set("n", "<leader>xd", "<Cmd>Trouble document_diagnostics<CR>")
+      vim.keymap.set("n", "<leader>xl", "<Cmd>Trouble loclist<CR>")
+      vim.keymap.set("n", "<leader>xq", "<Cmd>Trouble quickfix<CR>")
     end
   }
+
+  -- Toggle LSP diagnostics
   use {
     "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
     config = function()
