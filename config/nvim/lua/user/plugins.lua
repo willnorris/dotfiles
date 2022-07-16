@@ -222,14 +222,21 @@ return packer.startup(function(use)
   }
 
   -- Completion plugins
-  use "hrsh7th/nvim-cmp"                    -- The completion plugin
-  use "hrsh7th/cmp-buffer"                  -- Buffer completions
-  use "hrsh7th/cmp-path"                    -- Path completions
-  use "hrsh7th/cmp-cmdline"                 -- Cmdline completions
-  use "saadparwaiz1/cmp_luasnip"            -- Snippet completions
-  use "hrsh7th/cmp-nvim-lsp"                -- LSP completions
-  use "hrsh7th/cmp-nvim-lua"                -- Lua completions
-  use "hrsh7th/cmp-nvim-lsp-signature-help" -- LSP function signature completions
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      {"hrsh7th/cmp-buffer"},                  -- Buffer completions
+      {"hrsh7th/cmp-path"},                    -- Path completions
+      {"hrsh7th/cmp-cmdline"},                 -- Cmdline completions
+      {"saadparwaiz1/cmp_luasnip"},            -- Snippet completions
+      {"hrsh7th/cmp-nvim-lsp"},                -- LSP completions
+      {"hrsh7th/cmp-nvim-lua"},                -- Lua completions
+      {"hrsh7th/cmp-nvim-lsp-signature-help"}, -- LSP function signature completions
+    },
+    config = function()
+      require("user.cmp")
+    end
+  }
 
   -- Snippets
   use "L3MON4D3/LuaSnip"              -- Snippet engine
