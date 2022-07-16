@@ -35,6 +35,7 @@ return packer.startup(function(use)
   use "sickill/vim-pasta"                 -- Adjust indentation when pasting
   use "tpope/vim-eunuch"                  -- Helpers for UNIX
   use "tpope/vim-fugitive"                -- Vim interface to git
+  use "tpope/vim-rhubarb"                 -- GitHub support for vim-fugitive
   use "tpope/vim-git"                     -- Vim runtime files for git
   use "tpope/vim-repeat"                  -- Repeat more things with "."
   use "tpope/vim-sleuth"                  -- Heuristically set buffer options
