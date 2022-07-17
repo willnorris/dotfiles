@@ -43,7 +43,14 @@ keymap("n", "<S-L>", "<Cmd>tabnext<CR>")
 keymap("n", "<S-H>", "<Cmd>tabprevious<CR>")
 
 keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>")
-keymap("n", "<leader>R", "<Cmd>source $MYVIMRC<CR>")
+
+-- reload user settings and plugins
+keymap("n", "<leader>R", function()
+  require("plenary.reload").reload_module("user")
+  vim.cmd [[source $MYVIMRC]]
+  require("packer").sync()
+end)
+
 
 -- Join lines and restore cursor location (J)
 keymap("n", "J", [[<Cmd>call Preserve("join")<CR>]])
