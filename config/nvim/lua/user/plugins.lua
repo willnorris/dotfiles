@@ -20,7 +20,7 @@ return packer.startup(function(use)
 
   use "famiu/bufdelete.nvim"              -- Better buffer deletion
   use "farmergreg/vim-lastplace"          -- Restore last cursor position
-  use "joshdick/onedark.vim"              -- Dark colorscheme
+  use "willnorris/onedark.vim"              -- Dark colorscheme
   use "junegunn/gv.vim"                   -- Git commit browser
   use "konfekt/vim-sentence-chopper"      -- Semantic Line Breaks
   use "michaeljsmith/vim-indent-object"   -- Text objects based on indent level
@@ -189,7 +189,7 @@ return packer.startup(function(use)
             { "mode", fmt = function(str) return str:sub(1, 1) end }
           },
           lualine_c = {
-            { "filename" },
+            { "filename", color = { fg = "white" } },
             function()
               return require('nvim-treesitter').statusline({
                 separator = " > ",
@@ -283,6 +283,7 @@ return packer.startup(function(use)
       vim.keymap.set("n", "<C-t>", tb.find_files)
       vim.keymap.set("n", "<leader>tb", tb.buffers)
       vim.keymap.set("n", "<leader>tg", tb.live_grep)
+      vim.keymap.set("n", "<leader>th", tb.highlights)
       vim.keymap.set("n", "<leader>ts", tb.grep_string)
       vim.keymap.set("n", "<leader>tr", tb.treesitter)
     end
