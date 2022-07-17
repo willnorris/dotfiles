@@ -121,7 +121,22 @@ return packer.startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = '<Cmd>TSUpdate'
+    run = '<Cmd>TSUpdate',
+    config = function()
+      require "nvim-treesitter.configs".setup {
+        ensure_installed = {"go", "typescript"},
+        auto_install = true,
+        highlight = {
+          enable = true,
+        },
+      }
+    end,
+  }
+  use {
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function()
+      require "treesitter-context".setup{mode="topline"}
+    end
   }
 
   -- Distraction-free writing and coding
@@ -172,6 +187,14 @@ return packer.startup(function(use)
         sections = {
           lualine_a = {
             { "mode", fmt = function(str) return str:sub(1, 1) end }
+          },
+          lualine_c = {
+            { "filename" },
+            function()
+              return require('nvim-treesitter').statusline({
+                separator = " > ",
+              })
+            end,
           },
         },
         tabline = {

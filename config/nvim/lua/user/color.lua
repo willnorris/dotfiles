@@ -32,4 +32,5 @@ vim.cmd [[
   highlight LspReferenceRead ctermfg=red cterm=underline
   highlight LspReferenceWrite ctermfg=red cterm=underline
   highlight gitcommitComment ctermfg=8
+  highlight TreesitterContext ctermbg=0
 ]]
