@@ -14,6 +14,17 @@ o.splitright = true -- open vertical splits on the right
 o.showmode = false
 o.cursorlineopt = "number"
 
+-- Set the list option if expandtab is set.  This helps visualize erroneous
+-- tabs in a file that is otherwise indented with spaces.  Run on BufEnter
+-- after vim-sleuth has run.
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.o.expandtab then
+      vim.o.list = true
+    end
+  end,
+})
+
 -- Scrolling
 o.scrolloff = 3
 o.sidescrolloff = 10
@@ -30,9 +41,6 @@ o.expandtab = true
 o.smartindent = true
 
 o.diffopt = "filler,vertical"
-
--- set 'textwidth' to 78 characters for all text files
-vim.cmd [[autocmd FileType text setlocal textwidth=78]]
 
 -- Folding
 o.foldenable = true -- turn on folding
