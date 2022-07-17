@@ -6,6 +6,7 @@
   co = checkout
   ctags = !.git/hooks/ctags
   deleted-files = !cd -- ${GIT_PREFIX:-.} && git log --name-only --pretty=format: --diff-filter=D ${1:-.} | awk NF | sort -u && :
+  dif = diff # common typo
   git = !exec git
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset'
   ll = !git l | fzf-tmux --ansi --multi --preview 'git show --color=always {+2}'
