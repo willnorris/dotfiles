@@ -26,7 +26,9 @@ local defaults = {
       ["<C-t>"] = actions.select_tab,
 
       ["<A-k>"] = actions.preview_scrolling_up,
+      ["<A-b>"] = actions.preview_scrolling_up,
       ["<A-j>"] = actions.preview_scrolling_down,
+      ["<A-f>"] = actions.preview_scrolling_down,
 
       ["<PageUp>"] = actions.results_scrolling_up,
       ["<PageDown>"] = actions.results_scrolling_down,
