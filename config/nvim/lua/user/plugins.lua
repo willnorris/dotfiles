@@ -20,7 +20,7 @@ return packer.startup(function(use)
 
   use "famiu/bufdelete.nvim"              -- Better buffer deletion
   use "farmergreg/vim-lastplace"          -- Restore last cursor position
-  use "willnorris/onedark.vim"              -- Dark colorscheme
+  use "joshdick/onedark.vim"              -- Dark colorscheme
   use "junegunn/gv.vim"                   -- Git commit browser
   use "konfekt/vim-sentence-chopper"      -- Semantic Line Breaks
   use "michaeljsmith/vim-indent-object"   -- Text objects based on indent level
@@ -232,6 +232,7 @@ return packer.startup(function(use)
           Field = { icon = "f" },
           Function = { icon = "ƒ" },
           Struct = { icon = "s" },
+          Variable = { icon = "v" },
         }
       }
       vim.keymap.set("n", "<leader>tt", "<Cmd>SymbolsOutline<CR>")
