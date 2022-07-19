@@ -16,9 +16,12 @@ augroup colorextend
   autocmd ColorScheme * call onedark#extend_highlight("Pmenu", {"bg": none})
 
   autocmd ColorScheme * call onedark#set_highlight("FocusedSymbol", {"bg": colors.visual_grey})
+  autocmd ColorScheme * call onedark#set_highlight("SymbolsOutlineConnector", {"fg": colors.black})
   autocmd ColorScheme * call onedark#set_highlight("LspReferenceRead", {"fg": colors.cyan, "gui": "underline", "cterm": "underline"})
   autocmd ColorScheme * call onedark#set_highlight("LspReferenceWrite", {"fg": colors.cyan, "gui": "underline", "cterm": "underline"})
   autocmd ColorScheme * call onedark#set_highlight("TreesitterContext", {"bg": colors.black})
+
+  autocmd ColorScheme * call onedark#set_highlight("NvimTreeIndentMarker", {"fg": colors.black})
 augroup END
 ]]
 

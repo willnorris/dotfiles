@@ -33,6 +33,7 @@ return packer.startup(function(use)
   use "tpope/vim-sleuth"                  -- Heuristically set buffer options
   use "tpope/vim-surround"                -- Mappings for quotes, brackets, etc
   use "tpope/vim-unimpaired"              -- Pairs of handy bracket mappings
+  use "kyazdani42/nvim-web-devicons"
 
   -- Copy text to clipboard with OSC52
   use {
@@ -207,17 +208,19 @@ return packer.startup(function(use)
 
   -- File tree explorer
   use {
-    'preservim/nerdtree',
+    "kyazdani42/nvim-tree.lua",
     config = function()
-      vim.g.NERDTreeMapOpenVSPlit = "v"
-      vim.g.NERDTreeMapMenu = "M"
-      vim.keymap.set("n", "<leader>ff", "<Cmd>NERDTreeToggle<CR>")
+      require("nvim-tree").setup({
+        renderer = {
+          indent_markers = {
+            enable = true,
+          },
+        },
+      })
+      vim.keymap.set("n", "<leader>ff", "<Cmd>NvimTreeFocus<CR>")
+      vim.keymap.set("n", "<leader>ft", "<Cmd>NvimTreeToggle<CR>")
 
-      -- Close the tab if NERDTree is the only window remaining in it.
-      vim.cmd [[autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]
-      -- If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-      vim.cmd [[autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-        \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif]]
+      vim.cmd [[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
     end,
   }
 
@@ -227,13 +230,6 @@ return packer.startup(function(use)
     config = function()
       vim.g.symbols_outline = {
         auto_preview = false,
-        show_symbol_details = false,
-        symbols = {
-          Field = { icon = "f" },
-          Function = { icon = "ƒ" },
-          Struct = { icon = "s" },
-          Variable = { icon = "v" },
-        }
       }
       vim.keymap.set("n", "<leader>tt", "<Cmd>SymbolsOutline<CR>")
     end,
@@ -295,9 +291,8 @@ return packer.startup(function(use)
     "folke/trouble.nvim",
     config = function()
       require("trouble").setup {
-        icons = false,
-        fold_open = "▾",
-        fold_closed = "▸",
+        fold_open = "",
+        fold_closed = "",
         indent_lines = false,
         use_diagnostic_signs = true,
       }
