@@ -55,8 +55,7 @@ M.setup = function()
   vim.lsp.handlers["textDocument/codeAction"] = tb.lsp_references
 end
 
-local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
+local function lsp_activate_capabilities(client)
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
@@ -68,6 +67,12 @@ local function lsp_highlight_document(client)
     ]] ,
       false
     )
+  end
+
+  if client.resolved_capabilities.code_lens then
+    vim.api.nvim_create_autocmd({"BufEnter", "CursorHold", "InsertLeave"}, {
+      callback = vim.lsp.codelens.refresh,
+    })
   end
 end
 
@@ -83,6 +88,7 @@ local function lsp_keymaps(bufnr)
   keymap("n", "gr", vim.lsp.buf.references, opts { desc = "code references" })
   keymap("n", "gc", vim.lsp.buf.incoming_calls, opts { desc = "code incoming_calls" })
   keymap("n", "gi", vim.lsp.buf.implementation, opts { desc = "code implementation" })
+  keymap("n", "gl", vim.lsp.codelens.run, opts { desc = "run codelens" })
   keymap("n", "K", vim.lsp.buf.hover, opts { desc = "code hover" })
   keymap("n", "gk", vim.lsp.buf.signature_help, opts { desc = "code signature_help" })
   keymap("n", "<leader>rn", vim.lsp.buf.rename, opts { desc = "code rename" })
@@ -109,7 +115,7 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
   end
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  lsp_activate_capabilities(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
