@@ -6,6 +6,7 @@ o.updatetime = 100
 o.maxmempattern = 2000
 o.spellfile = vim.fn.stdpath("config") .. "/en.utf-8.add"
 o.undofile = true
+o.timeoutlen = 500
 
 -- UI
 o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
