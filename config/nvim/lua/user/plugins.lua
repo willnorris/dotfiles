@@ -49,7 +49,7 @@ return packer.startup(function(use)
   use {
     "kshenoy/vim-signature",
     config = function()
-      vim.keymap.set("n", "yom", "<Cmd>SignatureToggle<CR>")
+      vim.keymap.set("n", "yom", "<Cmd>SignatureToggle<CR>", { desc = "toggle signs/marks" })
     end,
   }
 
@@ -99,11 +99,11 @@ return packer.startup(function(use)
             return '<Ignore>'
           end, { expr = true, buffer = bufnr })
 
-          vim.keymap.set("n", "yogs", gs.toggle_signs)
-          vim.keymap.set("n", "<leader>ga", gs.stage_hunk)
-          vim.keymap.set("n", "<leader>gu", gs.undo_stage_hunk)
-          vim.keymap.set("n", "<leader>gr", gs.reset_hunk)
-          vim.keymap.set("n", "<leader>gp", gs.preview_hunk)
+          vim.keymap.set("n", "yogs", gs.toggle_signs, { desc = "toggle git signs" })
+          vim.keymap.set("n", "<leader>ga", gs.stage_hunk, { desc = "git add hunk" })
+          vim.keymap.set("n", "<leader>gu", gs.undo_stage_hunk, { desc = "undo add hunk" })
+          vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "git reset hunk" })
+          vim.keymap.set("n", "<leader>gp", gs.preview_hunk, { desc = "git preview hunk" })
         end,
       }
       vim.keymap.set("n", "yogs", "<Cmd>Gitsigns toggle_signs<CR>")
@@ -278,11 +278,11 @@ return packer.startup(function(use)
 
       local tb = require("telescope.builtin")
       vim.keymap.set("n", "<C-t>", tb.find_files)
-      vim.keymap.set("n", "<leader>tb", tb.buffers)
-      vim.keymap.set("n", "<leader>tg", tb.live_grep)
-      vim.keymap.set("n", "<leader>th", tb.highlights)
-      vim.keymap.set("n", "<leader>ts", tb.grep_string)
-      vim.keymap.set("n", "<leader>tr", tb.treesitter)
+      vim.keymap.set("n", "<leader>tb", tb.buffers, { desc = "telescope buffers" })
+      vim.keymap.set("n", "<leader>tg", tb.live_grep, { desc = "telescope live_grep" })
+      vim.keymap.set("n", "<leader>th", tb.highlights, { desc = "telescope highlights" })
+      vim.keymap.set("n", "<leader>ts", tb.grep_string, { desc = "telescope grep_string" })
+      vim.keymap.set("n", "<leader>tr", tb.treesitter, { desc = "telescope treesitter" })
     end
   }
 

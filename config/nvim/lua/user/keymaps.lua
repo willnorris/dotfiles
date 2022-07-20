@@ -42,21 +42,22 @@ keymap("n", "<leader>tc", "<Cmd>tabclose<CR>")
 keymap("n", "<S-L>", "<Cmd>tabnext<CR>")
 keymap("n", "<S-H>", "<Cmd>tabprevious<CR>")
 
-keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>")
+keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>",
+  { desc = "redraw screen" })
 
 -- reload user settings and plugins
 keymap("n", "<leader>R", function()
   require("plenary.reload").reload_module("user")
   vim.cmd [[source $MYVIMRC]]
   require("packer").sync()
-end)
+end, { desc = "reload $MYVIMRC" })
 
 
 -- Join lines and restore cursor location (J)
 keymap("n", "J", [[<Cmd>call Preserve("join")<CR>]])
 
 -- strip trailing whitespace
-keymap("n", "_$", [[<Cmd>call Preserve("%s/\\s\\+$//e")<CR>]])
+keymap("n", "_$", [[<Cmd>call Preserve("%s/\\s\\+$//e")<CR>]], { desc = "strip trailing whitespace" })
 
 -- timestamp insertion
 keymap("i", "<C-L>t", "<C-R>=system('timestamp -rfc3339')<CR>")
