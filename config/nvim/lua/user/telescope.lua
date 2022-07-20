@@ -1,6 +1,15 @@
 local telescope = require "telescope"
 local actions = require "telescope.actions"
 
+-- Scroll the preview window by a specified distance, rather than the default scroll_speed.
+local scroll_preview_custom = function(prompt_bufnr, speed, direction)
+  local status = require("telescope.state").get_status(prompt_bufnr)
+  local default_speed = status.picker.layout_config.scroll_speed
+  status.picker.layout_config.scroll_speed = speed
+  require("telescope.actions.set").scroll_previewer(prompt_bufnr, direction)
+  status.picker.layout_config.scroll_speed = default_speed
+end
+
 local defaults = {
   path_display = { "smart" },
   results_title = false,
@@ -25,10 +34,10 @@ local defaults = {
       ["<C-v>"] = actions.select_vertical,
       ["<C-t>"] = actions.select_tab,
 
-      ["<A-k>"] = actions.preview_scrolling_up,
-      ["<A-b>"] = actions.preview_scrolling_up,
-      ["<A-j>"] = actions.preview_scrolling_down,
+      ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
+      ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,
       ["<A-f>"] = actions.preview_scrolling_down,
+      ["<A-b>"] = actions.preview_scrolling_up,
 
       ["<PageUp>"] = actions.results_scrolling_up,
       ["<PageDown>"] = actions.results_scrolling_down,
@@ -66,8 +75,10 @@ local defaults = {
       ["<C-v>"] = actions.select_vertical,
       ["<C-t>"] = actions.select_tab,
 
-      ["<A-k>"] = actions.preview_scrolling_up,
-      ["<A-j>"] = actions.preview_scrolling_down,
+      ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
+      ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,
+      ["<A-f>"] = actions.preview_scrolling_down,
+      ["<A-b>"] = actions.preview_scrolling_up,
 
       ["<PageUp>"] = actions.results_scrolling_up,
       ["<PageDown>"] = actions.results_scrolling_down,
