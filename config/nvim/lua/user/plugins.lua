@@ -15,24 +15,24 @@ end
 
 -- Install plugins
 return packer.startup(function(use)
-  use "wbthomason/packer.nvim"            -- Have packer manage itself
-  use "nvim-lua/plenary.nvim"             -- Useful lua functions used by lots of plugins
+  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
-  use "famiu/bufdelete.nvim"              -- Better buffer deletion
-  use "farmergreg/vim-lastplace"          -- Restore last cursor position
-  use "joshdick/onedark.vim"              -- Dark colorscheme
-  use "junegunn/gv.vim"                   -- Git commit browser
-  use "konfekt/vim-sentence-chopper"      -- Semantic Line Breaks
-  use "michaeljsmith/vim-indent-object"   -- Text objects based on indent level
-  use "sickill/vim-pasta"                 -- Adjust indentation when pasting
-  use "tpope/vim-eunuch"                  -- Helpers for UNIX
-  use "tpope/vim-fugitive"                -- Vim interface to git
-  use "tpope/vim-rhubarb"                 -- GitHub support for vim-fugitive
-  use "tpope/vim-git"                     -- Vim runtime files for git
-  use "tpope/vim-repeat"                  -- Repeat more things with "."
-  use "tpope/vim-sleuth"                  -- Heuristically set buffer options
-  use "tpope/vim-surround"                -- Mappings for quotes, brackets, etc
-  use "tpope/vim-unimpaired"              -- Pairs of handy bracket mappings
+  use "famiu/bufdelete.nvim" -- Better buffer deletion
+  use "farmergreg/vim-lastplace" -- Restore last cursor position
+  use "joshdick/onedark.vim" -- Dark colorscheme
+  use "junegunn/gv.vim" -- Git commit browser
+  use "konfekt/vim-sentence-chopper" -- Semantic Line Breaks
+  use "michaeljsmith/vim-indent-object" -- Text objects based on indent level
+  use "sickill/vim-pasta" -- Adjust indentation when pasting
+  use "tpope/vim-eunuch" -- Helpers for UNIX
+  use "tpope/vim-fugitive" -- Vim interface to git
+  use "tpope/vim-rhubarb" -- GitHub support for vim-fugitive
+  use "tpope/vim-git" -- Vim runtime files for git
+  use "tpope/vim-repeat" -- Repeat more things with "."
+  use "tpope/vim-sleuth" -- Heuristically set buffer options
+  use "tpope/vim-surround" -- Mappings for quotes, brackets, etc
+  use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
   use "kyazdani42/nvim-web-devicons"
 
   -- Copy text to clipboard with OSC52
@@ -91,13 +91,13 @@ return packer.startup(function(use)
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gs.next_hunk() end)
             return '<Ignore>'
-          end, {expr=true, buffer=bufnr})
+          end, { expr = true, buffer = bufnr })
 
           vim.keymap.set('n', '[c', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
-          end, {expr=true, buffer=bufnr})
+          end, { expr = true, buffer = bufnr })
 
           vim.keymap.set("n", "yogs", gs.toggle_signs)
           vim.keymap.set("n", "<leader>ga", gs.stage_hunk)
@@ -125,7 +125,7 @@ return packer.startup(function(use)
     run = '<Cmd>TSUpdate',
     config = function()
       require "nvim-treesitter.configs".setup {
-        ensure_installed = {"go", "typescript"},
+        ensure_installed = { "go", "typescript" },
         auto_install = true,
         highlight = {
           enable = true,
@@ -136,7 +136,7 @@ return packer.startup(function(use)
   use {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
-      require "treesitter-context".setup{mode="topline"}
+      require "treesitter-context".setup { mode = "topline" }
     end
   }
 
@@ -239,13 +239,13 @@ return packer.startup(function(use)
   use {
     "hrsh7th/nvim-cmp",
     requires = {
-      {"hrsh7th/cmp-buffer"},                  -- Buffer completions
-      {"hrsh7th/cmp-path"},                    -- Path completions
-      {"hrsh7th/cmp-cmdline"},                 -- Cmdline completions
-      {"saadparwaiz1/cmp_luasnip"},            -- Snippet completions
-      {"hrsh7th/cmp-nvim-lsp"},                -- LSP completions
-      {"hrsh7th/cmp-nvim-lua"},                -- Lua completions
-      {"hrsh7th/cmp-nvim-lsp-signature-help"}, -- LSP function signature completions
+      { "hrsh7th/cmp-buffer" }, -- Buffer completions
+      { "hrsh7th/cmp-path" }, -- Path completions
+      { "hrsh7th/cmp-cmdline" }, -- Cmdline completions
+      { "saadparwaiz1/cmp_luasnip" }, -- Snippet completions
+      { "hrsh7th/cmp-nvim-lsp" }, -- LSP completions
+      { "hrsh7th/cmp-nvim-lua" }, -- Lua completions
+      { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- LSP function signature completions
     },
     config = function()
       require("user.cmp")
@@ -253,8 +253,8 @@ return packer.startup(function(use)
   }
 
   -- Snippets
-  use "L3MON4D3/LuaSnip"              -- Snippet engine
-  use "rafamadriz/friendly-snippets"  -- A bunch of snippets to use
+  use "L3MON4D3/LuaSnip" -- Snippet engine
+  use "rafamadriz/friendly-snippets" -- A bunch of snippets to use
 
   -- LSP
   use {
@@ -308,8 +308,8 @@ return packer.startup(function(use)
   use {
     "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
     config = function()
-      require'toggle_lsp_diagnostics'.init({
-          update_in_insert = false,
+      require 'toggle_lsp_diagnostics'.init({
+        update_in_insert = false,
       })
       vim.keymap.set("n", "yoxx", "<Plug>(toggle-lsp-diag-vtext)")
     end
