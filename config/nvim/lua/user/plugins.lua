@@ -217,7 +217,7 @@ return packer.startup(function(use)
           },
         },
       })
-      vim.keymap.set("n", "<leader>ff", "<Cmd>NvimTreeFocus<CR>")
+      vim.keymap.set("n", "<leader>ff", "<Cmd>NvimTreeFindFile<CR>")
       vim.keymap.set("n", "<leader>ft", "<Cmd>NvimTreeToggle<CR>")
 
       vim.cmd [[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
