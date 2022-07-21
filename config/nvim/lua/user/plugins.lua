@@ -267,6 +267,21 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Null-LS
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.code_actions.gitsigns,
+          null_ls.builtins.code_actions.shellcheck,
+          null_ls.builtins.diagnostics.shellcheck,
+        }
+      }
+    end
+  }
+
   -- Telescope
   use {
     "nvim-telescope/telescope.nvim",
