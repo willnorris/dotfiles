@@ -24,6 +24,9 @@ augroup colorextend
   autocmd ColorScheme * call onedark#set_highlight("TreesitterContext", {"bg": colors.black})
 
   autocmd ColorScheme * call onedark#set_highlight("NvimTreeIndentMarker", {"fg": colors.black})
+
+  autocmd ColorScheme * call onedark#set_highlight("NeotestIndent", {"fg": colors.black})
+  autocmd ColorScheme * call onedark#set_highlight("NeotestExpandMarker", {"fg": colors.black})
 augroup END
 ]]
 

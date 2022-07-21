@@ -283,6 +283,7 @@ return packer.startup(function(use)
       vim.keymap.set("n", "<leader>th", tb.highlights, { desc = "telescope highlights" })
       vim.keymap.set("n", "<leader>ts", tb.grep_string, { desc = "telescope grep_string" })
       vim.keymap.set("n", "<leader>tr", tb.treesitter, { desc = "telescope treesitter" })
+      vim.keymap.set("n", "<leader>td", tb.diagnostics, { desc = "telescope diagnostics" })
     end
   }
 
@@ -333,6 +334,49 @@ return packer.startup(function(use)
       }
     end,
   }
+
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-go",
+      "nvim-neotest/neotest-python",
+    },
+    config = function()
+      local neotest = require("neotest")
+      neotest.setup {
+        adapters = {
+          require("neotest-go"),
+          require("neotest-python"),
+        },
+        icons = {
+          expanded = "┐",
+          final_child_prefix = "└",
+        },
+        output = {
+          open_on_run = false,
+        }
+      }
+
+      vim.diagnostic.config({
+        signs = true,
+        virtual_text = true,
+      }, vim.api.nvim_create_namespace("neotest"))
+
+      vim.keymap.set("n", "tt", neotest.run.run, {desc="run nearest test"})
+      vim.keymap.set("n", "tf", function() neotest.run.run(vim.fn.expand("%")) end, {desc="test file"})
+      vim.keymap.set("n", "tl", function() neotest.run.run_last() end, {desc="run last test"})
+      vim.keymap.set("n", "ts", function() neotest.summary.toggle() end, {desc="show test summary"})
+      vim.keymap.set("n", "to", function() neotest.output.open() end, {desc="show test output"})
+      vim.keymap.set("n", "tw", function()
+        neotest.output.open({ open_win = function() vim.cmd("bel split") end })
+      end, {desc="show test window"})
+    end,
+  }
+
+  -- TODO: look at https://github.com/mfussenegger/nvim-dap
 
   -- Automatically set up configuration after cloning packer.nvim
   if packer_bootstrap then
