@@ -68,6 +68,10 @@ keymap("i", "<C-L>e", "<C-R>=system('timestamp -epoch')<CR>")
 -- Requires alt command (https://github.com/uptech/alt)
 vim.keymap.set("n", "<leader>.", function()
   local alt = vim.fn.system("alt " .. vim.fn.expand("%"))
+  if vim.v.shell_error ~= 0 then
+    vim.notify(alt)
+    return
+  end
   if alt ~= "" then
     vim.fn.execute(":e " .. alt)
   else
