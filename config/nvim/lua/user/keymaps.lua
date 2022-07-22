@@ -63,3 +63,14 @@ keymap("n", "_$", [[<Cmd>call Preserve("%s/\\s\\+$//e")<CR>]], { desc = "strip t
 keymap("i", "<C-L>t", "<C-R>=system('timestamp -rfc3339')<CR>")
 keymap("i", "<C-L>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>")
 keymap("i", "<C-L>e", "<C-R>=system('timestamp -epoch')<CR>")
+
+-- Find and open the alternate file for the current path.
+-- Requires alt command (https://github.com/uptech/alt)
+vim.keymap.set("n", "<leader>.", function()
+  local alt = vim.fn.system("alt " .. vim.fn.expand("%"))
+  if alt ~= "" then
+    vim.fn.execute(":e " .. alt)
+  else
+    vim.notify("Alt file not found for " .. vim.fn.expand("%"))
+  end
+end)
