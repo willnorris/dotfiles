@@ -14,6 +14,7 @@ o.number = true -- show line numbers
 o.splitright = true -- open vertical splits on the right
 o.showmode = false
 o.cursorlineopt = "number"
+o.linebreak = true
 
 -- Set the list option if expandtab is set.  This helps visualize erroneous
 -- tabs in a file that is otherwise indented with spaces.  Run on BufEnter
