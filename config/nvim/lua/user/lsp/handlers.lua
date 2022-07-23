@@ -1,45 +1,18 @@
 local M = {}
 
-M.setup = function()
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
+local function lsp_activate_capabilities(client, bufnr)
+  local autocmd = vim.api.nvim_create_autocmd
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
-
-  -- use telescope LSP handlers
-  local tb = require("telescope.builtin")
-  vim.lsp.handlers["callHierarchy/incomingCalls"] = tb.lsp_incoming_calls
-  vim.lsp.handlers["callHierarchy/outgoingCalls"] = tb.lsp_outgoing_calls
-  vim.lsp.handlers["textDocument/references"] = tb.lsp_references
-  vim.lsp.handlers["textDocument/definition"] = tb.lsp_definitions
-  vim.lsp.handlers["textDocument/typeDefinition"] = tb.lsp_type_definitions
-  vim.lsp.handlers["textDocument/implementation"] = tb.lsp_implementations
-  vim.lsp.handlers["textDocument/documentSymbol"] = tb.lsp_document_symbols
-  vim.lsp.handlers["workspace/symbol"] = tb.lsp_workspace_symbols
-  vim.lsp.handlers["textDocument/codeAction"] = tb.lsp_references
-end
-
-local function lsp_activate_capabilities(client)
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]] ,
-      false
-    )
+    autocmd({ "CursorHold" },
+      { buffer = bufnr, callback = vim.lsp.buf.document_highlight })
+    autocmd({ "CursorMoved" },
+      { buffer = bufnr, callback = vim.lsp.buf.clear_references })
   end
 
   if client.resolved_capabilities.code_lens then
-    vim.api.nvim_create_autocmd({"BufEnter", "CursorHold", "InsertLeave"}, {
-      callback = vim.lsp.codelens.refresh,
-    })
+    autocmd({ "BufEnter", "CursorHold", "InsertLeave" },
+      { buffer = bufnr, callback = vim.lsp.codelens.refresh })
   end
 end
 
@@ -81,17 +54,15 @@ M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
   end
-  lsp_keymaps(bufnr)
   lsp_activate_capabilities(client)
+  lsp_keymaps(bufnr)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not ok then
-  return
+if ok then
+  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 end
-
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M
