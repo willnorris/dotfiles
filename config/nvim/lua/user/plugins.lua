@@ -33,6 +33,7 @@ return packer.startup(function(use)
   use "tpope/vim-surround" -- Mappings for quotes, brackets, etc
   use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
   use "kyazdani42/nvim-web-devicons"
+  use "github/copilot.vim"
 
   -- Dark colorscheme
   use {
@@ -262,6 +263,7 @@ return packer.startup(function(use)
       { "hrsh7th/cmp-nvim-lsp" }, -- LSP completions
       { "hrsh7th/cmp-nvim-lua" }, -- Lua completions
       { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- LSP function signature completions
+      { "hrsh7th/cmp-copilot" }, -- LSP function signature completions
     },
     config = function()
       require("user.cmp")

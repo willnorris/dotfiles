@@ -70,6 +70,7 @@ cmp.setup {
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         nvim_lua = "[NVIM_LUA]",
+        copilot = "[Copilot]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
@@ -80,6 +81,7 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp_signature_help" },
     { name = "nvim_lsp" },
+    { name = "copilot" },
     { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },
