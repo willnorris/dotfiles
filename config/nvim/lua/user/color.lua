@@ -23,6 +23,7 @@ augroup colorextend
   autocmd ColorScheme * call onedark#set_highlight("SymbolsOutlineConnector", {"fg": colors.black})
   autocmd ColorScheme * call onedark#set_highlight("LspReferenceRead", {"fg": colors.cyan, "gui": "underline", "cterm": "underline"})
   autocmd ColorScheme * call onedark#set_highlight("LspReferenceWrite", {"fg": colors.cyan, "gui": "underline", "cterm": "underline"})
+  autocmd ColorScheme * call onedark#set_highlight("LspReferenceText", {"fg": colors.cyan, "gui": "underline", "cterm": "underline"})
   autocmd ColorScheme * call onedark#set_highlight("LspCodeLens", {"fg": colors.comment_grey})
   autocmd ColorScheme * call onedark#set_highlight("LspCodeLensSeparator", {"fg": colors.comment_grey})
   autocmd ColorScheme * call onedark#set_highlight("TreesitterContext", {"bg": colors.black})
