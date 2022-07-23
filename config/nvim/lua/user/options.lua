@@ -14,7 +14,6 @@ o.number = true -- show line numbers
 o.splitright = true -- open vertical splits on the right
 o.showmode = false
 o.cursorlineopt = "number"
-o.linebreak = true
 
 -- Set the list option if expandtab is set.  This helps visualize erroneous
 -- tabs in a file that is otherwise indented with spaces.  Run on BufEnter
@@ -27,20 +26,22 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
--- Scrolling
+-- Scrolling and Wrapping
 o.scrolloff = 3
 o.sidescrolloff = 10
+o.linebreak = true
 
 -- Text Formatting / Layout
 o.ignorecase = true
 o.smartcase = true
 o.infercase = true
 
--- 2 space indents
+-- Indents
 o.tabstop = 2
 o.shiftwidth = 2
 o.expandtab = true
 o.smartindent = true
+o.breakindent = true
 
 o.diffopt = "filler,vertical"
 
@@ -68,27 +69,34 @@ vim.g.netrw_browse_split = 4
 vim.g.netrw_altv = 1
 vim.g.netrw_winsize = -28
 
--- use OSCYank to integrate with client clipboard
--- https://github.com/ojroques/vim-oscyank/issues/24#issuecomment-1098406019
-local function copy(lines, _)
-  vim.fn.OSCYankString(table.concat(lines, "\n"))
-end
-
-local function paste()
-  return {
-    vim.fn.split(vim.fn.getreg(''), '\n'),
-    vim.fn.getregtype('')
-  }
-end
-
-vim.g.clipboard = {
-  name = "osc52",
-  copy = {
-    ["+"] = copy,
-    ["*"] = copy
-  },
-  paste = {
-    ["+"] = paste,
-    ["*"] = paste
-  }
+-- Signs and Diagnostics
+local signs = {
+  { name = "DiagnosticSignError", text = "e" },
+  { name = "DiagnosticSignWarn", text = "w" },
+  { name = "DiagnosticSignInfo", text = "i" },
+  { name = "DiagnosticSignHint", text = "h" },
 }
+
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
+vim.diagnostic.config({
+  -- enable virtual text
+  virtual_text = true,
+  -- show signs
+  signs = {
+    active = signs,
+  },
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+})
