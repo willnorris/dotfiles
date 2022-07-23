@@ -5,6 +5,10 @@ function! SynGroup()
 endfun
 ]]
 
+vim.g.onedark_color_overrides = {
+  background = { gui = "NONE", cterm = "NONE", cterm16 = "NONE" }
+}
+
 vim.cmd [[
 augroup colorextend
   autocmd!
