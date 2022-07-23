@@ -20,7 +20,6 @@ return packer.startup(function(use)
 
   use "famiu/bufdelete.nvim" -- Better buffer deletion
   use "farmergreg/vim-lastplace" -- Restore last cursor position
-  use "joshdick/onedark.vim" -- Dark colorscheme
   use "junegunn/gv.vim" -- Git commit browser
   use "konfekt/vim-sentence-chopper" -- Semantic Line Breaks
   use "michaeljsmith/vim-indent-object" -- Text objects based on indent level
@@ -34,6 +33,12 @@ return packer.startup(function(use)
   use "tpope/vim-surround" -- Mappings for quotes, brackets, etc
   use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
   use "kyazdani42/nvim-web-devicons"
+
+  -- Dark colorscheme
+  use {
+    "willnorris/onedark.vim",
+    branch = "lua",
+  }
 
   -- Copy text to clipboard with OSC52
   use {
