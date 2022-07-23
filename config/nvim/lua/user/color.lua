@@ -14,6 +14,7 @@ augroup colorextend
   autocmd!
   let colors = onedark#GetColors()
   let none = { "gui": "NONE", "cterm": "NONE", "cterm16": "NONE" }
+  autocmd ColorScheme * call onedark#extend_highlight("Normal", {"bg": none})
   autocmd ColorScheme * call onedark#extend_highlight("DiffChange", {"gui": "NONE", "cterm": "NONE"})
   autocmd ColorScheme * call onedark#set_highlight("MatchParen", {"cterm": "NONE", "bg": colors.comment_grey})
   autocmd ColorScheme * call onedark#set_highlight("NormalFloat", {"fg": colors.white})
