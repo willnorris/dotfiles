@@ -256,7 +256,7 @@ packer.startup(function(use)
       vim.g.symbols_outline = {
         auto_preview = false,
       }
-      vim.keymap.set("n", "<leader>so", "<Cmd>SymbolsOutline<CR>")
+      vim.keymap.set("n", "<leader>o", "<Cmd>SymbolsOutline<CR>")
     end,
   }
 
@@ -321,9 +321,10 @@ packer.startup(function(use)
       vim.keymap.set("n", "<leader>sf", tb.find_files, { desc = "search files" })
       vim.keymap.set("n", "<leader>sb", tb.buffers, { desc = "search buffers" })
       vim.keymap.set("n", "<leader>ss", tb.live_grep, { desc = "search for string" })
-      vim.keymap.set("n", "<leader>sh", tb.highlights, { desc = "search highlights" })
       vim.keymap.set("n", "<leader>sc", tb.grep_string, { desc = "search for string under cursor" })
+      vim.keymap.set("n", "<leader>sh", tb.highlights, { desc = "search highlights" })
       vim.keymap.set("n", "<leader>sd", tb.diagnostics, { desc = "search diagnostics" })
+      vim.keymap.set("n", "<leader>so", tb.oldfiles, { desc = "search previous files" })
     end
   }
 
