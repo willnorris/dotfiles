@@ -33,7 +33,15 @@ return packer.startup(function(use)
   use "tpope/vim-surround" -- Mappings for quotes, brackets, etc
   use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
   use "kyazdani42/nvim-web-devicons"
-  use "github/copilot.vim"
+
+  use {
+    "github/copilot.vim",
+    config = function ()
+      -- disable copilot completion, since we'll use it through nvim-cmp
+      vim.g.copilot_filetypes = {}
+      vim.g.copilot_filetypes["*"] = false
+    end
+  }
 
   -- Dark colorscheme
   use {
