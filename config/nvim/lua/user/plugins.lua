@@ -346,6 +346,26 @@ packer.startup(function(use)
     end
   }
 
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        highlight = {
+          pattern = {
+            [[.*<(KEYWORDS)\s*:]],
+            [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle TODO(name)
+          },
+          keyword = "fg",
+          after = "",
+        },
+        search = {
+          pattern = [[\b(KEYWORDS)(\(.*\))?:]],
+        },
+      }
+    end
+  }
+
   -- Toggle LSP diagnostics
   use {
     "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
