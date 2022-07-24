@@ -16,9 +16,6 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 
     onedark.set_highlight("FocusedSymbol", { bg = colors.visual_grey })
     onedark.set_highlight("SymbolsOutlineConnector", { fg = colors.black })
-    onedark.set_highlight("LspReferenceRead", { fg = colors.cyan, gui = "underline", cterm = "underline" })
-    onedark.set_highlight("LspReferenceWrite", { fg = colors.cyan, gui = "underline", cterm = "underline" })
-    onedark.set_highlight("LspReferenceText", { fg = colors.cyan, gui = "underline", cterm = "underline" })
     onedark.set_highlight("LspCodeLens", { fg = colors.comment_grey })
     onedark.set_highlight("LspCodeLensSeparator", { fg = colors.comment_grey })
     onedark.set_highlight("TreesitterContext", { bg = colors.black })
@@ -29,6 +26,10 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
     onedark.set_highlight("NeotestExpandMarker", { fg = colors.black })
 
     vim.cmd [[
+      hi link LspReferenceRead CursorLine
+      hi link LspReferenceWrite CursorLine
+      hi link LspReferenceText CursorLine
+
       " nvim-cmp
       hi link CmpItemAbbrDeprecated Comment
       hi link CmpItemAbbrMatch Special
