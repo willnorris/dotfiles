@@ -14,7 +14,7 @@ if not ok then
 end
 
 -- Install plugins
-return packer.startup(function(use)
+packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
@@ -256,7 +256,7 @@ return packer.startup(function(use)
       vim.g.symbols_outline = {
         auto_preview = false,
       }
-      vim.keymap.set("n", "<leader>tt", "<Cmd>SymbolsOutline<CR>")
+      vim.keymap.set("n", "<leader>so", "<Cmd>SymbolsOutline<CR>")
     end,
   }
 
@@ -266,7 +266,6 @@ return packer.startup(function(use)
     requires = {
       { "hrsh7th/cmp-buffer" }, -- Buffer completions
       { "hrsh7th/cmp-path" }, -- Path completions
-      { "hrsh7th/cmp-cmdline" }, -- Cmdline completions
       { "saadparwaiz1/cmp_luasnip" }, -- Snippet completions
       { "hrsh7th/cmp-nvim-lsp" }, -- LSP completions
       { "hrsh7th/cmp-nvim-lua" }, -- Lua completions
@@ -318,13 +317,13 @@ return packer.startup(function(use)
       require("user.telescope")
 
       local tb = require("telescope.builtin")
-      vim.keymap.set("n", "<C-t>", tb.find_files)
-      vim.keymap.set("n", "<leader>tb", tb.buffers, { desc = "telescope buffers" })
-      vim.keymap.set("n", "<leader>tg", tb.live_grep, { desc = "telescope live_grep" })
-      vim.keymap.set("n", "<leader>th", tb.highlights, { desc = "telescope highlights" })
-      vim.keymap.set("n", "<leader>ts", tb.grep_string, { desc = "telescope grep_string" })
-      vim.keymap.set("n", "<leader>tr", tb.treesitter, { desc = "telescope treesitter" })
-      vim.keymap.set("n", "<leader>td", tb.diagnostics, { desc = "telescope diagnostics" })
+      vim.keymap.set("n", "<C-t>", tb.find_files, { desc = "search files" })
+      vim.keymap.set("n", "<leader>sf", tb.find_files, { desc = "search files" })
+      vim.keymap.set("n", "<leader>sb", tb.buffers, { desc = "search buffers" })
+      vim.keymap.set("n", "<leader>ss", tb.live_grep, { desc = "search for string" })
+      vim.keymap.set("n", "<leader>sh", tb.highlights, { desc = "search highlights" })
+      vim.keymap.set("n", "<leader>sc", tb.grep_string, { desc = "search for string under cursor" })
+      vim.keymap.set("n", "<leader>sd", tb.diagnostics, { desc = "search diagnostics" })
     end
   }
 
@@ -406,12 +405,12 @@ return packer.startup(function(use)
         virtual_text = true,
       }, vim.api.nvim_create_namespace("neotest"))
 
-      vim.keymap.set("n", "tt", neotest.run.run, {desc="run nearest test"})
-      vim.keymap.set("n", "tf", function() neotest.run.run(vim.fn.expand("%")) end, {desc="test file"})
-      vim.keymap.set("n", "tl", function() neotest.run.run_last() end, {desc="run last test"})
-      vim.keymap.set("n", "ts", function() neotest.summary.toggle() end, {desc="show test summary"})
-      vim.keymap.set("n", "to", function() neotest.output.open() end, {desc="show test output"})
-      vim.keymap.set("n", "tw", function()
+      vim.keymap.set("n", "<leader>tt", neotest.run.run, {desc="run nearest test"})
+      vim.keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, {desc="test file"})
+      vim.keymap.set("n", "<leader>tl", neotest.run.run_last, {desc="run last test"})
+      vim.keymap.set("n", "<leader>ts", neotest.summary.toggle, {desc="show test summary"})
+      vim.keymap.set("n", "<leader>to", neotest.output.open, {desc="show test output"})
+      vim.keymap.set("n", "<leader>tw", function()
         neotest.output.open({ open_win = function() vim.cmd("bel split") end })
       end, {desc="show test window"})
     end,
