@@ -3,11 +3,16 @@ local M = {}
 local function lsp_activate_capabilities(client, bufnr)
   local autocmd = vim.api.nvim_create_autocmd
 
+  local group = vim.api.nvim_create_augroup("document_highlight", { clear = true })
   if client.resolved_capabilities.document_highlight then
     autocmd({ "CursorHold" },
-      { buffer = bufnr, callback = vim.lsp.buf.document_highlight })
+      { group = group, buffer = bufnr, callback = function()
+        if not vim.wo.diff then
+          vim.lsp.buf.document_highlight()
+        end
+      end})
     autocmd({ "CursorMoved" },
-      { buffer = bufnr, callback = vim.lsp.buf.clear_references })
+      { group = group, buffer = bufnr, callback = vim.lsp.buf.clear_references })
   end
 
   if client.resolved_capabilities.code_lens then
