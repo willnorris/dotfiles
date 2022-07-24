@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   end,
 })
 
-vim.g.onedark_termcolors = 16
+vim.o.termguicolors = true
 vim.cmd [[silent! colorscheme onedark]]
 
 vim.opt.hlsearch = true

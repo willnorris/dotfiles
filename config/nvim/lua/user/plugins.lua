@@ -194,18 +194,9 @@ packer.startup(function(use)
   use {
     "nvim-lualine/lualine.nvim",
     config = function()
-      -- customize 16color theme, swapping insert and normal color
-      local t16c = require "lualine.themes.16color"
-      local normal = t16c.normal.a
-      t16c.normal.a = t16c.insert.a
-      t16c.insert.a = normal
-      t16c.normal.a.fg = "#000000"
-      t16c.insert.a.fg = "#000000"
-      t16c.visual.a.fg = "#000000"
-
       require("lualine").setup {
         options = {
-          theme = t16c,
+          theme = "onedark",
           icons_enabled = false,
           section_separators = "",
           component_separators = "",
