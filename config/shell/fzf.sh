@@ -30,15 +30,6 @@ if command -v fzf > /dev/null; then
 
   export FZF_TMUX=1
 
-  # open recently edited files in vim (https://github.com/junegunn/fzf/wiki/Examples#v)
-  v() {
-    local files
-    files=$(grep '^>' "$XDG_DATA_HOME/vim/viminfo" | cut -c3- |
-            while read -r line; do
-              [ -f "${line/\~/$HOME}" ] && echo "$line"
-            done | fzf-tmux -d -m -q "$*" -1) && vim "${files//\~/$HOME}"
-  }
-
   # cd to recently opened directories (https://github.com/junegunn/fzf/wiki/Examples#z)
   j() {
     [ $# -gt 0 ] && _z "$*" && return
