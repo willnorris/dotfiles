@@ -2,13 +2,15 @@ local telescope = require "telescope"
 local actions = require "telescope.actions"
 
 -- Scroll the preview window by a specified distance, rather than the default scroll_speed.
-local scroll_preview_custom = function(prompt_bufnr, speed, direction)
-  local status = require("telescope.state").get_status(prompt_bufnr)
+local scroll_preview_custom = function(bufnr, speed, direction)
+  local status = require("telescope.state").get_status(bufnr)
   local default_speed = status.picker.layout_config.scroll_speed
   status.picker.layout_config.scroll_speed = speed
-  require("telescope.actions.set").scroll_previewer(prompt_bufnr, direction)
+  require("telescope.actions.set").scroll_previewer(bufnr, direction)
   status.picker.layout_config.scroll_speed = default_speed
 end
+
+local actions_which_key = function(bufnr) actions.which_key(bufnr, { separator = "  " }) end
 
 local defaults = {
   path_display = { "smart" },
@@ -49,7 +51,7 @@ local defaults = {
       ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
       ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
       ["<C-l>"] = actions.complete_tag,
-      ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+      ["<C-_>"] = actions_which_key, -- keys from pressing <C-/>
     },
 
     n = {
@@ -90,8 +92,8 @@ local defaults = {
       ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
       ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
-      ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
-      ["?"] = actions.which_key,
+      ["<C-_>"] = actions_which_key, -- keys from pressing <C-/>
+      ["?"] = actions_which_key,
     },
   },
 }
