@@ -10,8 +10,11 @@ local function go_format()
   vim.lsp.buf.formatting_sync(nil, 3000)
 end
 
+local augroup = vim.api.nvim_create_augroup("goformat", { clear = true })
+
 -- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup,
   pattern = { "*.go" },
   callback = go_format,
 })
@@ -34,6 +37,7 @@ end
 
 -- organize imports on save (from https://github.com/neovim/nvim-lspconfig/issues/115#issuecomment-1130373799)
 vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup,
   pattern = { "*.go" },
   callback = go_import,
 })
