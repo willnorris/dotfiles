@@ -38,8 +38,7 @@ packer.startup(function(use)
     "github/copilot.vim",
     config = function ()
       -- disable copilot completion, since we'll use it through nvim-cmp
-      vim.g.copilot_filetypes = {}
-      vim.g.copilot_filetypes["*"] = false
+      vim.g.copilot_filetypes = { ["*"] = false }
     end
   }
 
