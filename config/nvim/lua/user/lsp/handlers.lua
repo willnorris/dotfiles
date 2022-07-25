@@ -12,12 +12,15 @@ local function lsp_activate_capabilities(client, bufnr)
 end
 
 local function lsp_keymaps(bufnr)
+  local wk_ok, wk = pcall(require, "which-key")
   vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
   local keymap = vim.keymap.set
   local opts = function(o)
     return vim.tbl_extend("keep", o, { noremap = true, silent = true, buffer = bufnr })
   end
+
+  if wk_ok then wk.register({g = { name = "+goto" }}) end
   keymap("n", "gD", vim.lsp.buf.declaration, opts { desc = "code declaration" })
   keymap("n", "gd", vim.lsp.buf.definition, opts { desc = "code definition" })
   keymap("n", "gr", vim.lsp.buf.references, opts { desc = "code references" })
@@ -36,6 +39,7 @@ local function lsp_keymaps(bufnr)
   keymap("n", "<leader>q", vim.diagnostic.setloclist, opts { desc = "diagnostic loclist" })
 
   -- workspace folders
+  if wk_ok then wk.register({["<leader>w"] = { name = "+workspace" }}) end
   keymap('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts { desc = "add workspace folder" })
   keymap('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts { desc = "remove workspace folder" })
   keymap('n', '<leader>wl', function()
