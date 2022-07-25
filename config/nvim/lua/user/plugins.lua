@@ -38,6 +38,12 @@ packer.startup(function(use)
     "tpope/vim-fugitive", -- Vim interface to git
     "tpope/vim-rhubarb", -- GitHub support for vim-fugitive
     {
+      "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
+      config = function()
+        require("gitlinker").setup()
+      end,
+    },
+    {
       "rhysd/committia.vim",
       config = function() require("user.git") end,
     },
