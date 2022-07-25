@@ -2,11 +2,6 @@ vim.g.committia_hooks = {
   edit_open = function(info)
     vim.wo.spell = true
 
-    -- if commit message is empty, start in insert mode
-    if info.vcs == "git" and vim.fn.getline(1) == "" then
-      vim.cmd("startinsert")
-    end
-
     -- keymaps to scroll diff window
     vim.keymap.set({ "n", "i" }, "<A-j>",
       "<Plug>(committia-scroll-diff-down)", { buffer = 0, desc = "scroll diff down" })
