@@ -32,15 +32,15 @@ keymap("n", "<C-L>", "<C-W>l", noremap)
 
 -- buffer navigation
 keymap("n", "<leader>;", "<C-^>", noremap)
-keymap("n", "<leader>]", "<Cmd>bnext<CR>")
-keymap("n", "<leader>[", "<Cmd>bprev<CR>")
+keymap("n", "<S-L>", "<Cmd>bnext<CR>")
+keymap("n", "<S-H>", "<Cmd>bprev<CR>")
 keymap("n", "<leader>bd", "<Cmd>Bdelete<CR>")
 
 -- tab navigation
 keymap("n", "<leader>tn", "<Cmd>tabnew<CR>")
 keymap("n", "<leader>tc", "<Cmd>tabclose<CR>")
-keymap("n", "<S-L>", "<Cmd>tabnext<CR>")
-keymap("n", "<S-H>", "<Cmd>tabprevious<CR>")
+keymap("n", "<leader>]", "<Cmd>tabnext<CR>")
+keymap("n", "<leader>[", "<Cmd>tabprevious<CR>")
 
 keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>",
   { desc = "redraw screen" })
