@@ -25,14 +25,23 @@ packer.startup(function(use)
   use "michaeljsmith/vim-indent-object" -- Text objects based on indent level
   use "sickill/vim-pasta" -- Adjust indentation when pasting
   use "tpope/vim-eunuch" -- Helpers for UNIX
-  use "tpope/vim-fugitive" -- Vim interface to git
-  use "tpope/vim-rhubarb" -- GitHub support for vim-fugitive
-  use "tpope/vim-git" -- Vim runtime files for git
   use "tpope/vim-repeat" -- Repeat more things with "."
   use "tpope/vim-sleuth" -- Heuristically set buffer options
   use "tpope/vim-surround" -- Mappings for quotes, brackets, etc
   use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
   use "kyazdani42/nvim-web-devicons"
+
+
+  -- Git related plugins
+  use {
+    "tpope/vim-git", -- Vim runtime files for git
+    "tpope/vim-fugitive", -- Vim interface to git
+    "tpope/vim-rhubarb", -- GitHub support for vim-fugitive
+    {
+      "rhysd/committia.vim",
+      config = function() require("user.git") end,
+    },
+  }
 
   use {
     "github/copilot.vim",
@@ -108,7 +117,9 @@ packer.startup(function(use)
   use {
     "beauwilliams/focus.nvim",
     config = function()
-      require "focus".setup {}
+      require "focus".setup {
+        excluded_filetypes = {"gitcommit"}
+      }
       vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>", { desc = "toggle golden ratio view" })
     end,
   }
