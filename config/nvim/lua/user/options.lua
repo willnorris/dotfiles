@@ -1,20 +1,18 @@
-local o = vim.opt
-
 -- general
-o.wildmode = "list:longest,full"
-o.updatetime = 100
-o.maxmempattern = 2000
-o.spellfile = vim.fn.stdpath("config") .. "/en.utf-8.add"
-o.undofile = true
-o.timeoutlen = 500
+vim.o.wildmode = "list:longest,full"
+vim.o.updatetime = 100
+vim.o.maxmempattern = 2000
+vim.o.spellfile = vim.fn.stdpath("config") .. "/en.utf-8.add"
+vim.o.undofile = true
+vim.o.timeoutlen = 500
 
 -- UI
-o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
-o.number = true -- show line numbers
-o.splitright = true -- open vertical splits on the right
-o.showmode = false
-o.cursorlineopt = "number"
-o.hidden = false -- don't show hidden buffers
+vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
+vim.o.number = true -- show line numbers
+vim.o.splitright = true -- open vertical splits on the right
+vim.o.showmode = false
+vim.o.cursorlineopt = "number"
+vim.o.hidden = false -- don't show hidden buffers
 
 -- Set the list option if expandtab is set.  This helps visualize erroneous
 -- tabs in a file that is otherwise indented with spaces.  Run on BufEnter
@@ -28,29 +26,29 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Scrolling and Wrapping
-o.scrolloff = 3
-o.sidescrolloff = 10
-o.linebreak = true
+vim.o.scrolloff = 3
+vim.o.sidescrolloff = 10
+vim.o.linebreak = true
 
 -- Text Formatting / Layout
-o.ignorecase = true
-o.smartcase = true
-o.infercase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.infercase = true
 
 -- Indents
-o.tabstop = 2
-o.shiftwidth = 2
-o.expandtab = true
-o.smartindent = true
-o.breakindent = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.breakindent = true
 
-o.diffopt = "filler,vertical"
+vim.o.diffopt = "filler,vertical"
 
 -- Folding
-o.foldenable = true -- turn on folding
-o.foldmethod = "indent" -- fold on indent level
-o.foldlevel = 100 -- don't autofold anything
-o.foldopen = "block,hor,mark,percent,quickfix,tag" -- what movements open folds
+vim.o.foldenable = true -- turn on folding
+vim.o.foldmethod = "indent" -- fold on indent level
+vim.o.foldlevel = 100 -- don't autofold anything
+vim.o.foldopen = "block,hor,mark,percent,quickfix,tag" -- what movements open folds
 
 vim.cmd [[
   nnoremap yof :call FoldColumnToggle()<cr>
