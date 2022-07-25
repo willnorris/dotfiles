@@ -70,6 +70,11 @@ keymap("i", "<A-i>e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestam
 -- Find and open the alternate file for the current path.
 -- Requires alt command (https://github.com/uptech/alt)
 vim.keymap.set("n", "<leader>.", function()
+  if vim.fn.executable("alt") ~= 1 then
+    vim.notify("Need to install https://github.com/uptech/alt")
+    return
+  end
+
   local alt = vim.fn.system("alt " .. vim.fn.expand("%"))
   if vim.v.shell_error ~= 0 then
     vim.notify(alt)
