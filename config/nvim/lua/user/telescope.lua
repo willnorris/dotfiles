@@ -108,10 +108,13 @@ telescope.setup {
   },
   extensions = {
     ["ui-select"] = {
-      require("telescope.themes").get_cursor {
-      }
+      require("telescope.themes").get_cursor {}
+    },
+    file_browser = {
+      hijack_netrw = true,
     },
   },
 }
 
 telescope.load_extension("ui-select")
+telescope.load_extension("file_browser")

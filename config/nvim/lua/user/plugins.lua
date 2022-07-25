@@ -231,24 +231,6 @@ packer.startup(function(use)
     end,
   }
 
-  -- File tree explorer
-  use {
-    "kyazdani42/nvim-tree.lua",
-    config = function()
-      require("nvim-tree").setup({
-        renderer = {
-          indent_markers = {
-            enable = true,
-          },
-        },
-      })
-      vim.keymap.set("n", "<leader>ff", "<Cmd>NvimTreeFindFile<CR>")
-      vim.keymap.set("n", "<leader>ft", "<Cmd>NvimTreeToggle<CR>")
-
-      vim.cmd [[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
-    end,
-  }
-
   -- File outline based on LSP symbols
   use {
     "simrat39/symbols-outline.nvim",
@@ -311,7 +293,8 @@ packer.startup(function(use)
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
-      'nvim-telescope/telescope-ui-select.nvim'
+      "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
     },
     config = function()
       require("user.telescope")
@@ -319,6 +302,9 @@ packer.startup(function(use)
       local tb = require("telescope.builtin")
       vim.keymap.set("n", "<C-t>", tb.find_files, { desc = "search files" })
       vim.keymap.set("n", "<leader>sf", tb.find_files, { desc = "search files" })
+      vim.keymap.set("n", "<leader>fb", function()
+        require("telescope").extensions.file_browser.file_browser({path="%:h"})
+      end, { desc = "file browser" })
       vim.keymap.set("n", "<leader>sb", tb.buffers, { desc = "search buffers" })
       vim.keymap.set("n", "<leader>ss", tb.live_grep, { desc = "search for string" })
       vim.keymap.set("n", "<leader>sc", tb.grep_string, { desc = "search for string under cursor" })
