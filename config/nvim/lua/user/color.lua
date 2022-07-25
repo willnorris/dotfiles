@@ -27,6 +27,16 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 
     onedark.set_highlight("Twilight", { fg = colors.visual_grey })
 
+    onedark.set_highlight("SignatureMarkText", { fg = colors.red })
+    onedark.set_highlight("SignatureMarkerText", { fg = colors.green })
+
+    onedark.set_highlight("NeotestFailed", { fg = colors.red })
+    onedark.set_highlight("NeotestPassed", { fg = colors.green })
+    onedark.set_highlight("NeotestRunning", { fg = colors.yellow })
+    onedark.set_highlight("NeotestDir", { fg = colors.blue })
+    onedark.set_highlight("NeotestCyan", { fg = colors.cyan })
+    onedark.set_highlight("NeotestAdapterName", { fg = colors.red })
+
     vim.cmd [[
       hi link LspReferenceRead CursorLine
       hi link LspReferenceWrite CursorLine

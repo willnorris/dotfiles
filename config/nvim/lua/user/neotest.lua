@@ -8,6 +8,9 @@ neotest.setup {
   icons = {
     expanded = "┐",
     final_child_prefix = "└",
+    failed = "",
+    passed = "",
+    running = "",
   },
   output = {
     open_on_run = false,
