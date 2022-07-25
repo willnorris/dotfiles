@@ -118,3 +118,20 @@ telescope.setup {
 
 telescope.load_extension("ui-select")
 telescope.load_extension("file_browser")
+
+-- keymaps
+local wk_ok, wk = pcall(require, "which-key")
+if wk_ok then wk.register({ ["<leader>s"] = { name = "+search" } }) end
+
+local tb = require("telescope.builtin")
+vim.keymap.set("n", "<C-t>", tb.find_files, { desc = "search files" })
+vim.keymap.set("n", "<leader>sf", tb.find_files, { desc = "search files" })
+vim.keymap.set("n", "<leader>fb", function()
+  telescope.extensions.file_browser.file_browser({ path = "%:h" })
+end, { desc = "file browser" })
+vim.keymap.set("n", "<leader>sb", tb.buffers, { desc = "search buffers" })
+vim.keymap.set("n", "<leader>ss", tb.live_grep, { desc = "search for string" })
+vim.keymap.set("n", "<leader>sc", tb.grep_string, { desc = "search for string under cursor" })
+vim.keymap.set("n", "<leader>sh", tb.highlights, { desc = "search highlights" })
+vim.keymap.set("n", "<leader>sd", tb.diagnostics, { desc = "search diagnostics" })
+vim.keymap.set("n", "<leader>so", tb.oldfiles, { desc = "search previous files" })

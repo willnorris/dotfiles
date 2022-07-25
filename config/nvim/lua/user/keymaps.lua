@@ -1,6 +1,5 @@
 local keymap = vim.keymap.set
 local noremap = { noremap = true }
-local wk_ok, wk = pcall(require, "which-key")
 
 vim.cmd [[
   function! Preserve(command) "{{{
@@ -61,7 +60,9 @@ keymap("n", "J", [[<Cmd>call Preserve("join")<CR>]])
 keymap("n", "_$", [[<Cmd>call Preserve("%s/\\s\\+$//e")<CR>]], { desc = "strip trailing whitespace" })
 
 -- timestamp insertion
+local wk_ok, wk = pcall(require, "which-key")
 if wk_ok then wk.register({ ["<A-i>"] = { name = "+timestamp" } }) end
+
 keymap("i", "<A-i>t", "<C-R>=system('timestamp -rfc3339')<CR>", { desc = "timestamp -rfc3339" })
 keymap("i", "<A-i>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>", { desc = "timestamp -rfc3339 -utc" })
 keymap("i", "<A-i>e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestamp -epoch" })

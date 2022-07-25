@@ -25,6 +25,8 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
     onedark.set_highlight("NeotestIndent", { fg = colors.black })
     onedark.set_highlight("NeotestExpandMarker", { fg = colors.black })
 
+    onedark.set_highlight("Twilight", { fg = colors.visual_grey })
+
     vim.cmd [[
       hi link LspReferenceRead CursorLine
       hi link LspReferenceWrite CursorLine

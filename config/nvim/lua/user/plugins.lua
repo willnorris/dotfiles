@@ -36,17 +36,14 @@ packer.startup(function(use)
 
   use {
     "github/copilot.vim",
-    config = function ()
+    config = function()
       -- disable copilot completion, since we'll use it through nvim-cmp
       vim.g.copilot_filetypes = { ["*"] = false }
     end
   }
 
   -- Dark colorscheme
-  use {
-    "willnorris/onedark.vim",
-    branch = "lua",
-  }
+  use { "willnorris/onedark.vim", branch = "lua" }
 
   -- Copy text to clipboard with OSC52
   use {
@@ -59,6 +56,7 @@ packer.startup(function(use)
       -- use OSCYank to integrate with client clipboard
       -- https://github.com/ojroques/vim-oscyank/issues/24#issuecomment-1098406019
       local function copy(lines, _) vim.fn.OSCYankString(table.concat(lines, "\n")) end
+
       local function paste() return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') } end
 
       vim.g.clipboard = {
@@ -103,44 +101,15 @@ packer.startup(function(use)
   -- Git integration for buffers
   use {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup {
-        signs = {
-          add = { text = "+" },
-          change = { text = "~" },
-        },
-        on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
-          vim.keymap.set('n', ']c', function()
-            if vim.wo.diff then return ']c' end
-            vim.schedule(function() gs.next_hunk() end)
-            return '<Ignore>'
-          end, { expr = true, buffer = bufnr })
-
-          vim.keymap.set('n', '[c', function()
-            if vim.wo.diff then return '[c' end
-            vim.schedule(function() gs.prev_hunk() end)
-            return '<Ignore>'
-          end, { expr = true, buffer = bufnr })
-
-          vim.keymap.set("n", "yogs", gs.toggle_signs, { desc = "toggle git signs" })
-          vim.keymap.set("n", "<leader>ga", gs.stage_hunk, { desc = "git add hunk" })
-          vim.keymap.set("n", "<leader>gu", gs.undo_stage_hunk, { desc = "undo add hunk" })
-          vim.keymap.set("n", "<leader>gr", gs.reset_hunk, { desc = "git reset hunk" })
-          vim.keymap.set("n", "<leader>gp", gs.preview_hunk, { desc = "git preview hunk" })
-        end,
-      }
-      vim.keymap.set("n", "yogs", "<Cmd>Gitsigns toggle_signs<CR>")
-    end,
+    config = function() require("user.gitsigns") end,
   }
 
   -- Auto-resize windows according to golden ratio
   use {
     "beauwilliams/focus.nvim",
     config = function()
-      require "focus".setup {
-      }
-      vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>")
+      require "focus".setup {}
+      vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>", { desc = "toggle golden ratio view" })
     end,
   }
 
@@ -168,14 +137,17 @@ packer.startup(function(use)
     "https://github.com/RRethy/vim-illuminate",
     config = function()
       local illuminate = require "illuminate"
-      vim.keymap.set('n', '<a-n>', function() illuminate.next_reference{wrap=true} end)
-      vim.keymap.set('n', '<a-p>', function() illuminate.next_reference{reverse=true,wrap=true} end)
+      vim.keymap.set('n', '<a-n>', function() illuminate.next_reference { wrap = true } end)
+      vim.keymap.set('n', '<a-p>', function() illuminate.next_reference { reverse = true, wrap = true } end)
     end
   }
 
   -- Distraction-free writing and coding
   use {
     "folke/zen-mode.nvim",
+    requires = {
+      "benstockil/twilight.nvim", -- dim inactive portions of file
+    },
     config = function()
       require "zen-mode".setup {
         window = {
@@ -185,49 +157,14 @@ packer.startup(function(use)
           },
         },
       }
-      vim.keymap.set("n", "<leader>zz", "<Cmd>ZenMode<CR>")
-    end,
-  }
-
-  -- Dim inactive portions of file content
-  use {
-    "benstockil/twilight.nvim",
-    config = function()
-      require("twilight").setup {}
-      vim.cmd [[highlight Twilight ctermfg=8]]
+      vim.keymap.set("n", "<leader>zz", "<Cmd>ZenMode<CR>", { desc = "zen mode" })
     end,
   }
 
   -- Statusline
   use {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup {
-        options = {
-          theme = "onedark",
-          icons_enabled = false,
-          section_separators = "",
-          component_separators = "",
-        },
-        sections = {
-          lualine_a = {
-            { "mode", fmt = function(str) return str:sub(1, 1) end }
-          },
-          lualine_c = {
-            { "filename", color = { fg = "white" } },
-            function()
-              return require('nvim-treesitter').statusline({
-                separator = " > ",
-              })
-            end,
-          },
-        },
-        tabline = {
-          lualine_a = { { "buffers", mode = 2 } },
-          lualine_z = { { "tabs", mode = 2 } },
-        }
-      }
-    end,
+    config = function() require("user.lualine") end,
   }
 
   -- File outline based on LSP symbols
@@ -237,55 +174,38 @@ packer.startup(function(use)
       vim.g.symbols_outline = {
         auto_preview = false,
       }
-      vim.keymap.set("n", "<leader>o", "<Cmd>SymbolsOutline<CR>")
+      vim.keymap.set("n", "<leader>o", "<Cmd>SymbolsOutline<CR>", { desc = "symbol outline" })
     end,
   }
 
-  -- Completion plugins
   use {
     "hrsh7th/nvim-cmp",
     requires = {
-      { "hrsh7th/cmp-buffer" }, -- Buffer completions
-      { "hrsh7th/cmp-path" }, -- Path completions
-      { "saadparwaiz1/cmp_luasnip" }, -- Snippet completions
-      { "hrsh7th/cmp-nvim-lsp" }, -- LSP completions
-      { "hrsh7th/cmp-nvim-lua" }, -- Lua completions
-      { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- LSP function signature completions
-      { "hrsh7th/cmp-copilot" }, -- LSP function signature completions
-    },
-    config = function()
-      require("user.cmp")
-    end
-  }
+      -- Completion plugins
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-copilot",
 
-  -- Snippets
-  use "L3MON4D3/LuaSnip" -- Snippet engine
-  use "rafamadriz/friendly-snippets" -- A bunch of snippets to use
+      -- Snippets
+      "L3MON4D3/LuaSnip", -- Snippet engine
+      "rafamadriz/friendly-snippets", -- A bunch of snippets to use
+    },
+    config = function() require("user.cmp") end
+  }
 
   -- LSP
   use {
     "neovim/nvim-lspconfig",
     requires = {
       "williamboman/nvim-lsp-installer",
+      "jose-elias-alvarez/null-ls.nvim",
+      "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
     },
-    config = function()
-      require("user.lsp")
-    end,
-  }
-
-  -- Null-LS
-  use {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup {
-        sources = {
-          null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.code_actions.shellcheck,
-          null_ls.builtins.diagnostics.shellcheck,
-        }
-      }
-    end
+    config = function() require("user.lsp") end,
   }
 
   -- Telescope
@@ -295,40 +215,13 @@ packer.startup(function(use)
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
     },
-    config = function()
-      require("user.telescope")
-
-      local tb = require("telescope.builtin")
-      vim.keymap.set("n", "<C-t>", tb.find_files, { desc = "search files" })
-      vim.keymap.set("n", "<leader>sf", tb.find_files, { desc = "search files" })
-      vim.keymap.set("n", "<leader>fb", function()
-        require("telescope").extensions.file_browser.file_browser({path="%:h"})
-      end, { desc = "file browser" })
-      vim.keymap.set("n", "<leader>sb", tb.buffers, { desc = "search buffers" })
-      vim.keymap.set("n", "<leader>ss", tb.live_grep, { desc = "search for string" })
-      vim.keymap.set("n", "<leader>sc", tb.grep_string, { desc = "search for string under cursor" })
-      vim.keymap.set("n", "<leader>sh", tb.highlights, { desc = "search highlights" })
-      vim.keymap.set("n", "<leader>sd", tb.diagnostics, { desc = "search diagnostics" })
-      vim.keymap.set("n", "<leader>so", tb.oldfiles, { desc = "search previous files" })
-    end
+    config = function() require("user.telescope") end
   }
 
   -- Diagnostics viewer
   use {
     "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup {
-        fold_open = "",
-        fold_closed = "",
-        indent_lines = false,
-        use_diagnostic_signs = true,
-      }
-      vim.keymap.set("n", "<leader>xx", "<Cmd>TroubleToggle<CR>")
-      vim.keymap.set("n", "<leader>xw", "<Cmd>Trouble workspace_diagnostics<CR>")
-      vim.keymap.set("n", "<leader>xd", "<Cmd>Trouble document_diagnostics<CR>")
-      vim.keymap.set("n", "<leader>xl", "<Cmd>Trouble loclist<CR>")
-      vim.keymap.set("n", "<leader>xq", "<Cmd>Trouble quickfix<CR>")
-    end
+    config = function() require("user.trouble") end
   }
 
   use {
@@ -339,7 +232,7 @@ packer.startup(function(use)
         highlight = {
           pattern = {
             [[.*<(KEYWORDS)\s*:]],
-            [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle TODO(name)
+            [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle KEYWORD(name):
           },
           keyword = "fg",
           after = "",
@@ -348,17 +241,6 @@ packer.startup(function(use)
           pattern = [[\b(KEYWORDS)(\(.*\))?:]],
         },
       }
-    end
-  }
-
-  -- Toggle LSP diagnostics
-  use {
-    "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-    config = function()
-      require 'toggle_lsp_diagnostics'.init({
-        update_in_insert = false,
-      })
-      vim.keymap.set("n", "yoxx", "<Plug>(toggle-lsp-diag-vtext)")
     end
   }
 
@@ -394,34 +276,7 @@ packer.startup(function(use)
       "nvim-neotest/neotest-python",
     },
     config = function()
-      local neotest = require("neotest")
-      neotest.setup {
-        adapters = {
-          require("neotest-go"),
-          require("neotest-python"),
-        },
-        icons = {
-          expanded = "┐",
-          final_child_prefix = "└",
-        },
-        output = {
-          open_on_run = false,
-        }
-      }
-
-      vim.diagnostic.config({
-        signs = true,
-        virtual_text = true,
-      }, vim.api.nvim_create_namespace("neotest"))
-
-      vim.keymap.set("n", "<leader>tt", neotest.run.run, {desc="run nearest test"})
-      vim.keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, {desc="test file"})
-      vim.keymap.set("n", "<leader>tl", neotest.run.run_last, {desc="run last test"})
-      vim.keymap.set("n", "<leader>ts", neotest.summary.toggle, {desc="show test summary"})
-      vim.keymap.set("n", "<leader>to", neotest.output.open, {desc="show test output"})
-      vim.keymap.set("n", "<leader>tw", function()
-        neotest.output.open({ open_win = function() vim.cmd("bel split") end })
-      end, {desc="show test window"})
+      require("user.neotest")
     end,
   }
 
