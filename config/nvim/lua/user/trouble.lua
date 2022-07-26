@@ -5,6 +5,9 @@ trouble.setup {
   fold_closed = "",
   indent_lines = false,
   use_diagnostic_signs = true,
+  signs = {
+    other = "",
+  },
 }
 
 local wk_ok, wk = pcall(require, "which-key")
