@@ -36,6 +36,9 @@
 [color "diff"]
   meta = normal
 
+[commit]
+  verbose = true
+
 [core]
   excludesfile = ~/.config/git/ignore
   quotepath = false
@@ -48,7 +51,6 @@
   clean = git-lfs clean -- %f
   process = git-lfs filter-process
   smudge = git-lfs smudge -- %f
-
 
 [http]
   cookiefile = ~/.config/git/cookies
