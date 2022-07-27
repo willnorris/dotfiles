@@ -20,10 +20,10 @@ configuration files for internal tools. For those that have access, they can
 be found at <http://go/dotfiles/users/wnorris>. They are installed
 using:
 
-* `git clone https://git.internal/dotfiles ~/.dotfiles-work`
+* `git clone https://git.internal/dotfiles ~/.work-dotfiles`
 * update `~/.rcrc` to include:
 
-      DOTFILES_DIRS="${HOME}/.dotfiles-work/users/wnorris ${HOME}/.dotfiles"
+      DOTFILES_DIRS="${HOME}/.work-dotfiles/users/wnorris ${HOME}/.dotfiles"
 
 `rcup` will now install my work-specific dotfiles alongside my regular ones.
 
