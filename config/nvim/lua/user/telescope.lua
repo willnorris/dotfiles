@@ -17,6 +17,7 @@ local defaults = {
   path_display = { "smart" },
   results_title = false,
   color_devicons = false,
+  scroll_strategy = "limit",
 
   mappings = {
     i = {
