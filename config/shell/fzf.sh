@@ -28,11 +28,11 @@ if command -v fzf > /dev/null; then
   export FZF_CTRL_R_OPTS="--no-reverse"
   export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
-  export FZF_TMUX=1
+  #export FZF_TMUX=1
 
   # cd to recently opened directories (https://github.com/junegunn/fzf/wiki/Examples#z)
   j() {
     [ $# -gt 0 ] && _z "$*" && return
-    cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf-tmux +s --tac --query "$*")" || return
+    cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf-tmux +s --preview-window 'right:50%' --tac --query "$*")" || return
   }
 fi
