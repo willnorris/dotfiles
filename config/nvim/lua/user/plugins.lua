@@ -71,6 +71,7 @@ packer.startup(function(use)
       -- use OSCYank to integrate with client clipboard
       -- https://github.com/ojroques/vim-oscyank/issues/24#issuecomment-1098406019
       local function copy(lines, _) vim.fn.OSCYankString(table.concat(lines, "\n")) end
+
       local function paste() return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') } end
 
       vim.g.oscyank_term = "default"
@@ -124,7 +125,7 @@ packer.startup(function(use)
     "beauwilliams/focus.nvim",
     config = function()
       require "focus".setup {
-        excluded_filetypes = {"gitcommit"}
+        excluded_filetypes = { "gitcommit" }
       }
       vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>", { desc = "toggle golden ratio view" })
     end,
@@ -147,6 +148,12 @@ packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
       require "treesitter-context".setup { mode = "topline" }
+    end
+  }
+  use {
+    "lewis6991/spellsitter.nvim",
+    config = function ()
+      require "spellsitter".setup()
     end
   }
 
@@ -206,6 +213,7 @@ packer.startup(function(use)
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-copilot",
+      "f3fora/cmp-spell",
 
       -- Snippets
       "L3MON4D3/LuaSnip", -- Snippet engine
