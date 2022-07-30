@@ -13,7 +13,7 @@ require("lualine").setup {
       { "filename", color = { fg = "white" } },
       function()
         return require('nvim-treesitter').statusline({
-          separator = " > ",
+          separator = "  ",
         })
       end,
     },

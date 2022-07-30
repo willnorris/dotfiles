@@ -11,7 +11,7 @@ local scroll_preview_custom = function(bufnr, speed, direction)
   status.picker.layout_config.scroll_speed = default_speed
 end
 
-local actions_which_key = function(bufnr) actions.which_key(bufnr, { separator = "  " }) end
+local actions_which_key = function(bufnr) actions.which_key(bufnr, { separator = "  " }) end
 
 local defaults = {
   path_display = { "smart" },

@@ -277,7 +277,7 @@ packer.startup(function(use)
     config = function()
       require "which-key".setup {
         icons = {
-          separator = "",
+          separator = "",
         },
         window = {
           border = "single",
