@@ -5,23 +5,23 @@ Include ~/.ssh/work-config
 Host *
   ControlPath ~/.cache/ssh/master-%r@%h:%p
   ControlMaster auto
-  ControlPersist 3h
+  ControlPersist 30m
 
 Host ark
-  HostName ark.ipn.willnorris.net
+  HostName ark.willnorris.net
 
 Host esther
-  HostName esther.ipn.willnorris.net
+  HostName esther.willnorris.net
   User elisabeth
 
 Host levi
   HostName levi.ipn.willnorris.net
   User willnorris
+  ForwardAgent yes
 
 Host rpi
-  HostName rpi.ipn.willnorris.net
+  HostName rpi.willnorris.net
   User willnorris
-
 
 Host local
   HostName levi.ipn.willnorris.net
