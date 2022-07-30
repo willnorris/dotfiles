@@ -2,7 +2,7 @@
 vim.o.wildmode = "list:longest,full"
 vim.o.updatetime = 100
 vim.o.maxmempattern = 2000
-vim.o.spellfile = vim.fn.stdpath("config") .. "/en.utf-8.add"
+vim.o.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 vim.o.undofile = true
 vim.o.timeoutlen = 500
 
