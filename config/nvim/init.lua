@@ -1,7 +1,9 @@
-require "user.options"
-require "user.plugins"
-require "user.keymaps"
-require "user.color"
+local ok, impatient = pcall(require, 'impatient')
+if ok then
+  impatient.enable_profile()
+else
+  vim.notify(impatient)
+end
 
--- load user.work config if present
-pcall(require, "user.work")
+-- Do all init in user/init.lua so impatient can cache it
+require("user")

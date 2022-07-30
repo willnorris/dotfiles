@@ -18,6 +18,7 @@ packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
+  use 'lewis6991/impatient.nvim' -- Caching for faster startup time
   use "famiu/bufdelete.nvim" -- Better buffer deletion
   use "farmergreg/vim-lastplace" -- Restore last cursor position
   use "junegunn/gv.vim" -- Git commit browser
