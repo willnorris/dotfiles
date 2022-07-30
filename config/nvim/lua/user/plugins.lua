@@ -71,9 +71,9 @@ packer.startup(function(use)
       -- use OSCYank to integrate with client clipboard
       -- https://github.com/ojroques/vim-oscyank/issues/24#issuecomment-1098406019
       local function copy(lines, _) vim.fn.OSCYankString(table.concat(lines, "\n")) end
-
       local function paste() return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') } end
 
+      vim.g.oscyank_term = "default"
       vim.g.clipboard = {
         name = "osc52",
         copy = { ["+"] = copy, ["*"] = copy },
