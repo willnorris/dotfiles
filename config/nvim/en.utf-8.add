@@ -1,11 +1,14 @@
+ACL
 ACLs
 Amalekite
 API
 app
 apps
 audiobook
+auth
 AWS
 backend
+base64
 Bazel
 BigTable
 Bitbucket
@@ -29,7 +32,10 @@ indie
 IndieWebCamp
 Instagram
 IPsec
+json
+JSON
 macOS
+MagicDNS
 metadata
 Mullenweg
 namespace
@@ -51,8 +57,10 @@ ransomware
 SignCLA
 SNI
 tailnet
+tailnets
 Tailscale
 Tantek
+TODO
 UI
 URLs
 URLs
