@@ -15,6 +15,8 @@ local prompt_color=$(case $HOSTNAME in
 esac)
 
 export PURE_PROMPT_SYMBOL="%#"
+export PURE_GIT_DOWN_ARROW=""
+export PURE_GIT_UP_ARROW=""
 export PURE_PROMPT_VICMD_SYMBOL=":"
 export PURE_CMD_MAX_EXEC_TIME=3
 zstyle :prompt:pure:prompt:success color $prompt_color
