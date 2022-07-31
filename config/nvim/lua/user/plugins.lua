@@ -309,6 +309,14 @@ packer.startup(function(use)
     end,
   }
 
+  use {
+    "lewis6991/cleanfold.nvim",
+    config =function ()
+      require("cleanfold").setup()
+    end
+  }
+
+
   -- TODO: look at https://github.com/mfussenegger/nvim-dap
 
   -- Automatically set up configuration after cloning packer.nvim

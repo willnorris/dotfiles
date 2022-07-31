@@ -13,6 +13,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
     onedark.set_highlight("MatchParen", { bg = colors.comment_grey, gui = none.gui, cterm = none.cterm })
     onedark.set_highlight("NormalFloat", { fg = colors.white })
     onedark.extend_highlight("Pmenu", { bg = none })
+    onedark.extend_highlight("Folded", { fg = colors.comment_grey, bg = colors.black })
 
     onedark.set_highlight("FocusedSymbol", { bg = colors.visual_grey })
     onedark.set_highlight("SymbolsOutlineConnector", { fg = colors.black })

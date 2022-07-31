@@ -45,10 +45,12 @@ vim.o.breakindent = true
 vim.o.diffopt = "filler,vertical"
 
 -- Folding
-vim.o.foldenable = true -- turn on folding
-vim.o.foldmethod = "indent" -- fold on indent level
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
 vim.o.foldlevel = 100 -- don't autofold anything
-vim.o.foldopen = "block,hor,mark,percent,quickfix,tag" -- what movements open folds
+vim.o.foldnestmax = 3 -- maximum nesting
+vim.opt.foldopen:append("jump") -- what movements open folds
 
 vim.cmd [[
   nnoremap yof :call FoldColumnToggle()<cr>
