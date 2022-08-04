@@ -238,10 +238,23 @@ packer.startup(function(use)
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
-      "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
     },
     config = function() require("user.telescope") end
+  }
+  use {
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup {
+        input = {
+          anchor = "NW",
+          winblend = 0,
+        },
+        select = {
+          telescope = require('telescope.themes').get_cursor(),
+        },
+      }
+    end
   }
 
   -- Diagnostics viewer

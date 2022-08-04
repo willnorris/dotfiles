@@ -12,6 +12,8 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
     onedark.extend_highlight("DiffChange", { gui = none.gui, cterm = none.cterm })
     onedark.set_highlight("MatchParen", { bg = colors.comment_grey, gui = none.gui, cterm = none.cterm })
     onedark.set_highlight("NormalFloat", { fg = colors.white })
+    onedark.set_highlight("FloatTitle", { fg = colors.comment_grey })
+    onedark.set_highlight("FloatBorder", { fg = colors.comment_grey })
     onedark.extend_highlight("Pmenu", { bg = none })
     onedark.extend_highlight("Folded", { fg = colors.comment_grey, bg = colors.black })
 
