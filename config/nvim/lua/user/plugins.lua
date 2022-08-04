@@ -30,6 +30,7 @@ packer.startup(function(use)
   use "tpope/vim-sleuth" -- Heuristically set buffer options
   use "tpope/vim-surround" -- Mappings for quotes, brackets, etc
   use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
+  use "tpope/vim-vinegar" -- Improvements to netrw
   use "kyazdani42/nvim-web-devicons"
 
 
