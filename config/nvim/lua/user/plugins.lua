@@ -142,6 +142,11 @@ packer.startup(function(use)
         auto_install = true,
         highlight = {
           enable = true,
+          disable = function(_, bufnr)
+            -- treesitter highlighting seems to have trouble with large files. Partially disussed
+            -- (but not really resolved) at https://github.com/nvim-treesitter/nvim-treesitter/issues/556
+            return vim.api.nvim_buf_line_count(bufnr) > 5000
+          end,
         },
       }
     end,
