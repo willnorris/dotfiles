@@ -64,19 +64,20 @@ packer.startup(function(use)
 
   -- Copy text to clipboard with OSC52
   use {
-    "ojroques/vim-oscyank",
+    "ojroques/nvim-osc52",
     config = function()
-      -- Y yanks to client clipboard (must use : rather than <Cmd>)
-      vim.keymap.set("v", "Y", ":OSCYank<CR>")
-      vim.keymap.set("n", "Y", "<Plug>OSCYank")
+      local osc52 = require("osc52")
+      osc52.setup { silent = true }
 
-      -- use OSCYank to integrate with client clipboard
-      -- https://github.com/ojroques/vim-oscyank/issues/24#issuecomment-1098406019
-      local function copy(lines, _) vim.fn.OSCYankString(table.concat(lines, "\n")) end
+      vim.keymap.set("v", "Y", osc52.copy_visual)
+      vim.keymap.set("n", "Y", osc52.copy_operator, { expr = true })
+
+      -- use osc52 as clipboard provider
+      -- https://github.com/ojroques/nvim-osc52#using-nvim-osc52-as-clipboard-provider
+      local function copy(lines, _) osc52.copy(table.concat(lines, "\n")) end
 
       local function paste() return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') } end
 
-      vim.g.oscyank_term = "default"
       vim.g.clipboard = {
         name = "osc52",
         copy = { ["+"] = copy, ["*"] = copy },
@@ -159,7 +160,7 @@ packer.startup(function(use)
   }
   use {
     "lewis6991/spellsitter.nvim",
-    config = function ()
+    config = function()
       require "spellsitter".setup()
     end
   }
@@ -330,7 +331,7 @@ packer.startup(function(use)
 
   use {
     "lewis6991/cleanfold.nvim",
-    config =function ()
+    config = function()
       require("cleanfold").setup()
     end
   }
