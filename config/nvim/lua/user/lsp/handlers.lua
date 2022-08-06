@@ -5,7 +5,7 @@ local function lsp_activate_capabilities(client, bufnr)
 
   require("illuminate").on_attach(client)
 
-  if client.resolved_capabilities.code_lens then
+  if client.server_capabilities.codeLensProvider then
     autocmd({ "BufEnter", "CursorHold", "InsertLeave" },
       { buffer = bufnr, callback = vim.lsp.codelens.refresh })
   end
@@ -46,12 +46,14 @@ local function lsp_keymaps(bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts { desc = "list workspace folders" })
 
-  keymap('n', '<leader>fm', vim.lsp.buf.formatting, opts { desc = "code format" })
+  keymap('n', '<leader>fm', function()
+    vim.lsp.buf.format { async = true }
+  end, opts { desc = "code format" })
 end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
   end
   lsp_activate_capabilities(client)
   lsp_keymaps(bufnr)
