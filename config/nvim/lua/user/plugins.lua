@@ -211,6 +211,17 @@ packer.startup(function(use)
   }
 
   use {
+    "stevearc/stickybuf.nvim",
+    config = function()
+      require("stickybuf").setup {
+        filetype = {
+          Outline = "filetype",
+        },
+      }
+    end,
+  }
+
+  use {
     "hrsh7th/nvim-cmp",
     requires = {
       -- Completion plugins
