@@ -121,7 +121,8 @@ packer.startup(function(use)
     "beauwilliams/focus.nvim",
     config = function()
       require "focus".setup {
-        excluded_filetypes = { "gitcommit" }
+        excluded_filetypes = { "fugitive", "gitcommit", "packer", "Outline" },
+        signcolumn = false,
       }
       vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>", { desc = "toggle golden ratio view" })
     end,
