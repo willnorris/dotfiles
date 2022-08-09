@@ -21,7 +21,6 @@ packer.startup(function(use)
   use 'lewis6991/impatient.nvim' -- Caching for faster startup time
   use "famiu/bufdelete.nvim" -- Better buffer deletion
   use "farmergreg/vim-lastplace" -- Restore last cursor position
-  use "junegunn/gv.vim" -- Git commit browser
   use "konfekt/vim-sentence-chopper" -- Semantic Line Breaks
   use "michaeljsmith/vim-indent-object" -- Text objects based on indent level
   use "sickill/vim-pasta" -- Adjust indentation when pasting
@@ -33,12 +32,12 @@ packer.startup(function(use)
   use "tpope/vim-vinegar" -- Improvements to netrw
   use "kyazdani42/nvim-web-devicons"
 
-
-  -- Git related plugins
-  use {
+  use { -- Git related plugins
+    "junegunn/gv.vim", -- Git commit browser
     "tpope/vim-git", -- Vim runtime files for git
     "tpope/vim-fugitive", -- Vim interface to git
     "tpope/vim-rhubarb", -- GitHub support for vim-fugitive
+    "lewis6991/gitsigns.nvim", -- Git integration for buffers
     {
       "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
       config = function()
@@ -115,12 +114,6 @@ packer.startup(function(use)
     config = function()
       vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
     end,
-  }
-
-  -- Git integration for buffers
-  use {
-    "lewis6991/gitsigns.nvim",
-    config = function() require("user.gitsigns") end,
   }
 
   -- Auto-resize windows according to golden ratio
