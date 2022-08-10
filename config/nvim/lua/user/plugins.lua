@@ -119,6 +119,7 @@ packer.startup(function(use)
   -- Auto-resize windows according to golden ratio
   use {
     "beauwilliams/focus.nvim",
+    commit = "05df9ee",
     config = function()
       require "focus".setup {
         excluded_filetypes = { "fugitive", "gitcommit", "packer", "Outline" },
