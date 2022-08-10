@@ -16,6 +16,7 @@ zstyle ':completion:*' menu select=2
 # use vi key bindings
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins '^[' vi-cmd-mode
 bindkey "^?" backward-delete-char
 
 # sane backspace behavior
