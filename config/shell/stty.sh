@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 [ -z "$PS1" ] && return # interactive only
 
 # disable tty stop and start

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ -z "$GCLOUD_HOME" ]; then
   if [ -d /opt/google-cloud-sdk ]; then
     export GCLOUD_HOME=/opt/google-cloud-sdk

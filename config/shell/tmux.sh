@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+
 # load or start named tmux session (https://github.com/bag-man/dotfiles/blob/c88cc45/bashrc)
 ts() {
   [ -n "$TMUX" ] && change="switch-client" || change="attach-session"
@@ -8,3 +11,4 @@ ts() {
     fzf-tmux --exit-0 --preview='printf "Clients:\n$(tmux list-clients -t {})\n\nWindows:\n$(tmux list-windows -t {})"') \
     && tmux "$change" -t "$session" || echo "No sessions found."
 }
+# shellcheck disable=SC2016

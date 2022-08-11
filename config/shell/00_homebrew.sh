@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ -z "$HOMEBREW_HOME" ] && [ -d "/opt/homebrew" ]; then
   HOMEBREW_HOME="/opt/homebrew"
 fi

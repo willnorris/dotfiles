@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 [ -z "$PS1" ] && return # interactive only
 
 if command -v batcat >/dev/null; then

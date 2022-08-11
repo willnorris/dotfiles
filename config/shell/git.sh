@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 g () {
   if [ $# -gt 0 ]; then
     git "$@"

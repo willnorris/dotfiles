@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 . "${HOME}/.config/shell/_xdg_base.sh"
 

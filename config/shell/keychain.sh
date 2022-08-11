@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
 [ -z "$PS1" ] && return # interactive only
 
 # prefer secretive if installed (https://github.com/maxgoedjen/secretive)

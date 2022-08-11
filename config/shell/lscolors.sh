@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Setup ls colors
 
 [ -z "$PS1" ] && return # interactive only

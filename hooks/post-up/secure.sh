@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 HOST=$(hostname | cut -d. -f1)
 
@@ -7,8 +7,8 @@ function install_file() {
   DST="${HOME}/${2}"
 
   if [ -r "${SRC}" ]; then
-    if [ ! -h "${DST}" ] || [ $(readlink ${DST}) != "${SRC}" ]; then
-      mkdir -p $(dirname ${DST})
+    if [ ! -h "${DST}" ] || [ "$(readlink "${DST}")" != "${SRC}" ]; then
+      mkdir -p "$(dirname "${DST}")"
       ln -s "${SRC}" "${DST}"
     fi
   fi
