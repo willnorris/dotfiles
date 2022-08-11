@@ -11,6 +11,10 @@ if command -v bat >/dev/null; then
   alias cat='bat'
 fi
 
+if ! command -v fd >/dev/null && command fdfind >/dev/null; then
+  alias fd='fdfind'
+fi
+
 alias vi=vim
 alias view='vim -R'
 alias vimdiff='vim -d'
