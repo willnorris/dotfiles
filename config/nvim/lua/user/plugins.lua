@@ -14,7 +14,7 @@ if not ok then
 end
 
 -- Install plugins
-packer.startup(function(use)
+packer.startup({ function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
@@ -350,4 +350,12 @@ packer.startup(function(use)
   if packer_bootstrap then
     require("packer").sync()
   end
-end)
+end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'rounded' })
+      end
+    }
+  },
+})
