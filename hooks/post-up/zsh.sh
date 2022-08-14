@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. "${HOME}/.config/shell/_xdg_base.sh"
+. "${HOME}/.config/shell/_base.sh"
 
 ln -s zshenv "${XDG_CONFIG_HOME}/zsh/.zshenv" 2>/dev/null
 ln -s zprofile "${XDG_CONFIG_HOME}/zsh/.zprofile" 2>/dev/null

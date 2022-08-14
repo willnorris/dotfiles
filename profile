@@ -3,7 +3,7 @@
 # User Information
 : ${EMAIL:="will@willnorris.com"}
 
-source "${HOME}/.config/shell/_xdg_base.sh"
+source "${HOME}/.config/shell/_base.sh"
 
 if [ -d "${XDG_CONFIG_HOME}/shell" ]; then
   for i in ${XDG_CONFIG_HOME}/shell/*.sh; do

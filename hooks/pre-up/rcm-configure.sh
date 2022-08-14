@@ -2,7 +2,7 @@
 
 set -eu
 
-. "../../config/shell/_xdg_base.sh"
+. "../../config/shell/_base.sh"
 
 pushd "$(dirname "$0")" > /dev/null
 cd ../..

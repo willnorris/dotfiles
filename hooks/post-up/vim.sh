@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. "${HOME}/.config/shell/_xdg_base.sh"
+. "${HOME}/.config/shell/_base.sh"
 
 ln -sn "${XDG_CONFIG_HOME}/vim" "${HOME}/.vim" 2>/dev/null
 

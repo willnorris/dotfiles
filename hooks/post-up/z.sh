@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-. "${HOME}/.config/shell/_xdg_base.sh"
+. "${HOME}/.config/shell/_base.sh"
 
 mkdir -p "${XDG_DATA_HOME}/z"
