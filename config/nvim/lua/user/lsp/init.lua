@@ -48,11 +48,13 @@ if tb_ok then
   vim.lsp.handlers["callHierarchy/incomingCalls"] = tb.lsp_incoming_calls
   vim.lsp.handlers["callHierarchy/outgoingCalls"] = tb.lsp_outgoing_calls
   vim.lsp.handlers["textDocument/references"] = tb.lsp_references
-  vim.lsp.handlers["textDocument/definition"] = tb.lsp_definitions
   vim.lsp.handlers["textDocument/typeDefinition"] = tb.lsp_type_definitions
   vim.lsp.handlers["textDocument/implementation"] = tb.lsp_implementations
   vim.lsp.handlers["textDocument/documentSymbol"] = tb.lsp_document_symbols
   vim.lsp.handlers["workspace/symbol"] = tb.lsp_workspace_symbols
+
+  -- causes issues with goto-preview
+  --vim.lsp.handlers["textDocument/definition"] = tb.lsp_definitions
 end
 
 -- register additional null-ls handlers
@@ -74,6 +76,11 @@ if tl_ok then
     update_in_insert = false,
   })
   vim.keymap.set("n", "yoxx", "<Plug>(toggle-lsp-diag-vtext)", { desc = "Toggle LSP virtual text" })
+end
+
+local gp_ok, gp = pcall(require, 'goto-preview')
+if gp_ok then
+  gp.setup()
 end
 
 -- Fix LspInfo window border (https://neovim.discourse.group/t/1566)

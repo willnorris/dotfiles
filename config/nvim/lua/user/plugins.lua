@@ -243,6 +243,7 @@ packer.startup(function(use)
       "williamboman/nvim-lsp-installer",
       "jose-elias-alvarez/null-ls.nvim",
       "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+      "rmagatti/goto-preview",
     },
     config = function() require("user.lsp") end,
   }
