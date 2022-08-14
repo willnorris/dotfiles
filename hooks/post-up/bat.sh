@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-if command -v bat >/dev/null; then
+. "${HOME}/.config/shell/_base.sh"
+
+if has bat; then
   bat cache --build
 fi

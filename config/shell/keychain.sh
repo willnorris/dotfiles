@@ -9,7 +9,7 @@ if [ -r "${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/so
 fi
 
 # then try keychain (https://www.funtoo.org/Keychain)
-if command -v keychain >/dev/null; then
+if has keychain; then
   if [ -f "$HOME/.ssh/id_ed25519" ]; then
     mkdir -p "${XDG_RUNTIME_DIR}/keychain"
     eval "$(keychain --dir "${XDG_RUNTIME_DIR}/keychain" --absolute --eval --quiet --agents ssh id_ed25519)"

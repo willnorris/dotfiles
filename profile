@@ -16,5 +16,5 @@ fi
 
 # include ~/.local/bin in PATH late to give precedence
 if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
+    pathadd "$HOME/.local/bin"
 fi

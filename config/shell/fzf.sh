@@ -12,11 +12,11 @@ if [ -z "$FZF_HOME" ] && [ -d "$XDG_DATA_HOME/nvim/site/pack/packer/start/fzf" ]
 fi
 
 if [ -n "$FZF_HOME" ]; then
-  export PATH="$FZF_HOME/bin:$PATH"
+  export pathadd "$FZF_HOME/bin"
 fi
 
-if command -v fzf > /dev/null; then
-  if [ "$(command -v fd > /dev/null)" ]; then
+if has fzf; then
+  if has fd; then
     export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow --exclude .git --color always"
   fi
   export FZF_DEFAULT_OPTS="

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if command -v fzf > /dev/null; then
+if has fzf; then
   if [ -f "$FZF_HOME/shell/completion.bash" ]; then
     source "$FZF_HOME/shell/completion.bash"
   elif [ -f "/usr/share/doc/fzf/examples/completion.bash" ]; then

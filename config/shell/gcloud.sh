@@ -9,5 +9,5 @@ if [ -z "$GCLOUD_HOME" ]; then
 fi
 
 if [ -n "$GCLOUD_HOME" ]; then
-  PATH="$GCLOUD_HOME/bin:$PATH"
+  pathadd "$GCLOUD_HOME/bin"
 fi

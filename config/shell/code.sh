@@ -5,7 +5,7 @@
 # setup this alias is if we're running inside of VS Code stable.  That way, if
 # we're already in VS Code, 'code' will always point to the current version.
 if [ "${TERM_PROGRAM}" != "vscode" ] || [[ "${TERM_PROGRAM_VERSION}" == *"-insider" ]]; then
-  if command -v code-insiders >/dev/null; then
+  if has code-insiders; then
     alias code=code-insiders
   fi
 fi

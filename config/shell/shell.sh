@@ -2,16 +2,16 @@
 
 [ -z "$PS1" ] && return # interactive only
 
-if command -v batcat >/dev/null; then
+if has batcat; then
   alias bat='batcat'
 fi
-if command -v bat >/dev/null; then
+if has bat; then
   export BAT_THEME="OneHalfDark"
   export BAT_STYLE="plain"
   alias cat='bat'
 fi
 
-if ! command -v fd >/dev/null && command fdfind >/dev/null; then
+if ! has fd && has fdfind; then
   alias fd='fdfind'
 fi
 
@@ -19,7 +19,7 @@ alias vi=vim
 alias view='vim -R'
 alias vimdiff='vim -d'
 export EDITOR='vim'
-if command -v nvim >/dev/null; then
+if has nvim; then
   alias vim=nvim
   EDITOR='nvim'
 fi
@@ -38,7 +38,7 @@ fi
 
 # Set $HOSTNAME environment variables, which is used in other places for
 # host-specific configuration
-if command -v scutil >/dev/null; then
+if has scutil; then
   HOSTNAME="$(scutil --get ComputerName)"
 fi
 if [ -z "$HOSTNAME" ]; then
