@@ -6,6 +6,8 @@ vim.o.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 vim.o.undofile = true
 vim.o.timeoutlen = 500
 
+vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages"
+
 -- UI
 vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
 vim.o.number = true -- show line numbers
