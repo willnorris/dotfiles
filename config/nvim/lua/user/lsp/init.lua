@@ -53,7 +53,6 @@ if tb_ok then
   vim.lsp.handlers["textDocument/implementation"] = tb.lsp_implementations
   vim.lsp.handlers["textDocument/documentSymbol"] = tb.lsp_document_symbols
   vim.lsp.handlers["workspace/symbol"] = tb.lsp_workspace_symbols
-  vim.lsp.handlers["textDocument/codeAction"] = tb.lsp_references
 end
 
 -- register additional null-ls handlers
