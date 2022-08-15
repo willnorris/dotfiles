@@ -31,8 +31,8 @@ local function lsp_keymaps(bufnr)
   keymap("n", "gk", vim.lsp.buf.signature_help, opts { desc = "code signature_help" })
   keymap("n", "<leader>rn", vim.lsp.buf.rename, opts { desc = "code rename" })
   keymap("n", "ga", vim.lsp.buf.code_action, opts { desc = "code action" })
-  keymap("n", "gp", require("goto-preview").goto_preview_definition, opts { desc = "preview definition" })
-  keymap("n", "gP", require("goto-preview").close_all_win, opts { desc = "close preview windows" })
+  keymap("n", "gp", function() require("goto-preview").goto_preview_definition() end, opts { desc = "preview definition" })
+  keymap("n", "gP", function() require("goto-preview").close_all_win() end, opts { desc = "close preview windows" })
 
   -- diagnostics
   keymap("n", "<leader>e", vim.diagnostic.open_float, opts { desc = "show diagnostic" })

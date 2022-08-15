@@ -78,11 +78,6 @@ if tl_ok then
   vim.keymap.set("n", "yoxx", "<Plug>(toggle-lsp-diag-vtext)", { desc = "Toggle LSP virtual text" })
 end
 
-local gp_ok, gp = pcall(require, 'goto-preview')
-if gp_ok then
-  gp.setup()
-end
-
 -- Fix LspInfo window border (https://neovim.discourse.group/t/1566)
 local win = require('lspconfig.ui.windows')
 local _default_opts = win.default_opts

@@ -158,6 +158,7 @@ packer.startup({ function(use)
   }
   use {
     "nvim-treesitter/nvim-treesitter-context",
+    after = "nvim-treesitter",
     config = function()
       require "treesitter-context".setup { mode = "topline" }
     end
@@ -206,6 +207,7 @@ packer.startup({ function(use)
   -- File outline based on LSP symbols
   use {
     "simrat39/symbols-outline.nvim",
+    after = "nvim-lspconfig",
     config = function()
       vim.g.symbols_outline = {
         auto_preview = false,
@@ -247,37 +249,47 @@ packer.startup({ function(use)
 
   -- LSP
   use {
-    "neovim/nvim-lspconfig",
-    requires = {
-      "williamboman/nvim-lsp-installer",
-      "jose-elias-alvarez/null-ls.nvim",
-      "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-      "rmagatti/goto-preview",
+    {
+      "neovim/nvim-lspconfig",
+      ft = { "go", "html", "lua", "typescript" },
+      module = "lspconfig",
+      config = function() require("user.lsp") end,
     },
-    config = function() require("user.lsp") end,
+    { "williamboman/nvim-lsp-installer", module = "nvim-lsp-installer" },
+    { "jose-elias-alvarez/null-ls.nvim", module = "null-ls" },
+    { "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim", module = "toggle_lsp_diagnostics" },
+    {
+      "rmagatti/goto-preview",
+      module = "goto-preview",
+      config = function() require("goto-preview").setup() end,
+    }
   }
 
   -- Telescope
   use {
-    "nvim-telescope/telescope.nvim",
-    requires = {
-      "nvim-telescope/telescope-file-browser.nvim",
+    {
+      "nvim-telescope/telescope.nvim",
+      module = "telescope",
+      cmd = "Telescope",
+      keys = require("user.telescope").keys,
+      config = function() require("user.telescope").config() end,
     },
-    config = function() require("user.telescope") end
-  }
-  use {
-    "stevearc/dressing.nvim",
-    config = function()
-      require("dressing").setup {
-        input = {
-          anchor = "NW",
-          winblend = 0,
-        },
-        select = {
-          telescope = require('telescope.themes').get_cursor(),
-        },
-      }
-    end
+    { "nvim-telescope/telescope-file-browser.nvim", module = "telescope._extensions.file_browser", },
+    {
+      "stevearc/dressing.nvim",
+      module = "dressing",
+      config = function()
+        require("dressing").setup {
+          input = {
+            anchor = "NW",
+            winblend = 0,
+          },
+          select = {
+            telescope = require('telescope.themes').get_cursor(),
+          },
+        }
+      end
+    }
   }
 
   -- Diagnostics viewer
