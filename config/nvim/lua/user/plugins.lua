@@ -13,6 +13,15 @@ if not ok then
   return
 end
 
+-- recompile packer on when plugins.lua is saved
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "plugins.lua",
+  callback = function()
+    vim.cmd [[source <afile>]]
+    packer.compile()
+  end
+})
+
 -- Install plugins
 packer.startup({ function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
