@@ -345,16 +345,16 @@ packer.startup({ function(use)
 
   use {
     "nvim-neotest/neotest",
+    opt = true,
+    keys = require("user.neotest").keys,
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-neotest/neotest-go",
-      "nvim-neotest/neotest-python",
+      { "nvim-neotest/neotest-go", module = "neotest-go" },
+      { "nvim-neotest/neotest-python", module = "neotest-python" },
     },
-    config = function()
-      require("user.neotest")
-    end,
+    config = function() require("user.neotest").config() end,
   }
 
   use {
