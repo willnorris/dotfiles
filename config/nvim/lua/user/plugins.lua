@@ -53,7 +53,6 @@ packer.startup({ function(use)
     },
     {
       "rhysd/committia.vim",
-      after = "gitsigns.nvim",
       config = function() require("user.git").committia.config() end,
     },
   }
@@ -111,6 +110,7 @@ packer.startup({ function(use)
   -- Undo history visualizer
   use {
     "mbbill/undotree",
+    keys = "<leader>u",
     config = function()
       vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
     end,
@@ -174,6 +174,8 @@ packer.startup({ function(use)
   -- Distraction-free writing and coding
   use {
     "folke/zen-mode.nvim",
+    opt = true,
+    keys = "<leader>zz",
     requires = {
       "benstockil/twilight.nvim", -- dim inactive portions of file
     },
@@ -194,18 +196,6 @@ packer.startup({ function(use)
   use {
     "nvim-lualine/lualine.nvim",
     config = function() require("user.lualine") end,
-  }
-
-  -- File outline based on LSP symbols
-  use {
-    "simrat39/symbols-outline.nvim",
-    after = "nvim-lspconfig",
-    config = function()
-      vim.g.symbols_outline = {
-        auto_preview = false,
-      }
-      vim.keymap.set("n", "<leader>o", "<Cmd>SymbolsOutline<CR>", { desc = "symbol outline" })
-    end,
   }
 
   use {
@@ -260,11 +250,21 @@ packer.startup({ function(use)
     { "williamboman/nvim-lsp-installer", module = "nvim-lsp-installer" },
     { "jose-elias-alvarez/null-ls.nvim", module = "null-ls" },
     { "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim", module = "toggle_lsp_diagnostics" },
-    {
+    { -- Display LSP results in preview window
       "rmagatti/goto-preview",
       module = "goto-preview",
       config = function() require("goto-preview").setup() end,
-    }
+    },
+    { -- File outline based on LSP symbols
+      "simrat39/symbols-outline.nvim",
+      after = "nvim-lspconfig",
+      config = function()
+        vim.g.symbols_outline = {
+          auto_preview = false,
+        }
+        vim.keymap.set("n", "<leader>o", "<Cmd>SymbolsOutline<CR>", { desc = "symbol outline" })
+      end,
+    },
   }
 
   -- Telescope
@@ -336,6 +336,7 @@ packer.startup({ function(use)
 
   use {
     "folke/which-key.nvim",
+    keys = "<leader>",
     config = function()
       require "which-key".setup {
         icons = {
