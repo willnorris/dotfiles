@@ -68,14 +68,6 @@ packer.startup({ function(use)
     },
   }
 
-  use {
-    "github/copilot.vim",
-    config = function()
-      -- disable copilot completion, since we'll use it through nvim-cmp
-      vim.g.copilot_filetypes = { ["*"] = false }
-    end
-  }
-
   -- Dark colorscheme
   use { "willnorris/onedark.vim", branch = "lua" }
 
@@ -236,24 +228,34 @@ packer.startup({ function(use)
     end,
   }
 
-  use {
-    "hrsh7th/nvim-cmp",
-    requires = {
-      -- Completion plugins
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "hrsh7th/cmp-copilot",
-      "f3fora/cmp-spell",
-
-      -- Snippets
-      "L3MON4D3/LuaSnip", -- Snippet engine
-      "rafamadriz/friendly-snippets", -- A bunch of snippets to use
+  use { -- Text Completion
+    {
+      "hrsh7th/nvim-cmp",
+      opt = true,
+      event = "InsertEnter",
+      requires = {
+        -- Completion plugins
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-copilot",
+        "f3fora/cmp-spell",
+      },
+      config = function() require("user.cmp") end
     },
-    config = function() require("user.cmp") end
+    { "L3MON4D3/LuaSnip", module = "luasnip" },
+    { "rafamadriz/friendly-snippets", after = "LuaSnip" },
+    {
+      "github/copilot.vim",
+      after = "nvim-cmp",
+      config = function()
+        -- disable copilot completion, since we'll use it through nvim-cmp
+        vim.g.copilot_filetypes = { ["*"] = false }
+      end
+    },
   }
 
   -- LSP
