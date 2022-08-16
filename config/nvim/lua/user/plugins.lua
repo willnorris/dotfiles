@@ -156,13 +156,14 @@ packer.startup({ function(use)
   }
   use {
     "lewis6991/spellsitter.nvim",
+    after = "nvim-treesitter",
     config = function()
       require "spellsitter".setup()
     end
   }
 
   use {
-    "https://github.com/RRethy/vim-illuminate",
+    "RRethy/vim-illuminate",
     config = function()
       local illuminate = require "illuminate"
       vim.keymap.set('n', '<a-n>', function() illuminate.next_reference { wrap = true } end)
@@ -304,7 +305,7 @@ packer.startup({ function(use)
 
   use {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    requires = "plenary.nvim",
     config = function()
       require("todo-comments").setup {
         highlight = {
@@ -334,7 +335,7 @@ packer.startup({ function(use)
   }
 
   use {
-    "https://github.com/folke/which-key.nvim",
+    "folke/which-key.nvim",
     config = function()
       require "which-key".setup {
         icons = {
