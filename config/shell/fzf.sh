@@ -12,7 +12,7 @@ if [ -z "$FZF_HOME" ] && [ -d "$XDG_DATA_HOME/nvim/site/pack/packer/start/fzf" ]
 fi
 
 if [ -n "$FZF_HOME" ]; then
-  export pathadd "$FZF_HOME/bin"
+  pathadd "$FZF_HOME/bin"
 fi
 
 if has fzf; then
