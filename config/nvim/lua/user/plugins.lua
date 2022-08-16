@@ -42,20 +42,29 @@ packer.startup({ function(use)
   use "kyazdani42/nvim-web-devicons"
 
   use { -- Git related plugins
-    "junegunn/gv.vim", -- Git commit browser
-    "tpope/vim-git", -- Vim runtime files for git
-    "tpope/vim-fugitive", -- Vim interface to git
-    "tpope/vim-rhubarb", -- GitHub support for vim-fugitive
-    "lewis6991/gitsigns.nvim", -- Git integration for buffers
+    { -- Git integration for buffers.
+      -- gitsigns is configured to lazy load when in a git repo.
+      -- Most other git related plugins then load after gitsigns.
+      "lewis6991/gitsigns.nvim",
+      opt = true,
+      setup = function() require("user.git").gitsigns.setup() end,
+      config = function() require("user.git").gitsigns.config() end,
+    },
+    { "junegunn/gv.vim", after = "gitsigns.nvim" }, -- Git commit browser
+    { "tpope/vim-git", after = "gitsigns.nvim" }, -- Vim runtime files for git
+    { "tpope/vim-fugitive", after = "gitsigns.nvim" }, -- Vim interface to git
+    { "tpope/vim-rhubarb", after = "gitsigns.nvim" }, -- GitHub support for vim-fugitive
     {
       "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
+      keys = "<leader>gy",
       config = function()
         require("gitlinker").setup()
       end,
     },
     {
       "rhysd/committia.vim",
-      config = function() require("user.git") end,
+      after = "gitsigns.nvim",
+      config = function() require("user.git").committia.config() end,
     },
   }
 
