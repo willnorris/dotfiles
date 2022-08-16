@@ -49,6 +49,7 @@ keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<
 keymap("n", "<leader>R", function()
   require("plenary.reload").reload_module("user")
   vim.cmd [[source $MYVIMRC]]
+  require("user.plugins")
   require("packer").sync()
 end, { desc = "reload $MYVIMRC" })
 

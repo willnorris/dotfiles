@@ -1,13 +1,3 @@
--- Automatically install packer
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local packer_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
-    install_path })
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
-end
-
 local ok, packer = pcall(require, "packer")
 if not ok then
   return
@@ -24,7 +14,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -- Install plugins
 packer.startup({ function(use)
-  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use { "wbthomason/packer.nvim", opt = true } -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
   use 'lewis6991/impatient.nvim' -- Caching for faster startup time
@@ -380,11 +370,6 @@ packer.startup({ function(use)
 
 
   -- TODO: look at https://github.com/mfussenegger/nvim-dap
-
-  -- Automatically set up configuration after cloning packer.nvim
-  if packer_bootstrap then
-    require("packer").sync()
-  end
 end,
   config = {
     display = {
