@@ -5,7 +5,6 @@ M.keys = {"<leader>s", "<C-t>", "<leader>fb"}
 M.config = function()
   local telescope = require "telescope"
   local actions = require "telescope.actions"
-  local trouble = require "trouble.providers.telescope"
 
   -- Scroll the preview window by a specified distance, rather than the default scroll_speed.
   local scroll_preview_custom = function(bufnr, speed, direction)
@@ -42,7 +41,7 @@ M.config = function()
         ["<C-s>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
-        ["<C-r>"] = trouble.open_with_trouble,
+        ["<C-r>"] = function() require("trouble.providers.telescope").open_with_trouble() end,
 
         ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
         ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,
@@ -84,7 +83,7 @@ M.config = function()
         ["<C-s>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
-        ["<C-r>"] = trouble.open_with_trouble,
+        ["<C-r>"] = function() require("trouble.providers.telescope").open_with_trouble() end,
 
         ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
         ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,

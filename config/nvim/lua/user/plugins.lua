@@ -306,6 +306,9 @@ packer.startup({ function(use)
   -- Diagnostics viewer
   use {
     "folke/trouble.nvim",
+    opt = true,
+    keys = "<leader>x",
+    module = "trouble",
     config = function() require("user.trouble") end
   }
 
