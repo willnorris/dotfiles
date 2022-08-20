@@ -3,18 +3,9 @@ if not ok then
   return
 end
 
--- recompile packer on when plugins.lua is saved
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "plugins.lua",
-  callback = function()
-    vim.cmd [[source <afile>]]
-    packer.compile()
-  end
-})
-
 -- Install plugins
 packer.startup({ function(use)
-  use { "wbthomason/packer.nvim", opt = true } -- Have packer manage itself
+  use { "wbthomason/packer.nvim", module = "packer" } -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
   use 'lewis6991/impatient.nvim' -- Caching for faster startup time
