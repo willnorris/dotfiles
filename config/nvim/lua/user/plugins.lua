@@ -327,7 +327,7 @@ packer.startup({ function(use)
 
   use {
     "folke/which-key.nvim",
-    keys = "<leader>",
+    module = "which-key",
     config = function()
       require "which-key".setup {
         icons = {
