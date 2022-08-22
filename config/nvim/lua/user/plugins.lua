@@ -157,8 +157,8 @@ packer.startup({ function(use)
     "RRethy/vim-illuminate",
     config = function()
       local illuminate = require "illuminate"
-      vim.keymap.set('n', '<a-n>', function() illuminate.next_reference { wrap = true } end)
-      vim.keymap.set('n', '<a-p>', function() illuminate.next_reference { reverse = true, wrap = true } end)
+      vim.keymap.set('n', '<c-n>', function() illuminate.next_reference { wrap = true } end)
+      vim.keymap.set('n', '<c-p>', function() illuminate.next_reference { reverse = true, wrap = true } end)
     end
   }
 
