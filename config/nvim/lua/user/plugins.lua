@@ -21,6 +21,7 @@ packer.startup({ function(use)
   use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
   use "tpope/vim-vinegar" -- Improvements to netrw
   use "kyazdani42/nvim-web-devicons"
+  use "isobit/vim-caddyfile" -- Caddyfile syntax support
 
   use { -- Git related plugins
     { -- Git integration for buffers.
@@ -360,7 +361,6 @@ packer.startup({ function(use)
       require("cleanfold").setup()
     end
   }
-
 
   -- TODO: look at https://github.com/mfussenegger/nvim-dap
 end,
