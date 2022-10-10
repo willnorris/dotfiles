@@ -235,7 +235,7 @@ packer.startup({ function(use)
   use {
     {
       "neovim/nvim-lspconfig",
-      ft = { "go", "html", "lua", "typescript" },
+      ft = { "go", "html", "lua", "swift", "typescript", "typescriptreact" },
       module = "lspconfig",
       config = function() require("user.lsp") end,
     },
