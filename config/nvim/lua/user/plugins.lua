@@ -251,6 +251,7 @@ packer.startup({ function(use)
       "simrat39/symbols-outline.nvim",
       after = "nvim-lspconfig",
       config = function()
+        require("symbols-outline").setup()
         vim.g.symbols_outline = {
           auto_preview = false,
         }
