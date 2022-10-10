@@ -22,14 +22,14 @@ M.gitsigns = {
         change = { text = "~" },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', ']c', function()
-          if vim.wo.diff then return ']c' end
+        vim.keymap.set('n', ']d', function()
+          if vim.wo.diff then return ']d' end
           vim.schedule(function() gitsigns.next_hunk() end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr })
 
-        vim.keymap.set('n', '[c', function()
-          if vim.wo.diff then return '[c' end
+        vim.keymap.set('n', '[d', function()
+          if vim.wo.diff then return '[d' end
           vim.schedule(function() gitsigns.prev_hunk() end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr })

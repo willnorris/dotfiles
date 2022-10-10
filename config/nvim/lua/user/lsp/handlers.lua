@@ -36,8 +36,8 @@ local function lsp_keymaps(bufnr)
 
   -- diagnostics
   keymap("n", "<leader>e", vim.diagnostic.open_float, opts { desc = "show diagnostic" })
-  keymap("n", "[d", vim.diagnostic.goto_prev, opts { desc = "prev diagnostic" })
-  keymap("n", "]d", vim.diagnostic.goto_next, opts { desc = "next diagnostic" })
+  keymap("n", "[x", vim.diagnostic.goto_prev, opts { desc = "prev diagnostic" })
+  keymap("n", "]x", vim.diagnostic.goto_next, opts { desc = "next diagnostic" })
   keymap("n", "<leader>q", vim.diagnostic.setloclist, opts { desc = "diagnostic loclist" })
 
   -- workspace folders

@@ -16,6 +16,7 @@ M.config = function()
   end
 
   local actions_which_key = function(bufnr) actions.which_key(bufnr, { separator = "  " }) end
+  local trouble = require("trouble.providers.telescope")
 
   local defaults = {
     path_display = { "smart" },
@@ -37,11 +38,10 @@ M.config = function()
         ["<C-o>"] = require("telescope.actions.layout").toggle_preview,
 
         ["<CR>"] = actions.select_default,
-        ["<C-x>"] = actions.select_horizontal,
         ["<C-s>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
-        ["<C-r>"] = function() require("trouble.providers.telescope").open_with_trouble() end,
+        ["<C-x>"] = trouble.open_with_trouble,
 
         ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
         ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,
@@ -79,11 +79,10 @@ M.config = function()
         ["<C-o>"] = require("telescope.actions.layout").toggle_preview,
 
         ["<CR>"] = actions.select_default,
-        ["<C-x>"] = actions.select_horizontal,
         ["<C-s>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
-        ["<C-r>"] = function() require("trouble.providers.telescope").open_with_trouble() end,
+        ["<C-x>"] = trouble.open_with_trouble,
 
         ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
         ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,
