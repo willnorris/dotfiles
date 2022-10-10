@@ -2,6 +2,9 @@
 
 [ -z "$PS1" ] && return # interactive only
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 if has batcat; then
   alias bat='batcat'
 fi
