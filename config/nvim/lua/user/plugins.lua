@@ -124,6 +124,9 @@ packer.startup({ function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = '<Cmd>TSUpdate',
+    requires = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     config = function()
       require "nvim-treesitter.configs".setup {
         ensure_installed = { "go", "typescript" },
@@ -135,6 +138,28 @@ packer.startup({ function(use)
             -- (but not really resolved) at https://github.com/nvim-treesitter/nvim-treesitter/issues/556
             return vim.api.nvim_buf_line_count(bufnr) > 10000
           end,
+        },
+        textobjects = {
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+              ["]m"] = "@function.outer",
+              ["]]"] = { query = "@class.outer", desc = "Next class start" },
+            },
+            goto_next_end = {
+              ["]M"] = "@function.outer",
+              ["]["] = "@class.outer",
+            },
+            goto_previous_start = {
+              ["[m"] = "@function.outer",
+              ["[["] = "@class.outer",
+            },
+            goto_previous_end = {
+              ["[M"] = "@function.outer",
+              ["[]"] = "@class.outer",
+            },
+          },
         },
       }
     end,
