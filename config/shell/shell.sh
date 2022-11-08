@@ -33,6 +33,12 @@ export VISUAL=${EDITOR}
 export PAGER='less'
 export LYNX_LSS=${HOME}/.lynx.lss
 
+# Use rg output with a pager
+# https://github.com/BurntSushi/ripgrep/issues/181
+rg() {
+  command rg -p "$@" | less -RFX
+}
+
 if echo "a" | grep --color "a" >/dev/null 2>&1; then
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
