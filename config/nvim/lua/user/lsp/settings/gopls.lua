@@ -10,7 +10,7 @@ local opt = {
         unusedparams = true,
       },
       env = {
-        GOFLAGS = "-tags=windows,linux,darwin,js",
+        GOFLAGS = "-tags=windows,linux,darwin",
       },
       staticcheck = true,
     },
