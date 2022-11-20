@@ -2,8 +2,8 @@
 
 This repository contains my dotfiles for various applications.
 
-Installation of these files is managed by [rcm][], which I've actually bundled
-as part of my dotfiles in the [rcm](./vendor/rcm/) directory.
+Installation of these files is managed by [rcm][],
+which I've actually bundled as part of my dotfiles in the [vendor/rcm](./vendor/rcm/) directory.
 
 [rcm]: https://github.com/thoughtbot/rcm
 
@@ -14,16 +14,13 @@ To set up a new host:
 
 ## Work dotfiles
 
-For my work machines, I have a separate set of dotfiles that I store on an
-internal git server. They include things like additional shell aliases and
-configuration files for internal tools. For those that have access, they can
-be found at <http://go/dotfiles/users/wnorris>. They are installed
-using:
+I have a separate set of dotfiles for my work machines.
+They include things like additional shell aliases and configuration files for internal tools.
 
-* `git clone https://git.internal/dotfiles ~/.work-dotfiles`
-* update `~/.rcrc` to include:
+* `git clone https://host/work-dotfiles ~/.work-dotfiles`
+* update `~/.config/rcm/rcrc` to include:
 
-      DOTFILES_DIRS="${HOME}/.work-dotfiles/users/wnorris ${HOME}/.dotfiles"
+      DOTFILES_DIRS="${HOME}/.work-dotfiles ${HOME}/.dotfiles"
 
 `rcup` will now install my work-specific dotfiles alongside my regular ones.
 
