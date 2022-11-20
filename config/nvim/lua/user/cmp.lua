@@ -1,6 +1,7 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 
+require("copilot_cmp").setup()
 require("luasnip/loaders/from_vscode").lazy_load()
 
 cmp.setup {

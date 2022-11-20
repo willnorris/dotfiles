@@ -183,7 +183,7 @@ packer.startup({ function(use)
     "nvim-orgmode/orgmode",
     config = function()
       require('orgmode').setup_ts_grammar()
-      require("orgmode").setup{
+      require("orgmode").setup {
         org_agenda_files = "~/.local/share/orgmode/*",
         org_default_notes_file = "~/.local/share/orgmode/notes.org",
       }
@@ -250,20 +250,22 @@ packer.startup({ function(use)
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        "hrsh7th/cmp-copilot",
+        "zbirenbaum/copilot-cmp",
         "f3fora/cmp-spell",
       },
+      after = { "copilot.lua" },
       config = function() require("user.cmp") end
     },
     { "L3MON4D3/LuaSnip", module = "luasnip" },
     { "rafamadriz/friendly-snippets", after = "LuaSnip" },
     {
-      "github/copilot.vim",
-      after = "nvim-cmp",
+      "zbirenbaum/copilot.lua",
+      event = "VimEnter",
       config = function()
-        -- disable copilot completion, since we'll use it through nvim-cmp
-        vim.g.copilot_filetypes = { ["*"] = false }
-      end
+        vim.defer_fn(function()
+          require("copilot").setup()
+        end, 100)
+      end,
     },
   }
 
