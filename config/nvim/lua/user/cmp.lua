@@ -37,6 +37,7 @@ cmp.setup {
     { name = "nvim_lsp_signature_help" },
     { name = "nvim_lsp" },
     { name = "copilot" },
+    { name = "orgmode" },
     { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },

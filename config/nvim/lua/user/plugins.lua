@@ -180,6 +180,17 @@ packer.startup({ function(use)
   }
 
   use {
+    "nvim-orgmode/orgmode",
+    config = function()
+      require('orgmode').setup_ts_grammar()
+      require("orgmode").setup{
+        org_agenda_files = "~/.local/share/orgmode/*",
+        org_default_notes_file = "~/.local/share/orgmode/notes.org",
+      }
+    end
+  }
+
+  use {
     "RRethy/vim-illuminate",
     config = function()
       local illuminate = require "illuminate"
