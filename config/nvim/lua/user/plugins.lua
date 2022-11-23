@@ -237,6 +237,19 @@ packer.startup({ function(use)
     end,
   }
 
+  use {
+    "zbirenbaum/copilot.lua",
+    requires = {
+      "zbirenbaum/copilot-cmp",
+    },
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup()
+        require("copilot_cmp").setup()
+      end, 100)
+    end,
+  }
   use { -- Text Completion
     {
       "hrsh7th/nvim-cmp",
@@ -258,15 +271,6 @@ packer.startup({ function(use)
     },
     { "L3MON4D3/LuaSnip", module = "luasnip" },
     { "rafamadriz/friendly-snippets", after = "LuaSnip" },
-    {
-      "zbirenbaum/copilot.lua",
-      event = "VimEnter",
-      config = function()
-        vim.defer_fn(function()
-          require("copilot").setup()
-        end, 100)
-      end,
-    },
   }
 
   -- LSP
