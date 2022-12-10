@@ -16,8 +16,8 @@ fi
 
 if has gls; then
   alias ls=" gls --color=auto -F -N"
-elif ls --color=auto >/dev/null 2>/dev/null; then
-  alias ls=" ls --color=auto -F"
+elif ls --color=auto >/dev/null 2>&1; then
+  alias ls=" ls --color=auto -FG"
 else
   # Incase we're using BSD ls with color support.
   export CLICOLOR=1
