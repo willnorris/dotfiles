@@ -17,10 +17,10 @@ To set up a new host:
 I have a separate set of dotfiles for my work machines.
 They include things like additional shell aliases and configuration files for internal tools.
 
-* `git clone https://host/work-dotfiles ~/.work-dotfiles`
+* `git clone git@github.com:willnorris/dotfiles-work ~/.work-dotfiles`
 * update `~/.config/rcm/rcrc` to include:
 
-      DOTFILES_DIRS="${HOME}/.work-dotfiles ${HOME}/.dotfiles"
+      DOTFILES_DIRS="${HOME}/.dotfiles ${HOME}/.work-dotfiles"
 
 `rcup` will now install my work-specific dotfiles alongside my regular ones.
 
