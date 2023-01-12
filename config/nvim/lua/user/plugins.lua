@@ -171,13 +171,6 @@ packer.startup({ function(use)
       require "treesitter-context".setup { mode = "topline" }
     end
   }
-  use {
-    "lewis6991/spellsitter.nvim",
-    after = "nvim-treesitter",
-    config = function()
-      require "spellsitter".setup()
-    end
-  }
 
   use {
     "nvim-orgmode/orgmode",
