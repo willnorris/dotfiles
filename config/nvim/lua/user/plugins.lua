@@ -173,6 +173,35 @@ packer.startup({ function(use)
   }
 
   use {
+    { "rcarriga/nvim-dap-ui", module = "dapui", },
+    { "leoluz/nvim-dap-go", module = "dap-go", },
+    { "theHamsta/nvim-dap-virtual-text", module = "nvim-dap-virtual-text", },
+    {
+      "mfussenegger/nvim-dap",
+      opt = true,
+      keys = "<leader>d",
+      module = "dap",
+      config = function()
+        local dap, dapui = require("dap"), require("dapui")
+        dapui.setup()
+        require("dap-go").setup()
+        require("nvim-dap-virtual-text").setup({
+          commented = true,
+        })
+
+        vim.keymap.set('n', '<leader>dd', dapui.toggle, { desc = "debug: toggle UI" })
+        vim.keymap.set('n', '<leader>dk', dap.continue, { desc = "debug: continue" })
+        vim.keymap.set('n', '<leader>dj', dap.step_over, { desc = "debug: step over" })
+        vim.keymap.set('n', '<leader>dl', dap.step_into, { desc = "debug: step into" })
+        vim.keymap.set('n', '<leader>dh', dap.step_out, { desc = "debug: step out" })
+        vim.keymap.set('n', '<leader>dl', dap.run_last, { desc = "debug: run last" })
+        vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = "debug: toggle breakpoint" })
+        vim.keymap.set('n', '<leader>dt', dap.terminate, { desc = "debug: terminate session" })
+      end
+    }
+  }
+
+  use {
     "nvim-orgmode/orgmode",
     config = function()
       require('orgmode').setup_ts_grammar()
@@ -238,7 +267,11 @@ packer.startup({ function(use)
     event = "VimEnter",
     config = function()
       vim.defer_fn(function()
-        require("copilot").setup()
+        require("copilot").setup({
+          filetypes = {
+            ["dap-repl"] = false,
+          },
+        })
         require("copilot_cmp").setup()
       end, 100)
     end,
@@ -397,8 +430,6 @@ packer.startup({ function(use)
       require("cleanfold").setup()
     end
   }
-
-  -- TODO: look at https://github.com/mfussenegger/nvim-dap
 end,
   config = {
     display = {
