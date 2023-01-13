@@ -136,9 +136,10 @@ M.config = function()
   end, { desc = "file browser" })
   vim.keymap.set("n", "<leader>sb", tb.buffers, { desc = "search buffers" })
   vim.keymap.set("n", "<leader>ss", tb.live_grep, { desc = "search for string" })
-  vim.keymap.set("n", "<leader>sc", tb.grep_string, { desc = "search for string under cursor" })
-  vim.keymap.set("n", "<leader>sh", tb.highlights, { desc = "search highlights" })
-  vim.keymap.set("n", "<leader>sd", tb.diagnostics, { desc = "search diagnostics" })
+  vim.keymap.set("n", "<leader>sw", tb.grep_string, { desc = "search for word under cursor" })
+  vim.keymap.set("n", "<leader>sh", tb.help_tags, { desc = "search help" })
+  vim.keymap.set("n", "<leader>si", tb.highlights, { desc = "search highlights" })
+  vim.keymap.set("n", "<leader>sx", tb.diagnostics, { desc = "search diagnostics" })
   vim.keymap.set("n", "<leader>so", tb.oldfiles, { desc = "search previous files" })
 end
 
