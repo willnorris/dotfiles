@@ -2,5 +2,5 @@
 -- website, so most of these rules represent my preferences there.  If I start
 -- to edit more liquid files, I may need to modify some of these rules.
 
-vim.opt.textwidth = 100
-vim.opt.spell = true
+vim.opt_local.textwidth = 100
+vim.opt_local.spell = true

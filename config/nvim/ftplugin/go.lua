@@ -1,11 +1,11 @@
-vim.opt.ts = 8
-vim.opt.sw = 8
-vim.opt.et = false
-vim.opt.list = false
-vim.opt.spell = true
+vim.opt_local.ts = 8
+vim.opt_local.sw = 8
+vim.opt_local.et = false
+vim.opt_local.list = false
+vim.opt_local.spell = true
 
 -- Go has no max line-length, but set colorcolumn as a reference
-vim.opt.colorcolumn = "81"
+vim.opt_local.colorcolumn = "81"
 
 -- organize imports (from https://github.com/neovim/nvim-lspconfig/issues/115#issuecomment-1130373799)
 local function go_import()
