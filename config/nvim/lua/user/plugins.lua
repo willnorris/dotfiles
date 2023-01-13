@@ -50,7 +50,7 @@ packer.startup({ function(use)
   }
 
   -- Dark colorscheme
-  use { "willnorris/onedark.vim", branch = "lua" }
+  use { "navarasu/onedark.nvim" }
 
   -- Copy text to clipboard with OSC52
   use {
