@@ -2,6 +2,7 @@ vim.opt.ts = 8
 vim.opt.sw = 8
 vim.opt.et = false
 vim.opt.list = false
+vim.opt.spell = true
 
 -- Go has no max line-length, but set colorcolumn as a reference
 vim.opt.colorcolumn = "81"
