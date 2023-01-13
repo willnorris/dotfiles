@@ -15,7 +15,7 @@ cmp.setup {
     ["<C-j>"] = cmp.mapping.select_next_item(),
     ["<A-k>"] = cmp.mapping.scroll_docs(-2),
     ["<A-j>"] = cmp.mapping.scroll_docs(2),
-    ["<C-e>"] = cmp.mapping.abort(),
+    ["<C-c>"] = cmp.mapping.abort(),
     ["<C-y>"] = cmp.mapping.confirm { select = true },
     ["<C-o>"] = cmp.mapping.complete(),
   },
