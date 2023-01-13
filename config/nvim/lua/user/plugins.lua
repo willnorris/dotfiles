@@ -304,10 +304,14 @@ packer.startup({ function(use)
     {
       "neovim/nvim-lspconfig",
       ft = { "go", "html", "lua", "swift", "typescript", "typescriptreact" },
+      requires = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+      },
       module = "lspconfig",
       config = function() require("user.lsp") end,
     },
-    { "williamboman/nvim-lsp-installer", module = "nvim-lsp-installer" },
+    { "j-hui/fidget.nvim", module = "fidget" },
     { "jose-elias-alvarez/null-ls.nvim", module = "null-ls" },
     { "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim", module = "toggle_lsp_diagnostics" },
     { -- Display LSP results in preview window

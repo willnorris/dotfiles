@@ -1,16 +1,18 @@
 local lspconfig = require("lspconfig")
-local lsp_installer = require("nvim-lsp-installer")
 
-lsp_installer.setup({
-  ui = {
-    border = "rounded",
-    icons = {
-      server_installed = "",
-      server_pending = "",
-      server_uninstalled = ""
-    }
-  },
-})
+local mason_ok, mason = pcall(require, "mason")
+if mason_ok then
+  mason.setup({
+    ui = {
+      border = "rounded",
+      icons = {
+        package_installed = "",
+        package_pending = "",
+        package_uninstalled = ""
+      }
+    },
+  })
+end
 
 -- set default config for lsp servers
 lspconfig.util.default_config = vim.tbl_deep_extend("force",
@@ -22,13 +24,19 @@ lspconfig.util.default_config = vim.tbl_deep_extend("force",
 )
 
 -- configure installed lsp servers, loading settings from user/lsp/settings/<server>.lua if it exists.
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-  local opts = {}
-  local ok, server_opts = pcall(require, "user.lsp.settings." .. server.name)
-  if ok then
-    opts = server_opts
-  end
-  lspconfig[server.name].setup(opts)
+local mlsp_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if mlsp_ok then
+  mason_lspconfig.setup()
+  mason_lspconfig.setup_handlers {
+    function(server_name)
+      local opts = {}
+      local ok, server_opts = pcall(require, "user.lsp.settings." .. server_name)
+      if ok then
+        opts = server_opts
+      end
+      lspconfig[server_name].setup(opts)
+    end,
+  }
 end
 
 -- setup handlers
@@ -67,6 +75,12 @@ if nl_ok then
       null_ls.builtins.diagnostics.shellcheck,
     }
   }
+end
+
+-- unobtrusive progress indicator
+local fidget_ok, fidget = pcall(require, "fidget")
+if fidget_ok then
+  fidget.setup()
 end
 
 -- keymap to toggle LSP virtual text
