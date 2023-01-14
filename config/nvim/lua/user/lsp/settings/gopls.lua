@@ -9,9 +9,9 @@ local opt = {
       analyses = {
         unusedparams = true,
       },
-      env = {
-        GOFLAGS = "-tags=windows,linux,darwin",
-      },
+      -- env = {
+      --   GOFLAGS = "-tags=windows,linux,darwin",
+      -- },
       staticcheck = true,
     },
   },
