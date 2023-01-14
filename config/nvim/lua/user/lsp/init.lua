@@ -80,7 +80,11 @@ end
 -- unobtrusive progress indicator
 local fidget_ok, fidget = pcall(require, "fidget")
 if fidget_ok then
-  fidget.setup()
+  fidget.setup {
+    window = {
+      blend = 0,
+    },
+  }
 end
 
 -- keymap to toggle LSP virtual text
