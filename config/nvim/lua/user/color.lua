@@ -4,6 +4,10 @@ if ok then
     transparent = true,
     ending_tildes = true,
 
+    code_style = {
+      comments = "none",
+    },
+
     highlights = {
       Folded = { bg = "$bg0" },
       NormalFloat = { bg = "$bg0" },
