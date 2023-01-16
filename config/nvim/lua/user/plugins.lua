@@ -271,12 +271,13 @@ packer.startup({ function(use)
   use {
     {
       "neovim/nvim-lspconfig",
-      ft = { "go", "html", "lua", "swift", "typescript", "typescriptreact" },
+      ft = { "go", "html", "javascript", "lua", "swift", "typescript", "typescriptreact" },
       requires = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
       },
       module = "lspconfig",
+      cmd = "LspInfo",
       config = function() require("user.lsp") end,
     },
     { "j-hui/fidget.nvim", module = "fidget" },
