@@ -36,6 +36,7 @@ packer.startup({ function(use)
     { "tpope/vim-git", after = "gitsigns.nvim" }, -- Vim runtime files for git
     { "tpope/vim-fugitive", after = "gitsigns.nvim" }, -- Vim interface to git
     { "tpope/vim-rhubarb", after = "gitsigns.nvim" }, -- GitHub support for vim-fugitive
+    { "rhysd/git-messenger.vim", after = "gitsigns.nvim" }, -- commit message under cursor
     {
       "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
       keys = "<leader>gy",
