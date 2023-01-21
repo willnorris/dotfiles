@@ -1,4 +1,5 @@
 # ~/.config/profile contains common configuration for bourne compatible shells.
+# vim: ft=sh
 
 # User Information
 : ${EMAIL:="will@willnorris.com"}
