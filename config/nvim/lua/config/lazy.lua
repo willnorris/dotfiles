@@ -10,6 +10,11 @@ vim.g.maplocalleader = " "
 
 require("lazy").setup({
   spec = {
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = { colorscheme = "onedark" },
+    },
     { import = "plugins" },
   },
 })
