@@ -1,10 +1,10 @@
 local M = {}
 
-M.keys = {"<leader>s", "<C-t>", "<leader>fb"}
+M.keys = { "<leader>s", "<C-t>", "<leader>fb" }
 
 M.config = function()
-  local telescope = require "telescope"
-  local actions = require "telescope.actions"
+  local telescope = require("telescope")
+  local actions = require("telescope.actions")
 
   -- Scroll the preview window by a specified distance, rather than the default scroll_speed.
   local scroll_preview_custom = function(bufnr, speed, direction)
@@ -15,7 +15,9 @@ M.config = function()
     status.picker.layout_config.scroll_speed = default_speed
   end
 
-  local actions_which_key = function(bufnr) actions.which_key(bufnr, { separator = "  " }) end
+  local actions_which_key = function(bufnr)
+    actions.which_key(bufnr, { separator = "  " })
+  end
   local trouble = require("trouble.providers.telescope")
 
   local defaults = {
@@ -23,7 +25,6 @@ M.config = function()
     results_title = false,
     color_devicons = false,
     scroll_strategy = "limit",
-
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
@@ -43,8 +44,12 @@ M.config = function()
         ["<C-t>"] = actions.select_tab,
         ["<C-x>"] = trouble.open_with_trouble,
 
-        ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
-        ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,
+        ["<A-j>"] = function(bufnr)
+          scroll_preview_custom(bufnr, 1, 1)
+        end,
+        ["<A-k>"] = function(bufnr)
+          scroll_preview_custom(bufnr, 1, -1)
+        end,
         ["<A-f>"] = actions.preview_scrolling_down,
         ["<A-b>"] = actions.preview_scrolling_up,
 
@@ -84,8 +89,12 @@ M.config = function()
         ["<C-t>"] = actions.select_tab,
         ["<C-x>"] = trouble.open_with_trouble,
 
-        ["<A-j>"] = function(bufnr) scroll_preview_custom(bufnr, 1, 1) end,
-        ["<A-k>"] = function(bufnr) scroll_preview_custom(bufnr, 1, -1) end,
+        ["<A-j>"] = function(bufnr)
+          scroll_preview_custom(bufnr, 1, 1)
+        end,
+        ["<A-k>"] = function(bufnr)
+          scroll_preview_custom(bufnr, 1, -1)
+        end,
         ["<A-f>"] = actions.preview_scrolling_down,
         ["<A-b>"] = actions.preview_scrolling_up,
 
@@ -104,29 +113,31 @@ M.config = function()
       },
     },
   }
-  defaults = require 'telescope.themes'.get_ivy(defaults)
+  defaults = require("telescope.themes").get_ivy(defaults)
 
-  telescope.setup {
+  telescope.setup({
     defaults = defaults,
     pickers = {
       buffers = {
         ignore_current_buffer = true,
         sort_mru = true,
         previewer = false,
-      }
+      },
     },
     extensions = {
       ["ui-select"] = {
-        require("telescope.themes").get_cursor {}
+        require("telescope.themes").get_cursor({}),
       },
     },
-  }
+  })
 
   telescope.load_extension("file_browser")
 
   -- keymaps
   local wk_ok, wk = pcall(require, "which-key")
-  if wk_ok then wk.register({ ["<leader>s"] = { name = "+search" } }) end
+  if wk_ok then
+    wk.register({ ["<leader>s"] = { name = "+search" } })
+  end
 
   local tb = require("telescope.builtin")
   vim.keymap.set("n", "<C-t>", tb.find_files, { desc = "search files" })

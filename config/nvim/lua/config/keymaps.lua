@@ -1,7 +1,7 @@
 local keymap = vim.keymap.set
 local noremap = { noremap = true }
 
-vim.cmd [[
+vim.cmd([[
   function! Preserve(command) "{{{
     " preparation: save last search, and cursor position.
     let _s=@/
@@ -12,7 +12,7 @@ vim.cmd [[
     let @/=_s
     call winrestview(view)
   endfunction "}}}
-]]
+]])
 
 -- set leader and local leader key
 keymap("", "<Space>", "<Nop>")
@@ -42,17 +42,20 @@ keymap("n", "<leader>tc", "<Cmd>tabclose<CR>")
 keymap("n", "<leader>]", "<Cmd>tabnext<CR>")
 keymap("n", "<leader>[", "<Cmd>tabprevious<CR>")
 
-keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>",
-  { desc = "redraw screen" })
+keymap(
+  "n",
+  "<leader>!",
+  "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>",
+  { desc = "redraw screen" }
+)
 
 -- reload user settings and plugins
 keymap("n", "<leader>R", function()
   require("plenary.reload").reload_module("user")
-  vim.cmd [[source $MYVIMRC]]
+  vim.cmd([[source $MYVIMRC]])
   require("user.plugins")
   require("packer").sync()
 end, { desc = "reload $MYVIMRC" })
-
 
 -- Join lines and restore cursor location (J)
 keymap("n", "J", [[<Cmd>call Preserve("join")<CR>]])

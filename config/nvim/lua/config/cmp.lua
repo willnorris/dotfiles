@@ -1,10 +1,10 @@
-local cmp = require "cmp"
-local luasnip = require "luasnip"
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 require("copilot_cmp").setup()
 require("luasnip/loaders/from_vscode").lazy_load()
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -16,7 +16,7 @@ cmp.setup {
     ["<A-k>"] = cmp.mapping.scroll_docs(-2),
     ["<A-j>"] = cmp.mapping.scroll_docs(2),
     ["<C-c>"] = cmp.mapping.abort(),
-    ["<C-y>"] = cmp.mapping.confirm { select = true },
+    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
     ["<C-o>"] = cmp.mapping.complete(),
   },
   formatting = {
@@ -57,7 +57,7 @@ cmp.setup {
     ghost_text = true,
     native_menu = false,
   },
-}
+})
 
 -- LuaSnip keymaps to jump between snippet items
 vim.keymap.set({ "i", "s" }, "<c-l>", function()

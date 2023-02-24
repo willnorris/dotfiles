@@ -1,9 +1,9 @@
 return {
   "navarasu/onedark.nvim",
   priority = 1000,
-  config = function ()
+  config = function()
     local onedark = require("onedark")
-    onedark.setup {
+    onedark.setup({
       transparent = true,
       ending_tildes = true,
 
@@ -33,7 +33,7 @@ return {
         TelescopePreviewBorder = { fg = "$grey" },
         TelescopeTitle = { fg = "$fg" },
       },
-    }
+    })
     onedark.load()
 
     vim.opt.termguicolors = true
@@ -41,16 +41,18 @@ return {
     vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
 
     -- Highlight on yank
-    vim.api.nvim_create_autocmd('TextYankPost', {
-      group = vim.api.nvim_create_augroup('YankHighlight', {}),
-      callback = function() vim.highlight.on_yank({ timeout = 150 }) end,
+    vim.api.nvim_create_autocmd("TextYankPost", {
+      group = vim.api.nvim_create_augroup("YankHighlight", {}),
+      callback = function()
+        vim.highlight.on_yank({ timeout = 150 })
+      end,
     })
 
-    vim.cmd [[
+    vim.cmd([[
     function! SynGroup()
         let l:s = synID(line('.'), col('.'), 1)
         echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
     endfun
-    ]]
+    ]])
   end,
 }
