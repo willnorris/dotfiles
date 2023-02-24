@@ -320,15 +320,6 @@ return {
     }
   },
 
-  -- Diagnostics viewer
-  {
-    "folke/trouble.nvim",
-    opt = true,
-    keys = "<leader>x",
-    module = "trouble",
-    config = function() require("config.trouble") end
-  },
-
   {
     "folke/todo-comments.nvim",
     dependencies = "plenary.nvim",
