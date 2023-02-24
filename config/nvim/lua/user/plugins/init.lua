@@ -1,42 +1,35 @@
-local ok, packer = pcall(require, "packer")
-if not ok then
-  return
-end
+return {
+  "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
 
--- Install plugins
-packer.startup({ function(use)
-  use { "wbthomason/packer.nvim", module = "packer" } -- Have packer manage itself
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
+  "lewis6991/impatient.nvim", -- Caching for faster startup time
+  "famiu/bufdelete.nvim", -- Better buffer deletion
+  "farmergreg/vim-lastplace", -- Restore last cursor position
+  "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
+  "michaeljsmith/vim-indent-object", -- Text objects based on indent level
+  "sickill/vim-pasta", -- Adjust indentation when pasting
+  "tpope/vim-eunuch", -- Helpers for UNIX
+  "tpope/vim-repeat", -- Repeat more things with ".",
+  "tpope/vim-sleuth", -- Heuristically set buffer options
+  "tpope/vim-surround", -- Mappings for quotes, brackets, etc
+  "tpope/vim-unimpaired", -- Pairs of handy bracket mappings
+  "tpope/vim-vinegar", -- Improvements to netrw
+  "kyazdani42/nvim-web-devicons",
+  "isobit/vim-caddyfile", -- Caddyfile syntax support
 
-  use 'lewis6991/impatient.nvim' -- Caching for faster startup time
-  use "famiu/bufdelete.nvim" -- Better buffer deletion
-  use "farmergreg/vim-lastplace" -- Restore last cursor position
-  use "konfekt/vim-sentence-chopper" -- Semantic Line Breaks
-  use "michaeljsmith/vim-indent-object" -- Text objects based on indent level
-  use "sickill/vim-pasta" -- Adjust indentation when pasting
-  use "tpope/vim-eunuch" -- Helpers for UNIX
-  use "tpope/vim-repeat" -- Repeat more things with "."
-  use "tpope/vim-sleuth" -- Heuristically set buffer options
-  use "tpope/vim-surround" -- Mappings for quotes, brackets, etc
-  use "tpope/vim-unimpaired" -- Pairs of handy bracket mappings
-  use "tpope/vim-vinegar" -- Improvements to netrw
-  use "kyazdani42/nvim-web-devicons"
-  use "isobit/vim-caddyfile" -- Caddyfile syntax support
-
-  use { -- Git related plugins
+  { -- Git related plugins
     { -- Git integration for buffers.
       -- gitsigns is configured to lazy load when in a git repo.
       -- Most other git related plugins then load after gitsigns.
       "lewis6991/gitsigns.nvim",
       opt = true,
-      setup = function() require("user.git").gitsigns.setup() end,
+      build = function() require("user.git").gitsigns.setup() end,
       config = function() require("user.git").gitsigns.config() end,
     },
-    { "junegunn/gv.vim", after = "gitsigns.nvim" }, -- Git commit browser
-    { "tpope/vim-git", after = "gitsigns.nvim" }, -- Vim runtime files for git
-    { "tpope/vim-fugitive", after = "gitsigns.nvim" }, -- Vim interface to git
-    { "tpope/vim-rhubarb", after = "gitsigns.nvim" }, -- GitHub support for vim-fugitive
-    { "rhysd/git-messenger.vim", after = "gitsigns.nvim" }, -- commit message under cursor
+    "junegunn/gv.vim", -- Git commit browser
+    "tpope/vim-git", -- Vim runtime files for git
+    "tpope/vim-fugitive", -- Vim interface to git
+    "tpope/vim-rhubarb", -- GitHub support for vim-fugitive
+    "rhysd/git-messenger.vim", -- commit message under cursor
     {
       "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
       keys = "<leader>gy",
@@ -48,13 +41,16 @@ packer.startup({ function(use)
       "rhysd/committia.vim",
       config = function() require("user.git").committia.config() end,
     },
-  }
+  },
 
   -- Dark colorscheme
-  use { "navarasu/onedark.nvim" }
+  {
+    "navarasu/onedark.nvim",
+    priority = 1000,
+  },
 
   -- Copy text to clipboard with OSC52
-  use {
+  {
     "ojroques/nvim-osc52",
     config = function()
       local osc52 = require("osc52")
@@ -75,42 +71,41 @@ packer.startup({ function(use)
         paste = { ["+"] = paste, ["*"] = paste },
       }
     end,
-  }
+  },
 
   -- Toggle, display, and navigate marks
-  use {
+  {
     "kshenoy/vim-signature",
     config = function()
       vim.keymap.set("n", "yom", "<Cmd>SignatureToggle<CR>", { desc = "toggle signs/marks" })
     end,
-  }
+  },
 
   -- Smart and powerful commenting plugin
-  use {
+  {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
     end
-  }
+  },
 
-  use {
+  {
     "editorconfig/editorconfig-vim",
     config = function()
       vim.g.EditorConfig_exclude_patterns = { "fugitive://.*" }
     end,
-  }
+  },
 
   -- Undo history visualizer
-  use {
+  {
     "mbbill/undotree",
-    keys = "<leader>u",
     config = function()
       vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
     end,
-  }
+  },
 
   -- Auto-resize windows according to golden ratio
-  use {
+  {
     "beauwilliams/focus.nvim",
     commit = "05df9ee",
     config = function()
@@ -120,27 +115,27 @@ packer.startup({ function(use)
       }
       vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>", { desc = "toggle golden ratio view" })
     end,
-  }
+  },
 
-  use {
+
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
+    build = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
-    requires = {
+    dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     config = function() require("user.treesitter") end,
-  }
-  use {
+  },
+  {
     "nvim-treesitter/nvim-treesitter-context",
-    after = "nvim-treesitter",
     config = function()
       require "treesitter-context".setup { mode = "topline" }
     end
-  }
+  },
 
-  use {
+  {
     { "rcarriga/nvim-dap-ui", module = "dapui", },
     { "leoluz/nvim-dap-go", module = "dap-go", },
     { "theHamsta/nvim-dap-virtual-text", module = "nvim-dap-virtual-text", },
@@ -166,10 +161,10 @@ packer.startup({ function(use)
         vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = "debug: toggle breakpoint" })
         vim.keymap.set('n', '<leader>dt', dap.terminate, { desc = "debug: terminate session" })
       end
-    }
-  }
+    },
+  },
 
-  use {
+  {
     "nvim-orgmode/orgmode",
     config = function()
       require('orgmode').setup_ts_grammar()
@@ -178,23 +173,23 @@ packer.startup({ function(use)
         org_default_notes_file = "~/.local/share/orgmode/notes.org",
       }
     end
-  }
+  },
 
-  use {
+  {
     "RRethy/vim-illuminate",
     config = function()
       local illuminate = require "illuminate"
       vim.keymap.set('n', '<c-n>', function() illuminate.next_reference { wrap = true } end)
       vim.keymap.set('n', '<c-p>', function() illuminate.next_reference { reverse = true, wrap = true } end)
     end
-  }
+  },
 
   -- Distraction-free writing and coding
-  use {
+  {
     "folke/zen-mode.nvim",
     opt = true,
     keys = "<leader>zz",
-    requires = {
+    dependencies = {
       "benstockil/twilight.nvim", -- dim inactive portions of file
     },
     config = function()
@@ -208,15 +203,15 @@ packer.startup({ function(use)
       }
       vim.keymap.set("n", "<leader>zz", "<Cmd>ZenMode<CR>", { desc = "zen mode" })
     end,
-  }
+  },
 
   -- Statusline
-  use {
+  {
     "nvim-lualine/lualine.nvim",
     config = function() require("user.lualine") end,
-  }
+  },
 
-  use {
+  {
     "stevearc/stickybuf.nvim",
     config = function()
       require("stickybuf").setup {
@@ -225,11 +220,12 @@ packer.startup({ function(use)
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     "zbirenbaum/copilot.lua",
-    requires = {
+    enabled = false,
+    dependencies = {
       "zbirenbaum/copilot-cmp",
     },
     event = "VimEnter",
@@ -243,13 +239,14 @@ packer.startup({ function(use)
         require("copilot_cmp").setup()
       end, 100)
     end,
-  }
-  use { -- Text Completion
+  },
+
+  { -- Text Completion
     {
       "hrsh7th/nvim-cmp",
       opt = true,
       event = "InsertEnter",
-      requires = {
+      dependencies = {
         -- Completion plugins
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -260,19 +257,18 @@ packer.startup({ function(use)
         "zbirenbaum/copilot-cmp",
         "f3fora/cmp-spell",
       },
-      after = { "copilot.lua" },
       config = function() require("user.cmp") end
     },
     { "L3MON4D3/LuaSnip", module = "luasnip" },
-    { "rafamadriz/friendly-snippets", after = "LuaSnip" },
-  }
+    { "rafamadriz/friendly-snippets" },
+  },
 
   -- LSP
-  use {
+  {
     {
       "neovim/nvim-lspconfig",
       ft = { "go", "html", "javascript", "lua", "swift", "typescript", "typescriptreact" },
-      requires = {
+      dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
       },
@@ -290,7 +286,6 @@ packer.startup({ function(use)
     },
     { -- File outline based on LSP symbols
       "simrat39/symbols-outline.nvim",
-      after = "nvim-lspconfig",
       config = function()
         require("symbols-outline").setup()
         vim.g.symbols_outline = {
@@ -299,10 +294,10 @@ packer.startup({ function(use)
         vim.keymap.set("n", "<leader>o", "<Cmd>SymbolsOutline<CR>", { desc = "symbol outline" })
       end,
     },
-  }
+  },
 
   -- Telescope
-  use {
+  {
     {
       "nvim-telescope/telescope.nvim",
       module = "telescope",
@@ -318,7 +313,9 @@ packer.startup({ function(use)
         require("dressing").setup {
           input = {
             anchor = "NW",
-            winblend = 0,
+            win_options = {
+              winblend = 0,
+            },
           },
           select = {
             telescope = require('telescope.themes').get_cursor(),
@@ -326,20 +323,20 @@ packer.startup({ function(use)
         }
       end
     }
-  }
+  },
 
   -- Diagnostics viewer
-  use {
+  {
     "folke/trouble.nvim",
     opt = true,
     keys = "<leader>x",
     module = "trouble",
     config = function() require("user.trouble") end
-  }
+  },
 
-  use {
+  {
     "folke/todo-comments.nvim",
-    requires = "plenary.nvim",
+    dependencies = "plenary.nvim",
     config = function()
       require("todo-comments").setup {
         highlight = {
@@ -355,9 +352,9 @@ packer.startup({ function(use)
         },
       }
     end
-  }
+  },
 
-  use {
+  {
     "stevearc/qf_helper.nvim",
     config = function()
       require('qf_helper').setup {
@@ -366,9 +363,9 @@ packer.startup({ function(use)
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     "folke/which-key.nvim",
     module = "which-key",
     config = function()
@@ -381,13 +378,13 @@ packer.startup({ function(use)
         },
       }
     end,
-  }
+  },
 
-  use {
+  {
     "nvim-neotest/neotest",
     opt = true,
     keys = require("user.neotest").keys,
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
@@ -395,20 +392,12 @@ packer.startup({ function(use)
       { "nvim-neotest/neotest-python", module = "neotest-python" },
     },
     config = function() require("user.neotest").config() end,
-  }
+  },
 
-  use {
+  {
     "lewis6991/cleanfold.nvim",
     config = function()
       require("cleanfold").setup()
     end
-  }
-end,
-  config = {
-    display = {
-      open_fn = function()
-        return require('packer.util').float({ border = 'rounded' })
-      end
-    }
   },
-})
+}
