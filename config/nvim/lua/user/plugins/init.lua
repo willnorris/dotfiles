@@ -43,12 +43,6 @@ return {
     },
   },
 
-  -- Dark colorscheme
-  {
-    "navarasu/onedark.nvim",
-    priority = 1000,
-  },
-
   -- Copy text to clipboard with OSC52
   {
     "ojroques/nvim-osc52",
