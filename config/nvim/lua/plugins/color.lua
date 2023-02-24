@@ -15,6 +15,7 @@ return {
         Folded = { bg = "$bg0" },
         NormalFloat = { bg = "$bg0" },
         FloatBorder = { bg = "$bg0" },
+        NotifyBackground = { bg = "$bg0" },
 
         Twilight = { bg = "$none", fg = "$bg2" },
         ZenBg = { fg = "$fg" },
