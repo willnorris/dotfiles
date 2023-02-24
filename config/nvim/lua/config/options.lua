@@ -11,6 +11,7 @@ vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages"
 -- UI
 vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
 vim.o.number = true -- show line numbers
+vim.o.relativenumber = false -- no relative line numbers
 vim.o.splitright = true -- open vertical splits on the right
 vim.o.showmode = false
 vim.o.cursorlineopt = "number"

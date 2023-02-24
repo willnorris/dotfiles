@@ -12,8 +12,10 @@ return {
   "tpope/vim-surround", -- Mappings for quotes, brackets, etc
   "tpope/vim-unimpaired", -- Pairs of handy bracket mappings
   "tpope/vim-vinegar", -- Improvements to netrw
-  "kyazdani42/nvim-web-devicons",
+  "nvim-tree/nvim-web-devicons",
   "isobit/vim-caddyfile", -- Caddyfile syntax support
+
+  { "folke/noice.nvim", enabled = false },
 
   { -- Git related plugins
     { -- Git integration for buffers.
@@ -21,8 +23,8 @@ return {
       -- Most other git related plugins then load after gitsigns.
       "lewis6991/gitsigns.nvim",
       opt = true,
-      build = function() require("user.git").gitsigns.setup() end,
-      config = function() require("user.git").gitsigns.config() end,
+      build = function() require("config.git").gitsigns.setup() end,
+      config = function() require("config.git").gitsigns.config() end,
     },
     "junegunn/gv.vim", -- Git commit browser
     "tpope/vim-git", -- Vim runtime files for git
@@ -38,7 +40,7 @@ return {
     },
     {
       "rhysd/committia.vim",
-      config = function() require("user.git").committia.config() end,
+      config = function() require("config.git").committia.config() end,
     },
   },
 
@@ -119,7 +121,7 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    config = function() require("user.treesitter") end,
+    config = function() require("config.treesitter") end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -201,7 +203,7 @@ return {
   -- Statusline
   {
     "nvim-lualine/lualine.nvim",
-    config = function() require("user.lualine") end,
+    config = function() require("config.lualine") end,
   },
 
   {
@@ -250,7 +252,7 @@ return {
         "zbirenbaum/copilot-cmp",
         "f3fora/cmp-spell",
       },
-      config = function() require("user.cmp") end
+      config = function() require("config.cmp") end
     },
     { "L3MON4D3/LuaSnip", module = "luasnip" },
     { "rafamadriz/friendly-snippets" },
@@ -267,7 +269,7 @@ return {
       },
       module = "lspconfig",
       cmd = "LspInfo",
-      config = function() require("user.lsp") end,
+      config = function() require("config.lsp") end,
     },
     { "j-hui/fidget.nvim", module = "fidget" },
     { "jose-elias-alvarez/null-ls.nvim", module = "null-ls" },
@@ -295,8 +297,8 @@ return {
       "nvim-telescope/telescope.nvim",
       module = "telescope",
       cmd = "Telescope",
-      keys = require("user.telescope").keys,
-      config = function() require("user.telescope").config() end,
+      keys = require("config.telescope").keys,
+      config = function() require("config.telescope").config() end,
     },
     { "nvim-telescope/telescope-file-browser.nvim", module = "telescope._extensions.file_browser", },
     {
@@ -324,7 +326,7 @@ return {
     opt = true,
     keys = "<leader>x",
     module = "trouble",
-    config = function() require("user.trouble") end
+    config = function() require("config.trouble") end
   },
 
   {
@@ -376,7 +378,7 @@ return {
   {
     "nvim-neotest/neotest",
     opt = true,
-    keys = require("user.neotest").keys,
+    keys = require("config.neotest").keys,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -384,7 +386,7 @@ return {
       { "nvim-neotest/neotest-go", module = "neotest-go" },
       { "nvim-neotest/neotest-python", module = "neotest-python" },
     },
-    config = function() require("user.neotest").config() end,
+    config = function() require("config.neotest").config() end,
   },
 
   {

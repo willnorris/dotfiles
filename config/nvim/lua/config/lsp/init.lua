@@ -18,8 +18,8 @@ end
 lspconfig.util.default_config = vim.tbl_deep_extend("force",
   lspconfig.util.default_config,
   {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
+    on_attach = require("config.lsp.handlers").on_attach,
+    capabilities = require("config.lsp.handlers").capabilities,
   }
 )
 
@@ -30,7 +30,7 @@ if mlsp_ok then
   mason_lspconfig.setup_handlers {
     function(server_name)
       local opts = {}
-      local ok, server_opts = pcall(require, "user.lsp.settings." .. server_name)
+      local ok, server_opts = pcall(require, "config.lsp.settings." .. server_name)
       if ok then
         opts = server_opts
       end

@@ -5,11 +5,11 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 -- set leader before loading lazy.nvim
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 require("lazy").setup({
   spec = {
-    { import = "user.plugins" },
+    { import = "plugins" },
   },
 })
