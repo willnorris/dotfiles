@@ -36,17 +36,8 @@ return {
     })
     onedark.load()
 
-    vim.opt.termguicolors = true
     vim.opt.hlsearch = true
     vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
-
-    -- Highlight on yank
-    vim.api.nvim_create_autocmd("TextYankPost", {
-      group = vim.api.nvim_create_augroup("YankHighlight", {}),
-      callback = function()
-        vim.highlight.on_yank({ timeout = 150 })
-      end,
-    })
 
     vim.cmd([[
     function! SynGroup()

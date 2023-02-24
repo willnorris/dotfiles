@@ -223,6 +223,9 @@ return {
     end,
   },
 
+  { "bufferline.nvim", enabled = false },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
+
   {
     "stevearc/stickybuf.nvim",
     config = function()
