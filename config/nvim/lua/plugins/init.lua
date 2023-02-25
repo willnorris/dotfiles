@@ -17,40 +17,6 @@ return {
 
   { "echasnovski/mini.pairs",              enabled = false },
 
-
-  { -- Git related plugins
-    { -- Git integration for buffers.
-      -- gitsigns is configured to lazy load when in a git repo.
-      -- Most other git related plugins then load after gitsigns.
-      "lewis6991/gitsigns.nvim",
-      opt = true,
-      build = function()
-        require("config.git").gitsigns.setup()
-      end,
-      config = function()
-        require("config.git").gitsigns.config()
-      end,
-    },
-    "junegunn/gv.vim", -- Git commit browser
-    "tpope/vim-git", -- Vim runtime files for git
-    "tpope/vim-fugitive", -- Vim interface to git
-    "tpope/vim-rhubarb", -- GitHub support for vim-fugitive
-    "rhysd/git-messenger.vim", -- commit message under cursor
-    {
-      "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
-      keys = "<leader>gy",
-      config = function()
-        require("gitlinker").setup()
-      end,
-    },
-    {
-      "rhysd/committia.vim",
-      config = function()
-        require("config.git").committia.config()
-      end,
-    },
-  },
-
   -- Copy text to clipboard with OSC52
   {
     "ojroques/nvim-osc52",
@@ -84,14 +50,6 @@ return {
     "kshenoy/vim-signature",
     config = function()
       vim.keymap.set("n", "yom", "<Cmd>SignatureToggle<CR>", { desc = "toggle signs/marks" })
-    end,
-  },
-
-  -- Smart and powerful commenting plugin
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
     end,
   },
 
