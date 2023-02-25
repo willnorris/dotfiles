@@ -2,6 +2,7 @@
 vim.o.wildmode = "list:longest,full"
 vim.o.maxmempattern = 2000
 vim.o.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+vim.o.clipboard = ""
 
 -- UI
 vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
