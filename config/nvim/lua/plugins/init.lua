@@ -15,10 +15,7 @@ return {
   "nvim-tree/nvim-web-devicons",
   "isobit/vim-caddyfile", -- Caddyfile syntax support
 
-  { "folke/noice.nvim",                    enabled = false },
   { "echasnovski/mini.pairs",              enabled = false },
-  { "bufferline.nvim",                     enabled = false },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
 
   { -- Git related plugins
@@ -193,35 +190,6 @@ return {
     },
   },
 
-  -- Distraction-free writing and coding
-  {
-    "folke/zen-mode.nvim",
-    opt = true,
-    keys = "<leader>zz",
-    dependencies = {
-      "benstockil/twilight.nvim", -- dim inactive portions of file
-    },
-    config = function()
-      require("zen-mode").setup({
-        window = {
-          options = {
-            signcolumn = "no",
-            number = false,
-          },
-        },
-      })
-      vim.keymap.set("n", "<leader>zz", "<Cmd>ZenMode<CR>", { desc = "zen mode" })
-    end,
-  },
-
-  -- Statusline
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("config.lualine")
-    end,
-  },
-
   {
     "stevearc/stickybuf.nvim",
     config = function()
@@ -288,23 +256,6 @@ return {
       end,
     },
     { "nvim-telescope/telescope-file-browser.nvim", module = "telescope._extensions.file_browser" },
-    {
-      "stevearc/dressing.nvim",
-      module = "dressing",
-      config = function()
-        require("dressing").setup({
-          input = {
-            anchor = "NW",
-            win_options = {
-              winblend = 0,
-            },
-          },
-          select = {
-            telescope = require("telescope.themes").get_cursor(),
-          },
-        })
-      end,
-    },
   },
 
   {
