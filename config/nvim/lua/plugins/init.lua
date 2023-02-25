@@ -15,7 +15,11 @@ return {
   "nvim-tree/nvim-web-devicons",
   "isobit/vim-caddyfile", -- Caddyfile syntax support
 
-  { "folke/noice.nvim", enabled = false },
+  { "folke/noice.nvim",                    enabled = false },
+  { "echasnovski/mini.pairs",              enabled = false },
+  { "bufferline.nvim",                     enabled = false },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
+
 
   { -- Git related plugins
     { -- Git integration for buffers.
@@ -72,8 +76,8 @@ return {
 
       vim.g.clipboard = {
         name = "osc52",
-        copy = { ["+"] = copy, ["*"] = copy },
-        paste = { ["+"] = paste, ["*"] = paste },
+        copy = { ["+"] = copy,["*"] = copy },
+        paste = { ["+"] = paste,["*"] = paste },
       }
     end,
   },
@@ -142,8 +146,8 @@ return {
   },
 
   {
-    { "rcarriga/nvim-dap-ui", module = "dapui" },
-    { "leoluz/nvim-dap-go", module = "dap-go" },
+    { "rcarriga/nvim-dap-ui",            module = "dapui" },
+    { "leoluz/nvim-dap-go",              module = "dap-go" },
     { "theHamsta/nvim-dap-virtual-text", module = "nvim-dap-virtual-text" },
     {
       "mfussenegger/nvim-dap",
@@ -183,15 +187,10 @@ return {
 
   {
     "RRethy/vim-illuminate",
-    config = function()
-      local illuminate = require("illuminate")
-      vim.keymap.set("n", "<c-n>", function()
-        illuminate.next_reference({ wrap = true })
-      end)
-      vim.keymap.set("n", "<c-p>", function()
-        illuminate.next_reference({ reverse = true, wrap = true })
-      end)
-    end,
+    keys = {
+      { "<c-n>", require("illuminate").goto_next_reference, desc = "Next reference" },
+      { "<c-p>", require("illuminate").goto_prev_reference, desc = "Prev reference" },
+    },
   },
 
   -- Distraction-free writing and coding
@@ -222,9 +221,6 @@ return {
       require("config.lualine")
     end,
   },
-
-  { "bufferline.nvim", enabled = false },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
   {
     "stevearc/stickybuf.nvim",
@@ -365,7 +361,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
-      { "nvim-neotest/neotest-go", module = "neotest-go" },
+      { "nvim-neotest/neotest-go",     module = "neotest-go" },
       { "nvim-neotest/neotest-python", module = "neotest-python" },
     },
     config = function()
