@@ -276,45 +276,8 @@ return {
         require("config.cmp")
       end,
     },
-    { "L3MON4D3/LuaSnip", module = "luasnip" },
+    { "L3MON4D3/LuaSnip",            module = "luasnip" },
     { "rafamadriz/friendly-snippets" },
-  },
-
-  -- LSP
-  {
-    {
-      "neovim/nvim-lspconfig",
-      ft = { "go", "html", "javascript", "lua", "swift", "typescript", "typescriptreact" },
-      dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-      },
-      module = "lspconfig",
-      cmd = "LspInfo",
-      config = function()
-        require("config.lsp")
-      end,
-    },
-    { "j-hui/fidget.nvim", module = "fidget" },
-    { "jose-elias-alvarez/null-ls.nvim", module = "null-ls" },
-    { "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim", module = "toggle_lsp_diagnostics" },
-    { -- Display LSP results in preview window
-      "rmagatti/goto-preview",
-      module = "goto-preview",
-      config = function()
-        require("goto-preview").setup()
-      end,
-    },
-    { -- File outline based on LSP symbols
-      "simrat39/symbols-outline.nvim",
-      config = function()
-        require("symbols-outline").setup()
-        vim.g.symbols_outline = {
-          auto_preview = false,
-        }
-        vim.keymap.set("n", "<leader>o", "<Cmd>SymbolsOutline<CR>", { desc = "symbol outline" })
-      end,
-    },
   },
 
   -- Telescope
