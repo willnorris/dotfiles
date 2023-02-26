@@ -11,6 +11,7 @@ vim.o.splitbelow = false -- open horizontal splits on top
 vim.o.cursorlineopt = "number"
 vim.o.hidden = false -- don't show hidden buffers
 vim.o.mouse = false
+vim.o.pumblend = 0 -- no transparency on popup menu
 
 -- Set the list option only if expandtab is set.
 -- This helps visualize erroneous tabs in a file that uses spaces.

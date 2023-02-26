@@ -173,49 +173,6 @@ return {
   },
 
   {
-    "zbirenbaum/copilot.lua",
-    enabled = false,
-    dependencies = {
-      "zbirenbaum/copilot-cmp",
-    },
-    event = "VimEnter",
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup({
-          filetypes = {
-            ["dap-repl"] = false,
-          },
-        })
-        require("copilot_cmp").setup()
-      end, 100)
-    end,
-  },
-
-  { -- Text Completion
-    {
-      "hrsh7th/nvim-cmp",
-      opt = true,
-      event = "InsertEnter",
-      dependencies = {
-        -- Completion plugins
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-        "zbirenbaum/copilot-cmp",
-        "f3fora/cmp-spell",
-      },
-      config = function()
-        require("config.cmp")
-      end,
-    },
-    { "L3MON4D3/LuaSnip",            module = "luasnip" },
-    { "rafamadriz/friendly-snippets" },
-  },
-
-  {
     "folke/todo-comments.nvim",
     dependencies = "plenary.nvim",
     config = function()
@@ -258,22 +215,6 @@ return {
           border = "single",
         },
       })
-    end,
-  },
-
-  {
-    "nvim-neotest/neotest",
-    opt = true,
-    keys = require("config.neotest").keys,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      { "nvim-neotest/neotest-go",     module = "neotest-go" },
-      { "nvim-neotest/neotest-python", module = "neotest-python" },
-    },
-    config = function()
-      require("config.neotest").config()
     end,
   },
 
