@@ -202,20 +202,6 @@ return {
     { "rafamadriz/friendly-snippets" },
   },
 
-  -- Telescope
-  {
-    {
-      "nvim-telescope/telescope.nvim",
-      module = "telescope",
-      cmd = "Telescope",
-      keys = require("config.telescope").keys,
-      config = function()
-        require("config.telescope").config()
-      end,
-    },
-    { "nvim-telescope/telescope-file-browser.nvim", module = "telescope._extensions.file_browser" },
-  },
-
   {
     "folke/todo-comments.nvim",
     dependencies = "plenary.nvim",
