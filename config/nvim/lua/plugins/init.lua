@@ -125,17 +125,6 @@ return {
   },
 
   {
-    "RRethy/vim-illuminate",
-    keys = {
-      { "<c-n>", require("illuminate").goto_next_reference, desc = "Next reference" },
-      { "<c-p>", require("illuminate").goto_prev_reference, desc = "Prev reference" },
-    },
-    config = function(_, opts)
-      require("illuminate").configure(opts)
-    end,
-  },
-
-  {
     "stevearc/stickybuf.nvim",
     config = function()
       require("stickybuf").setup({
@@ -147,46 +136,11 @@ return {
   },
 
   {
-    "folke/todo-comments.nvim",
-    dependencies = "plenary.nvim",
-    config = function()
-      require("todo-comments").setup({
-        highlight = {
-          pattern = {
-            [[.*<(KEYWORDS)\s*:]],
-            [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle KEYWORD(name):
-          },
-          keyword = "fg",
-          after = "",
-        },
-        search = {
-          pattern = [[\b(KEYWORDS)(\(.*\))?:]],
-        },
-      })
-    end,
-  },
-
-  {
     "stevearc/qf_helper.nvim",
     config = function()
       require("qf_helper").setup({
         quickfix = {
           default_bindings = false,
-        },
-      })
-    end,
-  },
-
-  {
-    "folke/which-key.nvim",
-    module = "which-key",
-    config = function()
-      require("which-key").setup({
-        icons = {
-          separator = "",
-        },
-        window = {
-          border = "single",
         },
       })
     end,

@@ -116,4 +116,50 @@ return {
     end,
   },
   { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+
+  {
+    "folke/which-key.nvim",
+    module = "which-key",
+    config = function()
+      require("which-key").setup({
+        icons = {
+          separator = "",
+        },
+        window = {
+          border = "single",
+        },
+      })
+    end,
+  },
+
+  {
+    "RRethy/vim-illuminate",
+    keys = {
+      { "<c-n>", require("illuminate").goto_next_reference, desc = "Next reference" },
+      { "<c-p>", require("illuminate").goto_prev_reference, desc = "Prev reference" },
+    },
+    -- override config in LazyVim
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+    end,
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = "plenary.nvim",
+    opts = {
+      highlight = {
+        pattern = {
+          [[.*<(KEYWORDS)\s*:]],
+          [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle KEYWORD(name):
+        },
+        keyword = "fg",
+        after = "",
+      },
+      search = {
+        pattern = [[\b(KEYWORDS)(\(.*\))?:]],
+      },
+    }
+  },
+
 }
