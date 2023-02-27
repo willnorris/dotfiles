@@ -126,15 +126,6 @@ return {
       }
     end,
   },
-  {
-    "j-hui/fidget.nvim",
-    event = "VeryLazy",
-    opts = {
-      window = {
-        blend = 0,
-      },
-    },
-  },
   { -- Display LSP results in preview window
     "rmagatti/goto-preview",
     event = "VeryLazy",

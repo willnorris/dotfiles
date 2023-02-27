@@ -52,8 +52,8 @@ return {
             { name = "spell" },
           }),
           window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered(),
+            completion = cmp.config.window.bordered({winhighlight="Search:None"}),
+            documentation = cmp.config.window.bordered({winhighlight="Search:None"}),
           },
           confirm_opts = {
             behavior = cmp.ConfirmBehavior.Replace,

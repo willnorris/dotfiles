@@ -1,5 +1,4 @@
 return {
-  { "folke/noice.nvim",                    enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "bufferline.nvim",                     enabled = false },
 
@@ -116,5 +115,21 @@ return {
 ]],
       }, opts)
     end
+  },
+
+  {
+    "folke/noice.nvim",
+    opts = {
+      cmdline = {
+        view = "cmdline",
+        format = {
+          cmdline = { icon = ":" },
+        },
+      },
+      presets = {
+        command_palette = false,
+        lsp_doc_border = true,
+      },
+    },
   },
 }
