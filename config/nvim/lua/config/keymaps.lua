@@ -19,7 +19,6 @@ keymap("i", "jk", "<esc>", noremap)
 
 -- buffer navigation
 keymap("n", "<leader>;", "<C-^>", noremap)
-keymap("n", "<leader>bd", "<Cmd>Bdelete<CR>")
 
 keymap(
   "n",

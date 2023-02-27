@@ -1,7 +1,6 @@
 return {
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
 
-  "famiu/bufdelete.nvim", -- Better buffer deletion
   "farmergreg/vim-lastplace", -- Restore last cursor position
   "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
   "michaeljsmith/vim-indent-object", -- Text objects based on indent level

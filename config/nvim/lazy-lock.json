@@ -4,7 +4,6 @@
   "LuaSnip": { "branch": "master", "commit": "f7c845749aba6096f041a73a26ba64f3817bab99" },
   "SchemaStore.nvim": { "branch": "main", "commit": "6f2ffb8420422db9a6c43dbce7227f0fdb9fcf75" },
   "alpha-nvim": { "branch": "main", "commit": "b6c7b5d9d6d2633722255abf2be3ecb8733e8d2d" },
-  "bufdelete.nvim": { "branch": "master", "commit": "8933abc09df6c381d47dc271b1ee5d266541448e" },
   "cleanfold.nvim": { "branch": "master", "commit": "7ef2be14d7aace30925d3901ca036fdd29f121c1" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "0e6b2ed705ddcff9738ec4ea838141654f12eeef" },
