@@ -11,6 +11,7 @@ return {
         comments = "none",
       },
 
+      -- color palette: https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/palette.lua
       highlights = {
         Folded = { bg = "$bg0" },
         NormalFloat = { bg = "$bg0" },
@@ -32,6 +33,10 @@ return {
         TelescopeResultsBorder = { fg = "$grey" },
         TelescopePreviewBorder = { fg = "$grey" },
         TelescopeTitle = { fg = "$fg" },
+
+        MiniStarterHeader = { fg = "$blue" },
+        MiniStarterFooter = { fg = "$grey" },
+        MiniStarterItemPrefix = { fg = "$red" },
       },
     })
     onedark.load()

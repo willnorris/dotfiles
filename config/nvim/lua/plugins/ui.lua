@@ -95,4 +95,26 @@ return {
     end,
   },
 
+  {
+    "LazyVim/LazyVim",
+    import = "lazyvim.plugins.extras.ui.mini-starter",
+  },
+  {
+    "echasnovski/mini.starter",
+    opts = function (_, opts)
+      local pad = string.rep(" ", 22)
+      opts.items[#opts.items + 1] = { name = "Session", action = [[lua require("persistence").load()]], section = pad .. "Session" }
+
+      return vim.tbl_deep_extend("keep", {
+        header = [[
+  ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
+  ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
+  ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
+  ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
+  ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
+  ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
+]],
+      }, opts)
+    end
+  },
 }
