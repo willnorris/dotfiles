@@ -19,12 +19,12 @@ keymap("i", "jk", "<esc>", noremap)
 -- buffer navigation
 keymap("n", "<leader>;", "<C-^>", noremap)
 
-keymap(
-  "n",
-  "<leader>!",
-  "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>",
-  { desc = "redraw screen" }
-)
+keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<Bar>diffupdate<CR>",
+  { desc = "redraw screen" })
+
+keymap("n", "yof", function()
+  vim.o.foldcolumn = vim.o.foldcolumn == "0" and "1" or "0"
+end, { desc = "Toggle fold column"})
 
 -- Join lines and restore cursor location (J)
 keymap("n", "J", function() preserve("join") end)

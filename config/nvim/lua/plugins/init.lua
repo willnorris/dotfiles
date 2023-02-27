@@ -1,16 +1,10 @@
 return {
-  "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
-
-  "farmergreg/vim-lastplace", -- Restore last cursor position
   "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
   "michaeljsmith/vim-indent-object", -- Text objects based on indent level
   "sickill/vim-pasta", -- Adjust indentation when pasting
   "tpope/vim-eunuch", -- Helpers for UNIX
-  "tpope/vim-repeat", -- Repeat more things with ".",
   "tpope/vim-sleuth", -- Heuristically set buffer options
   "tpope/vim-unimpaired", -- Pairs of handy bracket mappings
-  "tpope/vim-vinegar", -- Improvements to netrw
-  "nvim-tree/nvim-web-devicons",
   "isobit/vim-caddyfile", -- Caddyfile syntax support
 
   { "echasnovski/mini.pairs", enabled = false },

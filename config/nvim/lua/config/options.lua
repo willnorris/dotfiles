@@ -38,21 +38,3 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 100 -- don't autofold anything
 vim.o.foldnestmax = 3 -- maximum nesting
 vim.opt.foldopen:append("jump") -- what movements open folds
-
-vim.cmd([[
-  nnoremap yof :call FoldColumnToggle()<cr>
-  function! FoldColumnToggle()
-      if &foldcolumn
-          setlocal foldcolumn=0
-      else
-          setlocal foldcolumn=1
-      endif
-  endfunction
-]])
-
--- Netrw
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_browse_split = 4
-vim.g.netrw_altv = 1
-vim.g.netrw_winsize = -28
