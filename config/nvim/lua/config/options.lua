@@ -12,6 +12,7 @@ vim.o.cursorlineopt = "number"
 vim.o.hidden = false -- don't show hidden buffers
 vim.o.mouse = false
 vim.o.pumblend = 0 -- no transparency on popup menu
+vim.o.conceallevel = 0 -- don't conceal anything
 
 -- Set the list option only if expandtab is set.
 -- This helps visualize erroneous tabs in a file that uses spaces.
