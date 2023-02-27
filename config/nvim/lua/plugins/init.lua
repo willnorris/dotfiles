@@ -130,6 +130,9 @@ return {
       { "<c-n>", require("illuminate").goto_next_reference, desc = "Next reference" },
       { "<c-p>", require("illuminate").goto_prev_reference, desc = "Prev reference" },
     },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+    end,
   },
 
   {
