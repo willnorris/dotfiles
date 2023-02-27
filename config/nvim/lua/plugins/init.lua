@@ -8,7 +8,6 @@ return {
   "tpope/vim-eunuch", -- Helpers for UNIX
   "tpope/vim-repeat", -- Repeat more things with ".",
   "tpope/vim-sleuth", -- Heuristically set buffer options
-  "tpope/vim-surround", -- Mappings for quotes, brackets, etc
   "tpope/vim-unimpaired", -- Pairs of handy bracket mappings
   "tpope/vim-vinegar", -- Improvements to netrw
   "nvim-tree/nvim-web-devicons",
