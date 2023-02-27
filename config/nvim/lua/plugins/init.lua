@@ -16,6 +16,8 @@ return {
   "isobit/vim-caddyfile", -- Caddyfile syntax support
 
   { "echasnovski/mini.pairs", enabled = false },
+  { "folke/tokyonight.nvim",  enabled = false },
+  { "catppuccin/nvim",        name = "catppuccin", enabled = false },
 
   -- Copy text to clipboard with OSC52
   {
