@@ -1,18 +1,17 @@
 local keymap = vim.keymap.set
 local noremap = { noremap = true }
 
-vim.cmd([[
-  function! Preserve(command) "{{{
-    " preparation: save last search, and cursor position.
-    let _s=@/
-    let view = winsaveview()
-    " do the business:
-    execute a:command
-    " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call winrestview(view)
-  endfunction "}}}
-]])
+-- https://stackoverflow.com/questions/70691265
+local preserve = function(arguments)
+  local command = string.format("keepjumps keeppatterns execute %q", arguments)
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_command(command)
+  local lastline = vim.fn.line("$")
+  if line > lastline then
+    line = lastline
+  end
+  vim.api.nvim_win_set_cursor(0, { line, col })
+end
 
 -- movement
 keymap("i", "jk", "<esc>", noremap)
@@ -28,10 +27,10 @@ keymap(
 )
 
 -- Join lines and restore cursor location (J)
-keymap("n", "J", [[<Cmd>call Preserve("join")<CR>]])
+keymap("n", "J", function() preserve("join") end)
 
 -- strip trailing whitespace
-keymap("n", "_$", [[<Cmd>call Preserve("%s/\\s\\+$//e")<CR>]], { desc = "strip trailing whitespace" })
+keymap("n", "_$", function() preserve("%s/\\s\\+$//e") end, { desc = "strip trailing whitespace" })
 
 -- timestamp insertion
 keymap("i", "<A-i>t", "<C-R>=system('timestamp -rfc3339')<CR>", { desc = "timestamp -rfc3339" })
