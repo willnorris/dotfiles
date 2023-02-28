@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [ "${ASDF_LOADED}" = "1" ]; then
+  return
+fi
+
+export ASDF_LOADED=1
+
 export ASDF_DIR="${XDG_DATA_HOME}/asdf"
 export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf/asdfrc"
 export ASDF_DATA_DIR="${ASDF_DIR}"
