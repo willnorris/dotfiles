@@ -14,6 +14,9 @@ vim.o.mouse = false
 vim.o.pumblend = 0 -- no transparency on popup menu
 vim.o.conceallevel = 0 -- don't conceal anything
 
+vim.opt.hlsearch = true
+vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
+
 -- Set the list option only if expandtab is set.
 -- This helps visualize erroneous tabs in a file that uses spaces.
 -- Run on BufEnter after vim-sleuth has run.

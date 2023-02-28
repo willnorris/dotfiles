@@ -14,17 +14,15 @@ return {
   -- Copy text to clipboard with OSC52
   {
     "ojroques/nvim-osc52",
-    config = function()
-      local osc52 = require("osc52")
-      osc52.setup({ silent = true })
-
-      vim.keymap.set("v", "Y", osc52.copy_visual)
-      vim.keymap.set("n", "Y", osc52.copy_operator, { expr = true })
-
+    keys = {
+      { "Y", function() require("osc52").copy_operator() end, { expr = true } },
+      { "Y", function() require("osc52").copy_visual() end, mode="v" },
+    },
+    init = function()
       -- use osc52 as clipboard provider
       -- https://github.com/ojroques/nvim-osc52#using-nvim-osc52-as-clipboard-provider
       local function copy(lines, _)
-        osc52.copy(table.concat(lines, "\n"))
+        require("osc52").copy(table.concat(lines, "\n"))
       end
 
       local function paste()
@@ -37,18 +35,19 @@ return {
         paste = { ["+"] = paste,["*"] = paste },
       }
     end,
+    opt = { silent = true },
   },
 
   -- Toggle, display, and navigate marks
   {
-    "kshenoy/vim-signature",
-    config = function()
-      vim.keymap.set("n", "yom", "<Cmd>SignatureToggle<CR>", { desc = "toggle signs/marks" })
-    end,
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    config = true,
   },
 
   {
     "editorconfig/editorconfig-vim",
+    event = "VeryLazy",
     config = function()
       vim.g.EditorConfig_exclude_patterns = { "fugitive://.*" }
     end,
@@ -57,22 +56,22 @@ return {
   -- Undo history visualizer
   {
     "mbbill/undotree",
-    config = function()
-      vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
-    end,
+    keys = {
+      { "<leader>u", "<Cmd>UndotreeToggle<CR>" },
+    },
   },
 
   -- Auto-resize windows according to golden ratio
   {
     "beauwilliams/focus.nvim",
-    commit = "05df9ee",
-    config = function()
-      require("focus").setup({
-        excluded_filetypes = { "fugitive", "gitcommit", "packer", "Outline" },
-        signcolumn = false,
-      })
-      vim.keymap.set("n", "yogv", "<Cmd>FocusToggle<CR>", { desc = "toggle golden ratio view" })
-    end,
+    event = "VimEnter",
+    keys = {
+      { "yogv", "<Cmd>FocusToggle<CR>", desc = "toggle golden ratio view" }
+    },
+    opts = {
+      excluded_filetypes = { "fugitive", "gitcommit", "packer", "Outline" },
+      signcolumn = false,
+    },
   },
 
   {
@@ -83,7 +82,7 @@ return {
     opts = function(_, opts)
       opts.ensure_installed[#opts.ensure_installed + 1] = "go"
 
-      return vim.tbl_deep_extend("keep", {
+      return vim.tbl_deep_extend("force", opts, {
         auto_install = true,
         highlight = {
           enable = true,
@@ -103,53 +102,46 @@ return {
             node_decremental = "grm",
           },
         },
-      }, opts)
+      })
     end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup({ mode = "topline" })
-    end,
+    opts = { mode = "topline" },
   },
 
   {
     "nvim-orgmode/orgmode",
-    config = function()
+    opts = {
+      org_agenda_files = "~/.local/share/orgmode/*",
+      org_default_notes_file = "~/.local/share/orgmode/notes.org",
+    },
+    config = function(_, opts)
       require("orgmode").setup_ts_grammar()
-      require("orgmode").setup({
-        org_agenda_files = "~/.local/share/orgmode/*",
-        org_default_notes_file = "~/.local/share/orgmode/notes.org",
-      })
+      require("orgmode").setup(opts)
     end,
   },
 
   {
     "stevearc/stickybuf.nvim",
-    config = function()
-      require("stickybuf").setup({
-        filetype = {
-          Outline = "filetype",
-        },
-      })
-    end,
+    opts = {
+      filetype = {
+        Outline = "filetype",
+      },
+    }
   },
 
   {
     "stevearc/qf_helper.nvim",
-    config = function()
-      require("qf_helper").setup({
-        quickfix = {
-          default_bindings = false,
-        },
-      })
-    end,
+    opts = {
+      quickfix = {
+        default_bindings = false,
+      },
+    }
   },
 
   {
     "lewis6991/cleanfold.nvim",
-    config = function()
-      require("cleanfold").setup()
-    end,
+    config = true,
   },
 }

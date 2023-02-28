@@ -43,7 +43,7 @@ return {
       -- use telescope ivy theme
       opts.defaults = require("telescope.themes").get_ivy(opts.defaults)
 
-      return vim.tbl_deep_extend("keep", {
+      return vim.tbl_deep_extend("force", opts, {
         defaults = {
           path_display = { "smart" },
           results_title = false,
@@ -112,7 +112,7 @@ return {
             require("telescope.themes").get_cursor({}),
           },
         },
-      }, opts)
+      })
     end,
   },
   { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
@@ -120,16 +120,14 @@ return {
   {
     "folke/which-key.nvim",
     module = "which-key",
-    config = function()
-      require("which-key").setup({
-        icons = {
-          separator = "",
-        },
-        window = {
-          border = "single",
-        },
-      })
-    end,
+    opts = {
+      icons = {
+        separator = "",
+      },
+      window = {
+        border = "single",
+      },
+    }
   },
 
   {

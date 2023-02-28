@@ -39,7 +39,7 @@ keymap("i", "<A-i>e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestam
 
 -- Find and open the alternate file for the current path.
 -- Requires alt command (https://github.com/uptech/alt)
-vim.keymap.set("n", "<leader>.", function()
+local open_alt_file = function()
   if vim.fn.executable("alt") ~= 1 then
     vim.notify("Need to install https://github.com/uptech/alt")
     return
@@ -55,4 +55,13 @@ vim.keymap.set("n", "<leader>.", function()
   else
     vim.notify("Alt file not found for " .. vim.fn.expand("%"))
   end
-end)
+end
+keymap("n", "<leader>.", open_alt_file, { desc = "Open alternate file" })
+
+keymap("n", "<C-e>",
+  function()
+    local result = vim.treesitter.get_captures_at_cursor(0)
+    print(vim.inspect(result))
+  end,
+  { noremap = true, desc = "Treesitter group under cursor" }
+)

@@ -76,22 +76,26 @@ return {
   -- Distraction-free writing and coding
   {
     "folke/zen-mode.nvim",
-    opt = true,
-    keys = "<leader>zz",
     dependencies = {
       "benstockil/twilight.nvim", -- dim inactive portions of file
     },
-    config = function()
-      require("zen-mode").setup({
-        window = {
-          options = {
-            signcolumn = "no",
-            number = false,
-          },
+    keys = {
+      { "<leader>zz", "<Cmd>ZenMode<CR>", desc = "zen mode" },
+    },
+    opts = {
+      window = {
+        options = {
+          signcolumn = "no",
+          number = false,
         },
-      })
-      vim.keymap.set("n", "<leader>zz", "<Cmd>ZenMode<CR>", { desc = "zen mode" })
-    end,
+      },
+      on_open = function()
+        vim.b.miniindentscope_disable = true
+      end,
+      on_close = function()
+        vim.b.miniindentscope_disable = false
+      end,
+    },
   },
 
   {
@@ -104,7 +108,7 @@ return {
       local pad = string.rep(" ", 22)
       opts.items[#opts.items + 1] = { name = "Session", action = [[lua require("persistence").load()]], section = pad .. "Session" }
 
-      return vim.tbl_deep_extend("keep", {
+      return vim.tbl_deep_extend("force", opts, {
         header = [[
   ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
   ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
@@ -113,7 +117,7 @@ return {
   ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
   ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
 ]],
-      }, opts)
+      })
     end
   },
 
@@ -125,6 +129,10 @@ return {
         format = {
           cmdline = { icon = ":" },
         },
+      },
+      messages = {
+        --view = "mini",
+        view_search = false,
       },
       presets = {
         command_palette = false,

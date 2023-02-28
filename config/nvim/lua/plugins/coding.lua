@@ -2,7 +2,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     dependencies = {
-      { "zbirenbaum/copilot-cmp", lazy = true, config = true },
+      { "zbirenbaum/copilot-cmp", config = true },
     },
     event = "VimEnter",
     opts = {
@@ -26,7 +26,7 @@ return {
       },
       opts = function(_, opts)
         local cmp = require("cmp")
-        return vim.tbl_deep_extend("keep", {
+        return vim.tbl_deep_extend("force", opts, {
           completion = {
             completeopt = "menu,menuone,noinsert,noselect",
           },
@@ -36,9 +36,9 @@ return {
             ["<A-k>"] = cmp.mapping.scroll_docs( -2),
             ["<A-j>"] = cmp.mapping.scroll_docs(2),
             ["<C-c>"] = cmp.mapping.abort(),
-            ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+            ["<C-y>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
             ["<C-o>"] = cmp.mapping.complete(),
-            ["<CR>"] = cmp.mapping.confirm({ select = false }),
+            ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
           }),
           sources = cmp.config.sources({
             { name = "nvim_lsp_signature_help" },
@@ -62,7 +62,7 @@ return {
           experimental = {
             native_menu = false,
           },
-        }, opts)
+        })
       end,
     },
   },
@@ -128,7 +128,7 @@ return {
         virtual_text = true,
       }, vim.api.nvim_create_namespace("neotest"))
 
-     require("which-key").register({ ["<leader>t"] = { name = "+testing" } })
+      require("which-key").register({ ["<leader>t"] = { name = "+testing" } })
     end,
   },
 
