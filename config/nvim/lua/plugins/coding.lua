@@ -89,17 +89,17 @@ return {
       { "<leader>tt", function() require("neotest").run.run() end, desc = "run nearest test" },
       { "<leader>tf", function()
         require("neotest").run.run(vim.fn.expand("%"))
-      end, { desc = "test file" } },
-      { "<leader>tl", function() require("neotest").run.run_last() end, { desc = "run last test" } },
-      { "<leader>ts", function() require("neotest").summary.toggle() end, { desc = "show test summary" } },
-      { "<leader>to", function() require("neotest").output.open() end, { desc = "show test output" } },
+      end, desc = "test file" },
+      { "<leader>tl", function() require("neotest").run.run_last() end, desc = "run last test" },
+      { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "show test summary" },
+      { "<leader>to", function() require("neotest").output.open() end, desc = "show test output" },
       { "<leader>tw", function()
         require("neotest").output.open({
           open_win = function()
             vim.cmd("bel split")
           end,
         })
-      end, { desc = "show test window" } },
+      end, desc = "show test window" },
     },
     opts = function ()
       return {

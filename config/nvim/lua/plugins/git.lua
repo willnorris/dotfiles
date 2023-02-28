@@ -24,7 +24,7 @@ return {
         map({ "n", "v" }, "<leader>hr", gitsigns.reset_hunk, "Reset hunk")
         map("n", "<leader>hu", gitsigns.undo_stage_hunk, "Undo stage hunk")
         map("n", "<leader>hS", gitsigns.stage_buffer, "Stage buffer")
-        map("n", "<leader>hR", gitsigns.reset_buffer, "Stage buffer")
+        map("n", "<leader>hR", gitsigns.reset_buffer, "Reset buffer")
         map("n", "<leader>hp", gitsigns.preview_hunk, "Preview hunk")
         map("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>ghd", gitsigns.diffthis, "Diff this")
