@@ -41,6 +41,9 @@ return {
   -- Toggle, display, and navigate marks
   {
     "chentoast/marks.nvim",
+    keys = {
+      { "yom", "<cmd>MarksToggleSigns<cr>", desc = "Toggle marks" },
+    },
     event = "VeryLazy",
     config = true,
   },
