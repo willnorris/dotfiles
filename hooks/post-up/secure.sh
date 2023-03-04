@@ -1,24 +1,16 @@
 #!/usr/bin/env bash
 
+. "${HOME}/.config/shell/_base.sh"
+
 HOST=$(hostname | cut -d. -f1)
 
-function install_file() {
-  SRC="${HOME}/.secure/${1}"
-  DST="${HOME}/${2}"
-
-  if [ -r "${SRC}" ]; then
-    if [ ! -h "${DST}" ] || [ "$(readlink "${DST}")" != "${SRC}" ]; then
-      mkdir -p "$(dirname "${DST}")"
-      ln -s "${SRC}" "${DST}"
-    fi
-  fi
+function link_secure() {
+  link_file "${HOME}/.secure/${1}" "${HOME}/${2}"
 }
 
-install_file "gmvault/token.sec"                 ".gmvault/token.sec"
-install_file "gmvault/wnorris@gmail.com.passwd"  ".gmvault/wnorris@gmail.com.passwd"
-install_file "gpg/pubring.gpg"                   ".gnupg/pubring.gpg"
-install_file "gpg/private-keys-v1.d"             ".gnupg/private-keys-v1.d"
-install_file "mutt/credentials"                  ".mutt/credentials"
-install_file "mysql/${HOST}.cnf"                 ".my.cnf"
-install_file "netrc/${HOST}.netrc"               ".netrc"
-install_file "rclone/wjn730-b321c955b53f.json"   ".config/rclone/wjn730-b321c955b53f.json"
+link_secure "gpg/pubring.gpg"                   ".gnupg/pubring.gpg"
+link_secure "gpg/private-keys-v1.d"             ".gnupg/private-keys-v1.d"
+link_secure "mutt/credentials"                  ".mutt/credentials"
+link_secure "mysql/${HOST}.cnf"                 ".my.cnf"
+link_secure "netrc/${HOST}.netrc"               ".netrc"
+link_secure "rclone/wjn730-b321c955b53f.json"   ".config/rclone/wjn730-b321c955b53f.json"
