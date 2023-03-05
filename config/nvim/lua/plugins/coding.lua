@@ -1,70 +1,47 @@
 return {
   {
-    "zbirenbaum/copilot.lua",
-    dependencies = {
-      { "zbirenbaum/copilot-cmp", config = true },
-    },
-    event = "VimEnter",
-    opts = {
-      filetypes = {
-        ["dap-repl"] = false,
-      },
-    },
+    "LazyVim/LazyVim",
+    import = "lazyvim.plugins.extras.coding.copilot",
   },
 
   -- auto completion
   {
-    {
-      "hrsh7th/nvim-cmp",
-      dependencies = {
-        -- Completion plugins
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-        "zbirenbaum/copilot-cmp",
-        "f3fora/cmp-spell",
-        "onsails/lspkind.nvim",
-      },
-      opts = function(_, opts)
-        local cmp = require("cmp")
-        return vim.tbl_deep_extend("force", opts, {
-          completion = {
-            completeopt = "menu,menuone,noinsert,noselect",
-          },
-          mapping = cmp.mapping.preset.insert({
-            ["<C-k>"] = cmp.mapping.select_prev_item(),
-            ["<C-j>"] = cmp.mapping.select_next_item(),
-            ["<A-k>"] = cmp.mapping.scroll_docs( -2),
-            ["<A-j>"] = cmp.mapping.scroll_docs(2),
-            ["<C-c>"] = cmp.mapping.abort(),
-            ["<C-y>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-            ["<C-o>"] = cmp.mapping.complete(),
-            ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
-          }),
-          sources = cmp.config.sources({
-            { name = "nvim_lsp_signature_help" },
-            { name = "nvim_lsp" },
-            { name = "copilot" },
-            { name = "orgmode" },
-            { name = "nvim_lua" },
-            { name = "luasnip" },
-            { name = "buffer" },
-            { name = "path" },
-            { name = "spell" },
-          }),
-          window = {
-            completion = cmp.config.window.bordered({winhighlight="Search:None"}),
-            documentation = cmp.config.window.bordered({winhighlight="Search:None"}),
-          },
-          confirm_opts = {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = false,
-          },
-          experimental = {
-            native_menu = false,
-          },
-        })
-      end,
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      -- Completion plugins
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "f3fora/cmp-spell",
+      "onsails/lspkind.nvim",
     },
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      return vim.tbl_deep_extend("force", opts, {
+        completion = {
+          completeopt = "menu,menuone,noinsert,noselect",
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<C-j>"] = cmp.mapping.select_next_item(),
+          ["<A-k>"] = cmp.mapping.scroll_docs( -2),
+          ["<A-j>"] = cmp.mapping.scroll_docs(2),
+          ["<C-c>"] = cmp.mapping.abort(),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+          ["<C-o>"] = cmp.mapping.complete(),
+          ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
+        }),
+        sources = cmp.config.sources(vim.list_extend(opts.sources, {
+          { name = "nvim_lsp_signature_help" },
+          { name = "orgmode" },
+          { name = "nvim_lua" },
+          { name = "spell" },
+        })),
+        window = {
+          completion = cmp.config.window.bordered({ winhighlight = "Search:None" }),
+          documentation = cmp.config.window.bordered({ winhighlight = "Search:None" }),
+        },
+      })
+    end,
   },
 
   {

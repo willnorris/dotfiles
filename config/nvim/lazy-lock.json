@@ -1,6 +1,6 @@
 {
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
-  "LazyVim": { "branch": "main", "commit": "befa6c67a4387b0db4f8421d463f5d03f91dc829" },
+  "LazyVim": { "branch": "main", "commit": "3c6357815c354ee2bb82b4162a484c1de6d575dc" },
   "LuaSnip": { "branch": "master", "commit": "f7c845749aba6096f041a73a26ba64f3817bab99" },
   "SchemaStore.nvim": { "branch": "main", "commit": "6f2ffb8420422db9a6c43dbce7227f0fdb9fcf75" },
   "cleanfold.nvim": { "branch": "master", "commit": "7ef2be14d7aace30925d3901ca036fdd29f121c1" },
