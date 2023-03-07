@@ -128,9 +128,11 @@ return {
   {
     "stevearc/stickybuf.nvim",
     opts = {
-      filetype = {
-        Outline = "filetype",
-      },
+      get_auto_pin = function(buf)
+        if vim.bo[buf].filetype == "Outline" then
+          return "filetype"
+        end
+      end,
     }
   },
 
