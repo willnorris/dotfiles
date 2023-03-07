@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.o.linebreak = true
 vim.o.infercase = true
 vim.o.breakindent = true
-vim.o.diffopt = "filler,vertical"
+vim.o.diffopt = "internal,filler,vertical,closeoff"
 vim.o.wrap = true
 
 -- Folding
