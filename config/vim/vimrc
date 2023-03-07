@@ -2,136 +2,99 @@
 unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
-" set XDG directories if not already set
+" General
+set history=9999 " keep plenty of history
+set hidden " allow changing buffers without saving
+set wildmode=list:longest,full
+set encoding=utf-8
+
+" Set XDG directories if not already set
 if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
 if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
 if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
 
-" General {{{
-  " a handful of basic config options come from vim-sensible
-  set history=9999 " keep plenty of history
-  set hidden " allow changing buffers without saving
-  set wildmode=list:longest,full
-  set encoding=utf-8
-  set updatetime=100
-  set maxmempattern=2000
-" }}}
+set viewdir=$XDG_DATA_HOME/vim/view     | call mkdir(&viewdir, 'p')
+set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
+set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
+set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
+set viminfofile=$XDG_DATA_HOME/vim/viminfo
+set undofile
 
-" Data Directories {{{
-  set runtimepath^=$XDG_CONFIG_HOME/vim
-  set runtimepath+=$XDG_DATA_HOME/vim
-  set runtimepath+=$XDG_CONFIG_HOME/vim/after
+" UI
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set number " show line numbers
+set splitright "open vertical splits on the right
+set sidescroll=1
+set sidescrolloff=8
 
-  let g:netrw_home = $XDG_DATA_HOME."/vim"
-  call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
+" Text Formatting / Layout
+set ignorecase smartcase infercase " smart case matching
+set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
+if v:version >= 704
+  set formatoptions+=cqj
+endif
+set diffopt=filler,vertical
 
-  " use XDG directories
-  set viewdir=$XDG_DATA_HOME/vim/view     | call mkdir(&viewdir, 'p')
-  set backupdir=$XDG_DATA_HOME/vim/backup | call mkdir(&backupdir, 'p')
-  set directory=$XDG_DATA_HOME/vim/swap   | call mkdir(&directory, 'p')
-  set undodir=$XDG_DATA_HOME/vim/undo     | call mkdir(&undodir, 'p')
-  set viminfofile=$XDG_DATA_HOME/vim/viminfo
-  set undofile
-" }}}
+" Mappings
+let mapleader = " "
+let maplocalleader = " "
 
-" Vim UI {{{
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-  set number " show line numbers
-  set splitright "open vertical splits on the right
-  set noshowmode
+noremap j gj
+noremap k gk
 
-  " Scrolling
-  set sidescroll=1
-  set sidescrolloff=10
-" }}}
+" Join lines and restore cursor location (J)
+nnoremap J :call Preserve("join")<CR>
 
-" Text Formatting / Layout {{{
-  set ignorecase smartcase infercase " smart case matching
-  set tabstop=2 shiftwidth=2 expandtab  " 2 space indents
-  if v:version >= 704
-    set formatoptions+=cqj
-  endif
+" Buffer navigation
+nnoremap <leader>; <C-^>
+:map <S-L> :bnext<CR>
+:map <S-H> :bprev<CR>
+nnoremap <leader>bd :bd<CR>
 
-  set diffopt=filler,vertical
+" strip trailing whitespace
+nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-" }}}
+inoremap jk <esc>
 
-" Mappings {{{
-  let mapleader = "\<SPACE>"
-  let maplocalleader = ","
+nnoremap <silent> <leader>! :redraw!<CR>:redrawstatus!<CR>
+nnoremap <leader>R :so $MYVIMRC<CR>
 
-  noremap j gj
-  noremap k gk
+nnoremap <leader>e :Lexplore<CR>
 
-  vmap <C-c> :OSCYank<cr>
+" tab navigation
+nnoremap <space><tab><tab> :tabnew<CR>
+nnoremap <space><tab>d :tabclose<CR>
+nnoremap <space><tab>] :tabnext<CR>
+nnoremap <space><tab>[ :tabprevious<CR>
 
-  " Join lines and restore cursor location (J)
-  nnoremap J :call Preserve("join")<CR>
+" move around split windows with ctrl
+noremap <C-H> <C-W>h
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-L> <C-W>l
 
-  " Buffer navigation
-  nnoremap <leader>; <C-^>
-  :map <leader>] :bnext<CR>
-  :map <leader>[ :bprev<CR>
-  nnoremap <leader>ls :Buffers<CR>
-  nnoremap <leader>dd :bd<CR>
+function! Preserve(command) "{{{
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let view = winsaveview()
+  " do the business:
+  execute a:command
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call winrestview(view)
+endfunction "}}}
 
-  " strip trailing whitespace
-  nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = -28
 
-  inoremap jk <esc>
+" Colors
+syntax on
+colorscheme habamax
+set hlsearch
+set colorcolumn=+1 " display column at edge of textwidth
 
-  nnoremap <silent> <leader>! :redraw!<CR>:redrawstatus!<CR>
-  nnoremap <leader>R :so $MYVIMRC<CR>
-
-  nnoremap <silent> <leader>nn :Lexplore<CR>
-  nnoremap <silent> <leader>tt :TagbarToggle<CR>
-
-  " tab navigation
-  nnoremap <silent> <leader>tn :tabnew<CR>
-  nnoremap <silent> <leader>tc :tabclose<CR>
-  nnoremap <S-L> :tabnext<CR>
-  nnoremap <S-H> :tabprevious<CR>
-
-  " move around split windows with ctrl
-  noremap <C-H> <C-W>h
-  noremap <C-J> <C-W>j
-  noremap <C-K> <C-W>k
-  noremap <C-L> <C-W>l
-
-" }}}
-
-" Functions {{{
-  function! Preserve(command) "{{{
-    " preparation: save last search, and cursor position.
-    let _s=@/
-    let view = winsaveview()
-    " do the business:
-    execute a:command
-    " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call winrestview(view)
-  endfunction "}}}
-" }}}
-
-  let g:netrw_banner = 0
-  let g:netrw_liststyle = 3
-  let g:netrw_browse_split = 4
-  let g:netrw_altv = 1
-  let g:netrw_winsize = -28
-
-" Colors {{{
-  syntax on
-  set hlsearch
-  set colorcolumn=+1 " display column at edge of textwidth
-
-  highlight Comment ctermfg=8
-  highlight SpecialComment ctermfg=8
-  highlight ColorColumn ctermbg=black
-  highlight SignColumn ctermbg=NONE
-  highlight LineNr ctermbg=NONE ctermfg=8
-  highlight DiffChange cterm=NONE
-  highlight SpellBad cterm=undercurl
-  highlight MatchParen ctermbg=8
-" }}}
+highlight Comment ctermfg=8
+highlight SpecialComment ctermfg=8
