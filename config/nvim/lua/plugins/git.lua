@@ -40,7 +40,9 @@ return {
   "rhysd/git-messenger.vim", -- commit message under cursor
   {
     "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
-    keys = "<leader>gy",
+    keys = {
+      { "<leader>gy", "", mode = { "n", "v" }, desc = "copy sharable git URL" },
+    },
     config = true,
   },
   {
