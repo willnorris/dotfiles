@@ -1,6 +1,5 @@
 return {
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
-  { "bufferline.nvim",                     enabled = false },
 
   {
     "stevearc/dressing.nvim",
@@ -18,6 +17,35 @@ return {
     }
   },
 
+  {
+    "bufferline.nvim",
+    keys = {
+      { "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", desc = "Open buffer 1" },
+      { "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", desc = "Open buffer 2" },
+      { "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", desc = "Open buffer 3" },
+      { "<leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>", desc = "Open buffer 4" },
+      { "<leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>", desc = "Open buffer 5" },
+      { "<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>", desc = "Open buffer 6" },
+      { "<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", desc = "Open buffer 7" },
+      { "<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", desc = "Open buffer 8" },
+      { "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", desc = "Open buffer 9" },
+    },
+    opts = {
+      options = {
+        tab_size = 0,
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+        always_show_bufferline = true,
+        separator_style = { "", "" },
+      },
+      highlights = {
+        buffer_selected = {
+          italic = false
+        },
+      },
+    },
+  },
+
   -- statusline
   {
     "nvim-lualine/lualine.nvim",
@@ -26,7 +54,6 @@ return {
       return {
         options = {
           theme = "auto",
-          --icons_enabled = false,
           section_separators = "",
           component_separators = "",
           disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
@@ -36,6 +63,7 @@ return {
             {
               "mode",
               fmt = function(str)
+                -- show first letter only
                 return str:sub(1, 1)
               end,
             },
@@ -55,19 +83,14 @@ return {
           },
           lualine_c = {
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-            --{ "filename", color = { fg = "white" } },
+            { "filename", path = 1, symbols = { modified = " ", readonly = " ", unnamed = "" } },
             function()
               return require("nvim-treesitter").statusline({
                 separator = "  ",
               })
             end,
           },
-          lualine_x = {'encoding', 'fileformat'},
-        },
-        tabline = {
-          lualine_a = { { "buffers", mode = 0 } },
-          lualine_z = { { "tabs", mode = 0 } },
+          lualine_x = {'encoding', 'fileformat' },
         },
       }
     end
