@@ -13,9 +13,6 @@ local preserve = function(arguments)
   vim.api.nvim_win_set_cursor(0, { line, col })
 end
 
--- movement
-keymap("i", "jk", "<esc>", noremap)
-
 -- buffer navigation
 keymap("n", "<leader>;", "<C-^>", noremap)
 

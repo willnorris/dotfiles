@@ -149,4 +149,11 @@ return {
     "lewis6991/cleanfold.nvim",
     config = true,
   },
+
+  {
+    "max397574/better-escape.nvim",
+    opts = {
+      mapping = {"jk"},
+    },
+  },
 }

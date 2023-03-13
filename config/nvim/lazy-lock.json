@@ -3,6 +3,7 @@
   "LazyVim": { "branch": "main", "commit": "bcdcfab020308a90c8cb347cf63d318f4cb05941" },
   "LuaSnip": { "branch": "master", "commit": "436857749a905b48c1e8205b996639c28f006556" },
   "SchemaStore.nvim": { "branch": "main", "commit": "1dc606bf07e1419d785e04d6dbb8585987d817cc" },
+  "better-escape.nvim": { "branch": "master", "commit": "426d29708064d5b1bfbb040424651c92af1f3f64" },
   "bufferline.nvim": { "branch": "main", "commit": "3677aceb9a72630b0613e56516c8f7151b86f95c" },
   "cleanfold.nvim": { "branch": "master", "commit": "7ef2be14d7aace30925d3901ca036fdd29f121c1" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
