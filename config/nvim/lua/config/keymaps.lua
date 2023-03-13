@@ -58,14 +58,6 @@ local open_alt_file = function()
 end
 keymap("n", "<leader>.", open_alt_file, { desc = "Open alternate file" })
 
-keymap("n", "<C-e>",
-  function()
-    local result = vim.treesitter.get_captures_at_cursor(0)
-    print(vim.inspect(result))
-  end,
-  { noremap = true, desc = "Treesitter group under cursor" }
-)
-
 -- Restore 'gw' to default behavior. First, remove the 'gw' keymap set in LazyVim:
 vim.keymap.del({ "n", "x" }, "gw")
 -- Then, reset formatexpr if null-ls is not providing any formatting generators.
