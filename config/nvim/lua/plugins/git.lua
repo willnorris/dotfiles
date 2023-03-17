@@ -11,26 +11,6 @@ return {
         changedelete = { text = '~' },
         untracked    = { text = '┆' },
       },
-      on_attach = function(buffer)
-        local gitsigns = package.loaded.gitsigns
-        local function map(mode, l, r, desc)
-          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-        end
-
-        map("n", "yohs", gitsigns.toggle_signs, "Toggle git signs")
-        map("n", "]h", gitsigns.next_hunk, "Next hunk")
-        map("n", "[h", gitsigns.prev_hunk, "Prev hunk")
-        map({ "n", "v" }, "<leader>hs", gitsigns.stage_hunk, "Stage hunk")
-        map({ "n", "v" }, "<leader>hr", gitsigns.reset_hunk, "Reset hunk")
-        map("n", "<leader>hu", gitsigns.undo_stage_hunk, "Undo stage hunk")
-        map("n", "<leader>hS", gitsigns.stage_buffer, "Stage buffer")
-        map("n", "<leader>hR", gitsigns.reset_buffer, "Reset buffer")
-        map("n", "<leader>hp", gitsigns.preview_hunk, "Preview hunk")
-        map("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end, "Blame line")
-        map("n", "<leader>ghd", gitsigns.diffthis, "Diff this")
-        map("n", "<leader>ghD", function() gitsigns.diffthis("~") end, "Diff this ~")
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-      end,
     }
   },
   "junegunn/gv.vim", -- Git commit browser

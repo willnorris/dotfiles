@@ -22,6 +22,8 @@ keymap("n", "<leader>!", "<Cmd>redraw!<CR><Cmd>redrawstatus!<CR><Cmd>nohlsearch<
 keymap("n", "yof", function()
   vim.o.foldcolumn = vim.o.foldcolumn == "0" and "1" or "0"
 end, { desc = "Toggle fold column"})
+keymap("n", "yogs", "<Cmd>Gitsigns toggle_signs<CR>", { desc = "Toggle git signs", silent = true })
+keymap("n", "<leader>ug", "<Cmd>Gitsigns toggle_signs<CR>", { desc = "Toggle git signs", silent = true })
 
 -- https://github.com/wookayin/dotfiles/commit/96d9355
 keymap("n", "<leader>wc", function ()
