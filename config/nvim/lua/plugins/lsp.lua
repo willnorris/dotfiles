@@ -6,7 +6,7 @@ return {
       -- setup handlers
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
       vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+          vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         -- Enable virtual text only on Warning or above
         virtual_text = {
@@ -83,8 +83,8 @@ return {
           },
         },
         gopls = {
-          cmd = {"gopls", "serve"},
-          filetypes = {"go", "gomod"},
+          cmd = { "gopls", "serve" },
+          filetypes = { "go", "gomod" },
           root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", ".git"),
           settings = {
             gopls = {
@@ -94,6 +94,10 @@ return {
               staticcheck = true,
             },
           },
+        },
+        sourcekit = {
+          cmd = { "xcrun", "sourcekit-lsp" },
+          filetypes = { "swift" },
         },
       },
     },
