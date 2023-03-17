@@ -48,14 +48,6 @@ return {
     config = true,
   },
 
-  {
-    "editorconfig/editorconfig-vim",
-    event = "VeryLazy",
-    config = function()
-      vim.g.EditorConfig_exclude_patterns = { "fugitive://.*" }
-    end,
-  },
-
   -- Undo history visualizer
   {
     "mbbill/undotree",
