@@ -90,7 +90,7 @@ return {
               })
             end,
           },
-          lualine_x = {'encoding', 'fileformat' },
+          lualine_x = { 'encoding', 'fileformat' },
         },
       }
     end

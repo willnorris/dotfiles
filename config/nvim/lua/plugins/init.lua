@@ -8,15 +8,15 @@ return {
   "isobit/vim-caddyfile", -- Caddyfile syntax support
 
   { "echasnovski/mini.pairs", enabled = false },
-  { "folke/tokyonight.nvim",  enabled = false },
-  { "catppuccin/nvim",        name = "catppuccin", enabled = false },
+  { "folke/tokyonight.nvim", enabled = false },
+  { "catppuccin/nvim", name = "catppuccin", enabled = false },
 
   -- Copy text to clipboard with OSC52
   {
     "ojroques/nvim-osc52",
     keys = {
       { "Y", function() require("osc52").copy_operator() end, { expr = true } },
-      { "Y", function() require("osc52").copy_visual() end, mode="v" },
+      { "Y", function() require("osc52").copy_visual() end, mode = "v" },
     },
     init = function()
       -- use osc52 as clipboard provider
@@ -145,7 +145,7 @@ return {
   {
     "max397574/better-escape.nvim",
     opts = {
-      mapping = {"jk"},
+      mapping = { "jk" },
     },
   },
 }

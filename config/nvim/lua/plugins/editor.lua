@@ -7,7 +7,7 @@ return {
     module = "telescope",
     cmd = "Telescope",
     keys = {
-      {"<C-t>", Util.telescope("files"), desc = "Find Files (root dir)"},
+      { "<C-t>", Util.telescope("files"), desc = "Find Files (root dir)" },
       { "<leader>sb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>sf", Util.telescope("files"), desc = "Find Files (root dir)" },
       { "<leader>sF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
@@ -23,7 +23,7 @@ return {
       { "<leader>fF", false }, -- find files (cwd) (<leader>sF)
       { "<leader>fr", false }, -- recent files (<leader>sp)
     },
-    opts = function (_, opts)
+    opts = function(_, opts)
       local actions = require("telescope.actions")
 
       -- Scroll the preview window by a specified distance, rather than the default scroll_speed.
@@ -167,7 +167,7 @@ return {
     keys = {
       { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "Markdown preview" },
     },
-    build = function ()
+    build = function()
       vim.fn["mkdp#util#install"]()
     end,
   },
