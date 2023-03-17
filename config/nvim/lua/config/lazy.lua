@@ -24,4 +24,7 @@ require("lazy").setup({
     },
     { import = "plugins" },
   },
+  dev = {
+    path = "~/src/nvim-plugins",
+  },
 })
