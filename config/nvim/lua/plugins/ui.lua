@@ -2,6 +2,15 @@ return {
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
   {
+    "norcalli/nvim-colorizer.lua",
+    opts = {
+      "css",
+      "javascript",
+      "scss",
+    },
+  },
+
+  {
     "stevearc/dressing.nvim",
     module = "dressing",
     opts = {
