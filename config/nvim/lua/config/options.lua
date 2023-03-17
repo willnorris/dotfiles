@@ -23,11 +23,11 @@ vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
 vim.o.list = false
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
-    if vim.o.filetype == "noice" then
+    if vim.bo.filetype == "noice" then
       return
     end
-    if vim.o.expandtab then
-      vim.o.list = true
+    if vim.bo.expandtab then
+      vim.wo.list = true
     end
   end,
 })

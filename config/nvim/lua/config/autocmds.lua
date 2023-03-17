@@ -6,3 +6,13 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = delm_augroup,
   command = "delm a-z",
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  callback = function()
+    if vim.bo.buftype == "nofile" then
+      vim.b.miniindentscope_disable = true
+      vim.wo.list = false
+      vim.bo.expandtab = false
+    end
+  end
+})
