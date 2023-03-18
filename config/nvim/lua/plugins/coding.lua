@@ -1,6 +1,5 @@
 return {
   {
-    "LazyVim/LazyVim",
     import = "lazyvim.plugins.extras.coding.copilot",
   },
 
@@ -71,7 +70,7 @@ return {
       { "<leader>tk", function() require("neotest").run.stop() end, desc = "stop test" },
       { "<leader>ta", function() require("neotest").run.attach() end, desc = "attach to nearest test" },
       { "<leader>tl", function() require("neotest").run.run_last() end, desc = "run last test" },
-      { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "show test summary" },
+      { "<leader>tu", function() require("neotest").summary.toggle() end, desc = "show test summary" },
       { "<leader>to", function() require("neotest").output.open() end, desc = "show test output" },
       { "<leader>tw", function()
         require("neotest").output.open({

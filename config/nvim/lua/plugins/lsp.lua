@@ -32,7 +32,7 @@ return {
       --keys[#keys + 1] = { "gd", vim.lsp.buf.definition, desc = "Goto Definition" }
       keys[#keys + 1] = { "gr", vim.lsp.buf.references, desc = "References" }
       keys[#keys + 1] = { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" }
-      keys[#keys + 1] = { "gc", vim.lsp.buf.incoming_calls, desc = "Incoming Calls" }
+      keys[#keys + 1] = { "gn", vim.lsp.buf.incoming_calls, desc = "Incoming Calls" }
       keys[#keys + 1] = { "gi", vim.lsp.buf.implementation, desc = "Goto Implementation" }
       keys[#keys + 1] = { "gt", vim.lsp.buf.type_definition, desc = "Goto Type Definition" }
       keys[#keys + 1] = { "gl", vim.lsp.codelens.run, desc = "Run codelens" }

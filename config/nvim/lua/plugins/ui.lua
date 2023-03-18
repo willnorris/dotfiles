@@ -27,7 +27,7 @@ return {
   },
 
   {
-    "bufferline.nvim",
+    "akinsho/bufferline.nvim",
     keys = {
       { "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", desc = "Open buffer 1" },
       { "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", desc = "Open buffer 2" },
@@ -99,7 +99,7 @@ return {
               })
             end,
           },
-          lualine_x = { 'encoding', 'fileformat' },
+          lualine_x = { "encoding", "fileformat" },
         },
       }
     end
@@ -131,9 +131,7 @@ return {
   },
 
   {
-    "LazyVim/LazyVim",
     import = "lazyvim.plugins.extras.ui.mini-starter",
-    version = false,
   },
   {
     "echasnovski/mini.starter",

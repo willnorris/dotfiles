@@ -35,7 +35,7 @@ return {
         paste = { ["+"] = paste,["*"] = paste },
       }
     end,
-    opt = { silent = true },
+    opts = { silent = true },
   },
 
   -- Toggle, display, and navigate marks
