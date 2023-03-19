@@ -27,6 +27,10 @@
   submit = codereview submit
   sync = codereview sync
 
+[blame]
+  date = relative
+  coloring = repeatedLines
+
 [credential "https://source.developers.google.com"]
   helper = gcloud.sh
 
