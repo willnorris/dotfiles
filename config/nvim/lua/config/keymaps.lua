@@ -80,3 +80,6 @@ require("lazyvim.util").on_attach(function(client, buf)
     end
   end
 end)
+
+-- replace selection with text from default register without changing the register
+keymap("x", "<_dP>p", [["_dP]], { desc = "Paste and keep default register" })
