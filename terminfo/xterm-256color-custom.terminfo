@@ -1,0 +1,6 @@
+xterm-256color-custom|xterm-256color with strikethrough,
+# italic
+  sitm=\E[3m, ritm=\E[23m,
+# strikethrough
+  smxx=\E[9m, rmxx=\E[29m,
+  use=xterm-256color,
