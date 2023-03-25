@@ -48,6 +48,10 @@ keymap("i", "<A-i>t", "<C-R>=system('timestamp -rfc3339')<CR>", { desc = "timest
 keymap("i", "<A-i>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>", { desc = "timestamp -rfc3339 -utc" })
 keymap("i", "<A-i>e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestamp -epoch" })
 
+-- j/k to move in wildmenu
+keymap("c", "<c-j>", "<c-n>", { remap = true })
+keymap("c", "<c-k>", "<c-p>", { remap = true })
+
 -- Find and open the alternate file for the current path.
 -- Requires alt command (https://github.com/uptech/alt)
 local open_alt_file = function()
