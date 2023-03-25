@@ -35,6 +35,8 @@ return {
       MiniStarterHeader = { fg = "$blue" },
       MiniStarterFooter = { fg = "$grey" },
       MiniStarterItemPrefix = { fg = "$red" },
+
+      WhichKeySeparator = { fg = "$grey" },
     },
   },
 }
