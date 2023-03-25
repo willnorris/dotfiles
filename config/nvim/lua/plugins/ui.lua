@@ -2,11 +2,14 @@ return {
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
   {
-    "norcalli/nvim-colorizer.lua",
+    "NvChad/nvim-colorizer.lua",
+    event = "BufEnter",
     opts = {
-      "css",
-      "javascript",
-      "scss",
+      user_default_options = {
+        names = false,
+        tailwind = true,
+        sass = { enable = true },
+      },
     },
   },
 
