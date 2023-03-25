@@ -130,6 +130,8 @@ return {
       }
     end,
   },
+  { import = "lazyvim.plugins.extras.formatting.prettier" },
+  { import = "lazyvim.plugins.extras.linting.eslint" },
   { -- Display LSP results in preview window
     "rmagatti/goto-preview",
     event = "VeryLazy",
