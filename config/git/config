@@ -31,6 +31,9 @@
   date = relative
   coloring = repeatedLines
 
+[credential]
+  helper = cache --timeout=3600
+
 [credential "https://source.developers.google.com"]
   helper = gcloud.sh
 
