@@ -59,6 +59,13 @@
   process = git-lfs filter-process
   smudge = git-lfs smudge -- %f
 
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  defaultKeyCommand = ssh-add -L
+  allowedSignersFile = ~/.config/git/allowed_signers
+
 [http]
   cookiefile = ~/.config/git/cookies
 
@@ -87,9 +94,11 @@
 [user]
   name = Will Norris
   email = will@willnorris.com
+  # signingKey should be set in ~/.config/git/local if needed
 
-# keep at end to let work configuration options override
+# keep at end to let local and work configuration options override
 [include]
+  path = ~/.config/git/local
   path = ~/.config/git/work
 
 # vim: ft=gitconfig
