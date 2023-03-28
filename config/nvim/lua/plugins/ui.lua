@@ -103,6 +103,7 @@ return {
             end,
           },
           lualine_x = { "encoding", "fileformat" },
+          lualine_z = { "location", "searchcount" },
         },
       }
     end
