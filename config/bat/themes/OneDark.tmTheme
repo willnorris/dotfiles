@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Name: One Half Dark
-  Author: Son A. Pham <sp@sonpham.me>
-  Url: https://github.com/sonph/onehalf
+  Name: One Dark
   License: The MIT License (MIT)
 
-  A dark Sublime Text color scheme based on Atom's One. See
-  github.com/sonph/onehalf for installation instructions, a light color
-  scheme, and versions for other editors/terminals such as Vim or iTerm.
+  A port of onedark.nvim (https://github.com/navarasu/onedark.nvim) back to
+  Sublime Text format for use in sharkdp/bat.
 
-  Red: #e06c75
+  Adapated directly from Son A. Pham's OneHalfDark theme for Sublime Text
+  (https://github.com/sonph/onehalf/tree/master/sublimetext),
+  with colors updated to match onedark.nvim.
+
+  Red: #e86671
   Green: #98c379
   Yellow: #e5c07b
   Blue: #61afef
   Purple: #c678dd
   Cyan: #56b6c2
-  White: #dcdfe4
+  Orange: #d19a66
+  White: #abb2bf
   Black: #282c34
-  Fg: #dcdfe4
+  Fg: #abb2bf
   Bg: #282c34
   Comment: #5c6370
   Gutter foreground: #919baa
@@ -35,10 +37,6 @@
   <string></string>
   <key>colorSpaceName</key>
   <string>sRGB</string>
-  <key>author</key>
-  <string>Son A. Pham &lt;sp@sonpham.me&gt;</string>
-  <key>comment</key>
-  <string>A dark iTerm color scheme based on Atom&apos;s One. See github.com&#x2f;sonph&#x2f;onehalf for installation instructions, a light color scheme, and versions for other editors&#x2f;terminals such as (Neo)Vim and Sublime Text.</string>
   <key>settings</key>
   <array>
     <dict>
@@ -47,7 +45,7 @@
         <key>fontStyle</key>
         <string></string>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
         <key>background</key>
         <string>#282c34</string>
         <key>bracketsOptions</key>
@@ -93,7 +91,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -137,7 +135,29 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#e06c75</string>
+        <string>#e86671</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Types</string>
+      <key>scope</key>
+      <string>storage.type</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#d19a66</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Member</string>
+      <key>scope</key>
+      <string>variable.other.member</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#56b6c2</string>
       </dict>
     </dict>
     <dict>
@@ -269,7 +289,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#e06c75</string>
+        <string>#c678dd</string>
       </dict>
     </dict>
     <dict>
@@ -309,13 +329,26 @@
       <key>name</key>
       <string>Markdown: Headings</string>
       <key>scope</key>
-      <string>markup.heading punctuation.definition.heading, entity.name.section</string>
+      <string>markup.heading, entity.name.section</string>
       <key>settings</key>
       <dict>
         <key>fontStyle</key>
-        <string></string>
+        <string>bold</string>
         <key>foreground</key>
-        <string>#61afef</string>
+        <string>#d19a66</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Markdown: Headings Symbol</string>
+      <key>scope</key>
+      <string>punctuation.definition.heading</string>
+      <key>settings</key>
+      <dict>
+        <key>fontStyle</key>
+        <string>bold</string>
+        <key>foreground</key>
+        <string>#e86671</string>
       </dict>
     </dict>
     <dict>
@@ -325,8 +358,8 @@
       <string>markup.bold, punctuation.definition.bold</string>
       <key>settings</key>
       <dict>
-        <key>foreground</key>
-        <string>#c678dd</string>
+        <key>fontStyle</key>
+        <string>bold</string>
       </dict>
     </dict>
     <dict>
@@ -336,8 +369,8 @@
       <string>markup.italic, punctuation.definition.italic</string>
       <key>settings</key>
       <dict>
-        <key>foreground</key>
-        <string>#c678dd</string>
+        <key>fontStyle</key>
+        <string>italic</string>
       </dict>
     </dict>
     <dict>
@@ -370,18 +403,18 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#98c379</string>
+        <string>#61afef</string>
       </dict>
     </dict>
     <dict>
       <key>name</key>
       <string>Markdown: Lists</string>
       <key>scope</key>
-      <string>markup.list</string>
+      <string>markup.list.unnumbered.bullet, markup.list.numbered.bullet</string>
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string></string>
+        <string>#e86671</string>
       </dict>
     </dict>
     <dict>
@@ -403,7 +436,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -414,7 +447,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -425,7 +458,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#e06c75</string>
+        <string>#e86671</string>
       </dict>
     </dict>
     <dict>
@@ -436,7 +469,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#e06c75</string>
+        <string>#e86671</string>
       </dict>
     </dict>
     <dict>
@@ -447,7 +480,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
       <dict>
@@ -458,7 +491,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#e06c75</string>
+        <string>#e86671</string>
       </dict>
     </dict>
     <dict>
@@ -469,7 +502,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#e06c75</string>
+        <string>#e86671</string>
       </dict>
     </dict>
     <dict>
@@ -480,7 +513,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -491,7 +524,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -502,7 +535,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -524,7 +557,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -559,7 +592,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#e06c75</string>
+        <string>#e86671</string>
       </dict>
     </dict>
     <dict>
@@ -614,9 +647,9 @@
       <key>settings</key>
       <dict>
         <key>background</key>
-        <string>#e06c75</string>
+        <string>#e86671</string>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -629,7 +662,7 @@
         <key>background</key>
         <string>#e5c07b</string>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -642,7 +675,7 @@
         <key>background</key>
         <string>#e5c07b</string>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
     <dict>
@@ -655,7 +688,7 @@
         <key>background</key>
         <string>#c678dd</string>
         <key>foreground</key>
-        <string>#dcdfe4</string>
+        <string>#abb2bf</string>
       </dict>
     </dict>
   </array>
