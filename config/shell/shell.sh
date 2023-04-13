@@ -9,8 +9,6 @@ if has batcat; then
   alias bat='batcat'
 fi
 if has bat; then
-  export BAT_THEME="OneHalfDark"
-  export BAT_STYLE="plain"
   alias cat='bat'
 fi
 
