@@ -4,16 +4,17 @@
 
 [ -z "$PS1" ] && return # interactive only
 
-if [ -r "$XDG_CONFIG_HOME/personal/dircolors" ]; then
+if [ -r "$XDG_CONFIG_HOME/shell/dircolors" ]; then
   if has udircolors; then
-    eval "$(udircolors ~/.config/personal/dircolors)"
+    eval "$(udircolors ~/.config/shell/dircolors)"
   elif has gdircolors; then
-    eval "$(gdircolors ~/.config/personal/dircolors)"
+    eval "$(gdircolors ~/.config/shell/dircolors)"
   elif has dircolors; then
-    eval "$(dircolors ~/.config/personal/dircolors)"
+    eval "$(dircolors ~/.config/shell/dircolors)"
   fi
 fi
 
+# The leading space in all of these aliases prevents them from polluting the shell history.
 if has gls; then
   alias ls=" gls --color=auto -F -N"
 elif ls --color=auto >/dev/null 2>&1; then
