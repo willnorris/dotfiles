@@ -1,0 +1,13 @@
+# imap_user and imap_pass set in credentials file
+source credentials
+
+set spoolfile="imaps://imap.fastmail.com"
+set folder="imaps://imap.fastmail.com/INBOX"
+set record="+Sent"
+set postponed="+Drafts"
+set read_inc=1000
+set write_inc=1000
+set mbox="+Archive"
+set mail_check = 5
+
+source color

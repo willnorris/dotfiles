@@ -31,6 +31,10 @@ export VISUAL="${EDITOR}"
 export PAGER='less'
 export LYNX_LSS="${HOME}/.lynx.lss"
 
+if has neomutt; then
+  alias mutt="neomutt"
+fi
+
 # Use rg output with a pager
 # https://github.com/BurntSushi/ripgrep/issues/181
 rg() {
