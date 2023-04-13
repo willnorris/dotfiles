@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 g () {
   if [ $# -gt 0 ]; then

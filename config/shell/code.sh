@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Prefer VS Code Insiders.  Alias 'code' to 'code-insiders' if we're running in
 # a normal terminal or inside of VS Code Insiders.  The only time we don't

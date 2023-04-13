@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 if [ -z "$GCLOUD_HOME" ]; then
   if [ -d /opt/google-cloud-sdk ]; then

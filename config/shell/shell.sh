@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 [ -z "$PS1" ] && return # interactive only
 
@@ -27,9 +27,9 @@ fi
 if [ "${TERM_PROGRAM}" = "vscode" ]; then
   EDITOR='code -w'
 fi
-export VISUAL=${EDITOR}
+export VISUAL="${EDITOR}"
 export PAGER='less'
-export LYNX_LSS=${HOME}/.lynx.lss
+export LYNX_LSS="${HOME}/.lynx.lss"
 
 # Use rg output with a pager
 # https://github.com/BurntSushi/ripgrep/issues/181

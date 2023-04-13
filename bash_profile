@@ -1,5 +1,5 @@
-# vim: ft=sh
+#!/usr/bin/env bash
 
-if [ -f ~/.bashrc ]; then 
-  . ~/.bashrc; 
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc;
 fi

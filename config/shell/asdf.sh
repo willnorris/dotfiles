@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 if [ "${ASDF_LOADED}" = "1" ]; then
   return

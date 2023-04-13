@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ -f "${HOME}/.profile" ]; then
   source "${HOME}/.profile"
 fi
@@ -7,7 +9,7 @@ export HISTFILE="${XDG_DATA_HOME}/bash/history"
 
 export PS1='\w\$ '
 
-for config_file in ${XDG_CONFIG_HOME}/bash/*.bash; do
-    source $config_file
+for config_file in "${XDG_CONFIG_HOME}/bash"/*.bash; do
+    source "$config_file"
 done
 unset i

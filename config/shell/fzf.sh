@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 if [ -d "$HOMEBREW_HOME/opt/fzf" ]; then
   export FZF_HOME="$HOMEBREW_HOME/opt/fzf"
