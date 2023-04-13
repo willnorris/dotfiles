@@ -63,12 +63,11 @@ return {
     keys = {
       { "yogv", "<Cmd>FocusToggle<CR>", desc = "toggle golden ratio view" }
     },
-    opts = function(_, opts)
-      opts.excluded_filetypes = opts.excluded_filetypes or {}
-      vim.list_extend(opts.excluded_filetypes, { "fugitive", "gitcommit", "Outline" })
-      opts.signcolumn = false
-      return opts
-    end,
+    opts = {
+      excluded_buftypes = { "nofile", "prompt", "popup", "tailscale" },
+      excluded_filetypes = { "fugitive", "gitcommit", "Outline" },
+      signcolumn = false,
+    },
   },
 
   {

@@ -133,10 +133,13 @@ return {
   {
     "RRethy/vim-illuminate",
     keys = {
-      { "<c-n>", require("illuminate").goto_next_reference, desc = "Next reference" },
-      { "<c-p>", require("illuminate").goto_prev_reference, desc = "Prev reference" },
+      { "<c-n>", function() require("illuminate").goto_next_reference() end, desc = "Next reference" },
+      { "<c-p>", function() require("illuminate").goto_prev_reference() end, desc = "Prev reference" },
     },
-    -- override config in LazyVim
+    opts = {
+      filetypes_denylist = { "dirbuf", "dirvish", "fugitive", "tailscale" },
+    },
+    -- override config in LazyVim to prevent [[ and ]] keymaps
     config = function(_, opts)
       require("illuminate").configure(opts)
     end,
