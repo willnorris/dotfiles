@@ -3,7 +3,7 @@
 Include ~/.ssh/work-config
 
 Host *
-  ControlPath ~/.cache/ssh/master-%r@%h:%p
+  ControlPath ~/.cache/ssh/ctl-%r@%h:%p
   ControlMaster auto
   ControlPersist 30m
 
