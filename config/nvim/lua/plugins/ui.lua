@@ -3,10 +3,11 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    event = "BufEnter",
     opts = {
       user_default_options = {
         names = false,
+        RRGGBBAA = true,
+        css_fn = true,
         tailwind = true,
         sass = { enable = true },
       },
