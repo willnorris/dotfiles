@@ -106,6 +106,17 @@ return {
   { import = "lazyvim.plugins.extras.lang.tailwind" },
   { import = "lazyvim.plugins.extras.lang.typescript" },
   {
+    "mfussenegger/nvim-jdtls",
+    ft = { "java" },
+    opts = {
+      cmd = { vim.fn.stdpath("data") .. "/mason/bin/jdtls" },
+      root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+    },
+    config = function(_, opts)
+      require("jdtls").start_or_attach(opts)
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     opts = {
       ui = {
@@ -133,11 +144,12 @@ return {
   },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
   { import = "lazyvim.plugins.extras.linting.eslint" },
-  { -- Display LSP results in preview window
+  {
+    -- Display LSP results in preview window
     "rmagatti/goto-preview",
     event = "VeryLazy",
     opts = {
-      border = {"┌", "─" ,"┐", "│", "┘", "─", "└", "│"};
+      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
       default_mappings = true,
       resizing_mappings = true,
       post_open_hook = function(_, winid)
@@ -154,7 +166,8 @@ return {
       require("toggle_lsp_diagnostics").init()
     end,
   },
-  { -- File outline based on LSP symbols
+  {
+    -- File outline based on LSP symbols
     "simrat39/symbols-outline.nvim",
     keys = {
       { "<leader>o", "<Cmd>SymbolsOutline<CR>", desc = "symbol outline" },
