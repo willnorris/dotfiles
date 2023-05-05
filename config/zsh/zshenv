@@ -1,7 +1,10 @@
 # vim: ft=zsh
 
+typeset -U PATH path MANPATH manpath
 source "${HOME}/.config/shell/_base.sh"
 
 for config_file (${XDG_CONFIG_HOME}/zsh/startup/*.zshenv(rN)); do
   source $config_file
 done
+
+original_path=(${path})

@@ -1,7 +1,21 @@
 # vim: ft=zsh
 
-typeset -U path manpath
 autoload -U compinit && compinit
+
+if [[ "$path" != "$original_path" ]]; then
+  # If path has changed, then it is likely that path_helper on macOS has run
+  # and changed the path order (https://gist.github.com/Linerre/f11ad4a6a934dcf01ee8415c9457e7b2).
+  if [ "${SHLVL}" = "1" ]; then
+    # This is a top-level shell, so we care about the paths that path_helper added,
+    # but source zshenv again to reset the order.
+    source ${XDG_CONFIG_HOME}/zsh/zshenv
+  else
+    # If this is a sub-shell, we already have the path_helper paths,
+    # so just reset to the original path.
+    path=(${original_path})
+  fi
+fi
+unset original_path
 
 # load common shell configuration
 if [ -f "${HOME}/.profile" ]; then
