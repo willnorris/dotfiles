@@ -2,7 +2,7 @@
 # shellcheck disable=SC2016
 
 # load or start named tmux session (https://github.com/bag-man/dotfiles/blob/c88cc45/bashrc)
-ts() {
+tm() {
   [ -n "$TMUX" ] && change="switch-client" || change="attach-session"
   if [ "$1" ]; then
     tmux "$change" -t "$1" 2>/dev/null || (tmux new-session -d -s "$1" && tmux "$change" -t "$1"); return
