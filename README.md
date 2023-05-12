@@ -17,7 +17,7 @@ To set up a new host:
 I have a separate set of dotfiles for my work machines.
 They include things like additional shell aliases and configuration files for internal tools.
 
-* `git clone git@github.com:willnorris/dotfiles-work ~/.work-dotfiles`
+* `git clone git@github.com:willnorris/work-dotfiles ~/.work-dotfiles`
 * update `~/.config/rcm/rcrc` to include:
 
       DOTFILES_DIRS="${HOME}/.dotfiles ${HOME}/.work-dotfiles"
