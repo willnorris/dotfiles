@@ -8,10 +8,12 @@ export ASDF_PYTHON_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/pip/default-python-
 export ASDF_NPM_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/npm/default-npm-packages"
 export ASDF_GEM_DEFAULT_PACKAGES_FILE="${XDG_CONFIG_HOME}/gem/default-gems"
 
+if [ ${SHLVL} -le 1 ]; then
+  PATH="$ASDF_DIR/bin:$ASDF_DATA_DIR/shims:$PATH"
+fi
+
 # load asdf.sh as long as we're not in a subshell ($SHLVL > 1),
 # in which case it should have already been loaded.
-if [ ${SHLVL} -le 1 ] && [ -f "${ASDF_DIR}/asdf.sh" ]; then
+if [ -f "${ASDF_DIR}/asdf.sh" ]; then
   . "${ASDF_DIR}/asdf.sh"
-else
-  . "${ASDF_DIR}/lib/asdf.sh"
 fi
