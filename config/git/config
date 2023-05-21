@@ -59,8 +59,7 @@
   process = git-lfs filter-process
   smudge = git-lfs smudge -- %f
 
-[gpg]
-  format = ssh
+# set "gpg.format = ssh" in ~/.config/git/local on appropriate hosts
 
 [gpg "ssh"]
   defaultKeyCommand = ssh-add -L
