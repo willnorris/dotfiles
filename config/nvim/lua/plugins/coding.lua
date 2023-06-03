@@ -55,60 +55,19 @@ return {
   },
 
   {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "antoinemadec/FixCursorHold.nvim",
-      { "nvim-neotest/neotest-go", },
-      { "nvim-neotest/neotest-python", },
-    },
-    keys = {
-      { "<leader>tt", function() require("neotest").run.run() end, desc = "run nearest test" },
-      { "<leader>tf", function()
-        require("neotest").run.run(vim.fn.expand("%"))
-      end, desc = "test file" },
-      { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "debug nearest test" },
-      { "<leader>tk", function() require("neotest").run.stop() end, desc = "stop test" },
-      { "<leader>ta", function() require("neotest").run.attach() end, desc = "attach to nearest test" },
-      { "<leader>tl", function() require("neotest").run.run_last() end, desc = "run last test" },
-      { "<leader>tu", function() require("neotest").summary.toggle() end, desc = "show test summary" },
-      { "<leader>to", function() require("neotest").output.open() end, desc = "show test output" },
-      { "<leader>tw", function()
-        require("neotest").output.open({
-          open_win = function()
-            vim.cmd("bel split")
-          end,
-        })
-      end, desc = "show test window" },
-    },
-    opts = function()
-      return {
-        adapters = {
-          require("neotest-go"),
-          require("neotest-python"),
-        },
+    { import = "lazyvim.plugins.extras.test.core" },
+    {
+      "nvim-neotest/neotest",
+      opts = {
         icons = {
-          expanded = "┐",
-          final_child_prefix = "└",
           failed = "",
           passed = "",
-          running = "",
         },
-        output = {
-          open_on_run = false,
-        },
-      }
-    end,
-    config = function(_, opts)
-      local neotest = require("neotest")
-      neotest.setup(opts)
-
-      vim.diagnostic.config({
-        signs = true,
-        virtual_text = true,
-      }, vim.api.nvim_create_namespace("neotest"))
-
-      require("which-key").register({ ["<leader>t"] = { name = "+testing" } })
-    end,
+      },
+      keys = {
+        { "<leader>tl", function() require("neotest").run.run_last() end, desc = "Run Last Test" },
+      },
+    },
   },
 
   {
