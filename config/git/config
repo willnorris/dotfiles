@@ -53,6 +53,9 @@
 [diff "vim"]
   command = vimdiff
 
+[fetch]
+  prune = true
+
 [filter "lfs"]
   required = true
   clean = git-lfs clean -- %f
