@@ -58,7 +58,8 @@ return {
 
   -- Auto-resize windows according to golden ratio
   {
-    "beauwilliams/focus.nvim",
+    "nvim-focus/focus.nvim",
+    branch = "refactor",
     event = "VimEnter",
     keys = {
       { "yogv", "<Cmd>FocusToggle<CR>", desc = "toggle golden ratio view" }
