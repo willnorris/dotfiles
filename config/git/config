@@ -79,6 +79,9 @@
   decorate = short
   follow = true
 
+[merge]
+  tool = nvimdiff
+
 [pull]
   rebase = true
 
