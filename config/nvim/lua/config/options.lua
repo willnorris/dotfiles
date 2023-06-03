@@ -7,12 +7,12 @@ vim.o.clipboard = ""
 -- UI
 vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
 vim.o.relativenumber = false -- no relative line numbers
-vim.o.splitbelow = false -- open horizontal splits on top
+vim.o.splitbelow = false     -- open horizontal splits on top
 vim.o.cursorlineopt = "number"
-vim.o.hidden = false -- don't show hidden buffers
+vim.o.hidden = false         -- don't show hidden buffers
 vim.o.mouse = false
-vim.o.pumblend = 0 -- no transparency on popup menu
-vim.o.conceallevel = 0 -- don't conceal anything
+vim.o.pumblend = 0           -- no transparency on popup menu
+vim.o.conceallevel = 0       -- don't conceal anything
 
 vim.opt.hlsearch = true
 vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
@@ -41,6 +41,6 @@ vim.o.wrap = true
 -- Folding
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldlevel = 100 -- don't autofold anything
-vim.o.foldnestmax = 3 -- maximum nesting
+vim.o.foldlevel = 100           -- don't autofold anything
+vim.o.foldnestmax = 3           -- maximum nesting
 vim.opt.foldopen:append("jump") -- what movements open folds

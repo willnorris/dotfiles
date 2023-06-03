@@ -13,9 +13,13 @@ return {
       { "<leader>sF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>sp", "<cmd>Telescope oldfiles<cr>", desc = "Previous files" },
       { "<leader>sx", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>fb", function()
-        require("telescope").extensions.file_browser.file_browser({ path = "%:h" })
-      end, desc = "file browser" },
+      {
+        "<leader>fb",
+        function()
+          require("telescope").extensions.file_browser.file_browser({ path = "%:h" })
+        end,
+        desc = "file browser"
+      },
 
       -- unset Lazyvim keymaps
       { "<leader>sd", false }, -- search diagnostics (<leader>sx)

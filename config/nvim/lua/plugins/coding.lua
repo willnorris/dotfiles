@@ -22,7 +22,7 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item(),
           ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<A-k>"] = cmp.mapping.scroll_docs( -2),
+          ["<A-k>"] = cmp.mapping.scroll_docs(-2),
           ["<A-j>"] = cmp.mapping.scroll_docs(2),
           ["<C-c>"] = cmp.mapping.abort(),
           ["<C-y>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
@@ -47,8 +47,8 @@ return {
     "echasnovski/mini.surround",
     opts = {
       mappings = {
-        add = "ys", -- Add surrounding in Normal and Visual modes
-        delete = "ds", -- Delete surrounding
+        add = "ys",     -- Add surrounding in Normal and Visual modes
+        delete = "ds",  -- Delete surrounding
         replace = "cs", -- Replace surrounding
       },
     },

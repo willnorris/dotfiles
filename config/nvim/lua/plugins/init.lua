@@ -1,11 +1,11 @@
 return {
-  "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
+  "konfekt/vim-sentence-chopper",    -- Semantic Line Breaks
   "michaeljsmith/vim-indent-object", -- Text objects based on indent level
-  "sickill/vim-pasta", -- Adjust indentation when pasting
-  "tpope/vim-eunuch", -- Helpers for UNIX
-  "tpope/vim-sleuth", -- Heuristically set buffer options
-  "tpope/vim-unimpaired", -- Pairs of handy bracket mappings
-  "isobit/vim-caddyfile", -- Caddyfile syntax support
+  "sickill/vim-pasta",               -- Adjust indentation when pasting
+  "tpope/vim-eunuch",                -- Helpers for UNIX
+  "tpope/vim-sleuth",                -- Heuristically set buffer options
+  "tpope/vim-unimpaired",            -- Pairs of handy bracket mappings
+  "isobit/vim-caddyfile",            -- Caddyfile syntax support
 
   { "echasnovski/mini.pairs", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
@@ -31,8 +31,8 @@ return {
 
       vim.g.clipboard = {
         name = "osc52",
-        copy = { ["+"] = copy,["*"] = copy },
-        paste = { ["+"] = paste,["*"] = paste },
+        copy = { ["+"] = copy, ["*"] = copy },
+        paste = { ["+"] = paste, ["*"] = paste },
       }
     end,
     opts = { silent = true },
