@@ -65,9 +65,9 @@ return {
       { "yogv", "<Cmd>FocusToggle<CR>", desc = "toggle golden ratio view" }
     },
     opts = {
-      excluded_buftypes = { "nofile", "prompt", "popup", "tailscale" },
-      excluded_filetypes = { "fugitive", "gitcommit", "Outline" },
-      signcolumn = false,
+      ui = {
+        signcolumn = false,
+      },
     },
   },
 
