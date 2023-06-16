@@ -1,0 +1,3 @@
+#!/bin/bash
+
+git fetch --prune && awk '/origin/&&/gone/{print $1}' <(git branch -vv) | xargs git branch -D
