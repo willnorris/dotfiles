@@ -104,13 +104,6 @@ return {
             },
           },
         },
-        pickers = {
-          buffers = {
-            ignore_current_buffer = true,
-            sort_mru = true,
-            previewer = false,
-          },
-        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_cursor({}),
