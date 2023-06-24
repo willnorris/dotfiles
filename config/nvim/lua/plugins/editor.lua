@@ -171,4 +171,11 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+
+  {
+    "folke/trouble.nvim",
+    opts = {
+      cycle_results = false,
+    },
+  }
 }
