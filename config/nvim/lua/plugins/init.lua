@@ -1,15 +1,11 @@
 return {
   "konfekt/vim-sentence-chopper",    -- Semantic Line Breaks
   "michaeljsmith/vim-indent-object", -- Text objects based on indent level
-  "sickill/vim-pasta",               -- Adjust indentation when pasting
-  "tpope/vim-eunuch",                -- Helpers for UNIX
   "tpope/vim-sleuth",                -- Heuristically set buffer options
-  "tpope/vim-unimpaired",            -- Pairs of handy bracket mappings
   "isobit/vim-caddyfile",            -- Caddyfile syntax support
 
+  { "echasnovski/mini.bracketed", config = true },
   { "echasnovski/mini.pairs", enabled = false },
-  { "folke/tokyonight.nvim", enabled = false },
-  { "catppuccin/nvim", name = "catppuccin", enabled = false },
 
   -- Copy text to clipboard with OSC52
   {

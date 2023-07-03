@@ -13,13 +13,14 @@ return {
       },
     }
   },
-  "junegunn/gv.vim",         -- Git commit browser
-  "tpope/vim-git",           -- Vim runtime files for git
-  "tpope/vim-fugitive",      -- Vim interface to git
-  "tpope/vim-rhubarb",       -- GitHub support for vim-fugitive
-  "rhysd/git-messenger.vim", -- commit message under cursor
+
+  "junegunn/gv.vim",    -- Git commit browser
+  "tpope/vim-git",      -- Vim runtime files for git
+  "tpope/vim-fugitive", -- Vim interface to git
+  "tpope/vim-rhubarb",  -- GitHub support for vim-fugitive
+
   {
-    "ruifm/gitlinker.nvim",  -- Shareable permalinks to git hosts
+    "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
     keys = {
       { "<leader>gy", "", mode = { "n", "v" }, desc = "copy sharable git URL" },
     },
