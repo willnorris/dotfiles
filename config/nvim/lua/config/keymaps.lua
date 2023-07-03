@@ -17,7 +17,7 @@ end
 keymap("n", "<leader>;", "<C-^>", noremap)
 
 keymap("n", "<C-C>", function()
-  require("noice").cmd("dismiss")
+  require("notify").dismiss({ silent = true, pending = true })
   vim.cmd "mode|redrawstatus!|redrawtabline"
   vim.cmd "nohlsearch|diffupdate"
 end, { desc = "clear and redraw screen" })

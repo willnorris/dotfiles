@@ -30,21 +30,11 @@ return {
       local keymaps = require("lazyvim.plugins.lsp.keymaps")
       local keys = keymaps.get()
       --keys[#keys + 1] = { "gd", vim.lsp.buf.definition, desc = "Goto Definition" }
-      keys[#keys + 1] = { "gr", vim.lsp.buf.references, desc = "References" }
-      keys[#keys + 1] = { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" }
       keys[#keys + 1] = { "gn", vim.lsp.buf.incoming_calls, desc = "Incoming Calls" }
       keys[#keys + 1] = { "gi", vim.lsp.buf.implementation, desc = "Goto Implementation" }
       keys[#keys + 1] = { "gt", vim.lsp.buf.type_definition, desc = "Goto Type Definition" }
       keys[#keys + 1] = { "gl", vim.lsp.codelens.run, desc = "Run codelens" }
       keys[#keys + 1] = { "gk", vim.lsp.buf.signature_help, desc = "Signature Help" }
-
-      -- diagnostics
-      keys[#keys + 1] = { "<leader>cx", vim.diagnostic.open_float, desc = "Line Diagnostics" }
-      keys[#keys + 1] = { "[x", vim.diagnostic.goto_prev, desc = "Prev Diagnostic" }
-      keys[#keys + 1] = { "]x", vim.diagnostic.goto_next, desc = "Next Diagnostic" }
-      keys[#keys + 1] = { "<leader>cd", false }
-      keys[#keys + 1] = { "]d", false }
-      keys[#keys + 1] = { "[d", false }
 
       -- workspace folders
       require("which-key").register({ ["<leader>w"] = { name = "+workspace" } })
@@ -161,7 +151,7 @@ return {
   {
     "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
     keys = {
-      { "yoxx", "<Plug>(toggle-lsp-diag-vtext)", desc = "Toggle LSP virtual text" },
+      { "<leader>ux", "<Plug>(toggle-lsp-diag-vtext)", desc = "Toggle LSP virtual text" },
     },
     config = function()
       require("toggle_lsp_diagnostics").init()

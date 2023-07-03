@@ -42,7 +42,7 @@ return {
   {
     "chentoast/marks.nvim",
     keys = {
-      { "yom", "<cmd>MarksToggleSigns<cr>", desc = "Toggle marks" },
+      { "<leader>um", "<cmd>MarksToggleSigns<cr>", desc = "Toggle marks" },
     },
     event = "VeryLazy",
     config = true,

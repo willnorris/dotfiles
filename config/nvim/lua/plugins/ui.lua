@@ -2,6 +2,13 @@ return {
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
   {
+    "rcarriga/nvim-notify",
+    keys = {
+      { "<leader>un", false },
+    },
+  },
+
+  {
     "NvChad/nvim-colorizer.lua",
     opts = {
       user_default_options = {
@@ -32,17 +39,6 @@ return {
 
   {
     "akinsho/bufferline.nvim",
-    keys = {
-      { "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", desc = "Open buffer 1" },
-      { "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", desc = "Open buffer 2" },
-      { "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", desc = "Open buffer 3" },
-      { "<leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>", desc = "Open buffer 4" },
-      { "<leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>", desc = "Open buffer 5" },
-      { "<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>", desc = "Open buffer 6" },
-      { "<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", desc = "Open buffer 7" },
-      { "<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", desc = "Open buffer 8" },
-      { "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", desc = "Open buffer 9" },
-    },
     opts = {
       options = {
         tab_size = 0,
