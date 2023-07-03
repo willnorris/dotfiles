@@ -58,7 +58,7 @@ return {
     branch = "refactor",
     event = "VimEnter",
     keys = {
-      { "yogv", "<Cmd>FocusToggle<CR>", desc = "toggle golden ratio view" }
+      { "<leader>uv", function() require("focus").focus_toggle() end, desc = "Toggle golden ratio view" }
     },
     opts = {
       ui = {

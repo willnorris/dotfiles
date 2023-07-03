@@ -1,5 +1,6 @@
 local keymap = vim.keymap.set
 local noremap = { noremap = true }
+local Util = require("lazyvim.util")
 
 -- https://stackoverflow.com/questions/70691265
 local preserve = function(arguments)
@@ -22,11 +23,10 @@ keymap("n", "<C-C>", function()
   vim.cmd "nohlsearch|diffupdate"
 end, { desc = "clear and redraw screen" })
 
-keymap("n", "yof", function()
-  vim.o.foldcolumn = vim.o.foldcolumn == "0" and "1" or "0"
-end, { desc = "Toggle fold column" })
-keymap("n", "yogs", "<Cmd>Gitsigns toggle_signs<CR>", { desc = "Toggle git signs", silent = true })
-keymap("n", "<leader>ug", "<Cmd>Gitsigns toggle_signs<CR>", { desc = "Toggle git signs", silent = true })
+keymap("n", "<leader>uo", function() Util.toggle("foldcolumn", true, { "1", "0" }) end, { desc = "Toggle fold column" })
+keymap("n", "<leader>ug", function() Util.toggle("signcolumn", true, { "no", "auto" }) end,
+  { desc = "Toggle sign column" })
+keymap("n", "<leader>ul", function() Util.toggle("number", true) end, { desc = "Toggle line numbers" })
 
 -- https://github.com/wookayin/dotfiles/commit/96d9355
 keymap("n", "<leader>wc", function()
