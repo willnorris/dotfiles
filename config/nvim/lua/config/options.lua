@@ -8,6 +8,7 @@ vim.o.clipboard = ""
 vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
 vim.o.relativenumber = false -- no relative line numbers
 vim.o.splitbelow = false     -- open horizontal splits on top
+vim.o.splitkeep = "cursor"
 vim.o.cursorlineopt = "number"
 vim.o.hidden = false         -- don't show hidden buffers
 vim.o.mouse = false
