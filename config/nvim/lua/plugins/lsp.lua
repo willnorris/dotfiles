@@ -55,7 +55,6 @@ return {
       require("lspconfig.ui.windows").default_options.border = "rounded"
     end,
     opts = {
-      autoformat = false,
       servers = {
         lua_ls = {
           settings = {
