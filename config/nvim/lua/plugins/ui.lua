@@ -8,18 +8,7 @@ return {
     },
   },
 
-  {
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      user_default_options = {
-        names = false,
-        RRGGBBAA = true,
-        css_fn = true,
-        tailwind = true,
-        sass = { enable = true },
-      },
-    },
-  },
+  { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 
   {
     "stevearc/dressing.nvim",
