@@ -11,8 +11,8 @@ return {
   {
     "ojroques/nvim-osc52",
     keys = {
-      { "Y", function() require("osc52").copy_operator() end, { expr = true } },
-      { "Y", function() require("osc52").copy_visual() end, mode = "v" },
+      { "Y", function() require("osc52").copy_operator() end, expr = true, desc = "Yank to clipboard" },
+      { "Y", function() require("osc52").copy_visual() end, mode = "v", desc = "Yank to clipboard" },
     },
     init = function()
       -- use osc52 as clipboard provider

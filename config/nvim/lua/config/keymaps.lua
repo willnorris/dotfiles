@@ -41,7 +41,7 @@ keymap("n", "<leader>wc", function()
 end, { desc = "Close all floating windows" })
 
 -- Join lines and restore cursor location (J)
-keymap("n", "J", function() preserve("join") end)
+keymap("n", "J", function() preserve("join") end, { desc = "Join lines" })
 
 -- strip trailing whitespace
 keymap("n", "_$", function() preserve("%s/\\s\\+$//e") end, { desc = "strip trailing whitespace" })
