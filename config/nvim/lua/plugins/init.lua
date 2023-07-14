@@ -6,6 +6,8 @@ return {
 
   { "echasnovski/mini.bracketed", config = true },
   { "echasnovski/mini.pairs", enabled = false },
+  { "folke/tokyonight.nvim", enabled = false },
+  { "catppuccin/nvim", name = "catppuccin", enabled = false },
 
   -- Copy text to clipboard with OSC52
   {
