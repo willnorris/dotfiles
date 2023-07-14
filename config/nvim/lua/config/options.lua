@@ -10,10 +10,9 @@ vim.o.relativenumber = false -- no relative line numbers
 vim.o.splitbelow = false     -- open horizontal splits on top
 vim.o.splitkeep = "cursor"
 vim.o.cursorlineopt = "number"
-vim.o.hidden = false         -- don't show hidden buffers
-vim.o.mouse = false
-vim.o.pumblend = 0           -- no transparency on popup menu
-vim.o.conceallevel = 0       -- don't conceal anything
+vim.o.hidden = false   -- don't show hidden buffers
+vim.o.pumblend = 0     -- no transparency on popup menu
+vim.o.conceallevel = 0 -- don't conceal anything
 
 vim.opt.hlsearch = true
 vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
