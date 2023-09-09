@@ -81,6 +81,9 @@ return {
           settings = {
             gopls = {
               gofumpt = false,
+              analyses = {
+                fieldalignment = false,
+              }
             },
           },
         },
