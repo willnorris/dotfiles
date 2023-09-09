@@ -1,7 +1,9 @@
 local Util = require("lazyvim.util")
 
--- Telescope
 return {
+  { "folke/flash.nvim", enabled = false }, -- disable search labels
+
+  -- Telescope
   {
     "nvim-telescope/telescope.nvim",
     module = "telescope",
