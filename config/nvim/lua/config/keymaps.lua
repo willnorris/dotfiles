@@ -76,9 +76,8 @@ local open_alt_file = function()
 end
 keymap("n", "<leader>.", open_alt_file, { desc = "Open alternate file" })
 
--- Restore 'gw' to default behavior. First, remove the 'gw' keymap set in LazyVim:
-vim.keymap.del({ "n", "x" }, "gw")
--- Then, reset formatexpr if null-ls is not providing any formatting generators.
+-- Restore 'gw' to default behavior by resetting formatexpr if null-ls
+-- is not providing any formatting generators.
 -- See: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
 require("lazyvim.util").on_attach(function(client, buf)
   if client.name == "null-ls" then
