@@ -1,6 +1,2 @@
-tmux-256color|tmux with 256 colors, italics, and strikethrouh,
-# italic
-  sitm=\E[3m, ritm=\E[23m,
-# strikethrough
-  smxx=\E[9m, rmxx=\E[29m,
+tmux-256color|tmux with 256 colors,
   use=xterm-256color, use=screen-256color,
