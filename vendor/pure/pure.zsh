@@ -182,7 +182,8 @@ prompt_pure_preprompt_render() {
 		cols="-1"
 	fi
 
-	# build preprompt_parts, including path
+	# build preprompt_parts, including path, which is truncated to last $cols characters.
+	# (see https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html)
 	preprompt_parts=(
 		$preprompt_before
 		'%F{${prompt_pure_colors[path]}}%${cols}<…<%~%<<%f'
@@ -192,7 +193,7 @@ prompt_pure_preprompt_render() {
 	local cleaned_ps1=$PROMPT
 	local -H MATCH MBEGIN MEND
 
-	# prompt_separator is a valid prompt escape sequence that does not 
+	# prompt_separator is a valid prompt escape sequence that does not
 	# expand to anything and is unlikely to ever appear in a real prompt
 	local prompt_separator="%{%}"
 
@@ -885,7 +886,7 @@ prompt_pure_setup() {
 	# If a virtualenv is activated, display it in grey.
 	PROMPT='%(12V.%F{$prompt_pure_colors[virtualenv]}%12v%f .)'
 
-	# Prompt turns red if the previous command didn't exit with 0.
+	# Prompt prepends red exclamation if the previous command didn't exit with 0.
 	local prompt_indicator='%(?..%F{$prompt_pure_colors[prompt:error]}!)%F{$prompt_pure_colors[prompt:success]}${prompt_pure_state[prompt]}%f '
 	PROMPT+=$prompt_indicator
 
