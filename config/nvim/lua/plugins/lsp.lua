@@ -121,15 +121,18 @@ return {
   },
   {
     "nvimtools/none-ls.nvim",
-    opts = function()
+    opts = function(_, opts)
       local nls = require("null-ls")
-      return {
-        sources = {
-          nls.builtins.code_actions.gitsigns,
-          nls.builtins.code_actions.shellcheck,
-          nls.builtins.diagnostics.shellcheck,
-        },
-      }
+      opts.sources = vim.list_extend(opts.sources, {
+        nls.builtins.code_actions.gitsigns,
+        nls.builtins.code_actions.shellcheck,
+        nls.builtins.diagnostics.shellcheck,
+      })
+      local remove_sources = { "goimports-reviser", "stylua" }
+      opts.sources = vim.tbl_filter(function(source)
+        return not vim.tbl_contains(remove_sources, source.name)
+      end, opts.sources)
+      return opts
     end,
   },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
