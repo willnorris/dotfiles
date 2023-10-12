@@ -119,6 +119,7 @@ return {
       },
     },
   },
+  { import = "lazyvim.plugins.extras.lsp.none-ls" },
   {
     "nvimtools/none-ls.nvim",
     opts = function(_, opts)
