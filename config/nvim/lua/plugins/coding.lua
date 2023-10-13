@@ -77,8 +77,8 @@ return {
       opts = {
         handlers = {
           delve = function(config)
-            config.adapters.executable.args = vim.list_extend(config.adapters.executable.args,
-              { "--check-go-version=false" })
+            config.adapters.executable.args =
+                vim.list_extend(config.adapters.executable.args, { "--check-go-version=false" })
             config.configurations = vim.list_extend(config.configurations or {}, {
               {
                 type = "delve",

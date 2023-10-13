@@ -89,7 +89,7 @@ return {
           return "filetype"
         end
       end,
-    }
+    },
   },
 
   {
@@ -98,7 +98,7 @@ return {
       quickfix = {
         default_bindings = false,
       },
-    }
+    },
   },
 
   {

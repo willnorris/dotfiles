@@ -20,7 +20,7 @@ return {
         function()
           require("telescope").extensions.file_browser.file_browser({ path = "%:h" })
         end,
-        desc = "file browser"
+        desc = "file browser",
       },
 
       -- unset Lazyvim keymaps
@@ -126,7 +126,7 @@ return {
       window = {
         border = "single",
       },
-    }
+    },
   },
 
   {
@@ -161,9 +161,8 @@ return {
       search = {
         pattern = [[\b(KEYWORDS)(\(.*\))?:]],
       },
-    }
+    },
   },
-
 
   {
     "iamcco/markdown-preview.nvim",
@@ -181,5 +180,5 @@ return {
     opts = {
       cycle_results = false,
     },
-  }
+  },
 }

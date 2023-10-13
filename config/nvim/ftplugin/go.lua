@@ -10,10 +10,10 @@ vim.opt_local.colorcolumn = "81"
 local augroup = vim.api.nvim_create_augroup("goformat", { clear = true })
 
 -- format and organize imports on save
-vim.api.nvim_create_autocmd('BufWritePre', {
+vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup,
-  pattern = '*.go',
+  pattern = "*.go",
   callback = function()
-    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-  end
+    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+  end,
 })

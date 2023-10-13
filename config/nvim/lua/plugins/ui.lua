@@ -23,7 +23,7 @@ return {
       select = {
         telescope = require("telescope.themes").get_cursor(),
       },
-    }
+    },
   },
 
   {
@@ -38,7 +38,7 @@ return {
       },
       highlights = {
         buffer_selected = {
-          italic = false
+          italic = false,
         },
       },
     },
@@ -92,7 +92,7 @@ return {
           lualine_z = { "location", "searchcount" },
         },
       }
-    end
+    end,
   },
 
   -- Distraction-free writing and coding

@@ -14,9 +14,8 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
       vim.wo.list = false
       vim.bo.expandtab = false
     end
-  end
+  end,
 })
-
 
 -- Disable focus.nvim on certain buftypes and filetypes
 local focus_augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
