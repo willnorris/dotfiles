@@ -16,6 +16,7 @@ return {
       FloatBorder = { bg = "$bg0" },
       NotifyBackground = { bg = "$bg0" },
 
+      DashboardHeader = { fg = "$blue" },
       Twilight = { bg = "$none", fg = "$bg2" },
       ZenBg = { fg = "$fg" },
 
