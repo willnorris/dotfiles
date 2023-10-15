@@ -35,6 +35,11 @@ return {
         show_close_icon = false,
         always_show_bufferline = true,
         separator_style = { "", "" },
+        groups = {
+          items = {
+            require("bufferline.groups").builtin.pinned:with({ icon = "" })
+          }
+        },
       },
       highlights = {
         buffer_selected = {
@@ -48,48 +53,16 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
-      local icons = require("lazyvim.config").icons
       return {
         options = {
-          theme = "auto",
           section_separators = "",
           component_separators = "",
-          disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
         },
         sections = {
           lualine_a = {
-            {
-              "mode",
-              fmt = function(str)
-                -- show first letter only
-                return str:sub(1, 1)
-              end,
-            },
+            -- show first letter of mode only
+            { "mode", fmt = function(str) return str:sub(1, 1) end },
           },
-          lualine_b = {
-            "branch",
-            "diff",
-            {
-              "diagnostics",
-              symbols = {
-                error = icons.diagnostics.Error,
-                warn = icons.diagnostics.Warn,
-                info = icons.diagnostics.Info,
-                hint = icons.diagnostics.Hint,
-              },
-            },
-          },
-          lualine_c = {
-            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            { "filename", path = 1, symbols = { modified = " ", readonly = " ", unnamed = "" } },
-            function()
-              return require("nvim-treesitter").statusline({
-                separator = "  ",
-              })
-            end,
-          },
-          lualine_x = { "encoding", "fileformat" },
-          lualine_z = { "location", "searchcount" },
         },
       }
     end,
@@ -146,7 +119,6 @@ return {
         },
       },
       messages = {
-        --view = "mini",
         view_search = false,
       },
       presets = {
