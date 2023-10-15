@@ -181,4 +181,6 @@ return {
       cycle_results = false,
     },
   },
+
+  { import = "lazyvim.plugins.extras.editor.symbols-outline" },
 }

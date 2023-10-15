@@ -169,14 +169,4 @@ return {
       require("toggle_lsp_diagnostics").init()
     end,
   },
-  {
-    -- File outline based on LSP symbols
-    "simrat39/symbols-outline.nvim",
-    keys = {
-      { "<leader>o", "<Cmd>SymbolsOutline<CR>", desc = "symbol outline" },
-    },
-    opts = {
-      auto_preview = false,
-    },
-  },
 }
