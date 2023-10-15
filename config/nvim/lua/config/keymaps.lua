@@ -1,5 +1,4 @@
 local keymap = vim.keymap.set
-local noremap = { noremap = true }
 local Util = require("lazyvim.util")
 
 -- https://stackoverflow.com/questions/70691265
@@ -15,7 +14,7 @@ local preserve = function(arguments)
 end
 
 -- buffer navigation
-keymap("n", "<leader>;", "<C-^>", noremap)
+keymap("n", "<leader>;", "<C-^>", { noremap = true })
 
 keymap("n", "<C-C>", function()
   require("notify").dismiss({ silent = true, pending = true })
@@ -23,22 +22,17 @@ keymap("n", "<C-C>", function()
   vim.cmd("nohlsearch|diffupdate")
 end, { desc = "clear and redraw screen" })
 
-keymap("n", "<leader>uo", function()
-  Util.toggle("foldcolumn", true, { "1", "0" })
-end, { desc = "Toggle fold column" })
-keymap("n", "<leader>ug", function()
-  Util.toggle("signcolumn", true, { "no", "auto" })
-end, { desc = "Toggle sign column" })
-keymap("n", "<leader>ul", function()
-  Util.toggle("number", true)
-end, { desc = "Toggle line numbers" })
+keymap("n", "<leader>uo", function() Util.toggle("foldcolumn", true, { "1", "0" }) end, { desc = "Toggle fold column" })
+keymap("n", "<leader>ug",
+  function() Util.toggle("signcolumn", true, { "no", "auto" }) end, { desc = "Toggle sign column" })
+keymap("n", "<leader>ul", function() Util.toggle("number", true) end, { desc = "Toggle line numbers" })
 
 -- https://github.com/wookayin/dotfiles/commit/96d9355
 keymap("n", "<leader>wc", function()
   local closed_windows = {}
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local config = vim.api.nvim_win_get_config(win)
-    if config.relative ~= "" then -- is_floating_window?
+    if config.relative ~= "" then        -- is_floating_window?
       vim.api.nvim_win_close(win, false) -- do not force
       table.insert(closed_windows, win)
     end
@@ -46,14 +40,10 @@ keymap("n", "<leader>wc", function()
 end, { desc = "Close all floating windows" })
 
 -- Join lines and restore cursor location (J)
-keymap("n", "J", function()
-  preserve("join")
-end, { desc = "Join lines" })
+keymap("n", "J", function() preserve("join") end, { desc = "Join lines" })
 
 -- strip trailing whitespace
-keymap("n", "_$", function()
-  preserve("%s/\\s\\+$//e")
-end, { desc = "strip trailing whitespace" })
+keymap("n", "_$", function() preserve("%s/\\s\\+$//e") end, { desc = "strip trailing whitespace" })
 
 -- timestamp insertion
 keymap("i", "<A-i>t", "<C-R>=system('timestamp -rfc3339')<CR>", { desc = "timestamp -rfc3339" })
