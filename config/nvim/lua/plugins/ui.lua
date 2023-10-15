@@ -14,12 +14,6 @@ return {
     "stevearc/dressing.nvim",
     module = "dressing",
     opts = {
-      input = {
-        anchor = "NW",
-        win_options = {
-          winblend = 0,
-        },
-      },
       select = {
         telescope = require("telescope.themes").get_cursor(),
       },

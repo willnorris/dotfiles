@@ -18,6 +18,7 @@ return {
       highlights = {
         Folded = { bg = "$bg0" },
         NormalFloat = { bg = "$bg0" },
+        FloatTitle = { bg = "$bg0" },
         FloatBorder = { bg = "$bg0" },
         NotifyBackground = { bg = "$bg0" },
 
