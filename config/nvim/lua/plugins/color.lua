@@ -1,43 +1,49 @@
 return {
-  "navarasu/onedark.nvim",
-  priority = 1000,
-  opts = {
-    transparent = true,
-    ending_tildes = true,
+  -- disable LazyVim colorschemes
+  { "folke/tokyonight.nvim", enabled = false },
+  { "catppuccin/nvim", name = "catppuccin", enabled = false },
 
-    code_style = {
-      comments = "none",
-    },
+  { -- onedark colorscheme
+    "navarasu/onedark.nvim",
+    priority = 1000,
+    opts = {
+      transparent = true,
+      ending_tildes = true,
 
-    -- color palette: https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/palette.lua
-    highlights = {
-      Folded = { bg = "$bg0" },
-      NormalFloat = { bg = "$bg0" },
-      FloatBorder = { bg = "$bg0" },
-      NotifyBackground = { bg = "$bg0" },
+      code_style = {
+        comments = "none",
+      },
 
-      DashboardHeader = { fg = "$blue" },
-      Twilight = { bg = "$none", fg = "$bg2" },
-      ZenBg = { fg = "$fg" },
+      -- color palette: https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/palette.lua
+      highlights = {
+        Folded = { bg = "$bg0" },
+        NormalFloat = { bg = "$bg0" },
+        FloatBorder = { bg = "$bg0" },
+        NotifyBackground = { bg = "$bg0" },
 
-      GitSignsChange = { fg = "$yellow" },
-      GitSignsChangeLn = { fg = "$yellow" },
-      GitSignsChangeNr = { fg = "$yellow" },
+        DashboardHeader = { fg = "$blue" },
+        Twilight = { bg = "$none", fg = "$bg2" },
+        ZenBg = { fg = "$fg" },
 
-      SignatureMarkText = { fg = "$red" },
-      SignatureMarkerText = { fg = "$green" },
+        GitSignsChange = { fg = "$yellow" },
+        GitSignsChangeLn = { fg = "$yellow" },
+        GitSignsChangeNr = { fg = "$yellow" },
 
-      TelescopeBorder = { fg = "$grey" },
-      TelescopePromptBorder = { fg = "$grey" },
-      TelescopeResultsBorder = { fg = "$grey" },
-      TelescopePreviewBorder = { fg = "$grey" },
-      TelescopeTitle = { fg = "$fg" },
+        SignatureMarkText = { fg = "$red" },
+        SignatureMarkerText = { fg = "$green" },
 
-      MiniStarterHeader = { fg = "$blue" },
-      MiniStarterFooter = { fg = "$grey" },
-      MiniStarterItemPrefix = { fg = "$red" },
+        TelescopeBorder = { fg = "$grey" },
+        TelescopePromptBorder = { fg = "$grey" },
+        TelescopeResultsBorder = { fg = "$grey" },
+        TelescopePreviewBorder = { fg = "$grey" },
+        TelescopeTitle = { fg = "$fg" },
 
-      WhichKeySeparator = { fg = "$grey" },
+        MiniStarterHeader = { fg = "$blue" },
+        MiniStarterFooter = { fg = "$grey" },
+        MiniStarterItemPrefix = { fg = "$red" },
+
+        WhichKeySeparator = { fg = "$grey" },
+      },
     },
   },
 }

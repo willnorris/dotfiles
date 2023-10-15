@@ -3,8 +3,27 @@ local Util = require("lazyvim.util")
 return {
   { "folke/flash.nvim", enabled = false }, -- disable search labels
 
-  -- Telescope
+  { "konfekt/vim-sentence-chopper" },      -- Semantic Line Breaks
+  { "tpope/vim-sleuth" },                  -- Heuristically set buffer options
+
   {
+    "max397574/better-escape.nvim",
+    opts = {
+      mapping = { "jk" },
+    },
+  },
+
+  { -- Toggle, display, and navigate marks
+    "chentoast/marks.nvim",
+    keys = {
+      { "<leader>um", "<cmd>MarksToggleSigns<cr>", desc = "Toggle marks" },
+    },
+    event = "VeryLazy",
+    config = true,
+  },
+
+
+  { -- Telescope
     "nvim-telescope/telescope.nvim",
     module = "telescope",
     cmd = "Telescope",
@@ -179,6 +198,48 @@ return {
     "folke/trouble.nvim",
     opts = {
       cycle_results = false,
+    },
+  },
+
+  { -- Copy text to clipboard with OSC52
+    "ojroques/nvim-osc52",
+    keys = {
+      { "Y", function() require("osc52").copy_operator() end, expr = true, desc = "Yank to clipboard" },
+      { "Y", function() require("osc52").copy_visual() end, mode = "v", desc = "Yank to clipboard" },
+    },
+    init = function()
+      -- use osc52 as clipboard provider
+      -- https://github.com/ojroques/nvim-osc52#using-nvim-osc52-as-clipboard-provider
+      local function copy(lines, _)
+        require("osc52").copy(table.concat(lines, "\n"))
+      end
+
+      local function paste()
+        return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+      end
+
+      vim.g.clipboard = {
+        name = "osc52",
+        copy = { ["+"] = copy, ["*"] = copy },
+        paste = { ["+"] = paste, ["*"] = paste },
+      }
+    end,
+    opts = { silent = true },
+  },
+
+  {
+    "stevearc/qf_helper.nvim",
+    opts = {
+      quickfix = {
+        default_bindings = false,
+      },
+    },
+  },
+
+  { -- Undo history visualizer
+    "mbbill/undotree",
+    keys = {
+      { "<leader>uu", "<Cmd>UndotreeToggle<CR>", desc = "Toggle undo tree" },
     },
   },
 

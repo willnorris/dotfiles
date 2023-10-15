@@ -49,8 +49,7 @@ return {
     },
   },
 
-  -- statusline
-  {
+  { -- statusline
     "nvim-lualine/lualine.nvim",
     opts = function()
       return {
@@ -68,8 +67,7 @@ return {
     end,
   },
 
-  -- Distraction-free writing and coding
-  {
+  { -- Distraction-free writing and coding
     "folke/zen-mode.nvim",
     dependencies = {
       "benstockil/twilight.nvim", -- dim inactive portions of file
@@ -126,5 +124,35 @@ return {
         lsp_doc_border = true,
       },
     },
+  },
+
+  { -- Auto-resize windows according to golden ratio
+    "nvim-focus/focus.nvim",
+    branch = "refactor",
+    event = "VimEnter",
+    keys = {
+      { "<leader>uv", function() require("focus").focus_toggle() end, desc = "Toggle golden ratio view" }
+    },
+    opts = {
+      ui = {
+        signcolumn = false,
+      },
+    },
+  },
+
+  {
+    "stevearc/stickybuf.nvim",
+    opts = {
+      get_auto_pin = function(buf)
+        if vim.bo[buf].filetype == "Outline" then
+          return "filetype"
+        end
+      end,
+    },
+  },
+
+  {
+    "lewis6991/cleanfold.nvim",
+    config = true,
   },
 }

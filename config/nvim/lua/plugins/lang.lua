@@ -1,4 +1,4 @@
--- LSP
+-- Language support: LSP, formatters, linters
 return {
   { import = "lazyvim.plugins.extras.lang.docker" },
   { import = "lazyvim.plugins.extras.lang.go" },
@@ -7,7 +7,11 @@ return {
   { import = "lazyvim.plugins.extras.lang.terraform" },
   { import = "lazyvim.plugins.extras.lang.typescript" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
-  {
+
+  -- Caddyfile syntax support
+  { "isobit/vim-caddyfile" },
+
+  { -- lspconfig
     "neovim/nvim-lspconfig",
     init = function()
       -- setup handlers
@@ -147,8 +151,7 @@ return {
   },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
   { import = "lazyvim.plugins.extras.linting.eslint" },
-  {
-    -- Display LSP results in preview window
+  { -- Display LSP results in preview window
     "rmagatti/goto-preview",
     event = "VeryLazy",
     opts = {
