@@ -14,6 +14,9 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
       vim.wo.list = false
       vim.bo.expandtab = false
     end
+    if vim.bo.filetype == "dashboard" then
+      vim.wo.list = false
+    end
   end,
 })
 
