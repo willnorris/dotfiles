@@ -45,8 +45,10 @@ return {
 
   { -- statusline
     "nvim-lualine/lualine.nvim",
-    opts = function()
-      return {
+    opts = function(_, opts)
+      local icons = require("lazyvim.config").icons
+      local Util = require("lazyvim.util")
+      return vim.tbl_deep_extend("force", opts, {
         options = {
           section_separators = "",
           component_separators = "",
@@ -56,8 +58,43 @@ return {
             -- show first letter of mode only
             { "mode", fmt = function(str) return str:sub(1, 1) end },
           },
+          lualine_b = {
+            "branch",
+            "diff",
+          },
+          lualine_c = {
+            {
+              "diagnostics",
+              symbols = {
+                error = icons.diagnostics.Error,
+                warn = icons.diagnostics.Warn,
+                info = icons.diagnostics.Info,
+                hint = icons.diagnostics.Hint,
+              },
+            },
+            { function() return require("lazyvim.util").root.pretty_path() end, },
+          },
+          lualine_x = { "encoding", "fileformat" },
+          lualine_y = {
+            {
+              function() return require("noice").api.status.mode.get() end,
+              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+              color = Util.ui.fg("Constant"),
+            },
+            {
+              function() return "  " .. require("dap").status() end,
+              cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+              color = Util.ui.fg("Debug"),
+            },
+            "searchcount",
+          },
+          lualine_z = {
+            { "progress" },
+            { "location", padding = { left = 0, right = 1 } },
+          },
+
         },
-      }
+      })
     end,
   },
 
