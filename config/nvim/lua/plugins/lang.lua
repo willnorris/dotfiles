@@ -128,6 +128,7 @@ return {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       opts.formatters_by_ft.lua = nil
+      opts.formatters_by_ft.go = nil
       return opts
     end,
   },
@@ -142,7 +143,7 @@ return {
         nls.builtins.code_actions.shellcheck,
         nls.builtins.diagnostics.shellcheck,
       })
-      local remove_sources = { "goimports-reviser", "stylua" }
+      local remove_sources = { "goimports", "gofumpt", "goimports-reviser", "stylua" }
       opts.sources = vim.tbl_filter(function(source)
         return not vim.tbl_contains(remove_sources, source.name)
       end, opts.sources)
@@ -159,8 +160,10 @@ return {
       default_mappings = true,
       resizing_mappings = true,
       post_open_hook = function(_, winid)
-        vim.keymap.set("n", "q", function() vim.api.nvim_win_close(winid, false) end)
-      end
+        vim.keymap.set("n", "q", function()
+          vim.api.nvim_win_close(winid, false)
+        end)
+      end,
     },
   },
   {
