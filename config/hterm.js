@@ -17,41 +17,41 @@ term_.prefs_.resetAll();
 
 // k
 const prefs = {
-    // colors
-    'foreground-color': '#abb2bf',
-    'background-color': '#1e1f24',
-    'cursor-color': '#e06c7580',
-    'color-palette-overrides': [
-        '#2c323c', // black
-        '#e06c75', // red
-        '#98c379', // green
-        '#e5c07b', // yellow
-        '#61afef', // blue
-        '#c678dd', // magenta
-        '#56b6c2', // cyan
-        '#5c6370', // white
-        '#3e4452', // bright black
-        '#e06c75', // bright red
-        '#98c379', // bright green
-        '#e5c07b', // bright yellow
-        '#61afef', // bright blue
-        '#c678dd', // bright magenta
-        '#56b6c2', // bright cyan
-        '#abb2bf', // bright white
-    ],
+  // colors
+  "foreground-color": "#abb2bf",
+  "background-color": "#1e1f24",
+  "cursor-color": "#e06c7580",
+  "color-palette-overrides": [
+    "#2c323c", // black
+    "#e06c75", // red
+    "#98c379", // green
+    "#e5c07b", // yellow
+    "#61afef", // blue
+    "#c678dd", // magenta
+    "#56b6c2", // cyan
+    "#5c6370", // white
+    "#3e4452", // bright black
+    "#e06c75", // bright red
+    "#98c379", // bright green
+    "#e5c07b", // bright yellow
+    "#61afef", // bright blue
+    "#c678dd", // bright magenta
+    "#56b6c2", // bright cyan
+    "#abb2bf", // bright white
+  ],
 
-    // typography
-    'font-size': 14,
-    'enable-bold': false,
-    'font-family': '"CaskaydiaCove Nerd Font Mono", monospace',
-    'user-css': 'https://willnorris.com/fonts/caskaydia-cove.css',
+  // typography
+  "font-size": 14,
+  "enable-bold": false,
+  "font-family": '"CaskaydiaCove Nerd Font Mono", monospace',
+  "user-css": "https://willnorris.com/fonts/caskaydia-cove.css",
 
-    // window and behavior
-    'scrollbar-visible': false,
-    'desktop-notification-bell': true,
-    'mouse-right-click-paste': false,
+  // window and behavior
+  "scrollbar-visible": false,
+  "desktop-notification-bell": true,
+  "mouse-right-click-paste": false,
 };
 
-for (const [k,v] of Object.entries(prefs)) {
-    term_.prefs_.set(k, v);
+for (const [k, v] of Object.entries(prefs)) {
+  term_.prefs_.set(k, v);
 }
