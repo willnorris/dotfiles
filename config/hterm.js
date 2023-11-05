@@ -20,7 +20,7 @@ const prefs = {
     // colors
     'foreground-color': '#abb2bf',
     'background-color': '#1e1f24',
-    'cursor-color': lib.colors.setAlpha(lib.colors.hexToRGB('#e06c75'), 0.5),
+    'cursor-color': '#e06c7580',
     'color-palette-overrides': [
         '#2c323c', // black
         '#e06c75', // red
