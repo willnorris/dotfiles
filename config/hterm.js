@@ -43,8 +43,8 @@ const prefs = {
     // typography
     'font-size': 14,
     'enable-bold': false,
-    'font-family': '"Noto Sans Mono", "CaskaydiaCove Nerd Font Mono", monospace',
-    'user-css': 'https://willnorris.com/x/nfwf/caskaydiacove-nerd-font-mono.css',
+    'font-family': '"CaskaydiaCove Nerd Font Mono", monospace',
+    'user-css': 'https://willnorris.com/fonts/caskaydia-cove.css',
 
     // window and behavior
     'scrollbar-visible': false,
