@@ -143,7 +143,7 @@ return {
         nls.builtins.code_actions.shellcheck,
         nls.builtins.diagnostics.shellcheck,
       })
-      local remove_sources = { "goimports", "gofumpt", "goimports-reviser", "stylua" }
+      local remove_sources = { "goimports", "gofumpt", "goimports-reviser", "hadolint", "stylua" }
       opts.sources = vim.tbl_filter(function(source)
         return not vim.tbl_contains(remove_sources, source.name)
       end, opts.sources)
