@@ -30,7 +30,7 @@ for c (fg bg jobs exit clear reset); do
 done
 
 if [[ -d "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting" ]]; then
-  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
   source "${XDG_CONFIG_HOME}/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 if (( $+ZSH_HIGHLIGHT_STYLES )); then
