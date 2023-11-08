@@ -13,6 +13,7 @@ vim.o.cursorlineopt = "number"
 vim.o.hidden = false   -- don't show hidden buffers
 vim.o.pumblend = 0     -- no transparency on popup menu
 vim.o.conceallevel = 0 -- don't conceal anything
+vim.o.mouse = ""
 
 vim.opt.hlsearch = true
 vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
