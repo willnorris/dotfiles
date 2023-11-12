@@ -74,14 +74,14 @@ return {
         ["<C-n>"] = actions.cycle_history_next,
         ["<C-p>"] = actions.cycle_history_prev,
 
-        ["<A-j>"] = function(bufnr)
+        ["<M-j>"] = function(bufnr)
           scroll_preview(bufnr, 1, 1)
         end,
-        ["<A-k>"] = function(bufnr)
+        ["<M-k>"] = function(bufnr)
           scroll_preview(bufnr, 1, -1)
         end,
-        ["<A-f>"] = actions.preview_scrolling_down,
-        ["<A-b>"] = actions.preview_scrolling_up,
+        ["<M-f>"] = actions.preview_scrolling_down,
+        ["<M-b>"] = actions.preview_scrolling_up,
 
         ["<C-s>"] = actions.select_horizontal,
         ["<C-x>"] = require("trouble.providers.telescope").open_with_trouble,
