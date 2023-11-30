@@ -16,23 +16,23 @@ has() {
 # Add a new path to the PATH environment variable if it is a directory and is
 # not already in PATH.
 pathadd() {
-    if [ -d "$1" ]; then
-      case ":$PATH:" in
-        *":$1:"*) : ;;
-        *) PATH="$1:$PATH" ;;
-      esac
-    fi
+  if [ -d "$1" ]; then
+    case ":$PATH:" in
+    *":$1:"*) : ;;
+    *) PATH="$1:$PATH" ;;
+    esac
+  fi
 }
 
 # Create symlink to TARGET from LINK if it's not already linked.
 link_file() {
-    TARGET=$1
-    LINK=$2
+  TARGET=$1
+  LINK=$2
 
-    if [ -r "${TARGET}" ]; then
-      if [ ! -h "${LINK}" ] || [ "$(readlink "${LINK}")" != "${TARGET}" ]; then
-        mkdir -p "$(dirname "${LINK}")"
-        ln -s "${TARGET}" "${LINK}"
-      fi
+  if [ -r "${TARGET}" ]; then
+    if [ ! -h "${LINK}" ] || [ "$(readlink "${LINK}")" != "${TARGET}" ]; then
+      mkdir -p "$(dirname "${LINK}")"
+      ln -s "${TARGET}" "${LINK}"
     fi
+  fi
 }

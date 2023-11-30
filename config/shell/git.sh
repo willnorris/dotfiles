@@ -1,6 +1,6 @@
 #!/bin/sh
 
-g () {
+g() {
   if [ $# -gt 0 ]; then
     git "$@"
   else

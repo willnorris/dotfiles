@@ -9,4 +9,3 @@ if [ "${TERM_PROGRAM}" != "vscode" ] || [[ "${TERM_PROGRAM_VERSION}" == *"-insid
     alias code=code-insiders
   fi
 fi
-
