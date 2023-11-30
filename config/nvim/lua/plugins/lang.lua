@@ -7,6 +7,7 @@ return {
   { import = "lazyvim.plugins.extras.lang.terraform" },
   { import = "lazyvim.plugins.extras.lang.typescript" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
+  { import = "lazyvim.plugins.extras.util.dot" },
 
   -- Caddyfile syntax support
   { "isobit/vim-caddyfile" },
