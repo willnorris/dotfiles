@@ -22,6 +22,14 @@ return {
         FloatBorder = { bg = "$bg0" },
         NotifyBackground = { bg = "$bg0" },
 
+        -- onedark.nvim already uses a colored undercurl for spelling highlights,
+        -- but my terminal isn't currently rendering them properly.
+        -- for now, just highlight the text.
+        SpellBad = { fg = "$red" },
+        SpellCap = { fg = "$yellow" },
+        SpellRare = { fg = "$purple" },
+        SpellLocal = { fg = "$blue" },
+
         DashboardHeader = { fg = "$blue" },
         Twilight = { bg = "$none", fg = "$bg2" },
         ZenBg = { fg = "$fg" },
