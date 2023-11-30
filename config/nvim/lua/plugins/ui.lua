@@ -72,7 +72,7 @@ return {
                 hint = icons.diagnostics.Hint,
               },
             },
-            { function() return require("lazyvim.util").root.pretty_path() end, },
+            { Util.lualine.pretty_path() },
           },
           lualine_x = { "encoding", "fileformat" },
           lualine_y = {
