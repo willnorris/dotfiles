@@ -16,6 +16,10 @@ if ! has fd && has fdfind; then
   alias fd='fdfind'
 fi
 
+if ! has open && has xdg-open; then
+  alias open='xdg-open'
+fi
+
 alias vi=vim
 alias view='vim -R'
 alias vimdiff='vim -d'
@@ -59,7 +63,7 @@ export HOSTNAME
 
 export _Z_DATA="${XDG_DATA_HOME}/z/db"
 
-encmount () {
+encmount() {
   [ -z "$1" ] && echo "volumne not specified" 2>&1 && return 1
   if [ "$(uname)" = "Darwin" ]; then
     encfs "$HOME/.googledrive/Documents/$1.enc" "$HOME/.$1" -- -o volname="$1"
