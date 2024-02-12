@@ -23,6 +23,10 @@ Host rpi
   HostName rpi.willnorris.net
   User willnorris
 
+Host gideon.local
+  HostName 10.0.1.4
+  User willnorris
+
 Host local
   HostName levi.ipn.willnorris.net
   User willnorris
