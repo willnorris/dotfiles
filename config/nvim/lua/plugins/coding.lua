@@ -13,6 +13,10 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "f3fora/cmp-spell",
       "onsails/lspkind.nvim",
+      "gitaarik/nvim-cmp-toggle",
+    },
+    keys = {
+      { "<leader>ua", ":NvimCmpToggle<CR>", desc = "Toggle autocomplete" },
     },
     opts = function(_, opts)
       local cmp = require("cmp")
