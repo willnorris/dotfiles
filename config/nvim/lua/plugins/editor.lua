@@ -209,5 +209,5 @@ return {
     },
   },
 
-  { import = "lazyvim.plugins.extras.editor.symbols-outline" },
+  { import = "lazyvim.plugins.extras.editor.outline" },
 }
