@@ -134,23 +134,6 @@ return {
     end,
   },
 
-  { import = "lazyvim.plugins.extras.lsp.none-ls" },
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = vim.list_extend(opts.sources, {
-        nls.builtins.code_actions.gitsigns,
-        nls.builtins.code_actions.shellcheck,
-        nls.builtins.diagnostics.shellcheck,
-      })
-      local remove_sources = { "goimports", "gofumpt", "goimports-reviser", "hadolint", "stylua" }
-      opts.sources = vim.tbl_filter(function(source)
-        return not vim.tbl_contains(remove_sources, source.name)
-      end, opts.sources)
-      return opts
-    end,
-  },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
   { import = "lazyvim.plugins.extras.linting.eslint" },
   { -- Display LSP results in preview window
