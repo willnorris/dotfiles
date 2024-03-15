@@ -89,6 +89,8 @@ return {
         ["<C-o>"] = require("telescope.actions.layout").toggle_preview,
         ["<C-c>"] = actions.close,
         ["<C-_>"] = actions_which_key, -- keys from pressing <C-/>
+
+        ["<C-d>"] = actions.delete_buffer,
       }
       for k, v in pairs(mappings) do
         -- apply mappings to both normal and insert mode
