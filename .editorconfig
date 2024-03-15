@@ -2,8 +2,3 @@
 indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true
-
-# https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/lua.template.editorconfig
-[*.lua]
-align_array_table = false
-quote_style = double
