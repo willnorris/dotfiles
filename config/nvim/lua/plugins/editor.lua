@@ -31,6 +31,11 @@ return {
         function() require("telescope").extensions.file_browser.file_browser({ path = "%:h" }) end,
         desc = "File explorer",
       },
+      {
+        "<leader>gl", -- "gl" for "git log"
+        function() require("telescope").extensions.git_file_history.git_file_history() end,
+        desc = "Git file history",
+      },
     },
     opts = function(_, opts)
       local actions = require("telescope.actions")
@@ -102,6 +107,11 @@ return {
     end,
   },
   { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+  {
+    "isak102/telescope-git-file-history.nvim",
+    dependencies = { "tpope/vim-fugitive" },
+    lazy = true
+  },
 
   {
     "folke/which-key.nvim",
