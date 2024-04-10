@@ -6,7 +6,6 @@ return {
       org_default_notes_file = "~/.local/share/orgmode/notes.org",
     },
     config = function(_, opts)
-      require("orgmode").setup_ts_grammar()
       require("orgmode").setup(opts)
     end,
   },
