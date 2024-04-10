@@ -1,0 +1,71 @@
+/*
+* Originally, I used a varaint of the style in this article:
+*   https://www.pcworld.com/article/823939/vertical-tabs-in-firefox-yes-its-really-possible.html
+*
+* Later, I started using various styles from https://github.com/MrOtherGuy/firefox-csshack.
+*/
+
+@import url(window_control_placeholder_support.css);
+
+/* Customize window control placeholders */
+@media (-moz-platform: macos) {
+  :root:is([tabsintitlebar]) {
+    --uc-window-control-width: 50px;
+  }
+  :root[tabsintitlebar="true"] #nav-bar {
+    border-right-width: 0;
+    margin-right: 40px;
+  }
+}
+@media (-moz-gtk-csd-available) {
+  /* Give extra room if all three window control buttons are visible */
+  @media (-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-close-button) {
+    :root:is([tabsintitlebar], [sizemode="fullscreen"]) {
+      --uc-window-control-width: 130px;
+    }
+  }
+  /* At least ChromeOS doesn't render transparent borders, so use margin-right instead of border-right. */
+  #nav-bar {
+    border-right-width: 0;
+    margin-right: calc(
+      var(--uc-window-control-width, 0px) +
+        var(--uc-window-drag-space-post, 0px)
+    );
+  }
+}
+
+/* Hide tabs and display nav bar at the top with window controls */
+#titlebar {
+  padding: 2px;
+}
+#tabbrowser-tabs {
+  display: none;
+}
+.toolbar-items > hbox {
+  justify-content: end;
+}
+#new-tab-button {
+  display: none;
+}
+#PanelUI-menu-button {
+  --toolbar-start-end-padding: 0;
+}
+
+.titlebar-spacer[type="post-tabs"] {
+  display: none;
+}
+
+#navigator-toolbox {
+  background-color: var(--toolbar-bgcolor) !important;
+}
+#nav-bar {
+  margin-top: -40px;
+  box-shadow: none !important;
+}
+
+#titlebar-buttonbox-container {
+  background-color: var(--toolbar-bgcolor);
+}
+.titlebar-color {
+  background-color: var(--toolbar-bgcolor);
+}
