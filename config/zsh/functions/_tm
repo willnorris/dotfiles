@@ -1,9 +1,9 @@
-#compdef ts
+#compdef tm
 
-_ts() { 
+_tm() {
   for s in `tmux list-sessions 2>/dev/null | cut -d: -f1`; do
     compadd $s
   done
 }
- 
-_ts "$@"
+
+_tm "$@"
