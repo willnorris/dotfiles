@@ -87,6 +87,7 @@ return {
               color = Util.ui.fg("Debug"),
             },
             "searchcount",
+            { "selectioncount", fmt = function(str) return str:len() > 0 and "󰒉 " .. str end },
           },
           lualine_z = {
             { "progress" },
