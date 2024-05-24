@@ -2,7 +2,6 @@ return {
   { import = "lazyvim.plugins.extras.coding.copilot" },
 
   { "echasnovski/mini.bracketed", config = true },
-  { "echasnovski/mini.pairs", enabled = false },
 
   -- auto completion
   {
@@ -27,6 +26,8 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item(),
           ["<C-j>"] = cmp.mapping.select_next_item(),
+          ["<C-b>"] = cmp.mapping.select_prev_item({ count = 10 }),
+          ["<C-f>"] = cmp.mapping.select_next_item({ count = 10 }),
           ["<M-k>"] = cmp.mapping.scroll_docs(-2),
           ["<M-j>"] = cmp.mapping.scroll_docs(2),
           ["<C-c>"] = cmp.mapping.abort(),
