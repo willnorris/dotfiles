@@ -179,32 +179,6 @@ return {
     },
   },
 
-  { -- Copy text to clipboard with OSC52
-    "ojroques/nvim-osc52",
-    keys = {
-      { "Y", function() require("osc52").copy_operator() end, expr = true, desc = "Yank to clipboard" },
-      { "Y", function() require("osc52").copy_visual() end, mode = "v", desc = "Yank to clipboard" },
-    },
-    init = function()
-      -- use osc52 as clipboard provider
-      -- https://github.com/ojroques/nvim-osc52#using-nvim-osc52-as-clipboard-provider
-      local function copy(lines, _)
-        require("osc52").copy(table.concat(lines, "\n"))
-      end
-
-      local function paste()
-        return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
-      end
-
-      vim.g.clipboard = {
-        name = "osc52",
-        copy = { ["+"] = copy, ["*"] = copy },
-        paste = { ["+"] = paste, ["*"] = paste },
-      }
-    end,
-    opts = { silent = true },
-  },
-
   {
     "stevearc/qf_helper.nvim",
     opts = {

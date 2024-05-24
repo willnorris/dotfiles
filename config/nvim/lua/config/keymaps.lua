@@ -88,3 +88,6 @@ end)
 
 -- replace selection with text from default register without changing the register
 keymap("x", "<_dP>p", [["_dP]], { desc = "Paste and keep default register" })
+
+-- yank text to system clipboard
+keymap({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" })

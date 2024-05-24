@@ -2,7 +2,6 @@
 vim.o.wildmode = "list:longest,full"
 vim.o.maxmempattern = 2000
 vim.o.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-vim.o.clipboard = ""
 
 -- UI
 vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
@@ -18,6 +17,20 @@ vim.o.mouse = ""
 vim.opt.hlsearch = true
 vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
 vim.opt.statuscolumn = ""  -- unset LazyVim's statuscolumn
+
+-- Use OSC52 clipboard
+vim.o.clipboard = ""
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    -- ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    -- ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+  },
+}
 
 -- Set the list option only if expandtab is set.
 -- This helps visualize erroneous tabs in a file that uses spaces.
