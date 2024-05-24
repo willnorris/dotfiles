@@ -36,7 +36,6 @@ return {
         }),
         sources = cmp.config.sources(vim.list_extend(opts.sources, {
           { name = "nvim_lsp_signature_help" },
-          { name = "orgmode" },
           { name = "nvim_lua" },
           { name = "spell" },
         })),
