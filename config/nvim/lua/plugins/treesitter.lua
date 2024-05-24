@@ -1,9 +1,6 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      { "nvim-treesitter/nvim-treesitter-context", opts = { mode = "topline" } },
-    },
     opts = function(_, opts)
       opts.ensure_installed[#opts.ensure_installed + 1] = "go"
 
@@ -30,16 +27,5 @@ return {
       })
     end,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    keys = {
-      { "<leader>ut", "<cmd>TSContextToggle<cr>", desc = "Toggle treesitter context" },
-    },
-    opts = {
-      line_numbers = false,
-      max_lines = 4,
-      mode = "topline",
-      trim_scope = "inner",
-    },
-  },
+  { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 }
