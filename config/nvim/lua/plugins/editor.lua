@@ -89,7 +89,7 @@ return {
         ["<M-b>"] = actions.preview_scrolling_up,
 
         ["<C-s>"] = actions.select_horizontal,
-        ["<C-x>"] = require("trouble.providers.telescope").open_with_trouble,
+        ["<C-x>"] = require("trouble.sources.telescope").open,
 
         ["<C-o>"] = require("telescope.actions.layout").toggle_preview,
         ["<C-c>"] = actions.close,
@@ -172,6 +172,7 @@ return {
     end,
   },
 
+  { import = "lazyvim.plugins.extras.editor.trouble-v3" },
   {
     "folke/trouble.nvim",
     opts = {
@@ -194,6 +195,4 @@ return {
       { "<leader>uu", "<Cmd>UndotreeToggle<CR>", desc = "Toggle undo tree" },
     },
   },
-
-  { import = "lazyvim.plugins.extras.editor.outline" },
 }
