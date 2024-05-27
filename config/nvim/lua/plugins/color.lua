@@ -3,6 +3,10 @@ return {
   { "folke/tokyonight.nvim", enabled = false },
   { "catppuccin/nvim", name = "catppuccin", enabled = false },
 
+  {
+    "LazyVim/LazyVim",
+    opts = { colorscheme = "onedark" },
+  },
   { -- onedark colorscheme
     "navarasu/onedark.nvim",
     priority = 1000,
