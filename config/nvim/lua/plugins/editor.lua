@@ -32,6 +32,13 @@ return {
         desc = "File explorer",
       },
       {
+        "<leader>sx",
+        function() require("telescope.builtin").resume() end,
+        noremap = true,
+        silent = true,
+        desc = "Resume telescope",
+      },
+      {
         "<leader>gl", -- "gl" for "git log"
         function() require("telescope").extensions.git_file_history.git_file_history() end,
         desc = "Git file history",
