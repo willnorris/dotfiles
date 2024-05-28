@@ -6,5 +6,10 @@ return {
       -- disable <c-k>, since that interferes with cmp navigation
       keys[#keys + 1] = { "<c-k>", false, mode = "i" }
     end,
-  }
+    opts = {
+      inlay_hints = {
+        enabled = false
+      },
+    },
+  },
 }
