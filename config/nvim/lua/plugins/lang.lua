@@ -129,7 +129,7 @@ return {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       opts.formatters_by_ft.lua = nil
-      opts.formatters_by_ft.go = nil
+      opts.formatters_by_ft.go = { "goimports" }
       return opts
     end,
   },
