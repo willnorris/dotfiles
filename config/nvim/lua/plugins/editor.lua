@@ -162,7 +162,6 @@ return {
     end,
   },
 
-  { import = "lazyvim.plugins.extras.editor.trouble-v3" },
   {
     "folke/trouble.nvim",
     opts = {
