@@ -94,3 +94,13 @@ keymap("x", "<_dP>p", [["_dP]], { desc = "Paste and keep default register" })
 
 -- yank text to system clipboard
 keymap({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" })
+
+-- remove default gr* keymaps
+vim.keymap.del({ "n", "x" }, "gra")
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "grr")
+require("which-key").register({
+  gra = "which_key_ignore",
+  grn = "which_key_ignore",
+  grr = "which_key_ignore",
+})
