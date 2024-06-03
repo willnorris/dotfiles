@@ -66,6 +66,9 @@ return {
 
       opts = vim.tbl_deep_extend("force", opts, {
         defaults = {
+          layout_config = {
+            height = 40,
+          },
           path_display = { "smart" },
           results_title = false,
           scroll_strategy = "limit",
