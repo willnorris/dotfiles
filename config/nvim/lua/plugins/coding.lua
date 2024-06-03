@@ -32,9 +32,9 @@ return {
           ["<M-k>"] = cmp.mapping.scroll_docs(-2),
           ["<M-j>"] = cmp.mapping.scroll_docs(2),
           ["<C-c>"] = cmp.mapping.abort(),
-          ["<C-y>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+          ["<C-y>"] = require("lazyvim.util").cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
           ["<C-o>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
+          ["<CR>"] = function(fallback) fallback() end,
         }),
         sources = cmp.config.sources(vim.list_extend(opts.sources, {
           { name = "nvim_lsp_signature_help" },
