@@ -32,6 +32,13 @@ vim.g.clipboard = {
   },
 }
 
+-- Filetype aliases
+vim.filetype.add {
+  extension = {
+    hujson = "json5",
+  }
+}
+
 -- Set the list option only if expandtab is set.
 -- This helps visualize erroneous tabs in a file that uses spaces.
 -- Run on BufEnter after vim-sleuth has run.
