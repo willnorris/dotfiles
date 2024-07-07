@@ -7,7 +7,12 @@ return {
   {
     "max397574/better-escape.nvim",
     opts = {
-      mapping = { "jk" },
+      mappings = {
+        -- disable "jj" mappings
+        i = { j = { j = false } },
+        c = { j = { j = false } },
+        t = { j = { j = false } },
+      },
     },
   },
 
