@@ -21,6 +21,7 @@ return {
 
   {
     "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
+    event = "VeryLazy",
     keys = {
       { "<leader>gy", "", mode = { "n", "v" }, desc = "copy sharable git URL" },
     },
