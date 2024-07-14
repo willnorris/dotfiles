@@ -99,8 +99,3 @@ keymap({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.del({ "n", "x" }, "gra")
 vim.keymap.del("n", "grn")
 vim.keymap.del("n", "grr")
-require("which-key").register({
-  gra = "which_key_ignore",
-  grn = "which_key_ignore",
-  grr = "which_key_ignore",
-})
