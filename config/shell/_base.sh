@@ -1,12 +1,15 @@
 #!/bin/sh
 
 # variables for default XDG user directories
-export XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME XDG_RUNTIME_DIR
+export XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR XDG_STATE_HOME
 
-: "${XDG_CONFIG_HOME:="${HOME}/.config"}"
 : "${XDG_CACHE_HOME:="${HOME}/.cache"}"
+: "${XDG_CONFIG_HOME:="${HOME}/.config"}"
 : "${XDG_DATA_HOME:="${HOME}/.local/share"}"
 : "${XDG_RUNTIME_DIR:="${HOME}/.local/run"}"
+: "${XDG_STATE_HOME:="${HOME}/.local/state"}"
+
+. "${XDG_CONFIG_HOME}/user-dirs.dirs"
 
 # Return exit code 0 if the specified command exists.
 has() {
