@@ -2,55 +2,47 @@
 {
   "layer": "top", // Waybar at top layer
   // "position": "bottom", // Waybar position (top|bottom|left|right)
-  // "height": 30, // Waybar height (to be removed for auto height)
+  //"height": 15, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
+  "spacing": 0, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": [
-    "sway/workspaces",
-    "sway/mode",
-    "hyprland/workspaces",
-    "hyprland/submap"
-  ],
-  "modules-center": ["sway/window", "hyprland/window"],
+  "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+  "modules-center": ["hyprland/window"],
   "modules-right": [
     "tray",
     "idle_inhibitor",
+    "privacy",
     "pulseaudio",
     "cpu",
     "memory",
     "temperature",
-    "clock"
+    "clock",
   ],
+
   // Modules configuration
-  /*
   "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{name}: {icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "urgent": "",
-      "focused": "",
-      "default": ""
-    }
+    // "disable-scroll": true,
+    // "all-outputs": true,
+    // "warp-on-scroll": false,
+    // "format": "{name}: {icon}",
+    // "format-icons": {
+    //   "1": "",
+    //   "2": "",
+    //   "urgent": "",
+    //   "focused": "",
+    //   "default": "",
+    // },
   },
-  */
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "",
-      "deactivated": ""
-    }
+      "deactivated": "",
+    },
   },
   "tray": {
     "icon-size": 21,
-    "spacing": 5
+    "spacing": 5,
   },
   "clock": {
     // "timezone": "America/New_York",
@@ -68,16 +60,15 @@
         "days": "<span color='#abb2bf'><b>{}</b></span>",
         "weeks": "",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#e06c75'><b>{}</b></span>"
-      }
-    }
+        "today": "<span color='#e06c75'><b>{}</b></span>",
+      },
+    },
   },
   "cpu": {
     "format": "{usage}% ",
-    "tooltip": false
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% ",
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -85,14 +76,40 @@
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format-icons": ["", "", ""],
+  },
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 12,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 18,
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 18,
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24,
+      },
+    ],
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
+    // "format": "{volume}% {icon} {format_source}",
+    // "format-bluetooth": "{volume}% {icon} {format_source}",
+    // "format-bluetooth-muted": " {icon} {format_source}",
+    // "format-muted": " {format_source}",
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": " {icon}",
+    "format-muted": "",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
@@ -102,8 +119,8 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", "", ""],
     },
-    "on-click": "pavucontrol"
-  }
+    "on-click": "pavucontrol",
+  },
 }
