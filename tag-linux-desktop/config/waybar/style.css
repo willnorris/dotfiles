@@ -1,7 +1,7 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 window#waybar {
@@ -92,8 +92,11 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-  padding: 0 5px;
   color: #ffffff;
+}
+
+.module {
+  padding: 0px 8px;
 }
 
 #window,
@@ -112,7 +115,7 @@ button:hover {
 }
 
 #clock {
-  background-color: #64727d;
+  /* background-color: #64727d; */
 }
 
 #battery {
@@ -122,8 +125,7 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-  color: #ffffff;
-  background-color: shade(#98c379, 1.5);
+  color: #98c379;
 }
 
 @keyframes blink {
@@ -134,8 +136,7 @@ button:hover {
 }
 
 #battery.critical:not(.charging) {
-  background-color: #e06c75;
-  color: #ffffff;
+  color: #e06c75;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -148,13 +149,11 @@ label:focus {
 }
 
 #cpu {
-  background-color: #98c379;
-  color: #000000;
+  color: #98c379;
 }
 
 #memory {
-  background-color: #c678dd;
-  color: #000000;
+  color: #c678dd;
 }
 
 #disk {
@@ -174,8 +173,7 @@ label:focus {
 }
 
 #pulseaudio {
-  background-color: #e5c07b;
-  color: #000000;
+  color: #e5c07b;
 }
 
 #pulseaudio.muted {
@@ -207,17 +205,17 @@ label:focus {
 }
 
 #temperature {
-  background-color: #56b6c2;
+  color: #56b6c2;
   opacity: 0.8;
-  color: #000000;
 }
 
 #temperature.critical {
   background-color: #e06c75;
+  color: #ffffff;
 }
 
 #tray {
-  background-color: #2d3436;
+  /* background-color: #2d3436; */
   /* background-color: #61afef; */
 }
 
@@ -230,8 +228,13 @@ label:focus {
   background-color: #e06c75;
 }
 
+#idle_inhibitor,
+#privacy {
+  padding: 0 0.5em;
+}
+
 #idle_inhibitor {
-  background-color: #2d3436;
+  /* background-color: #2d3436; */
 }
 
 #idle_inhibitor.activated {

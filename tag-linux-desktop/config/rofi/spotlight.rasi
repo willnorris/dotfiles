@@ -15,7 +15,7 @@
     fg1:     #FFFFFF;
     fg2:     #24242480;
 
-    background-color:   transparent;
+    background-color:   @bg0;
     text-color:         @fg0;
 
     margin:     0;
@@ -25,6 +25,8 @@
 
 window {
     background-color:   @bg0;
+    border:             1px 1 1;
+    border-color:       @bg1;
 
     location:       center;
     width:          640;
@@ -86,7 +88,7 @@ element normal active {
 
 element selected normal, element selected active {
     background-color:   @bg2;
-    text-color:         @fg1;
+    text-color:         @fg0;
 }
 
 element-icon {
