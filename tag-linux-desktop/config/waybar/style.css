@@ -115,6 +115,7 @@ button:hover {
 }
 
 #clock {
+  padding-top: 3px;
   /* background-color: #64727d; */
 }
 
@@ -289,4 +290,8 @@ label:focus {
 
 #scratchpad.empty {
   background-color: transparent;
+}
+#custom-notification {
+  font-size: 18px;
+  padding-left: 0;
 }
