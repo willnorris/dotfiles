@@ -1,6 +1,8 @@
 #!/bin/sh
 # ~/.config/profile contains common configuration for bourne compatible shells.
 
+. /etc/profile
+
 # User Information
 : "${EMAIL:="will@willnorris.com"}"
 
@@ -17,5 +19,5 @@ fi
 
 # include ~/.local/bin in PATH late to give precedence
 if [ -d "$HOME/.local/bin" ]; then
-    pathadd "$HOME/.local/bin"
+  pathadd "$HOME/.local/bin"
 fi
