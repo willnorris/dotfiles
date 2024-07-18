@@ -13,6 +13,7 @@
     "idle_inhibitor",
     "privacy",
     "pulseaudio",
+    "backlight",
     "cpu",
     "memory",
     "temperature",
@@ -64,6 +65,11 @@
         "today": "<span color='#e06c75'><b>{}</b></span>",
       },
     },
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", ""],
   },
   "cpu": {
     "format": "{usage}% ",
