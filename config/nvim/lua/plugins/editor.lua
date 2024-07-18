@@ -64,7 +64,6 @@ return {
       local actions_which_key = function(bufnr)
         actions.which_key(bufnr, { separator = "  " })
       end
-      require("which-key").register({ { "<leader>s", group = "search" } })
 
       -- use telescope ivy theme
       opts.defaults = require("telescope.themes").get_ivy(opts.defaults)
@@ -134,8 +133,9 @@ return {
     opts = {
       icons = {
         separator = "",
+        rules = false,
       },
-      window = {
+      win = {
         border = "single",
       },
     },
