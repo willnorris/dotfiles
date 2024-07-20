@@ -1,11 +1,7 @@
 // Configuration docs at https://github.com/Alexays/Waybar/wiki/Configuration
 {
-  "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  //"height": 15, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
+  "layer": "top",
   "spacing": 0, // Gaps between modules (4px)
-  // Choose the order of the modules
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
@@ -23,18 +19,13 @@
   ],
 
   // Modules configuration
-  "hyprland/workspaces": {
-    // "disable-scroll": true,
-    // "all-outputs": true,
-    // "warp-on-scroll": false,
-    // "format": "{name}: {icon}",
-    // "format-icons": {
-    //   "1": "",
-    //   "2": "",
-    //   "urgent": "",
-    //   "focused": "",
-    //   "default": "",
-    // },
+  "hyprland/workspaces": {},
+  "hyprland/window": {
+    "separate-outputs": true,
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 5,
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -43,15 +34,9 @@
       "deactivated": "",
     },
   },
-  "tray": {
-    "icon-size": 21,
-    "spacing": 5,
-  },
   "clock": {
-    // "timezone": "America/New_York",
     "format": "{:%a %b %d %I:%M %p}",
     "tooltip-format": "<tt>{calendar}</tt>",
-    //"format-alt": "{:%Y-%m-%d}"
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
@@ -120,11 +105,6 @@
     ],
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    // "format": "{volume}% {icon} {format_source}",
-    // "format-bluetooth": "{volume}% {icon} {format_source}",
-    // "format-bluetooth-muted": " {icon} {format_source}",
-    // "format-muted": " {format_source}",
     "format": "{volume}% {icon}",
     "format-bluetooth": "{volume}% {icon}",
     "format-bluetooth-muted": " {icon}",
