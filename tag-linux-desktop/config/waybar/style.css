@@ -60,12 +60,18 @@ button:hover {
 }
 
 #battery {
+  font-size: 2rem;
   color: #999999;
 }
 
 #battery.charging,
 #battery.plugged {
   color: #98c379;
+}
+
+#battery.warning,
+#battery.critical {
+  color: #e06c75;
 }
 
 @keyframes blink {
@@ -116,17 +122,11 @@ label:focus {
 
 #temperature {
   color: #56b6c2;
-  opacity: 0.8;
 }
 
 #temperature.critical {
   background-color: #e06c75;
   color: #ffffff;
-}
-
-#tray {
-  /* background-color: #2d3436; */
-  /* background-color: #61afef; */
 }
 
 #tray > .passive {
@@ -138,18 +138,16 @@ label:focus {
   background-color: #e06c75;
 }
 
-#idle_inhibitor,
 #privacy {
-  padding: 0 0.5em;
+  color: #c678dd;
+  padding: 0 8px;
 }
 
 #idle_inhibitor {
-  /* background-color: #2d3436; */
+  font-size: 1.6rem;
 }
-
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+  background-color: #2d3436;
 }
 
 #custom-notification {
