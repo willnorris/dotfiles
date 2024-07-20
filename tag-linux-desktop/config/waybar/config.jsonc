@@ -49,6 +49,8 @@
         "today": "<span color='#e06c75'><b>{}</b></span>",
       },
     },
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
   },
   "network": {
     "interface": "wlan0",
