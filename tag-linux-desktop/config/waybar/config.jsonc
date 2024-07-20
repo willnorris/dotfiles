@@ -9,7 +9,6 @@
     "idle_inhibitor",
     "privacy",
     "pulseaudio",
-    "backlight",
     "battery",
     "group/performance",
     "clock",
@@ -49,11 +48,6 @@
         "today": "<span color='#e06c75'><b>{}</b></span>",
       },
     },
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{percent}% {icon}",
-    "format-icons": ["", ""],
   },
   "battery": {
     "bat": "BAT1",
