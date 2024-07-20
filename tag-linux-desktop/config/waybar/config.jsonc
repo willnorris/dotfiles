@@ -9,6 +9,7 @@
     "idle_inhibitor",
     "privacy",
     "pulseaudio",
+    "network",
     "battery",
     "group/performance",
     "clock",
@@ -48,6 +49,19 @@
         "today": "<span color='#e06c75'><b>{}</b></span>",
       },
     },
+  },
+  "network": {
+    "interface": "wlan0",
+    "format": "{ifname}",
+    "format-wifi": "",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "on-click": "kitty --class impala impala",
   },
   "battery": {
     "bat": "BAT1",

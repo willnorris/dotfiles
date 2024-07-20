@@ -97,11 +97,12 @@ label:focus {
 }
 
 #network {
-  background-color: #61afef;
+  font-size: 2rem;
+  color: #61afef;
 }
 
 #network.disconnected {
-  background-color: #e06c75;
+  color: #e06c75;
 }
 
 #pulseaudio {
