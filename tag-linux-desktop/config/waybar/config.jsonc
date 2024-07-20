@@ -110,10 +110,10 @@
     ],
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
+    "format": "{icon}",
     "format-bluetooth": "{volume}% {icon}",
     "format-bluetooth-muted": " {icon}",
-    "format-muted": "",
+    "format-muted": "",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
@@ -125,6 +125,7 @@
       "car": "",
       "default": ["", "", ""],
     },
+    "tooltip-format": "{desc} ({volume}%)",
     "on-click": "pavucontrol",
   },
   "custom/notification": {
