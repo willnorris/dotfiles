@@ -113,12 +113,12 @@ label:focus {
 }
 
 #pulseaudio {
+  font-size: 2rem;
   color: #e5c07b;
 }
 
 #pulseaudio.muted {
-  background-color: #5c6370;
-  color: #ffffff;
+  color: #e06c75;
 }
 
 #temperature {
