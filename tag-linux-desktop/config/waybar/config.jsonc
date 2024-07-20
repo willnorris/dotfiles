@@ -56,18 +56,8 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-bluetooth-muted": " {icon}",
     "format-muted": "",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
       "default": ["", "", ""],
     },
     "tooltip-format": "{desc} ({volume}%)",

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Use wpctl to adjust volume and send a notification
+
+send_notification() {
+  vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+  notify-send "$vol" -t 1000 -i audio-volume-medium-symbolic -e -h string:x-canonical-private-synchronous:volume
+}
+
+case $1 in
+up)
+  wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+  wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+  send_notification "$1"
+  ;;
+down)
+  wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+  send_notification "$1"
+  ;;
+mute)
+  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+  send_notification "$1"
+  ;;
+esac
