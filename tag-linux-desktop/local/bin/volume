@@ -7,19 +7,34 @@ send_notification() {
   notify-send "$vol" -t 1000 -i audio-volume-medium-symbolic -e -h string:x-canonical-private-synchronous:volume
 }
 
+# use swayosd if installed and server is running
+swayosd-client -h >/dev/null && swayosd=1
+
 case $1 in
 up)
   wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
-  wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
-  send_notification "$1"
+  if [ -n "$swayosd" ]; then
+    swayosd-client --output-volume raise
+  else
+    wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+    send_notification "$1"
+  fi
   ;;
 down)
   wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
-  wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-  send_notification "$1"
+  if [ -n "$swayosd" ]; then
+    swayosd-client --output-volume lower
+  else
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    send_notification "$1"
+  fi
   ;;
 mute)
-  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-  send_notification "$1"
+  if [ -n "$swayosd" ]; then
+    swayosd-client --output-volume mute-toggle
+  else
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    send_notification "$1"
+  fi
   ;;
 esac

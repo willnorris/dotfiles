@@ -10,13 +10,24 @@ send_notification() {
   notify-send "Brightness: $brightness" -t 1000 -i display-brightness-symbolic -e -h string:x-canonical-private-synchronous:brightness
 }
 
+# use swayosd if installed and server is running
+swayosd-client -h >/dev/null && swayosd=1
+
 case $1 in
 up)
-  brightnessctl -e4 set 5%+
-  send_notification "$1"
+  if [ -n "$swayosd" ]; then
+    swayosd-client --brightness +10
+  else
+    brightnessctl -e4 set 5%+
+    send_notification "$1"
+  fi
   ;;
 down)
-  brightnessctl -e4 set 5%-
-  send_notification "$1"
+  if [ -n "$swayosd" ]; then
+    swayosd-client --brightness -10
+  else
+    brightnessctl -e4 set 5%-
+    send_notification "$1"
+  fi
   ;;
 esac
