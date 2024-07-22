@@ -51,6 +51,11 @@
   --toolbar-start-end-padding: 0;
 }
 
+/* Completely hide the window close button, as it's too close to other things and gets clicked accidentally. */
+.titlebar-close {
+  display: none;
+}
+
 .titlebar-spacer[type="post-tabs"] {
   display: none;
 }
