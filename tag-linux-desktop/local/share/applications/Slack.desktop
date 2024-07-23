@@ -1,0 +1,8 @@
+# This is a minimal desktop entry for "Slack" (capital S).
+# Slack sends dbus notifications with "desktop-entry=Slack",
+# however the default desktop entry is "slack" (lowercase S),
+# preventing the application icon from being included properly.
+[Desktop Entry]
+Name=Slack
+Icon=slack
+Type=Application
