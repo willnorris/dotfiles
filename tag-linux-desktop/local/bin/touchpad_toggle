@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Toggle laptop touchpad on/off in hyprland.
+# This requires a hyprland config such as:
+#
+#     $touchpad_enabled = true
+#     device {
+#       name = pixa3854:00-093a:0274-touchpad
+#       enabled = $touchpad_enabled
+#     }
+
+export status_file="$XDG_RUNTIME_DIR/touchpad.status"
+
+enable_touchpad() {
+  printf "true" >"$status_file"
+  notify-send -t 1000 -e -u normal "Enabling Touchpad"
+  hyprctl -r keyword '$touchpad_enabled' "true"
+}
+
+disable_touchpad() {
+  printf "false" >"$status_file"
+  notify-send -t 1000 -e -u normal "Disabling Touchpad"
+  hyprctl -r keyword '$touchpad_enabled' "false"
+}
+
+if ! [ -f "$status_file" ]; then
+  enable_touchpad
+else
+  if [ "$(cat "$status_file")" = "true" ]; then
+    disable_touchpad
+  elif [ "$(cat "$status_file")" = "false" ]; then
+    enable_touchpad
+  fi
+fi
