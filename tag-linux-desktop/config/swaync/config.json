@@ -12,17 +12,17 @@
   "control-center-margin-left": 0,
   "notification-2fa-action": true,
   "notification-inline-replies": false,
-  "notification-icon-size": 48,
+  "notification-icon-size": 36,
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
   "timeout": 10,
   "timeout-low": 5,
   "timeout-critical": 0,
-  "fit-to-screen": false,
+  "fit-to-screen": true,
   "relative-timestamps": true,
-  "control-center-width": 500,
+  "control-center-width": 400,
   "control-center-height": 600,
-  "notification-window-width": 500,
+  "notification-window-width": 350,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
   "transition-time": 200,
@@ -47,13 +47,7 @@
       "app-name": "Spotify"
     }
   },
-  "widgets": [
-    "inhibitors",
-    "dnd",
-    "mpris",
-    "notifications",
-    "title"
-  ],
+  "widgets": ["inhibitors", "dnd", "mpris", "notifications", "title"],
   "widget-config": {
     "inhibitors": {
       "text": "Inhibitors",
