@@ -1,6 +1,6 @@
 // Configuration docs at https://github.com/Alexays/Waybar/wiki/Configuration
 {
-  "layer": "top",
+  "layer": "bottom",
   "spacing": 0, // Gaps between modules (4px)
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["hyprland/window"],
