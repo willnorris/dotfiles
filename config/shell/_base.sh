@@ -9,7 +9,9 @@ export XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR XDG_STATE_HO
 : "${XDG_RUNTIME_DIR:="${HOME}/.local/run"}"
 : "${XDG_STATE_HOME:="${HOME}/.local/state"}"
 
-. "${XDG_CONFIG_HOME}/user-dirs.dirs"
+if [ -r "${XDG_CONFIG_HOME}/user-dirs.dirs" ]; then
+  . "${XDG_CONFIG_HOME}/user-dirs.dirs"
+fi
 
 # Return exit code 0 if the specified command exists.
 has() {
