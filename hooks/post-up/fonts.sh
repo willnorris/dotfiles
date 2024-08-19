@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Download and install Cascadia Code Nerd Font Mono
 
+. "${HOME}/.config/shell/_base.sh"
+
 if [ "$(uname)" = "Linux" ]; then
   FONTS="${HOME}/.local/share/fonts"
 elif [ "$(uname)" = "Darwin" ]; then
@@ -8,7 +10,7 @@ elif [ "$(uname)" = "Darwin" ]; then
 fi
 
 FILE="CaskaydiaCoveNerdFontMono-Regular.ttf"
-if [ ! -f "${FONTS}/${FILE}" ]; then
+if [ ! -f "${FONTS}/${FILE}" ] && $(has_network); then
   mkdir -p "${FONTS}"
   TMP=$(mktemp -d)
   pushd "${TMP}" || exit
