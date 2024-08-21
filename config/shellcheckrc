@@ -1,3 +1,10 @@
 external-sources=true
+
+# Can't follow non-constant source. (https://www.shellcheck.net/wiki/SC1090)
 disable=SC1090
+
+# Not following. (https://www.shellcheck.net/wiki/SC1091)
 disable=SC1091
+
+# Declare and assign separately to avoid masking return values. (https://www.shellcheck.net/wiki/SC2155)
+disable=SC2155
