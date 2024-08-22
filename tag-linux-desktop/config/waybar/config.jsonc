@@ -11,7 +11,6 @@
     "pulseaudio",
     "network",
     "battery",
-    "group/performance",
     "clock",
     "custom/notification",
   ],
@@ -56,7 +55,7 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "format-muted": "",
+    "format-muted": "󰝟",
     "format-icons": {
       "default": ["", "", ""],
     },
@@ -65,10 +64,12 @@
   },
   "network": {
     "interface": "wlan0",
-    "format": "{ifname}",
-    "format-wifi": "",
-    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
-    "format-disconnected": "×", //An empty format will hide the module.
+    "format": "{icon}",
+    "format-icons": {
+      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    },
+    "format-ethernet": "{ipaddr}/{cidr} <U+F0297>",
+    "format-disconnected": "󱛅",
     "tooltip-format": "{ifname} via {gwaddr} 󰊗",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",

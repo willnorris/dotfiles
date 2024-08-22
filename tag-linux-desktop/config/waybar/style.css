@@ -61,7 +61,6 @@ button:hover {
 
 #battery {
   font-size: 2rem;
-  color: #999999;
 }
 
 #battery.charging,
