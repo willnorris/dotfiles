@@ -1,12 +1,12 @@
 // Disable about:config warning
-user_pref("browser.aboutConfig.showWarning ", false);
+user_pref("browser.aboutConfig.showWarning", false);
 
 // Disable menu when pressing alt key.
-user_pref("ui.key.menuAccessKeyFocuses ", false);
+user_pref("ui.key.menuAccessKeyFocuses", false);
 
 // Allow go/links to work.
 // Repeat for any other bare hostnames to allow.
-user_pref("browser.fixup.domainwhitelist.go ", true);
+user_pref("browser.fixup.domainwhitelist.go", true);
 
 // Limit scroll distance when "fling" scrolling
 // There are additional apz.fling_* options,
