@@ -9,9 +9,6 @@
 
 /* Customize window control placeholders */
 @media (-moz-platform: macos) {
-  :root:is([tabsintitlebar]) {
-    --uc-window-control-width: 50px;
-  }
   :root[tabsintitlebar="true"] #nav-bar {
     border-right-width: 0;
     margin-right: 40px;
