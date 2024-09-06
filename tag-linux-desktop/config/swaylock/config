@@ -1,14 +1,1 @@
-font="monospace"
-
-clock
-timestr=%I:%M %p
-datestr=%a %b %d
-
-image=~/.config/wallpapers/pixabay.jpg
-
-fade-in=1
-
-indicator
-indicator-radius=200
-indicator-thickness=20
-indicator-caps-lock
+image=~/.config/wallpapers/current

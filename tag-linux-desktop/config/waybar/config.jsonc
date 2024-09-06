@@ -2,8 +2,13 @@
 {
   "layer": "bottom",
   "spacing": 0, // Gaps between modules (4px)
-  "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-  "modules-center": ["hyprland/window"],
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "hyprland/workspaces",
+    "hyprland/submap",
+  ],
+  "modules-center": ["sway/window", "hyprland/window"],
   "modules-right": [
     "tray",
     "idle_inhibitor",
