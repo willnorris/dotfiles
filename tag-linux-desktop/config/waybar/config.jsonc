@@ -80,7 +80,7 @@
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "kitty --class impala impala",
+    "on-click": "iwgtk",
   },
   "battery": {
     "bat": "BAT1",
@@ -93,6 +93,7 @@
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{capacity}% - {timeTo}",
     "max-length": 25,
+    "on-click": "kitty --class battop battop",
   },
   "group/performance": {
     "orientation": "inherit",
