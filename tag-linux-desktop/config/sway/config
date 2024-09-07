@@ -19,6 +19,7 @@ exec swayidle -w
 exec swayosd-server
 exec waybar
 exec swaync
+exec easyeffects --gapplication-service -w
 
 # assign workspaces to outputs
 # Assign 1 and 10 first so that each output has at least one workspace
