@@ -12,8 +12,8 @@
 }
 {
     "label" : "logout",
-    "action" : "hyprctl dispatch exit",
-    "text" : "Quit Hyprland",
+    "action" : "hyprctl dispatch exit || swaymsg exit",
+    "text" : "Logout",
     "keybind" : "q"
 }
 {
