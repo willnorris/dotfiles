@@ -1,0 +1,14 @@
+# lock before suspend (if not already locked)
+before-sleep 'pgrep swaylock || swaylock -f'
+
+# 1 min - dim displpay
+timeout 60 'brightnessctl -s set 10' resume 'brightnessctl -r'
+
+# 5 min - lock screen
+timeout 300 'swaylock -f'
+
+# 5.5 min - turn off display
+timeout 330 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+
+# 30 min - suspend
+timeout 1800 'systemctl suspend'
