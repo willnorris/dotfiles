@@ -229,6 +229,7 @@ for_window [app_id="org.gnome.NautilusPreviewer"] {
 for_window [title="Picture-in-Picture"] {
   floating enable
   sticky enable
+  exec sway-move-to top-right
 }
 
 
