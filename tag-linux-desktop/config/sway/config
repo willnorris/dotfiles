@@ -91,6 +91,7 @@ bindsym {
   XF86AudioNext         exec playerctl next
   XF86MonBrightnessUp   exec backlight up
   XF86MonBrightnessDown exec backlight down
+  XF86AudioMedia        exec touchpad_toggle
 
   # Reload the configuration file
   Alt+Shift+c reload

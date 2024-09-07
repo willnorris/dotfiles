@@ -14,12 +14,14 @@ enable_touchpad() {
   printf "true" >"$status_file"
   notify-send -t 1000 -e -u normal "Enabling Touchpad"
   hyprctl -r keyword '$touchpad_enabled' "true"
+  swaymsg 'input type:touchpad' events enabled
 }
 
 disable_touchpad() {
   printf "false" >"$status_file"
   notify-send -t 1000 -e -u normal "Disabling Touchpad"
   hyprctl -r keyword '$touchpad_enabled' "false"
+  swaymsg 'input type:touchpad' events disabled
 }
 
 if ! [ -f "$status_file" ]; then
