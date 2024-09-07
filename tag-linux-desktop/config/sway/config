@@ -75,9 +75,10 @@ seat seat0 {
 bindsym {
   # Kill focused window
   Alt+Shift+q kill
+  Alt+q exec notify-send "Kill Container" "Alt + Shift + Q" -e \
+    -t 1500 -h string:x-canonical-private-synchronous:sway-kill
 
   # Open launcher; pipe to swaymsg to open on correct workspace.
-  #Alt+Space exec kitty --class sway-launcher-desktop sway-launcher-desktop | xargs swaymsg exec --
   Alt+Space exec ulauncher | xargs swaymsg exec --
 
   # Media keys
