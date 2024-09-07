@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# git-reset-author resets the author of all commits since the specified ref.
+# The original author and commit date of each commit is kept intact.
+#
+# From: https://stackoverflow.com/q/41301627/
+
+if [ -z "$1" ]; then
+  echo "Usage: git reset-author <ref>"
+  exit 1
+fi
+
+git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_AUTHOR_DATE="%aD" git commit --amend --no-edit --reset-author' rebase -f "$@"
