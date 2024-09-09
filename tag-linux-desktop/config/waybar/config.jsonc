@@ -94,7 +94,8 @@
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{capacity}% - {timeTo}",
     "max-length": 25,
-    "on-click": "kitty --class battop battop",
+    "on-click": "kitty --class btop btop",
+    "on-click-right": "kitty --class battop battop",
   },
   "group/performance": {
     "orientation": "inherit",

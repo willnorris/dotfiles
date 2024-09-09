@@ -214,6 +214,10 @@ for_window [title="YouTube Music"] {
 for_window [app_id="org.gnome.Calculator"] {
   floating enable
 }
+for_window [app_id="btop"] {
+  floating enable
+  resize set width 80 ppt height 80 ppt
+}
 for_window [app_id="battop"] {
   floating enable
   resize set width 70 ppt height 70 ppt
