@@ -1,6 +1,8 @@
 # lock before suspend (if not already locked)
 before-sleep 'pgrep swaylock || swaylock -f'
 
+after-resume 'swaymsg "output * power on"'
+
 # 1 min - dim displpay
 timeout 60 'brightnessctl -s set 10' resume 'brightnessctl -r'
 
