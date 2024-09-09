@@ -81,6 +81,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
     "on-click": "iwgtk",
+    "on-click-right": "blueberry",
   },
   "battery": {
     "bat": "BAT1",

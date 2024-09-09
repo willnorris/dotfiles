@@ -222,6 +222,10 @@ for_window [app_id="org.twosheds.iwgtk"] {
   floating enable
   resize set width 300 px height 700 px
 }
+for_window [app_id="blueberry.py"] {
+  floating enable
+  resize set width 500 px height 600 px
+}
 for_window [app_id="org.pulseaudio.pavucontrol"] {
   floating enable
   resize set width 900 px height 900 px
