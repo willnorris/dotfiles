@@ -10,9 +10,9 @@ output eDP-1 {
 }
 output DP-3 {
   resolution 3840x2160@60Hz
-  scale 2
+  scale 1.5
   # position on right edge of eDP-1, raised up a bit
-  position 1440,-800
+  position 1440,-900
 }
 
 exec swayidle -w
