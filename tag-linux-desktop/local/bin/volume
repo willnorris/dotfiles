@@ -14,7 +14,7 @@ case $1 in
 up)
   wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
   if [ -n "$swayosd" ]; then
-    swayosd-client --output-volume raise
+    swayosd-client --max-volume=150 --output-volume raise
   else
     wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
     send_notification "$1"
@@ -23,7 +23,7 @@ up)
 down)
   wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
   if [ -n "$swayosd" ]; then
-    swayosd-client --output-volume lower
+    swayosd-client --max-volume=150 --output-volume lower
   else
     wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
     send_notification "$1"
