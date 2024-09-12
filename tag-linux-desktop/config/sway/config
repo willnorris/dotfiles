@@ -238,6 +238,12 @@ for_window [app_id="org.gnome.NautilusPreviewer"] {
   floating enable
 }
 
+for_window [title="meet.google.com is sharing a window."] {
+  floating enable
+  sticky enable
+  move position 20 ppt -57 px
+}
+
 for_window [title="Picture-in-Picture"] {
   floating enable
   sticky enable
