@@ -115,6 +115,9 @@ bindsym {
   Alt+k focus up
   Alt+l focus right
 
+  Alt+z focus prev sibling
+  Alt+x focus next sibling
+
   # Move the focused window
   Alt+Shift+h move left
   Alt+Shift+j move down
@@ -180,7 +183,7 @@ bindsym {
   Alt+p sticky toggle
 
   # Swap focus between the tiling area and the floating area
-  Alt+Shift+d focus mode_toggle
+  Alt+d focus mode_toggle
 
   # Move focus to the parent container
   Alt+a focus parent
