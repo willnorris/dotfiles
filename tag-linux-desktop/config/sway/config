@@ -64,7 +64,7 @@ input "type:touchpad" {
   click_method clickfinger
   tap_button_map lrm
   dwt enabled
-  tap enabled
+  tap disabled
 }
 seat seat0 {
   hide_cursor when-typing enable
