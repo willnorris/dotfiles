@@ -187,6 +187,9 @@ bindsym {
 
   # Move focus to the parent container
   Alt+a focus parent
+
+  Alt+Super+o exec headless-output-start
+  Alt+Super+Shift+o exec headless-output-stop
 }
 
 bindsym Alt+r mode "resize"
@@ -241,7 +244,7 @@ for_window [app_id="org.gnome.NautilusPreviewer"] {
   floating enable
 }
 
-for_window [title="meet.google.com is sharing a window."] {
+for_window [title="meet.google.com is sharing"] {
   floating enable
   sticky enable
   move position 20 ppt -57 px
@@ -253,5 +256,9 @@ for_window [title="Picture-in-Picture"] {
   exec sway-move-to top-right
 }
 
+for_window [app_id="at.yrlf.wl_mirror"] {
+  floating enable
+  resize set width 1600 px height 900 px
+}
 
 include /etc/sway/config.d/*
