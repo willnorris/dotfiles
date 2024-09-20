@@ -11,7 +11,7 @@ which I've actually bundled as part of my dotfiles in the [vendor/rcm] directory
 To set up a new host:
 
 - `git clone https://github.com/willnorris/dotfiles $HOME/.dotfiles`
-- `PATH="$HOME/.dotfiles/local/bin:$PATH" rcup`
+- `./.dotfiles/install.sh`
 
 ## Work dotfiles
 
