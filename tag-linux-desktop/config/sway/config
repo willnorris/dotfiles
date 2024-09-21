@@ -20,6 +20,7 @@ exec swayosd-server
 exec waybar
 exec swaync
 exec easyeffects --gapplication-service -w
+exec wluma
 
 # assign workspaces to outputs
 # Assign 1 and 10 first so that each output has at least one workspace
