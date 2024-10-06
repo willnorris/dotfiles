@@ -20,6 +20,7 @@ return {
     },
     opts = function(_, opts)
       local cmp = require("cmp")
+      local mod = require("util").mod
       return vim.tbl_deep_extend("force", opts, {
         completion = {
           completeopt = "menu,menuone,noinsert,noselect",
@@ -29,6 +30,8 @@ return {
           ["<C-j>"] = cmp.mapping.select_next_item(),
           ["<C-b>"] = cmp.mapping.select_prev_item({ count = 10 }),
           ["<C-f>"] = cmp.mapping.select_next_item({ count = 10 }),
+          [mod("k")] = cmp.mapping.scroll_docs(-2),
+          [mod("j")] = cmp.mapping.scroll_docs(2),
           ["<M-k>"] = cmp.mapping.scroll_docs(-2),
           ["<M-j>"] = cmp.mapping.scroll_docs(2),
           ["<C-c>"] = cmp.mapping.abort(),
