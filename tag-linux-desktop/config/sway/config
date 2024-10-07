@@ -36,11 +36,8 @@ workspace 4 output DP-2 eDP-1
 workspace 5 output DP-2 eDP-1
 
 # start apps on specific workspaces
-workspace 1
-exec kitty
-workspace 2
-exec firefox
-workspace 1
+exec swaymsg "workspace 2; exec firefox"
+exec swaymsg "workspace 1; exec kitty"
 
 ## Look and feel
 
