@@ -5,7 +5,7 @@
 # Check if there are any HEADLESS outputs
 headless_outputs=$(swaymsg -t get_outputs | jq -r '.[] | select(.name | startswith("HEADLESS-")) | .name')
 if [ -n "$headless_outputs" ]; then
-  notify-send -a headless-output -t 2000 "headless output already present" "$headless_outputs"
+  notify-send -a headless-output -e -t 2000 "headless output already present" "$headless_outputs"
   exit 0
 fi
 
@@ -37,4 +37,4 @@ swaymsg workspace "$CURRENT_WORKSPACE"
 
 wl-mirror "$NEW_OUTPUT" &
 
-notify-send -a headless-output -t 2000 "Created new output" "$NEW_OUTPUT"
+notify-send -a headless-output -e -t 2000 "Created new output" "$NEW_OUTPUT"

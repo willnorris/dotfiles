@@ -17,4 +17,4 @@ for output in $headless_outputs; do
   swaymsg output "$output" unplug
 done
 
-notify-send -a headless-output -t 2000 "All headless outputs removed"
+notify-send -a headless-output -e -t 2000 "All headless outputs removed"
