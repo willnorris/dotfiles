@@ -215,7 +215,8 @@ mode "resize" {
 
 ## Window rules
 
-for_window [title="YouTube Music"] {
+# app_id is YouTube Music PWA on default Chromium profile
+for_window [app_id="chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default"] {
   move container to scratchpad
 }
 
