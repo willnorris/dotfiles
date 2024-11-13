@@ -96,7 +96,7 @@
     "tooltip-format": "{capacity}% - {timeTo}",
     "max-length": 25,
     "on-click": "kitty --class btop btop",
-    "on-click-right": "kitty --class battop battop",
+    "on-click-right": "kitty --class batmon batmon",
   },
   "group/performance": {
     "orientation": "inherit",

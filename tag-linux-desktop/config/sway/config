@@ -226,7 +226,7 @@ for_window [app_id="btop"] {
   floating enable
   resize set width 80 ppt height 80 ppt
 }
-for_window [app_id="battop"] {
+for_window [app_id="batmon"] {
   floating enable
   resize set width 70 ppt height 70 ppt
 }
