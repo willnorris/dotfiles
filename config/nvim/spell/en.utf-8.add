@@ -21,6 +21,7 @@ curation
 ebook
 etherpad
 Facebook
+FIXME
 Gerrit
 GitHub
 Googler
@@ -54,6 +55,7 @@ plugins
 presubmit
 programmatically
 ransomware
+shardmap
 SignCLA
 SNI
 tailnet
@@ -69,5 +71,3 @@ webmentions
 wiki
 willnorris
 WordPress
-FIXME
-TODO
