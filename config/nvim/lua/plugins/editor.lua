@@ -1,8 +1,13 @@
 return {
   { "folke/flash.nvim", enabled = false }, -- disable search labels
 
-  { "konfekt/vim-sentence-chopper" },      -- Semantic Line Breaks
-  { "tpope/vim-sleuth" },                  -- Heuristically set buffer options
+  {
+    "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
+    keys = {
+      { "gs", "<plug>(ChopSentences)", mode = { "n", "x" }, desc = "Semantic Line Break" },
+    },
+  },
+  { "tpope/vim-sleuth" }, -- Heuristically set buffer options
 
   {
     "max397574/better-escape.nvim",
