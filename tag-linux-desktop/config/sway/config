@@ -23,7 +23,7 @@ exec swayosd-server
 exec waybar
 exec swaync
 exec easyeffects --gapplication-service -w
-exec wluma
+#exec wluma
 exec autotiling
 
 # assign workspaces to outputs
