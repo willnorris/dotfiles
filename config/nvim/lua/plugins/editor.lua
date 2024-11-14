@@ -167,17 +167,6 @@ return {
   },
 
   {
-    "iamcco/markdown-preview.nvim",
-    ft = "markdown",
-    keys = {
-      { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "Markdown preview" },
-    },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-
-  {
     "folke/trouble.nvim",
     opts = {
       cycle_results = false,

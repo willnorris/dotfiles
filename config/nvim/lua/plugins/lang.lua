@@ -9,6 +9,9 @@ return {
   { import = "lazyvim.plugins.extras.lang.yaml" },
   { import = "lazyvim.plugins.extras.util.dot" },
 
+  { import = "lazyvim.plugins.extras.lang.markdown" },
+  { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
+
   -- Caddyfile syntax support
   { "isobit/vim-caddyfile" },
 

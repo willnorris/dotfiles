@@ -66,6 +66,7 @@
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "qf_helper.nvim": { "branch": "master", "commit": "fa3c2f3f2706e2c9984409c9c14b5993302ddfa7" },
+  "render-markdown.nvim": { "branch": "main", "commit": "82184c4a3c3580a7a859b2cb7e58f16c10fd29ef" },
   "snacks.nvim": { "branch": "main", "commit": "f704f7479f79def638b92d011cbf74e2d1b8db86" },
   "stickybuf.nvim": { "branch": "master", "commit": "183b9569bef78f44b17c078214f7d731f19cbefe" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
