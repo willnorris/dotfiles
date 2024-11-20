@@ -1,9 +1,8 @@
 return {
-  { "folke/flash.nvim", enabled = false }, -- disable search labels
-
   {
     "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
     keys = {
+      -- e.g. `gsap` to format paragraph at semantic line breaks
       { "gs", "<plug>(ChopSentences)", mode = { "n", "x" }, desc = "Semantic Line Break" },
     },
   },
