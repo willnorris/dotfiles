@@ -164,18 +164,10 @@ return {
   },
 
   {
-    "stevearc/stickybuf.nvim",
-    opts = {
-      get_auto_pin = function(buf)
-        if vim.bo[buf].filetype == "Outline" then
-          return "filetype"
-        end
-      end,
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async", -- dim inactive portions of file
     },
-  },
-
-  {
-    "lewis6991/cleanfold.nvim",
     config = true,
   },
 }
