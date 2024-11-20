@@ -122,19 +122,12 @@ return {
   },
 
   {
-    "nvimdev/dashboard-nvim",
-    opts = {
-      config = {
-        header = vim.split(string.rep("\n", 8) .. [[
-███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
-████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
-██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
-██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
-██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
-╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
-        ]] .. "\n\n", "\n"),
-      },
-    },
+    "folke/snacks.nvim",
+    opts = function(_, opts)
+      -- use default dashboard header
+      opts.dashboard.preset.header = nil
+      return opts
+    end,
   },
 
   {
