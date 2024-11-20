@@ -34,7 +34,6 @@ return {
         SpellRare = { fg = "$purple" },
         SpellLocal = { fg = "$blue" },
 
-        DashboardHeader = { fg = "$blue" },
         Twilight = { bg = "$none", fg = "$bg2" },
         ZenBg = { fg = "$fg" },
 
@@ -50,10 +49,6 @@ return {
         TelescopeResultsBorder = { fg = "$grey" },
         TelescopePreviewBorder = { fg = "$grey" },
         TelescopeTitle = { fg = "$fg" },
-
-        MiniStarterHeader = { fg = "$blue" },
-        MiniStarterFooter = { fg = "$grey" },
-        MiniStarterItemPrefix = { fg = "$red" },
 
         WhichKeySeparator = { fg = "$grey" },
       },
