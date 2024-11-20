@@ -7,10 +7,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
--- set leader before loading lazy.nvim
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
