@@ -55,8 +55,8 @@ keymap("i", mod("i") .. "e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "t
 keymap("c", "<c-j>", "<c-n>", { remap = true })
 keymap("c", "<c-k>", "<c-p>", { remap = true })
 
-keymap("n", "<c-n>", function() require("lazyvim.util.lsp").words.jump(vim.v.count1) end, { desc = "Next reference" })
-keymap("n", "<c-p>", function() require("lazyvim.util.lsp").words.jump(-vim.v.count1) end, { desc = "Prev reference" })
+keymap("n", "<c-n>", function() require("snacks").words.jump(vim.v.count1) end, { desc = "Next reference" })
+keymap("n", "<c-p>", function() require("snacks").words.jump(-vim.v.count1) end, { desc = "Prev reference" })
 
 -- Find and open the alternate file for the current path.
 -- Requires alt command (https://github.com/uptech/alt)
