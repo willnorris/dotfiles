@@ -65,7 +65,7 @@ input "type:touchpad" {
   natural_scroll enabled
   click_method clickfinger
   tap_button_map lrm
-  dwt enabled
+  dwt enabled # disable-while-typing
   tap disabled
 }
 seat seat0 {
