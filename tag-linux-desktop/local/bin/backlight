@@ -2,11 +2,8 @@
 
 # Use brightnessctl to naturally adjust laptop screen brightness and send a notification
 
-currentbrightness=$(brightnessctl -e4 -m | awk -F, '{print substr($4, 0, length($4)-1)}')
-if [ "$currentbrightness" -lt 30 ] && [ "$1" = "down" ]; then exit 1; fi
-
 send_notification() {
-  brightness=$(brightnessctl -e4 -m | awk -F, '{print substr($4, 0, length($4)-1)}')
+  brightness=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}')
   notify-send "Brightness: $brightness" -t 1000 -i display-brightness-symbolic -e -h string:x-canonical-private-synchronous:brightness
 }
 
@@ -18,7 +15,7 @@ up)
   if [ -n "$swayosd" ]; then
     swayosd-client --brightness +10
   else
-    brightnessctl -e4 set 5%+
+    brightnessctl set 5%+
     send_notification "$1"
   fi
   ;;
@@ -26,7 +23,7 @@ down)
   if [ -n "$swayosd" ]; then
     swayosd-client --brightness -10
   else
-    brightnessctl -e4 set 5%-
+    brightnessctl set 5%-
     send_notification "$1"
   fi
   ;;
