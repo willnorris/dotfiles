@@ -23,6 +23,7 @@ return {
     opts = {
       options = {
         tab_size = 0,
+        show_buffer_icons = false,
         show_buffer_close_icons = false,
         show_close_icon = false,
         always_show_bufferline = true,
@@ -57,8 +58,6 @@ return {
             { "mode", fmt = function(str) return str:sub(1, 1) end },
           },
           lualine_b = {
-            "branch",
-            "diff",
           },
           lualine_c = {
             {
@@ -72,7 +71,7 @@ return {
             },
             { Util.lualine.pretty_path() },
           },
-          lualine_x = { "encoding", "fileformat" },
+          lualine_x = {},
           lualine_y = {
             {
               function() return require("noice").api.status.mode.get() end,
@@ -88,7 +87,6 @@ return {
             { "selectioncount", fmt = function(str) return str:len() > 0 and "󰒉 " .. str end },
           },
           lualine_z = {
-            { "progress" },
             { "location", padding = { left = 0, right = 1 } },
           },
 
