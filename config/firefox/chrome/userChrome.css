@@ -18,7 +18,7 @@
   /* Give extra room if all three window control buttons are visible */
   @media (-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-close-button) {
     :root:is([tabsintitlebar], [sizemode="fullscreen"]) {
-      --uc-window-control-width: 130px;
+      --uc-window-control-width: 145px;
     }
   }
   /* At least ChromeOS doesn't render transparent borders, so use margin-right instead of border-right. */
@@ -29,6 +29,22 @@
         var(--uc-window-drag-space-post, 0px)
     );
   }
+}
+
+@media (-moz-platform: linux) {
+  :root[tabsintitlebar="true"] #nav-bar {
+    margin-right: 4px;
+  }
+  .titlebar-buttonbox {
+    display: none;
+  }
+  #TabsToolbar-customization-target {
+    height: 36px;
+  }
+}
+
+.tabs-alltabs-button {
+  display: none;
 }
 
 /* Hide tabs and display nav bar at the top with window controls */
@@ -48,11 +64,6 @@
   --toolbar-start-end-padding: 0;
 }
 
-/* Completely hide the window close button, as it's too close to other things and gets clicked accidentally. */
-.titlebar-close {
-  display: none;
-}
-
 .titlebar-spacer[type="post-tabs"] {
   display: none;
 }
@@ -61,7 +72,8 @@
   background-color: var(--toolbar-bgcolor) !important;
 }
 #nav-bar {
-  margin-top: -40px;
+  margin-top: -36px;
+  margin-left: -34px;
   box-shadow: none !important;
 }
 
