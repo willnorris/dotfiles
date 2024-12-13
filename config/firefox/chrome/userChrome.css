@@ -87,3 +87,17 @@
 .sidebar-splitter {
   border-inline-start: 0 !important;
 }
+
+/* Hide containers button in URL bar */
+#pageAction-urlbar-_testpilot-containers {
+  display: none;
+}
+/* Hide container label in URL bar */
+#userContext-label {
+  display: none;
+}
+
+/* Hide bookmark star in URL bar */
+#star-button-box {
+  display: none;
+}
