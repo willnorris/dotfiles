@@ -71,3 +71,19 @@
 .titlebar-color {
   background-color: var(--toolbar-bgcolor);
 }
+
+/* Hide sidebar header. I only use the sidebar for Sidebery, and other sidebar views can be found elsewhere. */
+#sidebar-header {
+  display: none;
+}
+#sidebar-box {
+  min-width: 2.5em !important;
+  max-width: calc(100vw - 2.5em) !important;
+}
+:root[titlepreface="᠎"] #sidebar-box {
+  width: 2.5em !important;
+}
+
+.sidebar-splitter {
+  border-inline-start: 0 !important;
+}
