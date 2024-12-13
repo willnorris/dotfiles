@@ -53,6 +53,10 @@
 [diff "vim"]
   command = vimdiff
 
+[diff "lockb"]
+  textconv = bun
+  binary = true
+
 [fetch]
   prune = true
 
