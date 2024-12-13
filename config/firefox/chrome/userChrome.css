@@ -9,9 +9,16 @@
 
 /* Customize window control placeholders */
 @media (-moz-platform: macos) {
+  :root[tabsintitlebar="true"] {
+    --uc-window-control-width: 100px;
+  }
   :root[tabsintitlebar="true"] #nav-bar {
     border-right-width: 0;
-    margin-right: 40px;
+    margin-right: 8px;
+  }
+  :root[tabsintitlebar="true"] #TabsToolbar {
+    padding-top: 6px !important;
+    min-height: 36px !important;
   }
 }
 @media (-moz-gtk-csd-available) {
@@ -94,6 +101,9 @@
 }
 :root[titlepreface="᠎"] #sidebar-box {
   width: 2.5em !important;
+  @media (-moz-platform: macos) {
+    width: 3.25em !important;
+  }
 }
 
 .sidebar-splitter {
