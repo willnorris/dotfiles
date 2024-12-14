@@ -88,8 +88,6 @@ return {
         },
       })
 
-      local mod = require("util").mod
-
       local mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
@@ -99,14 +97,14 @@ return {
         ["<C-n>"] = actions.cycle_history_next,
         ["<C-p>"] = actions.cycle_history_prev,
 
-        [mod("j")] = function(bufnr)
+        ["<M-j>"] = function(bufnr)
           scroll_preview(bufnr, 1, 1)
         end,
-        [mod("k")] = function(bufnr)
+        ["<M-k>"] = function(bufnr)
           scroll_preview(bufnr, 1, -1)
         end,
-        [mod("f")] = actions.preview_scrolling_down,
-        [mod("b")] = actions.preview_scrolling_up,
+        ["<M-f>"] = actions.preview_scrolling_down,
+        ["<M-b>"] = actions.preview_scrolling_up,
 
         ["<C-s>"] = actions.select_horizontal,
         ["<C-x>"] = require("trouble.sources.telescope").open,
