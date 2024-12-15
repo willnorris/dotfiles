@@ -9,16 +9,6 @@ return {
   { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 
   {
-    "stevearc/dressing.nvim",
-    module = "dressing",
-    opts = {
-      select = {
-        telescope = require("telescope.themes").get_cursor(),
-      },
-    },
-  },
-
-  {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
@@ -46,7 +36,7 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       local icons = require("lazyvim.config").icons
-      local Util = require("lazyvim.util")
+      local snacks = require("snacks")
       return vim.tbl_deep_extend("force", opts, {
         options = {
           section_separators = "",
@@ -69,19 +59,19 @@ return {
                 hint = icons.diagnostics.Hint,
               },
             },
-            { Util.lualine.pretty_path() },
+            { require("lazyvim.util.lualine").pretty_path() },
           },
           lualine_x = {},
           lualine_y = {
             {
               function() return require("noice").api.status.mode.get() end,
               cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = Util.ui.fg("Constant"),
+              color = { fg = snacks.util.color("Constant") },
             },
             {
               function() return "  " .. require("dap").status() end,
               cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-              color = Util.ui.fg("Debug"),
+              color = { fg = snacks.util.color("Debug") },
             },
             "searchcount",
             { "selectioncount", fmt = function(str) return str:len() > 0 and "󰒉 " .. str end },

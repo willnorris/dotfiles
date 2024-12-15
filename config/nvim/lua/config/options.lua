@@ -18,6 +18,8 @@ vim.opt.hlsearch = true
 vim.opt.colorcolumn = "+1" -- display column at edge of textwidth
 vim.opt.statuscolumn = ""  -- unset LazyVim's statuscolumn
 
+vim.g.snacks_animate = false
+
 -- Use OSC52 clipboard
 vim.o.clipboard = ""
 vim.g.clipboard = {

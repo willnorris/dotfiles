@@ -22,10 +22,6 @@ keymap("n", "<C-C>", function()
   vim.cmd("nohlsearch|diffupdate")
 end, { desc = "clear and redraw screen" })
 
-keymap("n", "<leader>uo", function() Util.toggle("foldcolumn", true, { "1", "0" }) end, { desc = "Toggle fold column" })
-keymap("n", "<leader>ug",
-  function() Util.toggle("signcolumn", true, { "no", "auto" }) end, { desc = "Toggle sign column" })
-keymap("n", "<leader>ul", function() Util.toggle("number", true) end, { desc = "Toggle line numbers" })
 
 -- https://github.com/wookayin/dotfiles/commit/96d9355
 keymap("n", "<leader>wc", function()

@@ -41,14 +41,18 @@ return {
         GitSignsChangeLn = { fg = "$yellow" },
         GitSignsChangeNr = { fg = "$yellow" },
 
+        FzfLuaBorder = { fg = "$bg2" },
+
         SignatureMarkText = { fg = "$red" },
         SignatureMarkerText = { fg = "$green" },
 
-        TelescopeBorder = { fg = "$grey" },
-        TelescopePromptBorder = { fg = "$grey" },
-        TelescopeResultsBorder = { fg = "$grey" },
-        TelescopePreviewBorder = { fg = "$grey" },
-        TelescopeTitle = { fg = "$fg" },
+        SnacksIndent = { fg = "$bg0" },
+        SnacksIndentScope = { fg = "$grey" },
+
+        BlinkCmpMenuBorder = { fg = "$grey", bg = "$bg0" },
+        BlinkCmpDocBorder = { fg = "$grey", bg = "$bg0" },
+        BlinkCmpMenu = { bg = "$bg0" },
+        BlinkCmpMenuSelection = { bg = "$bg2" },
 
         WhichKeySeparator = { fg = "$grey" },
       },
