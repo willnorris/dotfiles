@@ -72,6 +72,7 @@ return {
 
   { import = "lazyvim.plugins.extras.formatting.prettier" },
   { import = "lazyvim.plugins.extras.linting.eslint" },
+
   { -- Display LSP results in preview window
     "rmagatti/goto-preview",
     event = "VeryLazy",
@@ -85,14 +86,5 @@ return {
         end)
       end,
     },
-  },
-  {
-    "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-    keys = {
-      { "<leader>ux", "<Plug>(toggle-lsp-diag-vtext)", desc = "Toggle LSP virtual text" },
-    },
-    config = function()
-      require("toggle_lsp_diagnostics").init()
-    end,
   },
 }

@@ -2,8 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      opts.ensure_installed[#opts.ensure_installed + 1] = "go"
-
       return vim.tbl_deep_extend("force", opts, {
         auto_install = true,
         highlight = {

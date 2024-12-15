@@ -34,9 +34,6 @@ return {
         SpellRare = { fg = "$purple" },
         SpellLocal = { fg = "$blue" },
 
-        Twilight = { bg = "$none", fg = "$bg2" },
-        ZenBg = { fg = "$fg" },
-
         GitSignsChange = { fg = "$yellow" },
         GitSignsChangeLn = { fg = "$yellow" },
         GitSignsChangeNr = { fg = "$yellow" },
@@ -46,6 +43,7 @@ return {
         SignatureMarkText = { fg = "$red" },
         SignatureMarkerText = { fg = "$green" },
 
+        SnacksDim = { fg = "$bg2" },
         SnacksIndent = { fg = "$bg0" },
         SnacksIndentScope = { fg = "$grey" },
 

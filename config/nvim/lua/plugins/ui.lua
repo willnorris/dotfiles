@@ -1,11 +1,4 @@
 return {
-  {
-    "rcarriga/nvim-notify",
-    keys = {
-      { "<leader>un", false },
-    },
-  },
-
   { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 
   {
@@ -85,36 +78,23 @@ return {
     end,
   },
 
-  { -- Distraction-free writing and coding
-    "folke/zen-mode.nvim",
-    dependencies = {
-      "benstockil/twilight.nvim", -- dim inactive portions of file
-    },
-    keys = {
-      { "<leader>zz", "<Cmd>ZenMode<CR>", desc = "zen mode" },
-    },
-    opts = {
-      window = {
-        options = {
-          signcolumn = "no",
-          number = false,
-        },
-      },
-      on_open = function()
-        vim.b.miniindentscope_disable = true
-      end,
-      on_close = function()
-        vim.b.miniindentscope_disable = false
-      end,
-    },
-  },
-
   {
     "folke/snacks.nvim",
     opts = function(_, opts)
       -- use default dashboard header
       opts.dashboard.preset.header = nil
-      return opts
+      return vim.tbl_deep_extend("force", opts, {
+        zen = {
+          toggles = {
+            diagnostics = false,
+            indent = false,
+          },
+          on_open = function()
+            vim.opt.signcolumn = "no"
+            vim.opt.number = false
+          end,
+        },
+      })
     end,
   },
 
@@ -154,7 +134,7 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
-      "kevinhwang91/promise-async", -- dim inactive portions of file
+      "kevinhwang91/promise-async",
     },
     config = true,
   },
