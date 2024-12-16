@@ -1,5 +1,4 @@
 local keymap = vim.keymap.set
-local Util = require("lazyvim.util")
 
 -- https://stackoverflow.com/questions/70691265
 local preserve = function(arguments)
@@ -17,20 +16,17 @@ end
 keymap("n", "<leader>;", "<C-^>", { noremap = true })
 
 keymap("n", "<C-C>", function()
-  require("notify").dismiss({ silent = true, pending = true })
+  vim.cmd("Noice dismiss")
   vim.cmd("mode|redrawstatus!|redrawtabline")
   vim.cmd("nohlsearch|diffupdate")
 end, { desc = "clear and redraw screen" })
 
-
 -- https://github.com/wookayin/dotfiles/commit/96d9355
 keymap("n", "<leader>wc", function()
-  local closed_windows = {}
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local config = vim.api.nvim_win_get_config(win)
     if config.relative ~= "" then        -- is_floating_window?
       vim.api.nvim_win_close(win, false) -- do not force
-      table.insert(closed_windows, win)
     end
   end
 end, { desc = "Close all floating windows" })

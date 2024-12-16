@@ -50,6 +50,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
     if vim.bo.filetype == "noice" then
       return
     end
+    if vim.bo.buftype == "nofile" then
+      return
+    end
     if vim.bo.expandtab then
       vim.wo.list = true
     end

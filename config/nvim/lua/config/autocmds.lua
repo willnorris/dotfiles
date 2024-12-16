@@ -1,15 +1,3 @@
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  callback = function()
-    if vim.bo.buftype == "nofile" then
-      vim.wo.list = false
-      vim.bo.expandtab = false
-    end
-    if vim.bo.filetype == "dashboard" then
-      vim.wo.list = false
-    end
-  end,
-})
-
 -- Disable focus.nvim on certain buftypes and filetypes
 local focus_augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
 
