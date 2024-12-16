@@ -41,6 +41,9 @@ return {
         FzfLuaBorder = { fg = "$bg2" },
         FzfLuaHeaderText = { fg = "$blue" },
         FzfLuaHeaderBind = { fg = "$red" },
+        FzfLuaBufFlagCur = { fg = "$red" },
+        FzfLuaBufFlagAlt = { fg = "$cyan" },
+        FzfLuaPathLineNr = { fg = "$green" },
 
         SignatureMarkText = { fg = "$red" },
         SignatureMarkerText = { fg = "$green" },

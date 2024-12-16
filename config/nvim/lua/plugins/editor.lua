@@ -67,6 +67,7 @@ return {
       preset = "classic",
       icons = {
         separator = "",
+        mappings = false,
         rules = false,
       },
       win = {
