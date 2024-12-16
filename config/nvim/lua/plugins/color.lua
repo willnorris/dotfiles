@@ -39,6 +39,8 @@ return {
         GitSignsChangeNr = { fg = "$yellow" },
 
         FzfLuaBorder = { fg = "$bg2" },
+        FzfLuaHeaderText = { fg = "$blue" },
+        FzfLuaHeaderBind = { fg = "$red" },
 
         SignatureMarkText = { fg = "$red" },
         SignatureMarkerText = { fg = "$green" },

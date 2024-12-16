@@ -57,12 +57,6 @@ return {
           ["ctrl-o"] = "toggle-preview",
         },
       },
-      files = {
-        no_header_i = true,
-      },
-      grep = {
-        no_header_i = true,
-      },
     },
   },
 
@@ -76,7 +70,7 @@ return {
         rules = false,
       },
       win = {
-        border = "single",
+        border = "rounded",
       },
     },
   },
