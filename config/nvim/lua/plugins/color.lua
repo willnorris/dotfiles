@@ -52,6 +52,10 @@ return {
         SnacksIndent = { fg = "$bg0" },
         SnacksIndentScope = { fg = "$grey" },
 
+        SnacksInputNormal = { bg = "$bg0" },
+        SnacksInputBorder = { bg = "$bg0", fg = "$grey" },
+        SnacksInputTitle = { bg = "$bg0", fg = "$fg" },
+
         BlinkCmpMenuBorder = { fg = "$grey", bg = "$bg0" },
         BlinkCmpDocBorder = { fg = "$grey", bg = "$bg0" },
         BlinkCmpMenu = { bg = "$bg0" },

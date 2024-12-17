@@ -84,6 +84,20 @@ return {
       -- use default dashboard header
       opts.dashboard.preset.header = nil
       return vim.tbl_deep_extend("force", opts, {
+        input = {
+          icon = "",
+          win = {
+            title_pos = "left",
+            relative = "cursor",
+            row = -3,
+            col = 0,
+            width = 30,
+            keys = {
+              ctrl_c = { "<c-c>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
+              esc = { "<esc>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
+            },
+          },
+        },
         zen = {
           toggles = {
             diagnostics = false,
