@@ -11,6 +11,16 @@ return {
 
   { import = "lazyvim.plugins.extras.lang.markdown" },
   { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
+  {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      local markdownlint = require("lint").linters["markdownlint-cli2"]
+      markdownlint.args = {
+        "--config", vim.fn.expand("~/.config/md.markdownlint.yaml"),
+      }
+      return opts
+    end
+  },
 
   -- Caddyfile syntax support
   { "isobit/vim-caddyfile" },

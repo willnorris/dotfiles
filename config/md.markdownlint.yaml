@@ -1,0 +1,8 @@
+# Ideally this file would just be named "markdownlint.yaml",
+# but markdownlint-cli2 really wants the filename to end with `.markdownlint.yaml`.
+
+# ignore line length
+line_length: false
+
+# allow inline HTML
+html: false
