@@ -116,4 +116,20 @@ return {
       { "<leader>uu", "<Cmd>UndotreeToggle<CR>", desc = "Toggle undo tree" },
     },
   },
+
+  {
+    "zk-org/zk-nvim",
+    config = function()
+      require("zk").setup({
+        picker = "fzf",
+        lsp = {
+          config = {
+            cmd = { "zk", "lsp" },
+            name = "zk",
+          },
+        },
+      })
+    end
+  },
+
 }

@@ -67,4 +67,5 @@
   "vim-sentence-chopper": { "branch": "master", "commit": "0657aaa3f3b1acffde94f6eb6b08b106d8cf8162" },
   "vim-sleuth": { "branch": "master", "commit": "be69bff86754b1aa5adcbb527d7fcd1635a84080" },
   "which-key.nvim": { "branch": "main", "commit": "8ab96b38a2530eacba5be717f52e04601eb59326" }
+  "zk-nvim": { "branch": "main", "commit": "42dc341d897ac4da3d4a9c5c506a36153473f021" }
 }
