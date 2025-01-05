@@ -15,6 +15,7 @@ if [ -r "$XDG_CONFIG_HOME/shell/dircolors" ]; then
 fi
 
 # The leading space in all of these aliases prevents them from polluting the shell history.
+# shellcheck disable=SC2262
 if has gls; then
   alias ls=" gls --color=auto -F -N"
 elif ls --color=auto >/dev/null 2>&1; then

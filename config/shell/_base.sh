@@ -15,11 +15,11 @@ fi
 
 # Return exit code 0 if the specified command exists.
 has() {
-  type "$1" >/dev/null 2>/dev/null
+  type "$1" >/dev/null 2>&1
 }
 
 has_network() {
-  ping -w1 -c1 8.8.8.8 2>/dev/null
+  ping -w1 -c1 8.8.8.8 >/dev/null 2>&1
 }
 
 # Add a new path to the PATH environment variable if it is a directory and is
