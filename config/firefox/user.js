@@ -13,3 +13,6 @@ user_pref("browser.fixup.domainwhitelist.go", true);
 // but at a minimum these seem to work well.
 user_pref("apz.fling_friction", "0.007");
 user_pref("apz.fling_min_velocity_threshold", "1.5");
+
+// Force popup windows to open as normal tabs with URL bar, etc.
+user_pref("browser.link.open_newwindow.restriction", 0);
