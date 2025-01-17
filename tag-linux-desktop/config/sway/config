@@ -25,6 +25,7 @@ exec swaync
 exec easyeffects --gapplication-service -w
 #exec wluma
 exec autotiling
+exec albert
 
 # assign workspaces to outputs
 # Assign 1 and 10 first so that each output has at least one workspace
@@ -81,8 +82,8 @@ bindsym {
   Alt+q exec notify-send "Kill Container" "Alt + Shift + Q" -e \
     -t 1500 -h string:x-canonical-private-synchronous:sway-kill
 
-  # Open launcher; pipe to swaymsg to open on correct workspace.
-  Alt+Space exec ulauncher | xargs swaymsg exec --
+  # Open albert launcher
+  Alt+Space exec echo -n toggle | socat - ~/.cache/albert/ipc_socket
 
   # Media keys
   XF86AudioRaiseVolume  exec volume up
@@ -214,6 +215,11 @@ mode "resize" {
 
 
 ## Window rules
+
+for_window [app_id="albert" title="^Albert$"] {
+  # 300px above center
+  move up 300 px
+}
 
 # app_id is YouTube Music PWA on default Chromium profile
 for_window [app_id="chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default"] {
