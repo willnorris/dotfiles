@@ -13,6 +13,8 @@
 # ctags
 tags
 
+.mise.toml
+
 .nvimlog
 
 /go.work
