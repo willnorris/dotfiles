@@ -16,3 +16,6 @@ user_pref("apz.fling_min_velocity_threshold", "1.5");
 
 // Force popup windows to open as normal tabs with URL bar, etc.
 user_pref("browser.link.open_newwindow.restriction", 0);
+
+// Use dark theme for private windows
+user_pref("browser.theme.dark-private-windows", true);
