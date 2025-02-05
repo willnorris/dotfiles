@@ -98,6 +98,46 @@ return {
             },
           },
         },
+        picker = {
+          layout = {
+            preset = "ivy",
+          },
+          win = {
+            input = {
+              keys = {
+                ["<c-p>"] = { "history_back", mode = { "i", "n" } },
+                ["<c-n>"] = { "history_forward", mode = { "i", "n" } },
+
+                ["<c-f>"] = { "list_scroll_down", mode = { "i", "n" } },
+                ["<c-b>"] = { "list_scroll_up", mode = { "i", "n" } },
+
+                ["<a-j>"] = { "preview_down", mode = { "i", "n" } },
+                ["<a-k>"] = { "preview_up", mode = { "i", "n" } },
+                ["<a-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
+                ["<a-b>"] = { "preview_scroll_up", mode = { "i", "n" } },
+              },
+            },
+            list = {
+              keys = {
+                ["<c-f>"] = "list_scroll_down",
+                ["<c-b>"] = "list_scroll_up",
+
+                ["<a-j>"] = "preview_down",
+                ["<a-k>"] = "preview_up",
+                ["<a-f>"] = "preview_scroll_down",
+                ["<a-b>"] = "preview_scroll_up",
+              },
+            },
+          },
+          actions = {
+            preview_down = function(p)
+              vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<c-e>")) end)
+            end,
+            preview_up = function(p)
+              vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<c-y>")) end)
+            end,
+          },
+        },
         zen = {
           toggles = {
             diagnostics = false,

@@ -71,3 +71,5 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 100           -- don't autofold anything
 vim.o.foldnestmax = 3           -- maximum nesting
 vim.opt.foldopen:append("jump") -- what movements open folds
+
+vim.g.lazyvim_picker = "snacks"

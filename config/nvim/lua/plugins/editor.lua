@@ -30,37 +30,6 @@ return {
   },
 
   {
-    "ibhagwan/fzf-lua",
-    keys = {
-      { "<leader>gl", "<cmd>FzfLua git_bcommits<CR>", desc = "File Commits" },
-    },
-    opts = {
-      winopts = { split = "botright new" },
-      keymap = {
-        builtin = {
-          ["<c-d>"] = "half-page-down",
-          ["<c-u>"] = "half-page-up",
-
-          ["<m-j>"] = "preview-down",
-          ["<m-k>"] = "preview-up",
-          ["<m-d>"] = "preview-half-page-down",
-          ["<m-u>"] = "preview-half-page-up",
-          ["<m-f>"] = "preview-page-down",
-          ["<m-b>"] = "preview-page-up",
-
-          ["<c-o>"] = "toggle-preview",
-        },
-        fzf = {
-          ["ctrl-d"] = "half-page-down",
-          ["ctrl-u"] = "half-page-up",
-
-          ["ctrl-o"] = "toggle-preview",
-        },
-      },
-    },
-  },
-
-  {
     "folke/which-key.nvim",
     module = "which-key",
     opts = {
