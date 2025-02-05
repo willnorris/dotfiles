@@ -13,7 +13,7 @@
 # ctags
 tags
 
-.mise.toml
+.mise.local.toml
 
 .nvimlog
 
