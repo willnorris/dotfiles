@@ -1,6 +1,6 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Symbols Nerd Font", Roboto, Helvetica, Arial, sans-serif;
   font-size: 13px;
 }
 
@@ -21,13 +21,13 @@ button:hover {
 }
 
 #workspaces button {
-  padding: 0 5px;
+  padding: 3px 3px 0 3px;
   color: #ffffff;
 }
 
 #workspaces button.focused {
   background-color: rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 -3px #ffffff;
+  box-shadow: inset 0 -1px #ffffff;
 }
 
 #workspaces button.urgent {
@@ -60,7 +60,7 @@ button:hover {
 }
 
 #battery {
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 #battery.charging,
@@ -102,7 +102,7 @@ label:focus {
 }
 
 #network {
-  font-size: 2rem;
+  font-size: 1.2em;
   color: #61afef;
 }
 
@@ -111,11 +111,11 @@ label:focus {
 }
 
 #pulseaudio {
-  font-size: 2rem;
   color: #e5c07b;
 }
 
 #pulseaudio.muted {
+  font-size: 1.3em;
   color: #e06c75;
 }
 
@@ -142,14 +142,10 @@ label:focus {
   padding: 0 8px;
 }
 
-#idle_inhibitor {
-  font-size: 1.6rem;
-}
 #idle_inhibitor.activated {
   background-color: #2d3436;
 }
 
 #custom-notification {
-  font-size: 1.4rem;
   padding-left: 0;
 }
