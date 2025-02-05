@@ -25,6 +25,9 @@ enabled=false
 [mpris]
 enabled=true
 
+[path]
+enabled=true
+
 [widgetsboxmodel]
 alwaysOnTop=true
 clearOnHide=true
