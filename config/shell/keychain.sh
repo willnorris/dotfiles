@@ -2,6 +2,8 @@
 
 [ -z "$PS1" ] && return # interactive only
 
+[ -n "${SSH_AUTH_SOCK}" ] && return # already set
+
 # prefer secretive if installed (https://github.com/maxgoedjen/secretive)
 if [ -r "${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" ]; then
   export SSH_AUTH_SOCK="${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
