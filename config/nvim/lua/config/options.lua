@@ -73,3 +73,4 @@ vim.o.foldnestmax = 3           -- maximum nesting
 vim.opt.foldopen:append("jump") -- what movements open folds
 
 vim.g.lazyvim_picker = "snacks"
+vim.g.lazyvim_check_order = false
