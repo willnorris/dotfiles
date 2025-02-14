@@ -105,6 +105,8 @@ return {
           win = {
             input = {
               keys = {
+                ["<C-c>"] = "close",
+
                 ["<c-p>"] = { "history_back", mode = { "i", "n" } },
                 ["<c-n>"] = { "history_forward", mode = { "i", "n" } },
 
