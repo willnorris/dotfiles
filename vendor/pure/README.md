@@ -16,10 +16,10 @@ the directory name is truncated so that the entire prompt takes up no more than 
 Additional portions of the prompt like git information are taken into account when calculating width.
 
 To see the local changes, run the following locally
-(GitHub doesn't support comparing a single file between commits):
+(GitHub doesn't support comparing a specific directory between commits):
 
 ```
-git diff pure-upstream..main -- vendor/pure
+git diff origin/pure-upstream..origin/main -- vendor/pure
 ```
 
 A demo of the responsive resizing can be seen here:
