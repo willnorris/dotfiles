@@ -105,6 +105,8 @@ return {
           win = {
             input = {
               keys = {
+                ["<c-x>"] = { "trouble_open", mode = { "n", "i" }, },
+
                 ["<C-c>"] = "close",
 
                 ["<c-p>"] = { "history_back", mode = { "i", "n" } },
@@ -121,6 +123,8 @@ return {
             },
             list = {
               keys = {
+                ["<c-x>"] = "trouble_open",
+
                 ["<c-f>"] = "list_scroll_down",
                 ["<c-b>"] = "list_scroll_up",
 
