@@ -3,13 +3,8 @@
   "layer": "bottom",
   "output": ["eDP-1", "DP-2"],
   "spacing": 0, // Gaps between modules (4px)
-  "modules-left": [
-    "sway/workspaces",
-    "sway/mode",
-    "hyprland/workspaces",
-    "hyprland/submap",
-  ],
-  "modules-center": ["sway/window", "hyprland/window"],
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["sway/window"],
   "modules-right": [
     "tray",
     "idle_inhibitor",
@@ -22,9 +17,8 @@
   ],
 
   // Modules configuration
-  "hyprland/workspaces": {},
-  "hyprland/window": {
-    "separate-outputs": true,
+  "sway/window": {
+    "max-length": 100,
   },
   "tray": {
     "icon-size": 21,
