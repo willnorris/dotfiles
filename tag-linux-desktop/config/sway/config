@@ -26,6 +26,7 @@ exec easyeffects --gapplication-service -w
 #exec wluma
 exec autotiling
 exec albert
+exec killall tailscale-systray; exec sleep 0.01 && tailscale-systray
 
 # assign workspaces to outputs
 # Assign 1 and 10 first so that each output has at least one workspace
