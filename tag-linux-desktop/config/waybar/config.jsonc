@@ -60,7 +60,8 @@
       "default": ["", "", ""],
     },
     "tooltip-format": "{desc} ({volume}%)",
-    "on-click": "pavucontrol",
+    "on-click": "$HOME/.local/bin/audio_changer.py",
+    "on-click-right": "pavucontrol",
   },
   "network": {
     "interface": "wlan0",
