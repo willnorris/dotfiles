@@ -30,6 +30,7 @@
       "activated": "",
       "deactivated": "",
     },
+    "timeout": 120,
   },
   "privacy": {
     "icon-spacing": 4,
