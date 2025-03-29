@@ -15,11 +15,9 @@
     "clock",
     "custom/notification",
   ],
+  "fixed-center": false,
 
   // Modules configuration
-  "sway/window": {
-    "max-length": 100,
-  },
   "tray": {
     "icon-size": 21,
     "spacing": 5,
