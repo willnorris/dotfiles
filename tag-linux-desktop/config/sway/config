@@ -267,8 +267,8 @@ for_window [title="Picture-in-Picture"] {
 }
 
 for_window [app_id="at.yrlf.wl_mirror"] {
-  floating enable
-  resize set width 1600 px height 900 px
+  #floating enable
+  #resize set width 1600 px height 900 px
 }
 
 include /etc/sway/config.d/*
