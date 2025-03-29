@@ -21,6 +21,11 @@
     min-height: 36px !important;
   }
 }
+@media (-moz-platform: linux) {
+  :root {
+    --uc-window-drag-space-post: 8px;
+  }
+}
 @media (-moz-gtk-csd-available) {
   /* Give extra room if all three window control buttons are visible */
   @media (-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-close-button) {
@@ -80,7 +85,6 @@
 }
 #nav-bar {
   margin-top: -36px;
-  margin-left: -34px;
   box-shadow: none !important;
 }
 
@@ -121,5 +125,10 @@
 
 /* Hide bookmark star in URL bar */
 #star-button-box {
+  display: none;
+}
+
+/* Hide Firefox View button. If needed, this can be accessed at about:firefoxview */
+#firefox-view-button {
   display: none;
 }
