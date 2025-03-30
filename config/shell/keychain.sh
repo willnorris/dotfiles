@@ -14,6 +14,6 @@ fi
 if has keychain; then
   if [ -f "$HOME/.ssh/id_ed25519" ]; then
     mkdir -p "${XDG_RUNTIME_DIR}/keychain"
-    eval "$(keychain --dir "${XDG_RUNTIME_DIR}/keychain" --absolute --eval --quiet --agents ssh id_ed25519)"
+    eval "$(keychain --absolute --dir "${XDG_RUNTIME_DIR}/keychain" --eval --quiet --agents ssh id_ed25519)"
   fi
 fi
