@@ -22,7 +22,7 @@ exec swayidle -w
 exec swayosd-server
 exec waybar
 exec swaync
-exec easyeffects --gapplication-service -w
+exec flatpak run com.github.wwmm.easyeffects --gapplication-service -w
 #exec wluma
 exec autotiling
 exec albert
