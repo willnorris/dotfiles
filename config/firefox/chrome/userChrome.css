@@ -137,6 +137,9 @@
 #identity-icon-label {
   display: none;
 }
+box[pageproxystate="valid"]:is(.notSecureText) > .identity-box-button {
+  background-color: inherit !important;
+}
 
 /* Hide Firefox View button. If needed, this can be accessed at about:firefoxview */
 #firefox-view-button {
