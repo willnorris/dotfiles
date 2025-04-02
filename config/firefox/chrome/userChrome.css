@@ -26,7 +26,9 @@
       --uc-window-control-width: 145px;
     }
   }
-  /* At least ChromeOS doesn't render transparent borders, so use margin-right instead of border-right. */
+}
+@media (-moz-gtk-csd-available),(-moz-platform:windows) {
+  /* Windows and ChromeOS doesn't render transparent borders, so use margin-right instead of border-right. */
   #nav-bar {
     border-right-width: 0;
     margin-right: calc(
@@ -42,6 +44,19 @@
     --uc-window-control-width: 0;
     --uc-window-drag-space-pre: 0;
     --uc-window-drag-space-post: 0;
+  }
+}
+
+@media (-moz-platform: windows) {
+  .browser-toolbox-background {
+    --toolbox-bgcolor: var(--toolbar-bgcolor);
+    --toolbox-bgcolor-inactive: var(--toolbar-bgcolor);
+  }
+  #TabsToolbar {
+    justify-content: end;
+  }
+  #nav-bar {
+    border-inline: 0;
   }
 }
 
