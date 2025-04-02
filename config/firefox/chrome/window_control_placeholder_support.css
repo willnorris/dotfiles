@@ -10,34 +10,34 @@ See the above repository for updates as well as full license text. */
 
 /* Defaults for window controls on RIGHT side of the window */
 /* Modify these values to match your preferences */
-:root:is([tabsintitlebar], [sizemode="fullscreen"]) {
+:root:is([customtitlebar], [sizemode="fullscreen"]) {
   --uc-window-control-width: 138px; /* Space reserved for window controls (Win10) */
   /* Extra space reserved on both sides of the nav-bar to be able to drag the window */
   --uc-window-drag-space-pre: 30px; /* left side*/
   --uc-window-drag-space-post: 0px; /* right side*/
 }
 
-:root:is([tabsintitlebar][sizemode="maximized"], [sizemode="fullscreen"]) {
+:root:is([customtitlebar][sizemode="maximized"], [sizemode="fullscreen"]) {
   --uc-window-drag-space-pre: 0px; /* Remove pre space */
 }
 
 @media  (-moz-platform: windows-win7),
         (-moz-platform: windows-win8){
-  :root:is([tabsintitlebar], [sizemode="fullscreen"]) {
+  :root:is([customtitlebar], [sizemode="fullscreen"]) {
     --uc-window-control-width: 105px;
   }
 }
 
 @media (-moz-gtk-csd-available) {
-  :root:is([tabsintitlebar],[sizemode="fullscreen"]) {
+  :root:is([customtitlebar],[sizemode="fullscreen"]) {
     --uc-window-control-width: 44px;
   }
 }
 @media (-moz-platform: macos){
-  :root:is([tabsintitlebar]) {
+  :root:is([customtitlebar]) {
     --uc-window-control-width: 72px;
   }
-  :root:is([tabsintitlebar][sizemode="fullscreen"]) {
+  :root:is([customtitlebar][sizemode="fullscreen"]) {
     --uc-window-control-width: 0;
   }
 }
@@ -69,7 +69,7 @@ See the above repository for updates as well as full license text. */
 @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
        (-moz-gtk-csd-reversed-placement),
        (-moz-platform: macos){
-  :root[tabsintitlebar="true"] #nav-bar{
+  :root[customtitlebar="true"] #nav-bar{
     border-inline-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-post,0px)) var(--uc-window-drag-space-pre,0px)
   }
   :root[sizemode="fullscreen"] #TabsToolbar > .titlebar-buttonbox-container:last-child,
@@ -86,7 +86,7 @@ See the above repository for updates as well as full license text. */
 
 /* This pref can be used to force window controls on left even if that is not normal behavior on your OS */
 @supports -moz-bool-pref("userchrome.force-window-controls-on-left.enabled"){
-  :root[tabsintitlebar="true"] #nav-bar{
+  :root[customtitlebar="true"] #nav-bar{
     border-inline-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-post,0px)) var(--uc-window-drag-space-pre,0px)
   }
   :root[sizemode="fullscreen"] #TabsToolbar > .titlebar-buttonbox-container:last-child,
