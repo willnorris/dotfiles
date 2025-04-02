@@ -9,27 +9,20 @@
 
 /* Customize window control placeholders */
 @media (-moz-platform: macos) {
-  :root[tabsintitlebar="true"] {
-    --uc-window-control-width: 100px;
+  :root[customtitlebar="true"] #nav-bar {
+    border-right-width: 8px;
   }
-  :root[tabsintitlebar="true"] #nav-bar {
-    border-right-width: 0;
-    margin-right: 8px;
+  :root[customtitlebar="true"] .titlebar-buttonbox-container {
+    padding-top: 6px;
   }
-  :root[tabsintitlebar="true"] #TabsToolbar {
-    padding-top: 6px !important;
-    min-height: 36px !important;
-  }
-}
-@media (-moz-platform: linux) {
-  :root {
-    --uc-window-drag-space-post: 8px;
+  #PanelUI-menu-button {
+    --toolbar-start-end-padding: 0;
   }
 }
 @media (-moz-gtk-csd-available) {
   /* Give extra room if all three window control buttons are visible */
   @media (-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-close-button) {
-    :root:is([tabsintitlebar], [sizemode="fullscreen"]) {
+    :root:is([customtitlebar], [sizemode="fullscreen"]) {
       --uc-window-control-width: 145px;
     }
   }
@@ -44,55 +37,25 @@
 }
 
 @media (-moz-platform: linux) {
-  :root[tabsintitlebar="true"] #nav-bar {
-    margin-right: 4px;
+  /* I have no window controls on linux, so remove all spacing */
+  :root[customtitlebar="true"] {
+    --uc-window-control-width: 0;
+    --uc-window-drag-space-pre: 0;
+    --uc-window-drag-space-post: 0;
   }
-  .titlebar-buttonbox {
-    display: none;
-  }
-  #TabsToolbar-customization-target {
-    height: 36px;
-  }
-}
-
-.tabs-alltabs-button {
-  display: none;
 }
 
 /* Hide tabs and display nav bar at the top with window controls */
-#titlebar {
-  padding: 2px;
-}
-#tabbrowser-tabs {
+#TabsToolbar .toolbar-items,
+#TabsToolbar .titlebar-spacer {
   display: none;
 }
-.toolbar-items > hbox {
-  justify-content: end;
-}
-#new-tab-button {
-  display: none;
-}
-#PanelUI-menu-button {
-  --toolbar-start-end-padding: 0;
-}
-
-.titlebar-spacer[type="post-tabs"] {
-  display: none;
-}
-
-#navigator-toolbox {
-  background-color: var(--toolbar-bgcolor) !important;
+#TabsToolbar {
+  min-height: 36px !important;
 }
 #nav-bar {
   margin-top: -36px;
   box-shadow: none !important;
-}
-
-#titlebar-buttonbox-container {
-  background-color: var(--toolbar-bgcolor);
-}
-.titlebar-color {
-  background-color: var(--toolbar-bgcolor);
 }
 
 /* Hide sidebar header. I only use the sidebar for Sidebery, and other sidebar views can be found elsewhere. */
