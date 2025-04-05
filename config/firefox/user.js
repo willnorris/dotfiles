@@ -1,6 +1,9 @@
 // Disable about:config warning
 user_pref("browser.aboutConfig.showWarning", false);
 
+// Enable userChrome.css
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
 // Disable menu when pressing alt key.
 user_pref("ui.key.menuAccessKeyFocuses", false);
 
