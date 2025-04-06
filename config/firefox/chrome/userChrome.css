@@ -30,14 +30,15 @@ box[pageproxystate="valid"]:is(.notSecure) > .identity-box-button {
   --tab-label-line-height: 1;
   --tab-min-height: max(28px, calc(var(--tab-label-line-height) * 1em));
   --tab-block-margin: 0;
-}
-#tabbrowser-tabs[orient="vertical"][expanded] {
-  --tab-label-line-height: 2;
-  --tab-inner-inline-margin: var(--space-xsmall);
-  --tab-pinned-container-margin-inline-expanded: var(--space-xsmall);
-  --tab-inline-padding: calc(
-    var(--tab-collapsed-width) - var(--icon-size-default) * 2.8
-  ) !important;
+
+  &[expanded] {
+    --tab-label-line-height: 2;
+    --tab-inner-inline-margin: var(--space-xsmall);
+    --tab-pinned-container-margin-inline-expanded: var(--space-xsmall);
+    --tab-inline-padding: calc(
+      var(--tab-collapsed-width) - var(--icon-size-default) * 2.8
+    ) !important;
+  }
 }
 
 /* hide tab close button when sidebar collapsed */
