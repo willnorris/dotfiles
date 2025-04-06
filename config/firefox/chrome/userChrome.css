@@ -1,7 +1,6 @@
 @import url(theme.css);
 
 /* Hide titlebar and sidebar elements */
-.titlebar-close, /* close window button */
 #tabs-newtab-button, /* new tabs button in sidebar */
 #vertical-tabs-newtab-button, /* new tabs button in sidebar */
 #nav-bar #vertical-spacer[removable="false"], /* forced spacer */
@@ -12,6 +11,13 @@
 #identity-icon-label /* "Not Secure" label next to lock icon */
 /**/ {
   display: none;
+}
+
+@media (-moz-platform: linux) {
+  /* hide close window button */
+  .titlebar-close {
+    display: none;
+  }
 }
 
 /* Make "Not Secure" button look like others */
