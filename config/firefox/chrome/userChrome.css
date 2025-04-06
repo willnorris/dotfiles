@@ -1,125 +1,35 @@
-/*
-* Originally, I used a varaint of the style in this article:
-*   https://www.pcworld.com/article/823939/vertical-tabs-in-firefox-yes-its-really-possible.html
-*
-* Later, I started using various styles from https://github.com/MrOtherGuy/firefox-csshack.
-*/
+@import url(theme.css);
 
-@import url(window_control_placeholder_support.css);
-
-/* Customize window control placeholders */
-@media (-moz-platform: macos) {
-  :root[customtitlebar="true"] #nav-bar {
-    border-right-width: 8px;
-  }
-  :root[customtitlebar="true"] .titlebar-buttonbox-container {
-    padding-top: 6px;
-  }
-  #PanelUI-menu-button {
-    --toolbar-start-end-padding: 0;
-  }
-}
-@media (-moz-gtk-csd-available) {
-  /* Give extra room if all three window control buttons are visible */
-  @media (-moz-gtk-csd-minimize-button) and (-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-close-button) {
-    :root:is([customtitlebar], [sizemode="fullscreen"]) {
-      --uc-window-control-width: 145px;
-    }
-  }
-}
-@media (-moz-gtk-csd-available),(-moz-platform:windows) {
-  /* Windows and ChromeOS doesn't render transparent borders, so use margin-right instead of border-right. */
-  #nav-bar {
-    border-right-width: 0;
-    margin-right: calc(
-      var(--uc-window-control-width, 0px) +
-        var(--uc-window-drag-space-post, 0px)
-    );
-  }
-}
-
-@media (-moz-platform: linux) {
-  /* I have no window controls on linux, so remove all spacing */
-  :root[customtitlebar="true"] {
-    --uc-window-control-width: 0;
-    --uc-window-drag-space-pre: 0;
-    --uc-window-drag-space-post: 0;
-  }
-}
-
-@media (-moz-platform: windows) {
-  .browser-toolbox-background {
-    --toolbox-bgcolor: var(--toolbar-bgcolor);
-    --toolbox-bgcolor-inactive: var(--toolbar-bgcolor);
-  }
-  #TabsToolbar {
-    justify-content: end;
-  }
-  #nav-bar {
-    border-inline: 0;
-  }
-}
-
-/* Hide tabs and display nav bar at the top with window controls */
-#TabsToolbar .toolbar-items,
-#TabsToolbar .titlebar-spacer {
-  display: none;
-}
-#TabsToolbar {
-  min-height: 36px !important;
-}
-#nav-bar {
-  margin-top: -36px;
-  box-shadow: none !important;
-}
-
-/* Hide sidebar header. I only use the sidebar for Sidebery, and other sidebar views can be found elsewhere. */
-#sidebar-header {
-  display: none;
-}
-#sidebar-box {
-  min-width: 2.5em !important;
-  max-width: calc(100vw - 2.5em) !important;
-}
-:root[titlepreface="᠎"] #sidebar-box {
-  width: 2.5em !important;
-  @media (-moz-platform: macos) {
-    width: 3.25em !important;
-  }
-}
-
-.sidebar-splitter {
-  border-inline-start: 0 !important;
-}
-
-/* Hide containers button in URL bar */
-#pageAction-urlbar-_testpilot-containers {
-  display: none;
-}
-/* Hide container label in URL bar */
-#userContext-label {
+/* Hide titlebar and sidebar elements */
+.titlebar-close, /* close window button */
+#tabs-newtab-button, /* new tabs button in sidebar */
+#vertical-tabs-newtab-button, /* new tabs button in sidebar */
+#nav-bar #vertical-spacer[removable="false"], /* forced spacer */
+#pageAction-urlbar-_testpilot-containers, /* containers button */
+#userContext-label, /* container label */
+#star-button-box, /* bookmark star */
+#reader-mode-button, /* reader mode button */
+#identity-icon-label /* "Not Secure" label next to lock icon */
+/**/ {
   display: none;
 }
 
-/* Hide bookmark star in URL bar */
-#star-button-box {
-  display: none;
+/* Make "Not Secure" button look like others */
+box[pageproxystate="valid"]:is(.notSecure) > .identity-box-button {
+  --urlbar-box-bgcolor: none;
 }
 
-/* Hide reader mode button in URL bar */
-#reader-mode-button {
-  display: none;
+/* tighten up the spacing of vertical tabs */
+#tabbrowser-tabs[orient="vertical"] {
+  --tab-label-line-height: 1;
+  --tab-min-height: max(28px, calc(var(--tab-label-line-height) * 1em));
+  --tab-block-margin: 0;
 }
-
-/* Hide "Not Secure" label next to lock icon */
-#identity-icon-label {
-  display: none;
-}
-box[pageproxystate="valid"]:is(.notSecureText) > .identity-box-button {
-  background-color: inherit !important;
-}
-
-/* Hide Firefox View button. If needed, this can be accessed at about:firefoxview */
-#firefox-view-button {
-  display: none;
+#tabbrowser-tabs[orient="vertical"][expanded] {
+  --tab-label-line-height: 2;
+  --tab-inner-inline-margin: var(--space-xsmall);
+  --tab-pinned-container-margin-inline-expanded: var(--space-xsmall);
+  --tab-inline-padding: calc(
+    var(--tab-collapsed-width) - var(--icon-size-default) * 2.8
+  ) !important;
 }
