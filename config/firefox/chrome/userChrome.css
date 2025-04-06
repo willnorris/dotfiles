@@ -39,3 +39,10 @@ box[pageproxystate="valid"]:is(.notSecure) > .identity-box-button {
     var(--tab-collapsed-width) - var(--icon-size-default) * 2.8
   ) !important;
 }
+
+/* hide tab close button when sidebar collapsed */
+#tabbrowser-tabs:is([orient="vertical"]):not([expanded]) {
+  & .tab-close-button {
+    display: none !important;
+  }
+}
