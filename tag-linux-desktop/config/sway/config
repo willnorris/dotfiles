@@ -23,7 +23,6 @@ exec swayosd-server
 exec waybar
 exec swaync
 exec flatpak run com.github.wwmm.easyeffects --gapplication-service -w
-#exec wluma
 exec autotiling
 exec albert
 exec killall tailscale-systray; exec sleep 0.01 && tailscale-systray
@@ -38,8 +37,8 @@ workspace 4 output DP-2 eDP-1
 workspace 5 output DP-2 eDP-1
 
 # start apps on specific workspaces
-#exec swaymsg "workspace 2; exec firefox"
 exec swaymsg "workspace 1; exec kitty"
+
 
 ## Look and feel
 
@@ -177,7 +176,7 @@ bindsym {
   Alt+w layout tabbed
   Alt+e layout toggle split
 
-  # Make the current focus fullscreen
+  # Make the current container fullscreen
   Alt+Return fullscreen
 
   # Toggle the current focus between tiling and floating mode
@@ -220,12 +219,10 @@ for_window [app_id="albert" title="^Albert$"] {
   # 300px above center
   move up 300 px
 }
-
-# app_id is YouTube Music PWA on default Chromium profile
 for_window [app_id="chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default"] {
+  # app_id is YouTube Music PWA on default Chromium profile
   move container to scratchpad
 }
-
 for_window [app_id="org.gnome.Calculator"] {
   floating enable
 }
@@ -252,22 +249,15 @@ for_window [app_id="org.pulseaudio.pavucontrol"] {
 for_window [app_id="org.gnome.NautilusPreviewer"] {
   floating enable
 }
-
 for_window [title="meet.google.com is sharing"] {
   floating enable
   sticky enable
   move position 20 ppt -57 px
 }
-
 for_window [title="Picture-in-Picture"] {
   floating enable
   sticky enable
   exec sway-move-to top-right
-}
-
-for_window [app_id="at.yrlf.wl_mirror"] {
-  #floating enable
-  #resize set width 1600 px height 900 px
 }
 
 include /etc/sway/config.d/*
