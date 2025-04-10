@@ -209,6 +209,7 @@ mode "resize" {
     # Return to default mode
     Return mode "default"
     Escape mode "default"
+    Alt+r  mode "default"
   }
 }
 
