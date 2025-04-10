@@ -49,8 +49,6 @@ default_border pixel
 # Resize windows with Alt + right mouse button.
 floating_modifier Alt normal
 
-# Move mouse to active window, which helps mitigate palm touches.
-mouse_warping container
 
 ## Input
 
