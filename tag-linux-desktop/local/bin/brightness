@@ -1,6 +1,8 @@
 #!/bin/sh
 
-# Use brightnessctl to naturally adjust laptop screen brightness and send a notification
+# Adjust brightness of the display.
+#
+# Uses swayosd if installed and running, otherwise brightnessctl and notify-send.
 
 send_notification() {
   brightness=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}')
@@ -13,7 +15,7 @@ swayosd-client -h >/dev/null && swayosd=1
 case $1 in
 up)
   if [ -n "$swayosd" ]; then
-    swayosd-client --brightness +10
+    swayosd-client --brightness raise
   else
     brightnessctl set 5%+
     send_notification "$1"
@@ -21,10 +23,13 @@ up)
   ;;
 down)
   if [ -n "$swayosd" ]; then
-    swayosd-client --brightness -10
+    swayosd-client --brightness lower
   else
     brightnessctl set 5%-
     send_notification "$1"
   fi
+  ;;
+*)
+  echo "usage: $(basename "$0") {up|down}"
   ;;
 esac
