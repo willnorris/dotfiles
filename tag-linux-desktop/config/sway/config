@@ -90,8 +90,8 @@ bindsym {
   XF86AudioPlay         exec playerctl play-pause
   XF86AudioPrev         exec playerctl previous
   XF86AudioNext         exec playerctl next
-  XF86MonBrightnessUp   exec backlight up
-  XF86MonBrightnessDown exec backlight down
+  XF86MonBrightnessUp   exec brightness up
+  XF86MonBrightnessDown exec brightness down
   XF86AudioMedia        exec touchpad_toggle
 
   # Reload the configuration file
