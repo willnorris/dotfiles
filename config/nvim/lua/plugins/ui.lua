@@ -93,8 +93,8 @@ return {
             col = 0,
             width = 30,
             keys = {
-              ctrl_c = { "<c-c>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
-              esc = { "<esc>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
+              ctrl_c = { "<C-c>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
+              esc = { "<Esc>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
             },
           },
         },
@@ -105,42 +105,42 @@ return {
           win = {
             input = {
               keys = {
-                ["<c-x>"] = { "trouble_open", mode = { "n", "i" }, },
+                ["<C-x>"] = { "trouble_open", mode = { "n", "i" }, },
 
                 ["<C-c>"] = "close",
 
-                ["<c-p>"] = { "history_back", mode = { "i", "n" } },
-                ["<c-n>"] = { "history_forward", mode = { "i", "n" } },
+                ["<C-p>"] = { "history_back", mode = { "i", "n" } },
+                ["<C-n>"] = { "history_forward", mode = { "i", "n" } },
 
-                ["<c-f>"] = { "list_scroll_down", mode = { "i", "n" } },
-                ["<c-b>"] = { "list_scroll_up", mode = { "i", "n" } },
+                ["<C-f>"] = { "list_scroll_down", mode = { "i", "n" } },
+                ["<C-b>"] = { "list_scroll_up", mode = { "i", "n" } },
 
-                ["<a-j>"] = { "preview_down", mode = { "i", "n" } },
-                ["<a-k>"] = { "preview_up", mode = { "i", "n" } },
-                ["<a-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
-                ["<a-b>"] = { "preview_scroll_up", mode = { "i", "n" } },
+                ["<A-j>"] = { "preview_down", mode = { "i", "n" } },
+                ["<A-k>"] = { "preview_up", mode = { "i", "n" } },
+                ["<A-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
+                ["<A-b>"] = { "preview_scroll_up", mode = { "i", "n" } },
               },
             },
             list = {
               keys = {
-                ["<c-x>"] = "trouble_open",
+                ["<C-x>"] = "trouble_open",
 
-                ["<c-f>"] = "list_scroll_down",
-                ["<c-b>"] = "list_scroll_up",
+                ["<C-f>"] = "list_scroll_down",
+                ["<C-b>"] = "list_scroll_up",
 
-                ["<a-j>"] = "preview_down",
-                ["<a-k>"] = "preview_up",
-                ["<a-f>"] = "preview_scroll_down",
-                ["<a-b>"] = "preview_scroll_up",
+                ["<A-j>"] = "preview_down",
+                ["<A-k>"] = "preview_up",
+                ["<A-f>"] = "preview_scroll_down",
+                ["<A-b>"] = "preview_scroll_up",
               },
             },
           },
           actions = {
             preview_down = function(p)
-              vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<c-e>")) end)
+              vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<C-e>")) end)
             end,
             preview_up = function(p)
-              vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<c-y>")) end)
+              vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<C-y>")) end)
             end,
           },
         },
@@ -182,7 +182,7 @@ return {
     branch = "refactor",
     event = "VimEnter",
     keys = {
-      { "<leader>uv", function() require("focus").focus_toggle() end, desc = "Toggle golden ratio view" }
+      { "<Leader>uv", function() require("focus").focus_toggle() end, desc = "Toggle golden ratio view" }
     },
     opts = {
       ui = {

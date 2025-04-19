@@ -9,11 +9,11 @@ return {
     opts = {
       keymap = {
         preset = "default",
-        ["<c-j>"] = { "select_next", "fallback" },
-        ["<c-k>"] = { "select_prev", "fallback" },
-        ["<m-j>"] = { "scroll_documentation_down", "fallback" },
-        ["<m-k>"] = { "scroll_documentation_up", "fallback" },
-        ["<enter>"] = { "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<A-j>"] = { "scroll_documentation_down", "fallback" },
+        ["<A-k>"] = { "scroll_documentation_up", "fallback" },
+        ["<Enter>"] = { "fallback" },
       },
       completion = {
         menu = {
@@ -50,7 +50,7 @@ return {
         },
       },
       keys = {
-        { "<leader>tl", function() require("neotest").run.run_last() end, desc = "Run Last Test" },
+        { "<Leader>tl", function() require("neotest").run.run_last() end, desc = "Run Last Test" },
       },
     },
   },
@@ -84,8 +84,8 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     keys = {
-      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "DiffView open" },
-      { "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "DiffView close" },
+      { "<Leader>gdo", "<Cmd>DiffviewOpen<CR>", desc = "DiffView open" },
+      { "<Leader>gdc", "<Cmd>DiffviewClose<CR>", desc = "DiffView close" },
     },
     config = true,
   },

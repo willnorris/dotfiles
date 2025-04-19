@@ -3,7 +3,7 @@ return {
     "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
     keys = {
       -- e.g. `gsap` to format paragraph at semantic line breaks
-      { "gs", "<plug>(ChopSentences)", mode = { "n", "x" }, desc = "Semantic Line Break" },
+      { "gs", "<Plug>(ChopSentences)", mode = { "n", "x" }, desc = "Semantic Line Break" },
     },
   },
   { "tpope/vim-sleuth" }, -- Heuristically set buffer options
@@ -23,7 +23,7 @@ return {
   { -- Toggle, display, and navigate marks
     "chentoast/marks.nvim",
     keys = {
-      { "<leader>um", "<cmd>MarksToggleSigns<cr>", desc = "Toggle marks" },
+      { "<Leader>um", "<Cmd>MarksToggleSigns<CR>", desc = "Toggle marks" },
     },
     event = "VeryLazy",
     config = true,
@@ -82,7 +82,7 @@ return {
   { -- Undo history visualizer
     "mbbill/undotree",
     keys = {
-      { "<leader>uu", "<Cmd>UndotreeToggle<CR>", desc = "Toggle undo tree" },
+      { "<Leader>uu", "<Cmd>UndotreeToggle<CR>", desc = "Toggle undo tree" },
     },
   },
 

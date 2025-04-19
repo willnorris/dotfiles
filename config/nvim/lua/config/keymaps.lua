@@ -13,7 +13,7 @@ local preserve = function(arguments)
 end
 
 -- buffer navigation
-keymap("n", "<leader>;", "<C-^>", { noremap = true })
+keymap("n", "<Leader>;", "<C-^>", { noremap = true })
 
 keymap("n", "<C-C>", function()
   vim.cmd("Noice dismiss")
@@ -22,7 +22,7 @@ keymap("n", "<C-C>", function()
 end, { desc = "clear and redraw screen" })
 
 -- https://github.com/wookayin/dotfiles/commit/96d9355
-keymap("n", "<leader>wc", function()
+keymap("n", "<Leader>wc", function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local config = vim.api.nvim_win_get_config(win)
     if config.relative ~= "" then        -- is_floating_window?
@@ -38,16 +38,16 @@ keymap("n", "J", function() preserve("join") end, { desc = "Join lines" })
 keymap("n", "_$", function() preserve("%s/\\s\\+$//e") end, { desc = "strip trailing whitespace" })
 
 -- timestamp insertion
-keymap("i", "<M-i>t", "<C-R>=system('timestamp -rfc3339')<CR>", { desc = "timestamp -rfc3339" })
-keymap("i", "<M-i>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>", { desc = "timestamp -rfc3339 -utc" })
-keymap("i", "<M-i>e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestamp -epoch" })
+keymap("i", "<A-i>t", "<C-R>=system('timestamp -rfc3339')<CR>", { desc = "timestamp -rfc3339" })
+keymap("i", "<A-i>z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>", { desc = "timestamp -rfc3339 -utc" })
+keymap("i", "<A-i>e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestamp -epoch" })
 
 -- j/k to move in wildmenu
-keymap("c", "<c-j>", "<c-n>", { remap = true })
-keymap("c", "<c-k>", "<c-p>", { remap = true })
+keymap("c", "<C-j>", "<c-n>", { remap = true })
+keymap("c", "<C-k>", "<c-p>", { remap = true })
 
-keymap("n", "<c-n>", function() require("snacks").words.jump(vim.v.count1) end, { desc = "Next reference" })
-keymap("n", "<c-p>", function() require("snacks").words.jump(-vim.v.count1) end, { desc = "Prev reference" })
+keymap("n", "<C-n>", function() require("snacks").words.jump(vim.v.count1) end, { desc = "Next reference" })
+keymap("n", "<C-p>", function() require("snacks").words.jump(-vim.v.count1) end, { desc = "Prev reference" })
 
 -- Find and open the alternate file for the current path.
 -- Requires alt command (https://github.com/uptech/alt)
@@ -68,7 +68,7 @@ local open_alt_file = function()
     vim.notify("Alt file not found for " .. vim.fn.expand("%"))
   end
 end
-keymap("n", "<leader>.", open_alt_file, { desc = "Open alternate file" })
+keymap("n", "<Leader>.", open_alt_file, { desc = "Open alternate file" })
 
 -- Restore 'gw' to default behavior by resetting formatexpr if null-ls
 -- is not providing any formatting generators.
