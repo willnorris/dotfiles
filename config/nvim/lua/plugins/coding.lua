@@ -6,26 +6,29 @@ return {
 
   {
     "saghen/blink.cmp",
-    opts = {
-      keymap = {
-        preset = "default",
-        ["<C-j>"] = { "select_next", "fallback" },
-        ["<C-k>"] = { "select_prev", "fallback" },
-        ["<A-j>"] = { "scroll_documentation_down", "fallback" },
-        ["<A-k>"] = { "scroll_documentation_up", "fallback" },
-        ["<Enter>"] = { "fallback" },
-      },
-      completion = {
-        menu = {
-          border = "rounded",
+    opts = function(_, opts)
+      local mod = require("util").mod
+      return vim.tbl_deep_extend("force", opts, {
+        keymap = {
+          preset = "default",
+          ["<C-j>"] = { "select_next", "fallback" },
+          ["<C-k>"] = { "select_prev", "fallback" },
+          [mod("j")] = { "scroll_documentation_down", "fallback" },
+          [mod("k")] = { "scroll_documentation_up", "fallback" },
+          ["<Enter>"] = { "fallback" },
         },
-        documentation = {
-          window = {
+        completion = {
+          menu = {
             border = "rounded",
           },
+          documentation = {
+            window = {
+              border = "rounded",
+            },
+          },
         },
-      },
-    },
+      })
+    end
   },
 
   {

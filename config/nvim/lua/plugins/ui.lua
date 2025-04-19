@@ -83,6 +83,7 @@ return {
     opts = function(_, opts)
       -- use default dashboard header
       opts.dashboard.preset.header = nil
+      local mod = require("util").mod
       return vim.tbl_deep_extend("force", opts, {
         input = {
           icon = "",
@@ -115,10 +116,10 @@ return {
                 ["<C-f>"] = { "list_scroll_down", mode = { "i", "n" } },
                 ["<C-b>"] = { "list_scroll_up", mode = { "i", "n" } },
 
-                ["<A-j>"] = { "preview_down", mode = { "i", "n" } },
-                ["<A-k>"] = { "preview_up", mode = { "i", "n" } },
-                ["<A-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
-                ["<A-b>"] = { "preview_scroll_up", mode = { "i", "n" } },
+                [mod("j")] = { "preview_down", mode = { "i", "n" } },
+                [mod("k")] = { "preview_up", mode = { "i", "n" } },
+                [mod("f")] = { "preview_scroll_down", mode = { "i", "n" } },
+                [mod("b")] = { "preview_scroll_up", mode = { "i", "n" } },
               },
             },
             list = {
@@ -128,10 +129,10 @@ return {
                 ["<C-f>"] = "list_scroll_down",
                 ["<C-b>"] = "list_scroll_up",
 
-                ["<A-j>"] = "preview_down",
-                ["<A-k>"] = "preview_up",
-                ["<A-f>"] = "preview_scroll_down",
-                ["<A-b>"] = "preview_scroll_up",
+                [mod("j")] = "preview_down",
+                [mod("k")] = "preview_up",
+                [mod("f")] = "preview_scroll_down",
+                [mod("b")] = "preview_scroll_up",
               },
             },
           },
