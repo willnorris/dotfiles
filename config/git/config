@@ -110,7 +110,7 @@
 
 # keep at end to let local and work configuration options override
 [include]
-  path = ~/.config/git/local
   path = ~/.config/git/work
+  path = ~/.config/git/local
 
 # vim: ft=gitconfig
