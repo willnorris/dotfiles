@@ -31,9 +31,6 @@ enabled=true
 [python]
 enabled=true
 
-[python.emoji]
-enabled=true
-
 [widgetsboxmodel]
 alwaysOnTop=true
 clearOnHide=true

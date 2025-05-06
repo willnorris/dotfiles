@@ -262,5 +262,8 @@ for_window [title="Picture-in-Picture"] {
   sticky enable
   exec sway-move-to top-right
 }
+for_window [app_id="it.mijorus.smile"] {
+  floating enable
+}
 
 include /etc/sway/config.d/*
