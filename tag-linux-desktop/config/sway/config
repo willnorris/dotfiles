@@ -60,6 +60,9 @@ input "type:keyboard" {
 input "type:pointer" {
   natural_scroll enabled
 }
+input "1133:45111:MX_Anywhere_3S_Mouse" {
+  pointer_accel -0.5
+}
 input "type:touchpad" {
   natural_scroll enabled
   click_method clickfinger
