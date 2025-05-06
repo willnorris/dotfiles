@@ -1,1 +1,3 @@
 export SDL_VIDEODRIVER=wayland
+
+export ELECTRON_OZONE_PLATFORM_HINT=auto
