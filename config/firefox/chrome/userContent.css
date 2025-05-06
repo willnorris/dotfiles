@@ -1,0 +1,46 @@
+@-moz-document domain(betaapp.fastmail.com) {
+  .v-PageHeader {
+    height: 40px !important;
+
+    .v-SearchInput {
+      height: 30px !important;
+
+      .v-TextInput-input {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+    }
+  }
+
+  #conversation .v-Toolbar {
+    height: 40px !important;
+  }
+
+  .v-Thread-title {
+    margin-top: 14px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .v-ThreadLabels {
+    justify-content: end;
+    margin-top: -1.8em !important;
+  }
+
+  /*
+  * Make the "Remote images blocked to protect your privacy" banner smaller.
+  */
+  .u-banner--informative:has(button[title="Shortcut: Shift-L"]) {
+    padding: 0 10px !important;
+
+    & button {
+      background: inherit !important;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .v-Message-body > .u-article {
+    padding-top: 0 !important;
+  }
+}
