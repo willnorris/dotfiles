@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set_scheme() {
+  gsettings set org.gnome.desktop.interface color-scheme "$1"
+  notify-send "Color scheme" "$2" -t 2500 -i preferences-color-symbolic -e -h string:x-canonical-private-synchronous:color-scheme
+}
+
+scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
+
+case $scheme in
+"'default'")
+  set_scheme "prefer-dark" "Dark"
+  ;;
+"'prefer-dark'")
+  set_scheme "prefer-light" "Light"
+  ;;
+"'prefer-light'")
+  set_scheme "default" "Default"
+  ;;
+esac

@@ -95,7 +95,7 @@ bindsym {
   XF86AudioNext         exec playerctl next
   XF86MonBrightnessUp   exec brightness up
   XF86MonBrightnessDown exec brightness down
-  XF86AudioMedia        exec touchpad_toggle
+  XF86AudioMedia        exec toggle-color-scheme
 
   # Reload the configuration file
   Alt+Shift+c reload
