@@ -1,3 +1,5 @@
+local Job = require("plenary.job")
+
 M = {}
 
 -- mod returns a keybinding string with the appropriate modifier key and k.
@@ -14,6 +16,22 @@ M.mod = function(k)
   else
     return "<D-" .. k .. ">"
   end
+end
+
+-- colorscheme returns the current system color scheme.
+-- Return values are either "default", "dark", or "light".
+M.colorscheme = function()
+  local scheme
+  Job:new({
+    command = "gsettings",
+    args = { "get", "org.gnome.desktop.interface", "color-scheme" },
+    on_exit = function(j, code)
+      if code == 0 then
+        scheme = string.gsub(j:result()[1], "prefer%-", "")
+      end
+    end,
+  }):sync()
+  return scheme
 end
 
 return M
