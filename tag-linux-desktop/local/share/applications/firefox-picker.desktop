@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/willnorris/.local/bin/firefox-picker
+# no name or icon so it doesn't show up in the menu
