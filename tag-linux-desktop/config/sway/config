@@ -194,6 +194,10 @@ bindsym {
 
   Alt+Super+o exec headless-output-start
   Alt+Super+Shift+o exec headless-output-stop
+
+  # Holding Super key reverses which firefox profile opens by default
+  --no-repeat Super_L exec touch $XDG_CACHE_HOME/firefox-open-reverse
+  --release Super_L exec "sleep 3; rm $XDG_CACHE_HOME/firefox-open-reverse"
 }
 
 bindsym Alt+r mode "resize"

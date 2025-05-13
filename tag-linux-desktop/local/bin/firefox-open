@@ -10,6 +10,12 @@ work="/usr/lib/firefox-developer-edition/firefox"
 personal="/usr/lib/firefox/firefox"
 time="$(date +%H:%M)"
 
+if [[ -f "$XDG_CACHE_HOME/firefox-open-reverse" ]]; then
+  tmp=$work
+  work=$personal
+  personal=$tmp
+fi
+
 if [[ $(date +%u) -le 5 ]] && [[ "$time" > "08:00" ]] && [[ "$time" < "17:00" ]]; then
   $work "$@"
 else
