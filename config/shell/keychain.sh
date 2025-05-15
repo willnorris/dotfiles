@@ -13,7 +13,7 @@ fi
 # then try keychain (https://www.funtoo.org/Keychain)
 if has keychain; then
   if [ -f "$HOME/.ssh/id_ed25519" ]; then
-    mkdir -p "${XDG_RUNTIME_DIR}/keychain"
-    eval "$(keychain --absolute --dir "${XDG_RUNTIME_DIR}/keychain" --eval --quiet --agents ssh id_ed25519)"
+    mkdir -p -m700 "${XDG_RUNTIME_DIR}/keychain"
+    eval "$(keychain --absolute --dir "${XDG_RUNTIME_DIR}/keychain" --eval --quiet id_ed25519)"
   fi
 fi
