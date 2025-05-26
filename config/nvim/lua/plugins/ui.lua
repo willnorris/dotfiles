@@ -95,7 +95,6 @@ return {
             width = 30,
             keys = {
               ctrl_c = { "<C-c>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
-              esc = { "<Esc>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
             },
           },
         },
