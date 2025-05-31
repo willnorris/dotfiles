@@ -1,1 +1,36 @@
 image=~/.config/wallpapers/current
+
+# Default colors at https://github.com/swaywm/swaylock/blob/7fb6bc3/main.c#L399
+
+bs-hl-color=#E06C75
+key-hl-color=#669743
+caps-lock-bs-hl-color=#E06C75
+caps-lock-key-hl-color=#98C379
+separator-color=#000000
+layout-bg-color=#000000C0
+layout-border-color=#00000000
+layout-text-color=#FFFFFF
+
+inside-color=#00000000 #000
+inside-clear-color=#E5C07BC0
+inside-caps-lock-color=#000000C0
+inside-ver-color=#61AFEFC0
+inside-wrong-color=#E06C75C0
+
+line-color=#000000
+line-clear-color=#000000
+line-caps-lock-color=#000000
+line-ver-color=#000000
+line-wrong-color=#000000
+
+ring-color=#98C379
+ring-clear-color=#E5C07B
+ring-caps-lock-color=#E5C07B
+ring-ver-color=#126bb4
+ring-wrong-color=#E06C75
+
+text-color=#E5C07B
+text-clear-color=#000000
+text-caps-lock-color=#E5C07B
+text-ver-color=#000000
+text-wrong-color=#000000
