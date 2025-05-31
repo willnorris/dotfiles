@@ -1,5 +1,26 @@
 return {
   { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+  {
+    "echasnovski/mini.hipatterns",
+    opts = function(_, opts)
+      opts = vim.tbl_deep_extend("force", opts, {
+        highlighters = {
+          -- Add support for #rrggbbaa style colors patterns.
+          -- Neovim doesn't support color transparency,
+          -- so just the #rrggbb is rendered.
+          hex_color_alpha = {
+            pattern = "#%x%x%x%x%x%x%x%x%f[%X]",
+            group = function(_, match)
+              return require("mini.hipatterns")
+                  .compute_hex_color_group(match:sub(1, 7), "bg")
+            end,
+            extmark_opts = { priority = 2000 },
+          },
+        },
+      })
+      return opts
+    end,
+  },
 
   {
     "akinsho/bufferline.nvim",
