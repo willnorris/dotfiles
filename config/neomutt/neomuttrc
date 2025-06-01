@@ -10,4 +10,6 @@ set write_inc=1000
 set mbox="+Archive"
 set mail_check = 5
 
+set sort=threads
+
 source color
