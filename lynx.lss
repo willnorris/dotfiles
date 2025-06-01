@@ -24,7 +24,7 @@ address:        normal:                 magenta
 hr:             normal:                 yellow
 pre:            normal:                 cyan
 blockquote:     normal:                 brightmagenta
-li:             normal:                 brown
+li:             normal:                 normal
 
 # Text-level semantics
 a:              bold:                   blue
