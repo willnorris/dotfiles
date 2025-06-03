@@ -44,6 +44,8 @@ exec swaymsg "workspace 1; exec kitty"
 
 default_border pixel
 
+client.focused #2e9ef4 #2e9ef4 #ffffff #2e9ef4
+
 # Move windows with Alt + left mouse button.
 # Resize windows with Alt + right mouse button.
 floating_modifier Alt normal
