@@ -84,7 +84,7 @@ bindsym {
     -t 1500 -h string:x-canonical-private-synchronous:sway-kill
 
   # Open albert launcher
-  Alt+Space exec echo -n toggle | socat - ~/.cache/albert/ipc_socket
+  Alt+Space exec echo -n '["toggle"]' | socat - ~/.cache/albert/ipc_socket
 
   # Media keys
   XF86AudioRaiseVolume  exec volume up
@@ -101,13 +101,13 @@ bindsym {
   Alt+Shift+c reload
 
   Alt+Super+Shift+l exec swaylock -f
-  Alt+Shift+e exec wlogout
-  XF86PowerOff exec wlogout
+  Alt+Shift+e       exec wlogout
+  XF86PowerOff      exec wlogout
 
   Alt+Equal exec swaync-client -t
 
-  Print exec grimshot --notify save output
-  Alt+Print exec grimshot --notify save window
+  Print       exec grimshot --notify save output
+  Alt+Print   exec grimshot --notify save window
   Shift+Print exec grimshot --notify save area
 }
 
