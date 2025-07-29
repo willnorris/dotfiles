@@ -86,6 +86,10 @@ return {
   { -- Display LSP results in preview window
     "rmagatti/goto-preview",
     event = "VeryLazy",
+    keys = {
+      -- use 'y' in addition to 't' for type definition to match LSP mappings
+      { "gpy", function() require("goto-preview").goto_preview_type_definition() end, desc = "Preview type definition" },
+    },
     opts = {
       border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
       default_mappings = true,
