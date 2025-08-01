@@ -29,6 +29,13 @@
       "deactivated": "",
     },
     "timeout": 120,
+
+    // sample menu configured in waybar
+    "menu": "on-click-right",
+    "menu-file": "~/.config/waybar/inhibitor.xml",
+    "menu-actions": {
+      "item1": "notify-send item1",
+    },
   },
   "privacy": {
     "icon-spacing": 4,
