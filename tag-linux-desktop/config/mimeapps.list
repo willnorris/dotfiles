@@ -9,7 +9,7 @@ application/x-extension-shtml=firefox-open.desktop
 application/xhtml+xml=firefox-open.desktop
 application/x-extension-xhtml=firefox-open.desktop
 application/x-extension-xht=firefox-open.desktop
-application/pdf=com.github.jeromerobert.pdfarranger.desktop
+application/pdf=org.gnome.Papers.desktop
 image/png=org.gnome.Loupe.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop
 image/jpeg=org.gnome.Loupe.desktop
@@ -20,6 +20,7 @@ x-scheme-handler/mailto=firefox-open.desktop
 text/markdown=org.gnome.TextEditor.desktop
 text/plain=org.gnome.TextEditor.desktop
 application/zip=org.gnome.Nautilus.desktop
+opendeck=opendeck-handler.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox-open.desktop;
@@ -32,8 +33,8 @@ application/x-extension-shtml=firefox-open.desktop;
 application/xhtml+xml=firefox-open.desktop;
 application/x-extension-xhtml=firefox-open.desktop;
 application/x-extension-xht=firefox-open.desktop;
-application/pdf=org.gnome.Evince.desktop;firefox-open.desktop;com.github.jeromerobert.pdfarranger.desktop;
-image/png=org.gimp.GIMP.desktop;org.gnome.Evince.desktop;org.gnome.Loupe.desktop;
+application/pdf=firefox-open.desktop;com.github.jeromerobert.pdfarranger.desktop;org.gnome.Papers.desktop;
+image/png=org.gimp.GIMP.desktop;org.gnome.Loupe.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop;
 image/jpeg=org.gnome.Loupe.desktop;
 image/gif=org.gnome.Loupe.desktop;
