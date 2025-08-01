@@ -1,7 +1,7 @@
 // Configuration docs at https://github.com/Alexays/Waybar/wiki/Configuration
 {
   "layer": "bottom",
-  "output": ["eDP-1", "DP-2"],
+  //"output": ["eDP-1", "DP-2"],
   "spacing": 0, // Gaps between modules (4px)
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["sway/window"],
