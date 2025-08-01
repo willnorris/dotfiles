@@ -255,6 +255,11 @@ for_window [app_id="org.twosheds.iwgtk"] {
   floating enable
   resize set width 300 px height 700 px
 }
+# iwgtk password window
+for_window [app_id="^iwgtk$"] {
+  floating enable
+  resize set width 200 px height 300 px
+}
 for_window [app_id="blueberry.py"] {
   floating enable
   resize set width 500 px height 600 px
@@ -276,7 +281,7 @@ for_window [title="Picture-in-Picture"] {
   sticky enable
   exec sway-move-to top-right
 }
-for_window [app_id="it.mijorus.smile"] {
+for_window [app_id="org.gnome.Characters"] {
   floating enable
 }
 
