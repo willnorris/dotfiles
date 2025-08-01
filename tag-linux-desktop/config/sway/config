@@ -99,6 +99,11 @@ bindsym {
   XF86MonBrightnessDown exec brightness down
   XF86AudioMedia        exec toggle-color-scheme
 
+  # The RFKill key will always toggle bluetooth and wifi devices.
+  # This additionally shows a notification with the current state.
+  XF86RFKill exec notify-send "$(rfkill -rno TYPE,SOFT)" -e \
+    -t 1500 -h string:x-canonical-private-synchronous:sway-rfkill
+
   # Reload the configuration file
   Alt+Shift+c reload
 
