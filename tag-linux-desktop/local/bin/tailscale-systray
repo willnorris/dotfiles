@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+# Start the tailscale systray app.
+# First kill other instances of the sytray app.
+
+pkill -f "tailscale systray" -u "${USER}" >/dev/null
+tailscale systray "$@"
