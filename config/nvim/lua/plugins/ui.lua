@@ -200,7 +200,6 @@ return {
 
   { -- Auto-resize windows according to golden ratio
     "nvim-focus/focus.nvim",
-    branch = "refactor",
     event = "VimEnter",
     keys = {
       { "<Leader>uv", function() require("focus").focus_toggle() end, desc = "Toggle golden ratio view" }
