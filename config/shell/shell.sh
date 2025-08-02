@@ -20,6 +20,9 @@ if ! has open && has xdg-open; then
   alias open='xdg-open'
 fi
 
+export EDITRC="${XDG_CONFIG_HOME}/editrc"
+export INPUTRC="${XDG_CONFIG_HOME}/inputrc"
+
 alias vi=vim
 alias view='vim -R'
 alias vimdiff='vim -d'
