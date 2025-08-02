@@ -111,7 +111,7 @@ bindsym {
   Alt+Shift+e       exec wlogout
   XF86PowerOff      exec wlogout
 
-  Alt+Equal exec swaync-client -t
+  Alt+Backspace exec swaync-client -t
 
   Print       exec grimshot --notify save output
   Alt+Print   exec grimshot --notify save window
@@ -146,6 +146,7 @@ bindsym {
   Alt+8 workspace number 8
   Alt+9 workspace number 9
   Alt+0 workspace number 10
+  Alt+Minus workspace -
 
   # Move focused container to workspace, and keep focus
   Alt+Shift+1 [con_id=__focused__] move container to workspace number 1, focus
@@ -158,13 +159,16 @@ bindsym {
   Alt+Shift+8 [con_id=__focused__] move container to workspace number 8, focus
   Alt+Shift+9 [con_id=__focused__] move container to workspace number 9, focus
   Alt+Shift+0 [con_id=__focused__] move container to workspace number 10, focus
+  Alt+Shift+Minus [con_id=__focused__] move container to workspace -, focus
 
   # Move the currently focused window to the scratchpad
-  Alt+Shift+Minus move scratchpad
+  Alt+Shift+Equal move scratchpad
+  Alt+Shift+Grave move scratchpad
 
   # Show the next scratchpad window or hide the focused scratchpad window.
   # If there are multiple scratchpad windows, this command cycles through them.
-  Alt+Minus scratchpad show
+  Alt+Equal scratchpad show
+  Alt+Grave scratchpad show
 
   # Move workspaces between monitors
   Alt+Super+h move workspace to output left
@@ -199,8 +203,8 @@ bindsym {
   # Move focus to the parent container
   Alt+a focus parent
 
-  Alt+Super+o exec headless-output-start
-  Alt+Super+Shift+o exec headless-output-stop
+  Alt+Super+Minus exec headless-output-start
+  Alt+Super+Shift+Minus exec headless-output-stop
 
   # Holding Super key reverses which firefox profile opens by default.
   # Some apps (e.g. kitty, with my config) won't open links with Super held,

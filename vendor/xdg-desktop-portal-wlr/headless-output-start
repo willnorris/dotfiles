@@ -21,19 +21,19 @@ if [ -z "$NEW_OUTPUT" ]; then
   exit 1
 fi
 
-# Assign a workspace 9 to the new output
-swaymsg workspace 9 output "$NEW_OUTPUT"
+# Assign the '-' workspace to the new output
+swaymsg workspace '-' output "$NEW_OUTPUT"
 
 # Set the resolution for the new output
 swaymsg output "$NEW_OUTPUT" resolution 1600x900
 
-# Switch to workspace 9 and then back to the previous workspace
+# Switch to '-' workspace and then back to the previous workspace
 CURRENT_WORKSPACE=$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .name')
-swaymsg workspace 9
+swaymsg workspace '-'
 swaymsg workspace "$CURRENT_WORKSPACE"
 
-# Move the currently focused container to workspace 9
-swaymsg move container to workspace number 9
+# Move the currently focused container to '-' workspace
+swaymsg move container to workspace '-'
 
 # Mirror the new output to a window in the current workspace
 wl-mirror "$NEW_OUTPUT" &
