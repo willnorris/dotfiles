@@ -1,4 +1,6 @@
 return {
+  { "folke/flash.nvim", enabled = false },
+
   {
     "konfekt/vim-sentence-chopper", -- Semantic Line Breaks
     keys = {
