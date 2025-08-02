@@ -10,6 +10,17 @@ return {
       inlay_hints = {
         enabled = false
       },
+      servers = {
+        jsonls = {
+          settings = {
+            json = {
+              schemas = {
+                { fileMatch = { "*.hujson", "*.jsonc" }, schema = { allowTrailingCommas = true } },
+              },
+            },
+          },
+        },
+      },
     },
   },
 }
