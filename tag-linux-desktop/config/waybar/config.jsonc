@@ -96,8 +96,8 @@
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{capacity}% - {timeTo}",
     "max-length": 25,
-    "on-click": "kitty --class btop btop",
-    "on-click-right": "kitty --class batmon batmon",
+    "on-click": "ghostty --class=local.btop -e btop",
+    "on-click-right": "ghostty --class=local.batmon -e batmon",
   },
   "group/performance": {
     "orientation": "inherit",
@@ -109,7 +109,7 @@
   },
   "cpu": {
     "format": "{usage}% ",
-    "on-click": "kitty --class htop htop",
+    "on-click": "ghostty --class=local.htop -e htop",
   },
   "memory": {
     "format": "{}% ",
