@@ -1,0 +1,24 @@
+# Default values with docs: `ghostty +show-config --default --docs`
+# Docs: https://ghostty.org/docs/config
+
+font-family = Cascadia Mono NF
+font-size = 10
+# no ligatures
+font-feature = -calt,-liga,-dlig
+
+theme = dark:Dark,light:Light
+window-theme = dark
+
+window-padding-balance = true
+
+cursor-style = block
+shell-integration-features = no-cursor
+
+copy-on-select = clipboard
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+# allow for local overrides
+config-file = ?local.conf
+
+# vim: ft=ini

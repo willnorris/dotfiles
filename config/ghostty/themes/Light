@@ -1,0 +1,26 @@
+# Based on OneHalfLight with various color tweaks for readability
+
+palette = 0=#2c323c
+palette = 1=#e06c75
+palette = 2=#40a14f
+palette = 3=#e5c07b
+palette = 4=#0184bc
+palette = 5=#c678dd
+palette = 6=#0997b3
+palette = 7=#5c6370
+palette = 8=#3e4452
+palette = 9=#e06c75
+palette = 10=#40a14F
+palette = 11=#e5c07b
+palette = 12=#0184bc
+palette = 13=#c678dd
+palette = 14=#0997b3
+palette = 15=#abb2bf
+background = #fafafa
+foreground = #383a42
+cursor-color = #bfceff
+cursor-text = #383a42
+selection-background = #bfceff
+selection-foreground = #383a42
+
+# vim: ft=ini
