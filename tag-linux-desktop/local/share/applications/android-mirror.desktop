@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=scrcpy --tcpip=p7w.lan.willnorris.net:5555
+Name=Android Mirror
+Icon=scrcpy
