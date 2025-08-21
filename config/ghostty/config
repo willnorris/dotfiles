@@ -18,6 +18,8 @@ copy-on-select = clipboard
 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 
+confirm-close-surface = false
+
 # allow for local overrides
 config-file = ?local.conf
 
