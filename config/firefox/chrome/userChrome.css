@@ -36,7 +36,9 @@ box[pageproxystate="valid"]:is(.notSecure) > .identity-box-button {
     --tab-inner-inline-margin: var(--space-xsmall);
     --tab-pinned-container-margin-inline-expanded: var(--space-xsmall);
     --tab-inline-padding: calc(
-      var(--tab-collapsed-width) - var(--icon-size-default) * 2.8
+      var(--tab-collapsed-width) -
+        /* ff 142 uses icon-size-default, ff 143 uses icon-size */
+        var(--icon-size-default, var(--icon-size, 0)) * 2.8
     ) !important;
   }
 }
