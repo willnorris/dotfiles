@@ -1,3 +1,4 @@
+/* To enable dark theme: ln -s dark-theme.css theme.css */
 #navigator-toolbox {
   --toolbox-bgcolor: #333;
   --toolbox-bgcolor-inactive: #333;
