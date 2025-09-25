@@ -1,6 +1,6 @@
 return {
-  { "echasnovski/mini.bracketed", config = true },
-  { "echasnovski/mini.pairs", enabled = false },
+  { "nvim-mini/mini.bracketed", config = true },
+  { "nvim-mini/mini.pairs", enabled = false },
 
   {
     "saghen/blink.cmp",
@@ -30,7 +30,7 @@ return {
   },
 
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = {
       mappings = {
         add = "ys",     -- Add surrounding in Normal and Visual modes

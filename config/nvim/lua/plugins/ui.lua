@@ -1,7 +1,7 @@
 return {
   { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     opts = function(_, opts)
       opts = vim.tbl_deep_extend("force", opts, {
         highlighters = {
