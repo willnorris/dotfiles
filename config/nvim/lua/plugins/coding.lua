@@ -1,6 +1,4 @@
 return {
-  { import = "lazyvim.plugins.extras.ai.copilot" },
-
   { "echasnovski/mini.bracketed", config = true },
   { "echasnovski/mini.pairs", enabled = false },
 
