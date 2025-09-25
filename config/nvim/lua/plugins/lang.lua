@@ -7,6 +7,7 @@ return {
   { import = "lazyvim.plugins.extras.lang.terraform" },
   { import = "lazyvim.plugins.extras.lang.typescript" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
+  { import = "lazyvim.plugins.extras.lang.zig" },
   { import = "lazyvim.plugins.extras.util.dot" },
 
   { import = "lazyvim.plugins.extras.lang.markdown" },
@@ -24,6 +25,7 @@ return {
 
   -- Caddyfile syntax support
   { "isobit/vim-caddyfile" },
+  { "davidmh/mdx.nvim", config = true },
 
   { -- lspconfig
     "neovim/nvim-lspconfig",
@@ -76,6 +78,7 @@ return {
     opts = function(_, opts)
       opts.formatters_by_ft.lua = nil
       opts.formatters_by_ft.go = { "goimports" }
+      opts.formatters_by_ft.mdx = { "prettier", "markdownlint-cli2", "markdown-toc" }
       return opts
     end,
   },
