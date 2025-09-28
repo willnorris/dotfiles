@@ -4,18 +4,25 @@ M = {}
 
 -- mod returns a keybinding string with the appropriate modifier key and k.
 -- It uses the modifier key that is two keys to the left of the space bar.
--- If tmux is active, in which case it uses <A-k>,
--- because tmux doesn't suppport the Super key and sends Alt instead.
--- On macOS, it uses <M-k> for the Option key.
--- On all other platforms, it uses <D-k> for the Super key.
 M.mod = function(k)
-  if os.getenv("TMUX") ~= nil then
+  -- tmux doesn't support Super key and sends Alt instead
+  if vim.env.TMUX ~= nil then
     return "<A-" .. k .. ">"
-  elseif vim.fn.has("mac") == 1 then
-    return "<M-" .. k .. ">"
-  else
-    return "<D-" .. k .. ">"
   end
+
+  -- with ghostty terminal, I map commonly used Super+k keys to Alt+k
+  -- for consistent behavior with and without tmux.
+  if vim.env.TERM_PROGRAM == "ghostty" then
+    return "<A-" .. k .. ">"
+  end
+
+  -- on macOS, use <M-k> for the Option key
+  if vim.fn.has("mac") == 1 then
+    return "<M-" .. k .. ">"
+  end
+
+  -- on all other platforms, use <D-k> for the Super key
+  return "<D-" .. k .. ">"
 end
 
 -- colorscheme returns the current system color scheme.

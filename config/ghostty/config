@@ -18,6 +18,16 @@ copy-on-select = clipboard
 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 
+# Remap common super key combinations to escape sequences.
+# I primarily use these for keymaps within neovim, which is often running inside tmux.
+# Tmux maps super key combinations to alt, so this achieves the same behavior both
+# in and out of tmux.
+keybind = super+b=esc:b
+keybind = super+f=esc:f
+keybind = super+i=esc:i
+keybind = super+j=esc:j
+keybind = super+k=esc:k
+
 confirm-close-surface = false
 
 # allow for local overrides
