@@ -2,7 +2,7 @@
 [alias]
   amend = commit --amend --no-edit
   authors = shortlog --summary --email --numbered
-  b = branch -v -v
+  b = !git branch --color -v -v | sed "s#$HOME#~#"
   co = checkout
   ctags = !.git/hooks/ctags
   deleted-files = !cd -- ${GIT_PREFIX:-.} && git log --name-only --pretty=format: --diff-filter=D ${1:-.} | awk NF | sort -u && :
@@ -10,6 +10,11 @@
   git = !exec git
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %C(yellow)(%cr) %C(blue)<%an>%Creset'
   ll = !git l | fzf-tmux --ansi --multi --preview 'git show --color=always {+2}'
+
+  # rb is "recent branches". It is similar to `git branch -v -v`,
+  # but displays the last committer time for each branch and sorts by that time.
+  rb = !git for-each-ref --color --sort=committerdate --format=$'%(if)%(HEAD)%(then)* %(color:green)%(refname:short)%(else)%(if)%(worktreepath)%(then)+ %(color:cyan)%(refname:short)%(else)  %(refname:short)%(end)%(end)|%(color:yellow)%(committerdate:relative)|%(color:default)%(if)%(worktreepath)%(then)%(if)%(HEAD)%(then)%(else)(%(color:cyan)%(worktreepath)%(color:default)) %(end)%(end)%(if)%(upstream)%(then)[%(color:blue)%(upstream:short)%(color:default)%(if)%(upstream:track)%(then): %(upstream:track,nobracket)%(end)] %(end)%(contents:subject)' refs/heads/ | sed "s#$HOME#~#" | column --separator=$'|' --table
+
   s = status --short --branch
   start = !git init && git commit -n --allow-empty -m \"initial empty commit\"
   who = log --graph --pretty=format:'%Cred%h%Creset - %C(blue)a: %an <%ae>%Creset %C(green)c: %cn <%ce>%Creset - %s'

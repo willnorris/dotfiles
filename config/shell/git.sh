@@ -6,6 +6,6 @@ g() {
   else
     git s
     echo "" && git l -n 5
-    echo "" && git b
+    echo "" && git rb
   fi
 }
