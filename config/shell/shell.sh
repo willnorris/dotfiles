@@ -64,6 +64,7 @@ if [ -z "$HOSTNAME" ]; then
 fi
 export HOSTNAME
 
+export _Z_CMD="__z"
 export _Z_DATA="${XDG_DATA_HOME}/z/db"
 
 encmount() {
