@@ -98,6 +98,8 @@ bindsym {
   XF86MonBrightnessUp   exec brightness up
   XF86MonBrightnessDown exec brightness down
   XF86AudioMedia        exec toggle-color-scheme
+  Alt+XF86AudioMedia    exec toggle-color-scheme
+  Alt+F12               exec toggle-color-scheme
 
   # The RFKill key will always toggle bluetooth and wifi devices.
   # This additionally shows a notification with the current state.
