@@ -1,17 +1,11 @@
 -- Language support: LSP, formatters, linters
 return {
-  { import = "lazyvim.plugins.extras.lang.docker" },
-  { import = "lazyvim.plugins.extras.lang.go" },
   { import = "lazyvim.plugins.extras.lang.json" },
-  { import = "lazyvim.plugins.extras.lang.tailwind" },
-  { import = "lazyvim.plugins.extras.lang.terraform" },
-  { import = "lazyvim.plugins.extras.lang.typescript" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
-  { import = "lazyvim.plugins.extras.lang.zig" },
   { import = "lazyvim.plugins.extras.util.dot" },
 
   { import = "lazyvim.plugins.extras.lang.markdown" },
-  { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
+  { "MeanderingProgrammer/render-markdown.nvim",    enabled = false },
   {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
@@ -24,41 +18,8 @@ return {
   },
 
   -- Caddyfile syntax support
-  { "isobit/vim-caddyfile" },
   { "davidmh/mdx.nvim", config = true },
 
-  { -- lspconfig
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        gopls = {
-          settings = {
-            gopls = {
-              gofumpt = false,
-              analyses = {
-                fieldalignment = false,
-              },
-            },
-          },
-        },
-        sourcekit = {
-          cmd = { "xcrun", "sourcekit-lsp" },
-          filetypes = { "swift" },
-        },
-      },
-    },
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-    ft = { "java" },
-    opts = {
-      cmd = { vim.fn.stdpath("data") .. "/mason/bin/jdtls" },
-      root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
-    },
-    config = function(_, opts)
-      require("jdtls").start_or_attach(opts)
-    end,
-  },
   {
     "mason-org/mason.nvim",
     opts = {
@@ -72,19 +33,6 @@ return {
       },
     },
   },
-
-  {
-    "stevearc/conform.nvim",
-    opts = function(_, opts)
-      opts.formatters_by_ft.lua = nil
-      opts.formatters_by_ft.go = { "goimports" }
-      opts.formatters_by_ft.mdx = { "prettier", "markdownlint-cli2", "markdown-toc" }
-      return opts
-    end,
-  },
-
-  { import = "lazyvim.plugins.extras.formatting.prettier" },
-  { import = "lazyvim.plugins.extras.linting.eslint" },
 
   { -- Display LSP results in preview window
     "rmagatti/goto-preview",
