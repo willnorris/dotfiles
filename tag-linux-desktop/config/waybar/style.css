@@ -106,7 +106,8 @@ label:focus {
   color: #61afef;
 }
 
-#network.disconnected {
+#network.disconnected,
+#network.disabled {
   color: #e06c75;
 }
 
