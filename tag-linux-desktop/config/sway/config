@@ -208,12 +208,12 @@ bindsym {
   Alt+Super+Minus exec headless-output-start
   Alt+Super+Shift+Minus exec headless-output-stop
 
-  # Holding Super key reverses which firefox profile opens by default.
+  # Holding Super key reverses which web browser opens by default.
   # Some apps (e.g. kitty, with my config) won't open links with Super held,
   # so wait 3 seconds after releasing Super before removing the reverse option.
   # This also removes the reverse options after 30 seconds, since it tends to get stuck sometimes.
-  --no-repeat Super_L exec "touch $XDG_CACHE_HOME/firefox-open-reverse; sleep 30; rm $XDG_CACHE_HOME/firefox-open-reverse"
-  --release Super_L exec "sleep 3; rm $XDG_CACHE_HOME/firefox-open-reverse"
+  --no-repeat Super_L exec "touch $XDG_CACHE_HOME/browser-open-reverse; sleep 30; rm $XDG_CACHE_HOME/browser-open-reverse"
+  --release Super_L exec "sleep 3; rm $XDG_CACHE_HOME/browser-open-reverse"
 }
 
 bindsym Alt+r mode "resize"
