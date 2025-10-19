@@ -4,10 +4,10 @@
 # depending on the time of day and day of the week.
 # During weekday working hours (Monday to Friday, 08:00 to 17:00),
 # firefox-developer-edition is opened.
-# Otherwise, the librewolf is opened.
+# Otherwise, firefox is opened.
 
-work="/usr/lib/firefox-developer-edition/firefox"
-personal="/usr/bin/librewolf"
+work="/usr/bin/firefox-developer-edition"
+personal="/usr/bin/firefox"
 time="$(date +%H:%M)"
 
 if [[ -f "$XDG_CACHE_HOME/browser-open-reverse" ]]; then
