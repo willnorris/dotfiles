@@ -21,6 +21,7 @@ require("mini.basics").setup({
   },
 })
 
+require("mini.extra").setup()
 require("mini.statusline").setup()
 require("mini.tabline").setup()
 require("mini.git").setup()
@@ -31,4 +32,13 @@ require("mini.diff").setup({
   }
 })
 
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 vim.o.cursorline = false
+
+-- Keymaps
+local keymap = vim.keymap.set
+
+keymap("n", "<leader>bd", function() require("mini.bufremove").delete() end, { desc = "Close buffer" })
+keymap("n", "H", "<cmd>bprev<cr>", { desc = "Go to previous buffer" })
+keymap("n", "L", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
