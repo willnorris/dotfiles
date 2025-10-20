@@ -2,6 +2,8 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.nvim",
 })
 
+vim.cmd [[colorscheme wjn]]
+
 -- Set leader first, since some plugins use it
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -20,3 +22,5 @@ require("mini.basics").setup({
 })
 require("mini.statusline").setup()
 require("mini.tabline").setup()
+
+vim.o.cursorline = false
