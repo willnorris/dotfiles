@@ -29,4 +29,7 @@ vim.cmd [[
   highlight NormalNC ctermbg=NONE guibg=NONE
   highlight LineNr ctermbg=NONE guibg=NONE
   highlight SignColumn ctermbg=NONE guibg=NONE
+  highlight MiniDiffSignAdd ctermbg=NONE guibg=NONE
+  highlight MiniDiffSignChange ctermbg=NONE guibg=NONE
+  highlight MiniDiffSignDelete ctermbg=NONE guibg=NONE
 ]]
