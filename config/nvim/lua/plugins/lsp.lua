@@ -1,16 +1,17 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- disable <C-k>, since that interferes with cmp navigation
-      keys[#keys + 1] = { "<C-k>", false, mode = "i" }
-    end,
     opts = {
       inlay_hints = {
         enabled = false
       },
       servers = {
+        ["*"] = {
+          keys = {
+            -- disable <C-k>, since that interferes with cmp navigation
+            { "<C-k>", false, mode = "i" },
+          },
+        },
         jsonls = {
           settings = {
             json = {
