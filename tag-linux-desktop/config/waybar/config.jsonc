@@ -66,7 +66,7 @@
       "default": ["", "", ""],
     },
     "tooltip-format": "{desc} ({volume}%)",
-    "on-click": "$HOME/.local/bin/audio_changer.py",
+    "on-click": "pkill -f '^wofi -D audio_changer' || $HOME/.local/bin/audio_changer.py",
     "on-click-right": "pavucontrol",
   },
   "network": {
