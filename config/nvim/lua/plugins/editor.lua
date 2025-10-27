@@ -11,15 +11,12 @@ return {
   { "tpope/vim-sleuth" }, -- Heuristically set buffer options
 
   {
-    "max397574/better-escape.nvim",
-    opts = {
-      mappings = {
-        -- disable "jj" mappings
-        i = { j = { j = false } },
-        c = { j = { j = false } },
-        t = { j = { j = false } },
-      },
-    },
+    "nvim-mini/mini.keymap",
+    config = function()
+      local keymap = require("mini.keymap")
+      keymap.setup()
+      keymap.map_combo({ "i", "c", "x", "s" }, "jk", "<BS><BS><Esc>")
+    end
   },
 
   { -- Toggle, display, and navigate marks
