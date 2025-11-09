@@ -5,7 +5,10 @@ return {
 
   {
     "LazyVim/LazyVim",
-    opts = { colorscheme = "onedark" },
+    opts = { colorscheme = "wjn" },
+  },
+  {
+    "nvim-mini/mini.base16",
   },
   { -- onedark colorscheme
     "navarasu/onedark.nvim",
@@ -65,9 +68,9 @@ return {
           WhichKeySeparator = { fg = "$grey" },
         },
       })
-      if require("util").colorscheme() == "light" then
-        opts.style = "light"
-      end
+      -- if require("util").colorscheme() == "light" then
+      --   opts.style = "light"
+      -- end
       return opts
     end,
   },
