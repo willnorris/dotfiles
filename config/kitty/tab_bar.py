@@ -50,12 +50,25 @@ def draw_tab(
         screen.cursor.bg = as_rgb(color_as_int(draw_data.inactive_bg))
     screen.cursor.bg = 0
 
-    # show keyboard mode on right side if set
+    # show keyboard mode and layout on right side if set
     if is_last:
+        trailers = []
+        trailers.append((0, tab.layout_name))
+
         mode = get_boss().mappings.current_keyboard_mode_name
         if mode and not mode.startswith("__"):
-            screen.cursor.x = screen.columns - len(mode)
-            screen.cursor.fg = as_rgb(color_as_int(opts.color1))
-            screen.draw(mode)
+            trailers.append((opts.color1, mode))
+
+        offset = len(trailers)
+        for t in trailers:
+            offset += len(t[1])
+        screen.cursor.x = screen.columns - offset
+
+        for t in reversed(trailers):
+            if t[0]:
+                screen.cursor.fg = as_rgb(color_as_int(t[0]))
+            else:
+                screen.cursor.fg = 0
+            screen.draw(" " + t[1])
 
     return end
