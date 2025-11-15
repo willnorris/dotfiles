@@ -19,6 +19,7 @@ require("mini.basics").setup({
 
 require("mini.extra").setup()
 
+vim.o.cmdheight = 0
+vim.o.cursorline = false
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
-vim.o.cursorline = false

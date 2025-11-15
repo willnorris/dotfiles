@@ -78,6 +78,12 @@ local highlights = {
   GitSignsAdd = { link = "Added" },
   GitSignsChange = { link = "Changed" },
   GitSignsDelete = { link = "Removed" },
+  DiffAdd = { link = "Added" },
+  DiffChange = { link = "Changed" },
+  DiffDelete = { link = "Removed" },
+  MiniDiffSignAdd = { link = "Added" },
+  MiniDiffSignChange = { link = "Changed" },
+  MiniDiffSignDelete = { link = "Removed" },
 
   SnacksIndent = { fg = p.base01 },
   SnacksIndentScope = { fg = p.base03 },
