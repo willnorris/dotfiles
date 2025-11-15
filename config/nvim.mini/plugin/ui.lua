@@ -117,6 +117,19 @@ keymap("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "
 keymap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
 keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
 
+vim.pack.add({ "https://github.com/folke/which-key.nvim" })
+require("which-key").setup({
+  preset = "classic",
+  icons = {
+    separator = "",
+    mappings = false,
+    rules = false,
+  },
+  win = {
+    border = "rounded",
+  },
+})
+
 require("mini.statusline").setup({
   content = {
     active = function()
