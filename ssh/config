@@ -3,7 +3,7 @@
 Include ~/.ssh/work-config
 
 Host *
-  ControlPath ~/.local/run/ssh-%r@%h:%p
+  ControlPath ${XDG_RUNTIME_DIR}/ssh-%r@%h:%p
   ControlMaster auto
   ControlPersist 30m
 
