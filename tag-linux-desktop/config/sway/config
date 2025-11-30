@@ -101,6 +101,18 @@ bindsym {
   Alt+XF86AudioMedia    exec toggle-color-scheme
   Alt+F12               exec toggle-color-scheme
 
+  Alt+Up   exec volume up
+  Alt+Down exec volume down
+  Alt+Home exec playerctl play-pause
+
+  # mirror media keys on built-in framework keyboard
+  Alt+F1  exec volume mute
+  Alt+F2  exec volume down
+  Alt+F3  exec volume up
+  Alt+F4  exec playerctl previous
+  Alt+F5  exec playerctl play-pause
+  Alt+F6  exec playerctl next
+
   # The RFKill key will always toggle bluetooth and wifi devices.
   # This additionally shows a notification with the current state.
   XF86RFKill exec notify-send "$(rfkill -rno TYPE,SOFT)" -e \
@@ -118,6 +130,10 @@ bindsym {
   Print       exec grimshot --notify save output
   Alt+Print   exec grimshot --notify save window
   Shift+Print exec grimshot --notify save area
+
+  Alt+F11       exec grimshot --notify save output
+  Alt+Super+F11 exec grimshot --notify save window
+  Alt+Shift+F11 exec grimshot --notify save area
 }
 
 # Windows and workspaces
