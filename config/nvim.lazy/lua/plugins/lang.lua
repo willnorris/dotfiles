@@ -5,7 +5,7 @@ return {
   { import = "lazyvim.plugins.extras.util.dot" },
 
   { import = "lazyvim.plugins.extras.lang.markdown" },
-  { "MeanderingProgrammer/render-markdown.nvim",    enabled = false },
+  { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
   {
     "mfussenegger/nvim-lint",
     opts = function(_, opts)
@@ -17,8 +17,7 @@ return {
     end
   },
 
-  -- Caddyfile syntax support
-  { "davidmh/mdx.nvim", config = true },
+  { "davidmh/mdx.nvim" },
 
   {
     "mason-org/mason.nvim",
