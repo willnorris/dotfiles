@@ -101,6 +101,9 @@ bindsym {
   Alt+XF86AudioMedia    exec toggle-color-scheme
   Alt+F12               exec toggle-color-scheme
 
+  Alt+Shift+XF86AudioMedia exec toggle-browser-profile
+  Alt+Shift+F12            exec toggle-browser-profile
+
   Alt+Up   exec volume up
   Alt+Down exec volume down
   Alt+Home exec playerctl play-pause
@@ -224,12 +227,9 @@ bindsym {
   Alt+Super+Minus exec headless-output-start
   Alt+Super+Shift+Minus exec headless-output-stop
 
-  # Holding Super key reverses which web browser opens by default.
-  # Some apps (e.g. kitty, with my config) won't open links with Super held,
-  # so wait 3 seconds after releasing Super before removing the reverse option.
-  # This also removes the reverse options after 30 seconds, since it tends to get stuck sometimes.
-  --no-repeat Super_L exec "touch $XDG_CACHE_HOME/browser-open-reverse; sleep 30; rm $XDG_CACHE_HOME/browser-open-reverse"
-  --release Super_L exec "sleep 3; rm $XDG_CACHE_HOME/browser-open-reverse"
+  # Pressing Super key reverses which web browser opens by default.
+  # The default browser is reset after 5 seconds.
+  --no-repeat Super_L exec toggle-browser-profile --reverse
 }
 
 bindsym Alt+r mode "resize"

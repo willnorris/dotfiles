@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <enum id="com.willnorris.desktop.BrowserProfiles">
+    <value nick="default" value="0"/>
+    <value nick="personal" value="1"/>
+    <value nick="work" value="2"/>
+    <value nick="reverse" value="3"/>
+  </enum>
+  <schema id="com.willnorris.desktop" path="/com/willnorris/desktop/">
+    <key name="browser-profile" enum="com.willnorris.desktop.BrowserProfiles">
+      <default>'default'</default>
+      <summary>Browser Profile</summary>
+      <description>Preferred browser profile.</description>
+    </key>
+  </schema>
+</schemalist>

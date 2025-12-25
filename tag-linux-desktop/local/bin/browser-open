@@ -10,14 +10,20 @@ work="/usr/bin/firefox-developer-edition"
 personal="/usr/bin/firefox"
 time="$(date +%H:%M)"
 
-if [[ -f "$XDG_CACHE_HOME/browser-open-reverse" ]]; then
-  tmp=$work
-  work=$personal
-  personal=$tmp
-fi
+profile=$(gsettings get com.willnorris.desktop browser-profile | cut -d "'" -f2)
 
-if [[ $(date +%u) -le 5 ]] && [[ "$time" > "08:00" ]] && [[ "$time" < "17:00" ]]; then
-  $work "$@"
-else
-  $personal "$@"
-fi
+case $profile in
+"default" | "reverse")
+  if [[ $(date +%u) -le 5 ]] && [[ "$time" > "08:00" ]] && [[ "$time" < "17:00" ]]; then
+    [ "$profile" = "reverse" ] && active="personal" || active="work"
+  else
+    [ "$profile" = "reverse" ] && active="work" || active="personal"
+  fi
+  ;;
+*) active=$profile ;;
+esac
+
+case $active in
+"personal") $personal "$@" ;;
+"work") $work "$@" ;;
+esac
