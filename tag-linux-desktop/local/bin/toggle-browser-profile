@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set_profile() {
+  gsettings set com.willnorris.desktop browser-profile "$1"
+  notify-send "Browser profile" "$2" -t 2500 -i web-browser-symbolic -e -h string:x-canonical-private-synchronous:browser-profile
+}
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  --reverse)
+    set_profile "reverse" "Reverse"
+    sleep 5
+    set_profile "default" "Default"
+    exit
+    ;;
+  *)
+    echo "Unknown argument $1"
+    exit 1
+    ;;
+  esac
+done
+
+profile=$(gsettings get com.willnorris.desktop browser-profile)
+
+case $profile in
+"'default'")
+  set_profile "personal" "Personal"
+  ;;
+"'personal'")
+  set_profile "work" "Work"
+  ;;
+"'work'")
+  set_profile "default" "Default"
+  ;;
+esac
