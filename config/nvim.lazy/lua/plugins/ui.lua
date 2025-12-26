@@ -121,7 +121,21 @@ return {
         },
         picker = {
           layout = {
-            preset = "ivy",
+            -- Copy of "ivy" preset with title moved into "input" window instead of root
+            layout = {
+              box = "vertical",
+              backdrop = false,
+              row = -1,
+              width = 0,
+              height = 0.4,
+              border = "none",
+              { win = "input", height = 1, border = "top_bottom", title = " {title} {live} {flags}", title_pos = "left" },
+              {
+                box = "horizontal",
+                { win = "list", border = "none" },
+                { win = "preview", title = "{preview}", width = 0.6, border = "left" },
+              },
+            },
           },
           win = {
             input = {
