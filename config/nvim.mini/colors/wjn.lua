@@ -95,6 +95,7 @@ local highlights = {
   SnacksPickerBorder = { fg = p.base03 },
   SnacksPickerIcon = { fg = c.red },
   SnacksPickerPrompt = { fg = c.red },
+  SnacksPickerInputTitle = { fg = "fg" },
 
   MiniTablineFill = { bg = p.base01 },
   MiniTablineVisible = { bg = p.base01 },
