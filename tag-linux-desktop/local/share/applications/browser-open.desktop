@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
-Exec=/home/willnorris/.local/bin/browser-open
+Exec=/home/willnorris/.local/bin/browser-open %U
 # no name or icon so it doesn't show up in the menu
