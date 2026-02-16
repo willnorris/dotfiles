@@ -1,0 +1,24 @@
+{
+  "plugins": {
+    "mini.nvim": {
+      "rev": "4ca988557786c9a4e41d5e5b6e31b4c9d7379f53",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "44acfe887d4056f704ccc4f17513ed41c9e2b2e6",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "onedark.nvim": {
+      "rev": "213c23ae45a04797572242568d5d51937181792d",
+      "src": "https://github.com/navarasu/onedark.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "which-key.nvim": {
+      "rev": "3aab214",
+      "src": "https://github.com/folke/which-key.nvim"
+    }
+  }
+}
