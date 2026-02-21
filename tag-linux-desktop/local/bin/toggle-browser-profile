@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
 
+notify=true   # notify on profile change
+reverse=false # temporarily reverse profile
+
 set_profile() {
   gsettings set com.willnorris.desktop browser-profile "$1"
-  notify-send "Browser profile" "$2" -t 2500 -i web-browser-symbolic -e -h string:x-canonical-private-synchronous:browser-profile
+  if [ $notify = true ]; then
+    notify-send "Browser profile" "$2" -t 2500 -i web-browser-symbolic -e -h string:x-canonical-private-synchronous:browser-profile
+  fi
 }
 
 while [[ $# -gt 0 ]]; do
   case $1 in
-  --reverse)
-    set_profile "reverse" "Reverse"
-    sleep 5
-    set_profile "default" "Default"
-    exit
+  -q | --quiet)
+    notify=false
+    shift
+    ;;
+  -r | --reverse)
+    reverse=true
+    shift
     ;;
   *)
     echo "Unknown argument $1"
@@ -20,8 +27,17 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+# temporarily reverse profile, wait, then switch back to default
+if [ $reverse = true ]; then
+  set_profile "reverse" "Reverse"
+  sleep 5
+  set_profile "default" "Default"
+  exit
+fi
+
 profile=$(gsettings get com.willnorris.desktop browser-profile)
 
+# cycle through profiles
 case $profile in
 "'default'")
   set_profile "personal" "Personal"

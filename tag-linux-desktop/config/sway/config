@@ -229,7 +229,7 @@ bindsym {
 
   # Pressing Super key reverses which web browser opens by default.
   # The default browser is reset after 5 seconds.
-  --no-repeat Super_L exec toggle-browser-profile --reverse
+  --no-repeat Super_L exec toggle-browser-profile --quiet --reverse
 }
 
 bindsym Alt+r mode "resize"
