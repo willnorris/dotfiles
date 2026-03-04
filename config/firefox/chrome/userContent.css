@@ -22,8 +22,10 @@
   }
 
   .v-ThreadLabels {
+    display: flex;
     justify-content: end;
-    margin-top: -1.8em !important;
+    right: 5em;
+    margin-top: -1.9em !important;
   }
 
   /*
