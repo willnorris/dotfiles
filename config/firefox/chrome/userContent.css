@@ -43,4 +43,18 @@
   .v-Message-body > .u-article {
     padding-top: 0 !important;
   }
+
+  /*
+   * Continue showing avatars when selecting emails in mailbox view.
+   */
+  .v-Mailbox.is-selection {
+    & .v-ThreadAvatars {
+      opacity: inherit !important;
+      margin-left: 2em !important;
+    }
+    & .v-MailboxItem-from,
+    & .v-MailboxItem-preview {
+      left: 104px !important;
+    }
+  }
 }
