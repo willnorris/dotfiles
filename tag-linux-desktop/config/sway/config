@@ -59,6 +59,10 @@ input "type:keyboard" {
   # caps lock → ctrl, right ctrl → compose
   xkb_options ctrl:nocaps,compose:rctrl
 }
+# disable ctrl:nocaps on keychron keyboard, which has custom mappings
+input "13364:4656:Keychron_Keychron_Q3_Ultra_8K_Keyboard" xkb_options compose:rctrl
+input "13364:53288:Keychron_Keychron_Ultra-Link_8K_Keyboard" xkb_options compose:rctrl
+
 input "type:pointer" {
   natural_scroll enabled
 }
@@ -85,7 +89,7 @@ bindsym {
   Alt+q exec notify-send "Kill Container" "Alt + Shift + Q" -e \
     -t 1500 -h string:x-canonical-private-synchronous:sway-kill
 
-  # Open albert launcher
+  # Toggle albert launcher
   Alt+Space exec echo -n '["toggle"]' | socat - ~/.cache/albert/ipc_socket
 
   # Media keys
@@ -99,23 +103,11 @@ bindsym {
   --locked XF86MonBrightnessDown exec brightness down
 
   XF86AudioMedia        exec toggle-color-scheme
-  Alt+XF86AudioMedia    exec toggle-color-scheme
-  Alt+F12               exec toggle-color-scheme
+  XF86Tools             exec toggle-color-scheme
 
-  Alt+Shift+XF86AudioMedia exec toggle-browser-profile
-  Alt+Shift+F12            exec toggle-browser-profile
-
-  Alt+Up   exec volume up
-  Alt+Down exec volume down
-  Alt+Home exec playerctl play-pause
-
-  # mirror media keys on built-in framework keyboard
-  Alt+F1  exec volume mute
-  Alt+F2  exec volume down
-  Alt+F3  exec volume up
-  Alt+F4  exec playerctl previous
-  Alt+F5  exec playerctl play-pause
-  Alt+F6  exec playerctl next
+  Alt+XF86AudioMedia exec toggle-browser-profile
+  Alt+F12            exec toggle-browser-profile
+  Alt+XF86Tools      exec toggle-browser-profile
 
   # The RFKill key will always toggle bluetooth and wifi devices.
   # This additionally shows a notification with the current state.
@@ -134,10 +126,6 @@ bindsym {
   --no-repeat Print       exec grimshot --notify save output
   --no-repeat Alt+Print   exec grimshot --notify save window
   --no-repeat Shift+Print exec grimshot --notify save area
-
-  Alt+F11       exec grimshot --notify save output
-  Alt+Super+F11 exec grimshot --notify save window
-  Alt+Shift+F11 exec grimshot --notify save area
 }
 
 # Windows and workspaces
