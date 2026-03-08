@@ -89,14 +89,15 @@ bindsym {
   Alt+Space exec echo -n '["toggle"]' | socat - ~/.cache/albert/ipc_socket
 
   # Media keys
-  XF86AudioRaiseVolume  exec volume up
-  XF86AudioLowerVolume  exec volume down
-  XF86AudioMute         exec volume mute
-  XF86AudioPlay         exec playerctl play-pause
-  XF86AudioPrev         exec playerctl previous
-  XF86AudioNext         exec playerctl next
-  XF86MonBrightnessUp   exec brightness up
-  XF86MonBrightnessDown exec brightness down
+  --locked XF86AudioRaiseVolume  exec volume up
+  --locked XF86AudioLowerVolume  exec volume down
+  --locked XF86AudioMute         exec volume mute
+  --locked XF86AudioPlay         exec playerctl play-pause
+  --locked XF86AudioPrev         exec playerctl previous
+  --locked XF86AudioNext         exec playerctl next
+  --locked XF86MonBrightnessUp   exec brightness up
+  --locked XF86MonBrightnessDown exec brightness down
+
   XF86AudioMedia        exec toggle-color-scheme
   Alt+XF86AudioMedia    exec toggle-color-scheme
   Alt+F12               exec toggle-color-scheme
