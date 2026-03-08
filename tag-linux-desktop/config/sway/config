@@ -131,9 +131,9 @@ bindsym {
 
   Alt+Backspace exec swaync-client -t
 
-  Print       exec grimshot --notify save output
-  Alt+Print   exec grimshot --notify save window
-  Shift+Print exec grimshot --notify save area
+  --no-repeat Print       exec grimshot --notify save output
+  --no-repeat Alt+Print   exec grimshot --notify save window
+  --no-repeat Shift+Print exec grimshot --notify save area
 
   Alt+F11       exec grimshot --notify save output
   Alt+Super+F11 exec grimshot --notify save window
