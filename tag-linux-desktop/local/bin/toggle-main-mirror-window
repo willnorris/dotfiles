@@ -1,0 +1,5 @@
+#!/bin/bash
+# Toggle a wl-mirror window that mirrors the main laptop display.
+
+display="${1:-eDP-1}"
+pkill -f "wl-mirror --title main-mirror" -u "${USER}" >/dev/null || wl-mirror --title main-mirror "${display}"

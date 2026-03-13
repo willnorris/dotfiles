@@ -1,6 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 # Try to connect to my phone over TCP first.
 # If that fails, then fallback to normal USB connection.
 
-scrcpy --tcpip=p7w.lan.willnorris.net:5555 || scrcpy
+flags="--keyboard=uhid --mouse=uhid --show-touches --stay-awake"
+
+if nc -z p7w.lan.willnorris.net 5555 &>/dev/null; then
+  flags="${flags} --tcpip=p7w.lan.willnorris.net:5555"
+fi
+
+set -x
+scrcpy ${flags} "$@"

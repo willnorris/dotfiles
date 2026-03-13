@@ -216,6 +216,10 @@ bindsym {
   Alt+Super+Minus exec headless-output-start
   Alt+Super+Shift+Minus exec headless-output-stop
 
+  Super+p exec toggle-main-mirror-window # F9 on internal keyboard
+  XF86Launch5 exec toggle-main-mirror-window # F9 on external keyboard
+  Alt+XF86Launch5 exec android-mirror
+
   # Pressing Super key reverses which web browser opens by default.
   # The default browser is reset after 5 seconds.
   --no-repeat Super_L exec toggle-browser-profile --quiet --reverse
