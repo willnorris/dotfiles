@@ -4,4 +4,6 @@
 
 if has bat; then
   bat cache --build >/dev/null
+elif has batcat; then
+  batcat cache --build >/dev/null
 fi
