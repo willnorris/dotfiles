@@ -2,7 +2,6 @@
 # by Sindre Sorhus
 # https://github.com/sindresorhus/pure
 # MIT License
-# vim: ft=zsh
 
 # For my own and others sanity
 # git:
@@ -67,7 +66,7 @@ prompt_pure_set_title() {
 
 	# Show hostname if connected via SSH.
 	local hostname=
-	if [[ -n $prompt_pure_state[username] ]]; then
+	if (( psvar[13] )); then
 		# Expand in-place in case ignore-escape is used.
 		hostname="${(%):-(%m) }"
 	fi
@@ -98,10 +97,10 @@ prompt_pure_preexec() {
 	# Shows the current directory and executed command in the title while a process is active.
 	prompt_pure_set_title 'ignore-escape' "$PWD:t: $2"
 
-	# Disallow Python virtualenv from updating the prompt. Set it to 12 if
+	# Disallow Python virtualenv from updating the prompt. Set it to 20 if
 	# untouched by the user to indicate that Pure modified it. Here we use
-	# the magic number 12, same as in `psvar`.
-	export VIRTUAL_ENV_DISABLE_PROMPT=${VIRTUAL_ENV_DISABLE_PROMPT:-12}
+	# the magic number 20, same as in `psvar`.
+	export VIRTUAL_ENV_DISABLE_PROMPT=${VIRTUAL_ENV_DISABLE_PROMPT:-20}
 }
 
 # Change the colors if their value are different from the current ones.
@@ -124,104 +123,47 @@ prompt_pure_preprompt_render() {
 
 	unset prompt_pure_async_render_requested
 
-	# Set color for Git branch/dirty status and change color if dirty checking has been delayed.
-	local git_color=$prompt_pure_colors[git:branch]
-	local git_dirty_color=$prompt_pure_colors[git:dirty]
-	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && git_color=$prompt_pure_colors[git:branch:cached]
+	# Update git branch color based on cache state.
+	typeset -g prompt_pure_git_branch_color=$prompt_pure_colors[git:branch]
+	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && prompt_pure_git_branch_color=$prompt_pure_colors[git:branch:cached]
 
-	# Initialize the preprompt arrays. preprompt_before and preprompt_after
-	# hold preprompt info before and after the path.
-	local -a preprompt_parts preprompt_before preprompt_after
+	# Update psvar values. PROMPT uses %(NV.true.false) to conditionally
+	# render each part. See prompt_pure_setup for the PROMPT template.
+	#
+	# psvar[12]: Suspended jobs symbol.
+	psvar[12]=
+	((${(M)#jobstates:#suspended:*} != 0)) && psvar[12]=${PURE_SUSPENDED_JOBS_SYMBOL:-✦}
 
-	# Suspended jobs in background.
-	if ((${(M)#jobstates:#suspended:*} != 0)); then
-		preprompt_parts+='%F{$prompt_pure_colors[suspended_jobs]}✦'
-	fi
+	# psvar[13]: Username flag (set once in prompt_pure_state_setup).
 
-	# Username and machine, if applicable.
-	[[ -n $prompt_pure_state[username] ]] && preprompt_before+=($prompt_pure_state[username])
+	# psvar[14]: Git branch name.
+	psvar[14]=${prompt_pure_vcs_info[branch]}
 
-	# Git branch and dirty status info.
-	typeset -gA prompt_pure_vcs_info
-	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
-		preprompt_after+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
-	fi
-	# Git action (for example, merge).
-	if [[ -n $prompt_pure_vcs_info[action] ]]; then
-		preprompt_after+=("%F{$prompt_pure_colors[git:action]}"'$prompt_pure_vcs_info[action]%f')
-	fi
-	# Git pull/push arrows.
-	if [[ -n $prompt_pure_git_arrows ]]; then
-		preprompt_after+=('%F{$prompt_pure_colors[git:arrow]}${prompt_pure_git_arrows}%f')
-	fi
-	# Git stash symbol (if opted in).
-	if [[ -n $prompt_pure_git_stash ]]; then
-		preprompt_after+=('%F{$prompt_pure_colors[git:stash]}${PURE_GIT_STASH_SYMBOL:-≡}%f')
-	fi
+	# psvar[15]: Git dirty marker.
+	psvar[15]=${prompt_pure_git_dirty}
 
-	# Execution time.
-	[[ -n $prompt_pure_cmd_exec_time ]] && preprompt_after+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f')
+	# psvar[16]: Git action (rebase/merge).
+	psvar[16]=${prompt_pure_vcs_info[action]}
 
-	local visual_separator=$prompt_newline
+	# psvar[17]: Git arrows (push/pull).
+	psvar[17]=${prompt_pure_git_arrows}
 
-	# determine if prompt should be split, and how much to truncate path
-	local split
-	(( split = $LINES >= $prompt_pure_state[minheight] )) # split prompt if sufficient vertical space
-	if (( !$split )); then
-		(( cols = $COLUMNS * 1/4 ))
-		visual_separator=" "
-	elif (( ${#preprompt_before} )) || (( ${#preprompt_after} )); then
-		# truncate path to make room for preprompt info
-		# strip substitution codes to ensure we calculate length correctly
-		local zero='%([BSUbfksu]|([FK]|){*})'
-		preprompt_parts=($preprompt_before $preprompt_after)
-		local ppp=${(j. .)preprompt_parts}
-		local ppp_length=${#${(S%%)ppp//$~zero/}}
-		(( cols = $COLUMNS - ${ppp_length} - 2 ))
-	else
-		cols="-1"
-	fi
+	# psvar[18]: Git stash flag.
+	psvar[18]=
+	[[ -n $prompt_pure_git_stash ]] && psvar[18]=1
 
-	# build preprompt_parts, including path, which is truncated to last $cols characters.
-	# (see https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html)
-	preprompt_parts=(
-		$preprompt_before
-		'%F{${prompt_pure_colors[path]}}%${cols}<…<%~%<<%f'
-		$preprompt_after
-	)
+	# psvar[19]: Command execution time.
+	psvar[19]=${prompt_pure_cmd_exec_time}
 
-	local cleaned_ps1=$PROMPT
-	local -H MATCH MBEGIN MEND
-
-	# prompt_separator is a valid prompt escape sequence that does not
-	# expand to anything and is unlikely to ever appear in a real prompt
-	local prompt_separator="%{%}"
-
-	if [[ $PROMPT = *$prompt_separator* ]]; then
-		# Remove everything from the prompt until the separator. This
-		# removes the preprompt and only the original PROMPT remains.
-		cleaned_ps1=${PROMPT##*${prompt_separator}}
-	fi
-	unset MATCH MBEGIN MEND
-
-	# Construct the new prompt with a clean preprompt.
-	local -ah ps1
-	ps1=(
-		${(j. .)preprompt_parts}  # Join parts, space separated.
-		$visual_separator         # Separate preprompt and prompt.
-		$prompt_separator
-		$cleaned_ps1
-	)
-
-	PROMPT="${(j..)ps1}"
-
-	# Expand the prompt for future comparision.
+	# Expand the prompt for future comparison.
 	local expanded_prompt
 	expanded_prompt="${(S%%)PROMPT}"
 
-	if [[ $1 == precmd ]] && (( $split )); then
+	if [[ $1 == precmd ]]; then
 		# Initial newline, for spaciousness.
-		print
+		if ${prompt_pure_state[pre_space]}; then
+			print
+		fi
 	elif [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
 		# Redraw the prompt.
 		prompt_pure_reset_prompt
@@ -246,18 +188,21 @@ prompt_pure_precmd() {
 	# Perform async Git dirty check and fetch.
 	prompt_pure_async_tasks
 
-	# Check if we should display the virtual env. We use a sufficiently high
-	# index of psvar (12) here to avoid collisions with user defined entries.
-	psvar[12]=
+	# Check if we should display the virtual env (psvar[20]).
+	psvar[20]=
 	# Check if a Conda environment is active and display its name.
 	if [[ -n $CONDA_DEFAULT_ENV ]]; then
-		psvar[12]="${CONDA_DEFAULT_ENV//[$'\t\r\n']}"
+		psvar[20]="${CONDA_DEFAULT_ENV//[$'\t\r\n']}"
 	fi
 	# When VIRTUAL_ENV_DISABLE_PROMPT is empty, it was unset by the user and
 	# Pure should take back control.
-	if [[ -n $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT || $VIRTUAL_ENV_DISABLE_PROMPT = 12 ]]; then
-		psvar[12]="${VIRTUAL_ENV:t}"
-		export VIRTUAL_ENV_DISABLE_PROMPT=12
+	if [[ -n $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT || $VIRTUAL_ENV_DISABLE_PROMPT = 20 ]]; then
+		if [[ -n $VIRTUAL_ENV_PROMPT ]]; then
+			psvar[20]="${VIRTUAL_ENV_PROMPT}"
+		else
+			psvar[20]="${VIRTUAL_ENV:t}"
+		fi
+		export VIRTUAL_ENV_DISABLE_PROMPT=20
 	fi
 
 	# Nix package manager integration. If used from within 'nix shell' - shell name is shown like so:
@@ -265,7 +210,7 @@ prompt_pure_precmd() {
 	# flake-utils-plus ❯
 	if zstyle -T ":prompt:pure:environment:nix-shell" show; then
 		if [[ -n $IN_NIX_SHELL ]]; then
-			psvar[12]="${name:-nix-shell}"
+			psvar[20]="${name:-nix-shell}"
 		fi
 	fi
 
@@ -405,6 +350,7 @@ prompt_pure_async_git_fetch() {
 	command git -c gc.auto=0 fetch \
 		--quiet \
 		--no-tags \
+		--no-prune-tags \
 		--recurse-submodules=no \
 		$remote &>/dev/null &
 	wait $! || return $fail_code
@@ -737,34 +683,43 @@ prompt_pure_state_setup() {
 		unset MATCH MBEGIN MEND
 	fi
 
-	hostname='%F{$prompt_pure_colors[host]}@%m%f'
+	local user_color
 	# Show `username@host` if logged in through SSH.
-	[[ -n $ssh_connection ]] && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
+	[[ -n $ssh_connection ]] && user_color=user
 
 	# Show `username@host` if inside a container and not in GitHub Codespaces.
-	[[ -z "${CODESPACES}" ]] && prompt_pure_is_inside_container && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
+	[[ -z "${CODESPACES}" ]] && prompt_pure_is_inside_container && user_color=user
 
 	# Show `username@host` if root, with username in default color.
-	[[ $UID -eq 0 ]] && username='%F{$prompt_pure_colors[user:root]}%n%f'"$hostname"
+	[[ $UID -eq 0 ]] && user_color=user:root
+
+	# Set psvar[13] flag for username display in PROMPT.
+	[[ -n $user_color ]] && psvar[13]=1
 
 	typeset -gA prompt_pure_state
-	prompt_pure_state[version]="1.23.0"
+	prompt_pure_state[version]="1.27.1"
 	prompt_pure_state+=(
-		username "$username"
-		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"
-		minheight "${PURE_PROMPT_MINHEIGHT:-20}"
+		user_color "$user_color"
+		prompt	   "${PURE_PROMPT_SYMBOL:-❯}"
+		pre_space  true
 	)
 }
 
 # Return true if executing inside a Docker, OCI, LXC, or systemd-nspawn container.
 prompt_pure_is_inside_container() {
-	local -r cgroup_file='/proc/1/cgroup'
 	local -r nspawn_file='/run/host/container-manager'
-	[[ -r "$cgroup_file" && "$(< $cgroup_file)" = *(lxc|docker)* ]] \
-		|| [[ "$container" == "lxc" ]] \
+	local -r podman_crio_file='/run/.containerenv'
+	local -r docker_file='/.dockerenv'
+	local -r k8s_token_file='/var/run/secrets/kubernetes.io/serviceaccount/token'
+	local -r cgroup_file='/proc/1/cgroup'
+	[[ "$container" == "lxc" ]] \
 		|| [[ "$container" == "oci" ]] \
 		|| [[ "$container" == "podman" ]] \
-		|| [[ -r "$nspawn_file" ]]
+		|| [[ -r "$nspawn_file" ]] \
+		|| [[ -r "$podman_crio_file" ]] \
+		|| [[ -r "$docker_file" ]] \
+		|| [[ -r "$k8s_token_file" ]] \
+		|| [[ -r "$cgroup_file" && "$(< $cgroup_file)" = *(lxc|docker|containerd)* ]]
 }
 
 prompt_pure_system_report() {
@@ -884,11 +839,49 @@ prompt_pure_setup() {
 		add-zle-hook-widget zle-keymap-select prompt_pure_update_vim_prompt_widget
 	fi
 
-	# If a virtualenv is activated, display it in grey.
-	PROMPT='%(12V.%F{$prompt_pure_colors[virtualenv]}%12v%f .)'
+	# Initialize globals referenced by PROMPT via prompt subst.
+	typeset -gA prompt_pure_vcs_info
+	typeset -g prompt_pure_git_branch_color=$prompt_pure_colors[git:branch]
 
-	# Prompt prepends red exclamation if the previous command didn't exit with 0.
-	local prompt_indicator='%(?..%F{$prompt_pure_colors[prompt:error]}!)%F{$prompt_pure_colors[prompt:success]}${prompt_pure_state[prompt]}%f '
+	# Construct PROMPT once, both preprompt and prompt line. Kept
+	# dynamic via variables and psvar[12-20], updated each render
+	# in prompt_pure_preprompt_render. Numbering starts at 12 for
+	# legacy reasons (Pure originally used psvar[12] for virtualenv)
+	# and to avoid collisions with low psvar indices which users
+	# may rely on (e.g. %v expands psvar[1]).
+	#
+	#   psvar[12] = suspended jobs symbol (e.g. ✦)
+	#   psvar[13] = username flag, renders user/host (e.g. user@host)
+	#   psvar[14] = git branch
+	#   psvar[15] = git dirty marker, nested inside [14] conditional
+	#   psvar[16] = git action (e.g. rebase, merge)
+	#   psvar[17] = git arrows (e.g. ⇣⇡)
+	#   psvar[18] = git stash flag, renders stash symbol
+	#   psvar[19] = exec time (e.g. 1d 3h 2m 5s)
+	#   psvar[20] = virtualenv/conda/nix-shell name
+	#   psvar[21] = current directory
+	#
+	# Example output:
+	#   ✦ user@host ~/Code/pure main* rebase ⇣⇡ ≡ 3s
+	#   myenv ❯
+	#
+	# Preprompt line: each %(NV..) section only renders when its psvar is non-empty.
+	PROMPT='%(12V.%F{$prompt_pure_colors[suspended_jobs]}%12v%f .)'
+	PROMPT+='%(13V.%F{$prompt_pure_colors['"${prompt_pure_state[user_color]:-user}"']}%n%f%F{$prompt_pure_colors[host]}@%m%f .)'
+	PROMPT+='%F{$prompt_pure_colors[path]}%(21V.%21v.%~)%f'
+	PROMPT+='%(14V. %F{${prompt_pure_git_branch_color}}%14v%(15V.%F{$prompt_pure_colors[git:dirty]}%15v.)%f.)'
+	PROMPT+='%(16V. %F{$prompt_pure_colors[git:action]}%16v%f.)'
+	PROMPT+='%(17V. %F{$prompt_pure_colors[git:arrow]}%17v%f.)'
+	PROMPT+='%(18V. %F{$prompt_pure_colors[git:stash]}${PURE_GIT_STASH_SYMBOL:-≡}%f.)'
+	PROMPT+='%(19V. %F{$prompt_pure_colors[execution_time]}%19v%f.)'
+
+	# Newline separating preprompt from prompt.
+	PROMPT+='${prompt_newline}'
+
+	# Prompt line: virtualenv and prompt symbol.
+	PROMPT+='%(20V.%F{$prompt_pure_colors[virtualenv]}%20v%f .)'
+	# Prompt symbol: turns red if the previous command didn't exit with 0.
+	local prompt_indicator='%(?.%F{$prompt_pure_colors[prompt:success]}.%F{$prompt_pure_colors[prompt:error]})${prompt_pure_state[prompt]}%f '
 	PROMPT+=$prompt_indicator
 
 	# Indicate continuation prompt by … and use a darker color for it.
