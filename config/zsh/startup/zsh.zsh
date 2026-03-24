@@ -3,9 +3,9 @@ set -k
 
 # Keep lots of shell history and save it to ~/.local/share/zsh/history
 setopt hist_expire_dups_first hist_ignore_space hist_no_functions \
-  hist_no_store inc_append_history share_history extended_history
-HISTSIZE=100000
-SAVEHIST=100000
+  hist_no_store share_history extended_history
+HISTSIZE=1000000
+SAVEHIST=$HISTSIZE
 HISTFILE="${XDG_DATA_HOME}/zsh/history"
 
 # Autoload zsh functions.
