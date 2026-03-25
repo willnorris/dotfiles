@@ -59,9 +59,10 @@ input "type:keyboard" {
   # caps lock → ctrl, right ctrl → compose
   xkb_options ctrl:nocaps,compose:rctrl
 }
-# disable ctrl:nocaps on keychron keyboard, which has custom mappings
+# disable ctrl:nocaps on specific keyboards, which have custom mappings
 input "13364:4656:Keychron_Keychron_Q3_Ultra_8K_Keyboard" xkb_options compose:rctrl
 input "13364:53288:Keychron_Keychron_Ultra-Link_8K_Keyboard" xkb_options compose:rctrl
+input "12771:5122:Wooting_Wooting_80HE" xkb_options compose:rctrl
 
 input "type:pointer" {
   natural_scroll enabled
