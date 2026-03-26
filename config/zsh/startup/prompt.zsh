@@ -45,7 +45,7 @@ prompt_willnorris_precmd() {
     local zero='%([BSUbfksu]|([FK]|){*})'
     local expanded_prompt
     expanded_prompt="${(S%%)PROMPT//$~zero/}"
-    cols=$(( $COLUMNS - ${#expanded_prompt} + $(expr length $(print -nP '%~')) + 5))
+    cols=$(( $COLUMNS - ${#expanded_prompt} + ${(c)#$(print -nP '%~')} + 5))
     if (($cols > $COLUMNS)); then
       cols=$COLUMNS
     fi
