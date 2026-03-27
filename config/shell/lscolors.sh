@@ -5,8 +5,8 @@
 [ -z "$PS1" ] && return # interactive only
 
 if [ -r "$XDG_CONFIG_HOME/shell/dircolors" ]; then
-  if has udircolors; then
-    eval "$(udircolors ~/.config/shell/dircolors)"
+  if has uu-dircolors; then
+    eval "$(uu-dircolors ~/.config/shell/dircolors)"
   elif has gdircolors; then
     eval "$(gdircolors ~/.config/shell/dircolors)"
   elif has dircolors; then
