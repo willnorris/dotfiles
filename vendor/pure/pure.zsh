@@ -161,9 +161,11 @@ prompt_pure_preprompt_render() {
 
 	if [[ $1 == precmd ]]; then
 		# Initial newline, for spaciousness.
-		if ${prompt_pure_state[pre_space]}; then
-			print
-		fi
+		# Only if :prompt:pure:preprompt newline is true or unset
+		zstyle -t ":prompt:pure:preprompt" newline
+		case $? in
+			0|2) print ;;
+		esac
 	elif [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
 		# Redraw the prompt.
 		prompt_pure_reset_prompt
@@ -701,7 +703,6 @@ prompt_pure_state_setup() {
 	prompt_pure_state+=(
 		user_color "$user_color"
 		prompt	   "${PURE_PROMPT_SYMBOL:-❯}"
-		pre_space  true
 	)
 }
 
@@ -844,7 +845,7 @@ prompt_pure_setup() {
 	typeset -g prompt_pure_git_branch_color=$prompt_pure_colors[git:branch]
 
 	# Construct PROMPT once, both preprompt and prompt line. Kept
-	# dynamic via variables and psvar[12-20], updated each render
+	# dynamic via variables and psvar[12-21], updated each render
 	# in prompt_pure_preprompt_render. Numbering starts at 12 for
 	# legacy reasons (Pure originally used psvar[12] for virtualenv)
 	# and to avoid collisions with low psvar indices which users

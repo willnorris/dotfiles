@@ -39,20 +39,19 @@ prompt_willnorris_precmd() {
 
   # split prompt if sufficient vertical space or not enough width
   if (( $min_height || $max_width )); then
+    zstyle :prompt:pure:preprompt newline true
     prompt_newline=$'\n%{\r%}'
 
     psvar[21]=$(print -nP '%~')
     local zero='%([BSUbfksu]|([FK]|){*})'
-    local expanded_prompt
-    expanded_prompt="${(S%%)PROMPT//$~zero/}"
+    local expanded_prompt="${(S%%)PROMPT//$~zero/}"
     cols=$(( $COLUMNS - ${#expanded_prompt} + ${(c)#$(print -nP '%~')} + 5))
     if (($cols > $COLUMNS)); then
       cols=$COLUMNS
     fi
-    prompt_pure_state+=(pre_space true)
   else
+    zstyle :prompt:pure:preprompt newline false
     prompt_newline=' '
-    prompt_pure_state+=(pre_space false)
     cols=$(( $COLUMNS * 1/4 ))
   fi
 
