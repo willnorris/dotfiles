@@ -5,6 +5,8 @@
   --toolbox-textcolor: #eee;
   --toolbox-textcolor-inactive: #eee;
   --toolbarbutton-icon-fill: currentColor;
+  background: var(--toolbox-bgcolor);
+  color: var(--toolbox-textcolor);
 }
 #urlbar {
   --toolbar-field-background-color: rgba(255, 255, 255, 0.95);
