@@ -22,6 +22,7 @@ text/plain=org.gnome.TextEditor.desktop
 application/zip=org.gnome.Nautilus.desktop
 opendeck=opendeck-handler.desktop
 application/vnd.oasis.opendocument.text=org.libreoffice.LibreOffice.writer.desktop
+video/mp4=org.videolan.VLC.desktop
 
 [Added Associations]
 x-scheme-handler/http=browser-open.desktop;
@@ -43,3 +44,4 @@ text/markdown=org.gnome.TextEditor.desktop;
 text/plain=org.gnome.TextEditor.desktop;
 application/zip=org.gnome.Nautilus.desktop;
 application/vnd.oasis.opendocument.text=org.libreoffice.LibreOffice.writer.desktop;
+video/mp4=org.videolan.VLC.desktop;
