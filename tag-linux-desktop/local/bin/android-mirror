@@ -1,13 +1,23 @@
 #!/bin/bash
-
 # Try to connect to my phone over TCP first.
 # If that fails, then fallback to normal USB connection.
+#
+# shellcheck disable=SC2086
 
 flags="--keyboard=uhid --mouse=uhid --show-touches --stay-awake"
 
-if nc -z p7w.lan.willnorris.net 5555 &>/dev/null; then
-  flags="${flags} --tcpip=p7w.lan.willnorris.net:5555"
-fi
+# additional flags for performance
+flags="${flags} --video-codec=h265 --max-size=1920 --max-fps=60"
 
 set -x
-scrcpy ${flags} "$@"
+
+# prefer physical device
+scrcpy -d ${flags} "$@" && exit
+
+# then any network attached devices
+scrcpy -e ${flags} "$@" && exit
+
+# finally try my specific hostname over the network
+if nc -z p7w.lan.willnorris.net 5555 &>/dev/null; then
+  scrcpy --tcpip=p7w.lan.willnorris.net:5555 ${flags} "$@"
+fi
