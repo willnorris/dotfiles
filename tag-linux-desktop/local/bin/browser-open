@@ -19,6 +19,20 @@ time="$(date +%H:%M)"
 
 profile=$(gsettings get com.willnorris.desktop browser-profile | cut -d "'" -f2)
 
+# If default, pick profile based on URL pattern.
+# Just testing for now, should probably pull this out to a config file.
+if [ "${profile}" = "default" ]; then
+  case "$1" in
+  *.corp.ts.net*)
+    profile="work"
+    ;;
+  *youtube.com*)
+    profile="personal"
+    ;;
+  *) ;;
+  esac
+fi
+
 case $profile in
 "default" | "reverse")
   if [[ $(date +%u) -le 5 ]] && [[ "$time" > "08:00" ]] && [[ "$time" < "17:00" ]]; then
