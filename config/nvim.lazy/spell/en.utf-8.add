@@ -18,6 +18,7 @@ CLA
 CLAs
 committer
 curation
+DynamoDB
 ebook
 etherpad
 Facebook
@@ -55,12 +56,9 @@ plugins
 presubmit
 programmatically
 ransomware
-shardmap
 SignCLA
 SNI
-tailnet
-tailnets
-Tailscale
+sqlite
 Tantek
 TODO
 UI
@@ -71,3 +69,13 @@ webmentions
 wiki
 willnorris
 WordPress
+
+## Tailscale-specific words
+cfgdb
+shardapi
+shardmap
+tailnet
+tailnets
+Tailscale
+
+## To be sorted
