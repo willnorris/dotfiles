@@ -159,6 +159,10 @@ bindsym {
   Alt+0 workspace number 10
   Alt+Minus workspace -
 
+  Alt+Period workspace next_on_output
+  Alt+Comma  workspace prev_on_output
+  Alt+Tab    workspace back_and_forth
+
   # Move focused container to workspace, and keep focus
   Alt+Shift+1 [con_id=__focused__] move container to workspace number 1, focus
   Alt+Shift+2 [con_id=__focused__] move container to workspace number 2, focus
