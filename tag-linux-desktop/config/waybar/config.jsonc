@@ -83,8 +83,8 @@
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "iwgtk",
-    "on-click-right": "blueberry",
+    "on-click": "pkill iwgtk || iwgtk",
+    "on-click-right": "pkill blueberry || blueberry",
   },
   "battery": {
     "bat": "BAT1",
@@ -97,8 +97,8 @@
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{capacity}% - {timeTo}",
     "max-length": 25,
-    "on-click": "kitty --class btop btop",
-    "on-click-right": "kitty --class batmon batmon",
+    "on-click": "pkill -f '^kitty --class btop' || kitty --class btop btop",
+    "on-click-right": "pkill -f '^kitty --class batmon' || kitty --class batmon batmon",
   },
   "group/performance": {
     "orientation": "inherit",
