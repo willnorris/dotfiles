@@ -1,8 +1,6 @@
 local keymap = vim.keymap.set
 local mod = require("util").mod
 
-vim.o.winblend = 0 -- disable transparency of floating windows
-
 vim.pack.add({
   "https://github.com/folke/snacks.nvim",
 })
