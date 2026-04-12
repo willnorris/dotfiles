@@ -28,5 +28,5 @@ C.on_packchanged = function(plugin_name, kinds, callback, desc)
     if not ev.data.active then vim.cmd.packadd(plugin_name) end
     callback(ev.data)
   end
-  C.new_autocmd('PackChanged', '*', f, desc)
+  C.autocmd('PackChanged', '*', f, desc)
 end
