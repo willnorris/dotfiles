@@ -1,11 +1,10 @@
-local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 local keymap = vim.keymap.set
 local mod = require("util").mod
 
 vim.pack.add({
   "https://github.com/folke/snacks.nvim",
 })
-later(function()
+C.later(function()
   require("snacks").setup({
     gh = {},
     picker = {
@@ -136,7 +135,7 @@ later(function()
 end)
 
 vim.pack.add({ "https://github.com/folke/which-key.nvim" })
-later(function()
+C.later(function()
   local wk = require("which-key")
   wk.setup({
     preset = "classic",
@@ -151,7 +150,7 @@ later(function()
   })
 end)
 
-now(function()
+C.now(function()
   require("mini.statusline").setup({
     content = {
       active = function()
@@ -177,8 +176,8 @@ now(function()
     },
   })
 end)
-now(function() require("mini.tabline").setup() end)
+C.now(function() require("mini.tabline").setup() end)
 
-now(function() require("mini.starter").setup() end)
-now(function() require("mini.sessions").setup() end)
-now(function() require("mini.notify").setup() end)
+C.now(function() require("mini.starter").setup() end)
+C.now(function() require("mini.sessions").setup() end)
+C.now(function() require("mini.notify").setup() end)

@@ -38,7 +38,7 @@ vim.o.termguicolors = true
 -- This helps visualize erroneous tabs in a file that uses spaces.
 -- Run on BufEnter after vim-sleuth has run.
 vim.o.list = false
-Config.autocmd("BufEnter", "*", function()
+C.autocmd("BufEnter", "*", function()
     if vim.bo.filetype == "noice" then
       return
     end
@@ -123,6 +123,6 @@ local diagnostic_opts = {
 }
 
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup
-Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
+C.later(function() vim.diagnostic.config(diagnostic_opts) end)
 
 vim.cmd [[colorscheme wjn]]

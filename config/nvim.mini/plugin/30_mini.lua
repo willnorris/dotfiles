@@ -1,4 +1,4 @@
-Config.now(function()
+C.now(function()
   require("mini.basics").setup({
     options = {
       basic = false,
