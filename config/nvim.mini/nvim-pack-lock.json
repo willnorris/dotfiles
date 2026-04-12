@@ -4,6 +4,10 @@
       "rev": "c8c0f255e8090ed90dd9d5dd2e8672994f8e3671",
       "src": "https://github.com/rhysd/committia.vim"
     },
+    "conform.nvim": {
+      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "focus.nvim": {
       "rev": "36ebedeebe82ebea250c9d671769194caa033902",
       "src": "https://github.com/nvim-focus/focus.nvim"

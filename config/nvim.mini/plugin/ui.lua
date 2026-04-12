@@ -147,6 +147,7 @@ C.later(function()
       { "<leader>b", group = "buffers", expand = function()
         return require("which-key.extras").expand.buf()
       end },
+      { "<leader>c", group = "code" },
       { "<leader>f", group = "find" },
       { "<leader>s", group = "search" },
     },
