@@ -13,7 +13,6 @@ C.now_if_args = vim.fn.argc(-1) > 0 and C.now or C.later
 C.on_event = function(ev, f) misc.safely('event:' .. ev, f) end
 C.on_filetype = function(ft, f) misc.safely('filetype:' .. ft, f) end
 
-
 -- Custom autocommand group and helper for creating autocommands.
 local gr = vim.api.nvim_create_augroup('custom-config', {})
 C.autocmd = function(event, pattern, callback, desc)

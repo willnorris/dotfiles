@@ -1,5 +1,5 @@
-vim.pack.add({"https://github.com/lewis6991/gitsigns.nvim"})
 C.later(function()
+  vim.pack.add({"https://github.com/lewis6991/gitsigns.nvim"})
   require("gitsigns").setup({
     signs = {
       add = { text = "+" },
@@ -61,11 +61,11 @@ C.later(function()
   })
 end)
 
-vim.pack.add({
-  "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/ruifm/gitlinker.nvim"
-})
 C.later(function()
+  vim.pack.add({
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/ruifm/gitlinker.nvim"
+  })
   local g = require("gitlinker")
   g.setup({mappings = nil})
   for _, mode in pairs({"n", "v"}) do
@@ -73,8 +73,8 @@ C.later(function()
   end
 end)
 
-vim.pack.add({"https://github.com/rhysd/committia.vim"})
 C.later(function()
+  vim.pack.add({"https://github.com/rhysd/committia.vim"})
   vim.g.committia_hooks = {
     edit_open = function(_)
       vim.wo.spell = true

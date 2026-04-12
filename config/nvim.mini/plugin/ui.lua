@@ -1,10 +1,8 @@
 local keymap = vim.keymap.set
 local mod = require("util").mod
 
-vim.pack.add({
-  "https://github.com/folke/snacks.nvim",
-})
 C.later(function()
+  vim.pack.add({"https://github.com/folke/snacks.nvim"})
   require("snacks").setup({
     gh = {},
     picker = {
@@ -134,8 +132,8 @@ C.later(function()
   keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
 end)
 
-vim.pack.add({ "https://github.com/folke/which-key.nvim" })
 C.later(function()
+  vim.pack.add({ "https://github.com/folke/which-key.nvim" })
   local wk = require("which-key")
   wk.setup({
     preset = "classic",
