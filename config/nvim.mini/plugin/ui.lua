@@ -156,12 +156,11 @@ C.later(function()
       border = "rounded",
     },
   })
-end)
 
--- Register keymap groups with which-key after all plugin files have been loaded.
-C.autocmd("VimEnter", "*", function()
-  local wk = require("which-key")
-  wk.add(C.keymap_groups)
+  -- Register keymap groups after all other plugins have added their groups.
+  C.later(function()
+    wk.add(C.keymap_groups)
+  end)
 end)
 
 C.now(function()
