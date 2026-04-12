@@ -190,7 +190,15 @@ C.now(function()
     },
   })
 end)
-C.now(function() require("mini.tabline").setup() end)
+C.now(function()
+  require("mini.tabline").setup({
+    show_icons = false,
+    -- add extra space around label name
+    format = function(buf_id, label)
+      return string.format(' %s ', MiniTabline.default_format(buf_id, label))
+    end
+  })
+end)
 
 C.now(function() require("mini.starter").setup() end)
 C.now(function() require("mini.sessions").setup() end)
