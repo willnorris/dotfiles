@@ -144,10 +144,24 @@ C.later(function()
       mappings = false,
       rules = false,
     },
+    spec = {
+      mode = {"n","x"},
+      { "<leader>b", group = "buffers", expand = function()
+        return require("which-key.extras").expand.buf()
+      end },
+      { "<leader>f", group = "find" },
+      { "<leader>s", group = "search" },
+    },
     win = {
       border = "rounded",
     },
   })
+end)
+
+-- Register keymap groups with which-key after all plugin files have been loaded.
+C.autocmd("VimEnter", "*", function()
+  local wk = require("which-key")
+  wk.add(C.keymap_groups)
 end)
 
 C.now(function()

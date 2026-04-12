@@ -14,4 +14,5 @@ C.now(function()
     },
     silent = true,
   })
+  table.insert(C.keymap_groups, { "<Leader>u", group = "toggle" })
 end)

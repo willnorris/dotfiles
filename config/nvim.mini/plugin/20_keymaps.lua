@@ -1,6 +1,15 @@
 -- Keymaps
-local keymap = vim.keymap.set
 
-keymap("n", "<leader>bd", function() require("mini.bufremove").delete() end, { desc = "Close buffer" })
-keymap("n", "H", "<cmd>bprev<cr>", { desc = "Go to previous buffer" })
-keymap("n", "L", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
+local nmap = function(lhs, rhs, desc)
+  vim.keymap.set('n', lhs, rhs, { desc = desc })
+end
+
+C.later(function() require("mini.bufremove").setup() end)
+
+nmap("<Leader>bd", "<Cmd>lua MiniBufremove.delete()<CR>", "Delete")
+nmap("<Leader>bD", "<Cmd>lua MiniBufremove.delete(0, true)<CR>", "Delete!")
+nmap("H", "<cmd>bprev<cr>", "Go to previous buffer")
+nmap("L", "<cmd>bnext<cr>", "Go to next buffer")
+
+-- additional keymap groups to register with which-key
+C.keymap_groups = {}
