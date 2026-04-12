@@ -197,6 +197,18 @@ C.now(function()
   })
 end)
 
+-- Auto-resize windows according to golden ratio
+C.later(function()
+  vim.pack.add({ "https://github.com/nvim-focus/focus.nvim" })
+  local focus = require("focus")
+  focus.setup({
+    ui = {
+      signcolumn = false,
+    },
+  })
+  keymap("n", "<Leader>uv", function() focus.focus_toggle() end, { desc = "Toggle golden ration view" })
+end)
+
 C.now(function() require("mini.starter").setup() end)
 C.now(function() require("mini.sessions").setup() end)
 C.now(function() require("mini.notify").setup() end)
