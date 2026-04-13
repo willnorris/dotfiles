@@ -89,7 +89,6 @@ vim.o.completetimeout = 100                             -- Limit sources delay
 
 -- Always use OSC52 clipboard
 vim.g.clipboard       = "osc52"
-vim.keymap.set({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" })
 
 -- Filetype aliases
 vim.filetype.add {

@@ -107,3 +107,18 @@ C.later(function()
   -- Press "jk" quickly to <esc>
   keymap.map_combo({ "i", "c", "x", "s" }, "jk", "<BS><BS><Esc>")
 end)
+
+-- Restore 'gw' to default behavior by resetting formatexpr if null-ls
+-- is not providing any formatting generators.
+-- See: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
+C.later(function()
+  vim.pack.add({
+    "https://github.com/folke/snacks.nvim",
+    "https://github.com/nvimtools/none-ls.nvim",
+  })
+  require("snacks.util").lsp.on({ name = "none-ls" }, function(buf)
+    if not require("none-ls.generators").can_run(vim.bo[buf].filetype, require("none-ls.methods").lsp.FORMATTING) then
+      vim.bo[buf].formatexpr = nil
+    end
+  end)
+end)

@@ -5,6 +5,63 @@ local nmap = function(lhs, rhs, desc)
 end
 C.nmap = nmap
 
+-- better up/down
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
+-- Execute command and preserve cursor location.
+-- https://stackoverflow.com/questions/70691265
+local preserve = function(arguments)
+  local command = string.format("keepjumps keeppatterns execute %q", arguments)
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_command(command)
+  local lastline = vim.fn.line("$")
+  if lastline and line > lastline then
+    line = lastline
+  end
+  vim.api.nvim_win_set_cursor(0, { line, col })
+end
+
+nmap("<C-C>", function()
+  vim.cmd("mode|redrawstatus!|redrawtabline")
+  vim.cmd("nohlsearch|diffupdate")
+end, "clear and redraw screen")
+
+-- https://github.com/wookayin/dotfiles/commit/96d9355
+nmap("<Leader>wc", function()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+    if config.relative ~= "" then        -- is_floating_window?
+      vim.api.nvim_win_close(win, false) -- do not force
+    end
+  end
+end, "Close all floating windows")
+
+-- Join lines and restore cursor location (J)
+nmap("J", function() preserve("join") end, "Join lines")
+
+-- strip trailing whitespace
+nmap("_$", function() preserve("%s/\\s\\+$//e") end, "strip trailing whitespace")
+
+local mod = require("util").mod
+-- timestamp insertion
+vim.keymap.set("i", mod("i") .. "t", "<C-R>=system('timestamp -rfc3339')<CR>", { desc = "timestamp -rfc3339" })
+vim.keymap.set("i", mod("i") .. "z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>", { desc = "timestamp -rfc3339 -utc" })
+vim.keymap.set("i", mod("i") .. "e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestamp -epoch" })
+
+-- j/k to move in wildmenu
+vim.keymap.set("c", "<C-j>", "<c-n>", { remap = true })
+vim.keymap.set("c", "<C-k>", "<c-p>", { remap = true })
+
+-- replace selection with text from default register without changing the register
+vim.keymap.set("x", "po", [["_dP]], { desc = "Paste and keep default register" })
+
+-- yank text to system clipboard
+vim.keymap.set({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" })
+
+-- buffer navigation
 C.later(function()
   local bufremove = require("mini.bufremove")
   bufremove.setup()
@@ -13,12 +70,19 @@ C.later(function()
   nmap("<Leader>bD", function() bufremove.delete(0, true) end, "Delete!")
   nmap("H", "<cmd>bprev<cr>", "Go to previous buffer")
   nmap("L", "<cmd>bnext<cr>", "Go to next buffer")
+  vim.keymap.set("n", "<Leader>;", "<C-^>", { noremap = true, desc = "Last buffer" })
 end)
+
+-- remove default gr* keymaps
+vim.keymap.del({ "n", "x" }, "gra")
+for _, k in pairs({ "gri", "grn", "grr", "grt", "grx", "gO" }) do
+  vim.keymap.del("n", k)
+end
 
 -- Configure default keyamps for code and LSP actions.
 -- Many of these will be overwritten later by plugins.
-vim.keymap.set({"n","x"}, "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action"})
-vim.keymap.set({"n","x"}, "<leader>cf", vim.lsp.buf.format, {desc = "Format"})
+vim.keymap.set({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+vim.keymap.set({ "n", "x" }, "<leader>cf", vim.lsp.buf.format, { desc = "Format" })
 nmap("<Leader>cd", vim.diagnostic.open_float, "Line diagnostics")
 nmap("<Leader>cl", vim.lsp.codelens.run, "Lens")
 nmap("<Leader>cr", vim.lsp.buf.rename, "Rename")
@@ -33,5 +97,5 @@ nmap("gao", vim.lsp.buf.outgoing_calls, "C[a]lls Outgoing")
 
 nmap("<Leader>cd", function() vim.diagnostic.open_float() end, "Line diagnostics")
 
--- additional keymap groups to register with which-key
+-- store additional keymap groups to register with which-key
 C.keymap_groups = {}
