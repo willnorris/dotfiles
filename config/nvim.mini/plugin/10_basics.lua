@@ -33,6 +33,7 @@ vim.o.splitkeep = "cursor"
 vim.o.splitright = true
 vim.o.wrap = true
 vim.o.termguicolors = true
+vim.o.winborder = "rounded"
 
 -- Set the list option only if expandtab is set.
 -- This helps visualize erroneous tabs in a file that uses spaces.
@@ -75,8 +76,6 @@ vim.o.splitkeep = "screen"
 vim.o.completeopt = "menuone,noselect"
 vim.o.virtualedit = "block"
 vim.opt.shortmess:append("WIcC")
-
-vim.o.iskeyword       = "@,48-57,_,192-255,-" -- Treat dash as `word` textobject part
 
 -- Pattern for a start of numbered list (used in `gw`). This reads as
 -- "Start of list item is: at least one special character (digit, -, +, *)
