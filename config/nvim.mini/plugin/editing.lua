@@ -1,7 +1,8 @@
-C.later(function()
+C.now_if_args(function()
   vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
   vim.lsp.enable({
     "lua_ls",
+    "gopls",
   })
 end)
 
@@ -16,7 +17,9 @@ C.later(function()
     format_on_save = {},
     -- Map of filetype to formatters
     -- Make sure that necessary CLI tool is available
-    -- formatters_by_ft = { lua = { 'stylua' } },
+    formatters_by_ft = {
+      go = { "goimports", "gofmt" },
+    },
   })
   vim.keymap.set({ "n", "x" }, "<Leader>cf",
     function() conform.format() end,
@@ -53,6 +56,7 @@ C.now_if_args(function()
     "lua",
     "vimdoc",
     "markdown",
+    "go", "gomod", "gosum", "gowork",
   }
   local to_install = vim.tbl_filter(function(lang)
     return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".*", false) == 0
