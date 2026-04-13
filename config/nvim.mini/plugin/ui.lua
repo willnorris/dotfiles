@@ -233,6 +233,27 @@ C.now(function()
   })
 end)
 
+C.later(function()
+  vim.pack.add({
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/folke/todo-comments.nvim"
+  })
+
+  require("todo-comments").setup({
+    highlight = {
+      pattern = {
+        [[.*<(KEYWORDS)\s*:]],
+        [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle KEYWORD(name):
+      },
+      keyword = "fg",
+      after = "",
+    },
+    search = {
+      pattern = [[\b(KEYWORDS)(\(.*\))?:]],
+    },
+  })
+end)
+
 -- Auto-resize windows according to golden ratio
 C.later(function()
   vim.pack.add({ "https://github.com/nvim-focus/focus.nvim" })

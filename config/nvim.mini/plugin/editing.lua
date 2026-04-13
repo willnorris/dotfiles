@@ -87,6 +87,12 @@ C.later(function()
 end)
 
 C.later(function()
+  vim.pack.add({ "https://github.com/chentoast/marks.nvim" })
+  require("marks").setup()
+  C.nmap("<Leader>um", "<Cmd>MarksToggleSigns<CR>", "Toggle marks")
+end)
+
+C.later(function()
   require("mini.surround").setup({
     mappings = {
       add = "ys",     -- Add surrounding in Normal and Visual modes
