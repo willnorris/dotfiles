@@ -1,6 +1,13 @@
 local keymap = vim.keymap.set
 local mod = require("util").mod
 
+-- restore cursor position
+C.now(function()
+  C.autocmd("BufWinEnter", "*",
+    function() vim.cmd([[silent! normal! g`"zv']]) end,
+    "return cursor to where it was last time closing the file")
+end)
+
 C.later(function()
   vim.pack.add({ "https://github.com/folke/snacks.nvim" })
   require("snacks").setup({
