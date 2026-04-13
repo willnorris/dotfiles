@@ -220,7 +220,29 @@ C.later(function()
   keymap("n", "<Leader>uv", function() focus.focus_toggle() end, { desc = "Toggle golden ration view" })
 end)
 
-C.now(function() require("mini.starter").setup() end)
+C.now(function()
+  local starter = require("mini.starter")
+  starter.setup({
+    header = "",
+    footer = "",
+    items = {
+      starter.sections.sessions(5, true),
+      starter.sections.recent_files(5, false, false),
+      {
+        { name = "New buffer", action = "enew", section = "Builtin actions" },
+        { name = "Quit Neovim", action = "qall", section = "Builtin actions" },
+      },
+
+    },
+  })
+  -- add keymaps to navigate with <C-j> and <C-k>
+  C.autocmd("User", "MiniStarterOpened", function(ev)
+    vim.keymap.set({ "n" }, "<C-j>", function() starter.update_current_item("next") end,
+      { buf = ev.buf, nowait = true, silent = true })
+    vim.keymap.set({ "n" }, "<C-k>", function() starter.update_current_item("prev") end,
+      { buf = ev.buf, nowait = true, silent = true })
+  end, "")
+end)
 
 C.now(function()
   local sessions = require("mini.sessions")

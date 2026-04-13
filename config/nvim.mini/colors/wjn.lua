@@ -101,6 +101,9 @@ local highlights = {
   MiniTablineVisible = { bg = p.base01 },
   MiniTablineHidden = { bg = p.base01 },
 
+  MiniStarterSection = { fg = c.blue },
+  MiniStarterItemBullet = { fg = p.base02 },
+
   PmenuBorder = { fg = p.base03, bg = p.base01 },
   BlinkCmpMenuBorder = { link = "PmenuBorder" },
   BlinkCmpDocBorder = { link = "PmenuBorder" },
