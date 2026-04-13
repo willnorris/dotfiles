@@ -133,6 +133,8 @@ C.later(function()
   keymap("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "C[a]lls Outgoing" })
   keymap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
   keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+
+  keymap("n", "<leader>cL", function() Snacks.picker.lsp_config() end, { desc = "LSP Info" })
 end)
 
 C.later(function()
