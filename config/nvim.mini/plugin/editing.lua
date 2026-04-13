@@ -1,3 +1,8 @@
+-- Heuristically set buffer options
+C.now(function()
+  vim.pack.add({ "https://github.com/tpope/vim-sleuth" })
+end)
+
 C.now_if_args(function()
   vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
   vim.lsp.enable({
@@ -74,6 +79,13 @@ C.now_if_args(function()
   C.autocmd("FileType", filetypes, ts_start, "Start tree-sitter")
 end)
 
+-- Semantic Line Breaks
+C.later(function()
+  vim.pack.add({ "https://github.com/konfekt/vim-sentence-chopper" })
+  vim.keymap.set({ "n", "x" }, "gs", "<Plug>(ChopSentences)",
+    { desc = "Semantic Line Break" })
+end)
+
 C.later(function()
   require("mini.surround").setup({
     mappings = {
@@ -87,4 +99,11 @@ end)
 C.later(function()
   local ai = require("mini.ai")
   ai.setup({})
+end)
+
+C.later(function()
+  local keymap = require("mini.keymap")
+  keymap.setup()
+  -- Press "jk" quickly to <esc>
+  keymap.map_combo({ "i", "c", "x", "s" }, "jk", "<BS><BS><Esc>")
 end)

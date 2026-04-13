@@ -52,6 +52,14 @@
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
     },
+    "vim-sentence-chopper": {
+      "rev": "dbfd03dd014ff3b76d98c33a7fdae50b5fe9bf7f",
+      "src": "https://github.com/konfekt/vim-sentence-chopper"
+    },
+    "vim-sleuth": {
+      "rev": "be69bff86754b1aa5adcbb527d7fcd1635a84080",
+      "src": "https://github.com/tpope/vim-sleuth"
+    },
     "which-key.nvim": {
       "rev": "3aab214",
       "src": "https://github.com/folke/which-key.nvim"
