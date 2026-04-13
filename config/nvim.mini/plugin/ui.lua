@@ -10,7 +10,8 @@ end)
 
 C.later(function()
   vim.pack.add({ "https://github.com/folke/snacks.nvim" })
-  require("snacks").setup({
+  local snacks = require("snacks")
+  snacks.setup({
     gh = {},
     picker = {
       layout = {
@@ -69,79 +70,80 @@ C.later(function()
       },
       actions = {
         preview_down = function(p)
-          vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<C-e>")) end)
+          vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. snacks.util.keycode("<C-e>")) end)
         end,
         preview_up = function(p)
-          vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. Snacks.util.keycode("<C-y>")) end)
+          vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. snacks.util.keycode("<C-y>")) end)
         end,
       },
     },
   })
-  keymap("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Find Files (Root Dir)" })
-  keymap("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-  keymap("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
-  keymap("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "Command History" })
-  keymap("n", "<leader>n", function() Snacks.picker.notifications() end, { desc = "Notification History" })
-  keymap("n", "<leader>e", function() Snacks.picker.explorer() end, { desc = "File Explorer" })
+  C.nmap("<Leader><space>", snacks.picker.smart, "Find Files (Root Dir)")
+  C.nmap("<Leader>,", snacks.picker.buffers, "Buffers")
+  C.nmap("<Leader>/", snacks.picker.grep, "Grep")
+  C.nmap("<Leader>:", snacks.picker.command_history, "Command History")
+  C.nmap("<Leader>n", snacks.picker.notifications, "Notification History")
+  C.nmap("<Leader>e", snacks.picker.explorer, "File Explorer")
   -- find
-  keymap("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-  keymap("n", "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true }) end, { desc = "Buffers" })
-  keymap("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
-    { desc = "Find Config Files" })
-  keymap("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
-  keymap("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Files (git-files)" })
-  keymap("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
-  keymap("n", "<leader>fR", function() Snacks.picker.recent({ filter = { cwd = true } }) end, { desc = "Recent (cwd)" })
-  keymap("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
+  C.nmap("<Leader>fb", snacks.picker.buffers, "Buffers")
+  C.nmap("<Leader>fB", function() snacks.picker.buffers({ hidden = true, nofile = true }) end, "Buffers")
+  C.nmap("<Leader>fc", function() snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, "Find Config Files")
+  C.nmap("<Leader>ff", snacks.picker.files, "Find Files")
+  C.nmap("<Leader>fg", snacks.picker.git_files, "Find Files (git-files)")
+  C.nmap("<Leader>fr", snacks.picker.recent, "Recent")
+  C.nmap("<Leader>fR", function() snacks.picker.recent({ filter = { cwd = true } }) end, "Recent (cwd)")
+  C.nmap("<Leader>fp", snacks.picker.projects, "Projects")
   -- git
-  keymap("n", "<leader>gd", function() Snacks.picker.git_diff() end, { desc = "Git Diff (hunks)" })
-  keymap("n", "<leader>gD", function() Snacks.picker.git_diff({ base = "origin", group = true }) end,
-    { desc = "Git Diff (origin)" })
-  keymap("n", "<leader>gs", function() Snacks.picker.git_status() end, { desc = "Git Status" })
-  keymap("n", "<leader>gS", function() Snacks.picker.git_stash() end, { desc = "Git Stash" })
-  keymap("n", "<leader>gi", function() Snacks.picker.gh_issue() end, { desc = "GitHub Issues (open)" })
-  keymap("n", "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, { desc = "GitHub Issues (all)" })
-  keymap("n", "<leader>gp", function() Snacks.picker.gh_pr() end, { desc = "GitHub Pull Requests (open)" })
-  keymap("n", "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end,
-    { desc = "GitHub Pull Requests (all)" })
+  C.nmap("<Leader>gd", snacks.picker.git_diff, "Git Diff (hunks)")
+  C.nmap("<Leader>gD", function() snacks.picker.git_diff({ base = "origin", group = true }) end, "Git Diff (origin)")
+  C.nmap("<Leader>gs", snacks.picker.git_status, "Git Status")
+  C.nmap("<Leader>gS", snacks.picker.git_stash, "Git Stash")
+  C.nmap("<Leader>gi", snacks.picker.gh_issue, "GitHub Issues (open)")
+  C.nmap("<Leader>gI", function() snacks.picker.gh_issue({ state = "all" }) end, "GitHub Issues (all)")
+  C.nmap("<Leader>gp", snacks.picker.gh_pr, "GitHub Pull Requests (open)")
+  C.nmap("<Leader>gP", function() snacks.picker.gh_pr({ state = "all" }) end, "GitHub Pull Requests (all)")
   -- Grep
-  keymap("n", "<leader>sb", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
-  keymap("n", "<leader>sB", function() Snacks.picker.grep_buffers() end, { desc = "Grep Open Buffers" })
-  keymap("n", "<leader>sg", function() Snacks.picker.grep() end, { desc = "Grep" })
-  keymap("n", "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Grep Word" })
+  C.nmap("<Leader>sb", snacks.picker.lines, "Buffer Lines")
+  C.nmap("<Leader>sB", snacks.picker.grep_buffers, "Grep Open Buffers")
+  C.nmap("<Leader>sg", snacks.picker.grep, "Grep")
+  C.nmap("<Leader>sw", snacks.picker.grep_word, "Grep Word")
   -- search
-  keymap("n", '<leader>s"', function() Snacks.picker.registers() end, { desc = "Registers" })
-  keymap("n", "<leader>s/", function() Snacks.picker.search_history() end, { desc = "Search History" })
-  keymap("n", "<leader>sa", function() Snacks.picker.autocmds() end, { desc = "Autocmds" })
-  keymap("n", "<leader>sc", function() Snacks.picker.command_history() end, { desc = "Command History" })
-  keymap("n", "<leader>sC", function() Snacks.picker.commands() end, { desc = "Commands" })
-  keymap("n", "<leader>sd", function() Snacks.picker.diagnostics() end, { desc = "Diagnostics" })
-  keymap("n", "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, { desc = "Buffer Diagnostics" })
-  keymap("n", "<leader>sh", function() Snacks.picker.help() end, { desc = "Help Pages" })
-  keymap("n", "<leader>sH", function() Snacks.picker.highlights() end, { desc = "Highlights" })
-  keymap("n", "<leader>si", function() Snacks.picker.icons() end, { desc = "Icons" })
-  keymap("n", "<leader>sj", function() Snacks.picker.jumps() end, { desc = "Jumps" })
-  keymap("n", "<leader>sk", function() Snacks.picker.keymaps() end, { desc = "Keymaps" })
-  keymap("n", "<leader>sl", function() Snacks.picker.loclist() end, { desc = "Location List" })
-  keymap("n", "<leader>sM", function() Snacks.picker.man() end, { desc = "Man Pages" })
-  keymap("n", "<leader>sm", function() Snacks.picker.marks() end, { desc = "Marks" })
-  keymap("n", "<leader>sq", function() Snacks.picker.qflist() end, { desc = "Quickfix List" })
-  keymap("n", "<leader>sR", function() Snacks.picker.resume() end, { desc = "Resume" })
-  keymap("n", "<leader>su", function() Snacks.picker.undo() end, { desc = "Undotree" })
+  C.nmap('<Leader>s"', snacks.picker.registers, "Registers")
+  C.nmap("<Leader>s/", snacks.picker.search_history, "Search History")
+  C.nmap("<Leader>sa", snacks.picker.autocmds, "Autocmds")
+  C.nmap("<Leader>sc", snacks.picker.command_history, "Command History")
+  C.nmap("<Leader>sC", snacks.picker.commands, "Commands")
+  C.nmap("<Leader>sd", snacks.picker.diagnostics, "Diagnostics")
+  C.nmap("<Leader>sD", snacks.picker.diagnostics_buffer, "Buffer Diagnostics")
+  C.nmap("<Leader>sh", snacks.picker.help, "Help Pages")
+  C.nmap("<Leader>sH", snacks.picker.highlights, "Highlights")
+  C.nmap("<Leader>si", snacks.picker.icons, "Icons")
+  C.nmap("<Leader>sj", snacks.picker.jumps, "Jumps")
+  C.nmap("<Leader>sk", snacks.picker.keymaps, "Keymaps")
+  C.nmap("<Leader>sl", snacks.picker.loclist, "Location List")
+  C.nmap("<Leader>sM", snacks.picker.man, "Man Pages")
+  C.nmap("<Leader>sm", snacks.picker.marks, "Marks")
+  C.nmap("<Leader>sq", snacks.picker.qflist, "Quickfix List")
+  C.nmap("<Leader>sR", snacks.picker.resume, "Resume")
+  C.nmap("<Leader>su", snacks.picker.undo, "Undotree")
   -- ui
-  keymap("n", "<leader>uC", function() Snacks.picker.colorschemes() end, { desc = "Colorschemes" })
+  C.nmap("<Leader>uC", snacks.picker.colorschemes, "Colorschemes")
 
-  keymap("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
-  keymap("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Goto Declaration" })
-  keymap("n", "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
-  keymap("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
-  keymap("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
-  keymap("n", "gai", function() Snacks.picker.lsp_incoming_calls() end, { desc = "C[a]lls Incoming" })
-  keymap("n", "gao", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "C[a]lls Outgoing" })
-  keymap("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-  keymap("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+  C.nmap("gd", snacks.picker.lsp_definitions, "Goto Definition")
+  C.nmap("gD", snacks.picker.lsp_declarations, "Goto Declaration")
+  keymap("n", "gr", snacks.picker.lsp_references, { nowait = true, desc = "References" })
+  C.nmap("gI", snacks.picker.lsp_implementations, "Goto Implementation")
+  C.nmap("gy", snacks.picker.lsp_type_definitions, "Goto T[y]pe Definition")
+  C.nmap("gai", snacks.picker.lsp_incoming_calls, "C[a]lls Incoming")
+  C.nmap("gao", snacks.picker.lsp_outgoing_calls, "C[a]lls Outgoing")
+  C.nmap("<Leader>ss", snacks.picker.lsp_symbols, "LSP Symbols")
+  C.nmap("<Leader>sS", snacks.picker.lsp_workspace_symbols, "LSP Workspace Symbols")
 
-  keymap("n", "<leader>cL", function() Snacks.picker.lsp_config() end, { desc = "LSP Info" })
+  C.nmap("<Leader>cL", snacks.picker.lsp_config, "LSP Info")
+
+  snacks.words.enable()
+  C.nmap("<C-n>", function() snacks.words.jump(vim.v.count1) end, "Next reference")
+  C.nmap("<C-p>", function() snacks.words.jump(-vim.v.count1) end, "Prev reference")
 end)
 
 C.later(function()
@@ -156,10 +158,10 @@ C.later(function()
     },
     spec = {
       mode = { "n", "x" },
-      { "<leader>b", group = "buffers", expand = function() return require("which-key.extras").expand.buf() end },
-      { "<leader>c", group = "code" },
-      { "<leader>f", group = "find" },
-      { "<leader>s", group = "search" },
+      { "<Leader>b", group = "buffers", expand = function() return require("which-key.extras").expand.buf() end },
+      { "<Leader>c", group = "code" },
+      { "<Leader>f", group = "find" },
+      { "<Leader>s", group = "search" },
     },
     win = {
       border = "rounded",
@@ -173,19 +175,20 @@ C.later(function()
 end)
 
 C.now(function()
-  require("mini.statusline").setup({
+  local msl = require("mini.statusline")
+  msl.setup({
     content = {
       active = function()
-        local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 9999 })
-        local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-        local lsp           = MiniStatusline.section_lsp({ trunc_width = 75 })
-        local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
-        local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
+        local mode, mode_hl = msl.section_mode({ trunc_width = 9999 })
+        local diagnostics   = msl.section_diagnostics({ trunc_width = 75 })
+        local lsp           = msl.section_lsp({ trunc_width = 75 })
+        local filename      = msl.section_filename({ trunc_width = 140 })
+        local search        = msl.section_searchcount({ trunc_width = 75 })
         local location      = "%l:%v"
 
         search              = (string.len(search) > 0 and "[" .. search .. "]" or search)
 
-        return MiniStatusline.combine_groups({
+        return msl.combine_groups({
           { hl = mode_hl, strings = { mode } },
           { hl = "MiniStatuslineDevinfo", strings = { diagnostics, lsp } },
           "%<", -- Mark general truncate point
@@ -199,11 +202,12 @@ C.now(function()
   })
 end)
 C.now(function()
-  require("mini.tabline").setup({
+  local mtl = require("mini.tabline")
+  mtl.setup({
     show_icons = false,
     -- add extra space around label name
     format = function(buf_id, label)
-      return string.format(" %s ", MiniTabline.default_format(buf_id, label))
+      return string.format(" %s ", mtl.default_format(buf_id, label))
     end
   })
 end)
@@ -237,9 +241,9 @@ C.now(function()
   })
   -- add keymaps to navigate with <C-j> and <C-k>
   C.autocmd("User", "MiniStarterOpened", function(ev)
-    vim.keymap.set({ "n" }, "<C-j>", function() starter.update_current_item("next") end,
+    keymap("n", "<C-j>", function() starter.update_current_item("next") end,
       { buf = ev.buf, nowait = true, silent = true })
-    vim.keymap.set({ "n" }, "<C-k>", function() starter.update_current_item("prev") end,
+    keymap("n", "<C-k>", function() starter.update_current_item("prev") end,
       { buf = ev.buf, nowait = true, silent = true })
   end, "")
 end)
