@@ -34,7 +34,15 @@ C.now_if_args(function()
   vim.pack.add({
     "https://github.com/nvim-treesitter/nvim-treesitter",
     "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+    "https://github.com/nvim-treesitter/nvim-treesitter-context",
   })
+
+  require("nvim-treesitter-textobjects").setup()
+  require("treesitter-context").setup()
+
+  vim.keymap.set("n", "[c", function()
+    require("treesitter-context").go_to_context(vim.v.count1)
+  end, { silent = true })
 
   -- Languages to install and auto enable. After changing, restart and wait for install.
   -- To see available languages:
