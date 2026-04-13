@@ -221,5 +221,26 @@ C.later(function()
 end)
 
 C.now(function() require("mini.starter").setup() end)
-C.now(function() require("mini.sessions").setup() end)
-C.now(function() require("mini.notify").setup() end)
+
+C.now(function()
+  local sessions = require("mini.sessions")
+  sessions.setup()
+
+  C.nmap("<Leader>Sd", function() sessions.select("delete") end, "Delete")
+  C.nmap("<Leader>Sn", function() vim.ui.input({ prompt = "Session name: " }, sessions.write) end, "New")
+  C.nmap("<Leader>Sr", function() sessions.select("read") end, "Read")
+  C.nmap("<Leader>SR", sessions.restart, "Restart")
+  C.nmap("<Leader>Sw", sessions.write, "Write current")
+
+  table.insert(C.keymap_groups, { "<Leader>S", group = "session" })
+end)
+
+C.now(function()
+  local notify = require("mini.notify")
+  notify.setup({
+    lsp_progress = {
+      duration_last = 0,
+    },
+  })
+  keymap("n", "<Leader>sn", notify.show_history, { desc = "Notifications" })
+end)
