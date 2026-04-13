@@ -184,9 +184,30 @@ C.now(function()
         local lsp           = msl.section_lsp({ trunc_width = 75 })
         local filename      = msl.section_filename({ trunc_width = 140 })
         local search        = msl.section_searchcount({ trunc_width = 75 })
-        local location      = "%l:%v"
+        local current_mode  = vim.fn.mode()
+        local location
 
-        search              = (string.len(search) > 0 and "[" .. search .. "]" or search)
+        -- \22 matches the control character for <c-v>
+        if current_mode == "\22" or current_mode == "\22s" then
+          local start_line = vim.fn.line("v")
+          local end_line = vim.fn.line(".")
+          local height = math.abs(end_line - start_line) + 1
+
+          local start_col = vim.fn.virtcol("v")
+          local end_col = vim.fn.virtcol(".")
+          local width = math.abs(end_col - start_col) + 1
+
+          location = string.format("%dx%d", height, width)
+        elseif current_mode:match("^[vVsS]") then
+          local start_line = vim.fn.line("v")
+          local end_line = vim.fn.line(".")
+          local count = math.abs(end_line - start_line) + 1
+          location = string.format("%dL", count)
+        else
+          location = "%l:%v"
+        end
+
+        search = (string.len(search) > 0 and "[" .. search .. "]" or search)
 
         return msl.combine_groups({
           { hl = mode_hl, strings = { mode } },
