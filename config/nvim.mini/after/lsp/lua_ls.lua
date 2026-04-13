@@ -5,27 +5,27 @@ return {
   on_attach = function(client, buf_id)
     -- Reduce very long list of triggers for better 'mini.completion' experience
     client.server_capabilities.completionProvider.triggerCharacters =
-      { '.', ':', '#', '(' }
+    { ".", ":", "#", "(" }
   end,
 
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
       if
-        path ~= vim.fn.stdpath('config')
-        and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+          path ~= vim.fn.stdpath("config")
+          and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
       then
         return
       end
     end
 
-    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+    client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
       runtime = {
-        version = 'LuaJIT',
+        version = "LuaJIT",
         -- Find Lua modules same way as Neovim (see `:h lua-module-load`)
         path = {
-          'lua/?.lua',
-          'lua/?/init.lua',
+          "lua/?.lua",
+          "lua/?/init.lua",
         },
       },
       -- Make the server aware of Neovim runtime files

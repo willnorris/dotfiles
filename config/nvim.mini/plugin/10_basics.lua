@@ -20,7 +20,7 @@ vim.o.breakindent = true
 vim.o.breakindentopt = "list:-1"
 vim.o.cmdheight = 0
 vim.o.colorcolumn = "+1" -- display column at edge of textwidth
-vim.o.conceallevel = 0 -- don't conceal anything
+vim.o.conceallevel = 0   -- don't conceal anything
 vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
 vim.o.diffopt = "internal,filler,vertical,closeoff"
@@ -28,7 +28,7 @@ vim.o.linebreak = true
 vim.o.list = true
 vim.o.listchars = "tab:> ,trail:-,extends:>,precedes:<,nbsp:+"
 vim.o.number = true
-vim.o.pumblend = 0     -- no transparency on popup menu
+vim.o.pumblend = 0 -- no transparency on popup menu
 vim.o.splitkeep = "cursor"
 vim.o.splitright = true
 vim.o.wrap = true
@@ -61,7 +61,7 @@ vim.opt.foldopen:append("jump") -- what movements open folds
 
 -- Editing ====================================================================
 vim.o.autoindent = true
-vim.o.formatoptions = 'tcroqnl1j'
+vim.o.formatoptions = "tcroqnl1j"
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.infercase = true
@@ -74,22 +74,22 @@ vim.o.splitkeep = "screen"
 
 vim.o.completeopt = "menuone,noselect"
 vim.o.virtualedit = "block"
-vim.opt.shortmess:append('WIcC')
+vim.opt.shortmess:append("WIcC")
 
-vim.o.iskeyword = '@,48-57,_,192-255,-' -- Treat dash as `word` textobject part
+vim.o.iskeyword       = "@,48-57,_,192-255,-" -- Treat dash as `word` textobject part
 
 -- Pattern for a start of numbered list (used in `gw`). This reads as
 -- "Start of list item is: at least one special character (digit, -, +, *)
 -- possibly followed by punctuation (. or `)`) followed by at least one space".
-vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
+vim.o.formatlistpat   = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 
 -- Built-in completion
-vim.o.complete        = '.,w,b,kspell'                  -- Use less sources
-vim.o.completeopt     = 'menuone,noselect,fuzzy,nosort' -- Use custom behavior
+vim.o.complete        = ".,w,b,kspell"                  -- Use less sources
+vim.o.completeopt     = "menuone,noselect,fuzzy,nosort" -- Use custom behavior
 vim.o.completetimeout = 100                             -- Limit sources delay
 
 -- Always use OSC52 clipboard
-vim.g.clipboard = "osc52"
+vim.g.clipboard       = "osc52"
 vim.keymap.set({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" })
 
 -- Filetype aliases

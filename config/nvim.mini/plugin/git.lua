@@ -1,5 +1,5 @@
 C.later(function()
-  vim.pack.add({"https://github.com/lewis6991/gitsigns.nvim"})
+  vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
   require("gitsigns").setup({
     signs = {
       add = { text = "+" },
@@ -67,14 +67,15 @@ C.later(function()
     "https://github.com/ruifm/gitlinker.nvim"
   })
   local g = require("gitlinker")
-  g.setup({mappings = nil})
-  for _, mode in pairs({"n", "v"}) do
-    vim.keymap.set(mode, "<Leader>gy", function() g.get_buf_range_url(mode) end, { noremap = true, desc = "Copy git URL" })
+  g.setup({ mappings = nil })
+  for _, mode in pairs({ "n", "v" }) do
+    vim.keymap.set(mode, "<Leader>gy", function() g.get_buf_range_url(mode) end,
+      { noremap = true, desc = "Copy git URL" })
   end
 end)
 
 C.later(function()
-  vim.pack.add({"https://github.com/rhysd/committia.vim"})
+  vim.pack.add({ "https://github.com/rhysd/committia.vim" })
   vim.g.committia_hooks = {
     edit_open = function(_)
       vim.wo.spell = true

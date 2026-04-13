@@ -10,7 +10,7 @@ C.now(function()
       windows = true,
     },
     autocommands = {
-        relnum_in_visual_mode = true,
+      relnum_in_visual_mode = true,
     },
     silent = true,
   })
