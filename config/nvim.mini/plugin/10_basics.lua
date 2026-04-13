@@ -104,25 +104,25 @@ vim.filetype.add {
 -- Neovim has built-in support for showing diagnostic messages. This configures
 -- a more conservative display while still being useful.
 -- See `:h vim.diagnostic` and `:h vim.diagnostic.config()`.
-local diagnostic_opts = {
-  -- Show signs on top of any other sign, but only for warnings and errors
-  signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
+C.later(function()
+  local sev = vim.diagnostic.severity
+  vim.diagnostic.config({
+    -- Show signs on top of any other sign, but only for warnings and errors
+    signs = { priority = 9999, severity = { min = sev.WARN, max = sev.ERROR } },
 
-  -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
-  underline = { severity = { min = 'HINT', max = 'ERROR' } },
+    -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
+    underline = { severity = { min = sev.HINT, max = sev.ERROR } },
 
-  -- Show more details immediately for errors on the current line
-  virtual_lines = false,
-  virtual_text = {
-    current_line = true,
-    severity = { min = 'ERROR', max = 'ERROR' },
-  },
+    -- Show more details immediately for errors on the current line
+    virtual_lines = false,
+    virtual_text = {
+      current_line = true,
+      severity = { min = sev.ERROR, max = sev.ERROR },
+    },
 
-  -- Don't update diagnostics when typing
-  update_in_insert = false,
-}
-
--- Use `later()` to avoid sourcing `vim.diagnostic` on startup
-C.later(function() vim.diagnostic.config(diagnostic_opts) end)
+    -- Don't update diagnostics when typing
+    update_in_insert = false,
+  })
+end)
 
 vim.cmd [[colorscheme wjn]]
