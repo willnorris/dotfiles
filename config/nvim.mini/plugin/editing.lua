@@ -68,3 +68,18 @@ C.now_if_args(function()
   local ts_start = function(ev) vim.treesitter.start(ev.buf) end
   C.autocmd("FileType", filetypes, ts_start, "Start tree-sitter")
 end)
+
+C.later(function()
+  require("mini.surround").setup({
+    mappings = {
+      add = "ys",     -- Add surrounding in Normal and Visual modes
+      delete = "ds",  -- Delete surrounding
+      replace = "cs", -- Replace surrounding
+    },
+  })
+end)
+
+C.later(function()
+  local ai = require("mini.ai")
+  ai.setup({})
+end)
