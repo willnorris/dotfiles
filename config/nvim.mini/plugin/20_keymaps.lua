@@ -51,10 +51,6 @@ vim.keymap.set("i", mod("i") .. "t", "<C-R>=system('timestamp -rfc3339')<CR>", {
 vim.keymap.set("i", mod("i") .. "z", "<C-R>=system('timestamp -rfc3339 -utc')<CR>", { desc = "timestamp -rfc3339 -utc" })
 vim.keymap.set("i", mod("i") .. "e", "<C-R>=system('timestamp -epoch')<CR>", { desc = "timestamp -epoch" })
 
--- j/k to move in wildmenu
-vim.keymap.set("c", "<C-j>", "<c-n>", { remap = true })
-vim.keymap.set("c", "<C-k>", "<c-p>", { remap = true })
-
 -- replace selection with text from default register without changing the register
 vim.keymap.set("x", "po", [["_dP]], { desc = "Paste and keep default register" })
 

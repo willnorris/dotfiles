@@ -174,10 +174,23 @@ C.later(function()
 end)
 
 C.later(function()
-  local keymap = require("mini.keymap")
-  keymap.setup()
+  local mk = require("mini.keymap")
+  mk.setup()
+
   -- Press "jk" quickly to <esc>
-  keymap.map_combo({ "i", "c", "x", "s" }, "jk", "<BS><BS><Esc>")
+  mk.map_combo({ "i", "c", "x", "s" }, "jk", "<BS><BS><Esc>")
+
+  -- ctrl+j/k to navigate menus
+  mk.map_multistep({ "i", "c" }, "<C-j>", { "pmenu_next" })
+  mk.map_multistep({ "i", "c" }, "<C-k>", { "pmenu_prev" })
+
+  mk.map_multistep("i", "<CR>", { "pmenu_accept", "minipairs_cr" })
+  mk.map_multistep("i", "<BS>", { "minipairs_bs" })
+
+  mk.map_multistep("i", "<Tab>",
+    { "minisnippets_next", "minisnippets_expand", "pmenu_next" })
+  mk.map_multistep("i", "<S-Tab>",
+    { "minisnippets_prev", "pmenu_prev" })
 end)
 
 -- Restore 'gw' to default behavior by resetting formatexpr if null-ls
