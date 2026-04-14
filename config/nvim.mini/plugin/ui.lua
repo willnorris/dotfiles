@@ -95,7 +95,7 @@ C.later(function()
       win = {
         input = {
           keys = {
-            ["<C-x>"] = { "trouble_open", mode = { "n", "i" }, },
+            ["<C-t>"] = { "trouble_open", mode = { "n", "i" }, },
 
             ["<C-c>"] = { "close", mode = { "n", "i" }, },
 
@@ -113,7 +113,7 @@ C.later(function()
         },
         list = {
           keys = {
-            ["<C-x>"] = "trouble_open",
+            ["<C-t>"] = "trouble_open",
 
             ["<C-f>"] = "list_scroll_down",
             ["<C-b>"] = "list_scroll_up",
@@ -125,14 +125,16 @@ C.later(function()
           },
         },
       },
-      actions = {
-        preview_down = function(p)
-          vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. snacks.util.keycode("<C-e>")) end)
-        end,
-        preview_up = function(p)
-          vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. snacks.util.keycode("<C-y>")) end)
-        end,
-      },
+      actions = vim.tbl_deep_extend("force",
+        require("trouble.sources.snacks").actions,
+        {
+          preview_down = function(p)
+            vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. snacks.util.keycode("<C-e>")) end)
+          end,
+          preview_up = function(p)
+            vim.api.nvim_win_call(p.preview.win.win, function() vim.cmd("normal! " .. snacks.util.keycode("<C-y>")) end)
+          end,
+        })
     },
     toggles = {},
     dim = {},
@@ -329,6 +331,30 @@ C.later(function()
     },
   })
   keymap("n", "<Leader>uv", function() focus.focus_toggle() end, { desc = "Toggle golden ration view" })
+
+  local focus_augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
+
+  vim.api.nvim_create_autocmd("WinEnter", {
+    group = focus_augroup,
+    callback = function(_)
+      local ignore_buftypes = { "nofile", "prompt", "popup", "tailscale" }
+      if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
+        vim.b.focus_disable = true
+      end
+    end,
+    desc = "Disable focus autoresize for BufType",
+  })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    group = focus_augroup,
+    callback = function(_)
+      local ignore_filetypes = { "fugitive", "gitcommit", "outline", "neo-tree", "snacks_picker_list", "trouble" }
+      if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+        vim.b.focus_disable = true
+      end
+    end,
+    desc = "Disable focus autoresize for FileType",
+  })
 end)
 
 C.now(function()

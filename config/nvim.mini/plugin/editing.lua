@@ -79,6 +79,67 @@ C.now_if_args(function()
   C.autocmd("FileType", filetypes, ts_start, "Start tree-sitter")
 end)
 
+C.now_if_args(function()
+  local cmp = require("mini.completion")
+  -- Don't show 'Text' suggestions (usually noisy) and show snippets last.
+  local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
+  local process_items = function(items, base)
+    return cmp.default_process_items(items, base, process_items_opts)
+  end
+  cmp.setup({
+    lsp_completion = {
+      source_func = "omnifunc",
+      auto_setup = false,
+      process_items = process_items,
+    },
+  })
+
+  -- Set 'omnifunc' for LSP completion only when needed.
+  local on_attach = function(ev)
+    vim.bo[ev.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
+  end
+  C.autocmd("LspAttach", nil, on_attach, "Set 'omnifunc'")
+
+  -- Advertise to servers that Neovim now supports certain set of completion and
+  -- signature features through 'mini.completion'.
+  vim.lsp.config("*", { capabilities = cmp.get_lsp_capabilities() })
+end)
+
+C.later(function()
+  vim.pack.add({ "https://github.com/folke/trouble.nvim" })
+  local trouble = require("trouble")
+  trouble.setup({
+    cycles_results = false
+  })
+
+  C.nmap("<Leader>xx", "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics (Trouble)")
+  C.nmap("<Leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics (Trouble)")
+  C.nmap("<Leader>cs", "<cmd>Trouble symbols toggle<cr>", "Symbols (Trouble)")
+  C.nmap("<Leader>cS", "<cmd>Trouble lsp toggle<cr>", "LSP references/definitions/... (Trouble)")
+  C.nmap("<Leader>xL", "<cmd>Trouble loclist toggle<cr>", "Location List (Trouble)")
+  C.nmap("<Leader>xQ", "<cmd>Trouble qflist toggle<cr>", "Quickfix List (Trouble)")
+  C.nmap("[q", function()
+    if trouble.is_open() then
+      trouble.prev({ skip_groups = true, jump = true })
+    else
+      local ok, err = pcall(vim.cmd.cprev)
+      if not ok then
+        vim.notify(err, vim.log.levels.ERROR)
+      end
+    end
+  end, "Previous Trouble/Quickfix Item")
+  C.nmap("]q", function()
+    if trouble.is_open() then
+      trouble.next({ skip_groups = true, jump = true })
+    else
+      local ok, err = pcall(vim.cmd.cnext)
+      if not ok then
+        vim.notify(err, vim.log.levels.ERROR)
+      end
+    end
+  end, "Next Trouble/Quickfix Item")
+end)
+
 -- Semantic Line Breaks
 C.later(function()
   vim.pack.add({ "https://github.com/konfekt/vim-sentence-chopper" })
