@@ -39,6 +39,17 @@ nmap("<Leader>wc", function()
   end
 end, "Close all floating windows")
 
+-- close windows with temporary buffers with 'q'
+C.autocmd("FileType",
+  { "help", "qf", "lspinfo", "checkhealth", "man", "notify" },
+  function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", {
+      buffer = event.buf,
+      silent = true,
+    })
+  end, "close window with 'q'")
+
 -- Join lines and restore cursor location (J)
 nmap("J", function() preserve("join") end, "Join lines")
 
