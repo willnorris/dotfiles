@@ -136,7 +136,7 @@ C.later(function()
           end,
         })
     },
-    toggles = {},
+    toggle = {},
     dim = {},
     zen = {
       toggles = {
@@ -226,7 +226,55 @@ C.later(function()
 
   C.nmap("<Leader>cL", snacks.picker.lsp_config, "LSP Info")
 
-  snacks.toggle.zen():map("<leader>uz")
+  -- toggle options
+  snacks.toggle.option("spell", { name = "Spelling" }):map("<Leader>us")
+  snacks.toggle.option("wrap", { name = "Wrap" }):map("<Leader>uw")
+  snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<Leader>uL")
+  snacks.toggle.diagnostics():map("<Leader>ud")
+  snacks.toggle.line_number():map("<Leader>ul")
+  snacks.toggle.option("conceallevel",
+    { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" }):map("<Leader>uc")
+  snacks.toggle.option("showtabline",
+    { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" }):map("<Leader>uA")
+  snacks.toggle.treesitter():map("<Leader>uT")
+  snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<Leader>ub")
+  snacks.toggle.dim():map("<Leader>uD")
+  snacks.toggle.animate():map("<Leader>ua")
+  snacks.toggle.indent():map("<Leader>ug")
+  snacks.toggle.scroll():map("<Leader>uS")
+  snacks.toggle.profiler():map("<Leader>dpp")
+  snacks.toggle.profiler_highlights():map("<Leader>dph")
+  snacks.toggle.zen():map("<Leader>uz")
+
+  if vim.lsp.inlay_hint then
+    snacks.toggle.inlay_hints():map("<Leader>uh")
+  end
+
+  -- global and buffer toggles for autoformat on save (used by conform.format_on_save)
+  snacks.toggle({
+    name = "Auto Format (Global)",
+    get = function()
+      return vim.g.autoformat == nil or vim.g.autoformat
+    end,
+    set = function(state)
+      vim.g.autoformat = state
+      vim.b.autoformat = nil
+    end,
+  }):map("<Leader>uf")
+  snacks.toggle({
+    name = "Auto Format (Buffer)",
+    get = function()
+      local buf = vim.api.nvim_get_current_buf()
+      if buf ~= nil then
+        return vim.b[buf].autoformat
+      else
+        return vim.g.autoformat == nil or vim.g.autoformat
+      end
+    end,
+    set = function(state)
+      vim.b.autoformat = state
+    end,
+  }):map("<Leader>uF")
 
   snacks.words.enable()
   C.nmap("<C-n>", function() snacks.words.jump(vim.v.count1) end, "Next reference")

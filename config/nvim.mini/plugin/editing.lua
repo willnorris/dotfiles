@@ -19,7 +19,15 @@ C.later(function()
       -- Allow formatting from LSP server if no dedicated formatter is available
       lsp_format = "fallback",
     },
-    format_on_save = {},
+    format_on_save = function(bufnr)
+      if vim.b[bufnr].autoformat ~= nil then
+        return vim.b[bufnr].autoformat and {} or nil
+      end
+      if vim.g.autoformat ~= nil then
+        return vim.g.autoformat and {} or nil
+      end
+      return {}
+    end,
     -- Map of filetype to formatters
     -- Make sure that necessary CLI tool is available
     formatters_by_ft = {
