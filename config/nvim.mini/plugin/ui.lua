@@ -33,8 +33,23 @@ end)
 C.later(function()
   vim.pack.add({ "https://github.com/folke/snacks.nvim" })
   local snacks = require("snacks")
+  vim.g.snacks_animate = false
   snacks.setup({
     gh = {},
+    indent = {},
+    input = {
+      icon = "",
+      win = {
+        title_pos = "left",
+        relative = "cursor",
+        row = -3,
+        col = 0,
+        width = 30,
+        keys = {
+          ctrl_c = { "<C-c>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
+        },
+      },
+    },
     picker = {
       layout = {
         -- Copy of "ivy" preset with title moved into "input" window instead of root
@@ -100,6 +115,27 @@ C.later(function()
       },
     },
     toggles = {},
+    dim = {},
+    zen = {
+      toggles = {
+        diagnostics = false,
+        indent = false,
+      },
+      on_open = function()
+        vim.opt.signcolumn = "no"
+        vim.opt.number = false
+      end,
+      win = {
+        backrop = { transparent = false },
+      },
+      zoom = {
+        win = {
+          --backdrop = true,
+          backrop = { transparent = false },
+          width = 0,
+        },
+      },
+    },
   })
   C.nmap("<Leader><space>", snacks.picker.smart, "Find Files (Root Dir)")
   C.nmap("<Leader>,", snacks.picker.buffers, "Buffers")
@@ -167,6 +203,8 @@ C.later(function()
   C.nmap("<Leader>sS", snacks.picker.lsp_workspace_symbols, "LSP Workspace Symbols")
 
   C.nmap("<Leader>cL", snacks.picker.lsp_config, "LSP Info")
+
+  snacks.toggle.zen():map("<leader>uz")
 
   snacks.words.enable()
   C.nmap("<C-n>", function() snacks.words.jump(vim.v.count1) end, "Next reference")
