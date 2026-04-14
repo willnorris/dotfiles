@@ -77,6 +77,7 @@ C.later(function()
         end,
       },
     },
+    toggles = {},
   })
   C.nmap("<Leader><space>", snacks.picker.smart, "Find Files (Root Dir)")
   C.nmap("<Leader>,", snacks.picker.buffers, "Buffers")
@@ -162,6 +163,7 @@ C.later(function()
       { "<Leader>c", group = "code" },
       { "<Leader>f", group = "find" },
       { "<Leader>s", group = "search" },
+      { "<Leader>u", group = "toggle" },
     },
     win = {
       border = "rounded",
