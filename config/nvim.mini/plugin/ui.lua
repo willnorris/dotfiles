@@ -8,6 +8,26 @@ C.now(function()
     "return cursor to where it was last time closing the file")
 end)
 
+C.later(function()
+  local hipatterns = require("mini.hipatterns")
+  hipatterns.setup({
+    highlighters = {
+      -- Highlight hex color string (#aabbcc) with that color as a background
+      hex_color = hipatterns.gen_highlighter.hex_color(),
+      -- Add support for #rrggbbaa style colors patterns.
+      -- Neovim doesn't support color transparency, so just the #rrggbb is rendered.
+      hex_color_alpha = {
+        pattern = "#%x%x%x%x%x%x%x%x%f[%X]",
+        group = function(_, match)
+          return hipatterns.compute_hex_color_group(match:sub(1, 7), "bg")
+        end,
+        extmark_opts = { priority = 2000 },
+      },
+
+    },
+  })
+end)
+
 -- must be before snacks.nvim
 C.later(function()
   vim.pack.add({
@@ -333,6 +353,29 @@ C.now(function()
     keymap("n", "<C-k>", function() starter.update_current_item("prev") end,
       { buf = ev.buf, nowait = true, silent = true })
   end, "")
+end)
+
+C.later(function()
+  local icons = require("mini.icons")
+  icons.setup({
+    file = {
+      [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+      ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+    },
+    filetype = {
+      dotenv = { glyph = "", hl = "MiniIconsYellow" },
+    },
+  })
+  icons.mock_nvim_web_devicons()
+  icons.tweak_lsp_kind()
+end)
+
+C.later(function()
+  require("mini.cmdline").setup({
+    autocomplete = {
+      delay = 300,
+    },
+  })
 end)
 
 C.now(function()

@@ -71,6 +71,7 @@ local highlights = {
 
   LineNr = { fg = p.base03 },
   SignColumn = { fg = p.base03 },
+  CursorLine = {},
   CursorLineNr = { fg = p.base05 },
   CursorLineSign = {},
   Delimiter = { fg = p.base05 },

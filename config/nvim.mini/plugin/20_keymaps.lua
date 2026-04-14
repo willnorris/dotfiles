@@ -18,16 +18,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = tr
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 -- Execute command and preserve cursor location.
--- https://stackoverflow.com/questions/70691265
 local preserve = function(arguments)
-  local command = string.format("keepjumps keeppatterns execute %q", arguments)
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  vim.api.nvim_command(command)
-  local lastline = vim.fn.line("$")
-  if lastline and line > lastline then
-    line = lastline
-  end
-  vim.api.nvim_win_set_cursor(0, { line, col })
+  local curpos = vim.api.nvim_win_get_cursor(0)
+  vim.cmd(string.format("keeppatterns keeppatterns execute %q", arguments))
+  vim.api.nvim_win_set_cursor(0, curpos)
 end
 
 nmap("<C-C>", function()
@@ -49,7 +43,7 @@ end, "Close all floating windows")
 nmap("J", function() preserve("join") end, "Join lines")
 
 -- strip trailing whitespace
-nmap("_$", function() preserve("%s/\\s\\+$//e") end, "strip trailing whitespace")
+nmap("_$", function() require("mini.trailspace").trim() end, "strip trailing whitespace")
 
 local mod = require("util").mod
 -- timestamp insertion

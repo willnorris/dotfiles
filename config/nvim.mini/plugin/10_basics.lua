@@ -34,6 +34,8 @@ vim.o.splitright = true
 vim.o.wrap = true
 vim.o.termguicolors = true
 vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
+vim.o.pumheight = 10
 
 -- Set the list option only if expandtab is set.
 -- This helps visualize erroneous tabs in a file that uses spaces.

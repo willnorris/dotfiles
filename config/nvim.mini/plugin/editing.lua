@@ -108,6 +108,11 @@ C.later(function()
 end)
 
 C.later(function()
+  local bracketed = require("mini.bracketed")
+  bracketed.setup({})
+end)
+
+C.later(function()
   local keymap = require("mini.keymap")
   keymap.setup()
   -- Press "jk" quickly to <esc>
