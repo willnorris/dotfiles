@@ -6,8 +6,11 @@ end)
 C.now_if_args(function()
   vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
   vim.lsp.enable({
-    "lua_ls",
+    "basedpyright",
     "gopls",
+    "lua_ls",
+    "rust_analyzer",
+    "vtsls",
   })
 end)
 
