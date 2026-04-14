@@ -8,6 +8,28 @@ C.now(function()
     "return cursor to where it was last time closing the file")
 end)
 
+-- must be before snacks.nvim
+C.later(function()
+  vim.pack.add({
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/folke/todo-comments.nvim"
+  })
+
+  require("todo-comments").setup({
+    highlight = {
+      pattern = {
+        [[.*<(KEYWORDS)\s*:]],
+        [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle KEYWORD(name):
+      },
+      keyword = "fg",
+      after = "",
+    },
+    search = {
+      pattern = [[\b(KEYWORDS)(\(.*\))?:]],
+    },
+  })
+end)
+
 C.later(function()
   vim.pack.add({ "https://github.com/folke/snacks.nvim" })
   local snacks = require("snacks")
@@ -130,6 +152,10 @@ C.later(function()
   -- ui
   C.nmap("<Leader>uC", snacks.picker.colorschemes, "Colorschemes")
 
+  C.nmap("<leader>st", snacks.picker.todo_comments, "Todo")
+  C.nmap("<leader>sT", function() snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,
+    "Todo/Fix/Fixme")
+
   C.nmap("gd", snacks.picker.lsp_definitions, "Goto Definition")
   C.nmap("gD", snacks.picker.lsp_declarations, "Goto Declaration")
   keymap("n", "gr", snacks.picker.lsp_references, { nowait = true, desc = "References" })
@@ -232,27 +258,6 @@ C.now(function()
     format = function(buf_id, label)
       return string.format(" %s ", mtl.default_format(buf_id, label))
     end
-  })
-end)
-
-C.later(function()
-  vim.pack.add({
-    "https://github.com/nvim-lua/plenary.nvim",
-    "https://github.com/folke/todo-comments.nvim"
-  })
-
-  require("todo-comments").setup({
-    highlight = {
-      pattern = {
-        [[.*<(KEYWORDS)\s*:]],
-        [[.*<(KEYWORDS)\(.*\)\s*:]], -- handle KEYWORD(name):
-      },
-      keyword = "fg",
-      after = "",
-    },
-    search = {
-      pattern = [[\b(KEYWORDS)(\(.*\))?:]],
-    },
   })
 end)
 
