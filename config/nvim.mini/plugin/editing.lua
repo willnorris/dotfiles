@@ -111,6 +111,10 @@ C.now_if_args(function()
   -- Advertise to servers that Neovim now supports certain set of completion and
   -- signature features through 'mini.completion'.
   vim.lsp.config("*", { capabilities = cmp.get_lsp_capabilities() })
+
+  C.autocmd("FileType", "snacks_picker_input",
+    function(args) vim.b[args.buf].minicompletion_disable = true end,
+    "Disable completion in snacks picker")
 end)
 
 C.later(function()
