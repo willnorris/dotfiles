@@ -79,6 +79,10 @@
     "which-key.nvim": {
       "rev": "3aab214",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "zk-nvim": {
+      "rev": "dea1ee6cd6d07568c92ea8353063d4d85c58a964",
+      "src": "https://github.com/zk-org/zk-nvim"
     }
   }
 }

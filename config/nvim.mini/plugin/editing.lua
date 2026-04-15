@@ -267,3 +267,20 @@ C.later(function()
     end
   end)
 end)
+
+C.later(function()
+  vim.pack.add({ "https://github.com/zk-org/zk-nvim" })
+  require("zk").setup({
+    picker = "snacks_picker",
+    lsp = {
+      config = {
+        name = "zk",
+        cmd = { "zk", "lsp" },
+        filetypes = { "markdown" },
+      },
+      auto_attach = {
+        enabled = true,
+      },
+    },
+  })
+end)
