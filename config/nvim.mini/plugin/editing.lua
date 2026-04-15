@@ -235,6 +235,24 @@ C.later(function()
     { "minisnippets_prev", "pmenu_prev" })
 end)
 
+C.later(function()
+  vim.pack.add({ "https://github.com/rmagatti/goto-preview" })
+  local gp = require("goto-preview")
+  gp.setup({
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    default_mappings = true,
+    resizing_mappings = true,
+    post_open_hook = function(_, winid)
+      vim.keymap.set("n", "q", function()
+        vim.api.nvim_win_close(winid, false)
+      end)
+    end,
+  })
+  -- use 'y' in addition to 't' for type definition to match LSP mappings
+  --{ "gpy", function() require("goto-preview").goto_preview_type_definition() end, desc = "Preview type definition" }
+  C.nmap("gpy", gp.goto_preview_type_definition, "Preview type defintion")
+end)
+
 -- Restore 'gw' to default behavior by resetting formatexpr if null-ls
 -- is not providing any formatting generators.
 -- See: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
