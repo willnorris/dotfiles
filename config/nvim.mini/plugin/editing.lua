@@ -203,7 +203,16 @@ end)
 
 C.later(function()
   local bracketed = require("mini.bracketed")
-  bracketed.setup({})
+  bracketed.setup({
+    file = { suffix = "" },
+  })
+
+  vim.keymap.set({ "n", "x", "o" }, "]f", function()
+    require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+  end, { desc = "Function backward" })
+  vim.keymap.set({ "n", "x", "o" }, "[f", function()
+    require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+  end, { desc = "Function forward" })
 end)
 
 C.later(function()
