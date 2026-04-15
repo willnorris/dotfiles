@@ -74,7 +74,7 @@ C.later(function()
   end
 end)
 
-C.later(function()
+C.now(function()
   vim.pack.add({ "https://github.com/rhysd/committia.vim" })
   vim.g.committia_hooks = {
     edit_open = function(_)
