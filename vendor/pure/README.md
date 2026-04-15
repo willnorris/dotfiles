@@ -15,12 +15,14 @@ On smaller windows with the prompt displayed on a single line,
 the directory name is truncated so that the entire prompt takes up no more than 1/4 to 1/3 of the available width.
 Additional portions of the prompt like git information are taken into account when calculating width.
 
-To see the local changes, run the following locally
+To see the local changes, which just adds a few new extension points, run the following locally
 (GitHub doesn't support comparing a specific directory between commits):
 
 ```
-git diff origin/pure-upstream..origin/main -- vendor/pure
+git diff origin/pure-upstream..origin/main -- vendor/pure/pure.zsh
 ```
+
+To see how I use those extensions, see [prompt.zsh](../../config/zsh/startup/prompt.zsh)
 
 A demo of the responsive resizing can be seen here:
 
