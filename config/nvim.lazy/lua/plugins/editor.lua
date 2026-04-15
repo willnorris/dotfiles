@@ -89,11 +89,15 @@ return {
     "zk-org/zk-nvim",
     config = function()
       require("zk").setup({
-        picker = "fzf",
+        picker = "snacks_picker",
         lsp = {
           config = {
-            cmd = { "zk", "lsp" },
             name = "zk",
+            cmd = { "zk", "lsp" },
+            filetypes = { "markdown" },
+          },
+          auto_attach = {
+            enabled = true,
           },
         },
       })
