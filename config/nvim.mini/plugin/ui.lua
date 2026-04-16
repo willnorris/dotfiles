@@ -136,8 +136,6 @@ C.later(function()
           end,
         })
     },
-    toggle = {},
-    dim = {},
     zen = {
       toggles = {
         diagnostics = false,
@@ -147,16 +145,6 @@ C.later(function()
         vim.opt.signcolumn = "no"
         vim.opt.number = false
       end,
-      win = {
-        backrop = { transparent = false },
-      },
-      zoom = {
-        win = {
-          --backdrop = true,
-          backrop = { transparent = false },
-          width = 0,
-        },
-      },
     },
   })
   C.nmap("<Leader><space>", snacks.picker.smart, "Find Files (Root Dir)")
