@@ -62,9 +62,7 @@ local c = {
 }
 
 local highlights = {
-  -- Normal = { fg = "fg" },
-  -- NormalNC = { fg = p.base05 },
-  -- NormalFloat = { bg = p.base00 },
+  Normal = { fg = "fg" }, -- remove bg to make theme transparent
   FloatBorder = { fg = p.base03, bg = p.base01 },
   FloatTitle = { fg = p.base05, bg = p.base01 },
   WinSeparator = { fg = p.base02 },
