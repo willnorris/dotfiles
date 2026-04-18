@@ -19,6 +19,9 @@ return {
       end
     end
 
+    -- disable LSP color provider, use mini.hipatterns instead
+    client.server_capabilities.colorProvider = false
+
     client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
       runtime = {
         version = "LuaJIT",
