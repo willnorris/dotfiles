@@ -23,7 +23,6 @@ C.later(function()
         end,
         extmark_opts = { priority = 2000 },
       },
-
     },
   })
 end)
