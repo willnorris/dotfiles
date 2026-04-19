@@ -357,7 +357,7 @@ C.now(function()
 end)
 
 -- Auto-resize windows according to golden ratio
-C.later(function()
+C.now(function()
   vim.pack.add({ "https://github.com/nvim-focus/focus.nvim" })
   local focus = require("focus")
   focus.setup({
@@ -367,29 +367,23 @@ C.later(function()
   })
   keymap("n", "<Leader>uv", function() focus.focus_toggle() end, { desc = "Toggle golden ration view" })
 
-  local focus_augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
-
-  vim.api.nvim_create_autocmd("WinEnter", {
-    group = focus_augroup,
-    callback = function(_)
+  C.autocmd("WinEnter", "*",
+    function(_)
       local ignore_buftypes = { "nofile", "prompt", "popup", "tailscale" }
       if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
         vim.b.focus_disable = true
       end
     end,
-    desc = "Disable focus autoresize for BufType",
-  })
+    "Disable focus autoresize for BufType")
 
-  vim.api.nvim_create_autocmd("FileType", {
-    group = focus_augroup,
-    callback = function(_)
+  C.autocmd("FileType", "*",
+    function(_)
       local ignore_filetypes = { "fugitive", "gitcommit", "outline", "neo-tree", "snacks_picker_list", "trouble" }
       if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
         vim.b.focus_disable = true
       end
     end,
-    desc = "Disable focus autoresize for FileType",
-  })
+    "Disable focus autoresize for FileType")
 end)
 
 C.now(function()
