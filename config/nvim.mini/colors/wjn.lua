@@ -45,12 +45,18 @@ end
 require("mini.base16").setup({
   palette = p,
   plugins = {
-    ["akinsho/bufferline.nvim"] = false,
+    -- only enable specific plugins
+    default = false,
+    ["nvim-mini/mini.nvim"] = true,
+    ["folke/trouble.nvim"] = true,
+    ["folke/which-key.nvim"] = true,
+    ["lewis6991/gitsigns.nvim"] = true,
   },
 })
 vim.g.colors_name = "wjn"
 
 local c = {
+  grey    = p.base03,
   red     = p.base08,
   orange  = p.base09,
   yellow  = p.base0A,
@@ -62,32 +68,31 @@ local c = {
 }
 
 local highlights = {
-  Normal = { fg = "fg" }, -- remove bg to make theme transparent
-  FloatBorder = { fg = p.base03, bg = p.base01 },
-  FloatTitle = { fg = p.base05, bg = p.base01 },
-  WinSeparator = { fg = p.base02 },
-
-  LineNr = { fg = p.base03 },
-  SignColumn = { fg = p.base03 },
-  CursorLine = {},
   CursorLineNr = { fg = p.base05 },
   CursorLineSign = {},
-  Delimiter = { fg = p.base05 },
+  FloatBorder = { fg = p.base03, bg = p.base01 },
+  FloatTitle = { fg = p.base05, bg = p.base01 },
+  LineNr = { fg = p.base03 },
+  Normal = { fg = "fg" }, -- remove bg to make theme transparent
+  SignColumn = { fg = p.base03 },
+  WinSeparator = { fg = p.base02 },
 
+  -- standard syntax
   Character = { fg = c.orange },
-  Structure = { fg = c.yellow },
   Constant = { fg = c.cyan },
-  PreProc = { fg = c.purple },
-  PreCondit = { fg = c.purple },
+  Delimiter = { fg = p.base05 },
+  Error = { fg = c.red },
+  Exception = { fg = c.red },
   Include = { fg = c.purple },
-  Exception = { fg = c.purple },
-  Repeat = { fg = c.purple },
-  Statement = { fg = c.purple },
-  Error = { fg = c.purple },
   Label = { fg = c.purple },
+  Operator = { fg = c.purple },
+  PreCondit = { fg = c.purple },
+  PreProc = { fg = c.purple },
+  Repeat = { fg = c.purple },
   Special = { fg = c.red },
   SpecialChar = { fg = c.red },
-  Operator = { fg = c.purple },
+  Statement = { fg = c.purple },
+  Structure = { fg = c.yellow },
   Tag = { fg = c.green },
   Todo = { fg = c.red },
 
@@ -142,20 +147,13 @@ local highlights = {
   ["@markup.link.url.markdown_inline"] = { fg = c.cyan, underline = true },
   ["@markup.list.markdown"] = { fg = c.red },
   ["@markup.raw.markdown_inline"] = { fg = c.green },
-  --
-  -- -- LSP
-  -- ["@constructor"] = { fg = c.yellow },
-  -- ["@keyword"] = { fg = c.purple },
-  -- ["@keyword.return"] = { fg = c.purple },
-  -- ["@lsp.type.variable"] = { fg = c.cyan },
-  -- ["@module"] = { fg = c.yellow },
-  -- ["@property"] = { fg = c.cyan },
-  -- ["@type.builtin.go"] = { fg = c.yellow },
-  -- ["@variable.member.go"] = { fg = c.cyan },
-  ["@variable.parameter"] = { fg = c.red },
-  --["@variable.parameter.go"] = { link = "@variable.parameter" },
-  ["@property.lua"] = { link = "@variable" },
-  ["@lsp.type.property.lua"] = { link = "@variable" },
+  ["@markup.quote"] = { fg = c.grey, italic = true },
+
+  ["@tag"] = { fg = c.purple },
+  ["@tag.attribute"] = { fg = c.yellow },
+
+  ["@property"] = { fg = c.cyan },
+  ["@variable.member"] = { link = "@property" },
 }
 
 for group, args in pairs(highlights) do
