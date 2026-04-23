@@ -14,6 +14,7 @@ local prompt_color=$(case $HOSTNAME in
   rpi)    echo red;;
   esther) echo cyan;;
   vashti) echo cyan;;
+  llm-sandbox) echo red;;
   *)      echo blue;;
 esac)
 
