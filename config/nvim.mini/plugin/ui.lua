@@ -392,6 +392,7 @@ C.now(function()
     header = "",
     footer = "",
     items = {
+      { name = "Restore autosession", action = function() require("persistence").load() end, section = "Sessions" },
       starter.sections.sessions(5, true),
       starter.sections.recent_files(5, false, false),
       {
@@ -444,6 +445,11 @@ C.now(function()
   C.nmap("<Leader>Sw", sessions.write, "Write current")
 
   table.insert(C.keymap_groups, { "<Leader>S", group = "session" })
+end)
+
+C.now(function()
+  vim.pack.add({ "https://github.com/folke/persistence.nvim" })
+  require("persistence").setup({})
 end)
 
 C.now(function()
