@@ -23,13 +23,14 @@ C.later(function()
       lsp_format = "fallback",
     },
     format_on_save = function(bufnr)
+      local opts = { timeout_ms = 5000 }
       if vim.b[bufnr].autoformat ~= nil then
-        return vim.b[bufnr].autoformat and {} or nil
+        return vim.b[bufnr].autoformat and opts or nil
       end
       if vim.g.autoformat ~= nil then
-        return vim.g.autoformat and {} or nil
+        return vim.g.autoformat and opts or nil
       end
-      return {}
+      return opts
     end,
     -- Map of filetype to formatters
     -- Make sure that necessary CLI tool is available
