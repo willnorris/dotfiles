@@ -5,7 +5,7 @@ return {
 
   {
     "LazyVim/LazyVim",
-    opts = { colorscheme = "wjn" },
+    opts = { colorscheme = "onedark" },
   },
   {
     "nvim-mini/mini.base16",
