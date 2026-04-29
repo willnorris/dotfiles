@@ -76,7 +76,7 @@ nmap("<leader>uI", function()
   vim.api.nvim_input("I")
 end, "Inspect Tree")
 
--- buffer navigation
+-- buffer and tab navigation
 C.later(function()
   local bufremove = require("mini.bufremove")
   bufremove.setup()
@@ -86,6 +86,12 @@ C.later(function()
   nmap("H", "<cmd>bprev<cr>", "Go to previous buffer")
   nmap("L", "<cmd>bnext<cr>", "Go to next buffer")
   vim.keymap.set("n", "<Leader>;", "<C-^>", { noremap = true, desc = "Last buffer" })
+
+  -- tabs
+  -- builtin keymaps: gt - next, gT - prev, g<Tab> - recent
+  nmap("<Leader><Tab>c", "<Cmd>tabclose<CR>", "Close Tab")
+  nmap("<Leader><Tab>n", "<Cmd>tabnew<CR>", "New Tab")
+  table.insert(C.keymap_groups, { "<Leader><Tab>", group = "tabs" })
 end)
 
 -- remove default gr* keymaps
