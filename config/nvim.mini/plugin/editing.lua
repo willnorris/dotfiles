@@ -285,3 +285,13 @@ C.later(function()
     },
   })
 end)
+
+C.later(function()
+  vim.pack.add({ "https://github.com/sindrets/diffview.nvim" })
+  require("diffview").setup()
+  C.nmap("<Leader>do", "<Cmd>DiffviewOpen<CR>", "Diffview Open")
+  C.nmap("<Leader>dh", "<Cmd>DiffviewOpen HEAD^<CR>", "Diffview Open (HEAD^)")
+  C.nmap("<Leader>dc", "<Cmd>DiffviewClose<CR>", "Diffview Close")
+  C.nmap("<Leader>dr", "<Cmd>DiffviewRefresh<CR>", "Diffview Refresh")
+  table.insert(C.keymap_groups, { "<Leader>d", group = "diff" })
+end)

@@ -378,7 +378,8 @@ C.now(function()
 
   C.autocmd("FileType", "*",
     function(_)
-      local ignore_filetypes = { "fugitive", "gitcommit", "outline", "neo-tree", "snacks_picker_list", "trouble" }
+      local ignore_filetypes = { "DiffviewFiles", "fugitive", "gitcommit", "outline", "neo-tree", "snacks_picker_list",
+        "trouble" }
       if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
         vim.b.focus_disable = true
       end
