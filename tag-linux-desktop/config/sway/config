@@ -103,17 +103,27 @@ bindsym {
   --locked XF86MonBrightnessUp   exec brightness up
   --locked XF86MonBrightnessDown exec brightness down
 
-  XF86AudioMedia        exec toggle-color-scheme
-  XF86Tools             exec toggle-color-scheme
+  # F9
+  Super+p exec toggle-main-mirror-window # internal keyboard
+  XF86Tools exec toggle-main-mirror-window # external keyboard
+  Alt+XF86Tools exec pkill scrcpy || swaymsg exec android-mirror
 
-  Alt+XF86AudioMedia exec toggle-browser-profile
-  Alt+F12            exec toggle-browser-profile
-  Alt+XF86Tools      exec toggle-browser-profile
-
+  # F10
   # The RFKill key will always toggle bluetooth and wifi devices.
   # This additionally shows a notification with the current state.
   XF86RFKill exec notify-send "$(rfkill -rno TYPE,SOFT)" -e \
     -t 2500 -h string:x-canonical-private-synchronous:sway-rfkill
+
+  # F11
+  --no-repeat Print       exec grimshot --notify save output
+  --no-repeat Alt+Print   exec grimshot --notify save window
+  --no-repeat Shift+Print exec grimshot --notify save area
+
+  # F12
+  XF86AudioMedia        exec toggle-color-scheme # internal keyboard
+  XF86Launch6           exec toggle-color-scheme # external keyboard
+  Alt+XF86AudioMedia    exec toggle-browser-profile # Alt+F12 on internal keyboard
+  Alt+XF86Launch6       exec toggle-browser-profile # Alt+F12 on external keyboard
 
   # Reload the configuration file
   Alt+Shift+c reload
@@ -124,9 +134,19 @@ bindsym {
 
   Alt+Backspace exec swaync-client -t
 
-  --no-repeat Print       exec grimshot --notify save output
-  --no-repeat Alt+Print   exec grimshot --notify save window
-  --no-repeat Shift+Print exec grimshot --notify save area
+  Alt+Super+Minus exec headless-output-start
+  Alt+Super+Shift+Minus exec headless-output-stop
+
+  --no-repeat F23 exec toggle-btop
+
+  --no-repeat F19 exec browser-open "http://100.100.100.100/"
+  --no-repeat XF86AudioMicMute exec browser-open "https://willnorris.com/" # F20
+
+  # Pressing Super key reverses which web browser opens by default.
+  # The default browser is reset after 5 seconds.
+  --no-repeat Super_L exec toggle-browser-profile --quiet --reverse
+
+  Alt+Shift+S exec pkill orca || swaymsg exec orca
 }
 
 # Windows and workspaces
@@ -217,19 +237,6 @@ bindsym {
 
   # Move focus to the parent container
   Alt+a focus parent
-
-  Alt+Super+Minus exec headless-output-start
-  Alt+Super+Shift+Minus exec headless-output-stop
-
-  Super+p exec toggle-main-mirror-window # F9 on internal keyboard
-  XF86Launch5 exec toggle-main-mirror-window # F9 on external keyboard
-  Alt+XF86Launch5 exec android-mirror
-
-  # Pressing Super key reverses which web browser opens by default.
-  # The default browser is reset after 5 seconds.
-  --no-repeat Super_L exec toggle-browser-profile --quiet --reverse
-
-  Alt+Shift+S exec pkill orca || swaymsg exec orca
 }
 
 bindsym Alt+r mode "resize"
