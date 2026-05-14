@@ -93,15 +93,15 @@ bindsym {
   # Toggle albert launcher
   Alt+Space exec echo -n '["toggle"]' | socat - ~/.cache/albert/ipc_socket
 
-  # Media keys
-  --locked XF86AudioRaiseVolume  exec volume up
-  --locked XF86AudioLowerVolume  exec volume down
+  # Media keys (F1-F8)
   --locked XF86AudioMute         exec volume mute
-  --locked XF86AudioPlay         exec playerctl play-pause
+  --locked XF86AudioLowerVolume  exec volume down
+  --locked XF86AudioRaiseVolume  exec volume up
   --locked XF86AudioPrev         exec playerctl previous
+  --locked XF86AudioPlay         exec playerctl play-pause
   --locked XF86AudioNext         exec playerctl next
-  --locked XF86MonBrightnessUp   exec brightness up
   --locked XF86MonBrightnessDown exec brightness down
+  --locked XF86MonBrightnessUp   exec brightness up
 
   # F9
   Super+p exec toggle-main-mirror-window # internal keyboard
