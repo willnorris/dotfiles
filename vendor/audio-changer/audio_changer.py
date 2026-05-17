@@ -21,6 +21,13 @@ def parse_wpctl_status():
     for line in lines[sinks_index +1:]:
         if not line.strip():
             break
+
+        # skip unused audio sinks
+        if "DisplayPort 1" in line or "DisplayPort 2" in line or "DisplayPort 4" in line:
+          continue
+        if "Easy Effects" in line:
+          continue
+
         sinks.append(line.strip())
 
     # remove the "[vol:" from the end of the sink name
