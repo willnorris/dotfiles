@@ -15,12 +15,23 @@ typeset -g ASYNC_DEBUG=${ASYNC_DEBUG:-0}
 # Execute commands that can manipulate the environment inside the async worker. Return output via callback.
 _async_eval() {
 	local ASYNC_JOB_NAME
-	# Rename job to _async_eval and redirect all eval output to cat running
-	# in _async_job. Here, stdout and stderr are not separated for
-	# simplicity, this could be improved in the future.
-	{
-		eval "$@"
-	} &> >(ASYNC_JOB_NAME=[async/eval] _async_job 'command -p cat')
+	local ret tmp
+
+	if ! zmodload -F zsh/files b:zf_rm 2>/dev/null; then
+		ASYNC_JOB_NAME=[async/eval] _async_job "return 1"
+		return
+	fi
+
+	if ! tmp=$(command mktemp "${TMPDIR:-/tmp}/zsh-async-eval.XXXXXXXXXX" 2>/dev/null); then
+		ASYNC_JOB_NAME=[async/eval] _async_job "return 1"
+		return
+	fi
+
+	eval "$@" >| "$tmp" 2>&1
+	ret=$?
+
+	ASYNC_JOB_NAME=[async/eval] _async_job "command -p cat ${(q)tmp}; return $ret"
+	zf_rm -f -- "$tmp"
 }
 
 # Wrapper for jobs executed by the async worker, gives output in parseable format with execution time
@@ -292,6 +303,18 @@ async_process_results() {
 
 	# Read output from zpty and parse it if available.
 	while zpty -r -t $worker data 2>/dev/null; do
+		if [[ -z $data ]]; then
+			# Empty read indicates a broken zpty fd (EOF without proper close).
+			# This prevents a busy-loop that causes 100% CPU usage.
+			if [[ -n $callback ]]; then
+				$callback '[async]' 2 "" 0 "$0:$LINENO: error: empty read from worker $worker, fd is broken" 0
+			fi
+			# Trap and watcher callers must not leak the recovery status to the shell.
+			if [[ $caller = trap || $caller = watcher ]]; then
+				return 0
+			fi
+			return 1
+		fi
 		ASYNC_PROCESS_BUFFER[$worker]+=$data
 		len=${#ASYNC_PROCESS_BUFFER[$worker]}
 		pos=${ASYNC_PROCESS_BUFFER[$worker][(i)$null]}  # Get index of NULL-character (delimiter).

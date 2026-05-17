@@ -7,7 +7,7 @@ autoload -Uz add-zsh-hook
 promptinit
 prompt pure
 
-add-zsh-hook precmd prompt_willnorris_precmd
+add-zsh-hook precmd prompt_pure_precustom
 
 local prompt_color=$(case $HOSTNAME in
   levi)   echo green;;
@@ -29,11 +29,10 @@ zstyle :prompt:pure:user:root color red
 
 # re-render preprompt when window changes
 TRAPWINCH() {
-  prompt_willnorris_precmd
   prompt_pure_preprompt_render
 }
 
-prompt_willnorris_precmd() {
+prompt_pure_precustom() {
   # determine if prompt should be split, and how much to truncate path
   local min_height=$(( $LINES >= 20 ))
   local max_width=$(( $COLUMNS <= 50 ))
@@ -41,9 +40,6 @@ prompt_willnorris_precmd() {
   # split prompt if sufficient vertical space or not enough width
   if (( $min_height || $max_width )); then
     zstyle :prompt:pure:preprompt newline true
-    prompt_newline=$'\n%{\r%}'
-
-    psvar[21]=$(print -nP '%~')
     local zero='%([BSUbfksu]|([FK]|){*})'
     local expanded_prompt="${(S%%)PROMPT//$~zero/}"
     cols=$(( $COLUMNS - ${#expanded_prompt} + ${(c)#$(print -nP '%~')} + 5))
@@ -52,9 +48,8 @@ prompt_willnorris_precmd() {
     fi
   else
     zstyle :prompt:pure:preprompt newline false
-    prompt_newline=' '
     cols=$(( $COLUMNS * 1/4 ))
   fi
 
-  psvar[21]=$(print -nP '%${cols}<…<%~%<<')
+  typeset -g prompt_pure_path_segment="%F{$prompt_pure_colors[path]}$(print -nP '%${cols}<…<%~%<<')%f"
 }
