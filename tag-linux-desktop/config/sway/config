@@ -125,6 +125,9 @@ bindsym {
   Alt+XF86AudioMedia    exec toggle-browser-profile # Alt+F12 on internal keyboard
   Alt+XF86Launch6       exec toggle-browser-profile # Alt+F12 on external keyboard
 
+  # F16
+  XF86TouchpadToggle  exec toggle-audio-selector
+
   # Reload the configuration file
   Alt+Shift+c reload
 
