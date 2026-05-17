@@ -11,6 +11,7 @@ C.now_if_args(function()
     "lua_ls",
     "rust_analyzer",
     "vtsls",
+    "zls", -- zig language server
   })
 end)
 
