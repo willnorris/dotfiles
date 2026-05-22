@@ -22,10 +22,13 @@
   }
 
   .v-ThreadLabels {
-    display: flex;
-    justify-content: end;
     right: 5em;
-    margin-top: -1.9em !important;
+    & > .u-flex {
+      justify-content: end;
+      & > .u-badge {
+        margin-top: -1.6em;
+      }
+    }
   }
 
   /*
