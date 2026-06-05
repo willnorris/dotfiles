@@ -1,0 +1,4 @@
+DOTFILES_DIRS="${HOME}/.dotfiles ${HOME}/.work-dotfiles"
+EXCLUDES="LICENSE README.md vendor install.sh"
+SYMLINK_DIRS="config/git/template"
+TAGS="devbox linux-desktop"
