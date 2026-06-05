@@ -270,8 +270,16 @@ for_window [app_id="albert" title="^Albert$"] {
   move up 300 px
 }
 for_window [app_id="chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default"] {
-  # app_id is YouTube Music PWA on default Chromium profile
+  # YouTube Music PWA on default Chromium profile
   move container to scratchpad
+}
+for_window [app_id="chrome-jhjcdofpkbdhhdfaemgoohfffcfiggpe-Default"] {
+  # Apple TV PWA on default Chromium profile
+  floating enable
+}
+for_window [app_id="chrome-kmkopapmnpfocihnnkbnphiagoljpmjj-Default"] {
+  # HBO Max PWA on default Chromium profile
+  floating enable
 }
 for_window [app_id="org.gnome.Calculator"] {
   floating enable
