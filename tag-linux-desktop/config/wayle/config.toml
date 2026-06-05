@@ -1,0 +1,117 @@
+[general]
+font-mono = "Cascadia Code NF"
+
+[bar]
+scale = 0.75
+bg = "bg-base"
+background-opacity = 80
+button-variant = "basic"
+button-bg-opacity = 0
+
+[[bar.layout]]
+monitor = "eDP-1"
+show = true
+left = [
+    "dashboard",
+    "sway-workspaces",
+    "keybind-mode",
+]
+center = ["window-title"]
+right = [
+    "systray",
+    "idle-inhibit",
+    "volume",
+    "network",
+    "battery",
+    "clock",
+    "notifications",
+]
+
+[[bar.layout]]
+monitor = "DP-2"
+extends = "eDP-1"
+show = true
+left = []
+center = []
+right = []
+
+[[bar.layout]]
+monitor = "*"
+extends = "eDP-1"
+show = true
+left = []
+center = []
+right = [
+    "systray",
+    "idle-inhibit",
+    "volume",
+    "network",
+    "battery",
+    "clock",
+]
+
+[styling.palette]
+bg = "#1e1f24"
+surface = "#282c34"
+elevated = "#3e4452"
+fg = "#eeeeee"
+fg-muted = "#abb2bf"
+red = "#e06c75"
+yellow = "#e5c07b"
+green = "#98c379"
+blue = "#61afef"
+
+[modules.battery]
+icon-color = "green"
+label-show = false
+right-click = "pkill -f '^kitty --class btop' || kitty --class btop btop"
+middle-click = "pkill -f '^kitty --class batmon' || kitty --class batmon batmon"
+
+[modules.clock]
+icon-show = false
+label-color = "fg-default"
+
+[modules.dashboard]
+icon-color = "blue"
+
+[modules.idle-inhibit]
+startup-duration = 150
+border-color = "blue"
+icon-color = "fg-default"
+icon-bg-color = "blue"
+label-show = false
+label-color = "blue"
+
+[modules.keybind-mode]
+auto-hide = true
+icon-show = false
+
+[modules.network]
+label-show = false
+right-click = "killall iwgtk || iwgtk"
+middle-click = "killall blueberry || blueberry"
+
+[modules.notifications]
+icon-color = "fg-default"
+label-show = false
+label-max-length = 20
+
+[modules.systray]
+icon-scale = 1.4
+item-gap = 0.75
+blacklist = [
+    "Slack_status_icon*",
+    "Fleet Desktop",
+    "Nextcloud",
+]
+
+[modules.volume]
+border-color = "yellow"
+icon-color = "yellow"
+icon-bg-color = "yellow"
+label-show = false
+label-color = "yellow"
+right-click = "killall pavucontrol || pavucontrol"
+
+[modules.weather]
+location = "Temecula"
