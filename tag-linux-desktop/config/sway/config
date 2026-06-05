@@ -19,10 +19,8 @@ output DP-2 {
 }
 
 exec swayidle -w
-exec swayosd-server
-exec waybar
-exec swaync
-exec flatpak run com.github.wwmm.easyeffects --gapplication-service -w
+exec wayle panel start
+#exec flatpak run com.github.wwmm.easyeffects --gapplication-service -w
 exec autotiling
 exec albert
 exec tailscale-systray
@@ -125,6 +123,9 @@ bindsym {
   Alt+XF86AudioMedia    exec toggle-browser-profile # Alt+F12 on internal keyboard
   Alt+XF86Launch6       exec toggle-browser-profile # Alt+F12 on external keyboard
 
+  # F14
+  XF86Launch9  exec wayle idle toggle
+
   # F16
   XF86TouchpadToggle  exec toggle-audio-selector
 
@@ -135,7 +136,7 @@ bindsym {
   Alt+Shift+e       exec wlogout
   XF86PowerOff      exec wlogout
 
-  Alt+Backspace exec swaync-client -t
+  Alt+Backspace exec wayle dropdown toggle notification
 
   Alt+Super+Minus exec headless-output-start
   Alt+Super+Shift+Minus exec headless-output-stop

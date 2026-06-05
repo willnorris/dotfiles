@@ -5,6 +5,7 @@
 # Uses swayosd if installed and server is running, otherwise use wpctl and notify-send.
 
 send_notification() {
+  pgrep wayle >/dev/null && return # wayle has on-screen display
   vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
   notify-send "$vol" -t 1000 -i audio-volume-medium-symbolic -e -h string:x-canonical-private-synchronous:volume
 }

@@ -5,6 +5,7 @@
 # Uses swayosd if installed and running, otherwise brightnessctl and notify-send.
 
 send_notification() {
+  pgrep wayle >/dev/null && return # wayle has on-screen display
   brightness=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}')
   notify-send "Brightness: $brightness" -t 1000 -i display-brightness-symbolic -e -h string:x-canonical-private-synchronous:brightness
 }
