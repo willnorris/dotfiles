@@ -125,6 +125,7 @@ bindsym {
 
   # F14
   XF86Launch9  exec wayle idle toggle
+  Alt+XF86Launch9  exec wayle dropdown toggle idle
 
   # F16
   XF86TouchpadToggle  exec toggle-audio-selector
