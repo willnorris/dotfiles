@@ -1,0 +1,53 @@
+# comments
+"comment" = "#545862"
+
+# strings
+"string" = "green"
+
+# regular expressions
+"keyword.operator.regexp" = "green"
+
+# escape characters
+"constant.character.escape" = "yellow"
+
+# numeric file descriptors (e.g. `2> /dev/null`)
+"constant.numeric.integer.decimal.file-descriptor" = "yellow"
+
+# parameters
+"variable.parameter" = "magenta"
+
+# environment variables
+"variable.other" = "yellow"
+"punctuation.definition.variable" = "yellow"
+
+# commands
+"variable.function" = "cyan"
+
+# home directory ~
+"variable.language.tilde" = "magenta"
+
+# keywords
+"keyword" = "blue"
+
+# variable assignments
+"storage" = "blue"
+
+# support terms (e.g. double braces, let)
+"support" = "cyan"
+
+# function names
+"entity.name.function" = "yellow"
+
+# braces
+"punctuation.section" = "yellow"
+
+# history expansions
+"meta.group.expansion.history" = "yellow"
+
+# reset command substitutions to terminal defaults
+"meta.group.expansion.command.parens" = {}
+
+# dynamic items
+"dynamic.callable" = "green"
+"dynamic.callable.missing" = "red"
+"dynamic.path" = { underline = true }
