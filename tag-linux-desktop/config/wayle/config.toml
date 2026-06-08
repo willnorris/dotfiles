@@ -56,6 +56,7 @@ surface = "#282c34"
 elevated = "#3e4452"
 fg = "#eeeeee"
 fg-muted = "#abb2bf"
+primary = "#eeeeee"
 red = "#e06c75"
 yellow = "#e5c07b"
 green = "#98c379"
@@ -72,6 +73,8 @@ icon-show = false
 label-color = "fg-default"
 
 [modules.dashboard]
+dropdown-lock-command = "swaylock"
+dropdown-logout-command = "swaymsg exit"
 icon-color = "blue"
 
 [modules.idle-inhibit]
@@ -80,7 +83,8 @@ border-color = "blue"
 icon-color = "fg-default"
 icon-bg-color = "blue"
 label-show = false
-label-color = "blue"
+left-click = "dropdown:idle"
+middle-click = "wayle idle toggle --indefinite"
 
 [modules.keybind-mode]
 auto-hide = true
@@ -90,6 +94,7 @@ icon-show = false
 label-show = false
 right-click = "killall iwgtk || iwgtk"
 middle-click = "killall blueberry || blueberry"
+icon-color = "blue"
 
 [modules.notifications]
 icon-color = "fg-default"
@@ -115,3 +120,7 @@ right-click = "killall pavucontrol || pavucontrol"
 
 [modules.weather]
 location = "Temecula"
+
+[modules.window-title]
+icon-show = false
+label-color = "fg-default"

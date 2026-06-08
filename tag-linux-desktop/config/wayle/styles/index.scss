@@ -1,0 +1,14 @@
+// mute appearance of idle-inhibit icon when disabled
+.idle-inhibit:not(.active) image {
+  --bar-btn-icon-color: #888;
+}
+
+// flash workspace with red (default is grey)
+.workspace.urgent {
+  --ws-override-color: var(--palette-red);
+}
+
+// red volume icon when muted
+.volume.muted image {
+  --bar-btn-icon-color: var(--palette-red);
+}
