@@ -20,6 +20,7 @@ output DP-2 {
 
 exec swayidle -w
 exec wayle panel start
+exec swayosd-server
 #exec flatpak run com.github.wwmm.easyeffects --gapplication-service -w
 exec autotiling
 exec albert

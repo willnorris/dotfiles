@@ -62,6 +62,9 @@ yellow = "#e5c07b"
 green = "#98c379"
 blue = "#61afef"
 
+[osd]
+enabled = false
+
 [modules.battery]
 icon-color = "green"
 label-show = false
