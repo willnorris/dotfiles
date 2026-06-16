@@ -89,6 +89,8 @@ bindsym {
   Alt+q exec notify-send "Kill Container" "Alt + Shift + Q" -e \
     -t 1500 -h string:x-canonical-private-synchronous:sway-kill
 
+  Alt+Escape exec wayle dropdown toggle dashboard
+
   # Toggle albert launcher
   Alt+Space exec echo -n '["toggle"]' | socat - ~/.cache/albert/ipc_socket
 
