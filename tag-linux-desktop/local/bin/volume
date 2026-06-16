@@ -11,7 +11,7 @@ send_notification() {
 }
 
 # use swayosd if installed and server is running
-swayosd-client -h >/dev/null && swayosd=1
+swayosd-client --custom-message "" >/dev/null && swayosd=1
 
 case $1 in
 up)
