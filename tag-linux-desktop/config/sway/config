@@ -126,12 +126,21 @@ bindsym {
   Alt+XF86AudioMedia    exec toggle-browser-profile # Alt+F12 on internal keyboard
   Alt+XF86Launch6       exec toggle-browser-profile # Alt+F12 on external keyboard
 
-  # F14
-  XF86Launch9  exec wayle idle toggle
+  # F18 / coffee
+  XF86Launch9      exec wayle idle toggle
   Alt+XF86Launch9  exec wayle dropdown toggle idle
 
-  # F16
-  XF86TouchpadToggle  exec toggle-audio-selector
+  # F19 / tailscale
+  --no-repeat F19 exec browser-open "http://100.100.100.100/"
+
+  # F20 / wn
+  --no-repeat XF86AudioMicMute exec browser-open "https://willnorris.com/"
+
+  # F21 / triangle
+  XF86TouchpadToggle  exec wayle dropdown toggle audio
+
+  # F23 / square
+  --no-repeat F23 exec toggle-btop
 
   # Reload the configuration file
   Alt+Shift+c reload
@@ -145,16 +154,9 @@ bindsym {
   Alt+Super+Minus exec headless-output-start
   Alt+Super+Shift+Minus exec headless-output-stop
 
-  --no-repeat F23 exec toggle-btop
-
-  --no-repeat F19 exec browser-open "http://100.100.100.100/"
-  --no-repeat XF86AudioMicMute exec browser-open "https://willnorris.com/" # F20
-
   # Pressing Super key reverses which web browser opens by default.
   # The default browser is reset after 5 seconds.
   --no-repeat Super_L exec toggle-browser-profile --quiet --reverse
-
-  Alt+Shift+S exec pkill orca || swaymsg exec orca
 }
 
 # Windows and workspaces
