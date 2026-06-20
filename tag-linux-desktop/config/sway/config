@@ -127,8 +127,9 @@ bindsym {
   Alt+XF86Launch6       exec toggle-browser-profile # Alt+F12 on external keyboard
 
   # F18 / coffee
-  XF86Launch9      exec wayle idle toggle
-  Alt+XF86Launch9  exec wayle dropdown toggle idle
+  --locked XF86Launch9       exec wayle idle toggle
+  --locked Shift+XF86Launch9 exec wayle idle off
+  Alt+XF86Launch9            exec wayle dropdown toggle idle
 
   # F19 / tailscale
   --no-repeat F19 exec browser-open "http://100.100.100.100/"
