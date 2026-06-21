@@ -56,19 +56,6 @@ C.later(function()
   snacks.setup({
     gh = {},
     indent = {},
-    input = {
-      icon = "",
-      win = {
-        title_pos = "left",
-        relative = "cursor",
-        row = -3,
-        col = 0,
-        width = 30,
-        keys = {
-          ctrl_c = { "<C-c>", { "cmp_close", "cancel" }, mode = { "n", "i" } },
-        },
-      },
-    },
     picker = {
       layout = {
         -- Copy of "ivy" preset with title moved into "input" window instead of root
@@ -451,6 +438,10 @@ end)
 C.now(function()
   vim.pack.add({ "https://github.com/folke/persistence.nvim" })
   require("persistence").setup({})
+end)
+
+C.now(function()
+  require("mini.input").setup()
 end)
 
 C.now(function()

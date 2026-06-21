@@ -109,14 +109,15 @@ local highlights = {
   SnacksIndent = { fg = p.base01 },
   SnacksIndentScope = { fg = p.base03 },
 
-  SnacksInputNormal = {},
-  SnacksInputBorder = { fg = p.base03 },
-  SnacksInputTitle = { fg = p.base04 },
   SnacksPicker = { fg = p.base05 },
   SnacksPickerBorder = { fg = p.base03 },
   SnacksPickerIcon = { fg = c.red },
   SnacksPickerPrompt = { fg = c.red },
   SnacksPickerInputTitle = { fg = "fg" },
+
+  MiniInputNormal = {},
+  MiniInputBorder = { fg = p.base03 },
+  MiniInputPrompt = { fg = p.base04 },
 
   MiniTablineFill = { bg = p.base01 },
   MiniTablineVisible = { bg = p.base01 },
