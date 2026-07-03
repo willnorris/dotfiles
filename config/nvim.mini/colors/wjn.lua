@@ -19,7 +19,7 @@ if vim.o.background == "light" then
     base0C = "#0997B3",
     base0D = "#0184BC",
     base0E = "#c678dd",
-    base0F = "#be5046",
+    base0F = "#0184BC",
   }
 else
   p = {
@@ -38,7 +38,7 @@ else
     base0C = "#56b6c2",
     base0D = "#61afef",
     base0E = "#c678dd",
-    base0F = "#be5046",
+    base0F = "#61afef",
   }
 end
 
@@ -56,15 +56,15 @@ require("mini.base16").setup({
 vim.g.colors_name = "wjn"
 
 local c = {
-  grey    = p.base03,
-  red     = p.base08,
-  orange  = p.base09,
-  yellow  = p.base0A,
-  green   = p.base0B,
-  cyan    = p.base0C,
-  blue    = p.base0D,
-  purple  = p.base0E,
-  darkred = p.base0F,
+  grey   = p.base03,
+  red    = p.base08,
+  orange = p.base09,
+  yellow = p.base0A,
+  green  = p.base0B,
+  cyan   = p.base0C,
+  azure  = p.base0D,
+  purple = p.base0E,
+  blue   = p.base0F,
 }
 
 local highlights = {
