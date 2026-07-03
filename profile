@@ -8,6 +8,9 @@
 
 . "${HOME}/.config/shell/_base.sh"
 
+# include ~/.local/bin early before shell/* so mise is available.
+pathadd "$HOME/.local/bin"
+
 if [ -d "${XDG_CONFIG_HOME}/shell" ]; then
   for i in "${XDG_CONFIG_HOME}/shell"/*.sh; do
     if [ -r "$i" ]; then
@@ -17,7 +20,7 @@ if [ -d "${XDG_CONFIG_HOME}/shell" ]; then
   unset i
 fi
 
-# include ~/.local/bin in PATH late to give precedence
+# include ~/.local/bin again late to give precedence.
 if [ -d "$HOME/.local/bin" ]; then
-  pathadd "$HOME/.local/bin"
+  PATH="${HOME}/.local/bin:${PATH}"
 fi
