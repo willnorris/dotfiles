@@ -333,5 +333,8 @@ for_window [title="Picture-in-Picture"] {
 for_window [app_id="org.gnome.Characters"] {
   floating enable
 }
+for_window [title="Color Picker"] {
+  floating enable
+}
 
 include /etc/sway/config.d/*
