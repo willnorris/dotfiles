@@ -155,6 +155,11 @@ local highlights = {
 
   ["@property"] = { fg = c.cyan },
   ["@variable.member"] = { link = "@property" },
+
+  ["@lsp.type.variable"] = {},
+  ["@lsp.mod.defaultLibrary"] = { link = "Special" },
+  ["@lsp.typemod.keyword.return"] = { link = "Special" },
+  ["@lsp.typemod.variable.readonly"] = { link = "Constant" },
 }
 
 for group, args in pairs(highlights) do
