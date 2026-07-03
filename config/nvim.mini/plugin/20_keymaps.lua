@@ -67,7 +67,7 @@ vim.keymap.set("x", "po", [["_dP]], { desc = "Paste and keep default register" }
 
 -- yank text to system clipboard
 vim.keymap.set({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" })
-C.autocmd("TextYankPost", "*", function() vim.hl.on_yank() end, "Highlight on yank")
+C.autocmd("TextYankPost", "*", function() vim.hl.hl_op() end, "Highlight on yank")
 
 -- highlights under cursor
 nmap("<leader>ui", vim.show_pos, "Inspect Pos")
