@@ -71,10 +71,11 @@ C.now_if_args(function()
   --  - execute `:=require('nvim-treesitter').get_available()`
   --  - visit https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
   local languages = {
-    "lua",
-    "vimdoc",
-    "markdown",
     "go", "gomod", "gosum", "gowork",
+    "lua",
+    "markdown",
+    "rust",
+    "vimdoc",
   }
   local to_install = vim.tbl_filter(function(lang)
     return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".*", false) == 0
