@@ -4,6 +4,7 @@
 local p
 if vim.o.background == "light" then
   p = {
+    -- light theme
     base00 = "#dedede",
     base01 = "#c9c9c9",
     base02 = "#b6bdca",
@@ -23,6 +24,7 @@ if vim.o.background == "light" then
   }
 else
   p = {
+    -- dark theme
     base00 = "#1e1f24",
     base01 = "#282c34",
     base02 = "#3e4451",
@@ -68,13 +70,17 @@ local c = {
 }
 
 local highlights = {
+  Normal = { fg = "fg" }, -- remove bg to make theme transparent
+  NormalNC = {},
+
+  SignColumn = { fg = p.base03 },
+  LineNr = { fg = p.base03 },
   CursorLineNr = { fg = p.base05 },
   CursorLineSign = {},
-  FloatBorder = { fg = p.base03, bg = p.base01 },
+
   FloatTitle = { fg = p.base05, bg = p.base01 },
-  LineNr = { fg = p.base03 },
-  Normal = { fg = "fg" }, -- remove bg to make theme transparent
-  SignColumn = { fg = p.base03 },
+  FloatBorder = { fg = p.base03, bg = p.base01 },
+  PmenuBorder = { fg = p.base03, bg = p.base01 },
   WinSeparator = { fg = p.base02 },
 
   -- standard syntax
@@ -96,45 +102,7 @@ local highlights = {
   Tag = { fg = c.green },
   Todo = { fg = c.red },
 
-  GitSignsAdd = { link = "Added" },
-  GitSignsChange = { link = "Changed" },
-  GitSignsDelete = { link = "Removed" },
-  DiffAdd = { link = "Added" },
-  DiffChange = { link = "Changed" },
-  DiffDelete = { link = "Removed" },
-  MiniDiffSignAdd = { link = "Added" },
-  MiniDiffSignChange = { link = "Changed" },
-  MiniDiffSignDelete = { link = "Removed" },
-
-  SnacksIndent = { fg = p.base01 },
-  SnacksIndentScope = { fg = p.base03 },
-
-  SnacksPicker = { fg = p.base05 },
-  SnacksPickerBorder = { fg = p.base03 },
-  SnacksPickerIcon = { fg = c.red },
-  SnacksPickerPrompt = { fg = c.red },
-  SnacksPickerInputTitle = { fg = "fg" },
-
-  MiniInputNormal = {},
-  MiniInputBorder = { fg = p.base03 },
-  MiniInputPrompt = { fg = p.base04 },
-
-  MiniTablineFill = { bg = p.base01 },
-  MiniTablineVisible = { bg = p.base01 },
-  MiniTablineHidden = { bg = p.base01 },
-
-  MiniStarterSection = { fg = c.blue },
-  MiniStarterItemBullet = { fg = p.base02 },
-
-  PmenuBorder = { fg = p.base03, bg = p.base01 },
-  BlinkCmpMenuBorder = { link = "PmenuBorder" },
-  BlinkCmpDocBorder = { link = "PmenuBorder" },
-
-  WhichKey = { fg = c.red },
-  WhichKeyDesc = { fg = c.blue },
-  WhichKeyGroup = { fg = c.orange },
-  WhichKeySeparator = { fg = p.base03 },
-
+  -- extended syntax, treesitter, LSP
   markdownH1 = { fg = c.red },
   markdownH2 = { fg = c.orange },
   markdownH3 = { fg = c.yellow },
@@ -160,8 +128,41 @@ local highlights = {
   ["@lsp.mod.defaultLibrary"] = { link = "Special" },
   ["@lsp.typemod.keyword.return"] = { link = "Special" },
   ["@lsp.typemod.variable.readonly"] = { link = "Constant" },
+
+  -- plugins
+  DiffAdd = { link = "Added" },
+  DiffChange = { link = "Changed" },
+  DiffDelete = { link = "Removed" },
+  GitSignsAdd = { link = "Added" },
+  GitSignsChange = { link = "Changed" },
+  GitSignsDelete = { link = "Removed" },
+  MiniDiffSignAdd = { link = "Added" },
+  MiniDiffSignChange = { link = "Changed" },
+  MiniDiffSignDelete = { link = "Removed" },
+
+  MiniInputNormal = {},
+  MiniInputBorder = { fg = p.base03 },
+  MiniInputPrompt = { fg = p.base04 },
+
+  MiniStarterSection = { fg = c.blue },
+  MiniStarterItemBullet = { fg = p.base02 },
+
+  SnacksIndent = { fg = p.base01 },
+  SnacksIndentScope = { fg = p.base03 },
+
+  SnacksPicker = { fg = p.base05 },
+  SnacksPickerBorder = { fg = p.base03 },
+  SnacksPickerIcon = { fg = c.red },
+  SnacksPickerPrompt = { fg = c.red },
+  SnacksPickerInputTitle = { fg = p.base03 },
+  SnacksPickerInputCursorLine = { fg = "fg" },
+
+  WhichKey = { fg = c.red },
+  WhichKeyDesc = { fg = c.blue },
+  WhichKeyGroup = { fg = c.orange },
+  WhichKeySeparator = { fg = p.base03 },
 }
 
-for group, args in pairs(highlights) do
-  vim.api.nvim_set_hl(0, group, args)
+for name, val in pairs(highlights) do
+  vim.api.nvim_set_hl(0, name, val)
 end
