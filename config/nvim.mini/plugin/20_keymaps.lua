@@ -11,11 +11,11 @@ vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Do
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
--- Move to window using the <ctrl> hjkl keys
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+-- Move to window using the <ctrl> + hjkl keys
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", noremap = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", noremap = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", noremap = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", noremap = true })
 
 -- Execute command and preserve cursor location.
 local preserve = function(arguments)
@@ -44,7 +44,7 @@ C.autocmd("FileType",
   { "help", "qf", "lspinfo", "checkhealth", "man", "notify" },
   function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", {
+    vim.keymap.set("n", "q", "<Cmd>close<CR>", {
       buffer = event.buf,
       silent = true,
     })
@@ -70,8 +70,8 @@ vim.keymap.set({ "n", "v" }, "Y", [["+y]], { desc = "Yank to system clipboard" }
 C.autocmd("TextYankPost", "*", function() vim.hl.hl_op() end, "Highlight on yank")
 
 -- highlights under cursor
-nmap("<leader>ui", vim.show_pos, "Inspect Pos")
-nmap("<leader>uI", function()
+nmap("<Leader>ui", vim.show_pos, "Inspect Pos")
+nmap("<Leader>uI", function()
   vim.treesitter.inspect_tree()
   vim.api.nvim_input("I")
 end, "Inspect Tree")
@@ -83,8 +83,8 @@ C.later(function()
 
   nmap("<Leader>bd", bufremove.delete, "Delete")
   nmap("<Leader>bD", function() bufremove.delete(0, true) end, "Delete!")
-  nmap("H", "<cmd>bprev<cr>", "Go to previous buffer")
-  nmap("L", "<cmd>bnext<cr>", "Go to next buffer")
+  nmap("H", "<Cmd>bprev<CR>", "Go to previous buffer")
+  nmap("L", "<Cmd>bnext<CR>", "Go to next buffer")
   vim.keymap.set("n", "<Leader>;", "<C-^>", { noremap = true, desc = "Last buffer" })
 
   -- tabs
@@ -102,17 +102,17 @@ end
 
 -- Configure default keyamps for code and LSP actions.
 -- Many of these will be overwritten later by plugins.
-vim.keymap.set({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-vim.keymap.set({ "n", "x" }, "<leader>cf", vim.lsp.buf.format, { desc = "Format" })
+vim.keymap.set({ "n", "x" }, "<Leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+vim.keymap.set({ "n", "x" }, "<Leader>cf", vim.lsp.buf.format, { desc = "Format" })
 nmap("<Leader>cd", vim.diagnostic.open_float, "Line diagnostics")
 nmap("<Leader>cl", vim.lsp.codelens.run, "Lens")
 nmap("<Leader>cr", vim.lsp.buf.rename, "Rename")
 
-nmap("gd", vim.lsp.buf.definition, "Source definition")
-nmap("gd", vim.lsp.buf.declaration, "Source definition")
-nmap("gr", vim.lsp.buf.references, "References")
-nmap("gI", vim.lsp.buf.implementation, "Implementation")
-nmap("gy", vim.lsp.buf.type_definition, "Type definition")
+nmap("gd", vim.lsp.buf.definition, "Goto Definition")
+nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
+nmap("gr", vim.lsp.buf.references, "Goto References")
+nmap("gI", vim.lsp.buf.implementation, "Goto Implementation")
+nmap("gy", vim.lsp.buf.type_definition, "Goto T[y]pe Definition")
 nmap("gai", vim.lsp.buf.incoming_calls, "C[a]lls Incoming")
 nmap("gao", vim.lsp.buf.outgoing_calls, "C[a]lls Outgoing")
 

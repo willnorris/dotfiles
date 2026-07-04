@@ -184,13 +184,13 @@ C.later(function()
   -- ui
   C.nmap("<Leader>uC", snacks.picker.colorschemes, "Colorschemes")
 
-  C.nmap("<leader>st", snacks.picker.todo_comments, "Todo")
-  C.nmap("<leader>sT", function() snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,
+  C.nmap("<Leader>st", snacks.picker.todo_comments, "Todo")
+  C.nmap("<Leader>sT", function() snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,
     "Todo/Fix/Fixme")
 
   C.nmap("gd", snacks.picker.lsp_definitions, "Goto Definition")
   C.nmap("gD", snacks.picker.lsp_declarations, "Goto Declaration")
-  keymap("n", "gr", snacks.picker.lsp_references, { nowait = true, desc = "References" })
+  keymap("n", "gr", snacks.picker.lsp_references, { nowait = true, desc = "Goto References" })
   C.nmap("gI", snacks.picker.lsp_implementations, "Goto Implementation")
   C.nmap("gy", snacks.picker.lsp_type_definitions, "Goto T[y]pe Definition")
   C.nmap("gai", snacks.picker.lsp_incoming_calls, "C[a]lls Incoming")

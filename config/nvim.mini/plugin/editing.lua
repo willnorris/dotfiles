@@ -42,7 +42,7 @@ C.later(function()
   vim.keymap.set({ "n", "x" }, "<Leader>cf",
     function() conform.format() end,
     { desc = "Format" })
-  vim.keymap.set({ "n", "x" }, "<leader>cF",
+  vim.keymap.set({ "n", "x" }, "<Leader>cF",
     function() conform.format({ formatters = { "injected" }, timeout_ms = 3000 }) end,
     { desc = "Format Injected Langs" }
   )
@@ -130,12 +130,12 @@ C.later(function()
     cycles_results = false
   })
 
-  C.nmap("<Leader>xx", "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics (Trouble)")
-  C.nmap("<Leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics (Trouble)")
-  C.nmap("<Leader>cs", "<cmd>Trouble symbols toggle<cr>", "Symbols (Trouble)")
-  C.nmap("<Leader>cS", "<cmd>Trouble lsp toggle<cr>", "LSP references/definitions/... (Trouble)")
-  C.nmap("<Leader>xL", "<cmd>Trouble loclist toggle<cr>", "Location List (Trouble)")
-  C.nmap("<Leader>xQ", "<cmd>Trouble qflist toggle<cr>", "Quickfix List (Trouble)")
+  C.nmap("<Leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", "Diagnostics (Trouble)")
+  C.nmap("<Leader>xX", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", "Buffer Diagnostics (Trouble)")
+  C.nmap("<Leader>cs", "<Cmd>Trouble symbols toggle<CR>", "Symbols (Trouble)")
+  C.nmap("<Leader>cS", "<Cmd>Trouble lsp toggle<CR>", "LSP references/definitions/... (Trouble)")
+  C.nmap("<Leader>xL", "<Cmd>Trouble loclist toggle<CR>", "Location List (Trouble)")
+  C.nmap("<Leader>xQ", "<Cmd>Trouble qflist toggle<CR>", "Quickfix List (Trouble)")
   C.nmap("[q", function()
     if trouble.is_open() then
       trouble.prev({ skip_groups = true, jump = true })
