@@ -26,6 +26,7 @@ exec swayosd-server
 exec autotiling
 exec albert
 exec tailscale-systray
+exec playerctld daemon
 
 # assign workspaces to outputs
 # Assign 1 and 10 first so that each output has at least one workspace
@@ -104,6 +105,9 @@ bindsym {
   --locked XF86AudioNext         exec playerctl next
   --locked XF86MonBrightnessDown exec brightness down
   --locked XF86MonBrightnessUp   exec brightness up
+
+  --locked Alt+XF86AudioPrev     exec playerctl position 30-
+  --locked Alt+XF86AudioNext     exec playerctl position 30+
 
   # F9
   Super+p exec toggle-main-mirror-window # internal keyboard
