@@ -15,7 +15,8 @@ output DP-2 {
   # Y coordinate should be -900 given my monitor position,
   # but XWayland seems to have issue where anything in negative space isn't clickable.
   # https://gitlab.freedesktop.org/xorg/xserver/-/issues/899
-  position 1440,0
+  position 1440,-900
+  #position 1440,0
 }
 
 exec swayidle -w
