@@ -290,7 +290,13 @@ end)
 
 C.later(function()
   vim.pack.add({ "https://github.com/sindrets/diffview.nvim" })
-  require("diffview").setup()
+  require("diffview").setup({
+    view = {
+      merge_tool = {
+        layout = "diff4_mixed",
+      },
+    },
+  })
   C.nmap("<Leader>do", ":DiffviewOpen ", "Diffview Open")
   C.nmap("<Leader>dh", "<Cmd>DiffviewOpen HEAD^<CR>", "Diffview Open (HEAD^)")
   C.nmap("<Leader>dm", "<Cmd>DiffviewOpen main<CR>", "Diffview Open (main)")

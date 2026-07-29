@@ -360,13 +360,17 @@ C.now(function()
       if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
         vim.b.focus_disable = true
       end
+      -- disable focus in diff mode
+      if vim.wo.diff then
+        vim.w.focus_disable = true
+      end
     end,
     "Disable focus autoresize for BufType")
 
   C.autocmd("FileType", "*",
     function(_)
-      local ignore_filetypes = { "DiffviewFiles", "fugitive", "gitcommit", "outline", "neo-tree", "snacks_picker_list",
-        "trouble" }
+      local ignore_filetypes = { "DiffviewFiles", "fugitive", "gitcommit", "gitsigns-blame",
+        "outline", "neo-tree", "snacks_picker_list", "trouble" }
       if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
         vim.b.focus_disable = true
       end

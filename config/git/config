@@ -94,6 +94,9 @@
 [mergetool]
   keepBackup = false
 
+[mergetool "nvimdiff"]
+  cmd = nvim -d $MERGED $LOCAL $BASE $REMOTE -c \"wincmd J\"
+
 [pull]
   rebase = true
 

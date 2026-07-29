@@ -94,3 +94,9 @@ C.now(function()
     end,
   }
 end)
+
+C.now(function()
+  vim.pack.add({ "https://github.com/tpope/vim-fugitive" })
+  vim.pack.add({ "https://github.com/justinmk/guh.nvim" })
+  vim.pack.add({ "https://github.com/barrettruth/diffs.nvim" })
+end)
