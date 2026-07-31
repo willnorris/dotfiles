@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# List all listening TCP ports.  First try the linux version of netstat, then
-# the darwin version.
+# List all listening TCP ports.  First try linux version of netstat, then
+# the darwin version. Finally, use ss if available.
 netstat --tcp --listen --numeric --program 2>/dev/null || \
-  netstat -an | grep LISTEN
+  netstat -an 2>/dev/null | grep LISTEN || \
+  ss --tcp --listening --resolve --numeric
