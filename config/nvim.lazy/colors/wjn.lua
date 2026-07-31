@@ -1,1 +1,0 @@
-../../nvim.mini/colors/wjn.lua
