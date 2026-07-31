@@ -5,6 +5,9 @@ local nmap = function(lhs, rhs, desc)
 end
 C.nmap = nmap
 
+-- store additional keymap groups to register with which-key
+C.keymap_groups = {}
+
 -- better up/down
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -117,6 +120,3 @@ nmap("gai", vim.lsp.buf.incoming_calls, "C[a]lls Incoming")
 nmap("gao", vim.lsp.buf.outgoing_calls, "C[a]lls Outgoing")
 
 nmap("<Leader>cd", function() vim.diagnostic.open_float() end, "Line diagnostics")
-
--- store additional keymap groups to register with which-key
-C.keymap_groups = {}
