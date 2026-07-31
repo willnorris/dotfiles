@@ -457,3 +457,12 @@ C.now(function()
   })
   keymap("n", "<Leader>sn", notify.show_history, { desc = "Notifications" })
 end)
+
+-- Cleaner foldtext
+C.later(function()
+  vim.pack.add({
+    "https://github.com/kevinhwang91/nvim-ufo",
+    "https://github.com/kevinhwang91/promise-async",
+  })
+  require("ufo").setup()
+end)
