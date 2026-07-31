@@ -46,9 +46,11 @@ prompt_pure_precustom() {
     if (($cols > $COLUMNS)); then
       cols=$COLUMNS
     fi
+    typeset -g prompt_newline=$'\n%{\r%}'
   else
     zstyle :prompt:pure:preprompt newline false
     cols=$(( $COLUMNS * 1/4 ))
+    typeset -g prompt_newline=' '
   fi
 
   typeset -g prompt_pure_path_segment="%F{$prompt_pure_colors[path]}$(print -nP '%${cols}<…<%~%<<')%f"
