@@ -48,6 +48,11 @@ C.later(function()
   )
 end)
 
+C.later(function()
+  vim.pack.add({ "https://github.com/stevearc/quicker.nvim" })
+  require("quicker").setup()
+end)
+
 C.now_if_args(function()
   -- Define hook to update tree-sitter parsers after plugin is updated
   local ts_update = function() vim.cmd("TSUpdate") end
