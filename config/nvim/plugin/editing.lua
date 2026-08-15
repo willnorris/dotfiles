@@ -76,6 +76,7 @@ C.now_if_args(function()
   --  - execute `:=require('nvim-treesitter').get_available()`
   --  - visit https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
   local languages = {
+    "caddy",
     "go", "gomod", "gosum", "gowork",
     "lua",
     "markdown",

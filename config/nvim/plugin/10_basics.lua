@@ -93,11 +93,15 @@ vim.o.completetimeout = 100                             -- Limit sources delay
 vim.g.clipboard       = "osc52"
 
 -- Filetype aliases
-vim.filetype.add {
+vim.filetype.add({
+  filename = {
+    Caddyfile = "caddy",
+  },
   extension = {
+    caddy = "caddy",
     hujson = "json5",
-  }
-}
+  },
+})
 
 -- Diagnostics ================================================================
 
