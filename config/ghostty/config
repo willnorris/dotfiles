@@ -32,5 +32,3 @@ confirm-close-surface = false
 
 # allow for local overrides
 config-file = ?local.conf
-
-# vim: ft=ini

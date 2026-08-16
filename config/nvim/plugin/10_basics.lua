@@ -92,14 +92,18 @@ vim.o.completetimeout = 100                             -- Limit sources delay
 -- Always use OSC52 clipboard
 vim.g.clipboard       = "osc52"
 
--- Filetype aliases
+-- Filetype detection
 vim.filetype.add({
-  filename = {
-    Caddyfile = "caddy",
-  },
   extension = {
     caddy = "caddy",
     hujson = "json5",
+  },
+  filename = {
+    Caddyfile = "caddy",
+    rcrc = "config",
+  },
+  pattern = {
+    [".*/rcrc%..+"] = "config",
   },
 })
 
