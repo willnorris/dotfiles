@@ -310,3 +310,8 @@ C.later(function()
   C.nmap("<Leader>dr", "<Cmd>DiffviewRefresh<CR>", "Diffview Refresh")
   table.insert(C.keymap_groups, { "<Leader>d", group = "diff" })
 end)
+
+C.later(function()
+  vim.pack.add({ "https://github.com/brianhuster/live-preview.nvim" })
+  C.nmap("<Leader>cp", "<Cmd>LivePreview start<CR>", "LivePreview start")
+end)
