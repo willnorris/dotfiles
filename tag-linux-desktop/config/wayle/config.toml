@@ -12,7 +12,6 @@ button-bg-opacity = 0
 monitor = "eDP-1"
 show = true
 left = [
-    "dashboard",
     "sway-workspaces",
     "keybind-mode",
 ]
@@ -21,8 +20,10 @@ right = [
     "systray",
     "idle-inhibit",
     "volume",
+    "bluetooth",
     "network",
     "battery",
+    "custom-clock-utc",
     "clock",
     "notifications",
 ]
@@ -45,8 +46,10 @@ right = [
     "systray",
     "idle-inhibit",
     "volume",
+    "bluetooth",
     "network",
     "battery",
+    "custom-utc-time",
     "clock",
 ]
 
@@ -71,9 +74,13 @@ label-show = false
 right-click = "pkill -f '^kitty --class btop' || kitty --class btop btop"
 middle-click = "pkill -f '^kitty --class batmon' || kitty --class batmon batmon"
 
+[modules.bluetooth]
+label-show = false
+
 [modules.clock]
 icon-show = false
 label-color = "fg-default"
+dropdown-show-seconds = true
 
 [modules.dashboard]
 dropdown-lock-command = "swaylock"
@@ -97,7 +104,7 @@ icon-show = false
 label-show = false
 right-click = "killall iwgtk || iwgtk"
 middle-click = "killall blueberry || blueberry"
-icon-color = "blue"
+icon-color = "fg-subtle"
 
 [modules.notifications]
 icon-color = "fg-default"
@@ -127,3 +134,10 @@ location = "Temecula"
 [modules.window-title]
 icon-show = false
 label-color = "fg-default"
+
+[[modules.custom]]
+id = "clock-utc"
+command = "date -u '+%F %TZ'"
+interval-ms = 1000
+format = "{{ output }}"
+icon-show = false
