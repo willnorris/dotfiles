@@ -42,9 +42,6 @@ vim.o.pumheight = 10
 -- Run on BufEnter after vim-sleuth has run.
 vim.o.list = false
 C.autocmd("BufEnter", "*", function()
-    if vim.bo.filetype == "noice" then
-      return
-    end
     if vim.bo.buftype == "nofile" then
       return
     end
