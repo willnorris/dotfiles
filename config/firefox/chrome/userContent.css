@@ -1,4 +1,5 @@
 @-moz-document domain(app.beta.fastmail.com) {
+  /* Tighten vertical spacing in header, top search box, toobar, and message title. */
   .v-PageHeader {
     height: 40px !important;
 
@@ -21,6 +22,7 @@
     margin-bottom: 10px !important;
   }
 
+  /* Show labels to the right of message title instead of underneath. */
   .v-ThreadLabels {
     right: 5em;
     & > .u-flex {
@@ -31,9 +33,7 @@
     }
   }
 
-  /*
-  * Make the "Remote images blocked to protect your privacy" banner smaller.
-  */
+  /* Make the "Remote images blocked to protect your privacy" banner smaller. */
   .u-banner--informative:has(button[title="Shortcut: Shift-L"]) {
     padding: 0 10px !important;
 
@@ -45,13 +45,7 @@
     }
   }
 
-  .v-Message-body > .u-article {
-    padding-top: 0 !important;
-  }
-
-  /*
-   * Continue showing avatars when selecting emails in mailbox view.
-   */
+  /* Continue showing avatars when selecting emails in mailbox view. */
   .v-Mailbox.is-selection {
     & .v-ThreadAvatars {
       opacity: inherit !important;
