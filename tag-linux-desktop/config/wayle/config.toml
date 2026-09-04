@@ -49,7 +49,7 @@ right = [
     "bluetooth",
     "network",
     "battery",
-    "custom-utc-time",
+    "custom-clock-utc",
     "clock",
 ]
 
