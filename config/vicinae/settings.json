@@ -1,0 +1,59 @@
+// This configuration is merged with the default vicinae configuration file, which you can obtain by running the `vicinae config default` command.
+// Every item defined in this file takes precedence over the values defined in the default config or any other imported file.
+//
+// You can make manual edits to this file, however you should keep in mind that this file may be written to by vicinae when a configuration change is made through the GUI.
+// When that happens, any custom comments or formatting will be lost.
+//
+// If you want to maintain a configuration file with your own comments and formatting, you should create a separate file and add it to the 'imports' array.
+//
+// Learn more about configuration at https://docs.vicinae.com/config
+
+{
+   "$schema": "https://vicinae.com/schemas/config.json",
+   "close_on_focus_loss": false,
+   "pop_to_root_on_close": true,
+   "escape_key_behavior": "close_window",
+   "tray": {
+      "enabled": false
+   },
+   "theme": {
+      "dark": {
+         "name": "libadwaita-light"
+      }
+   },
+   "launcher_window": {
+      "compact_mode": {
+         "enabled": true
+      }
+   },
+   "providers": {
+      "applications": {
+         "preferences": {
+            "defaultAction": "launch",
+            "paths": []
+         }
+      },
+      "snippets": {
+         "preferences": {
+            "enabled": true,
+            "keyDelay": "2",
+            "layout": "",
+            "prePasteDelay": "0",
+            "undo": true
+         }
+      },
+      "system": {
+         "entrypoints": {
+            "browse-apps": {
+               "enabled": true
+            },
+            "set-default-browser": {
+               "enabled": false
+            },
+            "set-default-terminal": {
+               "enabled": false
+            }
+         }
+      }
+   }
+}
