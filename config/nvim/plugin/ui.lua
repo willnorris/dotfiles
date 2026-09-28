@@ -91,6 +91,9 @@ C.later(function()
             ["<C-f>"] = { "list_scroll_down", mode = { "i", "n" } },
             ["<C-b>"] = { "list_scroll_up", mode = { "i", "n" } },
 
+            ["<C-o>"] = { "toggle_preview", mode = { "i", "n" } },
+            ["<C-m>"] = { "toggle_maximize", mode = { "i", "n" } },
+
             [mod("j")] = { "preview_down", mode = { "i", "n" } },
             [mod("k")] = { "preview_up", mode = { "i", "n" } },
             [mod("f")] = { "preview_scroll_down", mode = { "i", "n" } },
