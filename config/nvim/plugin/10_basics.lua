@@ -76,6 +76,8 @@ vim.o.completeopt = "menuone,noselect"
 vim.o.virtualedit = "block"
 vim.opt.shortmess:append("WIcC")
 
+vim.o.wildmode        = "noinsert,longest:full,full"
+
 -- Pattern for a start of numbered list (used in `gw`). This reads as
 -- "Start of list item is: at least one special character (digit, -, +, *)
 -- possibly followed by punctuation (. or `)`) followed by at least one space".
