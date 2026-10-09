@@ -24,7 +24,8 @@ exec wayle panel start
 exec swayosd-server
 #exec flatpak run com.github.wwmm.easyeffects --gapplication-service -w
 exec autotiling
-exec albert
+#exec albert
+exec vicinae server
 exec tailscale-systray
 exec playerctld daemon
 
@@ -93,8 +94,9 @@ bindsym {
 
   Alt+Escape exec wayle dropdown toggle dashboard
 
-  # Toggle albert launcher
-  Alt+Space exec echo -n '["toggle"]' | socat - ~/.cache/albert/ipc_socket
+  # Toggle launcher
+  #Alt+Space exec echo -n '["toggle"]' | socat - ~/.cache/albert/ipc_socket
+  Alt+Space exec vicinae toggle
 
   # Media keys (F1-F8)
   --locked XF86AudioMute         exec volume mute
@@ -110,9 +112,18 @@ bindsym {
   --locked Alt+XF86AudioNext     exec playerctl position 30+
 
   # F9
-  Super+p exec toggle-main-mirror-window # internal keyboard
-  XF86Tools exec toggle-main-mirror-window # external keyboard
-  Alt+XF86Tools exec pkill scrcpy || swaymsg exec android-mirror
+  # Display mirroring
+  Super+p exec headless-output-start # internal keyboard
+  XF86Tools exec headless-output-start # external keyboard
+
+  Shift+Super+p exec headless-output-stop # internal
+  Shift+XF86Tools exec headless-output-stop # external
+
+  Ctrl+Super+p exec toggle-main-mirror-window # internal
+  Ctrl+XF86Tools exec toggle-main-mirror-window # external
+
+  Alt+Super+p exec pkill scrcpy || swaymsg exec android-mirror # internal
+  Alt+XF86Tools exec pkill scrcpy || swaymsg exec android-mirror # external
 
   # F10
   # The RFKill key will always toggle bluetooth and wifi devices.
@@ -128,8 +139,9 @@ bindsym {
   # F12
   XF86AudioMedia        exec toggle-color-scheme # internal keyboard
   XF86Launch6           exec toggle-color-scheme # external keyboard
-  Alt+XF86AudioMedia    exec toggle-browser-profile # Alt+F12 on internal keyboard
-  Alt+XF86Launch6       exec toggle-browser-profile # Alt+F12 on external keyboard
+
+  Alt+XF86AudioMedia    exec toggle-browser-profile # internal
+  Alt+XF86Launch6       exec toggle-browser-profile # external
 
   # F18 / coffee
   --locked XF86Launch9       exec wayle idle toggle
