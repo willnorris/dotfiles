@@ -22,6 +22,10 @@
       }
    },
    "launcher_window": {
+      "client_side_decorations": {
+         "border_width": 2,
+         "shadow_size": 12
+      },
       "compact_mode": {
          "enabled": true
       }
