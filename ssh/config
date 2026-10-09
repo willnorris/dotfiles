@@ -27,6 +27,10 @@ Host gideon.local
   HostName 10.0.1.4
   User willnorris
 
+Host inn
+  HostName inn.lan.willnorris.net
+  User root
+
 Host local
   HostName levi.ipn.willnorris.net
   User willnorris
