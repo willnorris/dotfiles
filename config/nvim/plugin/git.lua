@@ -67,7 +67,12 @@ C.later(function()
     "https://github.com/ruifm/gitlinker.nvim"
   })
   local g = require("gitlinker")
-  g.setup({ mappings = nil })
+  g.setup({
+    callbacks = {
+      ["code.willnorris.net"] = g.hosts.get_gitea_type_url,
+    },
+    mappings = nil,
+  })
   for _, mode in pairs({ "n", "v" }) do
     vim.keymap.set(mode, "<Leader>gy", function() g.get_buf_range_url(mode) end,
       { noremap = true, desc = "Copy git URL" })
