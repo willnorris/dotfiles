@@ -466,6 +466,10 @@ C.now(function()
   keymap("n", "<Leader>sn", notify.show_history, { desc = "Notifications" })
 end)
 
+C.now(function()
+  require("mini.jump").setup()
+end)
+
 -- Cleaner foldtext
 C.later(function()
   vim.pack.add({
