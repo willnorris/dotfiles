@@ -130,7 +130,7 @@ local highlights = {
   ["@lsp.typemod.variable.readonly"] = { link = "Constant" },
 
   -- plugins
-  Added = {},
+  Added = { bg = "#303831" },
   Changed = {},
   Removed = { bg = "#452E34" },
   DiffAdd = { link = "Added" },
