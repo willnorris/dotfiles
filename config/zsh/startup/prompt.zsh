@@ -11,10 +11,9 @@ add-zsh-hook precmd prompt_pure_precustom
 
 local prompt_color=$(case $HOSTNAME in
   levi)   echo green;;
-  rpi)    echo red;;
   esther) echo cyan;;
   vashti) echo cyan;;
-  llm-sandbox) echo red;;
+  wail)   echo red;;
   *)      echo blue;;
 esac)
 
