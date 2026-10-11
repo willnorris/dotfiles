@@ -48,11 +48,6 @@ C.later(function()
   )
 end)
 
-C.later(function()
-  vim.pack.add({ "https://github.com/stevearc/quicker.nvim" })
-  require("quicker").setup()
-end)
-
 C.now_if_args(function()
   -- Define hook to update tree-sitter parsers after plugin is updated
   local ts_update = function() vim.cmd("TSUpdate") end
@@ -133,7 +128,16 @@ C.later(function()
   vim.pack.add({ "https://github.com/folke/trouble.nvim" })
   local trouble = require("trouble")
   trouble.setup({
-    cycles_results = false
+    cycles_results = false,
+    keys = {
+      ["<c-o>"] = "toggle_preview",
+    },
+    preview = {
+      type = "split",
+      relative = "win",
+      position = "right",
+      size = 0.5,
+    },
   })
 
   C.nmap("<Leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", "Diagnostics (Trouble)")

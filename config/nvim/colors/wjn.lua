@@ -160,6 +160,9 @@ local highlights = {
   SnacksPickerInputTitle = { fg = p.base03 },
   SnacksPickerInputCursorLine = { fg = "fg" },
 
+  TroubleNormal = { link = "Normal" },
+  TroubleNormalNC = { link = "NormalNC" },
+
   WhichKey = { fg = c.red },
   WhichKeyDesc = { fg = c.blue },
   WhichKeyGroup = { fg = c.orange },
