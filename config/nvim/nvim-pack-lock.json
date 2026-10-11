@@ -8,10 +8,6 @@
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
     },
-    "diffs.nvim": {
-      "rev": "ae999b3602c451d74755b0ca248714400b8c249a",
-      "src": "https://forge.barrettruth.com/barrettruth/diffs.nvim"
-    },
     "diffview.nvim": {
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim"
