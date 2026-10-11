@@ -18,7 +18,13 @@ local prompt_color=$(case $HOSTNAME in
   *)      echo blue;;
 esac)
 
-export PURE_PROMPT_SYMBOL="%#"
+# pure doesn't support prompt escapes like "%#", so handle manually
+if [ $UID = 0 ]; then
+  export PURE_PROMPT_SYMBOL="#"
+else
+  export PURE_PROMPT_SYMBOL="%"
+fi
+
 export PURE_GIT_DOWN_ARROW="↓"
 export PURE_GIT_UP_ARROW="↑"
 export PURE_PROMPT_VICMD_SYMBOL=":"
