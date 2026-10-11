@@ -136,7 +136,7 @@ C.later(function()
       end,
     },
   })
-  C.nmap("<Leader><space>", snacks.picker.smart, "Find Files (Root Dir)")
+  C.nmap("<Leader><space>", snacks.picker.smart, "Find Files (Smart)")
   C.nmap("<Leader>,", snacks.picker.buffers, "Buffers")
   C.nmap("<Leader>/", snacks.picker.grep, "Grep")
   C.nmap("<Leader>:", snacks.picker.command_history, "Command History")
@@ -152,10 +152,15 @@ C.later(function()
   C.nmap("<Leader>fR", function() snacks.picker.recent({ filter = { cwd = true } }) end, "Recent (cwd)")
   C.nmap("<Leader>fp", snacks.picker.projects, "Projects")
   -- git
+  C.nmap("<Leader>gb", snacks.picker.git_branches, "Git Branches")
   C.nmap("<Leader>gd", snacks.picker.git_diff, "Git Diff (hunks)")
   C.nmap("<Leader>gD", function() snacks.picker.git_diff({ base = "origin", group = true }) end, "Git Diff (origin)")
+  C.nmap("<Leader>gl", snacks.picker.git_log, "Git Log")
+  C.nmap("<Leader>gL", snacks.picker.git_log_line, "Git Log Line")
+  C.nmap("<Leader>gf", snacks.picker.git_log_file, "Git Log File")
   C.nmap("<Leader>gs", snacks.picker.git_status, "Git Status")
   C.nmap("<Leader>gS", snacks.picker.git_stash, "Git Stash")
+  -- github
   C.nmap("<Leader>gi", snacks.picker.gh_issue, "GitHub Issues (open)")
   C.nmap("<Leader>gI", function() snacks.picker.gh_issue({ state = "all" }) end, "GitHub Issues (all)")
   C.nmap("<Leader>gp", snacks.picker.gh_pr, "GitHub Pull Requests (open)")
@@ -355,7 +360,7 @@ C.now(function()
       signcolumn = false,
     },
   })
-  keymap("n", "<Leader>uv", function() focus.focus_toggle() end, { desc = "Toggle golden ration view" })
+  keymap("n", "<Leader>uv", focus.focus_toggle, { desc = "Toggle focus (golden ratio)" })
 
   C.autocmd("WinEnter", "*",
     function(_)
