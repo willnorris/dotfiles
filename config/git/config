@@ -32,10 +32,6 @@
   submit = codereview submit
   sync = codereview sync
 
-[blame]
-  date = relative
-  coloring = repeatedLines
-
 [credential]
   helper = cache --timeout=3600
 
@@ -54,6 +50,24 @@
 [core]
   excludesfile = ~/.config/git/ignore
   quotepath = false
+  pager = delta
+
+[delta]
+  navigate = true
+  line-numbers = true
+  side-by-side = true
+  syntax-theme = OneDark
+
+  hunk-header-decoration-style = omit
+  file-decoration-style = omit
+
+  minus-style = syntax "#452E34"
+  minus-emph-style = syntax "#6C3E44"
+  line-numbers-minus-style = "#e06c75"
+
+  plus-style = syntax "#303831"
+  plus-emph-style = syntax "#43503E"
+  line-numbers-plus-style = "#98c379"
 
 [diff "vim"]
   command = vimdiff
@@ -83,6 +97,9 @@
 [init]
   templatedir = ~/.config/git/template
   defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
 
 [log]
   decorate = short
