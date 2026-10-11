@@ -62,6 +62,10 @@ prompt_pure_set_title() {
 	# Emacs terminal does not support settings the title.
 	(( ${+EMACS} || ${+INSIDE_EMACS} )) && return
 
+	# Only write the escape when standard output is a terminal, or it would corrupt the output of a non-interactive script that sources Pure and redirects its stdout to a file or a pipe.
+	# $TTY is not a substitute: zsh also sets it from a tty on stdin, so it stays non-empty for `zsh script.zsh > out` run from a terminal.
+	[[ -t 1 ]] || return
+
 	case $TTY in
 		# Don't set title over serial console.
 		/dev/ttyS[0-9]*) return;;
@@ -87,8 +91,11 @@ prompt_pure_set_title() {
 prompt_pure_preexec() {
 	if [[ -n $prompt_pure_git_fetch_pattern ]]; then
 		# Detect when Git is performing pull/fetch, including Git aliases.
+		# Alias names are case-insensitive, and `git config` lists them in lowercase.
 		local -H MATCH MBEGIN MEND match mbegin mend
-		if [[ $2 =~ (git|hub)\ (.*\ )?($prompt_pure_git_fetch_pattern)(\ .*)?$ ]]; then
+		# The subcommand is followed by a space, a shell delimiter (`;`, `&`, `|`, `)`, a newline) or the end of the command line. The pattern lives in a variable because its `]]` would otherwise close the `[[ ]]` test.
+		local fetch_re="(git|hub)\ (.*\ )?($prompt_pure_git_fetch_pattern)([);&|[:space:]].*)?$"
+		if [[ ${(L)2} =~ $fetch_re ]]; then
 			# We must flush the async jobs to cancel our git fetch in order
 			# to avoid conflicts with the user issued pull / fetch.
 			async_flush_jobs 'prompt_pure'
@@ -98,7 +105,8 @@ prompt_pure_preexec() {
 	typeset -g prompt_pure_cmd_timestamp=$EPOCHSECONDS
 
 	# Shows the current directory and executed command in the title while a process is active.
-	prompt_pure_set_title 'ignore-escape' "$PWD:t: $2"
+	# The root directory has no name, so show `/`.
+	prompt_pure_set_title 'ignore-escape' "${${PWD:t}:-/}: $2"
 
 	# Disallow Python virtualenv from updating the prompt. Set it to 20 if
 	# untouched by the user to indicate that Pure modified it. Here we use
@@ -109,7 +117,8 @@ prompt_pure_preexec() {
 # Change the colors if their value are different from the current ones.
 prompt_pure_set_colors() {
 	local color_temp key value
-	for key value in ${(kv)prompt_pure_colors}; do
+	# Quote the expansion so an empty color value does not shift the key/value pairs and corrupt the palette.
+	for key value in "${(@kv)prompt_pure_colors}"; do
 		zstyle -t ":prompt:pure:$key" color "$value" && continue
 		case $? in
 			1) # The current style is different from the one from zstyle.
@@ -270,6 +279,10 @@ prompt_pure_precmd() {
 		if [[ -n $VIRTUAL_ENV ]] && [[ -z $VIRTUAL_ENV_DISABLE_PROMPT || $VIRTUAL_ENV_DISABLE_PROMPT = 20 ]]; then
 			if [[ -n $VIRTUAL_ENV_PROMPT ]]; then
 				psvar[20]="${VIRTUAL_ENV_PROMPT}"
+				# Python 3.11 and 3.12 venvs set it to `(name) `.
+				if [[ $VIRTUAL_ENV_PROMPT == \(*\)\  ]]; then
+					psvar[20]="${VIRTUAL_ENV_PROMPT[2,-3]}"
+				fi
 			else
 				psvar[20]="${VIRTUAL_ENV:t}"
 			fi
@@ -308,18 +321,16 @@ prompt_pure_async_print_generation() {
 prompt_pure_async_git_aliases() {
 	setopt localoptions noshwordsplit
 	prompt_pure_async_print_generation
-	local -a gitalias pullalias
+	local -a pullalias parts
+	local gitalias
 
-	# List all aliases and split on newline.
-	gitalias=(${(@f)"$(command git config --get-regexp "^alias\.")"})
-	for line in $gitalias; do
-		parts=(${(@)=line})           # Split line on spaces.
-		aliasname=${parts[1]#alias.}  # Grab the name (alias.[name]).
-		shift parts                   # Remove `aliasname`
+	# List all aliases, NUL-separated as `alias.[name]\n[value]`, since values can span multiple lines.
+	for gitalias in ${(0)"$(command git config -z --get-regexp "^alias\.")"}; do
+		parts=(${=gitalias#*$'\n'})  # Split the value on whitespace.
 
 		# Check alias for pull or fetch. Must be exact match.
 		if [[ $parts =~ ^(.*\ )?(pull|fetch)(\ .*)?$ ]]; then
-			pullalias+=($aliasname)
+			pullalias+=(${${gitalias%%$'\n'*}#alias.})
 		fi
 	done
 
@@ -332,9 +343,11 @@ prompt_pure_async_vcs_info() {
 
 	# Configure `vcs_info` inside an async task. This frees up `vcs_info`
 	# to be used or configured as the user pleases.
+	# The worker is a copy of the shell, so first delete the user's styles in it. Their `vcs_info` formats, hooks, and extra checks would change the messages or run slow Git commands. Pure's own jobs get their settings as arguments.
+	zstyle -d
 	zstyle ':vcs_info:*' enable git
 	zstyle ':vcs_info:*' use-simple true
-	# Only export four message variables from `vcs_info`.
+	# Only export three message variables from `vcs_info`.
 	zstyle ':vcs_info:*' max-exports 3
 	# Export branch (%b), Git toplevel (%R), action (rebase/cherry-pick) (%a)
 	zstyle ':vcs_info:git*' formats '%b' '%R' '%a'
@@ -344,7 +357,8 @@ prompt_pure_async_vcs_info() {
 
 	local -A info
 	info[pwd]=$PWD
-	info[branch]=${vcs_info_msg_0_//\%/%%}
+	# No `%` escaping needed, the branch is rendered literally through `%14v`.
+	info[branch]=$vcs_info_msg_0_
 	info[top]=$vcs_info_msg_1_
 	info[action]=$vcs_info_msg_2_
 
@@ -359,7 +373,10 @@ prompt_pure_async_git_dirty() {
 	local untracked_dirty=$1
 	local detailed=${2:-0}
 	local untracked_git_mode=$(command git config --get status.showUntrackedFiles)
-	if [[ "$untracked_git_mode" != 'no' ]]; then
+	# Git also accepts any boolean spelling, where false means `no`.
+	if [[ ${(L)untracked_git_mode} == (no|false|off|0) ]]; then
+		untracked_git_mode='no'
+	else
 		untracked_git_mode='normal'
 	fi
 
@@ -368,8 +385,10 @@ prompt_pure_async_git_dirty() {
 
 	if (( ! detailed )); then
 		if [[ $untracked_dirty = 0 ]]; then
-			command git diff --no-ext-diff --quiet --exit-code || return $?
-			command git diff --no-ext-diff --cached --quiet --exit-code
+			command git diff --no-ext-diff --quiet --exit-code &&
+				command git diff --no-ext-diff --cached --quiet --exit-code
+			# Only exit code 1 means changes. Errors, like in a bare repository, are clean, as with `git status` below.
+			return $(( $? == 1 ))
 		else
 			test -z "$(command git status --porcelain -u${untracked_git_mode})"
 		fi
@@ -390,7 +409,8 @@ prompt_pure_async_git_dirty() {
 
 	local has_unstaged=0 has_staged=0 has_untracked=0 line
 	for line in "${(f)output}"; do
-		(( ! has_unstaged )) && [[ ${line[2]} == [MTDUA] ]] && has_unstaged=1
+		# Renamed or copied (R, C) in the second column means an intent-to-add file matched a changed one.
+		(( ! has_unstaged )) && [[ ${line[2]} == [MTDRCUA] ]] && has_unstaged=1
 		(( ! has_staged )) && [[ ${line[1]} == [MTADRCU] ]] && has_staged=1
 		(( ! has_untracked )) && [[ $line == '??'* ]] && has_untracked=1
 		(( has_unstaged + has_staged + has_untracked == 3 )) && break
@@ -414,7 +434,12 @@ prompt_pure_async_git_fetch() {
 	# Sets `GIT_TERMINAL_PROMPT=0` to disable authentication prompt for Git fetch (Git 2.3+).
 	export GIT_TERMINAL_PROMPT=0
 	# Set SSH `BachMode` to disable all interactive SSH password prompting.
-	export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-"ssh"} -o BatchMode=yes"
+	# Keep the user's `core.sshCommand` (like a custom key), since `GIT_SSH_COMMAND` overrides it.
+	local ssh_command=${GIT_SSH_COMMAND:-$(command git config --get core.sshCommand)}
+	# `GIT_SSH` comes after both in Git's order. It is a program that Git passes its own arguments to, so it cannot get batch mode, and password prompts are instead caught by the monitor guard below.
+	if [[ -n $ssh_command || -z $GIT_SSH ]]; then
+		export GIT_SSH_COMMAND="${ssh_command:-ssh} -o BatchMode=yes"
+	fi
 
 	# If gpg-agent is set to handle SSH keys for `git fetch`, make
 	# sure it doesn't corrupt the parent TTY.
@@ -425,9 +450,10 @@ prompt_pure_async_git_fetch() {
 	local -a remote
 	if ((only_upstream)); then
 		local ref
-		ref=$(command git symbolic-ref -q HEAD)
-		# Set remote to only fetch information for the current branch.
-		remote=($(command git for-each-ref --format='%(upstream:remotename) %(refname)' $ref))
+		# A detached HEAD has no upstream. Without a ref, `for-each-ref` would list all refs.
+		ref=$(command git symbolic-ref -q HEAD) || return 97
+		# Set remote to only fetch information for the current branch. Use the upstream's ref on the remote, as it can have a different name than the local branch. Both fields are empty without an upstream.
+		remote=($(command git for-each-ref --format='%(upstream:remotename) %(upstream:remoteref)' $ref))
 		if [[ -z $remote[1] ]]; then
 			# No remote specified for this branch, skip fetch.
 			return 97
@@ -492,20 +518,11 @@ prompt_pure_async_git_stash() {
 prompt_pure_check_node_version() {
 	setopt localoptions noshwordsplit
 
-	# Walk up to find package.json (similar to how git detects repos).
-	local dir=$PWD
-	while [[ $dir != "/" ]]; do
-		[[ -f "$dir/package.json" ]] && break
-		dir=${dir:h}
-	done
-
-	local version=
-	if [[ -f "$dir/package.json" ]]; then
-		version=$(command node --version 2>/dev/null) || version=
-		version=${${${version#v}%%.*}//[$'\t\r\n']}
-	fi
-
-	print -r -- "$version"
+	local version
+	version=$(command node --version 2>/dev/null) || version=
+	# Strip whitespace before parsing, so a leading newline (some version-manager shims emit one) does not leave the `v` in the version.
+	version=${version//[[:space:]]/}
+	print -r -- "${${version#v}%%.*}"
 }
 
 # Try to lower the priority of the worker so that disk heavy operations
@@ -522,13 +539,18 @@ prompt_pure_async_renice() {
 	fi
 }
 
-prompt_pure_clear_git_state() {
+# Reset the Git info shown in the preprompt.
+prompt_pure_reset_git_info() {
 	unset prompt_pure_git_dirty prompt_pure_git_last_dirty_check_timestamp prompt_pure_git_arrows prompt_pure_git_stash prompt_pure_git_fetch_pattern
-	typeset -gA prompt_pure_worker_env=()
 	typeset -gA prompt_pure_vcs_info
 	prompt_pure_vcs_info[branch]=
 	prompt_pure_vcs_info[top]=
 	prompt_pure_vcs_info[action]=
+}
+
+prompt_pure_clear_git_state() {
+	prompt_pure_reset_git_info
+	typeset -gA prompt_pure_worker_env=()
 	prompt_pure_vcs_info[pwd]=
 }
 
@@ -552,11 +574,21 @@ prompt_pure_async_tasks() {
 
 	# Check if Node.js version display is enabled (independent of Git).
 	if zstyle -t ":prompt:pure:environment:node_version" show; then
-		# Cache key uses "|" separator so the value is never a valid directory
-		# path, preventing zsh from treating it as a named directory for %~.
-		local node_cache_key="$PWD|$PATH"
+		# Walk up to find package.json (similar to how git detects repos). This runs on every prompt, so creating or removing it is noticed.
+		# The cache key never holds a directory path, which prevents zsh from treating it as a named directory for %~ (AUTO_NAME_DIRS).
+		local package_json=${PWD%/}/package.json
+		while [[ ! -f $package_json && $package_json != /package.json ]]; do
+			package_json=${package_json:h:h}
+			package_json=${package_json%/}/package.json
+		done
+
+		# Only run `node` when the package or PATH changed.
+		local node_cache_key="$package_json|$PATH"
 		if [[ ${prompt_pure_node_cache_key-} != "$node_cache_key" ]]; then
-			typeset -g prompt_pure_node_version=$(prompt_pure_check_node_version)
+			typeset -g prompt_pure_node_version=
+			if [[ -f $package_json ]]; then
+				prompt_pure_node_version=$(prompt_pure_check_node_version)
+			fi
 			typeset -g prompt_pure_node_cache_key=$node_cache_key
 		fi
 	else
@@ -613,10 +645,7 @@ prompt_pure_async_tasks() {
 		$working_directory_changed == 1 ||
 		$working_tree_changed == 1 ]]; then
 		# Reset preprompt variables before syncing the new working tree.
-		unset prompt_pure_git_dirty prompt_pure_git_last_dirty_check_timestamp prompt_pure_git_arrows prompt_pure_git_stash prompt_pure_git_fetch_pattern
-		prompt_pure_vcs_info[branch]=
-		prompt_pure_vcs_info[top]=
-		prompt_pure_vcs_info[action]=
+		prompt_pure_reset_git_info
 	fi
 
 	if [[ $working_directory_changed == 1 ||
@@ -673,7 +702,8 @@ prompt_pure_async_refresh() {
 	async_job "prompt_pure" prompt_pure_async_git_arrows || return
 
 	# Do not perform `git fetch` if it is disabled or in home folder.
-	if (( ${PURE_GIT_PULL:-1} )) && [[ $prompt_pure_vcs_info[top] != $HOME ]]; then
+	# Git reports the top-level with symlinks resolved, so resolve HOME too.
+	if (( ${PURE_GIT_PULL:-1} )) && [[ $prompt_pure_vcs_info[top] != ${HOME:A} ]]; then
 		zstyle -t :prompt:pure:git:fetch only_upstream
 		local only_upstream=$((? == 0))
 		async_job "prompt_pure" prompt_pure_async_git_fetch $only_upstream || return
@@ -793,14 +823,17 @@ prompt_pure_async_callback() {
 			fi
 			unset MATCH MBEGIN MEND
 
-			# The update has a Git top-level set, which means we just entered a new
-			# Git directory. Run the async refresh tasks.
-			[[ -n $info[top] ]] && [[ -z $prompt_pure_vcs_info[top] ]] && prompt_pure_async_refresh
+			# The update has a Git top-level set, which means we just entered a new Git directory.
+			local entered_git_directory=0
+			[[ -n $info[top] ]] && [[ -z $prompt_pure_vcs_info[top] ]] && entered_git_directory=1
 
 			# Always update branch, top-level and stash.
 			prompt_pure_vcs_info[branch]=$info[branch]
 			prompt_pure_vcs_info[top]=$info[top]
 			prompt_pure_vcs_info[action]=$info[action]
+
+			# Run the async refresh tasks after the update, as they read the new top-level (for example, to skip fetching at HOME).
+			(( entered_git_directory )) && prompt_pure_async_refresh
 
 			do_render=1
 			;;
@@ -824,7 +857,7 @@ prompt_pure_async_callback() {
 			# in a different color. To distinguish between a "fresh" and a "cached" result, the
 			# preprompt is rendered before setting this variable. Thus, only upon the next
 			# rendering of the preprompt will the result appear in a different color.
-			(( $exec_time > 5 )) && prompt_pure_git_last_dirty_check_timestamp=$EPOCHSECONDS
+			(( $exec_time > 5 )) && typeset -g prompt_pure_git_last_dirty_check_timestamp=$EPOCHSECONDS
 			;;
 		prompt_pure_async_git_fetch|prompt_pure_async_git_arrows)
 			# `prompt_pure_async_git_fetch` executes `prompt_pure_async_git_arrows`
@@ -888,13 +921,18 @@ prompt_pure_reset_prompt() {
 	zle && zle .reset-prompt
 }
 
+# Store the prompt symbol, escaped so a `%` in it renders literally.
 prompt_pure_reset_prompt_symbol() {
-	prompt_pure_state[prompt]=${PURE_PROMPT_SYMBOL:-❯}
+	prompt_pure_state[prompt]=${${PURE_PROMPT_SYMBOL:-❯}//\%/%%}
 }
 
 prompt_pure_update_vim_prompt_widget() {
 	setopt localoptions noshwordsplit
-	prompt_pure_state[prompt]=${${${KEYMAP/vicmd/${PURE_PROMPT_VICMD_SYMBOL:-❮}}/visual/${PURE_PROMPT_VICMD_SYMBOL:-❮}}/(main|viins)/${PURE_PROMPT_SYMBOL:-❯}}
+	# Any other keymap (like `emacs` or a custom one) uses the regular symbol.
+	case $KEYMAP in
+		vicmd|visual) typeset PURE_PROMPT_SYMBOL=${PURE_PROMPT_VICMD_SYMBOL:-❮};;
+	esac
+	prompt_pure_reset_prompt_symbol
 
 	prompt_pure_reset_prompt
 }
@@ -925,7 +963,8 @@ prompt_pure_state_setup() {
 			who_out="${(M)who_in:#*[[:space:]]${TTY#/dev/}[[:space:]]*}"
 		fi
 
-		local reIPv6='(([0-9a-fA-F]+:)|:){2,}[0-9a-fA-F]+'  # Simplified, only checks partial pattern.
+		# Simplified, only checks partial pattern. Requires either the `::` compression or at least four groups, so a BusyBox `HH:MM:SS` login time (three groups) is not mistaken for a remote address.
+		local reIPv6='([0-9a-fA-F:]*::[0-9a-fA-F:]*|([0-9a-fA-F]+:){3,}[0-9a-fA-F]+)'
 		local reIPv4='([0-9]{1,3}\.){3}[0-9]+'   # Simplified, allows invalid ranges.
 		# Here we assume two non-consecutive periods represents a
 		# hostname. This matches `foo.bar.baz`, but not `foo.bar`.
@@ -963,12 +1002,12 @@ prompt_pure_state_setup() {
 	zstyle -T ":prompt:pure:host" show || show_host=0
 
 	typeset -gA prompt_pure_state
-	prompt_pure_state[version]="1.28.3"
+	prompt_pure_state[version]="1.28.4"
 	prompt_pure_state+=(
 		user_color "$user_color"
 		show_host  "$show_host"
-		prompt	   "${PURE_PROMPT_SYMBOL:-❯}"
 	)
+	prompt_pure_reset_prompt_symbol
 }
 
 # Return true if executing inside a Docker, OCI, LXC, or systemd-nspawn container.
@@ -991,11 +1030,8 @@ prompt_pure_is_inside_container() {
 prompt_pure_system_report() {
 	setopt localoptions noshwordsplit
 
-	local shell=$SHELL
-	if [[ -z $shell ]]; then
-		shell=$commands[zsh]
-	fi
-	print - "- Zsh: $($shell --version) ($shell)"
+	# Report the running Zsh. `$SHELL` is the login shell, which can be another shell or version.
+	print - "- Zsh: $ZSH_VERSION ($ZSH_PATCHLEVEL)"
 	print -n - "- Operating system: "
 	case "$(uname -s)" in
 		Darwin)	print "$(sw_vers -productName) $(sw_vers -productVersion) ($(sw_vers -buildVersion))";;
@@ -1006,10 +1042,13 @@ prompt_pure_system_report() {
 	[[ -n $TMUX ]] && print "yes" || print "no"
 
 	local git_version
-	git_version=($(git --version))  # Remove newlines, if hub is present.
+	# Git is optional (see `zstyle :prompt:pure:git show no`), so do not leak a shell error into the report when it is not installed.
+	git_version=($(command git --version 2>/dev/null))  # Remove newlines, if hub is present.
+	[[ -n $git_version ]] || git_version=('not installed')
 	print - "- Git: $git_version"
 
 	print - "- Pure state:"
+	local k v
 	for k v in "${(@kv)prompt_pure_state}"; do
 		print - "    - $k: \`${(q-)v}\`"
 	done
@@ -1050,6 +1089,7 @@ prompt_pure_preview() {
 	local -A c=("${(@kv)prompt_pure_colors}")
 	local node_symbol
 	zstyle -s ":prompt:pure:environment:node_version" symbol node_symbol || node_symbol='⬢'
+	node_symbol=${node_symbol//\%/%%}
 
 	local path_sample="%F{$c[path]}~/dev/pure%f"
 	if zstyle -t ':prompt:pure:path:separator' dim; then
@@ -1061,24 +1101,31 @@ prompt_pure_preview() {
 		host_sample="%F{$c[host]}@heartofgold%f"
 	fi
 
+	# The symbols are escaped so a `%` in one of them renders literally, like in the real prompt.
+	local symbol=${${PURE_PROMPT_SYMBOL:-❯}//\%/%%}
+	local suspended=${${PURE_SUSPENDED_JOBS_SYMBOL-✦}//\%/%%}
+	local arrows=${${PURE_GIT_DOWN_ARROW:-⇣}//\%/%%}${${PURE_GIT_UP_ARROW:-⇡}//\%/%%}
+	local stash=${${PURE_GIT_STASH_SYMBOL-≡}//\%/%%}
+
 	# Sample preprompt with all components visible.
-	print -P "%F{$c[custom:prefix]}prefix%f %F{$c[suspended_jobs]}${PURE_SUSPENDED_JOBS_SYMBOL-✦}%f %F{$c[user]}zaphod%f${host_sample} ${path_sample} %F{$c[git:branch]}main%f%F{$c[git:dirty]}*%f %F{$c[git:action]}rebase-i%f %F{$c[git:arrow]}${PURE_GIT_DOWN_ARROW:-⇣}${PURE_GIT_UP_ARROW:-⇡}%f %F{$c[git:stash]}${PURE_GIT_STASH_SYMBOL-≡}%f %F{$c[node_version]}${node_symbol}22%f %F{$c[execution_time]}42s%f %F{$c[custom:suffix]}suffix%f"
-	print -P "%F{$c[virtualenv]}venv%f %F{$c[prompt:success]}${PURE_PROMPT_SYMBOL:-❯}%f"
+	print -P "%F{$c[custom:prefix]}prefix%f %F{$c[suspended_jobs]}$suspended%f %F{$c[user]}zaphod%f${host_sample} ${path_sample} %F{$c[git:branch]}main%f%F{$c[git:dirty]}*%f %F{$c[git:action]}rebase-i%f %F{$c[git:arrow]}$arrows%f %F{$c[git:stash]}$stash%f %F{$c[node_version]}${node_symbol}22%f %F{$c[execution_time]}42s%f %F{$c[custom:suffix]}suffix%f"
+	print -P "%F{$c[virtualenv]}venv%f %F{$c[prompt:success]}$symbol%f"
 	print
-	print -P "%F{$c[prompt:error]}${PURE_PROMPT_SYMBOL:-❯}%f  prompt after error"
+	print -P "%F{$c[prompt:error]}$symbol%f  prompt after error"
 	print; print
 	print -P "%F{$c[git:branch:cached]}main%f  branch color when data is cached"
 	print; print
 	print -P "%F{$c[user:root]}root%f${host_sample}  root user"
 	print; print
-	print -P "%F{$c[prompt:continuation]}… if%f %F{$c[prompt:success]}${PURE_PROMPT_SYMBOL:-❯}%f  continuation prompt"
+	print -P "%F{$c[prompt:continuation]}… if%f %F{$c[prompt:success]}$symbol%f  continuation prompt"
 }
 
 prompt_pure_setup() {
 	# Prevent percentage showing up if output doesn't end with a newline.
 	export PROMPT_EOL_MARK=''
 
-	prompt_opts=(subst percent)
+	# Use `typeset -g` to set the `promptinit` local when called through it, without creating an undeclared global otherwise.
+	typeset -ga prompt_opts=(subst percent)
 
 	# Borrowed from `promptinit`. Sets the prompt options in case Pure was not
 	# initialized via `promptinit`.
