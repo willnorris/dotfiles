@@ -1,0 +1,47 @@
+onboarding = false
+[ui]
+# U+2060 WORD JOINER flags this title as multiplexer-owned,
+# so kitty's mux-prefix-dispatch.sh knows to forward prefix keys here
+# instead of running its native action.
+# {terminal_title} is herdr's equivalent of tmux's #T:
+# the title reported by whatever is running in the focused pane.
+window_title = "\u2060{terminal_title}"
+show_agent_labels_on_pane_borders = false
+agent_panel_sort = "spaces"
+
+status_indicators = "symbols"
+
+[keys]
+prefix = "ctrl+space"
+
+# tabs (= kitty tabs / tmux windows)
+new_tab = "prefix+c"
+previous_tab = ["prefix+h", "prefix+p"]
+next_tab = ["prefix+l", "prefix+n"]
+move_tab_previous = "prefix+shift+h"
+move_tab_next = "prefix+shift+l"
+switch_tab = "prefix+1..9"
+
+# panes (= kitty windows / tmux panes)
+# moved off the default plain h/j/k/l since those now drive tab switching
+focus_pane_left = "prefix+ctrl+h"
+focus_pane_down = "prefix+ctrl+j"
+focus_pane_up = "prefix+ctrl+k"
+focus_pane_right = "prefix+ctrl+l"
+
+# moved off the default prefix+minus so it doesn't collide with the
+# (unbound) resize keys forwarded from kitty
+split_horizontal = "prefix+s"
+split_vertical = "prefix+v"
+
+# scrollback — kept herdr's own default ("[") as a second way in
+copy_mode = ["prefix+space", "prefix+["]
+
+detach = ["prefix+d", "prefix+q"]
+
+[theme]
+name = "one-dark"
+auto_switch = false
+
+[ui.toast]
+delivery = "terminal"
