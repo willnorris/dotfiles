@@ -8,6 +8,9 @@ onboarding = false
 window_title = "\u2060{terminal_title}"
 show_agent_labels_on_pane_borders = false
 agent_panel_sort = "spaces"
+pane_borders = "auto"
+pane_outer_borders = false
+pane_gaps = false
 
 status_indicators = "symbols"
 
@@ -40,7 +43,7 @@ copy_mode = ["prefix+space", "prefix+["]
 detach = ["prefix+d", "prefix+q"]
 
 [theme]
-name = "one-dark"
+name = "terminal"
 auto_switch = false
 
 [ui.toast]
