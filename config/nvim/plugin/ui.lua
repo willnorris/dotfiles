@@ -1,4 +1,3 @@
-local keymap = vim.keymap.set
 local mod = require("util").mod
 
 -- restore cursor position
@@ -198,7 +197,7 @@ C.later(function()
 
   C.nmap("gd", snacks.picker.lsp_definitions, "Goto Definition")
   C.nmap("gD", snacks.picker.lsp_declarations, "Goto Declaration")
-  keymap("n", "gr", snacks.picker.lsp_references, { nowait = true, desc = "Goto References" })
+  vim.keymap.set("n", "gr", snacks.picker.lsp_references, { nowait = true, desc = "Goto References" })
   C.nmap("gI", snacks.picker.lsp_implementations, "Goto Implementation")
   C.nmap("gy", snacks.picker.lsp_type_definitions, "Goto T[y]pe Definition")
   C.nmap("gai", snacks.picker.lsp_incoming_calls, "C[a]lls Incoming")
@@ -360,7 +359,7 @@ C.now(function()
       signcolumn = false,
     },
   })
-  keymap("n", "<Leader>uv", focus.focus_toggle, { desc = "Toggle focus (golden ratio)" })
+  vim.keymap.set("n", "<Leader>uv", focus.focus_toggle, { desc = "Toggle focus (golden ratio)" })
 
   C.autocmd("WinEnter", "*",
     function(_)
@@ -404,9 +403,9 @@ C.now(function()
   })
   -- add keymaps to navigate with <C-j> and <C-k>
   C.autocmd("User", "MiniStarterOpened", function(ev)
-    keymap("n", "<C-j>", function() starter.update_current_item("next") end,
+    vim.keymap.set("n", "<C-j>", function() starter.update_current_item("next") end,
       { buf = ev.buf, nowait = true, silent = true })
-    keymap("n", "<C-k>", function() starter.update_current_item("prev") end,
+    vim.keymap.set("n", "<C-k>", function() starter.update_current_item("prev") end,
       { buf = ev.buf, nowait = true, silent = true })
   end, "")
 end)
@@ -463,7 +462,7 @@ C.now(function()
       duration_last = 0,
     },
   })
-  keymap("n", "<Leader>sn", notify.show_history, { desc = "Notifications" })
+  vim.keymap.set("n", "<Leader>sn", notify.show_history, { desc = "Notifications" })
 end)
 
 C.now(function()
