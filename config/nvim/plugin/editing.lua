@@ -126,11 +126,34 @@ end)
 
 C.later(function()
   vim.pack.add({ "https://github.com/folke/trouble.nvim" })
+
+  -- preview_keypress passes the specified key to the trouble preview window
+  local preview_keypress = function(key, desc)
+    return {
+      action = function()
+        local preview = require("trouble.view.preview")
+        if preview.preview and vim.api.nvim_win_is_valid(preview.preview.win) then
+          vim.api.nvim_win_call(preview.preview.win, function()
+            vim.cmd("normal! " .. vim.api.nvim_replace_termcodes(key, true, false, true))
+          end)
+        end
+      end,
+      desc = desc,
+    }
+  end
+
   local trouble = require("trouble")
+  local mod = require("util").mod
   trouble.setup({
     cycles_results = false,
     keys = {
       ["<c-o>"] = "toggle_preview",
+      [mod("j")] = preview_keypress("j", "Scroll preview down"),
+      [mod("k")] = preview_keypress("k", "Scroll preview up"),
+      [mod("d")] = preview_keypress("<C-d>", "Scroll preview half page down"),
+      [mod("u")] = preview_keypress("<C-u>", "Scroll preview half page up"),
+      [mod("f")] = preview_keypress("<C-f>", "Scroll preview page down"),
+      [mod("b")] = preview_keypress("<C-f>", "Scroll preview page up"),
     },
     preview = {
       type = "split",
