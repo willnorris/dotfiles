@@ -37,10 +37,21 @@ focus_pane_right = "prefix+ctrl+l"
 split_horizontal = "prefix+s"
 split_vertical = "prefix+v"
 
+# resize panes
+resize_pane_left = "ctrl+shift+alt+h"
+resize_pane_down = ["ctrl+shift+alt+j", "super+minus"]
+resize_pane_up = ["ctrl+shift+alt+k", "super+="]
+resize_pane_right = "ctrl+shift+alt+l"
+
 # scrollback — kept herdr's own default ("[") as a second way in
 copy_mode = ["prefix+space", "prefix+["]
 
 detach = ["prefix+d", "prefix+q"]
+
+# navigate mode (prefix, then a movement key):
+# j/k move through the workspace list instead of focusing panes.
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
 
 [theme]
 name = "terminal"
