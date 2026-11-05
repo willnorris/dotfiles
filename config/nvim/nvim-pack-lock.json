@@ -1,8 +1,8 @@
 {
   "plugins": {
-    "committia.vim": {
-      "rev": "c8c0f255e8090ed90dd9d5dd2e8672994f8e3671",
-      "src": "https://github.com/rhysd/committia.vim"
+    "committee.nvim": {
+      "rev": "86bca6c2698d6e6c37568f8bc588cbd190c99f91",
+      "src": "https://github.com/willnorris/committee.nvim"
     },
     "conform.nvim": {
       "rev": "016802de402556da54c36bd7359b441266b01cdd",

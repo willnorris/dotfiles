@@ -80,24 +80,23 @@ C.later(function()
 end)
 
 C.now(function()
-  vim.pack.add({ "https://github.com/rhysd/committia.vim" })
-  vim.g.committia_hooks = {
-    edit_open = function(_)
+  vim.pack.add({ "https://github.com/willnorris/committee.nvim" })
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "CommitteeEditOpen",
+    callback = function(ev)
       vim.wo.spell = true
 
+      local committee = require("committee")
       local mod = require("util").mod
-
-      -- keymaps to scroll diff window
-      vim.keymap.set({ "n", "i" }, mod("j"), "<Plug>(committia-scroll-diff-down)",
-        { buffer = 0, desc = "scroll diff down" })
-      vim.keymap.set({ "n", "i" }, mod("k"), "<Plug>(committia-scroll-diff-up)",
-        { buffer = 0, desc = "scroll diff up" })
-      vim.keymap.set({ "n", "i" }, mod("f"), "<Plug>(committia-scroll-diff-down-half)",
-        { buffer = 0, desc = "scroll diff down half" })
-      vim.keymap.set({ "n", "i" }, mod("b"), "<Plug>(committia-scroll-diff-up-half)",
-        { buffer = 0, desc = "scroll diff up half" })
+      local function map(lhs, fn, desc)
+        vim.keymap.set({ "n", "i" }, lhs, fn, { buffer = ev.data.buf_id, desc = desc })
+      end
+      map(mod("j"), committee.scroll_diff_down, "scroll diff down")
+      map(mod("k"), committee.scroll_diff_up, "scroll diff up")
+      map(mod("f"), committee.scroll_diff_down_half, "scroll diff down half")
+      map(mod("b"), committee.scroll_diff_up_half, "scroll diff up half")
     end,
-  }
+  })
 end)
 
 C.now(function()
