@@ -279,6 +279,9 @@ mode "resize" {
     Shift+k resize shrink height 200px
     Shift+l resize grow width 200px
 
+    Minus opacity minus .1
+    Equal opacity plus .1
+
     # Return to default mode
     Return mode "default"
     Escape mode "default"
@@ -294,20 +297,24 @@ for_window [app_id="albert" title="^Albert$"] {
   # 300px above center
   move up 300 px
 }
-for_window [app_id="chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default"] {
-  # YouTube Music PWA on default Chromium profile
+for_window [app_id="firefox.webapp-a4bda52f-b021-435e-8981-0a5e61093e56"] {
+  # YouTube Music PWA on personal Firefox profile
   move container to scratchpad
 }
-for_window [app_id="chrome-jhjcdofpkbdhhdfaemgoohfffcfiggpe-Default"] {
-  # Apple TV PWA on default Chromium profile
+for_window [app_id="firefox.webapp-bfb2e840-2918-4e1e-8ad0-ac1518529140"] {
+  # Apple TV PWA on personal Firefox profile
   floating enable
 }
-for_window [app_id="chrome-kmkopapmnpfocihnnkbnphiagoljpmjj-Default"] {
-  # HBO Max PWA on default Chromium profile
+for_window [app_id="firefox.webapp-fef5ea53-d6ba-44c1-bef6-8b71d6e247f2"] {
+  # HBO Max PWA on personal Firefox profile
   floating enable
 }
-for_window [app_id="chrome-eppojlglocelodeimnohnlnionkobfln-Default"] {
-  # Netflix PWA on default Chromium profile
+for_window [app_id="firefox.webapp-7e23cd12-08e6-474f-b999-72279d1ce4db"] {
+  # Netflix PWA on personal Firefox profile
+  floating enable
+}
+for_window [app_id="firefox.webapp-f587f2f2-2c13-40c0-b89e-ded5bfc080a2"] {
+  # Disney Plus PWA on personal Firefox profile
   floating enable
 }
 for_window [app_id="org.gnome.Calculator"] {
