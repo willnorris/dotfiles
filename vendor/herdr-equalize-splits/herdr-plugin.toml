@@ -1,0 +1,18 @@
+id = "local.equalize-splits"
+name = "Equalize Splits"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Balance every split in the current tab so each pane gets an equal share within its row/column."
+platforms = ["linux", "macos"]
+
+# Equalize all splits in the focused tab (even share within each row/column).
+[[actions]]
+id = "equalize"
+title = "Equalize splits"
+command = ["node", "equalize.mjs"]
+
+# Same computation, but print the planned ratios instead of applying them.
+[[actions]]
+id = "equalize-dry-run"
+title = "Equalize splits (dry run)"
+command = ["node", "equalize.mjs", "--dry-run"]
