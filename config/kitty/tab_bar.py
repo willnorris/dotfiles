@@ -53,7 +53,7 @@ def draw_tab(
     # show keyboard mode and layout on right side if set
     if is_last:
         trailers = []
-        trailers.append((0, tab.layout_name))
+        #trailers.append((0, tab.layout_name))
 
         mode = get_boss().mappings.current_keyboard_mode_name
         if mode and not mode.startswith("__"):

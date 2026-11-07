@@ -1,4 +1,5 @@
 onboarding = false
+
 [ui]
 # U+2060 WORD JOINER flags this title as multiplexer-owned,
 # so kitty's mux-prefix-dispatch.sh knows to forward prefix keys here
@@ -21,8 +22,8 @@ prefix = "ctrl+space"
 new_tab = "prefix+c"
 previous_tab = ["prefix+h", "prefix+p"]
 next_tab = ["prefix+l", "prefix+n"]
-move_tab_previous = "prefix+shift+h"
-move_tab_next = "prefix+shift+l"
+move_tab_previous = "prefix+shift+p"
+move_tab_next = "prefix+shift+n"
 switch_tab = "prefix+1..9"
 
 # panes (= kitty windows / tmux panes)
@@ -32,26 +33,36 @@ focus_pane_down = "prefix+ctrl+j"
 focus_pane_up = "prefix+ctrl+k"
 focus_pane_right = "prefix+ctrl+l"
 
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+
 # moved off the default prefix+minus so it doesn't collide with the
 # (unbound) resize keys forwarded from kitty
 split_horizontal = "prefix+s"
 split_vertical = "prefix+v"
+resize_mode = "prefix+r"
 
 # resize panes
-resize_pane_left = "ctrl+shift+alt+h"
-resize_pane_down = ["ctrl+shift+alt+j", "super+minus"]
-resize_pane_up = ["ctrl+shift+alt+k", "super+="]
-resize_pane_right = "ctrl+shift+alt+l"
+resize_pane_down = "super+minus"
+resize_pane_up = "super+="
 
 # scrollback — kept herdr's own default ("[") as a second way in
 copy_mode = ["prefix+space", "prefix+["]
 
-detach = ["prefix+d", "prefix+q"]
+detach = "prefix+d"
 
 # navigate mode (prefix, then a movement key):
 # j/k move through the workspace list instead of focusing panes.
 navigate_workspace_up = "k"
 navigate_workspace_down = "j"
+
+[[keys.command]]
+key = "prefix+="
+type = "plugin_action"
+command = "local.equalize-splits.equalize"
+description = "equalize splits"
 
 [theme]
 name = "terminal"
