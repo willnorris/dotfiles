@@ -32,6 +32,16 @@ user_pref("sidebar.main.tools", "");
 // Enable tab groups
 user_pref("browser.tabs.groups.enabled", true);
 
+// Enable taskbar tabs (PWAs / Web Apps)
+user_pref("browser.taskbarTabs.enabled", true);
+
+// Enable devtools
+user_pref("devtools.chrome.enabled", true);
+user_pref("devtools.debugger.remote-enabled", true);
+
+// Don't use client-side decorations on Linux to eliminate rounded corners
+user_pref("browser.tabs.inTitlebar", 0);
+
 // Set blank page as homepage.
 user_pref("browser.startup.homepage", "chrome://browser/content/blanktab.html");
 

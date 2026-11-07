@@ -1,5 +1,21 @@
 @import url(theme.css);
 
+/* Hide the main toolbar (back/reload/urlbar/icons) only on PWA windows */
+html[taskbartab] #nav-bar {
+  display: none !important;
+}
+
+/* Hide 1 bar sliver at top of PWA windows */
+html[taskbartab] body {
+  background: #000 !important;
+}
+
+/* Allow resizing windows much smaller */
+:root {
+  min-width: 1px !important;
+  min-height: 1px !important;
+}
+
 /* Hide titlebar and sidebar elements */
 #tabs-newtab-button, /* new tabs button in sidebar */
 #vertical-tabs-newtab-button, /* new tabs button in sidebar */
@@ -8,7 +24,8 @@
 #userContext-label, /* container label */
 #star-button-box, /* bookmark star */
 #reader-mode-button, /* reader mode button */
-#identity-icon-label /* "Not Secure" label next to lock icon */
+#identity-icon-label, /* "Not Secure" label next to lock icon */
+#taskbar-tabs-button /* add tab to taskbar button */
 /**/ {
   display: none;
 }
