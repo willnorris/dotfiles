@@ -16,6 +16,24 @@ html[taskbartab] body {
   min-height: 1px !important;
 }
 
+/* Remove many of the excessive rounded corners in the Nova design. */
+@media -moz-pref("browser.nova.enabled") {
+  :root {
+    --border-radius-xsmall: 2px !important;
+    --border-radius-small: 4px !important;
+    --border-radius-medium: 6px !important;
+    --border-radius-large: 6px !important;
+    --border-radius-xlarge: 6px !important;
+    --border-radius-circle: 6px !important;
+
+    --chrome-block-radius: 0px !important;
+  }
+  .browserContainer,
+  .browserStack {
+    border-radius: 0 !important;
+  }
+}
+
 /* Hide titlebar and sidebar elements */
 #tabs-newtab-button, /* new tabs button in sidebar */
 #vertical-tabs-newtab-button, /* new tabs button in sidebar */
