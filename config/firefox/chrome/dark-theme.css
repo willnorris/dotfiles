@@ -8,6 +8,14 @@
   background: var(--toolbox-bgcolor);
   color: var(--toolbox-textcolor);
 }
+
+/* Needed in addition to #navigator-toolbox above,
+ * either due to browser.tabs.inTitlebar=1 or just newer Firefox changes */
+#nav-bar {
+  background: var(--toolbox-bgcolor) !important;
+  color: var(--toolbox-textcolor) !important;
+}
+
 #urlbar {
   --toolbar-field-background-color: rgba(255, 255, 255, 0.95);
   --toolbar-field-text-color: #111;
