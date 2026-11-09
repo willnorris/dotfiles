@@ -37,9 +37,9 @@ html[taskbartab] body {
   }
 }
 
-/* Make "Not Secure" button look like others */
-box[pageproxystate="valid"]:is(.notSecure) > .identity-box-button {
-  --urlbar-box-bgcolor: none;
+/* Hide "Not Secure" label, the icon is sufficient. */
+#trust-label {
+  display: none;
 }
 
 /* tighten up the spacing of vertical tabs */
