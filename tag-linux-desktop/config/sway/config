@@ -72,6 +72,11 @@ input "type:pointer" {
 input "1133:45111:MX_Anywhere_3S_Mouse" {
   pointer_accel -0.5
 }
+
+# Disable two extra mouse buttons on MX Master 4 mouse
+bindsym --whole-window --input-device="1133:50504:Logitech_USB_Receiver_Mouse" BTN_BACK nop
+bindsym --whole-window --input-device="1133:50504:Logitech_USB_Receiver_Mouse" BTN_FORWARD nop
+
 input "type:touchpad" {
   natural_scroll enabled
   click_method clickfinger
