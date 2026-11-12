@@ -35,5 +35,5 @@ if kitten @ ls --match state:self 2>/dev/null | grep -Fq '\u2060'; then
         kitten @ send-key --match state:self "$remote_key"
     fi
 else
-    kitten @ action --no-response --match state:self "$@"
+    kitten @ action --no-response --self "$@"
 fi
